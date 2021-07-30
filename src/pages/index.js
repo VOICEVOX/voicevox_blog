@@ -8,6 +8,7 @@ import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons"
 import PlayButton from "../components/playButton"
 
 import Seo from "../components/seo"
+import "../components/layout.scss"
 
 import metan001 from "../audios/metan-001.wav"
 import metan002 from "../audios/metan-002.wav"
@@ -116,7 +117,7 @@ const IndexPage = () => (
         <div className="container is-flex is-justify-content-center">
           <a
             className="button is-outlined ml-1 mr-1"
-            href="https://github.com/Hiroshiba/VOICEVOX"
+            href="https://github.com/Hiroshiba/voicevox"
             target="_blank"
           >
             <span className="icon">

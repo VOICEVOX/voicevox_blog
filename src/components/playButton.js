@@ -7,8 +7,12 @@ class PlayButton extends Component {
   constructor(props) {
     super(props)
 
+    this.state = { audio: undefined, isPlaying: false }
+  }
+
+  componentDidMount() {
     const audio = new Audio(this.props.audio)
-    this.state = { audio, isPlaying: false }
+    this.setState({ audio })
 
     audio.addEventListener("play", () => {
       this.state.isPlaying = true
