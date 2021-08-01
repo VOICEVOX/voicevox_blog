@@ -3,7 +3,7 @@ module.exports = {
     title: `VOICEVOX`,
     description: `VOICEVOXのホームページ`,
     author: `Hiroshiba Kazuyuki`,
-    siteUrl: `https://voicevox.hiroshiba.jp/`,
+    siteUrl: `https://voicevox.hiroshiba.jp`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -32,5 +32,15 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
     `gatsby-plugin-sass`,
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: ["UA-141253083-3"],
+        pluginConfig: {
+          head: true,
+          respectDNT: false,
+        },
+      },
+    },
   ],
 }

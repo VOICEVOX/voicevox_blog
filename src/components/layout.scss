@@ -9,11 +9,30 @@ $family-sans-serif: "M PLUS Rounded 1c", sans-serif;
 
 .landing {
   .first-view {
-    height: 100vh;
+    @include desktop {
+      height: 100vh;
+    }
+
     display: flex;
     flex-direction: column;
     .not-header {
       flex-grow: 1;
+    }
+  }
+
+  video {
+    border: 1.5px solid;
+  }
+
+  .top-title {
+    font-size: $size-1 * 2;
+
+    @include until($desktop) {
+      font-size: $size-1 * 1.5;
+    }
+
+    @include until($tablet) {
+      font-size: $size-1;
     }
   }
 }
