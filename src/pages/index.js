@@ -6,6 +6,7 @@ import { faDownload } from "@fortawesome/free-solid-svg-icons"
 import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons"
 
 import PlayButton from "../components/playButton"
+import DownloadModal from "../components/downloadModal"
 
 import Seo from "../components/seo"
 import "../components/layout.scss"
@@ -23,10 +24,25 @@ import shareThumb from "../images/landing-share-thumb.jpg"
 class IndexPage extends Component {
   constructor(props) {
     super(props)
+
+    this.state = { showingDownloadModal: false }
+
+    this.showDownloadModal = this.showDownloadModal.bind(this)
+    this.hideDownloadModal = this.hideDownloadModal.bind(this)
+  }
+
+  showDownloadModal() {
+    document.documentElement.classList.add("is-clipped")
+    this.setState({ showingDownloadModal: true })
+  }
+  hideDownloadModal() {
+    document.documentElement.classList.remove("is-clipped")
+    this.setState({ showingDownloadModal: false })
   }
 
   sendEvent = (event, eventCategory) => {
     typeof window !== "undefined" &&
+      window.gtag &&
       window.gtag("event", event, { event_category: eventCategory })
   }
 
@@ -71,8 +87,10 @@ class IndexPage extends Component {
                   </p>
                   <a
                     className="button is-align-self-center mt-5 is-primary is-rounded is-large"
-                    href="https://drive.google.com/drive/folders/1xQm-3aB8S5nCM7MQY4fhX6RDWm1ZK0lt"
-                    onClick={() => this.sendEvent("download", "software")}
+                    onClick={() => {
+                      this.sendEvent("download", "software")
+                      this.showDownloadModal()
+                    }}
                   >
                     <span className="icon">
                       <FontAwesomeIcon icon={faDownload} />
@@ -130,8 +148,10 @@ class IndexPage extends Component {
               </div>
               <a
                 className="button is-align-self-center mt-5 mb-5 is-primary is-rounded is-large"
-                href="https://drive.google.com/drive/folders/1xQm-3aB8S5nCM7MQY4fhX6RDWm1ZK0lt"
-                onClick={() => this.sendEvent("download", "software")}
+                onClick={() => {
+                  this.sendEvent("download", "software")
+                  this.showDownloadModal()
+                }}
               >
                 <span className="icon">
                   <FontAwesomeIcon icon={faDownload} />
@@ -168,6 +188,10 @@ class IndexPage extends Component {
             </div>
           </footer>
         </div>
+        <DownloadModal
+          isActive={this.state.showingDownloadModal}
+          hide={this.hideDownloadModal}
+        />
       </>
     )
   }
