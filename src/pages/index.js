@@ -77,13 +77,22 @@ class IndexPage extends Component {
                   <h2 className="title">特徴</h2>
                   <div className="content">
                     <ul className="mt-0">
-                      <li>商用・非商用問わず無料 (※)</li>
-                      <li>すぐに使えるソフトウェア</li>
+                      <li>
+                        商用・非商用問わず無料{" "}
+                        <span style={{ "font-size": "0.7em" }}>(※1)</span>
+                      </li>
+                      <li>
+                        すぐに使えるソフトウェア{" "}
+                        <span style={{ "font-size": "0.7em" }}>(※2)</span>
+                      </li>
                       <li>イントネーションの詳細な調整が可能</li>
                     </ul>
                   </div>
                   <p className="is-size-7">
-                    ※詳しくは各音声ライブラリの利用規約をご参照ください
+                    ※1 詳しくは各音声ライブラリの利用規約をご参照ください
+                  </p>
+                  <p className="is-size-7">
+                    ※2 現在はWindows PCにのみ対応しています
                   </p>
                   <a
                     className="button is-align-self-center mt-5 is-primary is-rounded is-large"
