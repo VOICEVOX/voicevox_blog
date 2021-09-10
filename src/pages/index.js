@@ -96,8 +96,10 @@ class IndexPage extends Component {
                   </p>
                   <a
                     className="button is-align-self-center mt-5 is-primary is-rounded is-large"
-                    href="https://github.com/Hiroshiba/voicevox/releases/download/0.5.1/VOICEVOX.Web.Setup.0.5.1.exe"
-                    onClick={() => this.sendEvent("download", "software")}
+                    onClick={() => {
+                      this.showDownloadModal()
+                      this.sendEvent("download", "software")
+                    }}
                     target="_blank"
                   >
                     <span className="icon">
@@ -155,9 +157,11 @@ class IndexPage extends Component {
                 </div>
               </div>
               <a
-                className="button is-align-self-center mt-5 mb-5 is-primary is-rounded is-large"
-                href="https://github.com/Hiroshiba/voicevox/releases/download/0.5.1/VOICEVOX.Web.Setup.0.5.1.exe"
-                onClick={() => this.sendEvent("download", "software")}
+                className="button is-align-self-center mt-5 is-primary is-rounded is-large"
+                onClick={() => {
+                  this.showDownloadModal()
+                  this.sendEvent("download", "software")
+                }}
                 target="_blank"
               >
                 <span className="icon">
@@ -195,10 +199,10 @@ class IndexPage extends Component {
             </div>
           </footer>
         </div>
-        {/* <DownloadModal
+        <DownloadModal
           isActive={this.state.showingDownloadModal}
           hide={this.hideDownloadModal}
-        /> */}
+        />
       </>
     )
   }

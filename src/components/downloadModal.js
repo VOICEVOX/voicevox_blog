@@ -17,7 +17,7 @@ class DownloadModal extends Component {
         <div className="modal-background" onClick={this.props.hide}></div>
         <div className="modal-card">
           <header className="modal-card-head has-text-centered">
-            <p className="modal-card-title">ダウンロード方法</p>
+            <p className="modal-card-title">ダウンロード</p>
             <button
               className="delete"
               aria-label="close"
@@ -25,29 +25,31 @@ class DownloadModal extends Component {
             ></button>
           </header>
           <section className="modal-card-body">
-            <p className="title is-5">
-              ① ダウンロードページ（窓の杜）にアクセス
-            </p>
-            <div className="has-text-centered mb-5">
+            <div className="has-text-centered mt-3 mb-3">
               <a
-                href="https://forest.watch.impress.co.jp/docs/news/1341517.html"
+                href="https://github.com/Hiroshiba/voicevox/releases/download/0.5.1/VOICEVOX.Web.Setup.0.5.1.exe"
                 target="_blank"
-                className="button is-medium is-primary"
+                className="button is-medium is-primary is-rounded ml-2 mr-2"
               >
                 <span className="has-text-weight-semibold">
-                  ダウンロードページへ
+                  インストーラー版
                 </span>
               </a>
+              <a
+                href="https://drive.google.com/file/d/13T4iNG1bHXXjPGHc7C9BiBgFr_vTTgCB/view?usp=sharing"
+                target="_blank"
+                className="button is-medium is-primary is-rounded ml-2 mr-2"
+              >
+                <span className="has-text-weight-semibold">Zip版</span>
+              </a>
+              <a
+                href="https://docs.google.com/document/d/1h7vdNJ0oHittfO2u7pR3i_r2AYBZGbdhXSKhEfVnKHA/edit?usp=sharing"
+                target="_blank"
+                className="button is-medium is-rounded ml-2 mr-2"
+              >
+                <span>使い方</span>
+              </a>
             </div>
-            <p className="title is-5">
-              ② 記事の下の方にあるダウンロードボタンをクリック
-            </p>
-            <StaticImage
-              src="../images/download-page-image.png"
-              alt="ダウンロードボタンの場所"
-              objectFit="contain"
-              style={{ maxHeight: "12rem" }}
-            />
           </section>
           <footer className="modal-card-foot is-justify-content-flex-end"></footer>
         </div>
