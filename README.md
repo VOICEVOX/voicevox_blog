@@ -2,6 +2,12 @@
 
 https://voicevox.hiroshiba.jp/
 
+## debug
+
+```bash
+npm run develop
+```
+
 ## deploy
 
 ```bash

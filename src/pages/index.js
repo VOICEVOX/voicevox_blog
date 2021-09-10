@@ -96,7 +96,7 @@ class IndexPage extends Component {
                   </p>
                   <a
                     className="button is-align-self-center mt-5 is-primary is-rounded is-large"
-                    href="https://drive.google.com/drive/folders/1_7J9xkwirPUwGtr06QqlqD8k2dvose4N?usp=sharing"
+                    href="https://github.com/Hiroshiba/voicevox/releases/download/0.5.1/VOICEVOX.Web.Setup.0.5.1.exe"
                     onClick={() => this.sendEvent("download", "software")}
                     target="_blank"
                   >
@@ -156,7 +156,7 @@ class IndexPage extends Component {
               </div>
               <a
                 className="button is-align-self-center mt-5 mb-5 is-primary is-rounded is-large"
-                href="https://drive.google.com/drive/folders/1_7J9xkwirPUwGtr06QqlqD8k2dvose4N?usp=sharing"
+                href="https://github.com/Hiroshiba/voicevox/releases/download/0.5.1/VOICEVOX.Web.Setup.0.5.1.exe"
                 onClick={() => this.sendEvent("download", "software")}
                 target="_blank"
               >
