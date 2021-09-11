@@ -89,7 +89,7 @@ class IndexPage extends Component {
                     </ul>
                   </div>
                   <p className="is-size-7">
-                    ※1 詳しくは各音声ライブラリの利用規約をご参照ください
+                    ※1 詳しくは各キャラクターの利用規約をご参照ください
                   </p>
                   <p className="is-size-7">
                     ※2 現在はWindows PCにのみ対応しています
@@ -116,65 +116,128 @@ class IndexPage extends Component {
               </div>
             </section>
           </div>
-          <main className="section">
-            <div className="container is-max-desktop is-flex is-flex-direction-column">
-              <h2 className="title">音声ライブラリ一覧</h2>
-              <div className="tile is-ancestor is-justify-content-center">
-                <div className="tile is-parent is-5">
-                  <div className="tile is-child card">
-                    <StaticImage
-                      className="card-image"
-                      src="../images/bustup-metan.png"
-                      alt="四国めたん"
-                    />
-                    <div className="card-content has-text-centered">
-                      <h3 className="title is-4">四国めたん</h3>
-                      <p className="subtitle is-5">
-                        落ち着いた優しい声が特徴的
-                      </p>
-                      <p className="mb-1">音声サンプル</p>
-                      <PlayButton audio={metan001} className="ml-1 mr-1" />
-                      <PlayButton audio={metan002} className="ml-1 mr-1" />
-                      <PlayButton audio={metan003} className="ml-1 mr-1" />
+
+          <main>
+            <section className="section">
+              <div className="container is-max-desktop is-flex is-flex-direction-column">
+                <h2 className="title">キャラクター一覧</h2>
+                <div className="tile is-ancestor is-justify-content-center">
+                  <div className="tile is-parent is-5">
+                    <div className="tile is-child card">
+                      <StaticImage
+                        className="card-image"
+                        src="../images/bustup-metan.png"
+                        alt="四国めたん"
+                      />
+                      <div className="card-content has-text-centered">
+                        <h3 className="title is-4">四国めたん</h3>
+                        <p className="subtitle is-5">
+                          落ち着いた優しい声が特徴的
+                        </p>
+                        <p className="mb-1">音声サンプル</p>
+                        <PlayButton audio={metan001} className="ml-1 mr-1" />
+                        <PlayButton audio={metan002} className="ml-1 mr-1" />
+                        <PlayButton audio={metan003} className="ml-1 mr-1" />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="tile is-parent is-5">
+                    <div className="tile is-child card">
+                      <StaticImage
+                        className="card-image"
+                        src="../images/bustup-zundamon.png"
+                        alt="ずんだもん"
+                      />
+                      <div className="card-content has-text-centered">
+                        <h3 className="title is-4">ずんだもん</h3>
+                        <p className="subtitle is-5">
+                          子供っぽい高めの声が特徴的
+                        </p>
+                        <p className="mb-1">音声サンプル</p>
+                        <PlayButton audio={zundamon001} className="ml-1 mr-1" />
+                        <PlayButton audio={zundamon002} className="ml-1 mr-1" />
+                        <PlayButton audio={zundamon003} className="ml-1 mr-1" />
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div className="tile is-parent is-5">
-                  <div className="tile is-child card">
-                    <StaticImage
-                      className="card-image"
-                      src="../images/bustup-zundamon.png"
-                      alt="ずんだもん"
-                    />
-                    <div className="card-content has-text-centered">
-                      <h3 className="title is-4">ずんだもん</h3>
-                      <p className="subtitle is-5">
-                        子供っぽい高めの声が特徴的
-                      </p>
-                      <p className="mb-1">音声サンプル</p>
-                      <PlayButton audio={zundamon001} className="ml-1 mr-1" />
-                      <PlayButton audio={zundamon002} className="ml-1 mr-1" />
-                      <PlayButton audio={zundamon003} className="ml-1 mr-1" />
-                    </div>
-                  </div>
+                <a
+                  className="button is-align-self-center mt-5 is-primary is-rounded is-large"
+                  onClick={() => {
+                    this.showDownloadModal()
+                    this.sendEvent("download", "software")
+                  }}
+                  target="_blank"
+                >
+                  <span className="icon">
+                    <FontAwesomeIcon icon={faDownload} />
+                  </span>
+                  <span className="has-text-weight-semibold">ダウンロード</span>
+                </a>
+                <p className="is-align-self-center is-size-6">Version 0.5.1</p>
+              </div>
+            </section>
+
+            <section className="section">
+              <div className="container is-max-desktop is-flex is-flex-direction-column">
+                <h2 className="title">オープンソース</h2>
+                <p className="is-size-5">
+                  VOICEVOX ソフトウェアは OSS
+                  （オープンソース・ソフトウェア）です。
+                </p>
+                <p className="is-size-5">
+                  ソフトウェア部分は Electron + Vue 、音声合成エンジン部分は
+                  Python + FastAPI です。
+                </p>
+                <p className="is-size-5">
+                  追加したい・改善したい機能があれば、ぜひ開発にご参加ください！
+                </p>
+                <div className="is-flex mt-3">
+                  <a
+                    className="button is-outlined mr-1"
+                    href="https://github.com/Hiroshiba/voicevox"
+                    target="_blank"
+                  >
+                    <span className="icon">
+                      <FontAwesomeIcon icon={faGithub} />
+                    </span>
+                    <span>VOICEVOX ソフトウェア</span>
+                  </a>
+                  <a
+                    className="button is-outlined ml-1"
+                    href="https://github.com/Hiroshiba/voicevox_engine"
+                    target="_blank"
+                  >
+                    <span className="icon">
+                      <FontAwesomeIcon icon={faGithub} />
+                    </span>
+                    <span>VOICEVOX エンジン</span>
+                  </a>
                 </div>
               </div>
-              <a
-                className="button is-align-self-center mt-5 is-primary is-rounded is-large"
-                onClick={() => {
-                  this.showDownloadModal()
-                  this.sendEvent("download", "software")
-                }}
-                target="_blank"
-              >
-                <span className="icon">
-                  <FontAwesomeIcon icon={faDownload} />
-                </span>
-                <span className="has-text-weight-semibold">ダウンロード</span>
-              </a>
-              <p className="is-align-self-center is-size-6">Version 0.5.1</p>
-            </div>
+            </section>
+
+            <section className="section">
+              <div className="container is-max-desktop is-flex is-flex-direction-column">
+                <h2 className="title">コアライブラリ</h2>
+                <p className="is-size-5">
+                  VOICEVOXの音声合成をアプリケーションやサービスに組み込める、VOICEVOXのコアライブラリを配布しています。
+                </p>
+                <p className="is-size-5">
+                  詳しくは&nbsp;
+                  <a
+                    href="https://github.com/Hiroshiba/voicevox_core"
+                    className="has-text-primary has-text-weight-bold is-underlined"
+                    target="_blank"
+                  >
+                    VOICEVOX CORE
+                  </a>
+                  &nbsp;をご参照ください。
+                </p>
+              </div>
+            </section>
           </main>
+
           <footer className="footer">
             <div className="container is-flex is-justify-content-center">
               <a
