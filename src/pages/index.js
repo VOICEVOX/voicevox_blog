@@ -110,7 +110,7 @@ class IndexPage extends Component {
                     </span>
                   </a>
                   <p className="is-align-self-center is-size-6">
-                    Version 0.5.1
+                    Version 0.5.2
                   </p>
                 </div>
               </div>
@@ -174,7 +174,7 @@ class IndexPage extends Component {
                   </span>
                   <span className="has-text-weight-semibold">ダウンロード</span>
                 </a>
-                <p className="is-align-self-center is-size-6">Version 0.5.1</p>
+                <p className="is-align-self-center is-size-6">Version 0.5.2</p>
               </div>
             </section>
 
