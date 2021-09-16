@@ -110,7 +110,7 @@ class IndexPage extends Component {
                     </span>
                   </a>
                   <p className="is-align-self-center is-size-6">
-                    Version 0.5.2
+                    Version 0.5.3
                   </p>
                 </div>
               </div>
@@ -174,7 +174,7 @@ class IndexPage extends Component {
                   </span>
                   <span className="has-text-weight-semibold">ダウンロード</span>
                 </a>
-                <p className="is-align-self-center is-size-6">Version 0.5.2</p>
+                <p className="is-align-self-center is-size-6">Version 0.5.3</p>
               </div>
             </section>
 
@@ -190,7 +190,7 @@ class IndexPage extends Component {
                   Python + FastAPI です。
                 </p>
                 <p className="is-size-5">
-                  追加したい・改善したい機能があれば、ぜひ開発にご参加ください！
+                  追加したい・改善したい機能があれば、ぜひ開発にご参加ください。
                 </p>
                 <div className="is-flex mt-3">
                   <a
