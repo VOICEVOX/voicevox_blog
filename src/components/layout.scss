@@ -64,3 +64,13 @@ $family-sans-serif: "M PLUS Rounded 1c", sans-serif;
     border-width: 2.4px;
   }
 }
+
+.markdown {
+  @extend .content;
+
+  h2 {
+    @extend .title;
+    @extend .is-5;
+    @extend .mb-3;
+  }
+}

@@ -1,7 +1,5 @@
 import React, { Component } from "react"
 
-import { StaticImage } from "gatsby-plugin-image"
-
 class DownloadModal extends Component {
   constructor(props) {
     super(props)
@@ -25,7 +23,7 @@ class DownloadModal extends Component {
             ></button>
           </header>
           <section className="modal-card-body">
-            <div className="has-text-centered mt-3 mb-3">
+            <div className="has-text-centered pt-2 pb-2">
               <a
                 href="https://github.com/Hiroshiba/voicevox/releases/download/0.5.3/VOICEVOX.Web.Setup.0.5.3.exe"
                 target="_blank"
@@ -41,6 +39,14 @@ class DownloadModal extends Component {
                 className="button is-medium is-primary is-rounded ml-2 mr-2"
               >
                 <span className="has-text-weight-semibold">Zip版</span>
+              </a>
+            </div>
+            <div className="has-text-centered pt-2 pb-2">
+              <a
+                onClick={this.props.showReadme}
+                className="button is-medium is-rounded ml-2 mr-2"
+              >
+                <span>利用規約</span>
               </a>
               <a
                 href="https://docs.google.com/document/d/1WvhABjWP-z9mZjDjkTMAw81x-U2DNFrT1GPsOPLYQcA/edit?usp=sharing"
