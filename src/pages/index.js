@@ -126,7 +126,7 @@ export default props => {
                   </span>
                   <span className="has-text-weight-semibold">ダウンロード</span>
                 </a>
-                <p className="is-align-self-center is-size-6">Version 0.5.3</p>
+                <p className="is-align-self-center is-size-6">Version 0.6.1</p>
               </div>
             </div>
           </section>
@@ -205,7 +205,7 @@ export default props => {
                 </span>
                 <span className="has-text-weight-semibold">ダウンロード</span>
               </a>
-              <p className="is-align-self-center is-size-6">Version 0.5.3</p>
+              <p className="is-align-self-center is-size-6">Version 0.6.1</p>
             </div>
           </section>
 

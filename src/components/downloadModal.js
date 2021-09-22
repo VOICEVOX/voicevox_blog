@@ -25,7 +25,7 @@ class DownloadModal extends Component {
           <section className="modal-card-body">
             <div className="has-text-centered pt-2 pb-2">
               <a
-                href="https://github.com/Hiroshiba/voicevox/releases/download/0.5.3/VOICEVOX.Web.Setup.0.5.3.exe"
+                href="https://github.com/Hiroshiba/voicevox/releases/download/0.6.1/VOICEVOX.Web.Setup.0.6.1.exe"
                 target="_blank"
                 className="button is-medium is-primary is-rounded ml-2 mr-2"
               >
@@ -34,7 +34,7 @@ class DownloadModal extends Component {
                 </span>
               </a>
               <a
-                href="https://drive.google.com/file/d/1wjSzhYfQEJuCvOAaURfXFV4JcDutLnI2/view?usp=sharing"
+                href="https://drive.google.com/file/d/1eUJiYFL4uVV8T8bmRTYrby_3j3rWX-s6/view?usp=sharing"
                 target="_blank"
                 className="button is-medium is-primary is-rounded ml-2 mr-2"
               >
@@ -49,7 +49,7 @@ class DownloadModal extends Component {
                 <span>利用規約</span>
               </a>
               <a
-                href="https://docs.google.com/document/d/1WvhABjWP-z9mZjDjkTMAw81x-U2DNFrT1GPsOPLYQcA/edit?usp=sharing"
+                href="https://docs.google.com/document/d/1y021q5BToBTErkTQXdMac9A7JzFyJXb4fB1e9_AHe9o/edit?usp=sharing"
                 target="_blank"
                 className="button is-medium is-rounded ml-2 mr-2"
               >
