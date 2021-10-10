@@ -2,10 +2,9 @@ import React, { useState } from "react"
 import { StaticImage } from "gatsby-plugin-image"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faAngleDown, faDownload } from "@fortawesome/free-solid-svg-icons"
+import { faDownload } from "@fortawesome/free-solid-svg-icons"
 import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons"
 
-import PlayButton from "../components/playButton"
 import AudioSample from "../components/audioSample"
 import DownloadModal from "../components/downloadModal"
 import ModalReadmeSoftware from "../components/modalReadmeSoftware"

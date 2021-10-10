@@ -8,11 +8,17 @@ export default ({
   className,
   style,
 }: { url: string } & React.HTMLAttributes<HTMLDivElement>) => {
-  const audio = useMemo(() => new Audio(url), [url])
+  const [audio, setAudio] = useState<HTMLAudioElement | null>(null)
   const [isPlaying, setIsPlaying] = useState(false)
   const [isReady, setIsReady] = useState(false)
 
   useEffect(() => {
+    setAudio(new Audio(url))
+  }, [url])
+
+  useEffect(() => {
+    if (!audio) return
+
     const onPlayCallback = () => {
       setIsPlaying(true)
     }
@@ -34,6 +40,8 @@ export default ({
 
   useEffect(() => {
     return () => {
+      if (!audio) return
+
       audio.pause()
       setIsPlaying(false)
       setIsReady(false)
@@ -41,12 +49,12 @@ export default ({
   }, [audio])
 
   const play = () => {
-    audio.play()
+    audio!.play()
   }
 
   const stop = () => {
-    audio.pause()
-    audio.currentTime = 0
+    audio!.pause()
+    audio!.currentTime = 0
   }
 
   return (
