@@ -146,7 +146,7 @@ export default () => {
                   </span>
                   <span className="has-text-weight-semibold">ダウンロード</span>
                 </a>
-                <p className="is-align-self-center is-size-6">Version 0.7.1</p>
+                <p className="is-align-self-center is-size-6">Version 0.7.2</p>
               </div>
             </div>
           </section>
@@ -278,7 +278,7 @@ export default () => {
                 </span>
                 <span className="has-text-weight-semibold">ダウンロード</span>
               </a>
-              <p className="is-align-self-center is-size-6">Version 0.7.1</p>
+              <p className="is-align-self-center is-size-6">Version 0.7.2</p>
             </div>
           </section>
 

@@ -24,7 +24,7 @@ export default (props: {
         <section className="modal-card-body">
           <div className="has-text-centered pt-2 pb-2">
             <a
-              href="https://github.com/Hiroshiba/voicevox/releases/download/0.7.1/VOICEVOX.Web.Setup.0.7.1.exe"
+              href="https://github.com/Hiroshiba/voicevox/releases/download/0.7.2/VOICEVOX.Web.Setup.0.7.2.exe"
               target="_blank"
               rel="noreferrer"
               className="button is-medium is-primary is-rounded ml-2 mr-2"
@@ -32,7 +32,7 @@ export default (props: {
               <span className="has-text-weight-semibold">インストーラー版</span>
             </a>
             <a
-              href="https://drive.google.com/file/d/13bf0hAkpc-8h5TE1mFLDaSnimFEwU8Qc/view?usp=sharing"
+              href="https://drive.google.com/file/d/1oYBdjSJ3hED49mPtQyrzB7HBu762A6ai/view?usp=sharing"
               target="_blank"
               rel="noreferrer"
               className="button is-medium is-primary is-rounded ml-2 mr-2"
@@ -48,7 +48,7 @@ export default (props: {
               <span>利用規約</span>
             </button>
             <a
-              href="https://docs.google.com/document/d/10kS3Jh12BmoRZPnrVhlVoWVv8_LW3VYBuZuVExwPaJI/edit?usp=sharing"
+              href="https://docs.google.com/document/d/1JcuuhsR69GFUyg3xmym2DZ3FTMHVSjBvfxpgZvUjhm0/edit?usp=sharing"
               target="_blank"
               rel="noreferrer"
               className="button is-medium is-rounded ml-2 mr-2"
