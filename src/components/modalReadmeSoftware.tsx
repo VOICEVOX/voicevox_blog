@@ -3,11 +3,7 @@ import React from "react"
 
 import ModalMarkdown from "./modalMarkdown"
 
-export default (props: {
-  isActive: boolean
-  title: string
-  hide: () => {}
-}) => {
+export default (props: { isActive: boolean; hide: () => void }) => {
   const html = useStaticQuery(graphql`
     query {
       markdownRemark(fileAbsolutePath: { regex: "/softwareReadme/" }) {

@@ -4,7 +4,7 @@ export default (props: {
   isActive: boolean
   title: string
   html: string
-  hide: () => {}
+  hide: () => void
 }) => {
   return (
     <div className={"modal" + (props.isActive ? " is-active" : "")}>

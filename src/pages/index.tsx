@@ -2,10 +2,11 @@ import React, { useState } from "react"
 import { StaticImage } from "gatsby-plugin-image"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faDownload } from "@fortawesome/free-solid-svg-icons"
+import { faAngleDown, faDownload } from "@fortawesome/free-solid-svg-icons"
 import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons"
 
 import PlayButton from "../components/playButton"
+import AudioSample from "../components/audioSample"
 import DownloadModal from "../components/downloadModal"
 import ModalReadmeSoftware from "../components/modalReadmeSoftware"
 import ModalReadmeLibrary from "../components/modalReadmeLibrary"
@@ -13,17 +14,35 @@ import ModalReadmeLibrary from "../components/modalReadmeLibrary"
 import Seo from "../components/seo"
 import "../components/layout.scss"
 
-import metan001 from "../audios/metan-001.wav"
-import metan002 from "../audios/metan-002.wav"
-import metan003 from "../audios/metan-003.wav"
-import zundamon001 from "../audios/zundamon-001.wav"
-import zundamon002 from "../audios/zundamon-002.wav"
-import zundamon003 from "../audios/zundamon-003.wav"
+import metanNormal001 from "../audios/metan-normal-001.wav"
+import metanNormal002 from "../audios/metan-normal-002.wav"
+import metanNormal003 from "../audios/metan-normal-003.wav"
+import metanAma001 from "../audios/metan-ama-001.wav"
+import metanAma002 from "../audios/metan-ama-002.wav"
+import metanAma003 from "../audios/metan-ama-003.wav"
+import metanSexy001 from "../audios/metan-sexy-001.wav"
+import metanSexy002 from "../audios/metan-sexy-002.wav"
+import metanSexy003 from "../audios/metan-sexy-003.wav"
+import metanTsun001 from "../audios/metan-tsun-001.wav"
+import metanTsun002 from "../audios/metan-tsun-002.wav"
+import metanTsun003 from "../audios/metan-tsun-003.wav"
+import zundamonNormal001 from "../audios/zundamon-normal-001.wav"
+import zundamonNormal002 from "../audios/zundamon-normal-002.wav"
+import zundamonNormal003 from "../audios/zundamon-normal-003.wav"
+import zundamonAma001 from "../audios/zundamon-ama-001.wav"
+import zundamonAma002 from "../audios/zundamon-ama-002.wav"
+import zundamonAma003 from "../audios/zundamon-ama-003.wav"
+import zundamonSexy001 from "../audios/zundamon-sexy-001.wav"
+import zundamonSexy002 from "../audios/zundamon-sexy-002.wav"
+import zundamonSexy003 from "../audios/zundamon-sexy-003.wav"
+import zundamonTsun001 from "../audios/zundamon-tsun-001.wav"
+import zundamonTsun002 from "../audios/zundamon-tsun-002.wav"
+import zundamonTsun003 from "../audios/zundamon-tsun-003.wav"
 import landingMovieThumb from "../images/landing-movie-thumb.png"
 import landingMovie from "../movies/landing.mp4"
 import shareThumb from "../images/landing-share-thumb.jpg"
 
-export default props => {
+export default () => {
   const [showingDownloadModal, setShowingDownloadModal] = useState(false)
   const [showingSoftwareReadmeModal, setShowingSoftwareReadmeModal] =
     useState(false)
@@ -120,13 +139,14 @@ export default props => {
                     sendEvent("download", "software")
                   }}
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <span className="icon">
                     <FontAwesomeIcon icon={faDownload} />
                   </span>
                   <span className="has-text-weight-semibold">ダウンロード</span>
                 </a>
-                <p className="is-align-self-center is-size-6">Version 0.6.1</p>
+                <p className="is-align-self-center is-size-6">Version 0.7.1</p>
               </div>
             </div>
           </section>
@@ -137,7 +157,7 @@ export default props => {
             <div className="container is-max-desktop is-flex is-flex-direction-column">
               <h2 className="title">キャラクター一覧</h2>
               <div className="tile is-ancestor is-justify-content-center">
-                <div className="tile is-parent is-5">
+                <div className="tile is-parent is-6">
                   <div className="tile is-child card">
                     <StaticImage
                       className="card-image"
@@ -149,10 +169,30 @@ export default props => {
                       <p className="subtitle is-5">
                         落ち着いた優しい声が特徴的
                       </p>
-                      <p className="mb-1">音声サンプル</p>
-                      <PlayButton audio={metan001} className="ml-1 mr-1" />
-                      <PlayButton audio={metan002} className="ml-1 mr-1" />
-                      <PlayButton audio={metan003} className="ml-1 mr-1" />
+                      <AudioSample
+                        audioSamples={[
+                          {
+                            style: "ノーマル",
+                            urls: [
+                              metanNormal001,
+                              metanNormal002,
+                              metanNormal003,
+                            ],
+                          },
+                          {
+                            style: "あまあま",
+                            urls: [metanAma001, metanAma002, metanAma003],
+                          },
+                          {
+                            style: "ツンツン",
+                            urls: [metanTsun001, metanTsun002, metanTsun003],
+                          },
+                          {
+                            style: "セクシー",
+                            urls: [metanSexy001, metanSexy002, metanSexy003],
+                          },
+                        ]}
+                      />
                       <div className="pt-3">
                         <a
                           onClick={showLibraryReadmeModal}
@@ -164,7 +204,7 @@ export default props => {
                     </div>
                   </div>
                 </div>
-                <div className="tile is-parent is-5">
+                <div className="tile is-parent is-6">
                   <div className="tile is-child card">
                     <StaticImage
                       className="card-image"
@@ -176,10 +216,42 @@ export default props => {
                       <p className="subtitle is-5">
                         子供っぽい高めの声が特徴的
                       </p>
-                      <p className="mb-1">音声サンプル</p>
-                      <PlayButton audio={zundamon001} className="ml-1 mr-1" />
-                      <PlayButton audio={zundamon002} className="ml-1 mr-1" />
-                      <PlayButton audio={zundamon003} className="ml-1 mr-1" />
+                      <AudioSample
+                        audioSamples={[
+                          {
+                            style: "ノーマル",
+                            urls: [
+                              zundamonNormal001,
+                              zundamonNormal002,
+                              zundamonNormal003,
+                            ],
+                          },
+                          {
+                            style: "あまあま",
+                            urls: [
+                              zundamonAma001,
+                              zundamonAma002,
+                              zundamonAma003,
+                            ],
+                          },
+                          {
+                            style: "ツンツン",
+                            urls: [
+                              zundamonTsun001,
+                              zundamonTsun002,
+                              zundamonTsun003,
+                            ],
+                          },
+                          {
+                            style: "セクシー",
+                            urls: [
+                              zundamonSexy001,
+                              zundamonSexy002,
+                              zundamonSexy003,
+                            ],
+                          },
+                        ]}
+                      />
                       <div className="pt-3">
                         <a
                           onClick={showLibraryReadmeModal}
@@ -199,13 +271,14 @@ export default props => {
                   sendEvent("download", "software")
                 }}
                 target="_blank"
+                rel="noreferrer"
               >
                 <span className="icon">
                   <FontAwesomeIcon icon={faDownload} />
                 </span>
                 <span className="has-text-weight-semibold">ダウンロード</span>
               </a>
-              <p className="is-align-self-center is-size-6">Version 0.6.1</p>
+              <p className="is-align-self-center is-size-6">Version 0.7.1</p>
             </div>
           </section>
 
@@ -228,6 +301,7 @@ export default props => {
                   className="button is-outlined mr-1"
                   href="https://github.com/Hiroshiba/voicevox"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <span className="icon">
                     <FontAwesomeIcon icon={faGithub} />
@@ -238,6 +312,7 @@ export default props => {
                   className="button is-outlined ml-1"
                   href="https://github.com/Hiroshiba/voicevox_engine"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <span className="icon">
                     <FontAwesomeIcon icon={faGithub} />
@@ -260,6 +335,7 @@ export default props => {
                   href="https://github.com/Hiroshiba/voicevox_core"
                   className="has-text-primary has-text-weight-bold is-underlined"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   VOICEVOX CORE
                 </a>
@@ -275,6 +351,7 @@ export default props => {
               className="button is-outlined ml-1 mr-1"
               href="https://github.com/Hiroshiba/voicevox"
               target="_blank"
+              rel="noreferrer"
             >
               <span className="icon">
                 <FontAwesomeIcon icon={faGithub} />
@@ -285,6 +362,7 @@ export default props => {
               className="button is-outlined is-info ml-1 mr-1"
               href="https://twitter.com/hiho_karuta"
               target="_blank"
+              rel="noreferrer"
             >
               <span className="icon">
                 <FontAwesomeIcon icon={faTwitter} />
