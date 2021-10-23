@@ -23,6 +23,13 @@ module.exports = {
         path: `${__dirname}/src/markdowns`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `script`,
+        path: `${__dirname}/src/scripts`,
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {

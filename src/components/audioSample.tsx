@@ -1,6 +1,6 @@
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import React, { useDebugValue, useEffect, useMemo, useState } from "react"
+import React, { useMemo, useState } from "react"
 import PlayButton from "./playButton"
 
 export default ({
