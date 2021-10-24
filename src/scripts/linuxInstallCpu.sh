@@ -13,7 +13,26 @@
 ## ターミナルでインストールを実行する
 # 1. ターミナルを起動する
 # 2. 次のように入力して実行する
-#    bash [ファイル名].sh
+#    chmod +x [ファイル名].sh
+#    ./[ファイル名].sh
+
+if ! command -v curl &> /dev/null; then
+    cat << 'EOS'
+* curl コマンドが見つかりません。
+
+以下のコマンドを実行してください。
+
+Ubuntu/Debian:
+    sudo apt install curl
+
+CentOS/Fedora:
+    sudo dnf install curl
+もしくは
+    sudo yum install curl
+EOS
+    sleep 365d
+    exit 1
+fi
 
 curl -fsSL https://raw.githubusercontent.com/Hiroshiba/voicevox/main/build/installer_linux.sh |
     VERSION=0.7.5 NAME=linux-cpu-appimage bash
