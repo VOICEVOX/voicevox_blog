@@ -16,8 +16,10 @@
 #    chmod +x [ファイル名].sh
 #    ./[ファイル名].sh
 
-if ! command -v curl &> /dev/null; then
-    cat << 'EOS'
+set -euo pipefail
+
+if ! command -v curl &>/dev/null; then
+    cat <<'EOS'
 * curl コマンドが見つかりません。
 
 以下のコマンドを実行してください。
@@ -34,5 +36,6 @@ EOS
     exit 1
 fi
 
-curl -fsSL https://raw.githubusercontent.com/Hiroshiba/voicevox/main/build/installer_linux.sh |
-    VERSION=0.7.5 bash
+curl -fsSL https://raw.githubusercontent.com/Hiroshiba/voicevox/main/build/installer_linux.sh >tmp_voicevox_installer.sh
+VERSION=0.7.5 bash tmp_voicevox_installer.sh
+rm tmp_voicevox_installer.sh
