@@ -285,8 +285,19 @@ export default () => {
             <div className="container is-max-desktop is-flex is-flex-direction-column">
               <h2 className="title">オープンソース</h2>
               <p className="is-size-5">
-                VOICEVOX ソフトウェアは OSS
-                （オープンソース・ソフトウェア）です。
+                VOICEVOX は OSS（オープンソース・ソフトウェア）版 VOICEVOX
+                をもとに構築されています。
+              </p>
+              <p className="is-size-5">
+                製品版と OSS 版の違いやモジュール構成は&nbsp;
+                <a
+                  href="https://github.com/Hiroshiba/voicevox/blob/main/docs/%E5%85%A8%E4%BD%93%E6%A7%8B%E6%88%90.md"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  VOICEVOX の全体構成
+                </a>
+                &nbsp;をご参照ください。
               </p>
               <p className="is-size-5">
                 ソフトウェア部分は Electron + Vue 、音声合成エンジン部分は
@@ -305,7 +316,7 @@ export default () => {
                   <span className="icon">
                     <FontAwesomeIcon icon={faGithub} />
                   </span>
-                  <span>VOICEVOX ソフトウェア</span>
+                  <span>VOICEVOX エディター</span>
                 </a>
                 <a
                   className="button is-outlined ml-1"
