@@ -5,9 +5,14 @@ export default (props: {
   title: string
   html: string
   hide: () => void
+  className?: string
 }) => {
   return (
-    <div className={"modal" + (props.isActive ? " is-active" : "")}>
+    <div
+      className={
+        `${props.className} modal` + (props.isActive ? " is-active" : "")
+      }
+    >
       <div className="modal-background" onClick={props.hide}></div>
       <div className="modal-card">
         <header className="modal-card-head has-text-centered">

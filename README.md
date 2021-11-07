@@ -6,16 +6,16 @@ https://voicevox.hiroshiba.jp/
 
 ```bash
 resource_url="https://raw.githubusercontent.com/Hiroshiba/voicevox_resource"
-tag="0.7.5"
+tag="0.8.1"
 
-curl -s "$resource_url/$tag/VOICEVOX/README.md" > src/markdowns/softwareReadme.md
-curl -s "$resource_url/$tag/VOICEVOX%20LIBRARY/README.md" > src/markdowns/libraryReadme.md
+# 規約
+curl -s "$resource_url/$tag/editor/README.md" > src/markdowns/softwareReadme.md
+curl -s "$resource_url/$tag/core/README.md" > src/markdowns/libraryReadme.md
 
-# 使い方（工事中）
-curl -sL https://github.com/Hiroshiba/voicevox/archive/refs/tags/$tag.zip >/tmp/voicevox.zip
-
-unzip /tmp/voicevox -d /tmp/
-ls /tmp/voicevox-$tag/public/howtouse.md
+# 使い方
+editor_url="https://raw.githubusercontent.com/Hiroshiba/voicevox"
+curl -s "$editor_url/$tag/public/howtouse.md" > src/markdowns/howToUse.md
+sed -r 's|src="([^"]+?)"|src="'$editor_url/$tag'/public/\1"|g' -i src/markdowns/howToUse.md
 ```
 
 ## debug

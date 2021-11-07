@@ -85,3 +85,11 @@ $dropdown-item-active-background-color: $primary;
     @extend .mb-3;
   }
 }
+
+.modal-how-to-use {
+  @include tablet {
+    .modal-card {
+      width: 770px;
+    }
+  }
+}

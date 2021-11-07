@@ -9,6 +9,7 @@ import AudioSample from "../components/audioSample"
 import DownloadModal from "../components/downloadModal"
 import ModalReadmeSoftware from "../components/modalReadmeSoftware"
 import ModalReadmeLibrary from "../components/modalReadmeLibrary"
+import ModalHowToUse from "../components/modalHowToUse"
 
 import Seo from "../components/seo"
 import "../components/layout.scss"
@@ -47,6 +48,7 @@ export default () => {
     useState(false)
   const [showingLibraryReadmeModal, setShowingLibraryReadmeModal] =
     useState(false)
+  const [showingHowToUseModal, setShowingHowToUseModal] = useState(false)
 
   const showDownloadModal = () => {
     document.documentElement.classList.add("is-clipped")
@@ -76,6 +78,16 @@ export default () => {
   const hideLibraryReadmeModal = () => {
     document.documentElement.classList.remove("is-clipped")
     setShowingLibraryReadmeModal(false)
+  }
+
+  const showSoftwareHowtouseModal = () => {
+    document.documentElement.classList.add("is-clipped")
+    setShowingHowToUseModal(true)
+  }
+
+  const hideHowToUseModal = () => {
+    document.documentElement.classList.remove("is-clipped")
+    setShowingHowToUseModal(false)
   }
 
   const sendEvent = (event, eventCategory) => {
@@ -145,7 +157,7 @@ export default () => {
                   </span>
                   <span className="has-text-weight-semibold">ダウンロード</span>
                 </a>
-                <p className="is-align-self-center is-size-6">Version 0.7.5</p>
+                <p className="is-align-self-center is-size-6">Version 0.8.1</p>
               </div>
             </div>
           </section>
@@ -277,7 +289,7 @@ export default () => {
                 </span>
                 <span className="has-text-weight-semibold">ダウンロード</span>
               </a>
-              <p className="is-align-self-center is-size-6">Version 0.7.5</p>
+              <p className="is-align-self-center is-size-6">Version 0.8.1</p>
             </div>
           </section>
 
@@ -389,6 +401,7 @@ export default () => {
         isActive={showingDownloadModal}
         hide={hideDownloadModal}
         showReadme={showSoftwareReadmeModal}
+        showHowtouse={showSoftwareHowtouseModal}
       />
       <ModalReadmeSoftware
         isActive={showingSoftwareReadmeModal}
@@ -398,6 +411,7 @@ export default () => {
         isActive={showingLibraryReadmeModal}
         hide={hideLibraryReadmeModal}
       />
+      <ModalHowToUse isActive={showingHowToUseModal} hide={hideHowToUseModal} />
     </>
   )
 }
