@@ -18,8 +18,6 @@ const packageAvailables: Record<OsType, PackageType[]> = {
   Linux: ["インストーラー", "Zip"],
 }
 
-// linuxのインストーラーはスクリプトをダウンロードするようにし、コメントで実行方法を案内する
-
 export default (props: {
   isActive: boolean
   hide: () => void
@@ -49,22 +47,22 @@ export default (props: {
     Windows: {
       "GPU / CPU": {
         インストーラー: {
-          url: "https://github.com/Hiroshiba/voicevox/releases/download/0.8.1/VOICEVOX.Web.Setup.0.8.1.exe",
-          name: "VOICEVOX.Setup.0.8.1.Windows.exe",
+          url: "https://github.com/Hiroshiba/voicevox/releases/download/0.8.2/VOICEVOX.Web.Setup.0.8.2.exe",
+          name: "VOICEVOX.Setup.0.8.2.Windows.exe",
         },
         Zip: {
-          url: "https://drive.google.com/file/d/1GtYwfXS0fZTrI__85M7jh41Ble8Q2-gy/view?usp=sharing",
-          name: "VOICEVOX.0.8.1.Windows.zip",
+          url: "https://drive.google.com/file/d/1-kCw9n4HXIykHAuEcQjmpWehzcpat_ck/view?usp=sharing",
+          name: "VOICEVOX.0.8.2.Windows.zip",
         },
       },
       CPU: {
         インストーラー: {
-          url: "https://github.com/Hiroshiba/voicevox/releases/download/0.8.1/VOICEVOX-CPU.Web.Setup.0.8.1.exe",
-          name: "VOICEVOX-CPU.Setup.0.8.1.Windows.exe",
+          url: "https://github.com/Hiroshiba/voicevox/releases/download/0.8.2/VOICEVOX-CPU.Web.Setup.0.8.2.exe",
+          name: "VOICEVOX-CPU.Setup.0.8.2.Windows.exe",
         },
         Zip: {
-          url: "https://drive.google.com/file/d/1q7iUSneNwvD9hiN45gVPh9NeabcO-c5l/view?usp=sharing",
-          name: "VOICEVOX-CPU.0.8.1.Windows.zip",
+          url: "https://drive.google.com/file/d/1I3V2blL-8eQNB9zhwSAjdgEkaJ9nEpOZ/view?usp=sharing",
+          name: "VOICEVOX-CPU.0.8.2.Windows.zip",
         },
       },
     },
@@ -73,22 +71,22 @@ export default (props: {
         インストーラー: {
           url: scriptNodes.find(value => value.name == "linuxInstallNvidia")!
             .publicURL,
-          name: "VOICEVOX.Installer.0.8.1.Linux.sh",
+          name: "VOICEVOX.Installer.0.8.2.Linux.sh",
         },
         Zip: {
-          url: "https://drive.google.com/file/d/1hrEQxyOrDokq84LGsC1_Hd253y56Yabk/view?usp=sharing",
-          name: "VOICEVOX.0.8.1.Linux.zip",
+          url: "https://drive.google.com/file/d/1MgpnqqC8SiZAqCnmYBwDrzgY2slhnUkA/view?usp=sharing",
+          name: "VOICEVOX.0.8.2.Linux.zip",
         },
       },
       CPU: {
         インストーラー: {
           url: scriptNodes.find(value => value.name == "linuxInstallCpu")!
             .publicURL,
-          name: "VOICEVOX-CPU.Installer.0.8.1.Linux.sh",
+          name: "VOICEVOX-CPU.Installer.0.8.2.Linux.sh",
         },
         Zip: {
-          url: "https://drive.google.com/file/d/17oDEdB2GivUlPNDDcVGoo60DLUS32fYO/view?usp=sharing",
-          name: "VOICEVOX-CPU.0.8.1.Linux.zip",
+          url: "https://drive.google.com/file/d/1ec674ITSPWCXwcYWvY3tKzDP-zutQTIf/view?usp=sharing",
+          name: "VOICEVOX-CPU.0.8.2.Linux.zip",
         },
       },
     },
