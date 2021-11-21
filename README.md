@@ -29,3 +29,8 @@ npm run develop
 ```bash
 npm run clean && npm run deploy
 ```
+
+## LICENSE
+
+VOICEVOXの開発のための利用のみ許可されます。  
+異なるライセンスを取得したい場合は、ヒホ（twitter: @hiho_karuta）に求めてください。
