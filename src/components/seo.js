@@ -20,7 +20,6 @@ function Seo({ description, lang, meta, title, image }) {
   )
 
   const metaDescription = description || site.siteMetadata.description
-  const defaultTitle = site.siteMetadata?.title
 
   return (
     <Helmet
@@ -28,9 +27,7 @@ function Seo({ description, lang, meta, title, image }) {
         lang,
       }}
       title={title}
-      titleTemplate={
-        defaultTitle && title !== defaultTitle ? `%s | ${defaultTitle}` : null
-      }
+      titleTemplate={null}
       meta={[
         {
           name: `description`,
@@ -81,7 +78,7 @@ function Seo({ description, lang, meta, title, image }) {
 }
 
 Seo.defaultProps = {
-  lang: `en`,
+  lang: `ja`,
   meta: [],
   description: ``,
   image: undefined,

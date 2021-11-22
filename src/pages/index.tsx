@@ -99,7 +99,7 @@ export default () => {
   return (
     <>
       <Seo
-        title="VOICEVOX"
+        title="VOICEVOX | 無料で使える中品質なテキスト読み上げソフトウェア"
         description="無料で使える中品質なテキスト読み上げソフトウェア"
         image={shareThumb}
       />
@@ -109,9 +109,9 @@ export default () => {
             <div className="hero-body">
               <div className="container has-text-centered">
                 <h1 className="title top-title">VOICEVOX</h1>
-                <p className="subtitle has-text-weight-semibold">
+                <h2 className="subtitle has-text-weight-semibold">
                   無料で使える中品質なテキスト読み上げソフトウェア
-                </p>
+                </h2>
               </div>
             </div>
           </header>

@@ -5,9 +5,10 @@ import { faPlay, faStop } from "@fortawesome/free-solid-svg-icons"
 
 export default ({
   url,
+  color,
   className,
   style,
-}: { url: string } & React.HTMLAttributes<HTMLDivElement>) => {
+}: { url: string; color?: string } & React.HTMLAttributes<HTMLDivElement>) => {
   const [audio, setAudio] = useState<HTMLAudioElement | null>(null)
   const [isPlaying, setIsPlaying] = useState(false)
   const [isReady, setIsReady] = useState(false)
@@ -15,6 +16,19 @@ export default ({
   useEffect(() => {
     setAudio(new Audio(url))
   }, [url])
+
+  const colorAddedStyle = useMemo(
+    () =>
+      !color
+        ? style
+        : {
+            ...style,
+            backgroundColor: "white",
+            borderColor: color,
+            color: color,
+          },
+    [color, style]
+  )
 
   useEffect(() => {
     if (!audio) return
@@ -60,11 +74,11 @@ export default ({
   return (
     <button
       onClick={isPlaying ? stop : play}
-      className={`button is-primary circle-icon ${
+      className={`button circle-icon ${color || "is-primary"} ${
         !isReady ? "is-loading" : ""
       } ${className}`}
       disabled={!isReady}
-      style={style}
+      style={colorAddedStyle}
     >
       {isReady ? (
         <FontAwesomeIcon icon={isPlaying ? faStop : faPlay} />
