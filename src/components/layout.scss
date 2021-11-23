@@ -136,6 +136,10 @@ $dropdown-item-active-background-color: $primary;
       .character-card {
         cursor: pointer;
 
+        .card-image {
+          display: block !important;
+        }
+
         .card-content {
           @extend .px-0;
           @extend .has-text-centered;
