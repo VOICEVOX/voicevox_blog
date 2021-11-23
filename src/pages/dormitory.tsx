@@ -9,16 +9,23 @@ import "../components/layout.scss"
 import Seo from "../components/seo"
 import { CharacterInfo, CharacterKey } from "../types/dormitoryCharacter"
 
-import metanNormal001 from "../audios/metan-normal-001.wav"
-import metanNormal002 from "../audios/metan-normal-002.wav"
-import metanNormal003 from "../audios/metan-normal-003.wav"
-import zundamonNormal001 from "../audios/zundamon-normal-001.wav"
-import zundamonNormal002 from "../audios/zundamon-normal-002.wav"
-import zundamonNormal003 from "../audios/zundamon-normal-003.wav"
+import metan001 from "../audios/dormitory/metan-01.wav"
+import metan002 from "../audios/dormitory/metan-02.wav"
+import metan003 from "../audios/dormitory/metan-03.wav"
+import metan004 from "../audios/dormitory/metan-04.wav"
+import zundamon001 from "../audios/dormitory/zundamon-01.wav"
+import zundamon002 from "../audios/dormitory/zundamon-02.wav"
+import zundamon003 from "../audios/dormitory/zundamon-03.wav"
+import zundamon004 from "../audios/dormitory/zundamon-04.wav"
 import tsumugi001 from "../audios/dormitory/tsumugi-01.wav"
 import tsumugi002 from "../audios/dormitory/tsumugi-02.wav"
 import tsumugi003 from "../audios/dormitory/tsumugi-03.wav"
 import tsumugi004 from "../audios/dormitory/tsumugi-04.wav"
+import ritsu001 from "../audios/dormitory/ritsu-01.wav"
+import ritsu002 from "../audios/dormitory/ritsu-02.wav"
+import ritsu003 from "../audios/dormitory/ritsu-03.wav"
+import ritsu004 from "../audios/dormitory/ritsu-04.wav"
+import ritsu005 from "../audios/dormitory/ritsu-05.wav"
 
 export default () => {
   const queryPortraits: {
@@ -63,6 +70,7 @@ export default () => {
     "四国めたん",
     "ずんだもん",
     "春日部つむぎ",
+    "波音リツ",
   ]
 
   const characterInfos: {
@@ -80,14 +88,13 @@ export default () => {
       color: "#DF4C94",
       lightColor: "#E3ADD5",
       description:
-        "高等部二年生。常に金欠。<br />誰にでも遠慮しないので、基本的にタメ口。",
+        "高等部二年生。常に金欠。趣味は中二病妄想。<br />誰にでも遠慮しないので、基本的にタメ口。",
       labelInfos: [
         { label: "年齢", value: "17 歳", size: 1 },
         { label: "身長", value: "150 cm", size: 1 },
-        { label: "性格", value: "ツンデレ気味", size: 1 },
-        { label: "趣味", value: "中二病妄想", size: 1 },
+        { label: "性格", value: "若干ツンデレ気味", size: 2 },
       ],
-      voiceUrls: [metanNormal001, metanNormal002, metanNormal003],
+      voiceUrls: [metan001, metan002, metan003, metan004],
       infoImages: queryPortraits.dormitory.nodes
         .filter(node => node.name.includes("metan"))
         .sort((a, b) => a.name.localeCompare(b.name))
@@ -96,6 +103,7 @@ export default () => {
         四国めたん: undefined,
         ずんだもん: "ずんだもん",
         春日部つむぎ: "つむぎさん",
+        波音リツ: "リツさん",
         me: "わたくし",
         you: "貴女(たち)<br />アンタ(ら)",
       },
@@ -124,7 +132,7 @@ export default () => {
         },
         { label: "将来の夢", value: "ずんだ餅のさらなる普及", size: 2 },
       ],
-      voiceUrls: [zundamonNormal001, zundamonNormal002, zundamonNormal003],
+      voiceUrls: [zundamon001, zundamon002, zundamon003, zundamon004],
       infoImages: queryPortraits.dormitory.nodes
         .filter(node => node.name.includes("zundamon"))
         .sort((a, b) => a.name.localeCompare(b.name))
@@ -133,6 +141,7 @@ export default () => {
         四国めたん: "めたん",
         ずんだもん: undefined,
         春日部つむぎ: "つむぎ",
+        波音リツ: "リツ",
         me: "ずんだもん<br />僕",
         you: "オマエ<br />みんな",
       },
@@ -166,10 +175,42 @@ export default () => {
         四国めたん: "めたん先輩",
         ずんだもん: "ずんだもん先輩",
         春日部つむぎ: undefined,
+        波音リツ: "りっちゃん",
         me: "あーし",
         you: "きみ<br />きみたち",
       },
       detailUrl: "https://tsukushinyoki10.wixsite.com/ktsumugiofficial",
+    },
+
+    波音リツ: {
+      name: "波音リツ",
+      rubyName: "波音<rp>(</rp><rt>なみね</rt><rp>)</rp>リツ",
+      bustupImage: queryPortraits.bustup.nodes.find(
+        node => node.name === "bustup-ritsu"
+      )!.childImageSharp.gatsbyImageData,
+      portraitImage: queryPortraits.portrait.nodes.find(
+        node => node.name === "portrait-ritsu"
+      )!.childImageSharp.gatsbyImageData,
+      color: "#FC4E32",
+      lightColor: "#FDCDB7",
+      description:
+        "地獄のような安価を踏み抜いて生まれた、<br />2ch・VIP発のキャラクター。",
+      labelInfos: [
+        { label: "年齢", value: "6 歳", size: 2 },
+        { label: "身長", value: "156 cm", size: 2 },
+        { label: "体重", value: "25 トン", size: 2 },
+        { label: "好きなもの", value: "チョコクリスピー", size: 2 },
+      ],
+      voiceUrls: [ritsu001, ritsu002, ritsu003, ritsu004, ritsu005],
+      callNames: {
+        四国めたん: "めたん",
+        ずんだもん: "ずんだもん",
+        春日部つむぎ: "つむぎ",
+        波音リツ: undefined,
+        me: "あたし",
+        you: "アンタ<br />アンタら",
+      },
+      detailUrl: "http://www.canon-voice.com/ritsu.html",
     },
   }
 
@@ -242,23 +283,11 @@ export default () => {
                   </div>
                 </div>
               </div>
-              <div className="tile is-parent is-3">
-                <div
-                  className="tile is-child card coming-card"
-                  style={{ borderColor: "#FC4E32" }}
-                >
-                  <div className="card-content has-text-centered">
-                    <div
-                      className="content is-size-2 has-text-weight-bold"
-                      style={{ color: "#FC4E32" }}
-                    >
-                      Coming
-                      <br />
-                      soon
-                    </div>
-                  </div>
-                </div>
-              </div>
+
+              <DormitoryCharacterCard
+                characterInfo={characterInfos.波音リツ}
+                onClick={() => showCharacterModal("波音リツ")}
+              />
             </div>
 
             <hr />
@@ -328,8 +357,6 @@ export default () => {
             <a
               className="button is-align-self-center mt-5 is-primary is-rounded"
               href="/"
-              target="_blank"
-              rel="noreferrer"
             >
               <span className="has-text-weight-semibold">ダウンロード</span>
             </a>

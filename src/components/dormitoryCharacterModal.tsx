@@ -187,9 +187,12 @@ export default ({
                           >
                             {labelInfo.label}
                           </span>
-                          <span className="description-text">
-                            {labelInfo.value}
-                          </span>
+                          <span
+                            className="description-text"
+                            dangerouslySetInnerHTML={{
+                              __html: labelInfo.value,
+                            }}
+                          />
                         </div>
                       ))}
                       <div className="column is-12 description-box">
@@ -199,16 +202,20 @@ export default ({
                         >
                           音声サンプル
                         </span>
-                        <div className="description-samples">
-                          {characterInfo.voiceUrls.map((url, index) => (
-                            <PlayButton
-                              key={index}
-                              url={url}
-                              color={characterInfo.color}
-                              className="ml-1 mr-1"
-                            />
-                          ))}
-                        </div>
+                        {characterInfo.voiceUrls ? (
+                          <div className="description-samples">
+                            {characterInfo.voiceUrls.map((url, index) => (
+                              <PlayButton
+                                key={index}
+                                url={url}
+                                color={characterInfo.color}
+                                className="ml-1 mr-1"
+                              />
+                            ))}
+                          </div>
+                        ) : (
+                          <span className="description-text">準備中</span>
+                        )}
                       </div>
                     </div>
                     {characterInfo.infoImages && (

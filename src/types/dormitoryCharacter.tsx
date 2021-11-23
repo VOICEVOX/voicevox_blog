@@ -1,6 +1,10 @@
 import { IGatsbyImageData } from "gatsby-plugin-image"
 
-export type CharacterKey = "四国めたん" | "ずんだもん" | "春日部つむぎ"
+export type CharacterKey =
+  | "四国めたん"
+  | "ずんだもん"
+  | "春日部つむぎ"
+  | "波音リツ"
 
 export type CharacterInfo = {
   name: string
@@ -11,7 +15,7 @@ export type CharacterInfo = {
   lightColor: string
   description: string
   labelInfos: { label: string; value: string; size: 1 | 2 }[]
-  voiceUrls: string[]
+  voiceUrls?: string[]
   infoImages?: IGatsbyImageData[]
   callNames: {
     [key in CharacterKey]: string | undefined
