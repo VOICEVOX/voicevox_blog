@@ -4,6 +4,7 @@ export type CharacterKey =
   | "四国めたん"
   | "ずんだもん"
   | "春日部つむぎ"
+  | "雨晴はう"
   | "波音リツ"
 
 export type CharacterInfo = {

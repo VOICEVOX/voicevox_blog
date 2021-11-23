@@ -21,6 +21,10 @@ import tsumugi001 from "../audios/dormitory/tsumugi-01.wav"
 import tsumugi002 from "../audios/dormitory/tsumugi-02.wav"
 import tsumugi003 from "../audios/dormitory/tsumugi-03.wav"
 import tsumugi004 from "../audios/dormitory/tsumugi-04.wav"
+import hau001 from "../audios/dormitory/hau-01.wav"
+import hau002 from "../audios/dormitory/hau-02.wav"
+import hau003 from "../audios/dormitory/hau-03.wav"
+import hau004 from "../audios/dormitory/hau-04.wav"
 import ritsu001 from "../audios/dormitory/ritsu-01.wav"
 import ritsu002 from "../audios/dormitory/ritsu-02.wav"
 import ritsu003 from "../audios/dormitory/ritsu-03.wav"
@@ -70,6 +74,7 @@ export default () => {
     "四国めたん",
     "ずんだもん",
     "春日部つむぎ",
+    "雨晴はう",
     "波音リツ",
   ]
 
@@ -103,6 +108,7 @@ export default () => {
         四国めたん: undefined,
         ずんだもん: "ずんだもん",
         春日部つむぎ: "つむぎさん",
+        雨晴はう: "はうさん",
         波音リツ: "リツさん",
         me: "わたくし",
         you: "貴女(たち)<br />アンタ(ら)",
@@ -141,6 +147,7 @@ export default () => {
         四国めたん: "めたん",
         ずんだもん: undefined,
         春日部つむぎ: "つむぎ",
+        雨晴はう: "はう",
         波音リツ: "リツ",
         me: "ずんだもん<br />僕",
         you: "オマエ<br />みんな",
@@ -175,11 +182,45 @@ export default () => {
         四国めたん: "めたん先輩",
         ずんだもん: "ずんだもん先輩",
         春日部つむぎ: undefined,
+        雨晴はう: "はうちゃん",
         波音リツ: "りっちゃん",
         me: "あーし",
         you: "きみ<br />きみたち",
       },
       detailUrl: "https://tsukushinyoki10.wixsite.com/ktsumugiofficial",
+    },
+
+    雨晴はう: {
+      name: "雨晴はう",
+      rubyName: "雨晴<rp>(</rp><rt>あめはれ</rt><rp>)</rp>はう",
+      bustupImage: queryPortraits.bustup.nodes.find(
+        node => node.name === "bustup-hau"
+      )!.childImageSharp.gatsbyImageData,
+      portraitImage: queryPortraits.portrait.nodes.find(
+        node => node.name === "portrait-hau"
+      )!.childImageSharp.gatsbyImageData,
+      color: "#1D86AE",
+      lightColor: "#B3D7DD",
+      description: "現役看護師です！<br />看護師のあれこれお伝えします！",
+      labelInfos: [
+        { label: "誕生日", value: "10月30日", size: 1 },
+        { label: "身長", value: "152 cm", size: 1 },
+        { label: "色", value: "#28c4ec", size: 1 },
+        { label: "CV", value: "？？？", size: 1 },
+        { label: "好きなもの", value: "ラーメン", size: 2 },
+        { label: "趣味", value: "食べ歩き", size: 2 },
+      ],
+      voiceUrls: [hau001, hau002, hau003, hau004],
+      callNames: {
+        四国めたん: "めたんさん",
+        ずんだもん: "ずんだもん",
+        春日部つむぎ: "つむぎさん",
+        雨晴はう: undefined,
+        波音リツ: "リツさん",
+        me: "僕",
+        you: "あなた<br />あなた達",
+      },
+      detailUrl: "https://amehau.com/",
     },
 
     波音リツ: {
@@ -206,6 +247,7 @@ export default () => {
         四国めたん: "めたん",
         ずんだもん: "ずんだもん",
         春日部つむぎ: "つむぎ",
+        雨晴はう: "はう",
         波音リツ: undefined,
         me: "あたし",
         you: "アンタ<br />アンタら",
@@ -266,23 +308,10 @@ export default () => {
                 onClick={() => showCharacterModal("春日部つむぎ")}
               />
 
-              <div className="tile is-parent is-3">
-                <div
-                  className="tile is-child card coming-card"
-                  style={{ borderColor: "#386CB0" }}
-                >
-                  <div className="card-content has-text-centered">
-                    <div
-                      className="content is-size-2 has-text-weight-bold has-text-centered"
-                      style={{ color: "#386CB0" }}
-                    >
-                      Coming
-                      <br />
-                      soon
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <DormitoryCharacterCard
+                characterInfo={characterInfos.雨晴はう}
+                onClick={() => showCharacterModal("雨晴はう")}
+              />
 
               <DormitoryCharacterCard
                 characterInfo={characterInfos.波音リツ}
