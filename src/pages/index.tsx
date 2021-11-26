@@ -8,7 +8,10 @@ import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons"
 import AudioSample from "../components/audioSample"
 import DownloadModal from "../components/downloadModal"
 import ModalReadmeSoftware from "../components/modalReadmeSoftware"
-import ModalReadmeLibrary from "../components/modalReadmeLibrary"
+import ModalReadmeLibraryTohoku from "../components/modalReadmeLibraryTohoku"
+import ModalReadmeLibraryTsumugi from "../components/modalReadmeLibraryTsumugi"
+import ModalReadmeLibraryHau from "../components/modalReadmeLibraryHau"
+import ModalReadmeLibraryRitsu from "../components/modalReadmeLibraryRitsu"
 import ModalHowToUse from "../components/modalHowToUse"
 
 import Seo from "../components/seo"
@@ -38,16 +41,29 @@ import zundamonSexy003 from "../audios/zundamon-sexy-003.wav"
 import zundamonTsun001 from "../audios/zundamon-tsun-001.wav"
 import zundamonTsun002 from "../audios/zundamon-tsun-002.wav"
 import zundamonTsun003 from "../audios/zundamon-tsun-003.wav"
+import tsumugi001 from "../audios/tsumugi-001.wav"
+import tsumugi002 from "../audios/tsumugi-002.wav"
+import tsumugi003 from "../audios/tsumugi-003.wav"
+import hau001 from "../audios/hau-001.wav"
+import hau002 from "../audios/hau-002.wav"
+import hau003 from "../audios/hau-003.wav"
+import ritsu001 from "../audios/ritsu-001.wav"
+import ritsu002 from "../audios/ritsu-002.wav"
+import ritsu003 from "../audios/ritsu-003.wav"
 import landingMovieThumb from "../images/landing-movie-thumb.png"
 import landingMovie from "../movies/landing.mp4"
 import shareThumb from "../images/landing-share-thumb.jpg"
+
+type Character = "東北" | "春日部つむぎ" | "雨晴はう" | "波音リツ"
 
 export default () => {
   const [showingDownloadModal, setShowingDownloadModal] = useState(false)
   const [showingSoftwareReadmeModal, setShowingSoftwareReadmeModal] =
     useState(false)
-  const [showingLibraryReadmeModal, setShowingLibraryReadmeModal] =
-    useState(false)
+  const [
+    showingLibraryReadmeModalCharater,
+    setShowingLibraryReadmeModalCharater,
+  ] = useState<Character | undefined>(undefined)
   const [showingHowToUseModal, setShowingHowToUseModal] = useState(false)
 
   const showDownloadModal = () => {
@@ -70,14 +86,14 @@ export default () => {
     setShowingSoftwareReadmeModal(false)
   }
 
-  const showLibraryReadmeModal = () => {
+  const showLibraryReadmeModal = (character: Character) => {
     document.documentElement.classList.add("is-clipped")
-    setShowingLibraryReadmeModal(true)
+    setShowingLibraryReadmeModalCharater(character)
   }
 
   const hideLibraryReadmeModal = () => {
     document.documentElement.classList.remove("is-clipped")
-    setShowingLibraryReadmeModal(false)
+    setShowingLibraryReadmeModalCharater(undefined)
   }
 
   const showSoftwareHowtouseModal = () => {
@@ -157,7 +173,7 @@ export default () => {
                   </span>
                   <span className="has-text-weight-semibold">ダウンロード</span>
                 </a>
-                <p className="is-align-self-center is-size-6">Version 0.8.2</p>
+                <p className="is-align-self-center is-size-6">Version 0.9.1</p>
               </div>
             </div>
           </section>
@@ -178,7 +194,7 @@ export default () => {
                     <div className="card-content has-text-centered">
                       <h3 className="title is-4">四国めたん</h3>
                       <p className="subtitle is-5">
-                        落ち着いた優しい声が特徴的
+                        はっきりした芯のある声が特徴的
                       </p>
                       <AudioSample
                         audioSamples={[
@@ -206,7 +222,7 @@ export default () => {
                       />
                       <div className="pt-3">
                         <a
-                          onClick={showLibraryReadmeModal}
+                          onClick={() => showLibraryReadmeModal("東北")}
                           className="button is-normal is-rounded"
                         >
                           <span>四国めたん 利用規約</span>
@@ -265,10 +281,105 @@ export default () => {
                       />
                       <div className="pt-3">
                         <a
-                          onClick={showLibraryReadmeModal}
+                          onClick={() => showLibraryReadmeModal("東北")}
                           className="button is-normal is-rounded"
                         >
                           <span>ずんだもん 利用規約</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="tile is-ancestor is-justify-content-center">
+                <div className="tile is-parent is-6">
+                  <div className="tile is-child card">
+                    <StaticImage
+                      className="card-image"
+                      src="../images/bustup-tsumugi.png"
+                      alt="春日部つむぎ"
+                    />
+                    <div className="card-content has-text-centered">
+                      <h3 className="title is-4">春日部つむぎ</h3>
+                      <p className="subtitle is-5">元気な明るい声が特徴的</p>
+                      <AudioSample
+                        audioSamples={[
+                          {
+                            style: "ノーマル",
+                            urls: [tsumugi001, tsumugi002, tsumugi003],
+                          },
+                        ]}
+                      />
+                      <div className="pt-3">
+                        <a
+                          onClick={() => showLibraryReadmeModal("春日部つむぎ")}
+                          className="button is-normal is-rounded"
+                        >
+                          <span>春日部つむぎ 利用規約</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="tile is-parent is-6">
+                  <div className="tile is-child card">
+                    <StaticImage
+                      className="card-image"
+                      src="../images/bustup-hau.png"
+                      alt="雨晴はう"
+                    />
+                    <div className="card-content has-text-centered">
+                      <h3 className="title is-4">雨晴はう</h3>
+                      <p className="subtitle is-5">
+                        優しく可愛い声が特徴的
+                        <br />
+                        （2022年1月リリース予定）
+                      </p>
+                      <AudioSample
+                        audioSamples={[
+                          {
+                            style: "ノーマル",
+                            urls: [hau001, hau002, hau003],
+                          },
+                        ]}
+                      />
+                      <div className="pt-3">
+                        <a
+                          onClick={() => showLibraryReadmeModal("雨晴はう")}
+                          className="button is-normal is-rounded"
+                        >
+                          <span>雨晴はう 利用規約</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="tile is-ancestor is-justify-content-center">
+                <div className="tile is-parent is-6">
+                  <div className="tile is-child card">
+                    <StaticImage
+                      className="card-image"
+                      src="../images/bustup-ritsu.png"
+                      alt="波音リツ"
+                    />
+                    <div className="card-content has-text-centered">
+                      <h3 className="title is-4">波音リツ</h3>
+                      <p className="subtitle is-5">低めのクールな声が特徴的</p>
+                      <AudioSample
+                        audioSamples={[
+                          {
+                            style: "ノーマル",
+                            urls: [ritsu001, ritsu002, ritsu003],
+                          },
+                        ]}
+                      />
+                      <div className="pt-3">
+                        <a
+                          onClick={() => showLibraryReadmeModal("波音リツ")}
+                          className="button is-normal is-rounded"
+                        >
+                          <span>波音リツ 利用規約</span>
                         </a>
                       </div>
                     </div>
@@ -289,7 +400,7 @@ export default () => {
                 </span>
                 <span className="has-text-weight-semibold">ダウンロード</span>
               </a>
-              <p className="is-align-self-center is-size-6">Version 0.8.2</p>
+              <p className="is-align-self-center is-size-6">Version 0.9.1</p>
             </div>
           </section>
 
@@ -407,8 +518,20 @@ export default () => {
         isActive={showingSoftwareReadmeModal}
         hide={hideSoftwareReadmeModal}
       />
-      <ModalReadmeLibrary
-        isActive={showingLibraryReadmeModal}
+      <ModalReadmeLibraryTohoku
+        isActive={showingLibraryReadmeModalCharater == "東北"}
+        hide={hideLibraryReadmeModal}
+      />
+      <ModalReadmeLibraryTsumugi
+        isActive={showingLibraryReadmeModalCharater == "春日部つむぎ"}
+        hide={hideLibraryReadmeModal}
+      />
+      <ModalReadmeLibraryHau
+        isActive={showingLibraryReadmeModalCharater == "雨晴はう"}
+        hide={hideLibraryReadmeModal}
+      />
+      <ModalReadmeLibraryRitsu
+        isActive={showingLibraryReadmeModalCharater == "波音リツ"}
         hide={hideLibraryReadmeModal}
       />
       <ModalHowToUse isActive={showingHowToUseModal} hide={hideHowToUseModal} />
