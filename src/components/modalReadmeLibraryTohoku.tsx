@@ -6,7 +6,7 @@ import ModalMarkdown from "./modalMarkdown"
 export default (props: { isActive: boolean; hide: () => void }) => {
   const html = useStaticQuery(graphql`
     query {
-      markdownRemark(fileAbsolutePath: { regex: "/libraryReadme/" }) {
+      markdownRemark(fileAbsolutePath: { regex: "/libraryReadmeTohoku/" }) {
         html
       }
     }

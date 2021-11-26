@@ -10,7 +10,9 @@ tag="0.9.1"
 
 # 規約
 curl -s "$resource_url/$tag/editor/README.md" > src/markdowns/softwareReadme.md
-curl -s "$resource_url/$tag/core/README.md" > src/markdowns/libraryReadme.md
+curl -s "$resource_url/$tag/character_info/01_metan/policy.md" > src/markdowns/libraryReadmeTohoku.md
+curl -s "$resource_url/$tag/character_info/03_tsumugi/policy.md" > src/markdowns/libraryReadmeTsumugi.md
+curl -s "$resource_url/$tag/character_info/05_ritsu/policy.md" > src/markdowns/libraryReadmeRitsu.md
 
 # 使い方
 editor_url="https://raw.githubusercontent.com/Hiroshiba/voicevox"
