@@ -24,7 +24,7 @@ export default (props: {
   showReadme: () => void
   showHowtouse: () => void
 }) => {
-  const maintenanceMode = true
+  const maintenanceMode = false
   const scriptNodes: { name: string; publicURL: string }[] =
     useStaticQuery(graphql`
       query {
@@ -51,7 +51,7 @@ export default (props: {
           name: "VOICEVOX.Setup.0.9.1.Windows.exe",
         },
         Zip: {
-          url: "https://drive.google.com/file/d/1-kCw9n4HXIykHAuEcQjmpWehzcpat_ck/view?usp=sharing",
+          url: "https://drive.google.com/file/d/1bYKBnfb83KJrrrjWGauzomeokv0v_Qra/view?usp=sharing",
           name: "VOICEVOX.0.9.1.Windows.zip",
         },
       },
@@ -61,7 +61,7 @@ export default (props: {
           name: "VOICEVOX-CPU.Setup.0.9.1.Windows.exe",
         },
         Zip: {
-          url: "https://drive.google.com/file/d/1I3V2blL-8eQNB9zhwSAjdgEkaJ9nEpOZ/view?usp=sharing",
+          url: "https://drive.google.com/file/d/11reuCTTYgkhNFPwZR8Ag7Q-ud6aEXAFV/view?usp=sharing",
           name: "VOICEVOX-CPU.0.9.1.Windows.zip",
         },
       },
@@ -74,7 +74,7 @@ export default (props: {
           name: "VOICEVOX.Installer.0.9.1.Linux.sh",
         },
         Zip: {
-          url: "https://drive.google.com/file/d/1MgpnqqC8SiZAqCnmYBwDrzgY2slhnUkA/view?usp=sharing",
+          url: "https://drive.google.com/file/d/1Ar40hRYee2_O4cuqV1aROd2n91OpxsWV/view?usp=sharing",
           name: "VOICEVOX.0.9.1.Linux.zip",
         },
       },
@@ -85,7 +85,7 @@ export default (props: {
           name: "VOICEVOX-CPU.Installer.0.9.1.Linux.sh",
         },
         Zip: {
-          url: "https://drive.google.com/file/d/1ec674ITSPWCXwcYWvY3tKzDP-zutQTIf/view?usp=sharing",
+          url: "https://drive.google.com/file/d/10zEcDGr1RdCifpRqWGi-rUfF18P-CVmq/view?usp=sharing",
           name: "VOICEVOX-CPU.0.9.1.Linux.zip",
         },
       },
