@@ -26,13 +26,13 @@ export default (props: {
 }) => {
   const maintenanceMode = false
   const windowsZipUrl =
-    "https://drive.google.com/file/d/1ZxsuJgl4FXyLoiQcow-Giera7Mx3nW7o/view?usp=sharing"
+    "https://drive.google.com/file/d/137GPsHVjC1UEdhWZ76a1faxKfb5MjS0S/view?usp=sharing"
   const linuxZipUrl =
-    "https://drive.google.com/file/d/1nX1_ksCDsw5Bd6MR3O0g9vnk6xrJQnsI/view?usp=sharing"
+    "https://drive.google.com/file/d/1BiZkHIqVSeLD_6nxhtyVjy5QGhRtEFN4/view?usp=sharing"
   const windowsCpuZipUrl =
-    "https://drive.google.com/file/d/1_qDAtF2xQtrMYddamRQIa3loCMv7kfGf/view?usp=sharing"
+    "https://drive.google.com/file/d/1gCmfSvljUTurjSF-aTje_a3zE9Xr5CjN/view?usp=sharing"
   const linuxCpuZipUrl =
-    "https://drive.google.com/file/d/1I_Xt0kjVIJ6JnSE1lbxJQ0Bgo3wmhcNS/view?usp=sharing"
+    "https://drive.google.com/file/d/1wJGjWWJ2pytxhGlSCa-kHjXjnjdz9GSV/view?usp=sharing"
 
   const scriptNodes: { name: string; publicURL: string }[] =
     useStaticQuery(graphql`
@@ -56,22 +56,22 @@ export default (props: {
     Windows: {
       "GPU / CPU": {
         インストーラー: {
-          url: "https://github.com/Hiroshiba/voicevox/releases/download/0.9.2/VOICEVOX.Web.Setup.0.9.2.exe",
-          name: "VOICEVOX.Setup.0.9.2.Windows.exe",
+          url: "https://github.com/Hiroshiba/voicevox/releases/download/0.9.3/VOICEVOX.Web.Setup.0.9.3.exe",
+          name: "VOICEVOX.Setup.0.9.3.Windows.exe",
         },
         Zip: {
           url: windowsZipUrl,
-          name: "VOICEVOX.0.9.2.Windows.zip",
+          name: "VOICEVOX.0.9.3.Windows.zip",
         },
       },
       CPU: {
         インストーラー: {
-          url: "https://github.com/Hiroshiba/voicevox/releases/download/0.9.2/VOICEVOX-CPU.Web.Setup.0.9.2.exe",
-          name: "VOICEVOX-CPU.Setup.0.9.2.Windows.exe",
+          url: "https://github.com/Hiroshiba/voicevox/releases/download/0.9.3/VOICEVOX-CPU.Web.Setup.0.9.3.exe",
+          name: "VOICEVOX-CPU.Setup.0.9.3.Windows.exe",
         },
         Zip: {
           url: windowsCpuZipUrl,
-          name: "VOICEVOX-CPU.0.9.2.Windows.zip",
+          name: "VOICEVOX-CPU.0.9.3.Windows.zip",
         },
       },
     },
@@ -80,22 +80,22 @@ export default (props: {
         インストーラー: {
           url: scriptNodes.find(value => value.name == "linuxInstallNvidia")!
             .publicURL,
-          name: "VOICEVOX.Installer.0.9.2.Linux.sh",
+          name: "VOICEVOX.Installer.0.9.3.Linux.sh",
         },
         Zip: {
           url: linuxZipUrl,
-          name: "VOICEVOX.0.9.2.Linux.zip",
+          name: "VOICEVOX.0.9.3.Linux.zip",
         },
       },
       CPU: {
         インストーラー: {
           url: scriptNodes.find(value => value.name == "linuxInstallCpu")!
             .publicURL,
-          name: "VOICEVOX-CPU.Installer.0.9.2.Linux.sh",
+          name: "VOICEVOX-CPU.Installer.0.9.3.Linux.sh",
         },
         Zip: {
           url: linuxCpuZipUrl,
-          name: "VOICEVOX-CPU.0.9.2.Linux.zip",
+          name: "VOICEVOX-CPU.0.9.3.Linux.zip",
         },
       },
     },
