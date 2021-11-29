@@ -157,6 +157,10 @@ export default (props: {
               <p className="has-text-centered is-size-7">
                 ※ 推奨パッケージはインストーラー版です
               </p>
+              <p className="has-text-centered is-size-7">
+                ※
+                Zip版がダウンロードできない場合はインストーラー版をご利用ください
+              </p>
             </section>
 
             <footer className="modal-card-foot is-justify-content-flex-end">
