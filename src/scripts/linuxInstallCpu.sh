@@ -36,6 +36,6 @@ EOS
     exit 1
 fi
 
-curl -fsSL https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/build/installer_linux.sh >tmp_voicevox_installer.sh
-VERSION=0.9.1 NAME=linux-cpu-appimage bash tmp_voicevox_installer.sh
+curl -fsSL https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.2/build/installer_linux.sh >tmp_voicevox_installer.sh
+VERSION=0.9.2 NAME=linux-cpu-appimage bash tmp_voicevox_installer.sh
 rm tmp_voicevox_installer.sh

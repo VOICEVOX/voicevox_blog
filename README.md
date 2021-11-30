@@ -6,7 +6,7 @@ https://voicevox.hiroshiba.jp/
 
 ```bash
 resource_url="https://raw.githubusercontent.com/Hiroshiba/voicevox_resource"
-tag="0.9.1"
+tag="0.9.2"
 
 # 規約
 curl -s "$resource_url/$tag/editor/README.md" > src/markdowns/softwareReadme.md
