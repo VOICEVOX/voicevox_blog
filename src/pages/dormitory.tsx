@@ -344,16 +344,19 @@ export default () => {
                         className="tile is-child"
                         src="../images/icon-kiritan.png"
                         alt="東北きりたん"
+                        width={128}
                       />
                       <StaticImage
                         className="tile is-child"
                         src="../images/icon-zunko.png"
                         alt="東北ずん子"
+                        width={128}
                       />
                       <StaticImage
                         className="tile is-child"
                         src="../images/icon-itako.png"
                         alt="東北イタコ"
+                        width={128}
                       />
                     </div>
                   </a>
