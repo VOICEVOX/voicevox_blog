@@ -190,6 +190,7 @@ export default () => {
                       className="card-image"
                       src="../images/bustup-metan.png"
                       alt="四国めたん"
+                      width={640}
                     />
                     <div className="card-content has-text-centered">
                       <h3 className="title is-4">四国めたん</h3>
@@ -237,6 +238,7 @@ export default () => {
                       className="card-image"
                       src="../images/bustup-zundamon.png"
                       alt="ずんだもん"
+                      width={640}
                     />
                     <div className="card-content has-text-centered">
                       <h3 className="title is-4">ずんだもん</h3>
@@ -298,6 +300,7 @@ export default () => {
                       className="card-image"
                       src="../images/bustup-tsumugi.png"
                       alt="春日部つむぎ"
+                      width={640}
                     />
                     <div className="card-content has-text-centered">
                       <h3 className="title is-4">春日部つむぎ</h3>
@@ -327,6 +330,7 @@ export default () => {
                       className="card-image"
                       src="../images/bustup-hau.png"
                       alt="雨晴はう"
+                      width={640}
                     />
                     <div className="card-content has-text-centered">
                       <h3 className="title is-4">雨晴はう</h3>
@@ -362,6 +366,7 @@ export default () => {
                       className="card-image"
                       src="../images/bustup-ritsu.png"
                       alt="波音リツ"
+                      width={640}
                     />
                     <div className="card-content has-text-centered">
                       <h3 className="title is-4">波音リツ</h3>
