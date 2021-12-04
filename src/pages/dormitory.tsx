@@ -396,7 +396,7 @@ export default () => {
           <div className="container is-flex is-justify-content-center">
             <a
               className="button is-outlined ml-1 mr-1"
-              href="https://github.com/Hiroshiba/voicevox"
+              href="https://github.com/VOICEVOX/voicevox"
               target="_blank"
               rel="noreferrer"
             >

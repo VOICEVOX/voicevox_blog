@@ -56,7 +56,7 @@ export default (props: {
     Windows: {
       "GPU / CPU": {
         インストーラー: {
-          url: "https://github.com/Hiroshiba/voicevox/releases/download/0.9.3/VOICEVOX.Web.Setup.0.9.3.exe",
+          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.9.3/VOICEVOX.Web.Setup.0.9.3.exe",
           name: "VOICEVOX.Setup.0.9.3.Windows.exe",
         },
         Zip: {
@@ -66,7 +66,7 @@ export default (props: {
       },
       CPU: {
         インストーラー: {
-          url: "https://github.com/Hiroshiba/voicevox/releases/download/0.9.3/VOICEVOX-CPU.Web.Setup.0.9.3.exe",
+          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.9.3/VOICEVOX-CPU.Web.Setup.0.9.3.exe",
           name: "VOICEVOX-CPU.Setup.0.9.3.Windows.exe",
         },
         Zip: {
