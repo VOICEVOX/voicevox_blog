@@ -13,6 +13,7 @@ import ModalReadmeLibraryTsumugi from "../components/modalReadmeLibraryTsumugi"
 import ModalReadmeLibraryHau from "../components/modalReadmeLibraryHau"
 import ModalReadmeLibraryRitsu from "../components/modalReadmeLibraryRitsu"
 import ModalHowToUse from "../components/modalHowToUse"
+import ModalPrivacyPolicy from "../components/modalPrivacyPolicy"
 
 import Seo from "../components/seo"
 import "../components/layout.scss"
@@ -65,6 +66,8 @@ export default () => {
     setShowingLibraryReadmeModalCharater,
   ] = useState<Character | undefined>(undefined)
   const [showingHowToUseModal, setShowingHowToUseModal] = useState(false)
+  const [showingPrivacyPolicyModal, setShowingPrivacyPolicyModal] =
+    useState(false)
 
   const showDownloadModal = () => {
     document.documentElement.classList.add("is-clipped")
@@ -104,6 +107,16 @@ export default () => {
   const hideHowToUseModal = () => {
     document.documentElement.classList.remove("is-clipped")
     setShowingHowToUseModal(false)
+  }
+
+  const showPrivacyPolicyModal = () => {
+    document.documentElement.classList.add("is-clipped")
+    setShowingPrivacyPolicyModal(true)
+  }
+
+  const hidePrivacyPolicyModal = () => {
+    document.documentElement.classList.remove("is-clipped")
+    setShowingPrivacyPolicyModal(false)
   }
 
   const sendEvent = (event, eventCategory) => {
@@ -508,8 +521,11 @@ export default () => {
               <span>Twitter</span>
             </a>
           </div>
-          <div className="content has-text-centered mt-3">
-            <p>© 2021 Hiroshiba Kazuyuki</p>
+          <div className="container is-flex is-justify-content-center mt-2">
+            <a className="is-size-7	ml-1 mr-1" onClick={showPrivacyPolicyModal}>
+              プライバシーポリシー
+            </a>
+            <p className="is-size-7	ml-1 mr-1">© 2021 Hiroshiba Kazuyuki</p>
           </div>
         </footer>
       </div>
@@ -540,6 +556,10 @@ export default () => {
         hide={hideLibraryReadmeModal}
       />
       <ModalHowToUse isActive={showingHowToUseModal} hide={hideHowToUseModal} />
+      <ModalPrivacyPolicy
+        isActive={showingPrivacyPolicyModal}
+        hide={hidePrivacyPolicyModal}
+      />
     </>
   )
 }
