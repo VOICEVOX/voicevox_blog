@@ -5,7 +5,7 @@ https://voicevox.hiroshiba.jp/
 ## add resource
 
 ```bash
-resource_url="https://raw.githubusercontent.com/Hiroshiba/voicevox_resource"
+resource_url="https://raw.githubusercontent.com/VOICEVOX/voicevox_resource"
 tag="0.9.2"
 
 # 規約
@@ -15,7 +15,7 @@ curl -s "$resource_url/$tag/character_info/03_tsumugi/policy.md" > src/markdowns
 curl -s "$resource_url/$tag/character_info/05_ritsu/policy.md" > src/markdowns/libraryReadmeRitsu.md
 
 # 使い方
-editor_url="https://raw.githubusercontent.com/Hiroshiba/voicevox"
+editor_url="https://raw.githubusercontent.com/VOICEVOX/voicevox"
 curl -s "$editor_url/$tag/public/howtouse.md" > src/markdowns/howToUse.md
 sed -r 's|src="([^"]+?)"|src="'$editor_url/$tag'/public/\1"|g' -i src/markdowns/howToUse.md
 ```

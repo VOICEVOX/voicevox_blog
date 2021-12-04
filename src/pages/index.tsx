@@ -419,7 +419,7 @@ export default () => {
               <p className="is-size-5">
                 製品版と OSS 版の違いやモジュール構成は&nbsp;
                 <a
-                  href="https://github.com/Hiroshiba/voicevox/blob/main/docs/%E5%85%A8%E4%BD%93%E6%A7%8B%E6%88%90.md"
+                  href="https://github.com/VOICEVOX/voicevox/blob/main/docs/%E5%85%A8%E4%BD%93%E6%A7%8B%E6%88%90.md"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -437,7 +437,7 @@ export default () => {
               <div className="is-flex mt-3">
                 <a
                   className="button is-outlined mr-1"
-                  href="https://github.com/Hiroshiba/voicevox"
+                  href="https://github.com/VOICEVOX/voicevox"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -448,7 +448,7 @@ export default () => {
                 </a>
                 <a
                   className="button is-outlined ml-1"
-                  href="https://github.com/Hiroshiba/voicevox_engine"
+                  href="https://github.com/VOICEVOX/voicevox_engine"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -470,7 +470,7 @@ export default () => {
               <p className="is-size-5">
                 詳しくは&nbsp;
                 <a
-                  href="https://github.com/Hiroshiba/voicevox_core"
+                  href="https://github.com/VOICEVOX/voicevox_core"
                   className="has-text-primary has-text-weight-bold is-underlined"
                   target="_blank"
                   rel="noreferrer"
@@ -487,7 +487,7 @@ export default () => {
           <div className="container is-flex is-justify-content-center">
             <a
               className="button is-outlined ml-1 mr-1"
-              href="https://github.com/Hiroshiba/voicevox"
+              href="https://github.com/VOICEVOX/voicevox"
               target="_blank"
               rel="noreferrer"
             >
