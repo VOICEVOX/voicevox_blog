@@ -170,7 +170,7 @@ export default (props: {
               <button onClick={props.showHowtouse} className="button">
                 <span>使い方</span>
               </button>
-              <button
+              <a
                 href={
                   downloadUrls[selectedOs][selectedMode][selectedPackage]?.url
                 }
@@ -182,7 +182,7 @@ export default (props: {
                 className="button is-primary"
               >
                 <span className="has-text-weight-semibold">ダウンロード</span>
-              </button>
+              </a>
             </footer>
           </>
         ) : (
