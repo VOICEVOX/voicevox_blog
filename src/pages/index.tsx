@@ -455,7 +455,7 @@ export default () => {
                 追加したい・改善したい機能があれば、ぜひ開発にご参加ください。
               </p>
               <div className="is-flex mt-3">
-                <button
+                <a
                   className="button is-outlined mr-1"
                   href="https://github.com/VOICEVOX/voicevox"
                   target="_blank"
@@ -466,8 +466,8 @@ export default () => {
                     <FontAwesomeIcon icon={faGithub} />
                   </span>
                   <span>VOICEVOX エディター</span>
-                </button>
-                <button
+                </a>
+                <a
                   className="button is-outlined ml-1"
                   href="https://github.com/VOICEVOX/voicevox_engine"
                   target="_blank"
@@ -478,7 +478,7 @@ export default () => {
                     <FontAwesomeIcon icon={faGithub} />
                   </span>
                   <span>VOICEVOX エンジン</span>
-                </button>
+                </a>
               </div>
             </div>
           </section>
@@ -507,7 +507,7 @@ export default () => {
 
         <footer className="footer">
           <div className="container is-flex is-justify-content-center">
-            <button
+            <a
               className="button is-outlined ml-1 mr-1"
               href="https://github.com/VOICEVOX/voicevox"
               target="_blank"
@@ -518,8 +518,8 @@ export default () => {
                 <FontAwesomeIcon icon={faGithub} />
               </span>
               <span>GitHub</span>
-            </button>
-            <button
+            </a>
+            <a
               className="button is-outlined is-info ml-1 mr-1"
               href="https://twitter.com/hiho_karuta"
               target="_blank"
@@ -530,7 +530,7 @@ export default () => {
                 <FontAwesomeIcon icon={faTwitter} />
               </span>
               <span>Twitter</span>
-            </button>
+            </a>
           </div>
           <div className="container is-flex is-justify-content-center mt-2">
             <a className="is-size-7	ml-1 mr-1" onClick={showPrivacyPolicyModal}>
