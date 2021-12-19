@@ -50,7 +50,6 @@ export default ({
                   className="button is-rounded"
                   aria-haspopup="true"
                   aria-controls="dropdown-menu"
-                  type="button"
                 >
                   <span>{selectedStyle}</span>
                   <span className="icon">

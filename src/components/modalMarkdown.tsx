@@ -21,7 +21,6 @@ export default (props: {
             className="delete"
             aria-label="close"
             onClick={props.hide}
-            type="button"
           ></button>
         </header>
         <section className="modal-card-body">

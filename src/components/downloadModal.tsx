@@ -122,7 +122,6 @@ export default (props: {
                 className="delete"
                 aria-label="close"
                 onClick={props.hide}
-                type="button"
               ></button>
             </header>
 
@@ -165,10 +164,10 @@ export default (props: {
             </section>
 
             <footer className="modal-card-foot is-justify-content-flex-end">
-              <button onClick={props.showReadme} className="button" type="button">
+              <button onClick={props.showReadme} className="button">
                 <span>利用規約</span>
               </button>
-              <button onClick={props.showHowtouse} className="button" type="button">
+              <button onClick={props.showHowtouse} className="button">
                 <span>使い方</span>
               </button>
               <button
@@ -181,7 +180,6 @@ export default (props: {
                 target="_blank"
                 rel="noreferrer"
                 className="button is-primary"
-                type="button"
               >
                 <span className="has-text-weight-semibold">ダウンロード</span>
               </button>
@@ -194,8 +192,7 @@ export default (props: {
               <button
                 className="delete"
                 aria-label="close"
-                  onClick={props.hide}
-                  type="button"
+                onClick={props.hide}
               ></button>
             </header>
 
@@ -208,13 +205,13 @@ export default (props: {
             </section>
 
             <footer className="modal-card-foot is-justify-content-flex-end">
-              <button onClick={props.showReadme} className="button" type="button"> 
+              <button onClick={props.showReadme} className="button">
                 <span>利用規約</span>
               </button>
-              <button onClick={props.showHowtouse} className="button" type="button">
+              <button onClick={props.showHowtouse} className="button">
                 <span>使い方</span>
               </button>
-              <button onClick={props.hide} className="button" type="button">
+              <button onClick={props.hide} className="button">
                 <span>閉じる</span>
               </button>
             </footer>

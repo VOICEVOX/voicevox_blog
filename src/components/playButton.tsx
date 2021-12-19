@@ -79,7 +79,6 @@ export default ({
       } ${className}`}
       disabled={!isReady}
       style={colorAddedStyle}
-      type="button"
     >
       {isReady ? (
         <FontAwesomeIcon icon={isPlaying ? faStop : faPlay} />
