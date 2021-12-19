@@ -73,8 +73,8 @@ export default ({
                         setIsOpenDropdown(false)
                       }}
                       onFocus={() => {
-                        setIsOpenDropdown(true)
-                        setIsOpenDropdown(true)
+                        setSelectedStyle(style)
+                        setIsOpenDropdown(false)
                       }}
                       tabIndex={0}
                     >
