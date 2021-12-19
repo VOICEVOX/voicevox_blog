@@ -56,6 +56,7 @@ export default ({
           backgroundColor: selected ? characterInfo.lightColor : undefined,
         }}
         onClick={() => setDescriptionType(targetType)}
+        type="button"
       >
         {targetType}
       </button>
@@ -279,6 +280,7 @@ export default ({
           className="modal-close is-large"
           aria-label="close"
           onClick={hide}
+          type="button"
         />
       </div>
     </div>
