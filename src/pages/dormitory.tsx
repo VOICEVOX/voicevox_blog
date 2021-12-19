@@ -386,39 +386,42 @@ export default () => {
             <p className="is-size-6">
               商用・非商用問わず無料で、イントネーションの詳細な調整ができることが特徴です。
             </p>
-            <a
+            <button
               className="button is-align-self-center mt-5 is-primary is-rounded"
               href="/"
+              type="button"
             >
               <span className="has-text-weight-semibold">ダウンロード</span>
-            </a>
+            </button>
           </div>
         </section>
 
         <footer className="footer">
           <div className="container is-flex is-justify-content-center">
-            <a
+            <button
               className="button is-outlined ml-1 mr-1"
               href="https://github.com/VOICEVOX/voicevox"
               target="_blank"
               rel="noreferrer"
+              type="button"
             >
               <span className="icon">
                 <FontAwesomeIcon icon={faGithub} />
               </span>
               <span>GitHub</span>
-            </a>
-            <a
+            </button>
+            <button
               className="button is-outlined is-info ml-1 mr-1"
               href="https://twitter.com/hiho_karuta"
               target="_blank"
               rel="noreferrer"
+              type="button"
             >
               <span className="icon">
                 <FontAwesomeIcon icon={faTwitter} />
               </span>
               <span>Twitter</span>
-            </a>
+            </button>
           </div>
           <div className="content has-text-centered mt-3">
             <p>© 2021 Hiroshiba Kazuyuki</p>
