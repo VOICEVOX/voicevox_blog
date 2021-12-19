@@ -181,6 +181,8 @@ export default (props: {
                 target="_blank"
                 rel="noreferrer"
                 className="button is-primary"
+                type="button"
+                role={"button"}
               >
                 <span className="has-text-weight-semibold">ダウンロード</span>
               </a>

@@ -172,7 +172,7 @@ export default () => {
                 <p className="is-size-7">
                   ※2 現在は Windows / Linux に対応しています
                 </p>
-                <button
+                <a
                   className="button is-align-self-center mt-5 is-primary is-rounded is-large"
                   onClick={() => {
                     showDownloadModal()
@@ -180,13 +180,13 @@ export default () => {
                   }}
                   target="_blank"
                   rel="noreferrer"
-                  type="button"
+                  tabIndex={0}
                 >
                   <span className="icon">
                     <FontAwesomeIcon icon={faDownload} />
                   </span>
                   <span className="has-text-weight-semibold">ダウンロード</span>
-                </button>
+                </a>
                 <p className="is-align-self-center is-size-6">Version 0.9.3</p>
               </div>
             </div>
@@ -410,7 +410,7 @@ export default () => {
                   </div>
                 </div>
               </div>
-              <button
+              <a
                 className="button is-align-self-center mt-5 is-primary is-rounded is-large"
                 onClick={() => {
                   showDownloadModal()
@@ -418,13 +418,13 @@ export default () => {
                 }}
                 target="_blank"
                 rel="noreferrer"
-                type="button"
+                tabIndex={0}
               >
                 <span className="icon">
                   <FontAwesomeIcon icon={faDownload} />
                 </span>
                 <span className="has-text-weight-semibold">ダウンロード</span>
-              </button>
+              </a>
               <p className="is-align-self-center is-size-6">Version 0.9.3</p>
             </div>
           </section>
@@ -461,6 +461,7 @@ export default () => {
                   target="_blank"
                   rel="noreferrer"
                   type="button"
+                  role={"button"}
                 >
                   <span className="icon">
                     <FontAwesomeIcon icon={faGithub} />
@@ -473,6 +474,7 @@ export default () => {
                   target="_blank"
                   rel="noreferrer"
                   type="button"
+                  role={"button"}
                 >
                   <span className="icon">
                     <FontAwesomeIcon icon={faGithub} />
@@ -513,6 +515,7 @@ export default () => {
               target="_blank"
               rel="noreferrer"
               type="button"
+              role={"button"}
             >
               <span className="icon">
                 <FontAwesomeIcon icon={faGithub} />
@@ -525,6 +528,7 @@ export default () => {
               target="_blank"
               rel="noreferrer"
               type="button"
+              role={"button"}
             >
               <span className="icon">
                 <FontAwesomeIcon icon={faTwitter} />
