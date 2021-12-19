@@ -172,7 +172,7 @@ export default () => {
                 <p className="is-size-7">
                   ※2 現在は Windows / Linux に対応しています
                 </p>
-                <a
+                <button
                   className="button is-align-self-center mt-5 is-primary is-rounded is-large"
                   onClick={() => {
                     showDownloadModal()
@@ -180,12 +180,13 @@ export default () => {
                   }}
                   target="_blank"
                   rel="noreferrer"
+                  type="button"
                 >
                   <span className="icon">
                     <FontAwesomeIcon icon={faDownload} />
                   </span>
                   <span className="has-text-weight-semibold">ダウンロード</span>
-                </a>
+                </button>
                 <p className="is-align-self-center is-size-6">Version 0.9.3</p>
               </div>
             </div>
@@ -235,12 +236,13 @@ export default () => {
                         ]}
                       />
                       <div className="pt-3">
-                        <a
+                        <button
                           onClick={() => showLibraryReadmeModal("東北")}
                           className="button is-normal is-rounded"
+                          type="button"
                         >
                           <span>四国めたん 利用規約</span>
-                        </a>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -295,12 +297,13 @@ export default () => {
                         ]}
                       />
                       <div className="pt-3">
-                        <a
+                        <button
                           onClick={() => showLibraryReadmeModal("東北")}
                           className="button is-normal is-rounded"
+                          type="button"
                         >
                           <span>ずんだもん 利用規約</span>
-                        </a>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -327,12 +330,13 @@ export default () => {
                         ]}
                       />
                       <div className="pt-3">
-                        <a
+                        <button
                           onClick={() => showLibraryReadmeModal("春日部つむぎ")}
                           className="button is-normal is-rounded"
+                          type="button"
                         >
                           <span>春日部つむぎ 利用規約</span>
-                        </a>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -361,12 +365,13 @@ export default () => {
                         ]}
                       />
                       <div className="pt-3">
-                        <a
+                        <button
                           onClick={() => showLibraryReadmeModal("雨晴はう")}
                           className="button is-normal is-rounded"
+                          type="button"
                         >
                           <span>雨晴はう 利用規約</span>
-                        </a>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -393,18 +398,19 @@ export default () => {
                         ]}
                       />
                       <div className="pt-3">
-                        <a
+                        <button
                           onClick={() => showLibraryReadmeModal("波音リツ")}
                           className="button is-normal is-rounded"
+                          type="button"
                         >
                           <span>波音リツ 利用規約</span>
-                        </a>
+                        </button>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <a
+              <button
                 className="button is-align-self-center mt-5 is-primary is-rounded is-large"
                 onClick={() => {
                   showDownloadModal()
@@ -412,12 +418,13 @@ export default () => {
                 }}
                 target="_blank"
                 rel="noreferrer"
+                type="button"
               >
                 <span className="icon">
                   <FontAwesomeIcon icon={faDownload} />
                 </span>
                 <span className="has-text-weight-semibold">ダウンロード</span>
-              </a>
+              </button>
               <p className="is-align-self-center is-size-6">Version 0.9.3</p>
             </div>
           </section>
@@ -448,28 +455,30 @@ export default () => {
                 追加したい・改善したい機能があれば、ぜひ開発にご参加ください。
               </p>
               <div className="is-flex mt-3">
-                <a
+                <button
                   className="button is-outlined mr-1"
                   href="https://github.com/VOICEVOX/voicevox"
                   target="_blank"
                   rel="noreferrer"
+                  type="button"
                 >
                   <span className="icon">
                     <FontAwesomeIcon icon={faGithub} />
                   </span>
                   <span>VOICEVOX エディター</span>
-                </a>
-                <a
+                </button>
+                <button
                   className="button is-outlined ml-1"
                   href="https://github.com/VOICEVOX/voicevox_engine"
                   target="_blank"
                   rel="noreferrer"
+                  type="button"
                 >
                   <span className="icon">
                     <FontAwesomeIcon icon={faGithub} />
                   </span>
                   <span>VOICEVOX エンジン</span>
-                </a>
+                </button>
               </div>
             </div>
           </section>
@@ -498,28 +507,30 @@ export default () => {
 
         <footer className="footer">
           <div className="container is-flex is-justify-content-center">
-            <a
+            <button
               className="button is-outlined ml-1 mr-1"
               href="https://github.com/VOICEVOX/voicevox"
               target="_blank"
               rel="noreferrer"
+              type="button"
             >
               <span className="icon">
                 <FontAwesomeIcon icon={faGithub} />
               </span>
               <span>GitHub</span>
-            </a>
-            <a
+            </button>
+            <button
               className="button is-outlined is-info ml-1 mr-1"
               href="https://twitter.com/hiho_karuta"
               target="_blank"
               rel="noreferrer"
+              type="button"
             >
               <span className="icon">
                 <FontAwesomeIcon icon={faTwitter} />
               </span>
               <span>Twitter</span>
-            </a>
+            </button>
           </div>
           <div className="container is-flex is-justify-content-center mt-2">
             <a className="is-size-7	ml-1 mr-1" onClick={showPrivacyPolicyModal}>

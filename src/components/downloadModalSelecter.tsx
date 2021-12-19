@@ -34,6 +34,7 @@ export default <T extends string>({
                   : ""
               }`}
               onClick={() => setSelected(candidate)}
+              type="button"
             >
               <span>{candidate}</span>
             </button>
