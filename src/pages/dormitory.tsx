@@ -389,6 +389,8 @@ export default () => {
             <a
               className="button is-align-self-center mt-5 is-primary is-rounded"
               href="/"
+              type="button"
+              role={"button"}
             >
               <span className="has-text-weight-semibold">ダウンロード</span>
             </a>
@@ -402,6 +404,8 @@ export default () => {
               href="https://github.com/VOICEVOX/voicevox"
               target="_blank"
               rel="noreferrer"
+              type="button"
+              role={"button"}
             >
               <span className="icon">
                 <FontAwesomeIcon icon={faGithub} />
@@ -413,6 +417,8 @@ export default () => {
               href="https://twitter.com/hiho_karuta"
               target="_blank"
               rel="noreferrer"
+              type="button"
+              role={"button"}
             >
               <span className="icon">
                 <FontAwesomeIcon icon={faTwitter} />

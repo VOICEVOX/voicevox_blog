@@ -180,6 +180,7 @@ export default () => {
                   }}
                   target="_blank"
                   rel="noreferrer"
+                  tabIndex={0}
                 >
                   <span className="icon">
                     <FontAwesomeIcon icon={faDownload} />
@@ -235,12 +236,13 @@ export default () => {
                         ]}
                       />
                       <div className="pt-3">
-                        <a
+                        <button
                           onClick={() => showLibraryReadmeModal("東北")}
                           className="button is-normal is-rounded"
+                          type="button"
                         >
                           <span>四国めたん 利用規約</span>
-                        </a>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -295,12 +297,13 @@ export default () => {
                         ]}
                       />
                       <div className="pt-3">
-                        <a
+                        <button
                           onClick={() => showLibraryReadmeModal("東北")}
                           className="button is-normal is-rounded"
+                          type="button"
                         >
                           <span>ずんだもん 利用規約</span>
-                        </a>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -327,12 +330,13 @@ export default () => {
                         ]}
                       />
                       <div className="pt-3">
-                        <a
+                        <button
                           onClick={() => showLibraryReadmeModal("春日部つむぎ")}
                           className="button is-normal is-rounded"
+                          type="button"
                         >
                           <span>春日部つむぎ 利用規約</span>
-                        </a>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -361,12 +365,13 @@ export default () => {
                         ]}
                       />
                       <div className="pt-3">
-                        <a
+                        <button
                           onClick={() => showLibraryReadmeModal("雨晴はう")}
                           className="button is-normal is-rounded"
+                          type="button"
                         >
                           <span>雨晴はう 利用規約</span>
-                        </a>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -393,12 +398,13 @@ export default () => {
                         ]}
                       />
                       <div className="pt-3">
-                        <a
+                        <button
                           onClick={() => showLibraryReadmeModal("波音リツ")}
                           className="button is-normal is-rounded"
+                          type="button"
                         >
                           <span>波音リツ 利用規約</span>
-                        </a>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -412,6 +418,7 @@ export default () => {
                 }}
                 target="_blank"
                 rel="noreferrer"
+                tabIndex={0}
               >
                 <span className="icon">
                   <FontAwesomeIcon icon={faDownload} />
@@ -453,6 +460,8 @@ export default () => {
                   href="https://github.com/VOICEVOX/voicevox"
                   target="_blank"
                   rel="noreferrer"
+                  type="button"
+                  role={"button"}
                 >
                   <span className="icon">
                     <FontAwesomeIcon icon={faGithub} />
@@ -464,6 +473,8 @@ export default () => {
                   href="https://github.com/VOICEVOX/voicevox_engine"
                   target="_blank"
                   rel="noreferrer"
+                  type="button"
+                  role={"button"}
                 >
                   <span className="icon">
                     <FontAwesomeIcon icon={faGithub} />
@@ -503,6 +514,8 @@ export default () => {
               href="https://github.com/VOICEVOX/voicevox"
               target="_blank"
               rel="noreferrer"
+              type="button"
+              role={"button"}
             >
               <span className="icon">
                 <FontAwesomeIcon icon={faGithub} />
@@ -514,6 +527,8 @@ export default () => {
               href="https://twitter.com/hiho_karuta"
               target="_blank"
               rel="noreferrer"
+              type="button"
+              role={"button"}
             >
               <span className="icon">
                 <FontAwesomeIcon icon={faTwitter} />

@@ -44,12 +44,15 @@ export default ({
               className={`dropdown ${isOpenDropdown ? "is-active" : ""}`}
               onMouseEnter={() => setIsOpenDropdown(true)}
               onMouseLeave={() => setIsOpenDropdown(false)}
+              onFocus={() => setIsOpenDropdown(true)}
+              onBlur={() => setIsOpenDropdown(false)}
             >
               <div className="dropdown-trigger">
                 <button
                   className="button is-rounded"
                   aria-haspopup="true"
                   aria-controls="dropdown-menu"
+                  type="button"
                 >
                   <span>{selectedStyle}</span>
                   <span className="icon">
@@ -69,6 +72,11 @@ export default ({
                         setSelectedStyle(style)
                         setIsOpenDropdown(false)
                       }}
+                      onFocus={() => {
+                        setSelectedStyle(style)
+                        setIsOpenDropdown(false)
+                      }}
+                      tabIndex={0}
                     >
                       {style}
                     </a>
