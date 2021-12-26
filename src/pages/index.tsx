@@ -2,7 +2,7 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons"
 import { faDownload } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { StaticImage } from "gatsby-plugin-image"
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import hau001 from "../audios/hau-001.wav"
 import hau002 from "../audios/hau-002.wav"
 import hau003 from "../audios/hau-003.wav"
@@ -37,50 +37,27 @@ import zundamonTsun001 from "../audios/zundamon-tsun-001.wav"
 import zundamonTsun002 from "../audios/zundamon-tsun-002.wav"
 import zundamonTsun003 from "../audios/zundamon-tsun-003.wav"
 import AudioSample from "../components/audioSample"
-import DownloadModal from "../components/downloadModal"
 import "../components/layout.scss"
-import ModalHowToUse from "../components/modalHowToUse"
 import ModalReadmeLibraryHau from "../components/modalReadmeLibraryHau"
 import ModalReadmeLibraryRitsu from "../components/modalReadmeLibraryRitsu"
 import ModalReadmeLibraryTohoku from "../components/modalReadmeLibraryTohoku"
 import ModalReadmeLibraryTsumugi from "../components/modalReadmeLibraryTsumugi"
-import ModalReadmeSoftware from "../components/modalReadmeSoftware"
 import { Page } from "../components/page"
 import Seo from "../components/seo"
+import { DownloadModalContext } from "../contexts/context"
 import landingMovieThumb from "../images/landing-movie-thumb.png"
 import shareThumb from "../images/landing-share-thumb.jpg"
 import landingMovie from "../movies/landing.mp4"
 
 type Character = "東北" | "春日部つむぎ" | "雨晴はう" | "波音リツ"
 
-export default () => {
-  const [showingDownloadModal, setShowingDownloadModal] = useState(false)
-  const [showingSoftwareReadmeModal, setShowingSoftwareReadmeModal] =
-    useState(false)
+const Main: React.FC = () => {
+  const downloadModalContext = useContext(DownloadModalContext)
+
   const [
     showingLibraryReadmeModalCharater,
     setShowingLibraryReadmeModalCharater,
   ] = useState<Character | undefined>(undefined)
-  const [showingHowToUseModal, setShowingHowToUseModal] = useState(false)
-  const showDownloadModal = () => {
-    document.documentElement.classList.add("is-clipped")
-    setShowingDownloadModal(true)
-  }
-
-  const hideDownloadModal = () => {
-    document.documentElement.classList.remove("is-clipped")
-    setShowingDownloadModal(false)
-  }
-
-  const showSoftwareReadmeModal = () => {
-    document.documentElement.classList.add("is-clipped")
-    setShowingSoftwareReadmeModal(true)
-  }
-
-  const hideSoftwareReadmeModal = () => {
-    document.documentElement.classList.remove("is-clipped")
-    setShowingSoftwareReadmeModal(false)
-  }
 
   const showLibraryReadmeModal = (character: Character) => {
     document.documentElement.classList.add("is-clipped")
@@ -92,24 +69,8 @@ export default () => {
     setShowingLibraryReadmeModalCharater(undefined)
   }
 
-  const showSoftwareHowtouseModal = () => {
-    document.documentElement.classList.add("is-clipped")
-    setShowingHowToUseModal(true)
-  }
-
-  const hideHowToUseModal = () => {
-    document.documentElement.classList.remove("is-clipped")
-    setShowingHowToUseModal(false)
-  }
-
-  const sendEvent = (event, eventCategory) => {
-    typeof window !== "undefined" &&
-      window.gtag &&
-      window.gtag("event", event, { event_category: eventCategory })
-  }
-
   return (
-    <Page>
+    <>
       <Seo
         title="VOICEVOX | 無料で使える中品質なテキスト読み上げソフトウェア"
         description="無料で使える中品質なテキスト読み上げソフトウェア"
@@ -159,8 +120,8 @@ export default () => {
                 <a
                   className="button is-align-self-center mt-5 is-primary is-rounded is-large"
                   onClick={() => {
-                    showDownloadModal()
-                    sendEvent("download", "software")
+                    downloadModalContext.show()
+                    // sendEvent("download", "software")
                   }}
                   target="_blank"
                   rel="noreferrer"
@@ -397,8 +358,8 @@ export default () => {
               <a
                 className="button is-align-self-center mt-5 is-primary is-rounded is-large"
                 onClick={() => {
-                  showDownloadModal()
-                  sendEvent("download", "software")
+                  downloadModalContext.show()
+                  // sendEvent("download", "software")
                 }}
                 target="_blank"
                 rel="noreferrer"
@@ -491,16 +452,6 @@ export default () => {
           </section>
         </main>
       </div>
-      <DownloadModal
-        isActive={showingDownloadModal}
-        hide={hideDownloadModal}
-        showReadme={showSoftwareReadmeModal}
-        showHowtouse={showSoftwareHowtouseModal}
-      />
-      <ModalReadmeSoftware
-        isActive={showingSoftwareReadmeModal}
-        hide={hideSoftwareReadmeModal}
-      />
       <ModalReadmeLibraryTohoku
         isActive={showingLibraryReadmeModalCharater == "東北"}
         hide={hideLibraryReadmeModal}
@@ -517,7 +468,14 @@ export default () => {
         isActive={showingLibraryReadmeModalCharater == "波音リツ"}
         hide={hideLibraryReadmeModal}
       />
-      <ModalHowToUse isActive={showingHowToUseModal} hide={hideHowToUseModal} />
+    </>
+  )
+}
+
+export default () => {
+  return (
+    <Page>
+      <Main />
     </Page>
   )
 }

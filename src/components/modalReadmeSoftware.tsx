@@ -1,9 +1,11 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
-
 import ModalMarkdown from "./modalMarkdown"
 
-export default (props: { isActive: boolean; hide: () => void }) => {
+export const ModalReadmeSoftware: React.FC<{
+  isActive: boolean
+  hide: () => void
+}> = props => {
   const html = useStaticQuery(graphql`
     query {
       markdownRemark(fileAbsolutePath: { regex: "/softwareReadme/" }) {
