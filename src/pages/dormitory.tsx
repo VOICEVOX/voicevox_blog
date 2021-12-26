@@ -1,35 +1,33 @@
-import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { graphql, useStaticQuery } from "gatsby"
 import { IGatsbyImageData, StaticImage } from "gatsby-plugin-image"
 import React, { useState } from "react"
-import DormitoryCharacterCard from "../components/dormitoryCharacterCard"
-import DormitoryCharacterModal from "../components/dormitoryCharacterModal"
-import "../components/layout.scss"
-import Seo from "../components/seo"
-import { CharacterInfo, CharacterKey } from "../types/dormitoryCharacter"
-
-import metan001 from "../audios/dormitory/metan-01.wav"
-import metan002 from "../audios/dormitory/metan-02.wav"
-import metan003 from "../audios/dormitory/metan-03.wav"
-import metan004 from "../audios/dormitory/metan-04.wav"
-import zundamon001 from "../audios/dormitory/zundamon-01.wav"
-import zundamon002 from "../audios/dormitory/zundamon-02.wav"
-import zundamon003 from "../audios/dormitory/zundamon-03.wav"
-import zundamon004 from "../audios/dormitory/zundamon-04.wav"
-import tsumugi001 from "../audios/dormitory/tsumugi-01.wav"
-import tsumugi002 from "../audios/dormitory/tsumugi-02.wav"
-import tsumugi003 from "../audios/dormitory/tsumugi-03.wav"
-import tsumugi004 from "../audios/dormitory/tsumugi-04.wav"
 import hau001 from "../audios/dormitory/hau-01.wav"
 import hau002 from "../audios/dormitory/hau-02.wav"
 import hau003 from "../audios/dormitory/hau-03.wav"
 import hau004 from "../audios/dormitory/hau-04.wav"
+import metan001 from "../audios/dormitory/metan-01.wav"
+import metan002 from "../audios/dormitory/metan-02.wav"
+import metan003 from "../audios/dormitory/metan-03.wav"
+import metan004 from "../audios/dormitory/metan-04.wav"
 import ritsu001 from "../audios/dormitory/ritsu-01.wav"
 import ritsu002 from "../audios/dormitory/ritsu-02.wav"
 import ritsu003 from "../audios/dormitory/ritsu-03.wav"
 import ritsu004 from "../audios/dormitory/ritsu-04.wav"
 import ritsu005 from "../audios/dormitory/ritsu-05.wav"
+import tsumugi001 from "../audios/dormitory/tsumugi-01.wav"
+import tsumugi002 from "../audios/dormitory/tsumugi-02.wav"
+import tsumugi003 from "../audios/dormitory/tsumugi-03.wav"
+import tsumugi004 from "../audios/dormitory/tsumugi-04.wav"
+import zundamon001 from "../audios/dormitory/zundamon-01.wav"
+import zundamon002 from "../audios/dormitory/zundamon-02.wav"
+import zundamon003 from "../audios/dormitory/zundamon-03.wav"
+import zundamon004 from "../audios/dormitory/zundamon-04.wav"
+import DormitoryCharacterCard from "../components/dormitoryCharacterCard"
+import DormitoryCharacterModal from "../components/dormitoryCharacterModal"
+import "../components/layout.scss"
+import { Page } from "../components/page"
+import Seo from "../components/seo"
+import { CharacterInfo, CharacterKey } from "../types/dormitoryCharacter"
 
 export default () => {
   const queryPortraits: {
@@ -271,12 +269,13 @@ export default () => {
   }
 
   return (
-    <>
+    <Page>
       <Seo
         title="ボイボ寮 | VOICEVOX"
         description="とある世界の不思議な建物、ボイボ寮。ここでは個性豊かな住民たちが暮らしています。"
         // image={shareThumb}
       />
+
       <div className="dormitory">
         <header className="hero is-small">
           <div className="hero-body">
@@ -396,40 +395,6 @@ export default () => {
             </a>
           </div>
         </section>
-
-        <footer className="footer">
-          <div className="container is-flex is-justify-content-center">
-            <a
-              className="button is-outlined ml-1 mr-1"
-              href="https://github.com/VOICEVOX/voicevox"
-              target="_blank"
-              rel="noreferrer"
-              type="button"
-              role={"button"}
-            >
-              <span className="icon">
-                <FontAwesomeIcon icon={faGithub} />
-              </span>
-              <span>GitHub</span>
-            </a>
-            <a
-              className="button is-outlined is-info ml-1 mr-1"
-              href="https://twitter.com/hiho_karuta"
-              target="_blank"
-              rel="noreferrer"
-              type="button"
-              role={"button"}
-            >
-              <span className="icon">
-                <FontAwesomeIcon icon={faTwitter} />
-              </span>
-              <span>Twitter</span>
-            </a>
-          </div>
-          <div className="content has-text-centered mt-3">
-            <p>© 2021 Hiroshiba Kazuyuki</p>
-          </div>
-        </footer>
       </div>
       {selectedCharacterKey && (
         <DormitoryCharacterModal
@@ -440,6 +405,6 @@ export default () => {
           characterInfos={characterInfos}
         />
       )}
-    </>
+    </Page>
   )
 }

@@ -1,59 +1,55 @@
-import React, { useState } from "react"
-import { StaticImage } from "gatsby-plugin-image"
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faGithub } from "@fortawesome/free-brands-svg-icons"
 import { faDownload } from "@fortawesome/free-solid-svg-icons"
-import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons"
-
-import AudioSample from "../components/audioSample"
-import DownloadModal from "../components/downloadModal"
-import ModalReadmeSoftware from "../components/modalReadmeSoftware"
-import ModalReadmeLibraryTohoku from "../components/modalReadmeLibraryTohoku"
-import ModalReadmeLibraryTsumugi from "../components/modalReadmeLibraryTsumugi"
-import ModalReadmeLibraryHau from "../components/modalReadmeLibraryHau"
-import ModalReadmeLibraryRitsu from "../components/modalReadmeLibraryRitsu"
-import ModalHowToUse from "../components/modalHowToUse"
-import ModalPrivacyPolicy from "../components/modalPrivacyPolicy"
-
-import Seo from "../components/seo"
-import "../components/layout.scss"
-
-import metanNormal001 from "../audios/metan-normal-001.wav"
-import metanNormal002 from "../audios/metan-normal-002.wav"
-import metanNormal003 from "../audios/metan-normal-003.wav"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { StaticImage } from "gatsby-plugin-image"
+import React, { useState } from "react"
+import hau001 from "../audios/hau-001.wav"
+import hau002 from "../audios/hau-002.wav"
+import hau003 from "../audios/hau-003.wav"
 import metanAma001 from "../audios/metan-ama-001.wav"
 import metanAma002 from "../audios/metan-ama-002.wav"
 import metanAma003 from "../audios/metan-ama-003.wav"
+import metanNormal001 from "../audios/metan-normal-001.wav"
+import metanNormal002 from "../audios/metan-normal-002.wav"
+import metanNormal003 from "../audios/metan-normal-003.wav"
 import metanSexy001 from "../audios/metan-sexy-001.wav"
 import metanSexy002 from "../audios/metan-sexy-002.wav"
 import metanSexy003 from "../audios/metan-sexy-003.wav"
 import metanTsun001 from "../audios/metan-tsun-001.wav"
 import metanTsun002 from "../audios/metan-tsun-002.wav"
 import metanTsun003 from "../audios/metan-tsun-003.wav"
-import zundamonNormal001 from "../audios/zundamon-normal-001.wav"
-import zundamonNormal002 from "../audios/zundamon-normal-002.wav"
-import zundamonNormal003 from "../audios/zundamon-normal-003.wav"
+import ritsu001 from "../audios/ritsu-001.wav"
+import ritsu002 from "../audios/ritsu-002.wav"
+import ritsu003 from "../audios/ritsu-003.wav"
+import tsumugi001 from "../audios/tsumugi-001.wav"
+import tsumugi002 from "../audios/tsumugi-002.wav"
+import tsumugi003 from "../audios/tsumugi-003.wav"
 import zundamonAma001 from "../audios/zundamon-ama-001.wav"
 import zundamonAma002 from "../audios/zundamon-ama-002.wav"
 import zundamonAma003 from "../audios/zundamon-ama-003.wav"
+import zundamonNormal001 from "../audios/zundamon-normal-001.wav"
+import zundamonNormal002 from "../audios/zundamon-normal-002.wav"
+import zundamonNormal003 from "../audios/zundamon-normal-003.wav"
 import zundamonSexy001 from "../audios/zundamon-sexy-001.wav"
 import zundamonSexy002 from "../audios/zundamon-sexy-002.wav"
 import zundamonSexy003 from "../audios/zundamon-sexy-003.wav"
 import zundamonTsun001 from "../audios/zundamon-tsun-001.wav"
 import zundamonTsun002 from "../audios/zundamon-tsun-002.wav"
 import zundamonTsun003 from "../audios/zundamon-tsun-003.wav"
-import tsumugi001 from "../audios/tsumugi-001.wav"
-import tsumugi002 from "../audios/tsumugi-002.wav"
-import tsumugi003 from "../audios/tsumugi-003.wav"
-import hau001 from "../audios/hau-001.wav"
-import hau002 from "../audios/hau-002.wav"
-import hau003 from "../audios/hau-003.wav"
-import ritsu001 from "../audios/ritsu-001.wav"
-import ritsu002 from "../audios/ritsu-002.wav"
-import ritsu003 from "../audios/ritsu-003.wav"
+import AudioSample from "../components/audioSample"
+import DownloadModal from "../components/downloadModal"
+import "../components/layout.scss"
+import ModalHowToUse from "../components/modalHowToUse"
+import ModalReadmeLibraryHau from "../components/modalReadmeLibraryHau"
+import ModalReadmeLibraryRitsu from "../components/modalReadmeLibraryRitsu"
+import ModalReadmeLibraryTohoku from "../components/modalReadmeLibraryTohoku"
+import ModalReadmeLibraryTsumugi from "../components/modalReadmeLibraryTsumugi"
+import ModalReadmeSoftware from "../components/modalReadmeSoftware"
+import { Page } from "../components/page"
+import Seo from "../components/seo"
 import landingMovieThumb from "../images/landing-movie-thumb.png"
-import landingMovie from "../movies/landing.mp4"
 import shareThumb from "../images/landing-share-thumb.jpg"
+import landingMovie from "../movies/landing.mp4"
 
 type Character = "東北" | "春日部つむぎ" | "雨晴はう" | "波音リツ"
 
@@ -66,9 +62,6 @@ export default () => {
     setShowingLibraryReadmeModalCharater,
   ] = useState<Character | undefined>(undefined)
   const [showingHowToUseModal, setShowingHowToUseModal] = useState(false)
-  const [showingPrivacyPolicyModal, setShowingPrivacyPolicyModal] =
-    useState(false)
-
   const showDownloadModal = () => {
     document.documentElement.classList.add("is-clipped")
     setShowingDownloadModal(true)
@@ -109,16 +102,6 @@ export default () => {
     setShowingHowToUseModal(false)
   }
 
-  const showPrivacyPolicyModal = () => {
-    document.documentElement.classList.add("is-clipped")
-    setShowingPrivacyPolicyModal(true)
-  }
-
-  const hidePrivacyPolicyModal = () => {
-    document.documentElement.classList.remove("is-clipped")
-    setShowingPrivacyPolicyModal(false)
-  }
-
   const sendEvent = (event, eventCategory) => {
     typeof window !== "undefined" &&
       window.gtag &&
@@ -126,12 +109,13 @@ export default () => {
   }
 
   return (
-    <>
+    <Page>
       <Seo
         title="VOICEVOX | 無料で使える中品質なテキスト読み上げソフトウェア"
         description="無料で使える中品質なテキスト読み上げソフトウェア"
         image={shareThumb}
       />
+
       <div className="landing">
         <div className="first-view">
           <header className="hero is-primary is-small">
@@ -506,43 +490,6 @@ export default () => {
             </div>
           </section>
         </main>
-
-        <footer className="footer">
-          <div className="container is-flex is-justify-content-center">
-            <a
-              className="button is-outlined ml-1 mr-1"
-              href="https://github.com/VOICEVOX/voicevox"
-              target="_blank"
-              rel="noreferrer"
-              type="button"
-              role={"button"}
-            >
-              <span className="icon">
-                <FontAwesomeIcon icon={faGithub} />
-              </span>
-              <span>GitHub</span>
-            </a>
-            <a
-              className="button is-outlined is-info ml-1 mr-1"
-              href="https://twitter.com/hiho_karuta"
-              target="_blank"
-              rel="noreferrer"
-              type="button"
-              role={"button"}
-            >
-              <span className="icon">
-                <FontAwesomeIcon icon={faTwitter} />
-              </span>
-              <span>Twitter</span>
-            </a>
-          </div>
-          <div className="container is-flex is-justify-content-center mt-2">
-            <a className="is-size-7	ml-1 mr-1" onClick={showPrivacyPolicyModal}>
-              プライバシーポリシー
-            </a>
-            <p className="is-size-7	ml-1 mr-1">© 2021 Hiroshiba Kazuyuki</p>
-          </div>
-        </footer>
       </div>
       <DownloadModal
         isActive={showingDownloadModal}
@@ -571,10 +518,6 @@ export default () => {
         hide={hideLibraryReadmeModal}
       />
       <ModalHowToUse isActive={showingHowToUseModal} hide={hideHowToUseModal} />
-      <ModalPrivacyPolicy
-        isActive={showingPrivacyPolicyModal}
-        hide={hidePrivacyPolicyModal}
-      />
-    </>
+    </Page>
   )
 }
