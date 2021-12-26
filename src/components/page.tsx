@@ -1,30 +1,30 @@
 import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons"
 import { faDownload } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import React, { useEffect } from "react"
+import React, { useContext, useEffect } from "react"
 import ModalPrivacyPolicy from "../components/modalPrivacyPolicy"
-import {
-  DownloadModalContext,
-  DownloadModalContextProps,
-} from "../contexts/context"
+import { GlobalContext } from "../contexts/context"
 import { useModalController } from "../hooks/hook"
 import icon from "../images/icon.png"
 import { DownloadModal } from "./downloadModal"
 import { ModalHowToUse } from "./modalHowToUse"
 import { ModalReadmeSoftware } from "./modalReadmeSoftware"
 
-export const Page: React.FC<{ showHeader: boolean }> = ({
-  showHeader,
+export const Page: React.FC<{ showingHeader?: boolean }> = ({
+  showingHeader = true,
   children,
 }) => {
+  // ヘッダー分のスペースを空ける
+  // FIXME: 本当は`showingHeader`が変わるたびに切り替えたいが、
+  // そうするとトップページでヘッダー有無が振動するのでやめている
   useEffect(() => {
     const className = "has-navbar-fixed-top"
-    if (showHeader) {
+    if (showingHeader) {
       document.body.classList.add(className)
     } else {
       document.body.classList.remove(className)
     }
-  }, [showHeader])
+  }, [])
 
   // google analytics
   const sendEvent = (event: string, eventCategory: string) => {
@@ -33,7 +33,8 @@ export const Page: React.FC<{ showHeader: boolean }> = ({
       window.gtag("event", event, { event_category: eventCategory })
   }
 
-  const downloadModalContext: DownloadModalContextProps = useModalController()
+  const context = useContext(GlobalContext)
+  context.downloadModal = useModalController()
 
   const {
     showing: showingSoftwareReadmeModal,
@@ -55,7 +56,7 @@ export const Page: React.FC<{ showHeader: boolean }> = ({
 
   return (
     <>
-      {showHeader && (
+      {showingHeader && (
         <nav
           className="navbar is-fixed-top has-shadow"
           role="navigation"
@@ -69,6 +70,8 @@ export const Page: React.FC<{ showHeader: boolean }> = ({
               </span>
             </a>
 
+            {/*
+            ハンバーガーボタン。別ページがないのでまだ不要
             <a
               role="button"
               className="navbar-burger"
@@ -80,21 +83,22 @@ export const Page: React.FC<{ showHeader: boolean }> = ({
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
             </a>
+            */}
           </div>
 
           <div id="navbarBasicExample" className="navbar-menu">
             {/*
-          <div className="navbar-start">
-            <a className="navbar-item">ボイボ寮</a>
-          </div>
-          */}
+            <div className="navbar-start">
+              <a className="navbar-item">ボイボ寮</a>
+            </div>
+            */}
 
             <div className="navbar-end">
               <div className="navbar-item">
                 <a
                   className="button is-primary is-rounded"
                   onClick={() => {
-                    downloadModalContext.show()
+                    context.downloadModal.show()
                     sendEvent("download", "software")
                   }}
                   target="_blank"
@@ -112,13 +116,13 @@ export const Page: React.FC<{ showHeader: boolean }> = ({
         </nav>
       )}
 
-      <DownloadModalContext.Provider value={downloadModalContext}>
+      <GlobalContext.Provider value={context}>
         {children}
-      </DownloadModalContext.Provider>
+      </GlobalContext.Provider>
 
       <DownloadModal
-        isActive={downloadModalContext.showing}
-        hide={downloadModalContext.hide}
+        isActive={context.downloadModal.showing}
+        hide={context.downloadModal.hide}
         showReadme={showSoftwareReadmeModal}
         showHowToUse={showHowToUseModal}
       />

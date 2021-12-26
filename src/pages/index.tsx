@@ -2,7 +2,7 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons"
 import { faDownload } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { StaticImage } from "gatsby-plugin-image"
-import React, { useContext, useState } from "react"
+import React, { useContext, useEffect, useRef, useState } from "react"
 import hau001 from "../audios/hau-001.wav"
 import hau002 from "../audios/hau-002.wav"
 import hau003 from "../audios/hau-003.wav"
@@ -44,15 +44,29 @@ import ModalReadmeLibraryTohoku from "../components/modalReadmeLibraryTohoku"
 import ModalReadmeLibraryTsumugi from "../components/modalReadmeLibraryTsumugi"
 import { Page } from "../components/page"
 import Seo from "../components/seo"
-import { DownloadModalContext } from "../contexts/context"
+import { GlobalContext } from "../contexts/context"
 import landingMovieThumb from "../images/landing-movie-thumb.png"
 import shareThumb from "../images/landing-share-thumb.jpg"
 import landingMovie from "../movies/landing.mp4"
 
 type Character = "東北" | "春日部つむぎ" | "雨晴はう" | "波音リツ"
 
-const Main: React.FC = () => {
-  const downloadModalContext = useContext(DownloadModalContext)
+const Main: React.FC<{ setShowingHeader: (boolean) => void }> = ({
+  setShowingHeader,
+}) => {
+  const context = useContext(GlobalContext)
+
+  // ファーストビュー用のビューを超えたらヘッダーを表示する
+  const firstViewRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    if (!firstViewRef.current) return
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        setShowingHeader(!entry.isIntersecting)
+      })
+    })
+    observer.observe(firstViewRef.current)
+  }, [firstViewRef])
 
   const [
     showingLibraryReadmeModalCharater,
@@ -78,7 +92,7 @@ const Main: React.FC = () => {
       />
 
       <div className="landing">
-        <div className="first-view">
+        <div ref={firstViewRef} className="first-view">
           <header className="hero is-primary is-small">
             <div className="hero-body">
               <div className="container has-text-centered">
@@ -120,8 +134,8 @@ const Main: React.FC = () => {
                 <a
                   className="button is-align-self-center mt-5 is-primary is-rounded is-large"
                   onClick={() => {
-                    downloadModalContext.show()
-                    // sendEvent("download", "software")
+                    context.downloadModal.show()
+                    context.sendEvent("download", "software")
                   }}
                   target="_blank"
                   rel="noreferrer"
@@ -358,8 +372,8 @@ const Main: React.FC = () => {
               <a
                 className="button is-align-self-center mt-5 is-primary is-rounded is-large"
                 onClick={() => {
-                  downloadModalContext.show()
-                  // sendEvent("download", "software")
+                  context.downloadModal.show()
+                  context.sendEvent("download", "software")
                 }}
                 target="_blank"
                 rel="noreferrer"
@@ -473,9 +487,10 @@ const Main: React.FC = () => {
 }
 
 export default () => {
+  const [showingHeader, setShowingHeader] = useState(false)
   return (
-    <Page>
-      <Main />
+    <Page showingHeader={showingHeader}>
+      <Main setShowingHeader={setShowingHeader} />
     </Page>
   )
 }

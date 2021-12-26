@@ -269,7 +269,7 @@ export default () => {
   }
 
   return (
-    <Page>
+    <Page showingHeader={false}>
       <Seo
         title="ボイボ寮 | VOICEVOX"
         description="とある世界の不思議な建物、ボイボ寮。ここでは個性豊かな住民たちが暮らしています。"
