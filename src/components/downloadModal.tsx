@@ -1,8 +1,6 @@
+import { graphql, useStaticQuery } from "gatsby"
 import React, { useState } from "react"
-
 import DownloadModalSelecter from "./downloadModalSelecter"
-
-import { useStaticQuery, graphql } from "gatsby"
 
 type OsType = "Windows" | "Linux"
 type ModeType = "GPU / CPU" | "CPU"
@@ -18,12 +16,12 @@ const packageAvailables: Record<OsType, PackageType[]> = {
   Linux: ["インストーラー", "Zip"],
 }
 
-export default (props: {
+export const DownloadModal: React.FC<{
   isActive: boolean
   hide: () => void
   showReadme: () => void
-  showHowtouse: () => void
-}) => {
+  showHowToUse: () => void
+}> = props => {
   const maintenanceMode = false
   const windowsZipUrl =
     "https://drive.google.com/file/d/137GPsHVjC1UEdhWZ76a1faxKfb5MjS0S/view?usp=sharing"
@@ -165,10 +163,18 @@ export default (props: {
             </section>
 
             <footer className="modal-card-foot is-justify-content-flex-end">
-              <button onClick={props.showReadme} className="button" type="button">
+              <button
+                onClick={props.showReadme}
+                className="button"
+                type="button"
+              >
                 <span>利用規約</span>
               </button>
-              <button onClick={props.showHowtouse} className="button" type="button">
+              <button
+                onClick={props.showHowToUse}
+                className="button"
+                type="button"
+              >
                 <span>使い方</span>
               </button>
               <a
@@ -195,8 +201,8 @@ export default (props: {
               <button
                 className="delete"
                 aria-label="close"
-                  onClick={props.hide}
-                  type="button"
+                onClick={props.hide}
+                type="button"
               ></button>
             </header>
 
@@ -209,10 +215,18 @@ export default (props: {
             </section>
 
             <footer className="modal-card-foot is-justify-content-flex-end">
-              <button onClick={props.showReadme} className="button" type="button">
+              <button
+                onClick={props.showReadme}
+                className="button"
+                type="button"
+              >
                 <span>利用規約</span>
               </button>
-              <button onClick={props.showHowtouse} className="button" type="button">
+              <button
+                onClick={props.showHowToUse}
+                className="button"
+                type="button"
+              >
                 <span>使い方</span>
               </button>
               <button onClick={props.hide} className="button" type="button">

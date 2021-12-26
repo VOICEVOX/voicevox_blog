@@ -1,7 +1,6 @@
-import React, { useEffect, useMemo, useRef, useState } from "react"
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPlay, faStop } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import React, { useEffect, useMemo, useState } from "react"
 
 export default ({
   url,
