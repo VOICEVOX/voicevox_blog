@@ -358,3 +358,16 @@ $dropdown-item-active-background-color: $primary;
 .gatsby-image-wrapper > * {
   transition: unset !important;
 }
+
+//ヘッダーをゆっくり表示する
+.navbar{
+  animation: fadeIn .5s cubic-bezier(0.33, 1, 0.68, 1) 1 forwards;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
