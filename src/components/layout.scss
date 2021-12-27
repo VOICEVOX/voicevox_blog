@@ -10,6 +10,10 @@ $dropdown-item-active-background-color: $primary;
 
 @import "~bulma";
 
+.gatsby-image-wrapper > * {
+  transition: unset !important; // 画像にデフォルトで入るアニメーションを削除する
+}
+
 .landing {
   .first-view {
     @include desktop {

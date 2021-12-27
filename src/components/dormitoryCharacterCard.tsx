@@ -1,6 +1,5 @@
 import { GatsbyImage } from "gatsby-plugin-image"
 import React from "react"
-
 import { CharacterInfo } from "../types/dormitoryCharacter"
 
 export default ({
@@ -21,6 +20,7 @@ export default ({
           className="card-image"
           image={characterInfo.bustupImage}
           alt={characterInfo.name}
+          placeholder="none"
           objectFit="contain"
         />
         <div className="card-content has-text-centered">

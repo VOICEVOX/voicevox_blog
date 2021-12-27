@@ -13,6 +13,9 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+        defaults: {
+          placeholder: `none`,
+        },
       },
     },
     `gatsby-transformer-remark`,
