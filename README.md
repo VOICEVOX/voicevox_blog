@@ -6,12 +6,13 @@ https://voicevox.hiroshiba.jp/
 
 ```bash
 resource_url="https://raw.githubusercontent.com/VOICEVOX/voicevox_resource"
-tag="0.9.2"
+tag="0.9.4"
 
 # 規約
 curl -s "$resource_url/$tag/editor/README.md" > src/markdowns/softwareReadme.md
 curl -s "$resource_url/$tag/character_info/01_metan/policy.md" > src/markdowns/libraryReadmeTohoku.md
 curl -s "$resource_url/$tag/character_info/03_tsumugi/policy.md" > src/markdowns/libraryReadmeTsumugi.md
+curl -s "$resource_url/$tag/character_info/04_hau/policy.md" > src/markdowns/libraryReadmeHau.md
 curl -s "$resource_url/$tag/character_info/05_ritsu/policy.md" > src/markdowns/libraryReadmeRitsu.md
 
 # 使い方

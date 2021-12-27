@@ -1,6 +1,5 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
-
 import ModalMarkdown from "./modalMarkdown"
 
 export default (props: { isActive: boolean; hide: () => void }) => {
