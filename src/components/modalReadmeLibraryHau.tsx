@@ -1,10 +1,15 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
-
 import ModalMarkdown from "./modalMarkdown"
 
 export default (props: { isActive: boolean; hide: () => void }) => {
-  const html = "準備中" // TODO: 実装
+  const html = useStaticQuery(graphql`
+    query {
+      markdownRemark(fileAbsolutePath: { regex: "/libraryReadmeHau/" }) {
+        html
+      }
+    }
+  `).markdownRemark.html
 
   return (
     <ModalMarkdown
