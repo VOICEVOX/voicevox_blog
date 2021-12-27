@@ -25,7 +25,8 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
-    "sass": "^1.36.0"
+    "sass": "^1.36.0",
+    "webfontloader": "^1.6.28"
   },
   "devDependencies": {
     "@types/gtag.js": "0.0.7",
