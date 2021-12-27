@@ -20,7 +20,6 @@ export default ({
           className="card-image"
           image={characterInfo.bustupImage}
           alt={characterInfo.name}
-          placeholder="none"
           objectFit="contain"
         />
         <div className="card-content has-text-centered">
