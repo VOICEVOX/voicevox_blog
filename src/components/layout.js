@@ -18,6 +18,9 @@ WebFont.load({
   },
   loading: function () {
     document.documentElement.style.visibility = 'hidden';
+    setTimeout(() => {
+        document.documentElement.style.visibility = 'visible'
+      }, 1000);
   },
   active: function () {
     document.documentElement.style.visibility = 'visible';
