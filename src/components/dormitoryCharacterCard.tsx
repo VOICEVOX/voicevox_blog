@@ -1,6 +1,5 @@
 import { GatsbyImage } from "gatsby-plugin-image"
 import React from "react"
-
 import { CharacterInfo } from "../types/dormitoryCharacter"
 
 export default ({

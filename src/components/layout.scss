@@ -350,3 +350,11 @@ $dropdown-item-active-background-color: $primary;
     }
   }
 }
+
+// 画像にデフォルトで入るアニメーションを削除する
+.gatsby-image-wrapper [data-main-image] {
+  transition: unset !important;
+}
+.gatsby-image-wrapper > * {
+  transition: unset !important;
+}
