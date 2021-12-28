@@ -14,23 +14,23 @@
 
 起動しようとすると「Windows によって PC が保護されました」というダイアログが表示されるかもしれません。その際は「詳細情報」をクリックし、「実行」を選んでください。
 
-<img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image14.png" style="max-height: 16rem" /> → <img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image15.png" style="max-height: 16rem" />
+<img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image14.png" style="max-height: 16rem" alt="「Windows によって PC が保護されました」というダイアログ" /> → <img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image15.png" style="max-height: 16rem" alt="「詳細情報」をクリックする" />
 
 ## 音声合成エンジンの起動
 
 最初に音声合成エンジンが起動します。メモリが 3GB 以上の NVIDIA 製 GPU をお持ちの方は、音声の生成がずっと速い GPU モードを快適にご利用いただけます。
 
-<img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image4.png" style="max-height: 8rem" />
+<img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image4.png" style="max-height: 8rem" alt="音声合成エンジンが起動している様子" />
 
 ## 音声の生成
 
 キャラクターアイコンの右にある空白をクリックしてテキストを入力してみてください。
 
-<img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image19.png" style="max-height: 12rem" />
+<img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image19.png" style="max-height: 12rem" alt="キャラクターアイコンの右にある空白" />
 
 エンターボタンを押して文章を確定すると、画面の下の方に読みとアクセントが表示されます。（１回目は反映まで数秒ほど時間がかかることがあります。）
 
-<img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image6.png" style="max-height: 14rem" />
+<img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image6.png" style="max-height: 14rem" alt="読みとアクセント" />
 
 再生ボタンを押すと音声が生成され、音声が再生されます。
 
@@ -38,13 +38,13 @@
 
 右下の＋ボタンを押すとテキスト欄が増え、複数の文章を並べることができます。
 
-<img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image10.png" style="max-height: 14rem" />
+<img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image10.png" style="max-height: 14rem" alt="右下の＋ボタン" />
 
 ## キャラクターの変更
 
 テキスト入力欄の左にあるアイコンをクリックすると、テキストを読み上げてくれるキャラクターを変更することができます。
 
-<img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image7.png" style="max-height: 12rem" />
+<img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image7.png" style="max-height: 12rem" alt="キャラクター" />
 
 ## 単語の接続変更
 
@@ -52,19 +52,19 @@
 
 例えば「ディープラーニング」がこのように分かれてしまった場合は、
 
-<img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image9.png" style="max-height: 16rem" />
+<img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image9.png" style="max-height: 16rem" alt="ディープラーニングがディープとラーニングに分かれている" />
 
 ２つの隙間をクリックすると
 
-<img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image3.png" style="max-height: 8rem" />
+<img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image3.png" style="max-height: 8rem" alt="ディープとラーニングの隙間" />
 
 このように１語にまとめることができます
 
-<img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image8.png" style="max-height: 7rem" />
+<img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image8.png" style="max-height: 7rem" alt="隙間が埋まった様子" />
 
 逆に切り離したい場合は、文字の間をクリックして切り離すことができます。
 
-<img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image13.png" style="max-height: 8rem" />
+<img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image13.png" style="max-height: 8rem" alt="文字が分かれた様子" />
 
 ## アクセントの変更
 
@@ -73,7 +73,7 @@
 アクセント箇所を変えるには、読みの上にあるバーを左右に動かします。
 例えば「ディープラーニング」を「↑ ディープラ ↓ アニング」と読んでほしい場合は、「ラ」の位置まで丸をスライドします。
 
-<img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image8.png" style="max-height: 8rem" /> → <img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image1.png" style="max-height: 8rem" />
+<img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image8.png" style="max-height: 8rem" alt="ディープラーニング" /> → <img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image1.png" style="max-height: 8rem" alt="↑ ディープラ ↓ アニング" />
 
 ## イントネーションの変更
 
@@ -81,17 +81,17 @@
 
 「イントネーション」をクリックして現れる縦線のバーを上下させることで抑揚を表現できます。
 
-<img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image2.png" style="max-height: 8rem" />
+<img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image2.png" style="max-height: 8rem" alt="「イントネーション」をクリックして現れる縦線のバー" />
 
 イントネーション調整スペースを縦に広くすることで、より細かく抑揚を調整することもできます。
 
-<img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image18.png" style="max-height: 14rem" />
+<img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image18.png" style="max-height: 14rem" alt="イントネーション調整スペースを縦に広くする" />
 
 マウスホイールで調整することもできます。Ctrl キーを押しながらマウスホイールを使うと更に細かく調整できます。
 
 また、「キ」や「ツ」や「ス」などが無声化されている場合、バーが灰色になっています。イントネーション欄のテキストをクリックすることで無声化を解くことができます。
 
-<img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image5.png" style="max-height: 10rem" /> → <img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image12.png" style="max-height: 10rem" />
+<img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image5.png" style="max-height: 10rem" alt="「キ」や「ツ」や「ス」などが無声化されている様子" /> → <img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image12.png" style="max-height: 10rem" alt="無声化が解除された様子" />
 
 無声化できるものはイ行とウ行だけです。
 
@@ -99,13 +99,13 @@
 
 読みが思っているものと違う場合は、アクセント欄で読みをクリックすることで後から修正することもできます。テキスト欄と同様に、ひらがなや句読点、漢字も入力できます。
 
-<img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image20.png" style="max-height: 12rem" />
+<img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image20.png" style="max-height: 12rem" alt="アクセント欄で読みをクリックしている様子" />
 
 ## スタイルの変更
 
 キャラクターによっては複数のスタイル（喋り方）を変えることができます。キャラクターの変更と同様に、テキスト欄左のアイコンから選択できます。
 
-<img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image21.png" style="max-height: 12rem" />
+<img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image21.png" style="max-height: 12rem" alt="テキスト欄左のアイコン" />
 
 キャラクターを選択したときに適用されるスタイルは、設定の「デフォルトスタイル」で変更できます。
 
@@ -116,7 +116,7 @@
 「長さ」をクリックして現れる縦線のバーを上げるとその音を長く、下げると短くできます。
 右のバーが母音、左のバーが子音に対応しています。
 
-<img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image22.png" style="max-height: 12rem" />
+<img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image22.png" style="max-height: 12rem" alt="「長さ」をクリックして現れる縦線のバー" />
 
 ## 音声ファイル・テキストファイルの書き出し
 
@@ -137,7 +137,7 @@
 
 このように読み込まれます。
 
-<img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image17.png" style="max-height: 12rem" />
+<img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image17.png" style="max-height: 12rem" alt="読み込まれた様子" />
 
 ## プロジェクトファイルの保存・読み込み
 
@@ -172,7 +172,7 @@
 - 3
   - 長さ欄を表示
 - スライダーの上でマウスホイール
-  - スライダーの値を変更します（スライダー →<img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image16.png" style="max-height: 1rem" />）
+  - スライダーの値を変更します（スライダー →<img src="https://raw.githubusercontent.com/Hiroshiba/voicevox/0.9.1/public/res/image16.png" style="max-height: 1rem" alt="スライダーの画像" />）
 
 ## 設定画面
 
