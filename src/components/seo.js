@@ -30,6 +30,22 @@ function Seo({ description, lang, meta, title, image }) {
       titleTemplate={null}
       meta={[
         {
+          name: "http-equiv='Content-Security-Policy'",
+          content: "default-src 'self'",
+        },
+        {
+          name: "http-equiv='Content-Security-Policy'",
+          content: "upgrade-insecure-requests",
+        },
+        {
+          name: "http-equiv='Permissions-Policy'",
+          content: "interest-cohort=()",
+        },
+        {
+          name: "http-equiv='X-FRAME-OPTIONS'",
+          content: "DENY",
+        },
+        {
           name: `description`,
           content: metaDescription,
         },
