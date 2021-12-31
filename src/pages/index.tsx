@@ -146,7 +146,7 @@ const Main: React.FC<{ setShowingHeader: (boolean) => void }> = ({
                   </span>
                   <span className="has-text-weight-semibold">ダウンロード</span>
                 </a>
-                <p className="is-align-self-center is-size-6">Version 0.9.3</p>
+                <p className="is-align-self-center is-size-6">Version 0.9.4</p>
               </div>
             </div>
           </section>
@@ -310,11 +310,7 @@ const Main: React.FC<{ setShowingHeader: (boolean) => void }> = ({
                     />
                     <div className="card-content has-text-centered">
                       <h3 className="title is-4">雨晴はう</h3>
-                      <p className="subtitle is-5">
-                        優しく可愛い声が特徴的
-                        <br />
-                        （2022年1月リリース予定）
-                      </p>
+                      <p className="subtitle is-5">優しく可愛い声が特徴的</p>
                       <AudioSample
                         audioSamples={[
                           {
@@ -384,7 +380,7 @@ const Main: React.FC<{ setShowingHeader: (boolean) => void }> = ({
                 </span>
                 <span className="has-text-weight-semibold">ダウンロード</span>
               </a>
-              <p className="is-align-self-center is-size-6">Version 0.9.3</p>
+              <p className="is-align-self-center is-size-6">Version 0.9.4</p>
             </div>
           </section>
 

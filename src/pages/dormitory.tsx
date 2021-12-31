@@ -204,7 +204,7 @@ export default () => {
         { label: "誕生日", value: "10月30日", size: 1 },
         { label: "身長", value: "152 cm", size: 1 },
         { label: "色", value: "#28c4ec", size: 1 },
-        { label: "CV", value: "？？？", size: 1 },
+        { label: "CV", value: "結崎このみ", size: 1 },
         { label: "好きなもの", value: "ラーメン", size: 2 },
         { label: "趣味", value: "食べ歩き", size: 2 },
       ],
