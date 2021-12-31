@@ -24,13 +24,13 @@ export const DownloadModal: React.FC<{
 }> = props => {
   const maintenanceMode = false
   const windowsZipUrl =
-    "https://drive.google.com/file/d/137GPsHVjC1UEdhWZ76a1faxKfb5MjS0S/view?usp=sharing"
-  const linuxZipUrl =
-    "https://drive.google.com/file/d/1BiZkHIqVSeLD_6nxhtyVjy5QGhRtEFN4/view?usp=sharing"
+    "https://drive.google.com/file/d/18Jdn2KSXrCKF7S3NHtB_8sYNz8HnMHM8/view?usp=sharing"
   const windowsCpuZipUrl =
-    "https://drive.google.com/file/d/1gCmfSvljUTurjSF-aTje_a3zE9Xr5CjN/view?usp=sharing"
+    "https://drive.google.com/file/d/1JQBSOI7MidYCprGHEIQFqcDnoLhe0IBl/view?usp=sharing"
+  const linuxZipUrl =
+    "https://drive.google.com/file/d/1IS6RH5aZMYRyLh1J4uwBpZTy9yXucUYr/view?usp=sharing"
   const linuxCpuZipUrl =
-    "https://drive.google.com/file/d/1wJGjWWJ2pytxhGlSCa-kHjXjnjdz9GSV/view?usp=sharing"
+    "https://drive.google.com/file/d/1IS6RH5aZMYRyLh1J4uwBpZTy9yXucUYr/view?usp=sharing"
 
   const scriptNodes: { name: string; publicURL: string }[] =
     useStaticQuery(graphql`
@@ -54,22 +54,22 @@ export const DownloadModal: React.FC<{
     Windows: {
       "GPU / CPU": {
         インストーラー: {
-          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.9.3/VOICEVOX.Web.Setup.0.9.3.exe",
-          name: "VOICEVOX.Setup.0.9.3.Windows.exe",
+          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.9.4/VOICEVOX.Web.Setup.0.9.4.exe",
+          name: "VOICEVOX.Setup.0.9.4.Windows.exe",
         },
         Zip: {
           url: windowsZipUrl,
-          name: "VOICEVOX.0.9.3.Windows.zip",
+          name: "VOICEVOX.0.9.4.Windows.zip",
         },
       },
       CPU: {
         インストーラー: {
-          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.9.3/VOICEVOX-CPU.Web.Setup.0.9.3.exe",
-          name: "VOICEVOX-CPU.Setup.0.9.3.Windows.exe",
+          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.9.4/VOICEVOX-CPU.Web.Setup.0.9.4.exe",
+          name: "VOICEVOX-CPU.Setup.0.9.4.Windows.exe",
         },
         Zip: {
           url: windowsCpuZipUrl,
-          name: "VOICEVOX-CPU.0.9.3.Windows.zip",
+          name: "VOICEVOX-CPU.0.9.4.Windows.zip",
         },
       },
     },
@@ -78,22 +78,22 @@ export const DownloadModal: React.FC<{
         インストーラー: {
           url: scriptNodes.find(value => value.name == "linuxInstallNvidia")!
             .publicURL,
-          name: "VOICEVOX.Installer.0.9.3.Linux.sh",
+          name: "VOICEVOX.Installer.0.9.4.Linux.sh",
         },
         Zip: {
           url: linuxZipUrl,
-          name: "VOICEVOX.0.9.3.Linux.zip",
+          name: "VOICEVOX.0.9.4.Linux.zip",
         },
       },
       CPU: {
         インストーラー: {
           url: scriptNodes.find(value => value.name == "linuxInstallCpu")!
             .publicURL,
-          name: "VOICEVOX-CPU.Installer.0.9.3.Linux.sh",
+          name: "VOICEVOX-CPU.Installer.0.9.4.Linux.sh",
         },
         Zip: {
           url: linuxCpuZipUrl,
-          name: "VOICEVOX-CPU.0.9.3.Linux.zip",
+          name: "VOICEVOX-CPU.0.9.4.Linux.zip",
         },
       },
     },
