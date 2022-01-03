@@ -17,6 +17,12 @@ npm ci
 npm run develop
 ```
 
+もしくは
+
+```bash
+npm run build && npm run serve
+```
+
 ## deploy
 
 ```bash
@@ -40,6 +46,14 @@ curl -s "$resource_url/$tag/character_info/05_ritsu/policy.md" > src/markdowns/l
 editor_url="https://raw.githubusercontent.com/VOICEVOX/voicevox"
 curl -s "$editor_url/$tag/public/howtouse.md" > src/markdowns/howToUse.md
 sed -r 's|src="([^"]+?)"|src="'$editor_url/$tag'/public/\1"|g' -i src/markdowns/howToUse.md
+
+# 音声
+# 24kHzのwavファイルはiPhoneで再生できないので、48kHzのflacにする
+# sudo apt install sox libsox-fmt-all
+find src/audios -name '*.wav' -printf "%P\n" | while read f; do
+    sox src/audios/$f -r 48000 src/audios/$(echo $f | sed -r 's/.wav/.flac/g')
+    rm src/audios/$f
+done
 ```
 
 ## LICENSE
