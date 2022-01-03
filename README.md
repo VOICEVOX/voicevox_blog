@@ -1,6 +1,27 @@
 # VOICEVOX BLOG
 
+VOICEVOXの公式サイトのリポジトリです。  
 https://voicevox.hiroshiba.jp/
+
+## 環境構築
+
+Node v14.17.4、npm v6.14.14を用いて開発されています。
+
+```bash
+npm ci
+```
+
+## ローカル環境でチェック
+
+```bash
+npm run develop
+```
+
+## deploy
+
+```bash
+npm run clean && npm run deploy
+```
 
 ## add resource
 
@@ -19,18 +40,6 @@ curl -s "$resource_url/$tag/character_info/05_ritsu/policy.md" > src/markdowns/l
 editor_url="https://raw.githubusercontent.com/VOICEVOX/voicevox"
 curl -s "$editor_url/$tag/public/howtouse.md" > src/markdowns/howToUse.md
 sed -r 's|src="([^"]+?)"|src="'$editor_url/$tag'/public/\1"|g' -i src/markdowns/howToUse.md
-```
-
-## debug
-
-```bash
-npm run develop
-```
-
-## deploy
-
-```bash
-npm run clean && npm run deploy
 ```
 
 ## LICENSE
