@@ -486,6 +486,13 @@ const Main: React.FC<{ setShowingHeader: (boolean) => void }> = ({
                     </Link>
                   </a>
                 </li>
+                <li>
+                  <a>
+                    <Link to={'/updates'} className="has-text-primary has-text-weight-bold is-underlined">
+                      アップデート情報
+                    </Link>
+                  </a>
+                </li>
               </ul>
             </div>
           </section>
