@@ -467,28 +467,41 @@ const Main: React.FC<{ setShowingHeader: (boolean) => void }> = ({
               <h2 className="title">リンク</h2>
               <ul className="is-size-5">
                 <li>
-                  <a href="https://hiho.fanbox.cc/" target={'_blank'} rel={'noreferrer'} className="has-text-primary has-text-weight-bold is-underlined"
+                  <a
+                    href="https://hiho.fanbox.cc/"
+                    target={"_blank"}
+                    rel={"noreferrer"}
+                    className="has-text-primary has-text-weight-bold is-underlined"
                   >
                     ファンボックス
                   </a>
                 </li>
                 <li>
                   <a>
-                    <Link to={'/readme'} className="has-text-primary has-text-weight-bold is-underlined">
+                    <Link
+                      to={"/readme"}
+                      className="has-text-primary has-text-weight-bold is-underlined"
+                    >
                       利用規約
                     </Link>
                   </a>
                 </li>
                 <li>
                   <a>
-                    <Link to={'/howToUse'} className="has-text-primary has-text-weight-bold is-underlined">
+                    <Link
+                      to={"/howToUse"}
+                      className="has-text-primary has-text-weight-bold is-underlined"
+                    >
                       使い方
                     </Link>
                   </a>
                 </li>
                 <li>
                   <a>
-                    <Link to={'/updates'} className="has-text-primary has-text-weight-bold is-underlined">
+                    <Link
+                      to={"/updates"}
+                      className="has-text-primary has-text-weight-bold is-underlined"
+                    >
                       アップデート情報
                     </Link>
                   </a>
@@ -496,7 +509,6 @@ const Main: React.FC<{ setShowingHeader: (boolean) => void }> = ({
               </ul>
             </div>
           </section>
-
         </main>
       </div>
       <ModalReadmeLibraryTohoku
