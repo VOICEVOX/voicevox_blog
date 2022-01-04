@@ -20,7 +20,7 @@ export default () => {
         description="無料で使える中品質なテキスト読み上げソフトウェア"
         image={shareThumb}
       />
-      <div className="container my-5">
+      <div className="container hero is-fullheight my-5">
         <div className="columns">
           <div className="column is-10 is-offset-1">
             <h1 className="title">利用規約</h1>

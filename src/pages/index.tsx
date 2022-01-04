@@ -479,7 +479,7 @@ const Main: React.FC<{ setShowingHeader: (boolean) => void }> = ({
                 <li>
                   <a>
                     <Link
-                      to={"/readme"}
+                      to={"/terms"}
                       className="has-text-primary has-text-weight-bold is-underlined"
                     >
                       利用規約
@@ -489,7 +489,7 @@ const Main: React.FC<{ setShowingHeader: (boolean) => void }> = ({
                 <li>
                   <a>
                     <Link
-                      to={"/howToUse"}
+                      to={"/usage"}
                       className="has-text-primary has-text-weight-bold is-underlined"
                     >
                       使い方
