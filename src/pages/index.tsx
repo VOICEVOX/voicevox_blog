@@ -473,13 +473,13 @@ const Main: React.FC<{ setShowingHeader: (boolean) => void }> = ({
                     rel={"noreferrer"}
                     className="has-text-primary has-text-weight-bold is-underlined"
                   >
-                    ファンボックス
+                    pixivFANBOX
                   </a>
                 </li>
                 <li>
                   <a>
                     <Link
-                      to={"/terms"}
+                      to={"/term"}
                       className="has-text-primary has-text-weight-bold is-underlined"
                     >
                       利用規約
@@ -489,7 +489,7 @@ const Main: React.FC<{ setShowingHeader: (boolean) => void }> = ({
                 <li>
                   <a>
                     <Link
-                      to={"/usage"}
+                      to={"/how_to_use"}
                       className="has-text-primary has-text-weight-bold is-underlined"
                     >
                       使い方
@@ -499,7 +499,7 @@ const Main: React.FC<{ setShowingHeader: (boolean) => void }> = ({
                 <li>
                   <a>
                     <Link
-                      to={"/updates"}
+                      to={"/update_history"}
                       className="has-text-primary has-text-weight-bold is-underlined"
                     >
                       アップデート情報

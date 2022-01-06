@@ -94,7 +94,7 @@ export const Page: React.FC<{ showingHeader?: boolean }> = ({
             */}
 
             <div className="navbar-end">
-              <div className="navbar-item">
+              <div className="navbar-item py-0">
                 <a
                   className="button is-primary is-rounded"
                   onClick={() => {
