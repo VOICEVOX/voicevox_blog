@@ -1,6 +1,7 @@
 import { faGithub } from "@fortawesome/free-brands-svg-icons"
 import { faDownload } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import React, { useContext, useEffect, useRef, useState } from "react"
 import hau001 from "../audios/hau-001.flac"
@@ -458,6 +459,54 @@ const Main: React.FC<{ setShowingHeader: (boolean) => void }> = ({
                 </a>
                 &nbsp;をご参照ください。
               </p>
+            </div>
+          </section>
+
+          <section className="section">
+            <div className="container is-max-desktop is-flex is-flex-direction-column">
+              <h2 className="title">リンク</h2>
+              <ul className="is-size-5">
+                <li>
+                  <a
+                    href="https://hiho.fanbox.cc/"
+                    target={"_blank"}
+                    rel={"noreferrer"}
+                    className="has-text-primary has-text-weight-bold is-underlined"
+                  >
+                    ファンボックス
+                  </a>
+                </li>
+                <li>
+                  <a>
+                    <Link
+                      to={"/terms"}
+                      className="has-text-primary has-text-weight-bold is-underlined"
+                    >
+                      利用規約
+                    </Link>
+                  </a>
+                </li>
+                <li>
+                  <a>
+                    <Link
+                      to={"/usage"}
+                      className="has-text-primary has-text-weight-bold is-underlined"
+                    >
+                      使い方
+                    </Link>
+                  </a>
+                </li>
+                <li>
+                  <a>
+                    <Link
+                      to={"/updates"}
+                      className="has-text-primary has-text-weight-bold is-underlined"
+                    >
+                      アップデート情報
+                    </Link>
+                  </a>
+                </li>
+              </ul>
             </div>
           </section>
         </main>
