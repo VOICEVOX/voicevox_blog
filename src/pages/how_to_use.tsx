@@ -1,9 +1,9 @@
+import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
-import shareThumb from "../images/landing-share-thumb.jpg"
 import "../components/layout.scss"
 import { Page } from "../components/page"
 import Seo from "../components/seo"
-import { graphql, useStaticQuery } from "gatsby"
+import shareThumb from "../images/landing-share-thumb.jpg"
 
 export default () => {
   const html = useStaticQuery(graphql`
@@ -16,21 +16,19 @@ export default () => {
   return (
     <Page>
       <Seo
-        title="VOICEVOX | 無料で使える中品質なテキスト読み上げソフトウェア"
-        description="無料で使える中品質なテキスト読み上げソフトウェア"
+        title="使い方 | VOICEVOX"
+        description="VOICEVOXソフトウェアの使い方です"
         image={shareThumb}
       />
-      <div className="container my-5">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <h1 className="title">使いかた</h1>
-            <div
-              className="markdown"
-              dangerouslySetInnerHTML={{ __html: html }}
-            />
-          </div>
+      <section className="section">
+        <div className="container is-max-desktop">
+          <h1 className="title">使い方</h1>
+          <div
+            className="markdown"
+            dangerouslySetInnerHTML={{ __html: html }}
+          />
         </div>
-      </div>
+      </section>
     </Page>
   )
 }

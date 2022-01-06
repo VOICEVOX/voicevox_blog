@@ -1,6 +1,7 @@
 import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons"
 import { faDownload } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { Link } from "gatsby"
 import React, { useContext, useEffect } from "react"
 import ModalPrivacyPolicy from "../components/modalPrivacyPolicy"
 import { GlobalContext } from "../contexts/context"
@@ -63,12 +64,12 @@ export const Page: React.FC<{ showingHeader?: boolean }> = ({
           aria-label="main navigation"
         >
           <div className="navbar-brand">
-            <a className="navbar-item" href="/">
+            <Link to={"/"} className="navbar-item">
               <img src={icon} />
               <span className="has-text-weight-bold is-size-5 pl-2">
                 VOICEVOX
               </span>
-            </a>
+            </Link>
 
             {/*
             ハンバーガーボタン。別ページがないのでまだ不要
@@ -77,7 +78,7 @@ export const Page: React.FC<{ showingHeader?: boolean }> = ({
               className="navbar-burger"
               aria-label="menu"
               aria-expanded="false"
-              data-target="navbarBasicExample"
+              data-target="navbar"
             >
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
@@ -86,14 +87,28 @@ export const Page: React.FC<{ showingHeader?: boolean }> = ({
             */}
           </div>
 
-          <div id="navbarBasicExample" className="navbar-menu">
-            {/*
-            <div className="navbar-start">
-              <a className="navbar-item">ボイボ寮</a>
-            </div>
-            */}
-
+          <div id="navbar" className="navbar-menu">
             <div className="navbar-end">
+              <Link to={"/term"} className="navbar-item">
+                利用規約
+              </Link>
+              <Link to={"/how_to_use"} className="navbar-item">
+                使い方
+              </Link>
+              <Link to={"/dormitory"} className="navbar-item">
+                ボイボ寮
+              </Link>
+              <Link to={"/update_history"} className="navbar-item">
+                変更履歴
+              </Link>
+              <a
+                href="https://hiho.fanbox.cc/"
+                target={"_blank"}
+                rel={"noreferrer"}
+                className="navbar-item"
+              >
+                pixivFANBOX
+              </a>
               <div className="navbar-item py-0">
                 <a
                   className="button is-primary is-rounded"

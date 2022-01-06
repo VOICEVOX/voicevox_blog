@@ -2,6 +2,8 @@
 
 $primary: #a5d4adff;
 
+$navbar-breakpoint: $tablet;
+
 @import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;400;500;700&display=swap");
 $family-sans-serif: "M PLUS Rounded 1c", sans-serif;
 $font-smoothing: subpixel-antialiased;
@@ -92,7 +94,19 @@ $dropdown-item-active-background-color: $primary;
 
   h2 {
     @extend .title;
+    @extend .is-4;
+    @extend .mb-3;
+  }
+
+  h3 {
+    @extend .title;
     @extend .is-5;
+    @extend .mb-3;
+  }
+
+  h4 {
+    @extend .title;
+    @extend .is-6;
     @extend .mb-3;
   }
 }

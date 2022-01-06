@@ -3,7 +3,6 @@ import React from "react"
 import "../components/layout.scss"
 import { Page } from "../components/page"
 import Seo from "../components/seo"
-import shareThumb from "../images/landing-share-thumb.jpg"
 
 export default () => {
   const data: {
@@ -37,14 +36,14 @@ export default () => {
   return (
     <Page>
       <Seo
-        title="VOICEVOX | 無料で使える中品質なテキスト読み上げソフトウェア"
-        description="無料で使える中品質なテキスト読み上げソフトウェア"
-        image={shareThumb}
+        title="変更履歴 | VOICEVOX"
+        description="VOICEVOXソフトウェアの変更履歴です"
+        // image={shareThumb}
       />
-      <section className="section py-0">
+      <section className="section">
         <div className="container is-max-desktop">
-          <div className="update-history my-5">
-            <h1 className="title">アップデート履歴</h1>
+          <div className="update-history">
+            <h1 className="title">変更履歴</h1>
             {events.map((e, index) => (
               <>
                 <div key={index}>
