@@ -2,11 +2,14 @@
 
 $primary: #a5d4adff;
 
+$navbar-breakpoint: $tablet;
+
 @import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;400;500;700&display=swap");
 $family-sans-serif: "M PLUS Rounded 1c", sans-serif;
 $font-smoothing: subpixel-antialiased;
 $text-rendering: optimizeLegibility;
-@media only screen and (-webkit-min-device-pixel-ratio: 2),(min-resolution: 2dppx) {
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+  (min-resolution: 2dppx) {
   $font-smoothing: antialiased;
 }
 
@@ -91,9 +94,25 @@ $dropdown-item-active-background-color: $primary;
 
   h2 {
     @extend .title;
+    @extend .is-4;
+    @extend .mb-3;
+  }
+
+  h3 {
+    @extend .title;
     @extend .is-5;
     @extend .mb-3;
   }
+
+  h4 {
+    @extend .title;
+    @extend .is-6;
+    @extend .mb-3;
+  }
+}
+
+.update-history {
+  @extend .content;
 }
 
 .modal-how-to-use {
@@ -365,7 +384,7 @@ $dropdown-item-active-background-color: $primary;
 }
 
 //ヘッダーをゆっくり表示する
-.navbar{
+.navbar {
   animation: fadeIn 0.1s cubic-bezier(0.33, 1, 0.68, 1) 1 forwards;
 }
 @keyframes fadeIn {

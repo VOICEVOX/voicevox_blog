@@ -1,6 +1,7 @@
 import { faGithub } from "@fortawesome/free-brands-svg-icons"
 import { faDownload } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import React, { useContext, useEffect, useRef, useState } from "react"
 import hau001 from "../audios/hau-001.wav"
@@ -111,7 +112,9 @@ const Main: React.FC<{ setShowingHeader: (boolean) => void }> = ({
                 </video>
               </div>
               <div className="column is-narrow is-flex is-flex-direction-column">
-                <h2 className="title">特徴</h2>
+                <h2 id="feature" className="title">
+                  特徴
+                </h2>
                 <div className="content">
                   <ul className="mt-0">
                     <li>
@@ -155,7 +158,9 @@ const Main: React.FC<{ setShowingHeader: (boolean) => void }> = ({
         <main>
           <section className="section">
             <div className="container is-max-desktop is-flex is-flex-direction-column">
-              <h2 className="title">キャラクター一覧</h2>
+              <h2 id="characters" className="title">
+                キャラクター一覧
+              </h2>
               <div className="tile is-ancestor is-justify-content-center">
                 <div className="tile is-parent is-6">
                   <div className="tile is-child card">
@@ -365,28 +370,14 @@ const Main: React.FC<{ setShowingHeader: (boolean) => void }> = ({
                   </div>
                 </div>
               </div>
-              <a
-                className="button is-align-self-center mt-5 is-primary is-rounded is-large"
-                onClick={() => {
-                  context.downloadModal.show()
-                  context.sendEvent("download", "software")
-                }}
-                target="_blank"
-                rel="noreferrer"
-                tabIndex={0}
-              >
-                <span className="icon">
-                  <FontAwesomeIcon icon={faDownload} />
-                </span>
-                <span className="has-text-weight-semibold">ダウンロード</span>
-              </a>
-              <p className="is-align-self-center is-size-6">Version 0.9.4</p>
             </div>
           </section>
 
           <section className="section">
             <div className="container is-max-desktop is-flex is-flex-direction-column">
-              <h2 className="title">オープンソース</h2>
+              <h2 id="oss" className="title">
+                オープンソース
+              </h2>
               <p className="is-size-5">
                 VOICEVOX は OSS（オープンソース・ソフトウェア）版 VOICEVOX
                 をもとに構築されています。
@@ -442,7 +433,9 @@ const Main: React.FC<{ setShowingHeader: (boolean) => void }> = ({
 
           <section className="section">
             <div className="container is-max-desktop is-flex is-flex-direction-column">
-              <h2 className="title">コアライブラリ</h2>
+              <h2 id="core_library" className="title">
+                コアライブラリ
+              </h2>
               <p className="is-size-5">
                 VOICEVOXの音声合成をアプリケーションやサービスに組み込める、VOICEVOXのコアライブラリを配布しています。
               </p>
@@ -458,6 +451,56 @@ const Main: React.FC<{ setShowingHeader: (boolean) => void }> = ({
                 </a>
                 &nbsp;をご参照ください。
               </p>
+            </div>
+          </section>
+
+          <section className="section">
+            <div className="container is-max-desktop is-flex is-flex-direction-column">
+              <h2 className="title">リンク</h2>
+              <ul className="is-size-5">
+                <li>
+                  <Link
+                    to={"/term"}
+                    className="has-text-primary has-text-weight-bold is-underlined"
+                  >
+                    利用規約
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to={"/how_to_use"}
+                    className="has-text-primary has-text-weight-bold is-underlined"
+                  >
+                    使い方
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to={"/dormitory"}
+                    className="has-text-primary has-text-weight-bold is-underlined"
+                  >
+                    ボイボ寮
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to={"/update_history"}
+                    className="has-text-primary has-text-weight-bold is-underlined"
+                  >
+                    変更履歴
+                  </Link>
+                </li>
+                <li>
+                  <a
+                    href="https://hiho.fanbox.cc/"
+                    target={"_blank"}
+                    rel={"noreferrer"}
+                    className="has-text-primary has-text-weight-bold is-underlined"
+                  >
+                    pixivFANBOX
+                  </a>
+                </li>
+              </ul>
             </div>
           </section>
         </main>

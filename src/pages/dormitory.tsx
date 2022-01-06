@@ -1,6 +1,6 @@
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql, Link, useStaticQuery } from "gatsby"
 import { IGatsbyImageData, StaticImage } from "gatsby-plugin-image"
-import React, { useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import hau001 from "../audios/dormitory/hau-01.wav"
 import hau002 from "../audios/dormitory/hau-02.wav"
 import hau003 from "../audios/dormitory/hau-03.wav"
@@ -29,7 +29,9 @@ import { Page } from "../components/page"
 import Seo from "../components/seo"
 import { CharacterInfo, CharacterKey } from "../types/dormitoryCharacter"
 
-export default () => {
+const Dormitory: React.FC<{ setShowingHeader: (boolean) => void }> = ({
+  setShowingHeader,
+}) => {
   const queryPortraits: {
     [key: string]: {
       nodes: {
@@ -254,6 +256,18 @@ export default () => {
     },
   }
 
+  // ボイボ寮デザイン用のヘッダーを超えたらホムペ用のヘッダーを表示する
+  const headerRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    if (!headerRef.current) return
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        setShowingHeader(!entry.isIntersecting)
+      })
+    })
+    observer.observe(headerRef.current)
+  }, [headerRef])
+
   const [showingCharacterModal, setShowingCharacterModal] = useState(false)
   const [selectedCharacterKey, setSelectedCharacterKey] =
     useState<CharacterKey>()
@@ -269,7 +283,7 @@ export default () => {
   }
 
   return (
-    <Page showingHeader={false}>
+    <>
       <Seo
         title="ボイボ寮 | VOICEVOX"
         description="とある世界の不思議な建物、ボイボ寮。ここでは個性豊かな住民たちが暮らしています。"
@@ -277,7 +291,7 @@ export default () => {
       />
 
       <div className="dormitory">
-        <header className="hero is-small">
+        <header ref={headerRef} className="hero is-small">
           <div className="hero-body">
             <div className="container has-text-centered">
               <h1 className="title is-2">ボイボ寮の住民たち</h1>
@@ -385,14 +399,14 @@ export default () => {
             <p className="is-size-6">
               商用・非商用問わず無料で、イントネーションの詳細な調整ができることが特徴です。
             </p>
-            <a
+            <Link
+              to={"/"}
               className="button is-align-self-center mt-5 is-primary is-rounded"
-              href="/"
               type="button"
               role={"button"}
             >
               <span className="has-text-weight-semibold">ダウンロード</span>
-            </a>
+            </Link>
           </div>
         </section>
       </div>
@@ -405,6 +419,15 @@ export default () => {
           characterInfos={characterInfos}
         />
       )}
+    </>
+  )
+}
+
+export default () => {
+  const [showingHeader, setShowingHeader] = useState(false)
+  return (
+    <Page showingHeader={showingHeader}>
+      <Dormitory setShowingHeader={setShowingHeader} />
     </Page>
   )
 }
