@@ -49,14 +49,6 @@ sed -r 's|src="([^"]+?)"|src="'$editor_url/$tag'/public/\1"|g' -i src/markdowns/
 
 # 変更履歴
 curl -s "$editor_url/$tag/public/updateInfos.json" > src/data/updateInfos.json
-
-# 音声
-# 24kHzのwavファイルはiPhoneで再生できないので、48kHzのflacにする
-# sudo apt install sox libsox-fmt-all
-find src/audios -name '*.wav' -printf "%P\n" | while read f; do
-    sox src/audios/$f -r 48000 src/audios/$(echo $f | sed -r 's/.wav/.flac/g')
-    rm src/audios/$f
-done
 ```
 
 ## LICENSE

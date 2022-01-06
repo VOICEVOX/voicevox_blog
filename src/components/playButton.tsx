@@ -31,6 +31,7 @@ export default ({
 
   useEffect(() => {
     if (!audio) return
+    audio.load()
 
     const onPlayCallback = () => {
       setIsPlaying(true)
