@@ -17,6 +17,12 @@ npm ci
 npm run develop
 ```
 
+もしくは
+
+```bash
+npm run build && npm run serve
+```
+
 ## deploy
 
 ```bash
