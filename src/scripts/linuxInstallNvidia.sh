@@ -37,5 +37,5 @@ EOS
 fi
 
 curl -fsSL https://raw.githubusercontent.com/VOICEVOX/voicevox/0.9.4/build/installer_linux.sh >tmp_voicevox_installer.sh
-VERSION=0.9.4 bash tmp_voicevox_installer.sh
+VERSION=0.9.4 NAME=linux-nvidia-appimage bash tmp_voicevox_installer.sh
 rm tmp_voicevox_installer.sh
