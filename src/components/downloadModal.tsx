@@ -28,7 +28,7 @@ export const DownloadModal: React.FC<{
   const windowsCpuZipUrl =
     "https://drive.google.com/file/d/1JQBSOI7MidYCprGHEIQFqcDnoLhe0IBl/view?usp=sharing"
   const linuxZipUrl =
-    "https://drive.google.com/file/d/1IS6RH5aZMYRyLh1J4uwBpZTy9yXucUYr/view?usp=sharing"
+    "https://drive.google.com/file/d/1QTR9KvrG15kjaiDV6QziQnORB32mUA-_/view?usp=sharing"
   const linuxCpuZipUrl =
     "https://drive.google.com/file/d/1IS6RH5aZMYRyLh1J4uwBpZTy9yXucUYr/view?usp=sharing"
 
