@@ -13,9 +13,12 @@ $text-rendering: optimizeLegibility;
   $font-smoothing: antialiased;
 }
 
+//M+フォントのシャギーを解消する
 h1, h2, h3, h4, h5, h6, li, p, span, a {
+  //ほんの少し傾けると画像的に扱われ、アンチエイリアスがかかります。
   transform: rotate(0.03deg);
 }
+
 $dropdown-item-active-color: hsl(0, 0%, 4%);
 $dropdown-item-active-background-color: $primary;
 
