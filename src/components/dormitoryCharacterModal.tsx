@@ -58,7 +58,7 @@ export default ({
         onClick={() => setDescriptionType(targetType)}
         type="button"
       >
-        {targetType}
+        <span>{targetType}</span>
       </button>
     )
   }
