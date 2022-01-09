@@ -58,7 +58,7 @@ export default ({
         onClick={() => setDescriptionType(targetType)}
         type="button"
       >
-        {targetType}
+        <span>{targetType}</span>
       </button>
     )
   }
@@ -253,20 +253,16 @@ export default ({
                       </div>
                       <div className="column is-3 description-call-other-column">
                         <div className="description-call-other-cell">
-                          <div>一人称</div>
-                          <div
-                            dangerouslySetInnerHTML={{
-                              __html: characterInfo.callNames.me,
-                            }}
-                          />
+                          <div><span>一人称</span></div>
+                          <div>
+                            {characterInfo.callNames.me.map(callName => <p>{callName}</p>)}
+                          </div>
                         </div>
                         <div className="description-call-other-cell">
-                          <div>二人称</div>
-                          <div
-                            dangerouslySetInnerHTML={{
-                              __html: characterInfo.callNames.you,
-                            }}
-                          />
+                          <div><span>二人称</span></div>
+                          <div>
+                            {characterInfo.callNames.you.map(callName => <p>{callName}</p>)}
+                          </div>
                         </div>
                       </div>
                     </div>

@@ -20,6 +20,6 @@ export type CharacterInfo = {
   infoImages?: IGatsbyImageData[]
   callNames: {
     [key in CharacterKey]: string | undefined
-  } & { me: string; you: string }
+  } & { me: string[]; you: string[] }
   detailUrl: string
 }
