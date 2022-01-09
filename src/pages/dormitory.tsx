@@ -301,9 +301,8 @@ const Dormitory: React.FC<{ setShowingHeader: (boolean) => void }> = ({
 
         <section className="section py-0">
           <div className="container is-max-desktop has-text-centered is-size-5 py-6">
-            とある世界の不思議な建物、ボイボ寮。
-            <br />
-            ここでは個性豊かな住民たちが暮らしています。
+            <p>とある世界の不思議な建物、ボイボ寮。</p>
+            <p>ここでは個性豊かな住民たちが暮らしています。</p>
           </div>
         </section>
 
