@@ -1,6 +1,7 @@
 @import "~bulma/sass/utilities/initial-variables";
 
 $primary: #a5d4adff;
+$text : black;
 
 $navbar-breakpoint: $tablet;
 
@@ -114,6 +115,11 @@ $dropdown-item-active-background-color: $primary;
     @extend .title;
     @extend .is-6;
     @extend .mb-3;
+  }
+
+  img {
+    vertical-align: middle;
+    border : 1px solid #333;
   }
 }
 
