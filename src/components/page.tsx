@@ -65,7 +65,7 @@ export const Page: React.FC<{ showingHeader?: boolean }> = ({
         >
           <div className="navbar-brand">
             <Link to={"/"} className="navbar-item">
-              <img src={icon} />
+              <img src={icon} alt="VOICEVOXのロゴ"/>
               <span className="has-text-weight-bold is-size-5 pl-2">
                 VOICEVOX
               </span>
@@ -94,6 +94,9 @@ export const Page: React.FC<{ showingHeader?: boolean }> = ({
               </Link>
               <Link to={"/how_to_use"} className="navbar-item">
                 使い方
+              </Link>
+              <Link to={"/qa"} className="navbar-item">
+                Q&amp;A
               </Link>
               <Link to={"/dormitory"} className="navbar-item">
                 ボイボ寮
