@@ -400,9 +400,9 @@ const Main: React.FC<{ setShowingHeader: (boolean) => void }> = ({
               <p className="is-size-5">
                 追加したい・改善したい機能があれば、ぜひ開発にご参加ください。
               </p>
-              <div className="is-flex mt-3">
+              <div className="buttons mt-3">
                 <a
-                  className="button is-outlined mr-1"
+                  className="button is-outlined"
                   href="https://github.com/VOICEVOX/voicevox"
                   target="_blank"
                   rel="noreferrer"
@@ -415,7 +415,7 @@ const Main: React.FC<{ setShowingHeader: (boolean) => void }> = ({
                   <span>VOICEVOX エディター</span>
                 </a>
                 <a
-                  className="button is-outlined ml-1"
+                  className="button is-outlined"
                   href="https://github.com/VOICEVOX/voicevox_engine"
                   target="_blank"
                   rel="noreferrer"
@@ -479,7 +479,7 @@ const Main: React.FC<{ setShowingHeader: (boolean) => void }> = ({
                     to={"/qa"}
                     className="has-text-primary has-text-weight-bold is-underlined"
                   >
-                     Q&amp;A
+                    Q&amp;A
                   </Link>
                 </li>
                 <li>
