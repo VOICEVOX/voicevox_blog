@@ -26,7 +26,7 @@ export default <T extends string>({
       </div>
       <div className="column is-6 py-0 my-1">
         <div className="buttons is-centered">
-          {candidates.map((candidate ,index ) => (
+          {candidates.map((candidate, index) => (
             <button
               key={index}
               className={`button is-rounded ${
