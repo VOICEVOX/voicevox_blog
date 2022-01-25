@@ -6,12 +6,12 @@ import Seo from "../components/seo"
 
 export default () => {
   const html = useStaticQuery(graphql`
-  query {
-    markdownRemark(fileAbsolutePath: { regex: "/qAndA/" }) {
-      html
+    query {
+      markdownRemark(fileAbsolutePath: { regex: "/qAndA/" }) {
+        html
+      }
     }
-  }
-`).markdownRemark.html
+  `).markdownRemark.html
   return (
     <Page>
       <Seo
@@ -19,10 +19,11 @@ export default () => {
         description="VOICEVOX Q&A"
         // image={shareThumb}
       />
-       <section className="section">
-        <div className="container is-max-desktop markdown qa"
-          dangerouslySetInnerHTML={{ __html: html }}>
-        </div>
+      <section className="section">
+        <div
+          className="container is-max-desktop markdown qa"
+          dangerouslySetInnerHTML={{ __html: html }}
+        ></div>
       </section>
     </Page>
   )
