@@ -118,6 +118,7 @@ $dropdown-item-active-background-color: $primary;
   }
 
   img {
+    @extend .mb-3;
     vertical-align: middle;
     border : 1px solid #333;
   }
@@ -126,6 +127,20 @@ $dropdown-item-active-background-color: $primary;
 .update-history {
   @extend .content;
 }
+
+.qa{
+
+    h2{
+      @extend .p-4;
+      background-color: $primary;
+      color: #3f213a;
+    }
+
+    h3{
+      @extend .p-2;
+      background-color: rgb(208, 253, 216);
+    }
+  }
 
 .modal-how-to-use {
   @include tablet {
@@ -384,6 +399,25 @@ $dropdown-item-active-background-color: $primary;
     &::after {
       background-color: black;
     }
+  }
+}
+
+.page-404 {
+  margin: auto;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #f5f5f5;
+  ::selection {
+    color: white;
+    background-color: #9a9a9a;
+  }
+  :any-link {
+    color: black;
   }
 }
 

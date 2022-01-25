@@ -26,8 +26,9 @@ export default <T extends string>({
       </div>
       <div className="column is-6 py-0 my-1">
         <div className="buttons is-centered">
-          {candidates.map(candidate => (
+          {candidates.map((candidate, index) => (
             <button
+              key={index}
               className={`button is-rounded ${
                 candidate == selected
                   ? "is-success has-text-weight-semibold"

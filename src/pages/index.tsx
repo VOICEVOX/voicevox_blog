@@ -476,6 +476,14 @@ const Main: React.FC<{ setShowingHeader: (boolean) => void }> = ({
                 </li>
                 <li>
                   <Link
+                    to={"/qa"}
+                    className="has-text-primary has-text-weight-bold is-underlined"
+                  >
+                     Q&amp;A
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     to={"/dormitory"}
                     className="has-text-primary has-text-weight-bold is-underlined"
                   >
