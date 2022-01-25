@@ -47,6 +47,8 @@ curl -s "$resource_url/$tag/character_info/05_ritsu/policy.md" > src/markdowns/l
 curl -s "$editor_url/$tag/public/howtouse.md" > src/markdowns/howToUse.md
 sed -r 's|src="([^"]+?)"|src="'$editor_url/$tag'/public/\1"|g' -i src/markdowns/howToUse.md
 
+# TODO: Q&A
+
 # 変更履歴
 curl -s "$editor_url/$tag/public/updateInfos.json" > src/data/updateInfos.json
 ```
