@@ -114,7 +114,7 @@ GPU 版 : Windows 10 以上 及び Nvidia 製 GPU 搭載の PC、Linux 及び Nv
 
 ### Q. 会社や学校で使いたいです。
 
-VOICEVOX は商用・非商用問わず使用することができますが、作成された音声を使用する際は利用規約及び各音声ライブラリの規約をご確認ください。  
+VOICEVOX は商用・非商用問わず使用できますが、作成された音声を使用する際は利用規約及び各音声ライブラリの規約をご確認ください。  
 各音声ライブラリの権利者との間にトラブルが発生しても、対応致しかねますのでご了承ください。
 - [ずんだもん、四国めたん の音源利用規約](https://zunko.jp/con_ongen_kiyaku.html)
 - [春日部つむぎ の利用規約](https://tsukushinyoki10.wixsite.com/ktsumugiofficial/利用規約)
@@ -157,5 +157,5 @@ VOICEVOX は商用・非商用問わず使用することができますが、�
 
 うまく動かない場合や不具合を見つけられた方は、できるかぎり使いかたやQ&Aを自身で読み込んだ上で、 Twitter にて不具合をハッシュタグ `#VOICEVOX` を付けてツイートしていただくか、  VOICEVOX公式（[@voicevox_pj](https://twitter.com/voicevox_pj)）までご報告ください。  
 
-その他 Q&A に掲載されていないご質問があれば、できるかぎり使いかたやQ&Aを自身で読み込んだ上で、どうしても質問が必要だと考えられる場合のみ VOICEVOX公式（[@voicevox_pj](https://twitter.com/voicevox_pj)）にお問い合わせください。
+その他 Q&A に掲載されていないご質問があれば、できるかぎり使いかたやQ&Aを自身で読み込んだ上、どうしても質問が必要だと考えられる場合のみ VOICEVOX公式（[@voicevox_pj](https://twitter.com/voicevox_pj)）にお問い合わせください。
  
