@@ -16,14 +16,17 @@ export default () => {
     <Page>
       <Seo
         title="Q&A | VOICEVOX"
-        description="VOICEVOX Q&A"
+        description="VOICEVOXのよくあるご質問"
         // image={shareThumb}
       />
       <section className="section">
-        <div
-          className="container is-max-desktop markdown qa"
-          dangerouslySetInnerHTML={{ __html: html }}
-        ></div>
+        <div className="container is-max-desktop">
+          <h1 className="title">Q&amp;A</h1>
+          <div
+            className="markdown qa"
+            dangerouslySetInnerHTML={{ __html: html }}
+          />
+        </div>
       </section>
     </Page>
   )
