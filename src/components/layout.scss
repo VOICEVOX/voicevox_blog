@@ -29,6 +29,16 @@ body {
   min-height: -webkit-fill-available;
 }
 
+//footerを最下部に固定します。
+body {
+  position: relative;
+  footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+}
+
 $dropdown-item-active-color: hsl(0, 0%, 4%);
 $dropdown-item-active-background-color: $primary;
 
