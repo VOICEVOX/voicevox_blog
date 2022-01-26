@@ -153,7 +153,12 @@ export const Page: React.FC<{ showingHeader?: boolean }> = ({
         hide={hidePrivacyPolicyModal}
       />
       <ModalHowToUse isActive={showingHowToUseModal} hide={hideHowToUseModal} />
-      <VVFooter privacyPolicyShower={showPrivacyPolicyModal} />
+      <footer className="footer appearance">
+        <VVFooter privacyPolicyShower={showPrivacyPolicyModal}/>
+      </footer>
+      <div className="footer height-holder">
+        <VVFooter privacyPolicyShower={() => {}}/>
+      </div>
     </>
   )
 }

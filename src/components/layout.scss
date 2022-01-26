@@ -32,10 +32,16 @@ body {
 //footerを最下部に固定します。
 body {
   position: relative;
-  footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+  .footer {
+    &.appearance {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+    &.height-holder {
+      opacity: 0;
+      pointer-events: none;
+    }
   }
 }
 
