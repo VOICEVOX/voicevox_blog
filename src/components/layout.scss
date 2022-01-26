@@ -20,6 +20,15 @@ h1, h2, h3, h4, h5, h6, li, p, span, a {
   transform: rotate(0.03deg);
 }
 
+//もしページの内容が画面高さより小さくても、body要素は最低でも画面高さを持つようにします。
+html {
+  height: -webkit-fill-available;
+}
+body {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+}
+
 $dropdown-item-active-color: hsl(0, 0%, 4%);
 $dropdown-item-active-background-color: $primary;
 
