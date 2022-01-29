@@ -39,8 +39,7 @@ body {
       width: 100%;
     }
     &.height-holder {
-      opacity: 0;
-      pointer-events: none;
+      visibility: hidden;
     }
   }
 }
