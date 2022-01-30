@@ -1,4 +1,3 @@
-import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons"
 import { faDownload } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Link } from "gatsby"
@@ -10,6 +9,7 @@ import icon from "../images/icon.png"
 import { DownloadModal } from "./downloadModal"
 import { ModalHowToUse } from "./modalHowToUse"
 import { ModalReadmeSoftware } from "./modalReadmeSoftware"
+import { VVFooter } from "./page-footer"
 
 export const Page: React.FC<{ showingHeader?: boolean }> = ({
   showingHeader = true,
@@ -153,43 +153,12 @@ export const Page: React.FC<{ showingHeader?: boolean }> = ({
         hide={hidePrivacyPolicyModal}
       />
       <ModalHowToUse isActive={showingHowToUseModal} hide={hideHowToUseModal} />
-
-      <footer className="footer">
-        <div className="container is-flex is-justify-content-center">
-          <a
-            className="button is-outlined ml-1 mr-1"
-            href="https://github.com/VOICEVOX/voicevox"
-            target="_blank"
-            rel="noreferrer"
-            type="button"
-            role={"button"}
-          >
-            <span className="icon">
-              <FontAwesomeIcon icon={faGithub} />
-            </span>
-            <span>GitHub</span>
-          </a>
-          <a
-            className="button is-outlined is-info ml-1 mr-1"
-            href="https://twitter.com/hiho_karuta"
-            target="_blank"
-            rel="noreferrer"
-            type="button"
-            role={"button"}
-          >
-            <span className="icon">
-              <FontAwesomeIcon icon={faTwitter} />
-            </span>
-            <span>Twitter</span>
-          </a>
-        </div>
-        <div className="container is-flex is-justify-content-center mt-2">
-          <a className="is-size-7	ml-1 mr-1" onClick={showPrivacyPolicyModal}>
-            プライバシーポリシー
-          </a>
-          <p className="is-size-7	ml-1 mr-1">© 2021 Hiroshiba Kazuyuki</p>
-        </div>
+      <footer className="footer appearance">
+        <VVFooter privacyPolicyShower={showPrivacyPolicyModal} />
       </footer>
+      <div className="footer height-holder">
+        <VVFooter privacyPolicyShower={() => {}} />
+      </div>
     </>
   )
 }
