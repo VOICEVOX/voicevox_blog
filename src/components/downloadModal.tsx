@@ -54,22 +54,22 @@ export const DownloadModal: React.FC<{
     Windows: {
       "GPU / CPU": {
         インストーラー: {
-          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.9.4/VOICEVOX.Web.Setup.0.9.4.exe",
-          name: "VOICEVOX.Setup.0.9.4.Windows.exe",
+          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.10.4/VOICEVOX.Web.Setup.0.10.4.exe",
+          name: "VOICEVOX.Setup.0.10.4.Windows.exe",
         },
         Zip: {
           url: windowsZipUrl,
-          name: "VOICEVOX.0.9.4.Windows.zip",
+          name: "VOICEVOX.0.10.4.Windows.zip",
         },
       },
       CPU: {
         インストーラー: {
-          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.9.4/VOICEVOX-CPU.Web.Setup.0.9.4.exe",
-          name: "VOICEVOX-CPU.Setup.0.9.4.Windows.exe",
+          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.10.4/VOICEVOX-CPU.Web.Setup.0.10.4.exe",
+          name: "VOICEVOX-CPU.Setup.0.10.4.Windows.exe",
         },
         Zip: {
           url: windowsCpuZipUrl,
-          name: "VOICEVOX-CPU.0.9.4.Windows.zip",
+          name: "VOICEVOX-CPU.0.10.4.Windows.zip",
         },
       },
     },
@@ -78,22 +78,22 @@ export const DownloadModal: React.FC<{
         インストーラー: {
           url: scriptNodes.find(value => value.name == "linuxInstallNvidia")!
             .publicURL,
-          name: "VOICEVOX.Installer.0.9.4.Linux.sh",
+          name: "VOICEVOX.Installer.0.10.4.Linux.sh",
         },
         Zip: {
           url: linuxZipUrl,
-          name: "VOICEVOX.0.9.4.Linux.zip",
+          name: "VOICEVOX.0.10.4.Linux.zip",
         },
       },
       CPU: {
         インストーラー: {
           url: scriptNodes.find(value => value.name == "linuxInstallCpu")!
             .publicURL,
-          name: "VOICEVOX-CPU.Installer.0.9.4.Linux.sh",
+          name: "VOICEVOX-CPU.Installer.0.10.4.Linux.sh",
         },
         Zip: {
           url: linuxCpuZipUrl,
-          name: "VOICEVOX-CPU.0.9.4.Linux.zip",
+          name: "VOICEVOX-CPU.0.10.4.Linux.zip",
         },
       },
     },
