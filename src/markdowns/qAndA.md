@@ -4,11 +4,11 @@
 
 #### CPU 版
 
-Windows・Linux 搭載の PC に対応しています。
+Windows／Mac／Linux 搭載の PC に対応しています。
 
 #### GPU 版
 
-Windows・Linux と Nvidia 製 GPU 搭載の PC に対応しています。
+Windows／Linux と Nvidia 製 GPU 搭載の PC に対応しています。
 
 ## インストールに関する質問
 
@@ -43,6 +43,10 @@ Windows・Linux と Nvidia 製 GPU 搭載の PC に対応しています。
 
 `C:\Users\(ユーザー名)\AppData\Local\Programs\VOICEVOX`
 
+#### Mac 版
+
+`/Applications/VOICEVOX` もしくは `/Users/(ユーザー名)/Applications/VOICEVOX`
+
 ## 使い方に関する質問
 
 ### Q. 使い方がわかりません。
@@ -69,6 +73,10 @@ VOICEVOX Twitter アカウント [@voicevox_pj](https://twitter.com/voicevox_pj)
 
 `C:\Users\(ユーザー名)\AppData\Roaming\voicevox` もしくは `C:\Users\(ユーザー名)\AppData\Roaming\voicevox-cpu`
 
+#### Mac 版
+
+`/Users/(ユーザー名)/Library/Application Support/voicevox-cpu`
+
 ### Q. エンジンの起動が失敗したというエラーが表示されます。
 
 対応する GPU が搭載されていない PC で GPU モードとして起動するとエラーが表示されます。  
@@ -80,6 +88,8 @@ VOICEVOX Twitter アカウント [@voicevox_pj](https://twitter.com/voicevox_pj)
 設定 → エンジンから CPU モードを選んでください。
 
 対応する GPU が搭載されている PC でエラーが表示される場合は CPU 版がインストールされているかもしれません。ダウンロードページから GPU 版をダウンロードしてください。
+
+また、Mac 版は GPU モードに対応していません。
 
 ### Q. 音声が再生されません。
 
@@ -116,7 +126,7 @@ VOICEVOX で作成された音声は、クレジット表記をして頂けれ�
 ### Q. 電話音声など、音声のみを使いたい場合のクレジット記載はどうすれば良いですか？
 
 音声の最初か最後に音声クレジットを挿入してください。  
-キャラクターの利用規約に記載されている場合は、キャラクターの利用規約を優先してください。
+キャラクターの利用規約に案内がある場合はそちらを優先してください。
 
 ### Q. クレジット記載を省くにはどうすれば良いですか？
 
@@ -137,14 +147,14 @@ VOICEVOX で作成された音声は、クレジット表記をして頂けれ�
 - [VOICEVOX エンジン](https://github.com/VOICEVOX/voicevox_engine)
 - [VOICEVOX コア](https://github.com/VOICEVOX/voicevox_core)
 
-### Q. 利用規約に遵守できているかどうか教えてください。
+### Q. 利用規約を遵守できているかどうか教えてください。
 
-利用規約に遵守できているかどうかのご質問については、原則お答えしておりません。  
+利用規約を遵守できているかどうかのご質問については、原則お答えしておりません。  
 できるかぎり利用規約をご自身で読み込んだ上での判断をお願いいたします。
 
 ### Q. 問い合わせ先を教えてください。
 
-ご感想・ご要望は、ぜひ Twitter にてハッシュタグ `#VOICEVOX` を付けてツイートしてください。
+ご感想・ご要望は、ぜひ Twitter にてハッシュタグ `#VOICEVOX` を付けてツイートしてください。開発の励みになります。
 
 うまく動かない場合や不具合を見つけられた方は、Twitter にて不具合をハッシュタグ `#VOICEVOX` を付けてツイートしていただくか、VOICEVOX 公式（[@voicevox_pj](https://twitter.com/voicevox_pj)）までご報告ください。
 

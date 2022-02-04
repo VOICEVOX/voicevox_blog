@@ -1,7 +1,7 @@
 @import "~bulma/sass/utilities/initial-variables";
 
 $primary: #a5d4adff;
-$text : black;
+$text: black;
 
 $navbar-breakpoint: $tablet;
 
@@ -15,7 +15,16 @@ $text-rendering: optimizeLegibility;
 }
 
 //M+フォントのシャギーを解消する
-h1, h2, h3, h4, h5, h6, li, p, span, a {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+p,
+span,
+a {
   //ほんの少し傾けると画像的に扱われ、アンチエイリアスがかかります。
   transform: rotate(0.03deg);
 }
@@ -144,7 +153,7 @@ $dropdown-item-active-background-color: $primary;
   img {
     @extend .mb-3;
     vertical-align: middle;
-    border : 1px solid #333;
+    border: 1px solid #333;
   }
 }
 
@@ -152,19 +161,26 @@ $dropdown-item-active-background-color: $primary;
   @extend .content;
 }
 
-.qa{
+.qa {
+  h2 {
+    @extend .p-4;
+    background-color: $primary;
+    color: #3f213a;
+  }
 
-    h2{
-      @extend .p-4;
-      background-color: $primary;
-      color: #3f213a;
-    }
+  h3 {
+    @extend .p-2;
+    background-color: rgb(208, 253, 216);
+  }
+}
 
-    h3{
-      @extend .p-2;
-      background-color: rgb(208, 253, 216);
+.modal-download {
+  @include tablet {
+    .modal-card {
+      width: 670px;
     }
   }
+}
 
 .modal-how-to-use {
   @include tablet {
