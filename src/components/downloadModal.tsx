@@ -1,19 +1,21 @@
 import { graphql, useStaticQuery } from "gatsby"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import DownloadModalSelecter from "./downloadModalSelecter"
 
-type OsType = "Windows" | "Linux"
+type OsType = "Windows" | "Mac" | "Linux"
 type ModeType = "GPU / CPU" | "CPU"
-type PackageType = "インストーラー" | "Zip"
+type PackageType = "インストーラー" | "Zip" | "tar.gz"
 
 const modeAvailables: Record<OsType, ModeType[]> = {
   Windows: ["GPU / CPU", "CPU"],
+  Mac: ["CPU"],
   Linux: ["GPU / CPU", "CPU"],
 }
 
 const packageAvailables: Record<OsType, PackageType[]> = {
   Windows: ["インストーラー", "Zip"],
-  Linux: ["インストーラー", "Zip"],
+  Mac: ["インストーラー", "Zip"],
+  Linux: ["インストーラー", "tar.gz"],
 }
 
 export const DownloadModal: React.FC<{
@@ -23,14 +25,6 @@ export const DownloadModal: React.FC<{
   showHowToUse: () => void
 }> = props => {
   const maintenanceMode = false
-  const windowsZipUrl =
-    "https://drive.google.com/file/d/18Jdn2KSXrCKF7S3NHtB_8sYNz8HnMHM8/view?usp=sharing"
-  const windowsCpuZipUrl =
-    "https://drive.google.com/file/d/1JQBSOI7MidYCprGHEIQFqcDnoLhe0IBl/view?usp=sharing"
-  const linuxZipUrl =
-    "https://drive.google.com/file/d/1QTR9KvrG15kjaiDV6QziQnORB32mUA-_/view?usp=sharing"
-  const linuxCpuZipUrl =
-    "https://drive.google.com/file/d/1IS6RH5aZMYRyLh1J4uwBpZTy9yXucUYr/view?usp=sharing"
 
   const scriptNodes: { name: string; publicURL: string }[] =
     useStaticQuery(graphql`
@@ -44,11 +38,12 @@ export const DownloadModal: React.FC<{
       }
     `).allFile.nodes
 
+  // FIXME: 型エラーが出る
   const downloadUrls: Record<
     OsType,
     Record<
       ModeType,
-      Record<PackageType, { url: string; name: string } | undefined>
+      Record<PackageType, { url: string; name: string } | undefined> | undefined
     >
   > = {
     Windows: {
@@ -58,7 +53,7 @@ export const DownloadModal: React.FC<{
           name: "VOICEVOX.Setup.0.10.4.Windows.exe",
         },
         Zip: {
-          url: windowsZipUrl,
+          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.10.4/voicevox-windows-nvidia-0.10.4.zip",
           name: "VOICEVOX.0.10.4.Windows.zip",
         },
       },
@@ -68,8 +63,20 @@ export const DownloadModal: React.FC<{
           name: "VOICEVOX-CPU.Setup.0.10.4.Windows.exe",
         },
         Zip: {
-          url: windowsCpuZipUrl,
+          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.10.4/voicevox-windows-cpu-0.10.4.zip",
           name: "VOICEVOX-CPU.0.10.4.Windows.zip",
+        },
+      },
+    },
+    Mac: {
+      CPU: {
+        インストーラー: {
+          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.10.4/VOICEVOX.0.10.4.dmg",
+          name: "VOICEVOX.0.10.4.Mac.dmg",
+        },
+        Zip: {
+          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.10.4/voicevox-macos-cpu-0.10.4.zip",
+          name: "VOICEVOX-CPU.0.10.4.Mac.zip",
         },
       },
     },
@@ -80,9 +87,9 @@ export const DownloadModal: React.FC<{
             .publicURL,
           name: "VOICEVOX.Installer.0.10.4.Linux.sh",
         },
-        Zip: {
-          url: linuxZipUrl,
-          name: "VOICEVOX.0.10.4.Linux.zip",
+        "tar.gz": {
+          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.10.4/voicevox-linux-nvidia-0.10.4.tar.gz",
+          name: "VOICEVOX.0.10.4.Linux.tar.gz",
         },
       },
       CPU: {
@@ -91,9 +98,9 @@ export const DownloadModal: React.FC<{
             .publicURL,
           name: "VOICEVOX-CPU.Installer.0.10.4.Linux.sh",
         },
-        Zip: {
-          url: linuxCpuZipUrl,
-          name: "VOICEVOX-CPU.0.10.4.Linux.zip",
+        "tar.gz": {
+          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.10.4/voicevox-linux-cpu-0.10.4.tar.gz",
+          name: "VOICEVOX-CPU.0.10.4.Linux.tar.gz",
         },
       },
     },
@@ -104,8 +111,22 @@ export const DownloadModal: React.FC<{
   const [selectedPackage, setSelectedPackage] =
     useState<PackageType>("インストーラー")
 
+  // 存在しない組み合わせのときに選択中のものを変更する
+  useEffect(() => {
+    if (!modeAvailables[selectedOs].find(value => value == selectedMode)) {
+      setSelectedMode(modeAvailables[selectedOs][0])
+    }
+    if (
+      !packageAvailables[selectedOs].find(value => value == selectedPackage)
+    ) {
+      setSelectedPackage(packageAvailables[selectedOs][0])
+    }
+  }, [selectedOs, selectedMode, selectedPackage])
+
   return (
-    <div className={"modal" + (props.isActive ? " is-active" : "")}>
+    <div
+      className={"modal-download modal" + (props.isActive ? " is-active" : "")}
+    >
       <div
         className="modal-background"
         onClick={props.hide}
@@ -129,7 +150,7 @@ export const DownloadModal: React.FC<{
                 label="OS"
                 selected={selectedOs}
                 setSelected={setSelectedOs}
-                candidates={["Windows", "Linux"]}
+                candidates={["Windows", "Mac", "Linux"]}
               />
 
               <hr className="my-3" />
@@ -165,10 +186,11 @@ export const DownloadModal: React.FC<{
             <footer className="modal-card-foot is-justify-content-flex-end">
               <a
                 href={
-                  downloadUrls[selectedOs][selectedMode][selectedPackage]?.url
+                  downloadUrls[selectedOs][selectedMode]?.[selectedPackage]?.url
                 }
                 download={
-                  downloadUrls[selectedOs][selectedMode][selectedPackage]?.name
+                  downloadUrls[selectedOs][selectedMode]?.[selectedPackage]
+                    ?.name
                 }
                 target="_blank"
                 rel="noreferrer"

@@ -53,12 +53,16 @@ export default () => {
                       <li key={index}>{d}</li>
                     ))}
                   </ul>
-                  <h3 className="title is-5">貢献者リスト</h3>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: e.contributors.join(" / "),
-                    }}
-                  />
+                  {e.contributors.length > 0 && (
+                    <>
+                      <h3 className="title is-5">貢献者リスト</h3>
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: e.contributors.join(" / "),
+                        }}
+                      />
+                    </>
+                  )}
                 </div>
                 {events.length !== index + 1 && <hr />}
               </>
