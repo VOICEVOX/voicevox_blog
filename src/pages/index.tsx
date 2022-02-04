@@ -132,7 +132,7 @@ const Main: React.FC<{ setShowingHeader: (boolean) => void }> = ({
                   ※1 詳しくは各キャラクターの利用規約をご参照ください
                 </p>
                 <p className="is-size-7">
-                  ※2 現在は Windows / Linux に対応しています
+                  ※2 現在は Windows / Mac / Linux に対応しています
                 </p>
                 <a
                   className="button is-align-self-center mt-5 is-primary is-rounded is-large"
