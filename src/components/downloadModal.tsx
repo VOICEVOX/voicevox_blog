@@ -38,13 +38,12 @@ export const DownloadModal: React.FC<{
       }
     `).allFile.nodes
 
-  // FIXME: 型エラーが出る
   const downloadUrls: Record<
     OsType,
-    Record<
+    Partial<Record<
       ModeType,
-      Record<PackageType, { url: string; name: string } | undefined> | undefined
-    >
+      Partial<Record<PackageType, { url: string; name: string }>>
+    >>
   > = {
     Windows: {
       "GPU / CPU": {
