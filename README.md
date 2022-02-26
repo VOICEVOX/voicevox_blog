@@ -56,6 +56,24 @@ curl -s "$editor_url/public/qAndA.md" > src/markdowns/qAndA.md
 curl -s "$editor_url/public/updateInfos.json" > src/data/updateInfos.json
 ```
 
+## 音量に関して
+
+ffmpeg で音量を調べて、だいたい LUFS 値が -20~-23 になるように調整しています。
+
+```bash
+# 音量を調べる
+audio_file=audio.wav
+ffmpeg -nostats -i $audio_file -filter_complex ebur128 -f null - </dev/null 2>&1 |
+  grep -3 "Integrated loudness:" |
+  grep "I:" |
+  tail -n1
+
+# 音量を調整する（例えば -17 LUFS を -20 LUFS くらいにしたい場合は volume=-3dB にする）
+audio_file=audio.wav
+output_file=output.wav
+ffmpeg -i $audio_file -af volume=-3dB $output_file
+```
+
 ## LICENSE
 
 VOICEVOX の開発のための利用のみ許可されます。  

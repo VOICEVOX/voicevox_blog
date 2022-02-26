@@ -5,14 +5,16 @@ import { CharacterInfo } from "../types/dormitoryCharacter"
 export default ({
   characterInfo,
   onClick,
+  className = "",
 }: {
   characterInfo: CharacterInfo
   onClick: () => void
+  className?: string
 }) => {
   return (
-    <div className="tile is-parent is-3">
+    <div className={"column is-3 " + className}>
       <div
-        className="tile is-child card character-card"
+        className="card character-card"
         style={{ borderColor: characterInfo.color }}
         onClick={onClick}
       >

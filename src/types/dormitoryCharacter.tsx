@@ -6,6 +6,10 @@ export type CharacterKey =
   | "春日部つむぎ"
   | "雨晴はう"
   | "波音リツ"
+  | "玄野武宏"
+  | "白上虎太郎"
+  | "青山龍星"
+  | "冥鳴ひまり"
 
 export type CharacterInfo = {
   name: string
@@ -19,7 +23,9 @@ export type CharacterInfo = {
   voiceUrls?: string[]
   infoImages?: IGatsbyImageData[]
   callNames: {
-    [key in CharacterKey]: string | undefined
+    [key in CharacterKey]?: string | undefined
   } & { me: string[]; you: string[] }
   detailUrl: string
 }
+
+export type Generation = "一期生" | "二期生" | "三期生"
