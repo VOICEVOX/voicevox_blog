@@ -7,6 +7,12 @@ import React, { useContext, useEffect, useRef, useState } from "react"
 import hau001 from "../audios/hau-001.wav"
 import hau002 from "../audios/hau-002.wav"
 import hau003 from "../audios/hau-003.wav"
+import himari001 from "../audios/himari-001.wav"
+import himari002 from "../audios/himari-002.wav"
+import himari003 from "../audios/himari-003.wav"
+import kotarou001 from "../audios/kotarou-001.wav"
+import kotarou002 from "../audios/kotarou-002.wav"
+import kotarou003 from "../audios/kotarou-003.wav"
 import metanAma001 from "../audios/metan-ama-001.wav"
 import metanAma002 from "../audios/metan-ama-002.wav"
 import metanAma003 from "../audios/metan-ama-003.wav"
@@ -22,6 +28,12 @@ import metanTsun003 from "../audios/metan-tsun-003.wav"
 import ritsu001 from "../audios/ritsu-001.wav"
 import ritsu002 from "../audios/ritsu-002.wav"
 import ritsu003 from "../audios/ritsu-003.wav"
+import ryusei001 from "../audios/ryusei-001.wav"
+import ryusei002 from "../audios/ryusei-002.wav"
+import ryusei003 from "../audios/ryusei-003.wav"
+import takehiro001 from "../audios/takehiro-001.wav"
+import takehiro002 from "../audios/takehiro-002.wav"
+import takehiro003 from "../audios/takehiro-003.wav"
 import tsumugi001 from "../audios/tsumugi-001.wav"
 import tsumugi002 from "../audios/tsumugi-002.wav"
 import tsumugi003 from "../audios/tsumugi-003.wav"
@@ -162,7 +174,10 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         node => node.name === "bustup-takehiro"
       )!.childImageSharp.gatsbyImageData,
       voiceFeature: "爽やかな青年ボイス",
-      voiceUrls: [{ style: "ノーマル", urls: [] }],
+
+      voiceUrls: [
+        { style: "ノーマル", urls: [takehiro001, takehiro002, takehiro003] },
+      ],
     },
     白上虎太郎: {
       name: "白上虎太郎",
@@ -170,7 +185,10 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         node => node.name === "bustup-kotarou"
       )!.childImageSharp.gatsbyImageData,
       voiceFeature: "声変わり直後の少年ボイス",
-      voiceUrls: [{ style: "ノーマル", urls: [] }],
+
+      voiceUrls: [
+        { style: "ノーマル", urls: [kotarou001, kotarou002, kotarou003] },
+      ],
     },
     青山龍星: {
       name: "青山龍星",
@@ -178,7 +196,10 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         node => node.name === "bustup-ryusei"
       )!.childImageSharp.gatsbyImageData,
       voiceFeature: "重厚な低音ボイス",
-      voiceUrls: [{ style: "ノーマル", urls: [] }],
+
+      voiceUrls: [
+        { style: "ノーマル", urls: [ryusei001, ryusei002, ryusei003] },
+      ],
     },
     冥鳴ひまり: {
       name: "冥鳴ひまり",
@@ -186,7 +207,10 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         node => node.name === "bustup-himari"
       )!.childImageSharp.gatsbyImageData,
       voiceFeature: "柔らかく温かい声",
-      voiceUrls: [{ style: "ノーマル", urls: [] }],
+
+      voiceUrls: [
+        { style: "ノーマル", urls: [himari001, himari002, himari003] },
+      ],
     },
   }
 
