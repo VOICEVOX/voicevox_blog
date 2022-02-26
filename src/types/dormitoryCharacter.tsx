@@ -25,7 +25,7 @@ export type CharacterInfo = {
   callNames: {
     [key in CharacterKey]?: string | undefined
   } & { me: string[]; you: string[] }
-  detailUrl: string
+  detailUrl: string | undefined
 }
 
 export type Generation = "一期生" | "二期生" | "三期生"

@@ -10,6 +10,9 @@ import himari02 from "../audios/dormitory/himari-02.wav"
 import himari03 from "../audios/dormitory/himari-03.wav"
 import himari04 from "../audios/dormitory/himari-04.wav"
 import himari05 from "../audios/dormitory/himari-05.wav"
+import kotarou01 from "../audios/dormitory/kotarou-01.wav"
+import kotarou02 from "../audios/dormitory/kotarou-02.wav"
+import kotarou03 from "../audios/dormitory/kotarou-03.wav"
 import metan01 from "../audios/dormitory/metan-01.wav"
 import metan02 from "../audios/dormitory/metan-02.wav"
 import metan03 from "../audios/dormitory/metan-03.wav"
@@ -19,6 +22,9 @@ import ritsu02 from "../audios/dormitory/ritsu-02.wav"
 import ritsu03 from "../audios/dormitory/ritsu-03.wav"
 import ritsu04 from "../audios/dormitory/ritsu-04.wav"
 import ritsu05 from "../audios/dormitory/ritsu-05.wav"
+import ryusei01 from "../audios/dormitory/ryusei-01.wav"
+import ryusei02 from "../audios/dormitory/ryusei-02.wav"
+import ryusei03 from "../audios/dormitory/ryusei-03.wav"
 import tsumugi01 from "../audios/dormitory/tsumugi-01.wav"
 import tsumugi02 from "../audios/dormitory/tsumugi-02.wav"
 import tsumugi03 from "../audios/dormitory/tsumugi-03.wav"
@@ -113,10 +119,10 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         春日部つむぎ: "つむぎさん",
         雨晴はう: "はうさん",
         波音リツ: "リツさん",
-        玄野武宏: undefined,
-        白上虎太郎: undefined,
-        青山龍星: undefined,
-        冥鳴ひまり: undefined,
+        玄野武宏: "(準備中)",
+        白上虎太郎: "(準備中)",
+        青山龍星: "(準備中)",
+        冥鳴ひまり: "(準備中)",
         me: ["わたくし"],
         you: ["貴女(たち)", "アンタ(ら)"],
       },
@@ -155,10 +161,10 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         春日部つむぎ: "つむぎ",
         雨晴はう: "はう",
         波音リツ: "リツ",
-        玄野武宏: undefined,
-        白上虎太郎: undefined,
-        青山龍星: undefined,
-        冥鳴ひまり: undefined,
+        玄野武宏: "(準備中)",
+        白上虎太郎: "(準備中)",
+        青山龍星: "(準備中)",
+        冥鳴ひまり: "(準備中)",
         me: ["ずんだもん", "僕"],
         you: ["オマエ", "みんな"],
       },
@@ -193,10 +199,10 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         ずんだもん: "ずんだもん先輩",
         雨晴はう: "はうちゃん",
         波音リツ: "りっちゃん",
-        玄野武宏: undefined,
-        白上虎太郎: undefined,
-        青山龍星: undefined,
-        冥鳴ひまり: undefined,
+        玄野武宏: "(準備中)",
+        白上虎太郎: "(準備中)",
+        青山龍星: "(準備中)",
+        冥鳴ひまり: "(準備中)",
         me: ["あーし"],
         you: ["きみ", "きみたち"],
       },
@@ -228,10 +234,10 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         ずんだもん: "ずんだもん",
         春日部つむぎ: "つむぎさん",
         波音リツ: "リツさん",
-        玄野武宏: undefined,
-        白上虎太郎: undefined,
-        青山龍星: undefined,
-        冥鳴ひまり: undefined,
+        玄野武宏: "(準備中)",
+        白上虎太郎: "(準備中)",
+        青山龍星: "(準備中)",
+        冥鳴ひまり: "(準備中)",
         me: ["僕"],
         you: ["あなた", "あなた達"],
       },
@@ -263,10 +269,10 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         ずんだもん: "ずんだもん",
         春日部つむぎ: "つむぎ",
         雨晴はう: "はう",
-        玄野武宏: undefined,
-        白上虎太郎: undefined,
-        青山龍星: undefined,
-        冥鳴ひまり: undefined,
+        玄野武宏: "(準備中)",
+        白上虎太郎: "(準備中)",
+        青山龍星: "(準備中)",
+        冥鳴ひまり: "(準備中)",
         me: ["あたし"],
         you: ["アンタ", "アンタら"],
       },
@@ -285,29 +291,27 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       )!.childImageSharp.gatsbyImageData,
       color: "#1AA18E",
       lightColor: "#B3E2D8",
-      description: "",
+      description: "(準備中)",
       labelInfos: [
         { label: "身長", value: "177 cm", size: 2 },
         { label: "体重", value: "66 Kg", size: 2 },
         { label: "年齢", value: "20代前後", size: 2 },
         { label: "誕生日", value: "12月24日", size: 2 },
       ],
-      voiceUrls: [
-        /*takehiro01, takehiro02, takehiro03, takehiro04, takehiro05*/
-      ],
+      voiceUrls: undefined,
       callNames: {
-        四国めたん: undefined,
-        ずんだもん: undefined,
-        春日部つむぎ: undefined,
-        雨晴はう: undefined,
-        波音リツ: undefined,
-        白上虎太郎: undefined,
-        青山龍星: undefined,
-        冥鳴ひまり: undefined,
+        四国めたん: "(準備中)",
+        ずんだもん: "(準備中)",
+        春日部つむぎ: "(準備中)",
+        雨晴はう: "(準備中)",
+        波音リツ: "(準備中)",
+        白上虎太郎: "(準備中)",
+        青山龍星: "(準備中)",
+        冥鳴ひまり: "(準備中)",
         me: ["俺"],
-        you: [""],
+        you: ["(準備中)"],
       },
-      detailUrl: "",
+      detailUrl: undefined,
     },
 
     白上虎太郎: {
@@ -322,29 +326,27 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       )!.childImageSharp.gatsbyImageData,
       color: "#99D02B",
       lightColor: "#E6F5B0",
-      description: "",
+      description: "(準備中)",
       labelInfos: [
         { label: "身長", value: "146 cm", size: 2 },
         { label: "体重", value: "42 Kg", size: 2 },
         { label: "年齢", value: "18 歳", size: 2 },
         { label: "誕生日", value: "秋生まれ", size: 2 },
       ],
-      voiceUrls: [
-        /*kotarou01, kotarou02, kotarou03, kotarou04, kotarou05*/
-      ],
+      voiceUrls: [kotarou01, kotarou02, kotarou03],
       callNames: {
-        四国めたん: undefined,
-        ずんだもん: undefined,
-        春日部つむぎ: undefined,
-        雨晴はう: undefined,
-        波音リツ: undefined,
-        玄野武宏: undefined,
-        青山龍星: undefined,
-        冥鳴ひまり: undefined,
+        四国めたん: "(準備中)",
+        ずんだもん: "(準備中)",
+        春日部つむぎ: "(準備中)",
+        雨晴はう: "(準備中)",
+        波音リツ: "(準備中)",
+        玄野武宏: "(準備中)",
+        青山龍星: "(準備中)",
+        冥鳴ひまり: "(準備中)",
         me: ["おれ"],
         you: ["きみ"],
       },
-      detailUrl: "",
+      detailUrl: undefined,
     },
 
     青山龍星: {
@@ -359,29 +361,27 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       )!.childImageSharp.gatsbyImageData,
       color: "#386CB0",
       lightColor: "#B3CDE3",
-      description: "",
+      description: "(準備中)",
       labelInfos: [
         { label: "身長", value: "194 cm", size: 2 },
         { label: "体重", value: "94 Kg", size: 2 },
         { label: "年齢", value: "24 歳", size: 2 },
         { label: "誕生日", value: "春生まれ", size: 2 },
       ],
-      voiceUrls: [
-        /*ryusei01, ryusei02, ryusei03, ryusei04, ryusei05*/
-      ],
+      voiceUrls: [ryusei01, ryusei02, ryusei03],
       callNames: {
-        四国めたん: undefined,
-        ずんだもん: undefined,
-        春日部つむぎ: undefined,
-        雨晴はう: undefined,
-        波音リツ: undefined,
-        玄野武宏: undefined,
-        白上虎太郎: undefined,
-        冥鳴ひまり: undefined,
+        四国めたん: "(準備中)",
+        ずんだもん: "(準備中)",
+        春日部つむぎ: "(準備中)",
+        雨晴はう: "(準備中)",
+        波音リツ: "(準備中)",
+        玄野武宏: "(準備中)",
+        白上虎太郎: "(準備中)",
+        冥鳴ひまり: "(準備中)",
         me: ["オレ"],
         you: ["アンタ"],
       },
-      detailUrl: "",
+      detailUrl: undefined,
     },
 
     冥鳴ひまり: {
@@ -406,18 +406,18 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       ],
       voiceUrls: [himari01, himari02, himari03, himari04, himari05],
       callNames: {
-        四国めたん: undefined,
-        ずんだもん: undefined,
-        春日部つむぎ: undefined,
-        雨晴はう: undefined,
-        波音リツ: undefined,
-        玄野武宏: undefined,
-        白上虎太郎: undefined,
-        青山龍星: undefined,
+        四国めたん: "(準備中)",
+        ずんだもん: "(準備中)",
+        春日部つむぎ: "(準備中)",
+        雨晴はう: "(準備中)",
+        波音リツ: "(準備中)",
+        玄野武宏: "(準備中)",
+        白上虎太郎: "(準備中)",
+        青山龍星: "(準備中)",
         me: ["私"],
         you: ["君たち"],
       },
-      detailUrl: "",
+      detailUrl: undefined,
     },
   }
 

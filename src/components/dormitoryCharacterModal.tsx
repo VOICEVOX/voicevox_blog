@@ -158,6 +158,9 @@ export default ({
                     style={{
                       color: characterInfo.color,
                       borderColor: characterInfo.color,
+                      visibility: characterInfo.detailUrl
+                        ? "visible"
+                        : "hidden",
                     }}
                     href={characterInfo.detailUrl}
                     target="_blank"

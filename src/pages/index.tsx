@@ -51,10 +51,7 @@ import zundamonTsun002 from "../audios/zundamon-tsun-002.wav"
 import zundamonTsun003 from "../audios/zundamon-tsun-003.wav"
 import AudioSample from "../components/audioSample"
 import "../components/layout.scss"
-import ModalReadmeLibraryHau from "../components/modalReadmeLibraryHau"
-import ModalReadmeLibraryRitsu from "../components/modalReadmeLibraryRitsu"
-import ModalReadmeLibraryTohoku from "../components/modalReadmeLibraryTohoku"
-import ModalReadmeLibraryTsumugi from "../components/modalReadmeLibraryTsumugi"
+import ModalReadmeLibrary from "../components/modalReadmeLibrary"
 import { Page } from "../components/page"
 import Seo from "../components/seo"
 import { CharacterContext, GlobalContext } from "../contexts/context"
@@ -100,6 +97,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         style: string
         urls: string[]
       }[]
+      releaseStatus: "released" | "comingSoon"
     }
   } = {
     四国めたん: {
@@ -117,6 +115,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         { style: "ツンツン", urls: [metanTsun001, metanTsun002, metanTsun003] },
         { style: "セクシー", urls: [metanSexy001, metanSexy002, metanSexy003] },
       ],
+      releaseStatus: "released",
     },
     ずんだもん: {
       name: "ずんだもん",
@@ -142,6 +141,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
           urls: [zundamonSexy001, zundamonSexy002, zundamonSexy003],
         },
       ],
+      releaseStatus: "released",
     },
     春日部つむぎ: {
       name: "春日部つむぎ",
@@ -152,6 +152,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       voiceUrls: [
         { style: "ノーマル", urls: [tsumugi001, tsumugi002, tsumugi003] },
       ],
+      releaseStatus: "released",
     },
     雨晴はう: {
       name: "雨晴はう",
@@ -159,6 +160,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         .childImageSharp.gatsbyImageData,
       voiceFeature: "優しく可愛い声",
       voiceUrls: [{ style: "ノーマル", urls: [hau001, hau002, hau003] }],
+      releaseStatus: "released",
     },
     波音リツ: {
       name: "波音リツ",
@@ -167,6 +169,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       )!.childImageSharp.gatsbyImageData,
       voiceFeature: "低めのクールな声",
       voiceUrls: [{ style: "ノーマル", urls: [ritsu001, ritsu002, ritsu003] }],
+      releaseStatus: "released",
     },
     玄野武宏: {
       name: "玄野武宏",
@@ -174,10 +177,10 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         node => node.name === "bustup-takehiro"
       )!.childImageSharp.gatsbyImageData,
       voiceFeature: "爽やかな青年ボイス",
-
       voiceUrls: [
         { style: "ノーマル", urls: [takehiro001, takehiro002, takehiro003] },
       ],
+      releaseStatus: "comingSoon",
     },
     白上虎太郎: {
       name: "白上虎太郎",
@@ -185,10 +188,10 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         node => node.name === "bustup-kotarou"
       )!.childImageSharp.gatsbyImageData,
       voiceFeature: "声変わり直後の少年ボイス",
-
       voiceUrls: [
         { style: "ノーマル", urls: [kotarou001, kotarou002, kotarou003] },
       ],
+      releaseStatus: "comingSoon",
     },
     青山龍星: {
       name: "青山龍星",
@@ -196,10 +199,10 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         node => node.name === "bustup-ryusei"
       )!.childImageSharp.gatsbyImageData,
       voiceFeature: "重厚な低音ボイス",
-
       voiceUrls: [
         { style: "ノーマル", urls: [ryusei001, ryusei002, ryusei003] },
       ],
+      releaseStatus: "comingSoon",
     },
     冥鳴ひまり: {
       name: "冥鳴ひまり",
@@ -207,10 +210,10 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         node => node.name === "bustup-himari"
       )!.childImageSharp.gatsbyImageData,
       voiceFeature: "柔らかく温かい声",
-
       voiceUrls: [
         { style: "ノーマル", urls: [himari001, himari002, himari003] },
       ],
+      releaseStatus: "comingSoon",
     },
   }
 
@@ -255,6 +258,11 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
           <div className="card-content has-text-centered">
             <h3 className="title is-4">{characterInfo.name}</h3>
             <p className="subtitle is-5">{characterInfo.voiceFeature}</p>
+            {characterInfo.releaseStatus === "comingSoon" && (
+              <p className="py-0" style={{ marginTop: "-1rem", color: "red" }}>
+                Coming Soon
+              </p>
+            )}
             <AudioSample audioSamples={characterInfo.voiceUrls} />
             <div className="pt-3">
               <button
@@ -496,24 +504,17 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
           </section>
         </main>
       </div>
-      <ModalReadmeLibraryTohoku
-        isActive={
-          showingLibraryReadmeModalCharaterKey == "四国めたん" ||
-          showingLibraryReadmeModalCharaterKey == "ずんだもん"
-        }
+      <ModalReadmeLibrary
         hide={hideLibraryReadmeModal}
-      />
-      <ModalReadmeLibraryTsumugi
-        isActive={showingLibraryReadmeModalCharaterKey == "春日部つむぎ"}
-        hide={hideLibraryReadmeModal}
-      />
-      <ModalReadmeLibraryHau
-        isActive={showingLibraryReadmeModalCharaterKey == "雨晴はう"}
-        hide={hideLibraryReadmeModal}
-      />
-      <ModalReadmeLibraryRitsu
-        isActive={showingLibraryReadmeModalCharaterKey == "波音リツ"}
-        hide={hideLibraryReadmeModal}
+        {...(showingLibraryReadmeModalCharaterKey != undefined
+          ? {
+              isActive: true,
+              characterKey: showingLibraryReadmeModalCharaterKey,
+            }
+          : {
+              isActive: false,
+              characterKey: undefined,
+            })}
       />
     </>
   )
