@@ -1,6 +1,6 @@
 import { graphql, Link, useStaticQuery } from "gatsby"
 import { IGatsbyImageData, StaticImage } from "gatsby-plugin-image"
-import React, { useEffect, useRef, useState } from "react"
+import React, { useContext, useEffect, useRef, useState } from "react"
 import hau01 from "../audios/dormitory/hau-01.wav"
 import hau02 from "../audios/dormitory/hau-02.wav"
 import hau03 from "../audios/dormitory/hau-03.wav"
@@ -32,6 +32,7 @@ import DormitoryCharacterModal from "../components/dormitoryCharacterModal"
 import "../components/layout.scss"
 import { Page } from "../components/page"
 import Seo from "../components/seo"
+import { CharacterContext } from "../contexts/context"
 import {
   CharacterInfo,
   CharacterKey,
@@ -41,7 +42,7 @@ import {
 const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
   setShowingHeader,
 }) => {
-  const queryPortraits: {
+  const query: {
     [key: string]: {
       nodes: {
         name: string
@@ -79,17 +80,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
     }
   `)
 
-  const characterKeys: CharacterKey[] = [
-    "四国めたん",
-    "ずんだもん",
-    "春日部つむぎ",
-    "雨晴はう",
-    "波音リツ",
-    "玄野武宏",
-    "白上虎太郎",
-    "青山龍星",
-    "冥鳴ひまり",
-  ]
+  const { characterKeys } = useContext(CharacterContext)
 
   const characterInfos: {
     [key in CharacterKey]: CharacterInfo
@@ -97,10 +88,10 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
     四国めたん: {
       name: "四国めたん",
       rubyName: "四国<rp>(</rp><rt>しこく</rt><rp>)</rp>めたん",
-      bustupImage: queryPortraits.bustup.nodes.find(
+      bustupImage: query.bustup.nodes.find(
         node => node.name === "bustup-metan"
       )!.childImageSharp.gatsbyImageData,
-      portraitImage: queryPortraits.portrait.nodes.find(
+      portraitImage: query.portrait.nodes.find(
         node => node.name === "portrait-metan"
       )!.childImageSharp.gatsbyImageData,
       color: "#DF4C94",
@@ -113,7 +104,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         { label: "性格", value: "若干ツンデレ気味", size: 2 },
       ],
       voiceUrls: [metan01, metan02, metan03, metan04],
-      infoImages: queryPortraits.dormitory.nodes
+      infoImages: query.dormitory.nodes
         .filter(node => node.name.includes("metan"))
         .sort((a, b) => a.name.localeCompare(b.name))
         .map(node => node.childImageSharp.gatsbyImageData),
@@ -136,10 +127,10 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
     ずんだもん: {
       name: "ずんだもん",
       rubyName: "ずんだもん",
-      bustupImage: queryPortraits.bustup.nodes.find(
+      bustupImage: query.bustup.nodes.find(
         node => node.name === "bustup-zundamon"
       )!.childImageSharp.gatsbyImageData,
-      portraitImage: queryPortraits.portrait.nodes.find(
+      portraitImage: query.portrait.nodes.find(
         node => node.name === "portrait-zundamon"
       )!.childImageSharp.gatsbyImageData,
       color: "#33A65E",
@@ -155,7 +146,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         { label: "将来の夢", value: "ずんだ餅のさらなる普及", size: 2 },
       ],
       voiceUrls: [zundamon01, zundamon02, zundamon03, zundamon04],
-      infoImages: queryPortraits.dormitory.nodes
+      infoImages: query.dormitory.nodes
         .filter(node => node.name.includes("zundamon"))
         .sort((a, b) => a.name.localeCompare(b.name))
         .map(node => node.childImageSharp.gatsbyImageData),
@@ -178,10 +169,10 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
     春日部つむぎ: {
       name: "春日部つむぎ",
       rubyName: "春日部<rp>(</rp><rt>かすかべ</rt><rp>)</rp>つむぎ",
-      bustupImage: queryPortraits.bustup.nodes.find(
+      bustupImage: query.bustup.nodes.find(
         node => node.name === "bustup-tsumugi"
       )!.childImageSharp.gatsbyImageData,
-      portraitImage: queryPortraits.portrait.nodes.find(
+      portraitImage: query.portrait.nodes.find(
         node => node.name === "portrait-tsumugi"
       )!.childImageSharp.gatsbyImageData,
       color: "#FF9914",
@@ -215,10 +206,9 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
     雨晴はう: {
       name: "雨晴はう",
       rubyName: "雨晴<rp>(</rp><rt>あめはれ</rt><rp>)</rp>はう",
-      bustupImage: queryPortraits.bustup.nodes.find(
-        node => node.name === "bustup-hau"
-      )!.childImageSharp.gatsbyImageData,
-      portraitImage: queryPortraits.portrait.nodes.find(
+      bustupImage: query.bustup.nodes.find(node => node.name === "bustup-hau")!
+        .childImageSharp.gatsbyImageData,
+      portraitImage: query.portrait.nodes.find(
         node => node.name === "portrait-hau"
       )!.childImageSharp.gatsbyImageData,
       color: "#1D86AE",
@@ -251,10 +241,10 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
     波音リツ: {
       name: "波音リツ",
       rubyName: "波音<rp>(</rp><rt>なみね</rt><rp>)</rp>リツ",
-      bustupImage: queryPortraits.bustup.nodes.find(
+      bustupImage: query.bustup.nodes.find(
         node => node.name === "bustup-ritsu"
       )!.childImageSharp.gatsbyImageData,
-      portraitImage: queryPortraits.portrait.nodes.find(
+      portraitImage: query.portrait.nodes.find(
         node => node.name === "portrait-ritsu"
       )!.childImageSharp.gatsbyImageData,
       color: "#FC4E32",
@@ -287,10 +277,10 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       name: "玄野武宏",
       rubyName:
         "玄野<rp>(</rp><rt>くろの</rt><rp>)</rp>武宏<rp>(</rp><rt>たけひろ</rt><rp>)</rp>",
-      bustupImage: queryPortraits.bustup.nodes.find(
+      bustupImage: query.bustup.nodes.find(
         node => node.name === "bustup-takehiro"
       )!.childImageSharp.gatsbyImageData,
-      portraitImage: queryPortraits.portrait.nodes.find(
+      portraitImage: query.portrait.nodes.find(
         node => node.name === "portrait-takehiro"
       )!.childImageSharp.gatsbyImageData,
       color: "#1AA18E",
@@ -324,10 +314,10 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       name: "白上虎太郎",
       rubyName:
         "白上<rp>(</rp><rt>しらかみ</rt><rp>)</rp>虎太郎<rp>(</rp><rt>こたろう</rt><rp>)</rp>",
-      bustupImage: queryPortraits.bustup.nodes.find(
+      bustupImage: query.bustup.nodes.find(
         node => node.name === "bustup-kotarou"
       )!.childImageSharp.gatsbyImageData,
-      portraitImage: queryPortraits.portrait.nodes.find(
+      portraitImage: query.portrait.nodes.find(
         node => node.name === "portrait-kotarou"
       )!.childImageSharp.gatsbyImageData,
       color: "#99D02B",
@@ -361,10 +351,10 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       name: "青山龍星",
       rubyName:
         "青山<rp>(</rp><rt>あおやま</rt><rp>)</rp>龍星<rp>(</rp><rt>りゅうせい</rt><rp>)</rp>",
-      bustupImage: queryPortraits.bustup.nodes.find(
+      bustupImage: query.bustup.nodes.find(
         node => node.name === "bustup-ryusei"
       )!.childImageSharp.gatsbyImageData,
-      portraitImage: queryPortraits.portrait.nodes.find(
+      portraitImage: query.portrait.nodes.find(
         node => node.name === "portrait-ryusei"
       )!.childImageSharp.gatsbyImageData,
       color: "#386CB0",
@@ -397,10 +387,10 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
     冥鳴ひまり: {
       name: "冥鳴ひまり",
       rubyName: "冥鳴<rp>(</rp><rt>めいめい</rt><rp>)</rp>ひまり",
-      bustupImage: queryPortraits.bustup.nodes.find(
+      bustupImage: query.bustup.nodes.find(
         node => node.name === "bustup-himari"
       )!.childImageSharp.gatsbyImageData,
-      portraitImage: queryPortraits.portrait.nodes.find(
+      portraitImage: query.portrait.nodes.find(
         node => node.name === "portrait-himari"
       )!.childImageSharp.gatsbyImageData,
       color: "#A45AAA",

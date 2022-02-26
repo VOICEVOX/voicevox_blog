@@ -89,9 +89,24 @@ $dropdown-item-active-background-color: $primary;
 }
 
 .audio-sample {
-  .columns > .column > p {
-    @include from($tablet) {
-      text-align: right !important;
+  .audio-sample-pair {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 3px 10px;
+
+    @extend .py-1;
+
+    .audio-sample-label {
+      width: 100px;
+      // @include from($tablet) {
+      //   text-align: right !important;
+      // }
+    }
+    .audio-sample-content {
+      display: flex;
+      gap: 3px;
     }
   }
 }
