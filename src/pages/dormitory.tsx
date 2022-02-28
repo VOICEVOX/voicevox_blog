@@ -374,7 +374,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       voiceUrls: [ryusei01, ryusei02, ryusei03],
       callNames: {
         四国めたん: "めたん",
-        ずんだもん: "だもん",
+        ずんだもん: "ずんだもん",
         春日部つむぎ: "つむぎ",
         雨晴はう: "はう",
         波音リツ: "リツ",
