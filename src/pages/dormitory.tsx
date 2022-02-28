@@ -340,9 +340,9 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       callNames: {
         四国めたん: "めたんちゃん",
         ずんだもん: "ずんずん",
-        春日部つむぎ: "リツさん",
+        春日部つむぎ: "つむぎちゃん",
         雨晴はう: "はうさん",
-        波音リツ: "つむぎちゃん",
+        波音リツ: "リツさん",
         玄野武宏: "タケヒロ",
         青山龍星: "リューセー",
         冥鳴ひまり: "ひまりちゃん",
@@ -364,7 +364,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       )!.childImageSharp.gatsbyImageData,
       color: "#386CB0",
       lightColor: "#B3CDE3",
-      description: "(準備中)",
+      description: "とにかく大柄で無骨な青年<br />寡黙で冷静なストッパー枠",
       labelInfos: [
         { label: "身長", value: "194 cm", size: 2 },
         { label: "体重", value: "94 Kg", size: 2 },
