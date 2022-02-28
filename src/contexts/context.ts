@@ -82,6 +82,9 @@ export const CharacterContext = React.createContext<CharacterContextProps>({
       policyUrl:
         "https://virvoxproject.wixsite.com/official/voicevoxの利用規約",
     },
-    冥鳴ひまり: { name: "冥鳴ひまり", policyUrl: undefined },
+    冥鳴ひまり: {
+      name: "冥鳴ひまり",
+      policyUrl: "https://kotoran8zunzun.wixsite.com/my-site/利用規約",
+    },
   },
 })
