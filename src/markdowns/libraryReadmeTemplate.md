@@ -1,0 +1,4 @@
+VV_TEMPLATE_CHARACTER_NAMEの音声ライブラリを用いて生成した音声は、「VOICEVOX:VV_TEMPLATE_CHARACTER_NAME」とクレジットを記載すれば、商用・非商用で利用可能です。
+
+利用規約の詳細は以下をご確認ください。  
+[VV_TEMPLATE_POLICY_URL](VV_TEMPLATE_POLICY_URL)

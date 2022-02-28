@@ -1,11 +1,13 @@
+import { faHome } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { GatsbyImage } from "gatsby-plugin-image"
 import React, { useEffect, useMemo, useRef, useState } from "react"
-
-import { CharacterInfo, CharacterKey } from "../types/dormitoryCharacter"
-
 import PlayButton from "../components/playButton"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faHome } from "@fortawesome/free-solid-svg-icons"
+import {
+  CharacterInfo,
+  CharacterKey,
+  Generation,
+} from "../types/dormitoryCharacter"
 
 type DescriptionType = "プロフィール" | "呼び方"
 
@@ -15,6 +17,7 @@ export default ({
   characterKey,
   characterKeys,
   characterInfos,
+  generationInfos,
 }: {
   isActive: boolean
   hide: () => void
@@ -22,6 +25,9 @@ export default ({
   characterKeys: CharacterKey[]
   characterInfos: {
     [key in CharacterKey]: CharacterInfo
+  }
+  generationInfos: {
+    [key in Generation]: { characterKeys: CharacterKey[] }
   }
 }) => {
   const [descriptionType, setDescriptionType] =
@@ -82,10 +88,9 @@ export default ({
       </span>
     )
     return (
-      <div className="columns is-mobile is-vcentered description-call-box">
-        <div className="column is-8">
-          <div className="description-call-line">
-            <Arrow leftOrRight="right" />
+      <div className="columns is-mobile is-vcentered is-variable is-1 description-call-box">
+        <div className="column description-call-line">
+          <div className="description-call-one">
             <span
               className="description-call-text"
               style={{ borderColor: characterInfo.color }}
@@ -94,7 +99,7 @@ export default ({
             </span>
             <Arrow leftOrRight="right" />
           </div>
-          <div className="description-call-line">
+          <div className="description-call-one">
             <Arrow leftOrRight="left" />
             <span
               className="description-call-text"
@@ -102,10 +107,9 @@ export default ({
             >
               {characterInfos[targetCharaterKey].callNames[characterKey]}
             </span>
-            <Arrow leftOrRight="left" />
           </div>
         </div>
-        <div className="column is-4 py-1" style={{ height: "100%" }}>
+        <div className="column is-narrow py-1" style={{ height: "100%" }}>
           <GatsbyImage
             className="border-icon"
             image={characterInfos[targetCharaterKey].bustupImage}
@@ -154,6 +158,9 @@ export default ({
                     style={{
                       color: characterInfo.color,
                       borderColor: characterInfo.color,
+                      visibility: characterInfo.detailUrl
+                        ? "visible"
+                        : "hidden",
                     }}
                     href={characterInfo.detailUrl}
                     target="_blank"
@@ -236,37 +243,43 @@ export default ({
                   </>
                 )}
                 {descriptionType === "呼び方" && (
-                  <>
-                    <div className="columns description-pane">
-                      <div className="column is-9">
-                        {characterKeys
-                          .filter(
-                            targetCharaterKey =>
-                              targetCharaterKey !== characterKey
-                          )
-                          .map((targetCharaterKey, index) => (
-                            <CallBox
-                              key={index}
-                              targetCharaterKey={targetCharaterKey}
-                            />
-                          ))}
-                      </div>
-                      <div className="column is-3 description-call-other-column">
-                        <div className="description-call-other-cell">
-                          <div><span>一人称</span></div>
-                          <div>
-                            {characterInfo.callNames.me.map(callName => <p>{callName}</p>)}
-                          </div>
+                  <div className="columns description-call">
+                    <div className="column is-3 description-call-other-column">
+                      <div className="description-call-other-cell">
+                        <div>
+                          <span>一人称</span>
                         </div>
-                        <div className="description-call-other-cell">
-                          <div><span>二人称</span></div>
-                          <div>
-                            {characterInfo.callNames.you.map(callName => <p>{callName}</p>)}
-                          </div>
+                        <div>
+                          {characterInfo.callNames.me.map(callName => (
+                            <p>{callName}</p>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="description-call-other-cell">
+                        <div>
+                          <span>二人称</span>
+                        </div>
+                        <div>
+                          {characterInfo.callNames.you.map(callName => (
+                            <p>{callName}</p>
+                          ))}
                         </div>
                       </div>
                     </div>
-                  </>
+                    <div className="column is-9 description-call-character">
+                      {characterKeys
+                        .filter(
+                          targetCharaterKey =>
+                            targetCharaterKey !== characterKey
+                        )
+                        .map((targetCharaterKey, index) => (
+                          <CallBox
+                            key={index}
+                            targetCharaterKey={targetCharaterKey}
+                          />
+                        ))}
+                    </div>
+                  </div>
                 )}
               </div>
             </div>

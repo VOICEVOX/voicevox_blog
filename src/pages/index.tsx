@@ -1,12 +1,18 @@
 import { faGithub } from "@fortawesome/free-brands-svg-icons"
 import { faDownload } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+import { graphql, Link, useStaticQuery } from "gatsby"
+import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image"
 import React, { useContext, useEffect, useRef, useState } from "react"
 import hau001 from "../audios/hau-001.wav"
 import hau002 from "../audios/hau-002.wav"
 import hau003 from "../audios/hau-003.wav"
+import himari001 from "../audios/himari-001.wav"
+import himari002 from "../audios/himari-002.wav"
+import himari003 from "../audios/himari-003.wav"
+import kotarou001 from "../audios/kotarou-001.wav"
+import kotarou002 from "../audios/kotarou-002.wav"
+import kotarou003 from "../audios/kotarou-003.wav"
 import metanAma001 from "../audios/metan-ama-001.wav"
 import metanAma002 from "../audios/metan-ama-002.wav"
 import metanAma003 from "../audios/metan-ama-003.wav"
@@ -22,6 +28,12 @@ import metanTsun003 from "../audios/metan-tsun-003.wav"
 import ritsu001 from "../audios/ritsu-001.wav"
 import ritsu002 from "../audios/ritsu-002.wav"
 import ritsu003 from "../audios/ritsu-003.wav"
+import ryusei001 from "../audios/ryusei-001.wav"
+import ryusei002 from "../audios/ryusei-002.wav"
+import ryusei003 from "../audios/ryusei-003.wav"
+import takehiro001 from "../audios/takehiro-001.wav"
+import takehiro002 from "../audios/takehiro-002.wav"
+import takehiro003 from "../audios/takehiro-003.wav"
 import tsumugi001 from "../audios/tsumugi-001.wav"
 import tsumugi002 from "../audios/tsumugi-002.wav"
 import tsumugi003 from "../audios/tsumugi-003.wav"
@@ -39,23 +51,171 @@ import zundamonTsun002 from "../audios/zundamon-tsun-002.wav"
 import zundamonTsun003 from "../audios/zundamon-tsun-003.wav"
 import AudioSample from "../components/audioSample"
 import "../components/layout.scss"
-import ModalReadmeLibraryHau from "../components/modalReadmeLibraryHau"
-import ModalReadmeLibraryRitsu from "../components/modalReadmeLibraryRitsu"
-import ModalReadmeLibraryTohoku from "../components/modalReadmeLibraryTohoku"
-import ModalReadmeLibraryTsumugi from "../components/modalReadmeLibraryTsumugi"
+import ModalReadmeLibrary from "../components/modalReadmeLibrary"
 import { Page } from "../components/page"
 import Seo from "../components/seo"
-import { GlobalContext } from "../contexts/context"
+import { CharacterContext, GlobalContext } from "../contexts/context"
 import landingMovieThumb from "../images/landing-movie-thumb.png"
 import shareThumb from "../images/landing-share-thumb.jpg"
 import landingMovie from "../movies/landing.mp4"
+import { CharacterKey } from "../types/dormitoryCharacter"
 
-type Character = "東北" | "春日部つむぎ" | "雨晴はう" | "波音リツ"
-
-const Main: React.FC<{ setShowingHeader: (boolean) => void }> = ({
+const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
   setShowingHeader,
 }) => {
+  const query: {
+    allFile: {
+      nodes: {
+        name: string
+        childImageSharp: {
+          gatsbyImageData: IGatsbyImageData
+        }
+      }[]
+    }
+  } = useStaticQuery(graphql`
+    {
+      allFile(filter: { absolutePath: { regex: "/bustup/" } }) {
+        nodes {
+          name
+          childImageSharp {
+            gatsbyImageData(height: 640)
+          }
+        }
+      }
+    }
+  `)
+
   const context = useContext(GlobalContext)
+  const { characterKeys } = useContext(CharacterContext)
+
+  const characterInfos: {
+    [key in CharacterKey]: {
+      name: string
+      bustupImage: IGatsbyImageData
+      voiceFeature: string // 声の特徴テキスト
+      voiceUrls: {
+        style: string
+        urls: string[]
+      }[]
+      releaseStatus: "released" | "comingSoon"
+    }
+  } = {
+    四国めたん: {
+      name: "四国めたん",
+      bustupImage: query.allFile.nodes.find(
+        node => node.name === "bustup-metan"
+      )!.childImageSharp.gatsbyImageData,
+      voiceFeature: "はっきりした芯のある声",
+      voiceUrls: [
+        {
+          style: "ノーマル",
+          urls: [metanNormal001, metanNormal002, metanNormal003],
+        },
+        { style: "あまあま", urls: [metanAma001, metanAma002, metanAma003] },
+        { style: "ツンツン", urls: [metanTsun001, metanTsun002, metanTsun003] },
+        { style: "セクシー", urls: [metanSexy001, metanSexy002, metanSexy003] },
+      ],
+      releaseStatus: "released",
+    },
+    ずんだもん: {
+      name: "ずんだもん",
+      bustupImage: query.allFile.nodes.find(
+        node => node.name === "bustup-zundamon"
+      )!.childImageSharp.gatsbyImageData,
+      voiceFeature: "子供っぽい高めの声",
+      voiceUrls: [
+        {
+          style: "ノーマル",
+          urls: [zundamonNormal001, zundamonNormal002, zundamonNormal003],
+        },
+        {
+          style: "あまあま",
+          urls: [zundamonAma001, zundamonAma002, zundamonAma003],
+        },
+        {
+          style: "ツンツン",
+          urls: [zundamonTsun001, zundamonTsun002, zundamonTsun003],
+        },
+        {
+          style: "セクシー",
+          urls: [zundamonSexy001, zundamonSexy002, zundamonSexy003],
+        },
+      ],
+      releaseStatus: "released",
+    },
+    春日部つむぎ: {
+      name: "春日部つむぎ",
+      bustupImage: query.allFile.nodes.find(
+        node => node.name === "bustup-tsumugi"
+      )!.childImageSharp.gatsbyImageData,
+      voiceFeature: "元気な明るい声",
+      voiceUrls: [
+        { style: "ノーマル", urls: [tsumugi001, tsumugi002, tsumugi003] },
+      ],
+      releaseStatus: "released",
+    },
+    雨晴はう: {
+      name: "雨晴はう",
+      bustupImage: query.allFile.nodes.find(node => node.name === "bustup-hau")!
+        .childImageSharp.gatsbyImageData,
+      voiceFeature: "優しく可愛い声",
+      voiceUrls: [{ style: "ノーマル", urls: [hau001, hau002, hau003] }],
+      releaseStatus: "released",
+    },
+    波音リツ: {
+      name: "波音リツ",
+      bustupImage: query.allFile.nodes.find(
+        node => node.name === "bustup-ritsu"
+      )!.childImageSharp.gatsbyImageData,
+      voiceFeature: "低めのクールな声",
+      voiceUrls: [{ style: "ノーマル", urls: [ritsu001, ritsu002, ritsu003] }],
+      releaseStatus: "released",
+    },
+    玄野武宏: {
+      name: "玄野武宏",
+      bustupImage: query.allFile.nodes.find(
+        node => node.name === "bustup-takehiro"
+      )!.childImageSharp.gatsbyImageData,
+      voiceFeature: "爽やかな青年ボイス",
+      voiceUrls: [
+        { style: "ノーマル", urls: [takehiro001, takehiro002, takehiro003] },
+      ],
+      releaseStatus: "comingSoon",
+    },
+    白上虎太郎: {
+      name: "白上虎太郎",
+      bustupImage: query.allFile.nodes.find(
+        node => node.name === "bustup-kotarou"
+      )!.childImageSharp.gatsbyImageData,
+      voiceFeature: "声変わり直後の少年ボイス",
+      voiceUrls: [
+        { style: "ノーマル", urls: [kotarou001, kotarou002, kotarou003] },
+      ],
+      releaseStatus: "comingSoon",
+    },
+    青山龍星: {
+      name: "青山龍星",
+      bustupImage: query.allFile.nodes.find(
+        node => node.name === "bustup-ryusei"
+      )!.childImageSharp.gatsbyImageData,
+      voiceFeature: "重厚な低音ボイス",
+      voiceUrls: [
+        { style: "ノーマル", urls: [ryusei001, ryusei002, ryusei003] },
+      ],
+      releaseStatus: "comingSoon",
+    },
+    冥鳴ひまり: {
+      name: "冥鳴ひまり",
+      bustupImage: query.allFile.nodes.find(
+        node => node.name === "bustup-himari"
+      )!.childImageSharp.gatsbyImageData,
+      voiceFeature: "柔らかく温かい声",
+      voiceUrls: [
+        { style: "ノーマル", urls: [himari001, himari002, himari003] },
+      ],
+      releaseStatus: "comingSoon",
+    },
+  }
 
   // ファーストビュー用のビューを超えたらヘッダーを表示する
   const firstViewRef = useRef<HTMLDivElement>(null)
@@ -70,18 +230,53 @@ const Main: React.FC<{ setShowingHeader: (boolean) => void }> = ({
   }, [firstViewRef])
 
   const [
-    showingLibraryReadmeModalCharater,
-    setShowingLibraryReadmeModalCharater,
-  ] = useState<Character | undefined>(undefined)
+    showingLibraryReadmeModalCharaterKey,
+    setShowingLibraryReadmeModalCharaterKey,
+  ] = useState<CharacterKey | undefined>(undefined)
 
-  const showLibraryReadmeModal = (character: Character) => {
+  const showLibraryReadmeModal = (characterKey: CharacterKey) => {
     document.documentElement.classList.add("is-clipped")
-    setShowingLibraryReadmeModalCharater(character)
+    setShowingLibraryReadmeModalCharaterKey(characterKey)
   }
 
   const hideLibraryReadmeModal = () => {
     document.documentElement.classList.remove("is-clipped")
-    setShowingLibraryReadmeModalCharater(undefined)
+    setShowingLibraryReadmeModalCharaterKey(undefined)
+  }
+
+  // キャラクター表示
+  const CharacterCard = ({ characterKey }: { characterKey: CharacterKey }) => {
+    const characterInfo = characterInfos[characterKey]
+    return (
+      <div className="column is-6-tablet is-4-desktop">
+        <div className="card">
+          <GatsbyImage
+            className="card-image"
+            image={characterInfo.bustupImage}
+            alt={characterInfo.name}
+          />
+          <div className="card-content has-text-centered">
+            <h3 className="title is-4">{characterInfo.name}</h3>
+            <p className="subtitle is-5">{characterInfo.voiceFeature}</p>
+            {characterInfo.releaseStatus === "comingSoon" && (
+              <p className="py-0" style={{ marginTop: "-1rem", color: "red" }}>
+                Coming Soon
+              </p>
+            )}
+            <AudioSample audioSamples={characterInfo.voiceUrls} />
+            <div className="pt-3">
+              <button
+                onClick={() => showLibraryReadmeModal(characterKey)}
+                className="button is-normal is-rounded"
+                type="button"
+              >
+                <span>{characterInfo.name} 利用規約</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -149,7 +344,7 @@ const Main: React.FC<{ setShowingHeader: (boolean) => void }> = ({
                   </span>
                   <span className="has-text-weight-semibold">ダウンロード</span>
                 </a>
-                <p className="is-align-self-center is-size-6">Version 0.10.4</p>
+                <p className="is-align-self-center is-size-6">Version 0.11.2</p>
               </div>
             </div>
           </section>
@@ -161,214 +356,10 @@ const Main: React.FC<{ setShowingHeader: (boolean) => void }> = ({
               <h2 id="characters" className="title">
                 キャラクター一覧
               </h2>
-              <div className="tile is-ancestor is-justify-content-center">
-                <div className="tile is-parent is-6">
-                  <div className="tile is-child card">
-                    <StaticImage
-                      className="card-image"
-                      src="../images/bustup-metan.png"
-                      alt="四国めたん"
-                      width={640}
-                    />
-                    <div className="card-content has-text-centered">
-                      <h3 className="title is-4">四国めたん</h3>
-                      <p className="subtitle is-5">
-                        はっきりした芯のある声が特徴的
-                      </p>
-                      <AudioSample
-                        audioSamples={[
-                          {
-                            style: "ノーマル",
-                            urls: [
-                              metanNormal001,
-                              metanNormal002,
-                              metanNormal003,
-                            ],
-                          },
-                          {
-                            style: "あまあま",
-                            urls: [metanAma001, metanAma002, metanAma003],
-                          },
-                          {
-                            style: "ツンツン",
-                            urls: [metanTsun001, metanTsun002, metanTsun003],
-                          },
-                          {
-                            style: "セクシー",
-                            urls: [metanSexy001, metanSexy002, metanSexy003],
-                          },
-                        ]}
-                      />
-                      <div className="pt-3">
-                        <button
-                          onClick={() => showLibraryReadmeModal("東北")}
-                          className="button is-normal is-rounded"
-                          type="button"
-                        >
-                          <span>四国めたん 利用規約</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="tile is-parent is-6">
-                  <div className="tile is-child card">
-                    <StaticImage
-                      className="card-image"
-                      src="../images/bustup-zundamon.png"
-                      alt="ずんだもん"
-                      width={640}
-                    />
-                    <div className="card-content has-text-centered">
-                      <h3 className="title is-4">ずんだもん</h3>
-                      <p className="subtitle is-5">
-                        子供っぽい高めの声が特徴的
-                      </p>
-                      <AudioSample
-                        audioSamples={[
-                          {
-                            style: "ノーマル",
-                            urls: [
-                              zundamonNormal001,
-                              zundamonNormal002,
-                              zundamonNormal003,
-                            ],
-                          },
-                          {
-                            style: "あまあま",
-                            urls: [
-                              zundamonAma001,
-                              zundamonAma002,
-                              zundamonAma003,
-                            ],
-                          },
-                          {
-                            style: "ツンツン",
-                            urls: [
-                              zundamonTsun001,
-                              zundamonTsun002,
-                              zundamonTsun003,
-                            ],
-                          },
-                          {
-                            style: "セクシー",
-                            urls: [
-                              zundamonSexy001,
-                              zundamonSexy002,
-                              zundamonSexy003,
-                            ],
-                          },
-                        ]}
-                      />
-                      <div className="pt-3">
-                        <button
-                          onClick={() => showLibraryReadmeModal("東北")}
-                          className="button is-normal is-rounded"
-                          type="button"
-                        >
-                          <span>ずんだもん 利用規約</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="tile is-ancestor is-justify-content-center">
-                <div className="tile is-parent is-6">
-                  <div className="tile is-child card">
-                    <StaticImage
-                      className="card-image"
-                      src="../images/bustup-tsumugi.png"
-                      alt="春日部つむぎ"
-                      width={640}
-                    />
-                    <div className="card-content has-text-centered">
-                      <h3 className="title is-4">春日部つむぎ</h3>
-                      <p className="subtitle is-5">元気な明るい声が特徴的</p>
-                      <AudioSample
-                        audioSamples={[
-                          {
-                            style: "ノーマル",
-                            urls: [tsumugi001, tsumugi002, tsumugi003],
-                          },
-                        ]}
-                      />
-                      <div className="pt-3">
-                        <button
-                          onClick={() => showLibraryReadmeModal("春日部つむぎ")}
-                          className="button is-normal is-rounded"
-                          type="button"
-                        >
-                          <span>春日部つむぎ 利用規約</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="tile is-parent is-6">
-                  <div className="tile is-child card">
-                    <StaticImage
-                      className="card-image"
-                      src="../images/bustup-hau.png"
-                      alt="雨晴はう"
-                      width={640}
-                    />
-                    <div className="card-content has-text-centered">
-                      <h3 className="title is-4">雨晴はう</h3>
-                      <p className="subtitle is-5">優しく可愛い声が特徴的</p>
-                      <AudioSample
-                        audioSamples={[
-                          {
-                            style: "ノーマル",
-                            urls: [hau001, hau002, hau003],
-                          },
-                        ]}
-                      />
-                      <div className="pt-3">
-                        <button
-                          onClick={() => showLibraryReadmeModal("雨晴はう")}
-                          className="button is-normal is-rounded"
-                          type="button"
-                        >
-                          <span>雨晴はう 利用規約</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="tile is-ancestor is-justify-content-center">
-                <div className="tile is-parent is-6">
-                  <div className="tile is-child card">
-                    <StaticImage
-                      className="card-image"
-                      src="../images/bustup-ritsu.png"
-                      alt="波音リツ"
-                      width={640}
-                    />
-                    <div className="card-content has-text-centered">
-                      <h3 className="title is-4">波音リツ</h3>
-                      <p className="subtitle is-5">低めのクールな声が特徴的</p>
-                      <AudioSample
-                        audioSamples={[
-                          {
-                            style: "ノーマル",
-                            urls: [ritsu001, ritsu002, ritsu003],
-                          },
-                        ]}
-                      />
-                      <div className="pt-3">
-                        <button
-                          onClick={() => showLibraryReadmeModal("波音リツ")}
-                          className="button is-normal is-rounded"
-                          type="button"
-                        >
-                          <span>波音リツ 利用規約</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div className="columns is-multiline is-centered">
+                {characterKeys.map((characterKey, index) => (
+                  <CharacterCard key={index} characterKey={characterKey} />
+                ))}
               </div>
             </div>
           </section>
@@ -513,21 +504,17 @@ const Main: React.FC<{ setShowingHeader: (boolean) => void }> = ({
           </section>
         </main>
       </div>
-      <ModalReadmeLibraryTohoku
-        isActive={showingLibraryReadmeModalCharater == "東北"}
+      <ModalReadmeLibrary
         hide={hideLibraryReadmeModal}
-      />
-      <ModalReadmeLibraryTsumugi
-        isActive={showingLibraryReadmeModalCharater == "春日部つむぎ"}
-        hide={hideLibraryReadmeModal}
-      />
-      <ModalReadmeLibraryHau
-        isActive={showingLibraryReadmeModalCharater == "雨晴はう"}
-        hide={hideLibraryReadmeModal}
-      />
-      <ModalReadmeLibraryRitsu
-        isActive={showingLibraryReadmeModalCharater == "波音リツ"}
-        hide={hideLibraryReadmeModal}
+        {...(showingLibraryReadmeModalCharaterKey != undefined
+          ? {
+              isActive: true,
+              characterKey: showingLibraryReadmeModalCharaterKey,
+            }
+          : {
+              isActive: false,
+              characterKey: undefined,
+            })}
       />
     </>
   )

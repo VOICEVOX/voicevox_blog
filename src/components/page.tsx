@@ -65,14 +65,14 @@ export const Page: React.FC<{ showingHeader?: boolean }> = ({
         >
           <div className="navbar-brand">
             <Link to={"/"} className="navbar-item">
-              <img src={icon} alt="VOICEVOXのロゴ"/>
+              <img src={icon} alt="VOICEVOXのロゴ" />
               <span className="has-text-weight-bold is-size-5 pl-2">
                 VOICEVOX
               </span>
             </Link>
 
             {/*
-            ハンバーガーボタン。別ページがないのでまだ不要
+            FIXME: ハンバーガーボタン。ページが増えたので対応しないといけない
             <a
               role="button"
               className="navbar-burger"

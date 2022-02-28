@@ -24,22 +24,22 @@ export default ({
   return (
     <div className={"audio-sample " + className}>
       <hr className="my-3" />
-      <div className="columns is-vcentered py-0 my-2">
-        <div className="column is-5 py-0 my-1">
-          <p>音声サンプル</p>
+      <div className="audio-sample-pair">
+        <div className="audio-sample-label">
+          <span>音声サンプル</span>
         </div>
-        <div className="column is-7 py-0 my-1">
+        <div className="audio-sample-content">
           {selectedUrls.map((url, index) => (
-            <PlayButton key={index} url={url} className="ml-1 mr-1" />
+            <PlayButton key={index} url={url} className="is-small" />
           ))}
         </div>
       </div>
       {styles.length > 1 && (
-        <div className="columns is-vcentered py-0 my-2">
-          <div className="column is-5 py-0 my-1">
-            <p>スタイル</p>
+        <div className="audio-sample-pair">
+          <div className="audio-sample-label">
+            <span>スタイル</span>
           </div>
-          <div className="column is-7 py-0 my-1">
+          <div className="audio-sample-content">
             <div
               className={`dropdown ${isOpenDropdown ? "is-active" : ""}`}
               onMouseEnter={() => setIsOpenDropdown(true)}
