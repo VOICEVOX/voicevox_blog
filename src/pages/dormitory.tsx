@@ -25,6 +25,9 @@ import ritsu05 from "../audios/dormitory/ritsu-05.wav"
 import ryusei01 from "../audios/dormitory/ryusei-01.wav"
 import ryusei02 from "../audios/dormitory/ryusei-02.wav"
 import ryusei03 from "../audios/dormitory/ryusei-03.wav"
+import takehiro01 from "../audios/dormitory/takehiro-01.wav"
+import takehiro02 from "../audios/dormitory/takehiro-02.wav"
+import takehiro03 from "../audios/dormitory/takehiro-03.wav"
 import tsumugi01 from "../audios/dormitory/tsumugi-01.wav"
 import tsumugi02 from "../audios/dormitory/tsumugi-02.wav"
 import tsumugi03 from "../audios/dormitory/tsumugi-03.wav"
@@ -298,7 +301,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         { label: "年齢", value: "20代前後", size: 2 },
         { label: "誕生日", value: "12月24日", size: 2 },
       ],
-      voiceUrls: undefined,
+      voiceUrls: [takehiro01, takehiro02, takehiro03],
       callNames: {
         四国めたん: "めたん",
         ずんだもん: "ずんだもん",
