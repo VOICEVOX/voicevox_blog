@@ -92,7 +92,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
   const { characterKeys } = useContext(CharacterContext)
 
   const characterInfos: {
-    [key in CharacterKey]: CharacterInfo
+    [key in CharacterKey]: CharacterInfo | undefined
   } = {
     四国めたん: {
       name: "四国めたん",
@@ -422,6 +422,8 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       },
       detailUrl: "https://kotoran8zunzun.wixsite.com/my-site/利用規約",
     },
+
+    まだシークレットキャラ: undefined,
   }
 
   const generationInfos: {
@@ -509,6 +511,10 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
                 characterInfo={characterInfos.冥鳴ひまり}
                 onClick={() => showCharacterModal("冥鳴ひまり")}
                 className="is-offset-2"
+              />
+              <DormitoryCharacterCard
+                characterInfo={characterInfos.まだシークレットキャラ}
+                onClick={() => {}}
               />
             </div>
 
