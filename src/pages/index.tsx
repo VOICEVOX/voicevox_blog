@@ -180,7 +180,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       voiceUrls: [
         { style: "ノーマル", urls: [takehiro001, takehiro002, takehiro003] },
       ],
-      releaseStatus: "comingSoon",
+      releaseStatus: "released",
     },
     白上虎太郎: {
       name: "白上虎太郎",
@@ -191,7 +191,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       voiceUrls: [
         { style: "ノーマル", urls: [kotarou001, kotarou002, kotarou003] },
       ],
-      releaseStatus: "comingSoon",
+      releaseStatus: "released",
     },
     青山龍星: {
       name: "青山龍星",
@@ -202,7 +202,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       voiceUrls: [
         { style: "ノーマル", urls: [ryusei001, ryusei002, ryusei003] },
       ],
-      releaseStatus: "comingSoon",
+      releaseStatus: "released",
     },
     冥鳴ひまり: {
       name: "冥鳴ひまり",
@@ -213,7 +213,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       voiceUrls: [
         { style: "ノーマル", urls: [himari001, himari002, himari003] },
       ],
-      releaseStatus: "comingSoon",
+      releaseStatus: "released",
     },
   }
 
