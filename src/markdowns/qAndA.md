@@ -4,7 +4,8 @@
 
 #### CPU 版
 
-Windows／Mac／Linux 搭載の PC に対応しています。
+Windows／Mac／Linux 搭載の PC に対応しています。  
+※macOS：macOS Catalina以降の対応です。
 
 #### GPU 版
 
