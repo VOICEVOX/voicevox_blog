@@ -10,6 +10,7 @@ export type CharacterKey =
   | "白上虎太郎"
   | "青山龍星"
   | "冥鳴ひまり"
+  | "まだシークレットキャラ"
 
 export type CharacterInfo = {
   name: string
