@@ -25,6 +25,10 @@ import ritsu05 from "../audios/dormitory/ritsu-05.wav"
 import ryusei01 from "../audios/dormitory/ryusei-01.wav"
 import ryusei02 from "../audios/dormitory/ryusei-02.wav"
 import ryusei03 from "../audios/dormitory/ryusei-03.wav"
+import sora01 from "../audios/dormitory/sora-01.wav"
+import sora02 from "../audios/dormitory/sora-02.wav"
+import sora03 from "../audios/dormitory/sora-03.wav"
+import sora04 from "../audios/dormitory/sora-04.wav"
 import takehiro01 from "../audios/dormitory/takehiro-01.wav"
 import takehiro02 from "../audios/dormitory/takehiro-02.wav"
 import takehiro03 from "../audios/dormitory/takehiro-03.wav"
@@ -443,7 +447,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       color: "#6964AD",
       lightColor: "#B2B6D8",
       description:
-        "宇宙開拓用に開発されたアンドロイド。<br />生まれたばかりで、どんなことでも興味を持つ。",
+        "宇宙開拓用に開発されたアンドロイド。<br />正式名称は「九州そらmk=II」（まーくつー）。",
       labelInfos: [
         {
           label: "年齢",
@@ -455,9 +459,8 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
           value: "173 cm（ヒールなしだと160cm）",
           size: 2,
         },
-        { label: "性格", value: "天然でのほほんとした性格", size: 2 },
       ],
-      voiceUrls: undefined,
+      voiceUrls: [sora01, sora02, sora03, sora04],
       infoImages: query.dormitory.nodes
         .filter(node => node.name.includes("sora"))
         .sort((a, b) => a.name.localeCompare(b.name))
