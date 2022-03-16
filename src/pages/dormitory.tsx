@@ -25,6 +25,10 @@ import ritsu05 from "../audios/dormitory/ritsu-05.wav"
 import ryusei01 from "../audios/dormitory/ryusei-01.wav"
 import ryusei02 from "../audios/dormitory/ryusei-02.wav"
 import ryusei03 from "../audios/dormitory/ryusei-03.wav"
+import sora01 from "../audios/dormitory/sora-01.wav"
+import sora02 from "../audios/dormitory/sora-02.wav"
+import sora03 from "../audios/dormitory/sora-03.wav"
+import sora04 from "../audios/dormitory/sora-04.wav"
 import takehiro01 from "../audios/dormitory/takehiro-01.wav"
 import takehiro02 from "../audios/dormitory/takehiro-02.wav"
 import takehiro03 from "../audios/dormitory/takehiro-03.wav"
@@ -126,6 +130,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         白上虎太郎: "白上さん",
         青山龍星: "青山さん",
         冥鳴ひまり: "ひまりさん",
+        九州そら: "そら",
         me: ["わたくし"],
         you: ["貴女(たち)", "アンタ(ら)"],
       },
@@ -168,6 +173,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         白上虎太郎: "こたろう",
         青山龍星: "りゅうせい",
         冥鳴ひまり: "ひまり",
+        九州そら: "そら",
         me: ["ずんだもん", "僕"],
         you: ["オマエ", "みんな"],
       },
@@ -206,6 +212,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         白上虎太郎: "虎太郎くん",
         青山龍星: "龍星くん",
         冥鳴ひまり: "ひまっち",
+        九州そら: "（準備中）",
         me: ["あーし"],
         you: ["きみ", "きみたち"],
       },
@@ -243,6 +250,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         冥鳴ひまり: "ひまりさん",
         me: ["僕"],
         you: ["あなた", "あなた達"],
+        九州そら: "（準備中）",
       },
       detailUrl: "https://amehau.com/",
     },
@@ -276,6 +284,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         白上虎太郎: "こたろう",
         青山龍星: "りゅうせい",
         冥鳴ひまり: "ひまり",
+        九州そら: "（準備中）",
         me: ["あたし"],
         you: ["アンタ", "アンタら"],
       },
@@ -311,6 +320,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         白上虎太郎: "虎太郎",
         青山龍星: "龍星",
         冥鳴ひまり: "ひまり",
+        九州そら: "（準備中）",
         me: ["俺"],
         you: ["お前", "お前ら"],
       },
@@ -346,6 +356,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         玄野武宏: "タケヒロ",
         青山龍星: "リューセー",
         冥鳴ひまり: "ひまりちゃん",
+        九州そら: "（準備中）",
         me: ["おれ"],
         you: ["きみ", "きみ達"],
       },
@@ -381,6 +392,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         玄野武宏: "武宏",
         白上虎太郎: "虎太郎",
         冥鳴ひまり: "ひまり",
+        九州そら: "（準備中）",
         me: ["オレ"],
         you: ["アンタ", "アンタ達", "お前達"],
       },
@@ -417,13 +429,58 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         玄野武宏: "武宏くん",
         白上虎太郎: "虎太郎くん",
         青山龍星: "龍星くん",
+        九州そら: "（準備中）",
         me: ["私"],
         you: ["君たち"],
       },
       detailUrl: "https://kotoran8zunzun.wixsite.com/my-site/利用規約",
     },
 
-    まだシークレットキャラ: undefined,
+    九州そら: {
+      name: "九州そら",
+      rubyName: "九州<rp>(</rp><rt>きゅうしゅう</rt><rp>)</rp>そら",
+      bustupImage: query.bustup.nodes.find(node => node.name === "bustup-sora")!
+        .childImageSharp.gatsbyImageData,
+      portraitImage: query.portrait.nodes.find(
+        node => node.name === "portrait-sora"
+      )!.childImageSharp.gatsbyImageData,
+      color: "#6964AD",
+      lightColor: "#B2B6D8",
+      description:
+        "宇宙開拓用に開発されたアンドロイド。<br />正式名称は「九州そらmk=II」（まーくつー）。",
+      labelInfos: [
+        {
+          label: "年齢",
+          value: "0 歳（外見年齢は17歳）",
+          size: 2,
+        },
+        {
+          label: "身長",
+          value: "173 cm（ヒールなしだと160cm）",
+          size: 2,
+        },
+      ],
+      voiceUrls: [sora01, sora02, sora03, sora04],
+      infoImages: query.dormitory.nodes
+        .filter(node => node.name.includes("sora"))
+        .sort((a, b) => a.name.localeCompare(b.name))
+        .map(node => node.childImageSharp.gatsbyImageData),
+      callNames: {
+        ずんだもん: "ずんだもん",
+        四国めたん: "めたんさま",
+        春日部つむぎ: "（準備中）",
+        雨晴はう: "（準備中）",
+        波音リツ: "（準備中）",
+        玄野武宏: "（準備中）",
+        白上虎太郎: "（準備中）",
+        青山龍星: "（準備中）",
+        冥鳴ひまり: "（準備中）",
+        me: ["まーくつー"],
+        you: ["あなたさま", "みなさま"],
+      },
+      detailUrl:
+        "https://zunko.jp/con_voice.html#:~:text=%E3%81%8D%E3%81%BF%E3%81%8C%E3%81%9F%E3%82%81-,%E4%B9%9D%E5%B7%9E%E3%81%9D%E3%82%89mk%3DII,-CV%3A%E8%A5%BF%E7%94%B0%E6%9C%9B%E8%A6%8B",
+    },
   }
 
   const generationInfos: {
@@ -434,7 +491,13 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       characterKeys: ["春日部つむぎ", "雨晴はう", "波音リツ"],
     },
     三期生: {
-      characterKeys: ["玄野武宏", "白上虎太郎", "青山龍星", "冥鳴ひまり"],
+      characterKeys: [
+        "玄野武宏",
+        "白上虎太郎",
+        "青山龍星",
+        "冥鳴ひまり",
+        "九州そら",
+      ],
     },
   }
 
@@ -513,8 +576,8 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
                 className="is-offset-2"
               />
               <DormitoryCharacterCard
-                characterInfo={characterInfos.まだシークレットキャラ}
-                onClick={() => {}}
+                characterInfo={characterInfos.九州そら}
+                onClick={() => showCharacterModal("九州そら")}
               />
             </div>
 

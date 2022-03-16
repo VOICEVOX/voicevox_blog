@@ -44,6 +44,7 @@ export const CharacterContext = React.createContext<CharacterContextProps>({
     "白上虎太郎",
     "青山龍星",
     "冥鳴ひまり",
+    "九州そら",
   ],
   characterInfos: {
     四国めたん: {
@@ -85,6 +86,10 @@ export const CharacterContext = React.createContext<CharacterContextProps>({
     冥鳴ひまり: {
       name: "冥鳴ひまり",
       policyUrl: "https://kotoran8zunzun.wixsite.com/my-site/利用規約",
+    },
+    九州そら: {
+      name: "九州そら",
+      policyUrl: "https://zunko.jp/con_ongen_kiyaku.html",
     },
   },
 })

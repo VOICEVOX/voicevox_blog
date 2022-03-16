@@ -31,6 +31,21 @@ import ritsu003 from "../audios/ritsu-003.wav"
 import ryusei001 from "../audios/ryusei-001.wav"
 import ryusei002 from "../audios/ryusei-002.wav"
 import ryusei003 from "../audios/ryusei-003.wav"
+import soraAma001 from "../audios/sora-ama-001.wav"
+import soraAma002 from "../audios/sora-ama-002.wav"
+import soraAma003 from "../audios/sora-ama-003.wav"
+import soraNormal001 from "../audios/sora-normal-001.wav"
+import soraNormal002 from "../audios/sora-normal-002.wav"
+import soraNormal003 from "../audios/sora-normal-003.wav"
+import soraSexy001 from "../audios/sora-sexy-001.wav"
+import soraSexy002 from "../audios/sora-sexy-002.wav"
+import soraSexy003 from "../audios/sora-sexy-003.wav"
+import soraTsun001 from "../audios/sora-tsun-001.wav"
+import soraTsun002 from "../audios/sora-tsun-002.wav"
+import soraTsun003 from "../audios/sora-tsun-003.wav"
+import soraWhis001 from "../audios/sora-whis-001.wav"
+import soraWhis002 from "../audios/sora-whis-002.wav"
+import soraWhis003 from "../audios/sora-whis-003.wav"
 import takehiro001 from "../audios/takehiro-001.wav"
 import takehiro002 from "../audios/takehiro-002.wav"
 import takehiro003 from "../audios/takehiro-003.wav"
@@ -215,6 +230,36 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       ],
       releaseStatus: "released",
     },
+    九州そら: {
+      name: "九州そら",
+      bustupImage: query.allFile.nodes.find(
+        node => node.name === "bustup-sora"
+      )!.childImageSharp.gatsbyImageData,
+      voiceFeature: "気品のある大人な声",
+      voiceUrls: [
+        {
+          style: "ノーマル",
+          urls: [soraNormal001, soraNormal002, soraNormal003],
+        },
+        {
+          style: "あまあま",
+          urls: [soraAma001, soraAma002, soraAma003],
+        },
+        {
+          style: "ツンツン",
+          urls: [soraTsun001, soraTsun002, soraTsun003],
+        },
+        {
+          style: "セクシー",
+          urls: [soraSexy001, soraSexy002, soraSexy003],
+        },
+        {
+          style: "ささやき",
+          urls: [soraWhis001, soraWhis002, soraWhis003],
+        },
+      ],
+      releaseStatus: "released",
+    },
   }
 
   // ファーストビュー用のビューを超えたらヘッダーを表示する
@@ -344,7 +389,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
                   </span>
                   <span className="has-text-weight-semibold">ダウンロード</span>
                 </a>
-                <p className="is-align-self-center is-size-6">Version 0.11.3</p>
+                <p className="is-align-self-center is-size-6">Version 0.11.4</p>
               </div>
             </div>
           </section>

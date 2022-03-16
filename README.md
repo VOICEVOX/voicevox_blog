@@ -32,10 +32,10 @@ npm run clean && npm run deploy
 ## add resource
 
 ```bash
-editor_tag="0.11.3"
+editor_tag="0.11.4"
 editor_url="https://raw.githubusercontent.com/VOICEVOX/voicevox/$editor_tag"
 
-resource_tag="0.11.0"
+resource_tag="0.11.4"
 resource_url="https://raw.githubusercontent.com/VOICEVOX/voicevox_resource/$resource_tag"
 
 # 規約
