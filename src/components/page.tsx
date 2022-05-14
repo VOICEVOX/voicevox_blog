@@ -6,9 +6,6 @@ import ModalPrivacyPolicy from "../components/modalPrivacyPolicy"
 import { GlobalContext } from "../contexts/context"
 import { useModalController } from "../hooks/hook"
 import icon from "../images/icon.png"
-import { DownloadModal } from "./downloadModal"
-import { ModalHowToUse } from "./modalHowToUse"
-import { ModalReadmeSoftware } from "./modalReadmeSoftware"
 import { VVFooter } from "./page-footer"
 
 export const Page: React.FC<{ showingHeader?: boolean }> = ({
@@ -35,19 +32,6 @@ export const Page: React.FC<{ showingHeader?: boolean }> = ({
   }
 
   const context = useContext(GlobalContext)
-  context.downloadModal = useModalController()
-
-  const {
-    showing: showingSoftwareReadmeModal,
-    show: showSoftwareReadmeModal,
-    hide: hideSoftwareReadmeModal,
-  } = useModalController()
-
-  const {
-    showing: showingHowToUseModal,
-    show: showHowToUseModal,
-    hide: hideHowToUseModal,
-  } = useModalController()
 
   const {
     showing: showingPrivacyPolicyModal,
@@ -113,46 +97,24 @@ export const Page: React.FC<{ showingHeader?: boolean }> = ({
                 pixivFANBOX
               </a>
               <div className="navbar-item py-0">
-                <a
-                  className="button is-primary is-rounded"
-                  onClick={() => {
-                    context.downloadModal.show()
-                    sendEvent("download", "software")
-                  }}
-                  target="_blank"
-                  rel="noreferrer"
-                  tabIndex={0}
-                >
+                <Link to={"/download"} className="button is-primary is-rounded">
                   <span className="icon">
                     <FontAwesomeIcon icon={faDownload} />
                   </span>
                   <span className="has-text-weight-semibold">ダウンロード</span>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
         </nav>
       )}
-
       <GlobalContext.Provider value={context}>
         {children}
       </GlobalContext.Provider>
-
-      <DownloadModal
-        isActive={context.downloadModal.showing}
-        hide={context.downloadModal.hide}
-        showReadme={showSoftwareReadmeModal}
-        showHowToUse={showHowToUseModal}
-      />
-      <ModalReadmeSoftware
-        isActive={showingSoftwareReadmeModal}
-        hide={hideSoftwareReadmeModal}
-      />
       <ModalPrivacyPolicy
         isActive={showingPrivacyPolicyModal}
         hide={hidePrivacyPolicyModal}
       />
-      <ModalHowToUse isActive={showingHowToUseModal} hide={hideHowToUseModal} />
       <footer className="footer appearance">
         <VVFooter privacyPolicyShower={showPrivacyPolicyModal} />
       </footer>
