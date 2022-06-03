@@ -389,7 +389,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
                   </span>
                   <span className="has-text-weight-semibold">ダウンロード</span>
                 </a>
-                <p className="is-align-self-center is-size-6">Version 0.12.1</p>
+                <p className="is-align-self-center is-size-6">Version 0.12.2</p>
               </div>
             </div>
           </section>

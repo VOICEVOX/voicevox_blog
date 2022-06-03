@@ -32,7 +32,7 @@ npm run clean && npm run deploy
 ## add resource
 
 ```bash
-editor_tag="0.12.1"
+editor_tag="0.12.2"
 editor_url="https://raw.githubusercontent.com/VOICEVOX/voicevox/$editor_tag"
 
 resource_tag="0.12.0"
