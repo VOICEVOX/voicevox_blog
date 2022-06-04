@@ -13,6 +13,9 @@ import himari003 from "../audios/himari-003.wav"
 import kotarou001 from "../audios/kotarou-001.wav"
 import kotarou002 from "../audios/kotarou-002.wav"
 import kotarou003 from "../audios/kotarou-003.wav"
+import kyoko001 from "../audios/kyoko-001.wav"
+import kyoko002 from "../audios/kyoko-002.wav"
+import kyoko003 from "../audios/kyoko-003.wav"
 import metanAma001 from "../audios/metan-ama-001.wav"
 import metanAma002 from "../audios/metan-ama-002.wav"
 import metanAma003 from "../audios/metan-ama-003.wav"
@@ -259,6 +262,15 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         },
       ],
       releaseStatus: "released",
+    },
+    モチノキョウコ: {
+      name: "もち子さん",
+      bustupImage: query.allFile.nodes.find(
+        node => node.name === "bustup-kyoko"
+      )!.childImageSharp.gatsbyImageData,
+      voiceFeature: "明瞭で穏やかな声",
+      voiceUrls: [{ style: "ノーマル", urls: [kyoko001, kyoko002, kyoko003] }],
+      releaseStatus: "comingSoon",
     },
   }
 

@@ -13,6 +13,11 @@ import himari05 from "../audios/dormitory/himari-05.wav"
 import kotarou01 from "../audios/dormitory/kotarou-01.wav"
 import kotarou02 from "../audios/dormitory/kotarou-02.wav"
 import kotarou03 from "../audios/dormitory/kotarou-03.wav"
+import kyoko01 from "../audios/dormitory/kyoko-01.mp3"
+import kyoko02 from "../audios/dormitory/kyoko-02.wav"
+import kyoko03 from "../audios/dormitory/kyoko-03.wav"
+import kyoko04 from "../audios/dormitory/kyoko-04.wav"
+import kyoko05 from "../audios/dormitory/kyoko-05.wav"
 import metan01 from "../audios/dormitory/metan-01.wav"
 import metan02 from "../audios/dormitory/metan-02.wav"
 import metan03 from "../audios/dormitory/metan-03.wav"
@@ -100,7 +105,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
   } = {
     四国めたん: {
       name: "四国めたん",
-      rubyName: "四国<rp>(</rp><rt>しこく</rt><rp>)</rp>めたん",
+      rubyName: "<ruby>四国<rp>(</rp><rt>しこく</rt><rp>)</rp>めたん</ruby>",
       bustupImage: query.bustup.nodes.find(
         node => node.name === "bustup-metan"
       )!.childImageSharp.gatsbyImageData,
@@ -140,7 +145,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
 
     ずんだもん: {
       name: "ずんだもん",
-      rubyName: "ずんだもん",
+      rubyName: "<ruby>ずんだもん</ruby>",
       bustupImage: query.bustup.nodes.find(
         node => node.name === "bustup-zundamon"
       )!.childImageSharp.gatsbyImageData,
@@ -183,7 +188,8 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
 
     春日部つむぎ: {
       name: "春日部つむぎ",
-      rubyName: "春日部<rp>(</rp><rt>かすかべ</rt><rp>)</rp>つむぎ",
+      rubyName:
+        "<ruby>春日部<rp>(</rp><rt>かすかべ</rt><rp>)</rp>つむぎ</ruby>",
       bustupImage: query.bustup.nodes.find(
         node => node.name === "bustup-tsumugi"
       )!.childImageSharp.gatsbyImageData,
@@ -221,7 +227,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
 
     雨晴はう: {
       name: "雨晴はう",
-      rubyName: "雨晴<rp>(</rp><rt>あめはれ</rt><rp>)</rp>はう",
+      rubyName: "<ruby>雨晴<rp>(</rp><rt>あめはれ</rt><rp>)</rp>はう</ruby>",
       bustupImage: query.bustup.nodes.find(node => node.name === "bustup-hau")!
         .childImageSharp.gatsbyImageData,
       portraitImage: query.portrait.nodes.find(
@@ -257,7 +263,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
 
     波音リツ: {
       name: "波音リツ",
-      rubyName: "波音<rp>(</rp><rt>なみね</rt><rp>)</rp>リツ",
+      rubyName: "<ruby>波音<rp>(</rp><rt>なみね</rt><rp>)</rp>リツ</ruby>",
       bustupImage: query.bustup.nodes.find(
         node => node.name === "bustup-ritsu"
       )!.childImageSharp.gatsbyImageData,
@@ -294,7 +300,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
     玄野武宏: {
       name: "玄野武宏",
       rubyName:
-        "玄野<rp>(</rp><rt>くろの</rt><rp>)</rp>武宏<rp>(</rp><rt>たけひろ</rt><rp>)</rp>",
+        "<ruby>玄野<rp>(</rp><rt>くろの</rt><rp>)</rp>武宏<rp>(</rp><rt>たけひろ</rt><rp>)</rp></ruby>",
       bustupImage: query.bustup.nodes.find(
         node => node.name === "bustup-takehiro"
       )!.childImageSharp.gatsbyImageData,
@@ -303,7 +309,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       )!.childImageSharp.gatsbyImageData,
       color: "#1AA18E",
       lightColor: "#B3E2D8",
-      description: "サッパリした青年<br />やや短気だが面倒見は良い",
+      description: "サッパリした青年。<br />やや短気だが面倒見は良い。",
       labelInfos: [
         { label: "身長", value: "177 cm", size: 2 },
         { label: "体重", value: "66 Kg", size: 2 },
@@ -330,7 +336,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
     白上虎太郎: {
       name: "白上虎太郎",
       rubyName:
-        "白上<rp>(</rp><rt>しらかみ</rt><rp>)</rp>虎太郎<rp>(</rp><rt>こたろう</rt><rp>)</rp>",
+        "<ruby>白上<rp>(</rp><rt>しらかみ</rt><rp>)</rp>虎太郎<rp>(</rp><rt>こたろう</rt><rp>)</rp></ruby>",
       bustupImage: query.bustup.nodes.find(
         node => node.name === "bustup-kotarou"
       )!.childImageSharp.gatsbyImageData,
@@ -339,7 +345,8 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       )!.childImageSharp.gatsbyImageData,
       color: "#99D02B",
       lightColor: "#E6F5B0",
-      description: "まっすぐで人懐っこい青年<br />愛嬌はあるものの少しおばか",
+      description:
+        "まっすぐで人懐っこい青年。<br />愛嬌はあるものの少しおばか。",
       labelInfos: [
         { label: "身長", value: "146 cm", size: 2 },
         { label: "体重", value: "42 Kg", size: 2 },
@@ -366,7 +373,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
     青山龍星: {
       name: "青山龍星",
       rubyName:
-        "青山<rp>(</rp><rt>あおやま</rt><rp>)</rp>龍星<rp>(</rp><rt>りゅうせい</rt><rp>)</rp>",
+        "<ruby>青山<rp>(</rp><rt>あおやま</rt><rp>)</rp>龍星<rp>(</rp><rt>りゅうせい</rt><rp>)</rp></ruby>",
       bustupImage: query.bustup.nodes.find(
         node => node.name === "bustup-ryusei"
       )!.childImageSharp.gatsbyImageData,
@@ -375,7 +382,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       )!.childImageSharp.gatsbyImageData,
       color: "#386CB0",
       lightColor: "#B3CDE3",
-      description: "とにかく大柄で無骨な青年<br />寡黙で冷静なストッパー枠",
+      description: "とにかく大柄で無骨な青年。<br />寡黙で冷静なストッパー枠。",
       labelInfos: [
         { label: "身長", value: "194 cm", size: 2 },
         { label: "体重", value: "94 Kg", size: 2 },
@@ -401,7 +408,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
 
     冥鳴ひまり: {
       name: "冥鳴ひまり",
-      rubyName: "冥鳴<rp>(</rp><rt>めいめい</rt><rp>)</rp>ひまり",
+      rubyName: "<ruby>冥鳴<rp>(</rp><rt>めいめい</rt><rp>)</rp>ひまり</ruby>",
       bustupImage: query.bustup.nodes.find(
         node => node.name === "bustup-himari"
       )!.childImageSharp.gatsbyImageData,
@@ -410,7 +417,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       )!.childImageSharp.gatsbyImageData,
       color: "#A45AAA",
       lightColor: "#CAB2D6",
-      description: "冥界から来た死神<br />可愛いものに目がない",
+      description: "冥界から来た死神。<br />可愛いものに目がない。",
       labelInfos: [
         { label: "年齢", value: "18 歳", size: 1 },
         { label: "種族", value: "死神", size: 1 },
@@ -438,7 +445,8 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
 
     九州そら: {
       name: "九州そら",
-      rubyName: "九州<rp>(</rp><rt>きゅうしゅう</rt><rp>)</rp>そら",
+      rubyName:
+        "<ruby>九州<rp>(</rp><rt>きゅうしゅう</rt><rp>)</rp>そら</ruby>",
       bustupImage: query.bustup.nodes.find(node => node.name === "bustup-sora")!
         .childImageSharp.gatsbyImageData,
       portraitImage: query.portrait.nodes.find(
@@ -480,6 +488,48 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       },
       detailUrl:
         "https://zunko.jp/con_voice.html#:~:text=%E3%81%8D%E3%81%BF%E3%81%8C%E3%81%9F%E3%82%81-,%E4%B9%9D%E5%B7%9E%E3%81%9D%E3%82%89mk%3DII,-CV%3A%E8%A5%BF%E7%94%B0%E6%9C%9B%E8%A6%8B",
+    },
+
+    モチノキョウコ: {
+      name: "もち子さん",
+      rubyName:
+        "<ruby>もち</ruby><ruby>子<rp>(</rp><rt>こ</rt><rp>)</rp>さん</ruby>",
+      bustupImage: query.bustup.nodes.find(
+        node => node.name === "bustup-kyoko"
+      )!.childImageSharp.gatsbyImageData,
+      portraitImage: query.portrait.nodes.find(
+        node => node.name === "portrait-kyoko"
+      )!.childImageSharp.gatsbyImageData,
+      color: "#1D86AE",
+      lightColor: "#B3D7DD",
+      description: "童顔だけどプラモ大好き！<br />健気な子犬系ヲタ娘です。",
+      labelInfos: [
+        { label: "本名", value: "ﾓﾁﾉ･ｷｮｳｺ", size: 1 },
+        { label: "CV", value: "明日葉よもぎ", size: 1 },
+        { label: "相棒（？）", value: "あん子ちゃん", size: 1 },
+        { label: "身長", value: "143 cm", size: 1 },
+      ],
+      voiceUrls: [kyoko01, kyoko02, kyoko03, kyoko04, kyoko05],
+      infoImages: query.dormitory.nodes
+        .filter(node => node.name.includes("kyoko"))
+        .sort((a, b) => a.name.localeCompare(b.name))
+        .map(node => node.childImageSharp.gatsbyImageData),
+      callNames: {
+        ずんだもん: "ずんだもんちゃん",
+        四国めたん: "めたんさん",
+        春日部つむぎ: "つむぎさん",
+        雨晴はう: "はうちゃん",
+        波音リツ: "リッちゃん先輩",
+        玄野武宏: "玄野くん",
+        白上虎太郎: "白上くん",
+        青山龍星: "青山くん",
+        冥鳴ひまり: "ひまりさん",
+        九州そら: "そらさん",
+        me: ["私", "もち子"],
+        you: ["あなた", "あなた達"],
+      },
+      detailUrl:
+        "https://vtubermochio.wixsite.com/mochizora/もち子さんとは-設定資料",
     },
   }
 
@@ -553,6 +603,20 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
 
         <main className="section py-0">
           <div className="container is-max-desktop pt-1 pb-6">
+            <div className="columns is-multiline">
+              <div className="column is-2 generation-label">
+                <h2 className="title is-3">4 期 生</h2>
+              </div>
+
+              <DormitoryCharacterCard
+                characterInfo={characterInfos.モチノキョウコ}
+                onClick={() => showCharacterModal("モチノキョウコ")}
+              />
+              <DormitoryCharacterCard characterInfo={undefined} />
+            </div>
+
+            <hr />
+
             <div className="columns is-multiline">
               <div className="column is-2 generation-label">
                 <h2 className="title is-3">3 期 生</h2>
