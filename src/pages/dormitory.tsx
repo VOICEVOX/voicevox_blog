@@ -512,7 +512,8 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       )!.childImageSharp.gatsbyImageData,
       color: "#1D86AE",
       lightColor: "#B3D7DD",
-      description: "童顔だけどプラモ大好き！<br />健気な子犬系ヲタ娘です。",
+      description:
+        "小さい背丈で頑張る君を応援！<br />福島県生まれのプラモ好き犬系ヲタ娘です",
       labelInfos: [
         { label: "本名", value: "ﾓﾁﾉ･ｷｮｳｺ", size: 1 },
         { label: "CV", value: "明日葉よもぎ", size: 1 },
