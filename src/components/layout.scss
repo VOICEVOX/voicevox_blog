@@ -362,6 +362,7 @@ $dropdown-item-active-background-color: $primary;
 
     .description-box {
       @extend .pb-0;
+      @extend .pt-3;
 
       display: flex;
       align-items: center;
@@ -375,11 +376,11 @@ $dropdown-item-active-background-color: $primary;
       }
       .description-text {
         flex-grow: 1;
-        @extend .pl-4;
+        @extend .pl-3;
       }
       .description-samples {
         flex-grow: 1;
-        @extend .pl-4;
+        @extend .pl-3;
       }
     }
 

@@ -11,6 +11,7 @@ export type CharacterKey =
   | "青山龍星"
   | "冥鳴ひまり"
   | "九州そら"
+  | "モチノキョウコ"
 
 export type CharacterInfo = {
   name: string

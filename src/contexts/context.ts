@@ -45,6 +45,7 @@ export const CharacterContext = React.createContext<CharacterContextProps>({
     "青山龍星",
     "冥鳴ひまり",
     "九州そら",
+    "モチノキョウコ",
   ],
   characterInfos: {
     四国めたん: {
@@ -90,6 +91,10 @@ export const CharacterContext = React.createContext<CharacterContextProps>({
     九州そら: {
       name: "九州そら",
       policyUrl: "https://zunko.jp/con_ongen_kiyaku.html",
+    },
+    モチノキョウコ: {
+      name: "もち子さん",
+      policyUrl: "https://vtubermochio.wixsite.com/mochizora/利用規約",
     },
   },
 })

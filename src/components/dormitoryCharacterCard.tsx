@@ -8,7 +8,7 @@ export default ({
   className = "",
 }: {
   characterInfo: CharacterInfo | undefined
-  onClick: () => void
+  onClick?: () => void
   className?: string
 }) => {
   const color = characterInfo?.color || "black"
