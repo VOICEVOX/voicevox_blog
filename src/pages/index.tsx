@@ -270,7 +270,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       )!.childImageSharp.gatsbyImageData,
       voiceFeature: "明瞭で穏やかな声",
       voiceUrls: [{ style: "ノーマル", urls: [kyoko001, kyoko002, kyoko003] }],
-      releaseStatus: "comingSoon",
+      releaseStatus: "released",
     },
   }
 
@@ -401,7 +401,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
                   </span>
                   <span className="has-text-weight-semibold">ダウンロード</span>
                 </a>
-                <p className="is-align-self-center is-size-6">Version 0.12.2</p>
+                <p className="is-align-self-center is-size-6">Version 0.12.3</p>
               </div>
             </div>
           </section>
