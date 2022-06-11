@@ -23,6 +23,11 @@ npm run develop
 npm run build && npm run serve
 ```
 
+### 実験モード
+
+OSS としてコードは実装したいけど、デザインや調整などの課題があって公開中のサイトに反映させていない実験的なコードがいくつかあります。
+実験的なコードを反映した見た目を確認する際は、`.env.development`ファイルで`GATSBY_VOICEVOX_EXPERIMENTS=true`を指定してください。
+
 ## deploy
 
 ```bash
