@@ -8,6 +8,7 @@ export interface GlobalContextProps {
     show: () => void
     hide: () => void
   }
+  experiments: boolean
 }
 
 export const GlobalContext = React.createContext<GlobalContextProps>({
@@ -21,6 +22,7 @@ export const GlobalContext = React.createContext<GlobalContextProps>({
     show: () => {},
     hide: () => {},
   },
+  experiments: process.env.GATSBY_VOICEVOX_EXPERIMENTS === "true",
 })
 
 export interface CharacterContextProps {
