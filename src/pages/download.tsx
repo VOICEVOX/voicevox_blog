@@ -1,6 +1,16 @@
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql, Link, useStaticQuery } from "gatsby"
 import React, { useEffect, useState } from "react"
-import DownloadModalSelecter from "./downloadModalSelecter"
+import DownloadModalSelecter from "../components/downloadModalSelecter"
+import { Page } from "../components/page"
+import Seo from "../components/seo"
+import SoftwareFeatures from "../components/softwareFeatures"
+import shareThumb from "../images/landing-share-thumb.jpg"
+
+const userAgent = /*navigator.userAgentData ||*/ navigator.userAgent
+const isWindows = userAgent.includes("Windows")
+const isMac = userAgent.includes("Mac")
+const isLinux = userAgent.includes("Linux")
+const os = isWindows ? "Windows" : isMac ? "Mac" : isLinux ? "Linux" : "Unknown"
 
 type OsType = "Windows" | "Mac" | "Linux"
 type ModeType = "GPU / CPU" | "CPU"
@@ -18,12 +28,7 @@ const packageAvailables: Record<OsType, PackageType[]> = {
   Linux: ["インストーラー", "tar.gz"],
 }
 
-export const DownloadModal: React.FC<{
-  isActive: boolean
-  hide: () => void
-  showReadme: () => void
-  showHowToUse: () => void
-}> = props => {
+const Download = () => {
   const maintenanceMode = false
 
   const scriptNodes: { name: string; publicURL: string }[] =
@@ -124,27 +129,90 @@ export const DownloadModal: React.FC<{
     }
   }, [selectedOs, selectedMode, selectedPackage])
 
+  useEffect(() => {
+    document.addEventListener("Load", () => {
+      switch (os) {
+        case "Windows":
+          setSelectedOs("Windows")
+          break
+        case "Mac":
+          setSelectedOs("Mac")
+          break
+        case "Linux":
+          setSelectedOs("Linux")
+          break
+        default:
+          setSelectedOs("Windows")
+          break
+      }
+    })
+  }, [])
+
+  const ref = React.createRef<HTMLDivElement>()
+
+  const scrollToRef = () => {
+    ref.current?.scrollIntoView({ behavior: "smooth" })
+  }
+
   return (
-    <div
-      className={"modal-download modal" + (props.isActive ? " is-active" : "")}
-    >
-      <div
-        className="modal-background"
-        onClick={props.hide}
-        role="presentation"
+    <Page>
+      <Seo
+        title="ダウンロード | VOICEVOX"
+        description="VOICEVOXのダウンロードページ"
+        image={shareThumb}
       />
-      <div className="modal-card">
-        {!maintenanceMode ? (
-          <>
-            <header className="modal-card-head has-text-centered">
+      {!maintenanceMode ? (
+        <>
+          <section className="has-background-primary section is-flex is-flex-direction-row is-justify-content-center">
+            <div className="container is-max-desktop columns is-desktop is-vcentered">
+              <div className="section my-6">
+                <h1 className="title mb-3">VOICEVOXのダウンロード</h1>
+                <p className="my-4">
+                  ダウンロードにお困りの際は<Link to={"/qa"}>Q&amp;A</Link>
+                  をご覧ください。
+                </p>
+
+                <div className="is-flex is-flex-direction-column is-align-items-start buttons are-medium">
+                  <a
+                    href={
+                      downloadUrls[selectedOs][selectedMode]?.[selectedPackage]
+                        ?.url
+                    }
+                    target="_blank"
+                    rel="noreferrer"
+                    className="button is-rounded my-2"
+                    type="button"
+                    role={"button"}
+                  >
+                    <span className="has-text-weight-semibold">
+                      {selectedOs}版インストーラーのダウンロード
+                    </span>
+                  </a>
+                  <a
+                    onClick={scrollToRef}
+                    className="button is-rounded my-2"
+                    type="button"
+                    role={"button"}
+                  >
+                    <span className="has-text-weight-semibold">
+                      カスタムダウンロード
+                    </span>
+                  </a>
+                </div>
+              </div>
+              <div className="p-1 has-background-white">
+                <img src={shareThumb} alt="VOICEVOX" />
+              </div>
+            </div>
+          </section>
+          <SoftwareFeatures />
+          <section
+            ref={ref}
+            className="container is-max-desktop is-desktop mb-6"
+          >
+            <section className="modal-card-head has-text-centered">
               <p className="modal-card-title">ダウンロード選択</p>
-              <button
-                className="delete"
-                aria-label="close"
-                onClick={props.hide}
-                type="button"
-              ></button>
-            </header>
+            </section>
 
             <section className="modal-card-body">
               <DownloadModalSelecter
@@ -184,7 +252,11 @@ export const DownloadModal: React.FC<{
               </p>
             </section>
 
-            <footer className="modal-card-foot is-justify-content-flex-end">
+            <section className="modal-card-foot is-justify-content-flex-end">
+              <p className="my-4">
+                ダウンロードにお困りの際は<Link to={"/qa"}>Q&amp;A</Link>
+                をご覧ください。
+              </p>
               <a
                 href={
                   downloadUrls[selectedOs][selectedMode]?.[selectedPackage]?.url
@@ -201,50 +273,26 @@ export const DownloadModal: React.FC<{
               >
                 <span className="has-text-weight-semibold">ダウンロード</span>
               </a>
-            </footer>
-          </>
-        ) : (
-          <>
-            <header className="modal-card-head has-text-centered">
-              <p className="modal-card-title">メンテナンス中です</p>
-              <button
-                className="delete"
-                aria-label="close"
-                onClick={props.hide}
-                type="button"
-              ></button>
-            </header>
-
-            <section className="modal-card-body">
-              <p className="has-text-centered is-size-5">
-                アップデートのためのメンテナンス中です。
-                <br />
-                しばらくお待ち下さい。
-              </p>
             </section>
-
-            <footer className="modal-card-foot is-justify-content-flex-end">
-              <button
-                onClick={props.showReadme}
-                className="button"
-                type="button"
-              >
-                <span>利用規約</span>
-              </button>
-              <button
-                onClick={props.showHowToUse}
-                className="button"
-                type="button"
-              >
-                <span>使い方</span>
-              </button>
-              <button onClick={props.hide} className="button" type="button">
-                <span>閉じる</span>
-              </button>
-            </footer>
-          </>
-        )}
-      </div>
-    </div>
+          </section>
+        </>
+      ) : (
+        <>
+          <section className="modal-card-head has-text-centered">
+            <p className="modal-card-title">メンテナンス中です</p>
+          </section>
+          <section className="modal-card-body">
+            <p className="has-text-centered is-size-5">
+              アップデートの準備をしています。
+            </p>
+            <p className="has-text-centered is-size-5">
+              しばらくお待ち下さい。
+            </p>
+          </section>
+        </>
+      )}
+    </Page>
   )
 }
+
+export default Download

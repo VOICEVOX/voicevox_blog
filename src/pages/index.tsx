@@ -386,21 +386,15 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
                 <p className="is-size-7">
                   ※2 現在は Windows / Mac / Linux に対応しています
                 </p>
-                <a
+                <Link
+                  to={"/download"}
                   className="button is-align-self-center mt-5 is-primary is-rounded is-large"
-                  onClick={() => {
-                    context.downloadModal.show()
-                    context.sendEvent("download", "software")
-                  }}
-                  target="_blank"
-                  rel="noreferrer"
-                  tabIndex={0}
                 >
                   <span className="icon">
                     <FontAwesomeIcon icon={faDownload} />
                   </span>
                   <span className="has-text-weight-semibold">ダウンロード</span>
-                </a>
+                </Link>
                 <p className="is-align-self-center is-size-6">Version 0.12.3</p>
               </div>
             </div>
