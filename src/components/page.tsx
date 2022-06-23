@@ -1,7 +1,7 @@
 import { faDownload } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Link } from "gatsby"
-import React, { useContext, useEffect } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import ModalPrivacyPolicy from "../components/modalPrivacyPolicy"
 import { GlobalContext } from "../contexts/context"
 import { useModalController } from "../hooks/hook"
@@ -23,6 +23,8 @@ export const Page: React.FC<{ showingHeader?: boolean }> = ({
       document.body.classList.remove(className)
     }
   }, [])
+
+  const [isBurgerActive, setIsBurgerActive] = useState(false)
 
   // google analytics
   const sendEvent = (event: string, eventCategory: string) => {
@@ -55,23 +57,24 @@ export const Page: React.FC<{ showingHeader?: boolean }> = ({
               </span>
             </Link>
 
-            {/*
-            FIXME: ハンバーガーボタン。ページが増えたので対応しないといけない
             <a
               role="button"
-              className="navbar-burger"
+              className={`navbar-burger ${isBurgerActive ? "is-active" : ""}`}
               aria-label="menu"
               aria-expanded="false"
               data-target="navbar"
+              onClick={() => setIsBurgerActive(!isBurgerActive)}
             >
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
             </a>
-            */}
           </div>
 
-          <div id="navbar" className="navbar-menu">
+          <div
+            id="navbar"
+            className={`navbar-menu ${isBurgerActive ? "is-active" : ""}`}
+          >
             <div className="navbar-end">
               <Link to={"/term"} className="navbar-item">
                 利用規約

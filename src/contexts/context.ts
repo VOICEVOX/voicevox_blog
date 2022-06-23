@@ -3,6 +3,7 @@ import { CharacterKey } from "../types/dormitoryCharacter"
 
 export interface GlobalContextProps {
   sendEvent: (event: string, eventCategory: string) => void
+  experiments: boolean
 }
 
 export const GlobalContext = React.createContext<GlobalContextProps>({
@@ -11,6 +12,7 @@ export const GlobalContext = React.createContext<GlobalContextProps>({
       window.gtag &&
       window.gtag("event", event, { event_category: eventCategory })
   },
+  experiments: process.env.GATSBY_VOICEVOX_EXPERIMENTS === "true",
 })
 
 export interface CharacterContextProps {
@@ -35,6 +37,7 @@ export const CharacterContext = React.createContext<CharacterContextProps>({
     "青山龍星",
     "冥鳴ひまり",
     "九州そら",
+    "モチノキョウコ",
   ],
   characterInfos: {
     四国めたん: {
@@ -80,6 +83,10 @@ export const CharacterContext = React.createContext<CharacterContextProps>({
     九州そら: {
       name: "九州そら",
       policyUrl: "https://zunko.jp/con_ongen_kiyaku.html",
+    },
+    モチノキョウコ: {
+      name: "もち子さん",
+      policyUrl: "https://vtubermochio.wixsite.com/mochizora/利用規約",
     },
   },
 })

@@ -23,6 +23,11 @@ npm run develop
 npm run build && npm run serve
 ```
 
+### 実験モード
+
+コードは実装したいけど、デザインや調整などの課題があってまだサイトに反映できていない実験的なコードがいくつかあります。
+実験的なコードを反映した見た目を確認する際は、`.env.development`ファイルで`GATSBY_VOICEVOX_EXPERIMENTS=true`を指定してください。
+
 ## deploy
 
 ```bash
@@ -32,10 +37,10 @@ npm run clean && npm run deploy
 ## add resource
 
 ```bash
-editor_tag="0.11.4"
+editor_tag="0.12.3"
 editor_url="https://raw.githubusercontent.com/VOICEVOX/voicevox/$editor_tag"
 
-resource_tag="0.11.4"
+resource_tag="0.12.1"
 resource_url="https://raw.githubusercontent.com/VOICEVOX/voicevox_resource/$resource_tag"
 
 # 規約

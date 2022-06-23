@@ -150,7 +150,7 @@ export default ({
                   <h1
                     className="title"
                     dangerouslySetInnerHTML={{
-                      __html: `<ruby>${characterInfo.rubyName}</ruby>`,
+                      __html: characterInfo.rubyName,
                     }}
                   />
                   <a
@@ -181,7 +181,7 @@ export default ({
                         __html: characterInfo.description,
                       }}
                     />
-                    <div className="columns is-multiline">
+                    <div className="columns is-variable is-1 is-multiline">
                       {characterInfo.labelInfos.map((labelInfo, index) => (
                         <div
                           key={index}

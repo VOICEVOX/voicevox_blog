@@ -13,6 +13,9 @@ import himari003 from "../audios/himari-003.wav"
 import kotarou001 from "../audios/kotarou-001.wav"
 import kotarou002 from "../audios/kotarou-002.wav"
 import kotarou003 from "../audios/kotarou-003.wav"
+import kyoko001 from "../audios/kyoko-001.wav"
+import kyoko002 from "../audios/kyoko-002.wav"
+import kyoko003 from "../audios/kyoko-003.wav"
 import metanAma001 from "../audios/metan-ama-001.wav"
 import metanAma002 from "../audios/metan-ama-002.wav"
 import metanAma003 from "../audios/metan-ama-003.wav"
@@ -69,7 +72,6 @@ import "../components/layout.scss"
 import ModalReadmeLibrary from "../components/modalReadmeLibrary"
 import { Page } from "../components/page"
 import Seo from "../components/seo"
-import SoftwareFeatures from "../components/softwareFeatures"
 import { CharacterContext, GlobalContext } from "../contexts/context"
 import landingMovieThumb from "../images/landing-movie-thumb.png"
 import shareThumb from "../images/landing-share-thumb.jpg"
@@ -261,6 +263,15 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       ],
       releaseStatus: "released",
     },
+    モチノキョウコ: {
+      name: "もち子さん",
+      bustupImage: query.allFile.nodes.find(
+        node => node.name === "bustup-kyoko"
+      )!.childImageSharp.gatsbyImageData,
+      voiceFeature: "明瞭で穏やかな声",
+      voiceUrls: [{ style: "ノーマル", urls: [kyoko001, kyoko002, kyoko003] }],
+      releaseStatus: "released",
+    },
   }
 
   // ファーストビュー用のビューを超えたらヘッダーを表示する
@@ -384,14 +395,13 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
                   </span>
                   <span className="has-text-weight-semibold">ダウンロード</span>
                 </Link>
-                <p className="is-align-self-center is-size-6">Version 0.11.4</p>
+                <p className="is-align-self-center is-size-6">Version 0.12.3</p>
               </div>
             </div>
           </section>
         </div>
 
         <main>
-          <SoftwareFeatures />
           <section className="section">
             <div className="container is-max-desktop is-flex is-flex-direction-column">
               <h2 id="characters" className="title">
