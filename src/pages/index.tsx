@@ -282,7 +282,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       )!.childImageSharp.gatsbyImageData,
       voiceFeature: "安心感のある落ち着いた声",
       voiceUrls: [{ style: "ノーマル", urls: [mesuo001, mesuo002, mesuo003] }],
-      releaseStatus: "comingSoon",
+      releaseStatus: "released",
     },
   }
 

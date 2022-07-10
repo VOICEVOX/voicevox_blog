@@ -18,6 +18,7 @@ import kyoko02 from "../audios/dormitory/kyoko-02.wav"
 import kyoko03 from "../audios/dormitory/kyoko-03.wav"
 import kyoko04 from "../audios/dormitory/kyoko-04.wav"
 import kyoko05 from "../audios/dormitory/kyoko-05.wav"
+import mesuo01 from "../audios/dormitory/mesuo-01.wav"
 import metan01 from "../audios/dormitory/metan-01.wav"
 import metan02 from "../audios/dormitory/metan-02.wav"
 import metan03 from "../audios/dormitory/metan-03.wav"
@@ -576,7 +577,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         { label: "目的", value: "人類滅亡", size: 1 },
         { label: "年齢", value: "3600 歳", size: 1 },
       ],
-      voiceUrls: undefined,
+      voiceUrls: [mesuo01],
       infoImages: query.dormitory.nodes
         .filter(node => node.name.includes("mesuo"))
         .sort((a, b) => a.name.localeCompare(b.name))
@@ -596,7 +597,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         me: ["僕"],
         you: ["君等"],
       },
-      detailUrl: undefined,
+      detailUrl: "https://frontier.creatia.cc/fanclubs/413/posts/4507",
     },
   }
 
