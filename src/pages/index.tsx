@@ -16,6 +16,9 @@ import kotarou003 from "../audios/kotarou-003.wav"
 import kyoko001 from "../audios/kyoko-001.wav"
 import kyoko002 from "../audios/kyoko-002.wav"
 import kyoko003 from "../audios/kyoko-003.wav"
+import mesuo001 from "../audios/mesuo-001.wav"
+import mesuo002 from "../audios/mesuo-002.wav"
+import mesuo003 from "../audios/mesuo-003.wav"
 import metanAma001 from "../audios/metan-ama-001.wav"
 import metanAma002 from "../audios/metan-ama-002.wav"
 import metanAma003 from "../audios/metan-ama-003.wav"
@@ -194,7 +197,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       bustupImage: query.allFile.nodes.find(
         node => node.name === "bustup-takehiro"
       )!.childImageSharp.gatsbyImageData,
-      voiceFeature: "爽やかな青年ボイス",
+      voiceFeature: "爽やかな青年の声",
       voiceUrls: [
         { style: "ノーマル", urls: [takehiro001, takehiro002, takehiro003] },
       ],
@@ -205,7 +208,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       bustupImage: query.allFile.nodes.find(
         node => node.name === "bustup-kotarou"
       )!.childImageSharp.gatsbyImageData,
-      voiceFeature: "声変わり直後の少年ボイス",
+      voiceFeature: "声変わり直後の少年の声",
       voiceUrls: [
         { style: "ノーマル", urls: [kotarou001, kotarou002, kotarou003] },
       ],
@@ -216,7 +219,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       bustupImage: query.allFile.nodes.find(
         node => node.name === "bustup-ryusei"
       )!.childImageSharp.gatsbyImageData,
-      voiceFeature: "重厚な低音ボイス",
+      voiceFeature: "重厚で低音な声",
       voiceUrls: [
         { style: "ノーマル", urls: [ryusei001, ryusei002, ryusei003] },
       ],
@@ -271,6 +274,15 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       voiceFeature: "明瞭で穏やかな声",
       voiceUrls: [{ style: "ノーマル", urls: [kyoko001, kyoko002, kyoko003] }],
       releaseStatus: "released",
+    },
+    剣崎雌雄: {
+      name: "剣崎雌雄",
+      bustupImage: query.allFile.nodes.find(
+        node => node.name === "bustup-mesuo"
+      )!.childImageSharp.gatsbyImageData,
+      voiceFeature: "安心感のある落ち着いた声",
+      voiceUrls: [{ style: "ノーマル", urls: [mesuo001, mesuo002, mesuo003] }],
+      releaseStatus: "comingSoon",
     },
   }
 

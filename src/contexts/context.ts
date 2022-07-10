@@ -48,6 +48,7 @@ export const CharacterContext = React.createContext<CharacterContextProps>({
     "冥鳴ひまり",
     "九州そら",
     "モチノキョウコ",
+    "剣崎雌雄",
   ],
   characterInfos: {
     四国めたん: {
@@ -97,6 +98,10 @@ export const CharacterContext = React.createContext<CharacterContextProps>({
     モチノキョウコ: {
       name: "もち子さん",
       policyUrl: "https://vtubermochio.wixsite.com/mochizora/利用規約",
+    },
+    剣崎雌雄: {
+      name: "剣崎雌雄",
+      policyUrl: "https://frontier.creatia.cc/fanclubs/413/posts/4507",
     },
   },
 })

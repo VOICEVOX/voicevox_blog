@@ -137,6 +137,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         冥鳴ひまり: "ひまりさん",
         九州そら: "そら",
         モチノキョウコ: "もち子さん",
+        剣崎雌雄: "剣崎さん",
         me: ["わたくし"],
         you: ["貴女(たち)", "アンタ(ら)"],
       },
@@ -181,6 +182,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         冥鳴ひまり: "ひまり",
         九州そら: "そら",
         モチノキョウコ: "もち子",
+        剣崎雌雄: "めすお",
         me: ["ずんだもん", "僕"],
         you: ["オマエ", "みんな"],
       },
@@ -222,6 +224,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         冥鳴ひまり: "ひまっち",
         九州そら: "そらさん",
         モチノキョウコ: "もち子ちゃん",
+        剣崎雌雄: "めすおちゃん",
         me: ["あーし"],
         you: ["きみ", "きみたち"],
       },
@@ -259,6 +262,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         冥鳴ひまり: "ひまりさん",
         九州そら: "そらさん",
         モチノキョウコ: "もち子さん",
+        剣崎雌雄: "剣崎さん",
         me: ["僕"],
         you: ["あなた", "あなた達"],
       },
@@ -296,6 +300,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         冥鳴ひまり: "ひまり",
         九州そら: "そら",
         モチノキョウコ: "もち子",
+        剣崎雌雄: "めすお",
         me: ["あたし"],
         you: ["アンタ", "アンタら"],
       },
@@ -333,6 +338,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         冥鳴ひまり: "ひまり",
         九州そら: "そら",
         モチノキョウコ: "もち子",
+        剣崎雌雄: "雌雄",
         me: ["俺"],
         you: ["お前", "お前ら"],
       },
@@ -371,6 +377,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         冥鳴ひまり: "ひまりちゃん",
         九州そら: "そらさん",
         モチノキョウコ: "もち子さん",
+        剣崎雌雄: "シユー",
         me: ["おれ"],
         you: ["きみ", "きみ達"],
       },
@@ -408,6 +415,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         冥鳴ひまり: "ひまり",
         九州そら: "そら",
         モチノキョウコ: "もち子",
+        剣崎雌雄: "雌雄",
         me: ["オレ"],
         you: ["アンタ", "アンタ達", "お前達"],
       },
@@ -446,6 +454,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         青山龍星: "龍星くん",
         九州そら: "そらちゃん",
         モチノキョウコ: "もち子ちゃん",
+        剣崎雌雄: "メスオジ",
         me: ["私"],
         you: ["君たち"],
       },
@@ -493,6 +502,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         青山龍星: "龍星さま",
         冥鳴ひまり: "ひまりさま",
         モチノキョウコ: "もち子さま",
+        剣崎雌雄: "雌雄さま",
         me: ["まーくつー"],
         you: ["あなたさま", "みなさま"],
       },
@@ -518,7 +528,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         { label: "本名", value: "ﾓﾁﾉ･ｷｮｳｺ", size: 1 },
         { label: "CV", value: "明日葉よもぎ", size: 1 },
         { label: "相棒（？）", value: "あん子ちゃん", size: 1 },
-        { label: "身長", value: "143 cm", size: 1 },
+        { label: "身長", value: "142 cm", size: 1 },
       ],
       voiceUrls: [kyoko01, kyoko02, kyoko03, kyoko04, kyoko05],
       infoImages: query.dormitory.nodes
@@ -536,11 +546,57 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         青山龍星: "青山くん",
         冥鳴ひまり: "ひまりさん",
         九州そら: "そらさん",
+        剣崎雌雄: "剣崎さん",
         me: ["私", "もち子"],
         you: ["あなた", "あなた達"],
       },
       detailUrl:
         "https://vtubermochio.wixsite.com/mochizora/もち子さんとは-設定資料",
+    },
+
+    剣崎雌雄: {
+      name: "剣崎雌雄",
+      rubyName:
+        "<ruby>剣崎<rp>(</rp><rt>けんざき</rt><rp>)</rp>雌雄<rp>(</rp><rt>めすお</rt><rp>)</rp></ruby>",
+      bustupImage: query.bustup.nodes.find(
+        node => node.name === "bustup-mesuo"
+      )!.childImageSharp.gatsbyImageData,
+      portraitImage: query.portrait.nodes.find(
+        node => node.name === "portrait-mesuo"
+      )!.childImageSharp.gatsbyImageData,
+      color: "#33A65E",
+      lightColor: "#CCEBC5",
+      description:
+        "メスお兄さんじゃねえ！メスのお兄さんだ！<br />（人類滅亡を目論む医療用メスの付喪神）",
+      labelInfos: [
+        { label: "種族", value: "医療用メス（付喪神）", size: 2 },
+        { label: "好物", value: "人間のクソデカ感情・砥石", size: 2 },
+        { label: "身長", value: "175 cm", size: 1 },
+        { label: "誕生日", value: "7月7日", size: 1 },
+        { label: "目的", value: "人類滅亡", size: 1 },
+        { label: "年齢", value: "3600 歳", size: 1 },
+      ],
+      voiceUrls: undefined,
+      infoImages: query.dormitory.nodes
+        .filter(node => node.name.includes("mesuo"))
+        .sort((a, b) => a.name.localeCompare(b.name))
+        .map(node => node.childImageSharp.gatsbyImageData),
+      callNames: {
+        四国めたん: "くにさん",
+        ずんだもん: "だーもん",
+        春日部つむぎ: "べっつー",
+        雨晴はう: "はーさん",
+        波音リツ: "ねりさん",
+        玄野武宏: "くーろん",
+        白上虎太郎: "こっちゃん",
+        青山龍星: "りゅうさん",
+        冥鳴ひまり: "めまりちゃん",
+        九州そら: "らーさん",
+        モチノキョウコ: "もっちー",
+        me: ["僕"],
+        you: ["君等"],
+      },
+      detailUrl: undefined,
     },
   }
 
@@ -623,7 +679,10 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
                 characterInfo={characterInfos.モチノキョウコ}
                 onClick={() => showCharacterModal("モチノキョウコ")}
               />
-              <DormitoryCharacterCard characterInfo={undefined} />
+              <DormitoryCharacterCard
+                characterInfo={characterInfos.剣崎雌雄}
+                onClick={() => showCharacterModal("剣崎雌雄")}
+              />
             </div>
 
             <hr />
