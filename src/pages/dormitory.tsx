@@ -459,7 +459,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         me: ["私"],
         you: ["君たち"],
       },
-      detailUrl: "https://kotoran8zunzun.wixsite.com/my-site/利用規約",
+      detailUrl: "https://meimeihimari.wixsite.com/himari/複製-vtuber",
     },
 
     九州そら: {

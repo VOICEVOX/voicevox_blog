@@ -89,7 +89,7 @@ export const CharacterContext = React.createContext<CharacterContextProps>({
     },
     冥鳴ひまり: {
       name: "冥鳴ひまり",
-      policyUrl: "https://kotoran8zunzun.wixsite.com/my-site/利用規約",
+      policyUrl: "https://meimeihimari.wixsite.com/himari/terms-of-use",
     },
     九州そら: {
       name: "九州そら",
