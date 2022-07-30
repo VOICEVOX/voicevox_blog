@@ -229,7 +229,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         me: ["あーし"],
         you: ["きみ", "きみたち"],
       },
-      detailUrl: "https://tsukushinyoki10.wixsite.com/ktsumugiofficial",
+      detailUrl: "https://tsumugi-official.studio.site/top",
     },
 
     雨晴はう: {

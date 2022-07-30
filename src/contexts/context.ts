@@ -61,8 +61,7 @@ export const CharacterContext = React.createContext<CharacterContextProps>({
     },
     春日部つむぎ: {
       name: "春日部つむぎ",
-      policyUrl:
-        "https://tsukushinyoki10.wixsite.com/ktsumugiofficial/利用規約",
+      policyUrl: "https://tsumugi-official.studio.site/rule",
     },
     雨晴はう: {
       name: "雨晴はう",
