@@ -5,7 +5,7 @@ https://voicevox.hiroshiba.jp/
 
 ## 環境構築
 
-Node v14.17.4、npm v6.14.14 を用いて開発されています。
+Node v16.16.0、npm v8.11.0 を用いて開発されています。
 
 ```bash
 npm ci
