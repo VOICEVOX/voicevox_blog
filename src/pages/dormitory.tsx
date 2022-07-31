@@ -46,6 +46,7 @@ import zundamon01 from "../audios/dormitory/zundamon-01.wav"
 import zundamon02 from "../audios/dormitory/zundamon-02.wav"
 import zundamon03 from "../audios/dormitory/zundamon-03.wav"
 import zundamon04 from "../audios/dormitory/zundamon-04.wav"
+import zundamon05 from "../audios/dormitory/zundamon-05.wav"
 import DormitoryCharacterCard from "../components/dormitoryCharacterCard"
 import DormitoryCharacterModal from "../components/dormitoryCharacterModal"
 import "../components/layout.scss"
@@ -167,7 +168,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         },
         { label: "将来の夢", value: "ずんだ餅のさらなる普及", size: 2 },
       ],
-      voiceUrls: [zundamon01, zundamon02, zundamon03, zundamon04],
+      voiceUrls: [zundamon01, zundamon02, zundamon03, zundamon04, zundamon05],
       infoImages: query.dormitory.nodes
         .filter(node => node.name.includes("zundamon"))
         .sort((a, b) => a.name.localeCompare(b.name))
