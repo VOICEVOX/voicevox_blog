@@ -12,10 +12,16 @@ const modeAvailables: Record<OsType, ModeType[]> = {
   Linux: ["GPU / CPU", "CPU"],
 }
 
-const packageAvailables: Record<OsType, PackageType[]> = {
-  Windows: ["インストーラー", "Zip"],
-  Mac: ["インストーラー", "Zip"],
-  Linux: ["インストーラー", "tar.gz"],
+const packageAvailables: Record<OsType, Record<ModeType, PackageType[]>> = {
+  Windows: {
+    "GPU / CPU": ["インストーラー", "Zip"],
+    CPU: ["インストーラー", "Zip"],
+  },
+  Mac: {
+    "GPU / CPU": ["インストーラー", "Zip"],
+    CPU: ["インストーラー", "Zip"],
+  },
+  Linux: { "GPU / CPU": ["インストーラー"], CPU: ["インストーラー", "tar.gz"] },
 }
 
 export const DownloadModal: React.FC<{
@@ -50,34 +56,34 @@ export const DownloadModal: React.FC<{
     Windows: {
       "GPU / CPU": {
         インストーラー: {
-          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.12.5/VOICEVOX.Web.Setup.0.12.5.exe",
-          name: "VOICEVOX.Setup.0.12.5.Windows.exe",
+          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.13.1/VOICEVOX.Web.Setup.0.13.1.exe",
+          name: "VOICEVOX.Setup.0.13.1.Windows.exe",
         },
         Zip: {
-          url: "https://drive.google.com/file/d/1Reb6zMvUcJdkIIDZnBPuOruqi7MrwiU7/view?usp=sharing",
-          name: "VOICEVOX.0.12.5.Windows.zip",
+          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.13.1/voicevox-windows-directml-0.13.1.zip",
+          name: "VOICEVOX.0.13.1.Windows.zip",
         },
       },
       CPU: {
         インストーラー: {
-          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.12.5/VOICEVOX-CPU.Web.Setup.0.12.5.exe",
-          name: "VOICEVOX-CPU.Setup.0.12.5.Windows.exe",
+          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.13.1/VOICEVOX-CPU.Web.Setup.0.13.1.exe",
+          name: "VOICEVOX-CPU.Setup.0.13.1.Windows.exe",
         },
         Zip: {
-          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.12.5/voicevox-windows-cpu-0.12.5.zip",
-          name: "VOICEVOX-CPU.0.12.5.Windows.zip",
+          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.13.1/voicevox-windows-cpu-0.13.1.zip",
+          name: "VOICEVOX-CPU.0.13.1.Windows.zip",
         },
       },
     },
     Mac: {
       CPU: {
         インストーラー: {
-          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.12.5/VOICEVOX.0.12.5.dmg",
-          name: "VOICEVOX.0.12.5.Mac.dmg",
+          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.13.1/VOICEVOX.0.13.1.dmg",
+          name: "VOICEVOX.0.13.1.Mac.dmg",
         },
         Zip: {
-          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.12.5/voicevox-macos-cpu-0.12.5.zip",
-          name: "VOICEVOX-CPU.0.12.5.Mac.zip",
+          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.13.1/voicevox-macos-cpu-0.13.1.zip",
+          name: "VOICEVOX-CPU.0.13.1.Mac.zip",
         },
       },
     },
@@ -86,22 +92,18 @@ export const DownloadModal: React.FC<{
         インストーラー: {
           url: scriptNodes.find(value => value.name == "linuxInstallNvidia")!
             .publicURL,
-          name: "VOICEVOX.Installer.0.12.5.Linux.sh",
-        },
-        "tar.gz": {
-          url: "https://drive.google.com/file/d/1eBfzTpjqAT3LDtZur1qrTQMi5p_7P_ND/view?usp=sharing",
-          name: "VOICEVOX.0.12.5.Linux.tar.gz",
+          name: "VOICEVOX.Installer.0.13.1.Linux.sh",
         },
       },
       CPU: {
         インストーラー: {
           url: scriptNodes.find(value => value.name == "linuxInstallCpu")!
             .publicURL,
-          name: "VOICEVOX-CPU.Installer.0.12.5.Linux.sh",
+          name: "VOICEVOX-CPU.Installer.0.13.1.Linux.sh",
         },
         "tar.gz": {
-          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.12.5/voicevox-linux-cpu-0.12.5.tar.gz",
-          name: "VOICEVOX-CPU.0.12.5.Linux.tar.gz",
+          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.13.1/voicevox-linux-cpu-0.13.1.tar.gz",
+          name: "VOICEVOX-CPU.0.13.1.Linux.tar.gz",
         },
       },
     },
@@ -118,9 +120,11 @@ export const DownloadModal: React.FC<{
       setSelectedMode(modeAvailables[selectedOs][0])
     }
     if (
-      !packageAvailables[selectedOs].find(value => value == selectedPackage)
+      !packageAvailables[selectedOs][selectedMode].find(
+        value => value == selectedPackage
+      )
     ) {
-      setSelectedPackage(packageAvailables[selectedOs][0])
+      setSelectedPackage(packageAvailables[selectedOs][selectedMode][0])
     }
   }, [selectedOs, selectedMode, selectedPackage])
 
@@ -173,7 +177,7 @@ export const DownloadModal: React.FC<{
                 label="パッケージ"
                 selected={selectedPackage}
                 setSelected={setSelectedPackage}
-                candidates={packageAvailables[selectedOs]}
+                candidates={packageAvailables[selectedOs][selectedMode]}
               />
               <p className="has-text-centered is-size-7">
                 ※ 推奨パッケージはインストーラー版です
