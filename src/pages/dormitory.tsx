@@ -53,6 +53,7 @@ import "../components/layout.scss"
 import { Page } from "../components/page"
 import Seo from "../components/seo"
 import { CharacterContext } from "../contexts/context"
+import shareThumb from "../images/dormitory/top.png"
 import {
   CharacterInfo,
   CharacterKey,
@@ -651,7 +652,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       <Seo
         title="ボイボ寮 | VOICEVOX"
         description="とある世界の不思議な建物、ボイボ寮。ここでは個性豊かな住民たちが暮らしています。"
-        // image={shareThumb}
+        image={shareThumb}
       />
 
       <div className="dormitory">
@@ -664,6 +665,12 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         </header>
 
         <section className="section py-0">
+          <div className="container is-max-desktop">
+            <StaticImage
+              src="../images/dormitory/top.png"
+              alt="トップイラスト"
+            />
+          </div>
           <div className="container is-max-desktop has-text-centered is-size-5 py-6">
             <p>とある世界の不思議な建物、ボイボ寮。</p>
             <p>ここでは個性豊かな住民たちが暮らしています。</p>
