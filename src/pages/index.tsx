@@ -70,6 +70,9 @@ import zundamonSexy003 from "../audios/zundamon-sexy-003.wav"
 import zundamonTsun001 from "../audios/zundamon-tsun-001.wav"
 import zundamonTsun002 from "../audios/zundamon-tsun-002.wav"
 import zundamonTsun003 from "../audios/zundamon-tsun-003.wav"
+import zundamonWhis001 from "../audios/zundamon-whis-001.wav"
+import zundamonWhis002 from "../audios/zundamon-whis-002.wav"
+import zundamonWhis003 from "../audios/zundamon-whis-003.wav"
 import AudioSample from "../components/audioSample"
 import "../components/layout.scss"
 import ModalReadmeLibrary from "../components/modalReadmeLibrary"
@@ -160,6 +163,10 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         {
           style: "セクシー",
           urls: [zundamonSexy001, zundamonSexy002, zundamonSexy003],
+        },
+        {
+          style: "ささやき",
+          urls: [zundamonWhis001, zundamonWhis002, zundamonWhis003],
         },
       ],
       releaseStatus: "released",
@@ -413,7 +420,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
                   </span>
                   <span className="has-text-weight-semibold">ダウンロード</span>
                 </a>
-                <p className="is-align-self-center is-size-6">Version 0.12.4</p>
+                <p className="is-align-self-center is-size-6">Version 0.12.5</p>
               </div>
             </div>
           </section>

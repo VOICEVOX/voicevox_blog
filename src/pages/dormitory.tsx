@@ -46,12 +46,14 @@ import zundamon01 from "../audios/dormitory/zundamon-01.wav"
 import zundamon02 from "../audios/dormitory/zundamon-02.wav"
 import zundamon03 from "../audios/dormitory/zundamon-03.wav"
 import zundamon04 from "../audios/dormitory/zundamon-04.wav"
+import zundamon05 from "../audios/dormitory/zundamon-05.wav"
 import DormitoryCharacterCard from "../components/dormitoryCharacterCard"
 import DormitoryCharacterModal from "../components/dormitoryCharacterModal"
 import "../components/layout.scss"
 import { Page } from "../components/page"
 import Seo from "../components/seo"
 import { CharacterContext } from "../contexts/context"
+import shareThumb from "../images/dormitory/top.png"
 import {
   CharacterInfo,
   CharacterKey,
@@ -167,7 +169,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         },
         { label: "将来の夢", value: "ずんだ餅のさらなる普及", size: 2 },
       ],
-      voiceUrls: [zundamon01, zundamon02, zundamon03, zundamon04],
+      voiceUrls: [zundamon01, zundamon02, zundamon03, zundamon04, zundamon05],
       infoImages: query.dormitory.nodes
         .filter(node => node.name.includes("zundamon"))
         .sort((a, b) => a.name.localeCompare(b.name))
@@ -650,7 +652,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       <Seo
         title="ボイボ寮 | VOICEVOX"
         description="とある世界の不思議な建物、ボイボ寮。ここでは個性豊かな住民たちが暮らしています。"
-        // image={shareThumb}
+        image={shareThumb}
       />
 
       <div className="dormitory">
@@ -663,6 +665,12 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         </header>
 
         <section className="section py-0">
+          <div className="container is-max-desktop">
+            <StaticImage
+              src="../images/dormitory/top.png"
+              alt="トップイラスト"
+            />
+          </div>
           <div className="container is-max-desktop has-text-centered is-size-5 py-6">
             <p>とある世界の不思議な建物、ボイボ寮。</p>
             <p>ここでは個性豊かな住民たちが暮らしています。</p>

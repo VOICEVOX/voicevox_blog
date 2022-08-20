@@ -50,34 +50,34 @@ export const DownloadModal: React.FC<{
     Windows: {
       "GPU / CPU": {
         インストーラー: {
-          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.12.4/VOICEVOX.Web.Setup.0.12.4.exe",
-          name: "VOICEVOX.Setup.0.12.4.Windows.exe",
+          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.12.5/VOICEVOX.Web.Setup.0.12.5.exe",
+          name: "VOICEVOX.Setup.0.12.5.Windows.exe",
         },
         Zip: {
-          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.12.4/voicevox-windows-nvidia-0.12.4.zip",
-          name: "VOICEVOX.0.12.4.Windows.zip",
+          url: "https://drive.google.com/file/d/1Reb6zMvUcJdkIIDZnBPuOruqi7MrwiU7/view?usp=sharing",
+          name: "VOICEVOX.0.12.5.Windows.zip",
         },
       },
       CPU: {
         インストーラー: {
-          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.12.4/VOICEVOX-CPU.Web.Setup.0.12.4.exe",
-          name: "VOICEVOX-CPU.Setup.0.12.4.Windows.exe",
+          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.12.5/VOICEVOX-CPU.Web.Setup.0.12.5.exe",
+          name: "VOICEVOX-CPU.Setup.0.12.5.Windows.exe",
         },
         Zip: {
-          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.12.4/voicevox-windows-cpu-0.12.4.zip",
-          name: "VOICEVOX-CPU.0.12.4.Windows.zip",
+          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.12.5/voicevox-windows-cpu-0.12.5.zip",
+          name: "VOICEVOX-CPU.0.12.5.Windows.zip",
         },
       },
     },
     Mac: {
       CPU: {
         インストーラー: {
-          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.12.4/VOICEVOX.0.12.4.dmg",
-          name: "VOICEVOX.0.12.4.Mac.dmg",
+          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.12.5/VOICEVOX.0.12.5.dmg",
+          name: "VOICEVOX.0.12.5.Mac.dmg",
         },
         Zip: {
-          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.12.4/voicevox-macos-cpu-0.12.4.zip",
-          name: "VOICEVOX-CPU.0.12.4.Mac.zip",
+          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.12.5/voicevox-macos-cpu-0.12.5.zip",
+          name: "VOICEVOX-CPU.0.12.5.Mac.zip",
         },
       },
     },
@@ -86,22 +86,22 @@ export const DownloadModal: React.FC<{
         インストーラー: {
           url: scriptNodes.find(value => value.name == "linuxInstallNvidia")!
             .publicURL,
-          name: "VOICEVOX.Installer.0.12.4.Linux.sh",
+          name: "VOICEVOX.Installer.0.12.5.Linux.sh",
         },
         "tar.gz": {
-          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.12.4/voicevox-linux-nvidia-0.12.4.tar.gz",
-          name: "VOICEVOX.0.12.4.Linux.tar.gz",
+          url: "https://drive.google.com/file/d/1eBfzTpjqAT3LDtZur1qrTQMi5p_7P_ND/view?usp=sharing",
+          name: "VOICEVOX.0.12.5.Linux.tar.gz",
         },
       },
       CPU: {
         インストーラー: {
           url: scriptNodes.find(value => value.name == "linuxInstallCpu")!
             .publicURL,
-          name: "VOICEVOX-CPU.Installer.0.12.4.Linux.sh",
+          name: "VOICEVOX-CPU.Installer.0.12.5.Linux.sh",
         },
         "tar.gz": {
-          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.12.4/voicevox-linux-cpu-0.12.4.tar.gz",
-          name: "VOICEVOX-CPU.0.12.4.Linux.tar.gz",
+          url: "https://github.com/VOICEVOX/voicevox/releases/download/0.12.5/voicevox-linux-cpu-0.12.5.tar.gz",
+          name: "VOICEVOX-CPU.0.12.5.Linux.tar.gz",
         },
       },
     },
