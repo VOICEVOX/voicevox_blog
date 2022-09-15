@@ -22,7 +22,7 @@ export const VVFooter: React.FC<{
       </a>
       <a
         className="button is-outlined is-info ml-1 mr-1"
-        href="https://twitter.com/hiho_karuta"
+        href="https://twitter.com/voicevox_pj"
         target="_blank"
         rel="noreferrer"
         type="button"
