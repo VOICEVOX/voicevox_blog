@@ -11,10 +11,10 @@ import { ModalHowToUse } from "./modalHowToUse"
 import { ModalReadmeSoftware } from "./modalReadmeSoftware"
 import { VVFooter } from "./page-footer"
 
-export const Page: React.FC<{ showingHeader?: boolean }> = ({
-  showingHeader = true,
-  children,
-}) => {
+export const Page: React.FC<{
+  showingHeader?: boolean
+  children: React.ReactNode
+}> = ({ showingHeader = true, children }) => {
   // ヘッダー分のスペースを空ける
   // FIXME: 本当は`showingHeader`が変わるたびに切り替えたいが、
   // そうするとトップページでヘッダー有無が振動するのでやめている

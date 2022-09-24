@@ -49,11 +49,12 @@ import zundamon04 from "../audios/dormitory/zundamon-04.wav"
 import zundamon05 from "../audios/dormitory/zundamon-05.wav"
 import DormitoryCharacterCard from "../components/dormitoryCharacterCard"
 import DormitoryCharacterModal from "../components/dormitoryCharacterModal"
+import DormitoryTopIllustContainer from "../components/dormitoryTopIllustContainer"
 import "../components/layout.scss"
 import { Page } from "../components/page"
 import Seo from "../components/seo"
 import { CharacterContext } from "../contexts/context"
-import shareThumb from "../images/dormitory/top.png"
+import shareThumb from "../images/dormitory/top-illusts/top-illust-002.png"
 import {
   CharacterInfo,
   CharacterKey,
@@ -633,6 +634,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
     observer.observe(headerRef.current)
   }, [headerRef])
 
+  // キャラクターモーダル
   const [showingCharacterModal, setShowingCharacterModal] = useState(false)
   const [selectedCharacterKey, setSelectedCharacterKey] =
     useState<CharacterKey>()
@@ -667,7 +669,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         <section className="section py-0">
           <div className="container is-max-desktop">
             <StaticImage
-              src="../images/dormitory/top.png"
+              src="../images/dormitory/top-illusts/top-illust-002.png"
               alt="トップイラスト"
             />
           </div>
@@ -678,7 +680,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         </section>
 
         <main className="section py-0">
-          <div className="container is-max-desktop pt-1 pb-6">
+          <div className="container character-container is-max-desktop pt-1 pb-6">
             <div className="columns is-multiline">
               <div className="column is-2 generation-label">
                 <h2 className="title is-3">4 期 生</h2>
@@ -822,6 +824,10 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
             </Link>
           </div>
         </section>
+
+        <section className="section py-5">
+          <DormitoryTopIllustContainer />
+        </section>
       </div>
       {selectedCharacterKey && (
         <DormitoryCharacterModal
@@ -833,6 +839,17 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
           generationInfos={generationInfos}
         />
       )}
+      {/* {selectedTopIllustKey && (
+        <div
+          className={
+            `modal-top-illust modal` +
+            (selectedTopIllustKey ? " is-active" : "")
+          }
+        >
+          <div className="modal-background" onClick={hideTopIllustModal} />
+          
+        </div>
+      )} */}
     </>
   )
 }
