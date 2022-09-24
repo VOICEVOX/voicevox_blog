@@ -839,17 +839,6 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
           generationInfos={generationInfos}
         />
       )}
-      {/* {selectedTopIllustKey && (
-        <div
-          className={
-            `modal-top-illust modal` +
-            (selectedTopIllustKey ? " is-active" : "")
-          }
-        >
-          <div className="modal-background" onClick={hideTopIllustModal} />
-          
-        </div>
-      )} */}
     </>
   )
 }
