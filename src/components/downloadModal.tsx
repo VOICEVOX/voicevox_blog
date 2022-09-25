@@ -167,8 +167,9 @@ export const DownloadModal: React.FC<{
                 candidates={modeAvailables[selectedOs]}
               />
               <p className="has-text-centered is-size-7">
-                ※
-                GPUモードの方が快適ですが、利用するためにはNvidia製GPUが必要です
+                ※ GPUモードの方が快適ですが、利用するためには
+                <a href="https://voicevox.hiroshiba.jp/qa">対応するGPU</a>
+                が必要です
               </p>
 
               <hr className="my-3" />
@@ -181,10 +182,6 @@ export const DownloadModal: React.FC<{
               />
               <p className="has-text-centered is-size-7">
                 ※ 推奨パッケージはインストーラー版です
-              </p>
-              <p className="has-text-centered is-size-7">
-                ※
-                Zip版がダウンロードできない場合はインストーラー版をご利用ください
               </p>
             </section>
 
