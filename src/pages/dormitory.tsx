@@ -1,6 +1,11 @@
 import { graphql, Link, useStaticQuery } from "gatsby"
 import { IGatsbyImageData, StaticImage } from "gatsby-plugin-image"
 import React, { useContext, useEffect, useRef, useState } from "react"
+import goki01 from "../audios/dormitory/goki-01.wav"
+import goki02 from "../audios/dormitory/goki-02.wav"
+import goki03 from "../audios/dormitory/goki-03.wav"
+import goki04 from "../audios/dormitory/goki-04.wav"
+import goki05 from "../audios/dormitory/goki-05.wav"
 import hau01 from "../audios/dormitory/hau-01.wav"
 import hau02 from "../audios/dormitory/hau-02.wav"
 import hau03 from "../audios/dormitory/hau-03.wav"
@@ -31,6 +36,10 @@ import ritsu05 from "../audios/dormitory/ritsu-05.wav"
 import ryusei01 from "../audios/dormitory/ryusei-01.wav"
 import ryusei02 from "../audios/dormitory/ryusei-02.wav"
 import ryusei03 from "../audios/dormitory/ryusei-03.wav"
+import seven01 from "../audios/dormitory/seven-01.wav"
+import seven02 from "../audios/dormitory/seven-02.wav"
+import seven03 from "../audios/dormitory/seven-03.wav"
+import seven04 from "../audios/dormitory/seven-04.wav"
 import sora01 from "../audios/dormitory/sora-01.wav"
 import sora02 from "../audios/dormitory/sora-02.wav"
 import sora03 from "../audios/dormitory/sora-03.wav"
@@ -42,6 +51,10 @@ import tsumugi01 from "../audios/dormitory/tsumugi-01.wav"
 import tsumugi02 from "../audios/dormitory/tsumugi-02.wav"
 import tsumugi03 from "../audios/dormitory/tsumugi-03.wav"
 import tsumugi04 from "../audios/dormitory/tsumugi-04.wav"
+import white01 from "../audios/dormitory/white-01.wav"
+import white02 from "../audios/dormitory/white-02.wav"
+import white03 from "../audios/dormitory/white-03.wav"
+import white04 from "../audios/dormitory/white-04.wav"
 import zundamon01 from "../audios/dormitory/zundamon-01.wav"
 import zundamon02 from "../audios/dormitory/zundamon-02.wav"
 import zundamon03 from "../audios/dormitory/zundamon-03.wav"
@@ -142,6 +155,9 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         九州そら: "そら",
         モチノキョウコ: "もち子さん",
         剣崎雌雄: "剣崎さん",
+        WhiteCUL: "雪さん",
+        後鬼: "後鬼さん",
+        No7: "セブンさん",
         me: ["わたくし"],
         you: ["貴女(たち)", "アンタ(ら)"],
       },
@@ -187,6 +203,9 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         九州そら: "そら",
         モチノキョウコ: "もち子",
         剣崎雌雄: "めすお",
+        WhiteCUL: "雪",
+        後鬼: "後鬼",
+        No7: "セブン",
         me: ["ずんだもん", "僕"],
         you: ["オマエ", "みんな"],
       },
@@ -229,6 +248,9 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         九州そら: "そらさん",
         モチノキョウコ: "もち子ちゃん",
         剣崎雌雄: "めすおちゃん",
+        WhiteCUL: "ゆきちゃん",
+        後鬼: "後鬼せんせー",
+        No7: "ななっち",
         me: ["あーし"],
         you: ["きみ", "きみたち"],
       },
@@ -305,6 +327,9 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         九州そら: "そら",
         モチノキョウコ: "もち子",
         剣崎雌雄: "めすお",
+        WhiteCUL: "ゆき",
+        後鬼: "ごき",
+        No7: "なな",
         me: ["あたし"],
         you: ["アンタ", "アンタら"],
       },
@@ -507,6 +532,9 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         冥鳴ひまり: "ひまりさま",
         モチノキョウコ: "もち子さま",
         剣崎雌雄: "雌雄さま",
+        WhiteCUL: "雪さま",
+        後鬼: "後鬼さま",
+        No7: "セブンさま",
         me: ["まーくつー"],
         you: ["あなたさま", "みなさま"],
       },
@@ -551,6 +579,9 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         冥鳴ひまり: "ひまりさん",
         九州そら: "そらさん",
         剣崎雌雄: "剣崎さん",
+        WhiteCUL: "ユキさん",
+        後鬼: "後鬼お姉さん",
+        No7: "セブンちゃん",
         me: ["私", "もち子"],
         you: ["あなた", "あなた達"],
       },
@@ -597,10 +628,157 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         冥鳴ひまり: "めまりちゃん",
         九州そら: "らーさん",
         モチノキョウコ: "もっちー",
+        WhiteCUL: "とかっち",
+        後鬼: "ごっさん",
+        No7: "ぶんぶん丸",
         me: ["僕"],
         you: ["君等"],
       },
       detailUrl: "https://frontier.creatia.cc/fanclubs/413/posts/4507",
+    },
+
+    WhiteCUL: {
+      name: "WhiteCUL",
+      rubyName:
+        "<ruby>WhiteCUL<rp>(</rp><rt>ほわいとかる</rt><rp>)</rp></ruby>",
+      bustupImage: query.bustup.nodes.find(
+        node => node.name === "bustup-white"
+      )!.childImageSharp.gatsbyImageData,
+      portraitImage: query.portrait.nodes.find(
+        node => node.name === "portrait-white"
+      )!.childImageSharp.gatsbyImageData,
+      color: "#1D86AE",
+      lightColor: "#B3D7DD",
+      description:
+        "CULの姉。風雪月花四姉妹の雪。冷静に見えるが、<br>実は小心者のクールビューティー。",
+      labelInfos: [
+        { label: "年齢", value: "20 歳", size: 1 },
+        { label: "身長", value: "165 cm", size: 1 },
+        { label: "体重", value: "内緒", size: 1 },
+        { label: "誕生日", value: "9月30日", size: 1 },
+        { label: "愛称", value: "雪さん", size: 1 },
+        { label: "相棒", value: "雪おこじょ", size: 1 },
+        { label: "好物", value: "バニラソフトクリーム", size: 2 },
+      ],
+      voiceUrls: [white01, white02, white03, white04],
+      infoImages: query.dormitory.nodes
+        .filter(node => node.name.includes("white"))
+        .sort((a, b) => a.name.localeCompare(b.name))
+        .map(node => node.childImageSharp.gatsbyImageData),
+      callNames: {
+        四国めたん: "めたんちゃん",
+        ずんだもん: "ずんだもん",
+        春日部つむぎ: "つむぎ",
+        雨晴はう: "はうちゃん",
+        波音リツ: "リツちゃん",
+        玄野武宏: "武弘さん",
+        白上虎太郎: "虎太郎くん",
+        青山龍星: "りゅうちゃん",
+        冥鳴ひまり: "ひまりん",
+        九州そら: "そらさん",
+        モチノキョウコ: "もちこさん",
+        剣崎雌雄: "剣崎さん",
+        後鬼: "後鬼さん",
+        No7: "ななさん",
+        me: ["わたし"],
+        you: ["あなた", "あなたたち"],
+      },
+      detailUrl: "https://whitecul.zan-shin.net/",
+    },
+
+    後鬼: {
+      name: "後鬼",
+      rubyName: "<ruby>後鬼<rp>(</rp><rt>ごき</rt><rp>)</rp></ruby>",
+      bustupImage: query.bustup.nodes.find(node => node.name === "bustup-goki")!
+        .childImageSharp.gatsbyImageData,
+      portraitImage: query.portrait.nodes.find(
+        node => node.name === "portrait-goki"
+      )!.childImageSharp.gatsbyImageData,
+      color: "#386CB0",
+      lightColor: "#B3CDE3",
+      description:
+        "ぬいぐるみ後鬼の人間態。人間態では口調が大きく<br>変わり、色っぽい大人の女性の話し方になる。",
+      labelInfos: [
+        { label: "CV", value: "七海映子", size: 1 },
+        { label: "年齢", value: "少なくとも1300歳以上", size: 2 },
+        { label: "身長", value: "ヒール込みで170cm", size: 2 },
+        { label: "体重", value: "スイカ2つ分（某部分が）", size: 2 },
+      ],
+      voiceUrls: [goki01, goki02, goki03, goki04, goki05],
+      infoImages: query.dormitory.nodes
+        .filter(node => node.name.includes("goki"))
+        .sort((a, b) => a.name.localeCompare(b.name))
+        .map(node => node.childImageSharp.gatsbyImageData),
+      callNames: {
+        四国めたん: "四国さん/めたんはん",
+        ずんだもん: "ずんだもん",
+        春日部つむぎ: "春日部さん/つむぎはん",
+        雨晴はう: "雨晴さん/はうはん",
+        波音リツ: "波音さん/リツはん",
+        玄野武宏: "玄野くん/玄野はん",
+        白上虎太郎: "白上くん/白上はん",
+        青山龍星: "青山くん/龍星はん",
+        冥鳴ひまり: "冥鳴さん/ひまりはん",
+        九州そら: "九州さん/九州はん",
+        モチノキョウコ: "もち子さん/もち子はん",
+        剣崎雌雄: "剣崎くん/剣崎はん",
+        WhiteCUL: "雪さん/雪はん",
+        No7: "セブンさん/セブンはん",
+        me: ["私/ワテ"],
+        you: ["あなたorキミ", "/あんたはん"],
+      },
+      detailUrl: "https://ついなちゃん.com/voicevox_terms/",
+    },
+
+    No7: {
+      name: "No.7",
+      rubyName: "<ruby>No.7<rp>(</rp><rt>なんばーせぶん</rt><rp>)</rp></ruby>",
+      bustupImage: query.bustup.nodes.find(
+        node => node.name === "bustup-seven"
+      )!.childImageSharp.gatsbyImageData,
+      portraitImage: query.portrait.nodes.find(
+        node => node.name === "portrait-seven"
+      )!.childImageSharp.gatsbyImageData,
+      color: "#A45AAA",
+      lightColor: "#CAB2D6",
+      description:
+        "正体がつかめない不思議な女性。<br>得意のメイクで複数の「顔」を持つ。",
+      labelInfos: [
+        { label: "年齢", value: "23 歳", size: 1 },
+        { label: "身長", value: "165 cm", size: 1 },
+        { label: "CV", value: "小岩井ことり", size: 1 },
+        { label: "好きなもの", value: "子供", size: 1 },
+        {
+          label: "性格",
+          value: "ミニマリストで部屋の明かりは蝋燭のみ",
+          size: 2,
+        },
+        { label: "趣味", value: "かいわれ大根の栽培", size: 2 },
+      ],
+      voiceUrls: [seven01, seven02, seven03, seven04],
+      infoImages: query.dormitory.nodes
+        .filter(node => node.name.includes("seven"))
+        .sort((a, b) => a.name.localeCompare(b.name))
+        .map(node => node.childImageSharp.gatsbyImageData),
+      callNames: {
+        四国めたん: "四国さん",
+        ずんだもん: "ずんだもん様",
+        春日部つむぎ: "春日部さん",
+        雨晴はう: "雨晴さん",
+        波音リツ: "波音さん",
+        玄野武宏: "玄野さん",
+        白上虎太郎: "白上さん",
+        青山龍星: "青山さん",
+        冥鳴ひまり: "冥鳴さん",
+        九州そら: "九州さん",
+        モチノキョウコ: "モチノさん",
+        剣崎雌雄: "剣崎さん",
+        後鬼: "後鬼さん",
+        WhiteCUL: "雪さん",
+        me: ["私"],
+        you: ["そちら様", "皆様"],
+      },
+      detailUrl: "https://voiceseven.com/",
     },
   }
 
@@ -681,6 +859,27 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
 
         <main className="section py-0">
           <div className="container character-container is-max-desktop pt-1 pb-6">
+            <div className="columns is-multiline">
+              <div className="column is-2 generation-label">
+                <h2 className="title is-3">5 期 生</h2>
+              </div>
+
+              <DormitoryCharacterCard
+                characterInfo={characterInfos.WhiteCUL}
+                onClick={() => showCharacterModal("WhiteCUL")}
+              />
+              <DormitoryCharacterCard
+                characterInfo={characterInfos.後鬼}
+                onClick={() => showCharacterModal("後鬼")}
+              />
+              <DormitoryCharacterCard
+                characterInfo={characterInfos.No7}
+                onClick={() => showCharacterModal("No7")}
+              />
+            </div>
+
+            <hr />
+
             <div className="columns is-multiline">
               <div className="column is-2 generation-label">
                 <h2 className="title is-3">4 期 生</h2>

@@ -13,6 +13,9 @@ export type CharacterKey =
   | "九州そら"
   | "モチノキョウコ"
   | "剣崎雌雄"
+  | "WhiteCUL"
+  | "後鬼"
+  | "No7"
 
 export type CharacterInfo = {
   name: string

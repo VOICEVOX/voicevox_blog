@@ -4,15 +4,33 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { graphql, Link, useStaticQuery } from "gatsby"
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image"
 import React, { useContext, useEffect, useRef, useState } from "react"
+import gokiNormal001 from "../audios/goki-normal-001.wav"
+import gokiNormal002 from "../audios/goki-normal-002.wav"
+import gokiNormal003 from "../audios/goki-normal-003.wav"
+import gokiNuigurumi001 from "../audios/goki-nuigurumi-001.wav"
+import gokiNuigurumi002 from "../audios/goki-nuigurumi-002.wav"
+import gokiNuigurumi003 from "../audios/goki-nuigurumi-003.wav"
 import hau001 from "../audios/hau-001.wav"
 import hau002 from "../audios/hau-002.wav"
 import hau003 from "../audios/hau-003.wav"
 import himari001 from "../audios/himari-001.wav"
 import himari002 from "../audios/himari-002.wav"
 import himari003 from "../audios/himari-003.wav"
-import kotarou001 from "../audios/kotarou-001.wav"
-import kotarou002 from "../audios/kotarou-002.wav"
-import kotarou003 from "../audios/kotarou-003.wav"
+import kotarouAngry001 from "../audios/kotarou-angry-001.wav"
+import kotarouAngry002 from "../audios/kotarou-angry-002.wav"
+import kotarouAngry003 from "../audios/kotarou-angry-003.wav"
+import kotarouBiku001 from "../audios/kotarou-biku-001.wav"
+import kotarouBiku002 from "../audios/kotarou-biku-002.wav"
+import kotarouBiku003 from "../audios/kotarou-biku-003.wav"
+import kotarouCry001 from "../audios/kotarou-cry-001.wav"
+import kotarouCry002 from "../audios/kotarou-cry-002.wav"
+import kotarouCry003 from "../audios/kotarou-cry-003.wav"
+import kotarouJoy001 from "../audios/kotarou-joy-001.wav"
+import kotarouJoy002 from "../audios/kotarou-joy-002.wav"
+import kotarouJoy003 from "../audios/kotarou-joy-003.wav"
+import kotarouNormal001 from "../audios/kotarou-normal-001.wav"
+import kotarouNormal002 from "../audios/kotarou-normal-002.wav"
+import kotarouNormal003 from "../audios/kotarou-normal-003.wav"
 import kyoko001 from "../audios/kyoko-001.wav"
 import kyoko002 from "../audios/kyoko-002.wav"
 import kyoko003 from "../audios/kyoko-003.wav"
@@ -37,6 +55,15 @@ import ritsu003 from "../audios/ritsu-003.wav"
 import ryusei001 from "../audios/ryusei-001.wav"
 import ryusei002 from "../audios/ryusei-002.wav"
 import ryusei003 from "../audios/ryusei-003.wav"
+import sevenAnnounce001 from "../audios/seven-announce-001.wav"
+import sevenAnnounce002 from "../audios/seven-announce-002.wav"
+import sevenAnnounce003 from "../audios/seven-announce-003.wav"
+import sevenNormal001 from "../audios/seven-normal-001.wav"
+import sevenNormal002 from "../audios/seven-normal-002.wav"
+import sevenNormal003 from "../audios/seven-normal-003.wav"
+import sevenReading001 from "../audios/seven-reading-001.wav"
+import sevenReading002 from "../audios/seven-reading-002.wav"
+import sevenReading003 from "../audios/seven-reading-003.wav"
 import soraAma001 from "../audios/sora-ama-001.wav"
 import soraAma002 from "../audios/sora-ama-002.wav"
 import soraAma003 from "../audios/sora-ama-003.wav"
@@ -58,6 +85,18 @@ import takehiro003 from "../audios/takehiro-003.wav"
 import tsumugi001 from "../audios/tsumugi-001.wav"
 import tsumugi002 from "../audios/tsumugi-002.wav"
 import tsumugi003 from "../audios/tsumugi-003.wav"
+import whiteCry001 from "../audios/white-cry-001.wav"
+import whiteCry002 from "../audios/white-cry-002.wav"
+import whiteCry003 from "../audios/white-cry-003.wav"
+import whiteJoy001 from "../audios/white-joy-001.wav"
+import whiteJoy002 from "../audios/white-joy-002.wav"
+import whiteJoy003 from "../audios/white-joy-003.wav"
+import whiteNormal001 from "../audios/white-normal-001.wav"
+import whiteNormal002 from "../audios/white-normal-002.wav"
+import whiteNormal003 from "../audios/white-normal-003.wav"
+import whiteSad001 from "../audios/white-sad-001.wav"
+import whiteSad002 from "../audios/white-sad-002.wav"
+import whiteSad003 from "../audios/white-sad-003.wav"
 import zundamonAma001 from "../audios/zundamon-ama-001.wav"
 import zundamonAma002 from "../audios/zundamon-ama-002.wav"
 import zundamonAma003 from "../audios/zundamon-ama-003.wav"
@@ -217,7 +256,26 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       )!.childImageSharp.gatsbyImageData,
       voiceFeature: "声変わり直後の少年の声",
       voiceUrls: [
-        { style: "ノーマル", urls: [kotarou001, kotarou002, kotarou003] },
+        {
+          style: "ふつう",
+          urls: [kotarouNormal001, kotarouNormal002, kotarouNormal003],
+        },
+        {
+          style: "わーい",
+          urls: [kotarouJoy001, kotarouJoy002, kotarouJoy003],
+        },
+        {
+          style: "おこ",
+          urls: [kotarouAngry001, kotarouAngry002, kotarouAngry003],
+        },
+        {
+          style: "びくびく",
+          urls: [kotarouBiku001, kotarouBiku002, kotarouBiku003],
+        },
+        {
+          style: "びえーん",
+          urls: [kotarouCry001, kotarouCry002, kotarouCry003],
+        },
       ],
       releaseStatus: "released",
     },
@@ -290,6 +348,63 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       voiceFeature: "安心感のある落ち着いた声",
       voiceUrls: [{ style: "ノーマル", urls: [mesuo001, mesuo002, mesuo003] }],
       releaseStatus: "released",
+    },
+    WhiteCUL: {
+      name: "WhiteCUL",
+      bustupImage: query.allFile.nodes.find(
+        node => node.name === "bustup-white"
+      )!.childImageSharp.gatsbyImageData,
+      voiceFeature: "聞き心地のよい率直な声",
+      voiceUrls: [
+        {
+          style: "ノーマル",
+          urls: [whiteNormal001, whiteNormal002, whiteNormal003],
+        },
+        { style: "たのしい", urls: [whiteJoy001, whiteJoy002, whiteJoy003] },
+        { style: "かなしい", urls: [whiteSad001, whiteSad002, whiteSad003] },
+        { style: "びえーん", urls: [whiteCry001, whiteCry002, whiteCry003] },
+      ],
+      releaseStatus: "comingSoon",
+    },
+    後鬼: {
+      name: "後鬼",
+      bustupImage: query.allFile.nodes.find(
+        node => node.name === "bustup-goki"
+      )!.childImageSharp.gatsbyImageData,
+      voiceFeature: "包容力のある奥ゆかしい声",
+      voiceUrls: [
+        {
+          style: "人間ver.",
+          urls: [gokiNormal001, gokiNormal002, gokiNormal003],
+        },
+        {
+          style: "ぬいぐるみver.",
+          urls: [gokiNuigurumi001, gokiNuigurumi002, gokiNuigurumi003],
+        },
+      ],
+      releaseStatus: "comingSoon",
+    },
+    No7: {
+      name: "No.7",
+      bustupImage: query.allFile.nodes.find(
+        node => node.name === "bustup-seven"
+      )!.childImageSharp.gatsbyImageData,
+      voiceFeature: "しっかりした凛々しい声",
+      voiceUrls: [
+        {
+          style: "ノーマル",
+          urls: [sevenNormal001, sevenNormal002, sevenNormal003],
+        },
+        {
+          style: "アナウンス",
+          urls: [sevenAnnounce001, sevenAnnounce002, sevenAnnounce003],
+        },
+        {
+          style: "読み聞かせ",
+          urls: [sevenReading001, sevenReading002, sevenReading003],
+        },
+      ],
+      releaseStatus: "comingSoon",
     },
   }
 

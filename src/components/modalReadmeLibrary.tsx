@@ -21,6 +21,8 @@ export default (
     template: { html: string }
     ryusei: { html: string }
     kyoko: { html: string }
+    goki: { html: string }
+    seven: { html: string }
   } = useStaticQuery(graphql`
     query {
       template: markdownRemark(
@@ -35,6 +37,14 @@ export default (
       }
       kyoko: markdownRemark(
         fileAbsolutePath: { regex: "/libraryReadmeKyoko/" }
+      ) {
+        html
+      }
+      goki: markdownRemark(fileAbsolutePath: { regex: "/libraryReadmeGoki/" }) {
+        html
+      }
+      seven: markdownRemark(
+        fileAbsolutePath: { regex: "/libraryReadmeSeven/" }
       ) {
         html
       }
@@ -55,6 +65,10 @@ export default (
       html = query.ryusei.html
     } else if (props.characterKey == "モチノキョウコ") {
       html = query.kyoko.html
+    } else if (props.characterKey == "後鬼") {
+      html = query.goki.html
+    } else if (props.characterKey == "No7") {
+      html = query.seven.html
     } else {
       if (!characterInfo.policyUrl) {
         html = "<p>準備中</p>"

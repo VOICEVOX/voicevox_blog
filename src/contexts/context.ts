@@ -49,6 +49,9 @@ export const CharacterContext = React.createContext<CharacterContextProps>({
     "九州そら",
     "モチノキョウコ",
     "剣崎雌雄",
+    "WhiteCUL",
+    "後鬼",
+    "No7",
   ],
   characterInfos: {
     四国めたん: {
@@ -101,6 +104,18 @@ export const CharacterContext = React.createContext<CharacterContextProps>({
     剣崎雌雄: {
       name: "剣崎雌雄",
       policyUrl: "https://frontier.creatia.cc/fanclubs/413/posts/4507",
+    },
+    WhiteCUL: {
+      name: "WhiteCUL",
+      policyUrl: "https://whitecul.zan-shin.net/guideline",
+    },
+    後鬼: {
+      name: "後鬼",
+      policyUrl: "https://ついなちゃん.com/voicevox_terms/",
+    },
+    No7: {
+      name: "No.7",
+      policyUrl: "https://voiceseven.com/",
     },
   },
 })
