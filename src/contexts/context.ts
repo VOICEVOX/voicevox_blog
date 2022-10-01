@@ -115,7 +115,7 @@ export const CharacterContext = React.createContext<CharacterContextProps>({
     },
     No7: {
       name: "No.7",
-      policyUrl: "https://voiceseven.com/",
+      policyUrl: "https://voiceseven.com/#j0400",
     },
   },
 })

@@ -364,7 +364,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         { style: "かなしい", urls: [whiteSad001, whiteSad002, whiteSad003] },
         { style: "びえーん", urls: [whiteCry001, whiteCry002, whiteCry003] },
       ],
-      releaseStatus: "comingSoon",
+      releaseStatus: "released",
     },
     後鬼: {
       name: "後鬼",
@@ -382,7 +382,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
           urls: [gokiNuigurumi001, gokiNuigurumi002, gokiNuigurumi003],
         },
       ],
-      releaseStatus: "comingSoon",
+      releaseStatus: "released",
     },
     No7: {
       name: "No.7",
@@ -404,7 +404,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
           urls: [sevenReading001, sevenReading002, sevenReading003],
         },
       ],
-      releaseStatus: "comingSoon",
+      releaseStatus: "released",
     },
   }
 
@@ -535,7 +535,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
                   </span>
                   <span className="has-text-weight-semibold">ダウンロード</span>
                 </a>
-                <p className="is-align-self-center is-size-6">Version 0.13.1</p>
+                <p className="is-align-self-center is-size-6">Version 0.13.2</p>
               </div>
             </div>
           </section>
