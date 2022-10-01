@@ -44,8 +44,6 @@ export default ({
               className={`dropdown ${isOpenDropdown ? "is-active" : ""}`}
               onMouseEnter={() => setIsOpenDropdown(true)}
               onMouseLeave={() => setIsOpenDropdown(false)}
-              onFocus={() => setIsOpenDropdown(true)}
-              onBlur={() => setIsOpenDropdown(false)}
             >
               <div className="dropdown-trigger">
                 <button
@@ -53,6 +51,8 @@ export default ({
                   aria-haspopup="true"
                   aria-controls="dropdown-menu"
                   type="button"
+                  onFocus={() => setIsOpenDropdown(true)}
+                  onBlur={() => setIsOpenDropdown(false)}
                 >
                   <span>{selectedStyle}</span>
                   <span className="icon">
@@ -68,11 +68,7 @@ export default ({
                       className={`dropdown-item is-primary ${
                         style == selectedStyle ? "is-active" : ""
                       }`}
-                      onClick={() => {
-                        setSelectedStyle(style)
-                        setIsOpenDropdown(false)
-                      }}
-                      onFocus={() => {
+                      onMouseDown={() => {
                         setSelectedStyle(style)
                         setIsOpenDropdown(false)
                       }}
