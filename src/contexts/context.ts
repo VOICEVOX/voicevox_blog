@@ -107,7 +107,7 @@ export const CharacterContext = React.createContext<CharacterContextProps>({
     },
     WhiteCUL: {
       name: "WhiteCUL",
-      policyUrl: "https://whitecul.zan-shin.net/guideline",
+      policyUrl: "https://www.whitecul.com/guideline",
     },
     後鬼: {
       name: "後鬼",
