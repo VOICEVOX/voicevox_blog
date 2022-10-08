@@ -742,7 +742,7 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         me: ["私/ワテ"],
         you: ["あなたorキミ", "/あんたはん"],
       },
-      detailUrl: "https://ついなちゃん.com/voicevox_terms/",
+      detailUrl: "https://ついなちゃん.com/character/?goki",
     },
 
     No7: {
