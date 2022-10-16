@@ -28,7 +28,6 @@ exports.createPages = async ({ graphql, actions }) => {
       path: `/dormitory/${key}`,
       component: path.resolve("./src/pages/dormitory.tsx"),
       context: {
-        modalLink: true,
         initialSelectedCharacterKey: key,
       },
     })

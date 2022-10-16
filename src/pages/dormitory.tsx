@@ -76,13 +76,11 @@ import {
 
 type DormitoryProps = {
   setShowingHeader: (show: boolean) => void
-  modalLink: boolean
   initialSelectedCharacterKey?: CharacterKey
 }
 
 const Dormitory: React.FC<DormitoryProps> = ({
   setShowingHeader,
-  modalLink = false,
   initialSelectedCharacterKey,
 }) => {
   const query: {
@@ -836,7 +834,10 @@ const Dormitory: React.FC<DormitoryProps> = ({
   }, [headerRef])
 
   // キャラクターモーダル
-  const [showingCharacterModal, setShowingCharacterModal] = useState(modalLink)
+  // 寮生個別ページを開いていたら初期値はtrue
+  const [showingCharacterModal, setShowingCharacterModal] = useState(
+    initialSelectedCharacterKey !== undefined
+  )
   const [selectedCharacterKey, setSelectedCharacterKey] = useState<
     CharacterKey | undefined
   >(initialSelectedCharacterKey)
@@ -1096,15 +1097,12 @@ const Dormitory: React.FC<DormitoryProps> = ({
   )
 }
 
-export default ({
-  pageContext: { modalLink, initialSelectedCharacterKey },
-}) => {
+export default ({ pageContext: { initialSelectedCharacterKey } }) => {
   const [showingHeader, setShowingHeader] = useState(false)
   return (
     <Page showingHeader={showingHeader}>
       <Dormitory
         setShowingHeader={setShowingHeader}
-        modalLink={modalLink}
         initialSelectedCharacterKey={initialSelectedCharacterKey}
       />
     </Page>
