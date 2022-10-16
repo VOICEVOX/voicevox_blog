@@ -35,24 +35,26 @@ export interface CharacterContextProps {
   }
 }
 
+export const characterKeys: CharacterKey[] = [
+  "四国めたん",
+  "ずんだもん",
+  "春日部つむぎ",
+  "雨晴はう",
+  "波音リツ",
+  "玄野武宏",
+  "白上虎太郎",
+  "青山龍星",
+  "冥鳴ひまり",
+  "九州そら",
+  "モチノキョウコ",
+  "剣崎雌雄",
+  "WhiteCUL",
+  "後鬼",
+  "No7",
+]
+
 export const CharacterContext = React.createContext<CharacterContextProps>({
-  characterKeys: [
-    "四国めたん",
-    "ずんだもん",
-    "春日部つむぎ",
-    "雨晴はう",
-    "波音リツ",
-    "玄野武宏",
-    "白上虎太郎",
-    "青山龍星",
-    "冥鳴ひまり",
-    "九州そら",
-    "モチノキョウコ",
-    "剣崎雌雄",
-    "WhiteCUL",
-    "後鬼",
-    "No7",
-  ],
+  characterKeys,
   characterInfos: {
     四国めたん: {
       name: "四国めたん",
