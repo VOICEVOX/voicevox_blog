@@ -851,6 +851,13 @@ const Dormitory: React.FC<DormitoryProps> = ({
     window.history.replaceState({}, "", `/dormitory`)
     document.documentElement.classList.remove("is-clipped")
     setShowingCharacterModal(false)
+    if (selectedCharacterKey) {
+      document
+        .querySelector<HTMLElement>(
+          `img[alt='${characterInfos[selectedCharacterKey]?.name}']`
+        )
+        ?.scrollIntoView({ block: "center" })
+    }
   }
 
   return (
