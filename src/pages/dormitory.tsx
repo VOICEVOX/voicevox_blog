@@ -869,13 +869,25 @@ const Dormitory: React.FC<DormitoryProps> = ({
     }
   }
 
+  const initialSelectedCharacterInfo = initialSelectedCharacterKey
+    ? characterInfos[initialSelectedCharacterKey]
+    : undefined
+
   return (
     <>
-      <Seo
-        title="ボイボ寮 | VOICEVOX"
-        description="とある世界の不思議な建物、ボイボ寮。ここでは個性豊かな住民たちが暮らしています。"
-        image={shareThumb}
-      />
+      {initialSelectedCharacterKey ? (
+        <Seo
+          title={`${initialSelectedCharacterInfo?.name} | ボイボ寮 | VOICEVOX`}
+          description={initialSelectedCharacterInfo?.description}
+          image={initialSelectedCharacterInfo?.bustupImage.images.fallback?.src}
+        />
+      ) : (
+        <Seo
+          title="ボイボ寮 | VOICEVOX"
+          description="とある世界の不思議な建物、ボイボ寮。ここでは個性豊かな住民たちが暮らしています。"
+          image={shareThumb}
+        />
+      )}
 
       <div className="dormitory">
         <header ref={headerRef} className="hero is-small">
