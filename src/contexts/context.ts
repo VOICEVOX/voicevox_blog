@@ -35,7 +35,7 @@ export interface CharacterContextProps {
   }
 }
 
-export const characterKeys: CharacterKey[] = [
+export const characterKeys: CharacterContextProps["characterKeys"] = [
   "四国めたん",
   "ずんだもん",
   "春日部つむぎ",
@@ -53,71 +53,70 @@ export const characterKeys: CharacterKey[] = [
   "No7",
 ]
 
+export const characterInfos: CharacterContextProps["characterInfos"] = {
+  四国めたん: {
+    name: "四国めたん",
+    policyUrl: "https://zunko.jp/con_ongen_kiyaku.html",
+  },
+  ずんだもん: {
+    name: "ずんだもん",
+    policyUrl: "https://zunko.jp/con_ongen_kiyaku.html",
+  },
+  春日部つむぎ: {
+    name: "春日部つむぎ",
+    policyUrl: "https://tsumugi-official.studio.site/rule",
+  },
+  雨晴はう: {
+    name: "雨晴はう",
+    policyUrl: "https://amehau.com/?page_id=225",
+  },
+  波音リツ: {
+    name: "波音リツ",
+    policyUrl: "http://canon-voice.com/kiyaku.html",
+  },
+  玄野武宏: {
+    name: "玄野武宏",
+    policyUrl: "https://virvoxproject.wixsite.com/official/voicevoxの利用規約",
+  },
+  白上虎太郎: {
+    name: "白上虎太郎",
+    policyUrl: "https://virvoxproject.wixsite.com/official/voicevoxの利用規約",
+  },
+  青山龍星: {
+    name: "青山龍星",
+    policyUrl: "https://virvoxproject.wixsite.com/official/voicevoxの利用規約",
+  },
+  冥鳴ひまり: {
+    name: "冥鳴ひまり",
+    policyUrl: "https://meimeihimari.wixsite.com/himari/terms-of-use",
+  },
+  九州そら: {
+    name: "九州そら",
+    policyUrl: "https://zunko.jp/con_ongen_kiyaku.html",
+  },
+  モチノキョウコ: {
+    name: "もち子さん",
+    policyUrl: "https://vtubermochio.wixsite.com/mochizora/利用規約",
+  },
+  剣崎雌雄: {
+    name: "剣崎雌雄",
+    policyUrl: "https://frontier.creatia.cc/fanclubs/413/posts/4507",
+  },
+  WhiteCUL: {
+    name: "WhiteCUL",
+    policyUrl: "https://www.whitecul.com/guideline",
+  },
+  後鬼: {
+    name: "後鬼",
+    policyUrl: "https://ついなちゃん.com/voicevox_terms/",
+  },
+  No7: {
+    name: "No.7",
+    policyUrl: "https://voiceseven.com/#j0400",
+  },
+}
+
 export const CharacterContext = React.createContext<CharacterContextProps>({
   characterKeys,
-  characterInfos: {
-    四国めたん: {
-      name: "四国めたん",
-      policyUrl: "https://zunko.jp/con_ongen_kiyaku.html",
-    },
-    ずんだもん: {
-      name: "ずんだもん",
-      policyUrl: "https://zunko.jp/con_ongen_kiyaku.html",
-    },
-    春日部つむぎ: {
-      name: "春日部つむぎ",
-      policyUrl: "https://tsumugi-official.studio.site/rule",
-    },
-    雨晴はう: {
-      name: "雨晴はう",
-      policyUrl: "https://amehau.com/?page_id=225",
-    },
-    波音リツ: {
-      name: "波音リツ",
-      policyUrl: "http://canon-voice.com/kiyaku.html",
-    },
-    玄野武宏: {
-      name: "玄野武宏",
-      policyUrl:
-        "https://virvoxproject.wixsite.com/official/voicevoxの利用規約",
-    },
-    白上虎太郎: {
-      name: "白上虎太郎",
-      policyUrl:
-        "https://virvoxproject.wixsite.com/official/voicevoxの利用規約",
-    },
-    青山龍星: {
-      name: "青山龍星",
-      policyUrl:
-        "https://virvoxproject.wixsite.com/official/voicevoxの利用規約",
-    },
-    冥鳴ひまり: {
-      name: "冥鳴ひまり",
-      policyUrl: "https://meimeihimari.wixsite.com/himari/terms-of-use",
-    },
-    九州そら: {
-      name: "九州そら",
-      policyUrl: "https://zunko.jp/con_ongen_kiyaku.html",
-    },
-    モチノキョウコ: {
-      name: "もち子さん",
-      policyUrl: "https://vtubermochio.wixsite.com/mochizora/利用規約",
-    },
-    剣崎雌雄: {
-      name: "剣崎雌雄",
-      policyUrl: "https://frontier.creatia.cc/fanclubs/413/posts/4507",
-    },
-    WhiteCUL: {
-      name: "WhiteCUL",
-      policyUrl: "https://www.whitecul.com/guideline",
-    },
-    後鬼: {
-      name: "後鬼",
-      policyUrl: "https://ついなちゃん.com/voicevox_terms/",
-    },
-    No7: {
-      name: "No.7",
-      policyUrl: "https://voiceseven.com/#j0400",
-    },
-  },
+  characterInfos,
 })
