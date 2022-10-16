@@ -74,8 +74,16 @@ import {
   Generation,
 } from "../types/dormitoryCharacter"
 
-const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
+type DormitoryProps = {
+  setShowingHeader: (show: boolean) => void
+  modalLink: boolean
+  initialSelectedCharacterKey?: CharacterKey
+}
+
+const Dormitory: React.FC<DormitoryProps> = ({
   setShowingHeader,
+  modalLink = false,
+  initialSelectedCharacterKey,
 }) => {
   const query: {
     [key: string]: {
@@ -828,9 +836,10 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
   }, [headerRef])
 
   // キャラクターモーダル
-  const [showingCharacterModal, setShowingCharacterModal] = useState(false)
-  const [selectedCharacterKey, setSelectedCharacterKey] =
-    useState<CharacterKey>()
+  const [showingCharacterModal, setShowingCharacterModal] = useState(modalLink)
+  const [selectedCharacterKey, setSelectedCharacterKey] = useState<
+    CharacterKey | undefined
+  >(initialSelectedCharacterKey)
 
   const showCharacterModal = (characterKey: CharacterKey) => {
     document.documentElement.classList.add("is-clipped")
@@ -1057,11 +1066,17 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
   )
 }
 
-export default () => {
+export default ({
+  pageContext: { modalLink, initialSelectedCharacterKey },
+}) => {
   const [showingHeader, setShowingHeader] = useState(false)
   return (
     <Page showingHeader={showingHeader}>
-      <Dormitory setShowingHeader={setShowingHeader} />
+      <Dormitory
+        setShowingHeader={setShowingHeader}
+        modalLink={modalLink}
+        initialSelectedCharacterKey={initialSelectedCharacterKey}
+      />
     </Page>
   )
 }
