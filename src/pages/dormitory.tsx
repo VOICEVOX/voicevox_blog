@@ -853,7 +853,7 @@ const Dormitory: React.FC<DormitoryProps> = ({
     setShowingCharacterModal(false)
     if (selectedCharacterKey) {
       document
-        .querySelector<HTMLElement>(
+        .querySelector(
           `img[alt='${characterInfos[selectedCharacterKey]?.name}']`
         )
         ?.scrollIntoView({ block: "center" })
