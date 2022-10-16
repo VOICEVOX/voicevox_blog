@@ -842,11 +842,13 @@ const Dormitory: React.FC<DormitoryProps> = ({
   >(initialSelectedCharacterKey)
 
   const showCharacterModal = (characterKey: CharacterKey) => {
+    window.history.replaceState({}, "", `/dormitory/${characterKey}`)
     document.documentElement.classList.add("is-clipped")
     setSelectedCharacterKey(characterKey)
     setShowingCharacterModal(true)
   }
   const hideCharacterModal = () => {
+    window.history.replaceState({}, "", `/dormitory`)
     document.documentElement.classList.remove("is-clipped")
     setShowingCharacterModal(false)
   }
