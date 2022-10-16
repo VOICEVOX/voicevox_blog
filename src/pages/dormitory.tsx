@@ -853,14 +853,13 @@ const Dormitory: React.FC<DormitoryProps> = ({
     document.documentElement.classList.remove("is-clipped")
     setShowingCharacterModal(false)
 
-    // 個別のURLから飛んできた場合は、
     // モーダルを閉じたら該当キャラクターの位置までスクロールする
     if (selectedCharacterKey) {
       const dom = document.querySelector(
         `img[alt='${characterInfos[selectedCharacterKey]?.name}']`
       )
       if (dom) {
-        // キャラクターカードが既に一部でも画面内に表示されている場合はスクロールしない
+        // キャラクターカードが既に画面内に表示されていた場合はスクロールしない
         const { top, bottom } = dom.getBoundingClientRect()
         const htmlHeight = document.documentElement.clientHeight
         const inView = 0 < bottom && top < htmlHeight
