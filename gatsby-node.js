@@ -5,7 +5,7 @@
  */
 const path = require(`path`)
 
-exports.onCreatePage = async ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions }) => {
   const characterKeys = [
     "四国めたん",
     "ずんだもん",
