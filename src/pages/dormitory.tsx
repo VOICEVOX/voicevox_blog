@@ -134,6 +134,7 @@ const Dormitory: React.FC<DormitoryProps> = ({
   } = {
     四国めたん: {
       name: "四国めたん",
+      id: "shikoku_metan",
       rubyName: "<ruby>四国<rp>(</rp><rt>しこく</rt><rp>)</rp>めたん</ruby>",
       bustupImage: query.bustup.nodes.find(
         node => node.name === "bustup-metan"
@@ -179,6 +180,7 @@ const Dormitory: React.FC<DormitoryProps> = ({
 
     ずんだもん: {
       name: "ずんだもん",
+      id: "zundamon",
       rubyName: "<ruby>ずんだもん</ruby>",
       bustupImage: query.bustup.nodes.find(
         node => node.name === "bustup-zundamon"
@@ -227,6 +229,7 @@ const Dormitory: React.FC<DormitoryProps> = ({
 
     春日部つむぎ: {
       name: "春日部つむぎ",
+      id: "kasukabe_tsumugi",
       rubyName:
         "<ruby>春日部<rp>(</rp><rt>かすかべ</rt><rp>)</rp>つむぎ</ruby>",
       bustupImage: query.bustup.nodes.find(
@@ -271,6 +274,7 @@ const Dormitory: React.FC<DormitoryProps> = ({
 
     雨晴はう: {
       name: "雨晴はう",
+      id: "amehare_hau",
       rubyName: "<ruby>雨晴<rp>(</rp><rt>あめはれ</rt><rp>)</rp>はう</ruby>",
       bustupImage: query.bustup.nodes.find(node => node.name === "bustup-hau")!
         .childImageSharp.gatsbyImageData,
@@ -312,6 +316,7 @@ const Dormitory: React.FC<DormitoryProps> = ({
 
     波音リツ: {
       name: "波音リツ",
+      id: "namine_ritsu",
       rubyName: "<ruby>波音<rp>(</rp><rt>なみね</rt><rp>)</rp>リツ</ruby>",
       bustupImage: query.bustup.nodes.find(
         node => node.name === "bustup-ritsu"
@@ -353,6 +358,7 @@ const Dormitory: React.FC<DormitoryProps> = ({
 
     玄野武宏: {
       name: "玄野武宏",
+      id: "kurono_takehiro",
       rubyName:
         "<ruby>玄野<rp>(</rp><rt>くろの</rt><rp>)</rp>武宏<rp>(</rp><rt>たけひろ</rt><rp>)</rp></ruby>",
       bustupImage: query.bustup.nodes.find(
@@ -394,6 +400,7 @@ const Dormitory: React.FC<DormitoryProps> = ({
 
     白上虎太郎: {
       name: "白上虎太郎",
+      id: "shirakami_kotaro",
       rubyName:
         "<ruby>白上<rp>(</rp><rt>しらかみ</rt><rp>)</rp>虎太郎<rp>(</rp><rt>こたろう</rt><rp>)</rp></ruby>",
       bustupImage: query.bustup.nodes.find(
@@ -436,6 +443,7 @@ const Dormitory: React.FC<DormitoryProps> = ({
 
     青山龍星: {
       name: "青山龍星",
+      id: "aoyama_ryusei",
       rubyName:
         "<ruby>青山<rp>(</rp><rt>あおやま</rt><rp>)</rp>龍星<rp>(</rp><rt>りゅうせい</rt><rp>)</rp></ruby>",
       bustupImage: query.bustup.nodes.find(
@@ -477,6 +485,7 @@ const Dormitory: React.FC<DormitoryProps> = ({
 
     冥鳴ひまり: {
       name: "冥鳴ひまり",
+      id: "meimei_himari",
       rubyName: "<ruby>冥鳴<rp>(</rp><rt>めいめい</rt><rp>)</rp>ひまり</ruby>",
       bustupImage: query.bustup.nodes.find(
         node => node.name === "bustup-himari"
@@ -519,6 +528,7 @@ const Dormitory: React.FC<DormitoryProps> = ({
 
     九州そら: {
       name: "九州そら",
+      id: "kyushu_sora",
       rubyName:
         "<ruby>九州<rp>(</rp><rt>きゅうしゅう</rt><rp>)</rp>そら</ruby>",
       bustupImage: query.bustup.nodes.find(node => node.name === "bustup-sora")!
@@ -571,6 +581,7 @@ const Dormitory: React.FC<DormitoryProps> = ({
 
     モチノキョウコ: {
       name: "もち子さん",
+      id: "mochikosan",
       rubyName:
         "<ruby>もち</ruby><ruby>子<rp>(</rp><rt>こ</rt><rp>)</rp>さん</ruby>",
       bustupImage: query.bustup.nodes.find(
@@ -618,6 +629,7 @@ const Dormitory: React.FC<DormitoryProps> = ({
 
     剣崎雌雄: {
       name: "剣崎雌雄",
+      id: "kenzaki_mesuo",
       rubyName:
         "<ruby>剣崎<rp>(</rp><rt>けんざき</rt><rp>)</rp>雌雄<rp>(</rp><rt>めすお</rt><rp>)</rp></ruby>",
       bustupImage: query.bustup.nodes.find(
@@ -666,6 +678,7 @@ const Dormitory: React.FC<DormitoryProps> = ({
 
     WhiteCUL: {
       name: "WhiteCUL",
+      id: "white_cul",
       rubyName:
         "<ruby>WhiteCUL<rp>(</rp><rt>ほわいとかる</rt><rp>)</rp></ruby>",
       bustupImage: query.bustup.nodes.find(
@@ -715,6 +728,7 @@ const Dormitory: React.FC<DormitoryProps> = ({
 
     後鬼: {
       name: "後鬼",
+      id: "goki",
       rubyName: "<ruby>後鬼<rp>(</rp><rt>ごき</rt><rp>)</rp></ruby>",
       bustupImage: query.bustup.nodes.find(node => node.name === "bustup-goki")!
         .childImageSharp.gatsbyImageData,
@@ -759,6 +773,7 @@ const Dormitory: React.FC<DormitoryProps> = ({
 
     No7: {
       name: "No.7",
+      id: "number_seven",
       rubyName: "<ruby>No.7<rp>(</rp><rt>なんばーせぶん</rt><rp>)</rp></ruby>",
       bustupImage: query.bustup.nodes.find(
         node => node.name === "bustup-seven"
@@ -857,7 +872,7 @@ const Dormitory: React.FC<DormitoryProps> = ({
   }, [showingCharacterModal])
 
   const showCharacterModal = (characterKey: CharacterKey) => {
-    const url = characterInfos[characterKey]?.name
+    const url = characterInfos[characterKey]?.id
     window.history.replaceState({}, "", `/dormitory/${url}`)
     setSelectedCharacterKey(characterKey)
     setShowingCharacterModal(true)

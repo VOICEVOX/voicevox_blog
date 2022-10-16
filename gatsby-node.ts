@@ -11,7 +11,7 @@ export const createPages: GatsbyNode["createPages"] = async ({ actions }) => {
   characterKeys.forEach(key => {
     const info = characterInfos[key]
     actions.createPage({
-      path: `/dormitory/${info.name}`,
+      path: `/dormitory/${info.id}`,
       component: path.resolve("./src/pages/dormitory.tsx"),
       context: {
         initialSelectedCharacterKey: key,
