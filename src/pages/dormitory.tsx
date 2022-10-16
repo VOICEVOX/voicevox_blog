@@ -1,6 +1,12 @@
 import { graphql, Link, useStaticQuery } from "gatsby"
 import { IGatsbyImageData, StaticImage } from "gatsby-plugin-image"
-import React, { useContext, useEffect, useRef, useState } from "react"
+import React, {
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react"
 import goki01 from "../audios/dormitory/goki-01.wav"
 import goki02 from "../audios/dormitory/goki-02.wav"
 import goki03 from "../audios/dormitory/goki-03.wav"
@@ -842,15 +848,21 @@ const Dormitory: React.FC<DormitoryProps> = ({
     CharacterKey | undefined
   >(initialSelectedCharacterKey)
 
+  useEffect(() => {
+    if (showingCharacterModal) {
+      document.documentElement.classList.add("is-clipped")
+    } else {
+      document.documentElement.classList.remove("is-clipped")
+    }
+  }, [showingCharacterModal])
+
   const showCharacterModal = (characterKey: CharacterKey) => {
     window.history.replaceState({}, "", `/dormitory/${characterKey}`)
-    document.documentElement.classList.add("is-clipped")
     setSelectedCharacterKey(characterKey)
     setShowingCharacterModal(true)
   }
   const hideCharacterModal = () => {
     window.history.replaceState({}, "", `/dormitory`)
-    document.documentElement.classList.remove("is-clipped")
     setShowingCharacterModal(false)
 
     // モーダルを閉じたら該当キャラクターの位置までスクロールする
