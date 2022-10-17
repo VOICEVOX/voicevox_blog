@@ -8,6 +8,7 @@ import path from "path"
 import { characterKeys, characterInfos } from "./src/contexts/context"
 
 export const createPages: GatsbyNode["createPages"] = async ({ actions }) => {
+  // ボイボ寮のキャラクターごとのURL
   characterKeys.forEach(key => {
     const info = characterInfos[key]
     actions.createPage({
