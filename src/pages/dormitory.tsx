@@ -400,7 +400,7 @@ const Dormitory: React.FC<DormitoryProps> = ({
 
     白上虎太郎: {
       name: "白上虎太郎",
-      id: "shirakami_kotaro",
+      id: "shirakami_kotarou",
       rubyName:
         "<ruby>白上<rp>(</rp><rt>しらかみ</rt><rp>)</rp>虎太郎<rp>(</rp><rt>こたろう</rt><rp>)</rp></ruby>",
       bustupImage: query.bustup.nodes.find(
