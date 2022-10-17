@@ -872,8 +872,8 @@ const Dormitory: React.FC<DormitoryProps> = ({
   }, [showingCharacterModal])
 
   const showCharacterModal = (characterKey: CharacterKey) => {
-    const url = characterInfos[characterKey]?.id
-    window.history.replaceState({}, "", `/dormitory/${url}`)
+    const characterId = characterInfos[characterKey]?.id
+    window.history.replaceState({}, "", `/dormitory/${characterId}`)
     setSelectedCharacterKey(characterKey)
     setShowingCharacterModal(true)
   }
