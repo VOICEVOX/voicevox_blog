@@ -5,7 +5,7 @@
  */
 import type { GatsbyNode } from "gatsby"
 import path from "path"
-import { characterKeys, characterInfos } from "./src/contexts/context"
+import { characterKeys, characterInfos } from "./src/constants"
 
 export const createPages: GatsbyNode["createPages"] = async ({ actions }) => {
   // ボイボ寮のキャラクターごとのURL
