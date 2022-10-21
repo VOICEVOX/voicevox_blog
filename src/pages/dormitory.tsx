@@ -897,17 +897,17 @@ const Dormitory: React.FC<DormitoryProps> = ({
     }
   }
 
-  const initialSelectedCharacterInfo = initialSelectedCharacterKey
-    ? characterInfos[initialSelectedCharacterKey]
+  const selectedCharacterInfo = selectedCharacterKey
+    ? characterInfos[selectedCharacterKey]
     : undefined
 
   return (
     <>
-      {initialSelectedCharacterKey ? (
+      {showingCharacterModal && selectedCharacterKey ? (
         <Seo
-          title={`${initialSelectedCharacterInfo?.name} | ボイボ寮 | VOICEVOX`}
-          description={initialSelectedCharacterInfo?.description}
-          image={initialSelectedCharacterInfo?.bustupImage.images.fallback?.src}
+          title={`${selectedCharacterInfo?.name} | ボイボ寮 | VOICEVOX`}
+          description={selectedCharacterInfo?.description}
+          image={selectedCharacterInfo?.bustupImage.images.fallback?.src}
         />
       ) : (
         <Seo
