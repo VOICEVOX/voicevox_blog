@@ -4,19 +4,28 @@
  * See: https://www.gatsbyjs.com/docs/node-apis/
  */
 import type { GatsbyNode } from "gatsby"
-import path from "path"
 import { characterKeys, characterInfos } from "./src/constants"
 
-export const createPages: GatsbyNode["createPages"] = async ({ actions }) => {
-  // ボイボ寮のキャラクターごとのURL
-  characterKeys.forEach(key => {
-    const info = characterInfos[key]
-    actions.createPage({
-      path: `/dormitory/${info.id}`,
-      component: path.resolve("./src/pages/dormitory.tsx"),
-      context: {
-        initialSelectedCharacterKey: key,
+export const sourceNodes: GatsbyNode["sourceNodes"] = async ({
+  actions,
+  createNodeId,
+  createContentDigest,
+}) => {
+  // constantsに記述したcharacterInfoをgraphqlに乗せる
+  characterKeys.forEach(characterKey => {
+    const characterInfo = characterInfos[characterKey]
+
+    const node = {
+      name: characterInfo.name,
+      characterId: characterInfo.id,
+
+      id: createNodeId(`Character-${characterInfo.id}`),
+      internal: {
+        type: "Character",
+        contentDigest: createContentDigest(characterInfo),
       },
-    })
+    }
+
+    actions.createNode(node)
   })
 }
