@@ -16,6 +16,7 @@ export const sourceNodes: GatsbyNode["sourceNodes"] = async ({
     const characterInfo = characterInfos[characterKey]
 
     const node = {
+      key: characterKey,
       name: characterInfo.name,
       characterId: characterInfo.id,
 
