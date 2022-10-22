@@ -118,6 +118,7 @@ import ModalReadmeLibrary from "../components/modalReadmeLibrary"
 import { Page } from "../components/page"
 import Seo from "../components/seo"
 import { CharacterContext, GlobalContext } from "../contexts/context"
+import { useCharacterInfo } from "../hooks/useCharacterInfo"
 import landingMovieThumb from "../images/landing-movie-thumb.png"
 import shareThumb from "../images/landing-share-thumb.jpg"
 import landingMovie from "../movies/landing.mp4"
@@ -148,6 +149,8 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
     }
   `)
 
+  const { getCharacterInfo } = useCharacterInfo()
+
   const context = useContext(GlobalContext)
   const { characterKeys } = useContext(CharacterContext)
 
@@ -164,7 +167,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
     }
   } = {
     四国めたん: {
-      name: "四国めたん",
+      name: getCharacterInfo("四国めたん").name,
       bustupImage: query.allFile.nodes.find(
         node => node.name === "bustup-metan"
       )!.childImageSharp.gatsbyImageData,
@@ -181,7 +184,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       releaseStatus: "released",
     },
     ずんだもん: {
-      name: "ずんだもん",
+      name: getCharacterInfo("ずんだもん").name,
       bustupImage: query.allFile.nodes.find(
         node => node.name === "bustup-zundamon"
       )!.childImageSharp.gatsbyImageData,
@@ -211,7 +214,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       releaseStatus: "released",
     },
     春日部つむぎ: {
-      name: "春日部つむぎ",
+      name: getCharacterInfo("春日部つむぎ").name,
       bustupImage: query.allFile.nodes.find(
         node => node.name === "bustup-tsumugi"
       )!.childImageSharp.gatsbyImageData,
@@ -222,7 +225,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       releaseStatus: "released",
     },
     雨晴はう: {
-      name: "雨晴はう",
+      name: getCharacterInfo("雨晴はう").name,
       bustupImage: query.allFile.nodes.find(node => node.name === "bustup-hau")!
         .childImageSharp.gatsbyImageData,
       voiceFeature: "優しく可愛い声",
@@ -230,7 +233,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       releaseStatus: "released",
     },
     波音リツ: {
-      name: "波音リツ",
+      name: getCharacterInfo("波音リツ").name,
       bustupImage: query.allFile.nodes.find(
         node => node.name === "bustup-ritsu"
       )!.childImageSharp.gatsbyImageData,
@@ -239,7 +242,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       releaseStatus: "released",
     },
     玄野武宏: {
-      name: "玄野武宏",
+      name: getCharacterInfo("玄野武宏").name,
       bustupImage: query.allFile.nodes.find(
         node => node.name === "bustup-takehiro"
       )!.childImageSharp.gatsbyImageData,
@@ -250,7 +253,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       releaseStatus: "released",
     },
     白上虎太郎: {
-      name: "白上虎太郎",
+      name: getCharacterInfo("白上虎太郎").name,
       bustupImage: query.allFile.nodes.find(
         node => node.name === "bustup-kotarou"
       )!.childImageSharp.gatsbyImageData,
@@ -280,7 +283,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       releaseStatus: "released",
     },
     青山龍星: {
-      name: "青山龍星",
+      name: getCharacterInfo("青山龍星").name,
       bustupImage: query.allFile.nodes.find(
         node => node.name === "bustup-ryusei"
       )!.childImageSharp.gatsbyImageData,
@@ -291,7 +294,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       releaseStatus: "released",
     },
     冥鳴ひまり: {
-      name: "冥鳴ひまり",
+      name: getCharacterInfo("冥鳴ひまり").name,
       bustupImage: query.allFile.nodes.find(
         node => node.name === "bustup-himari"
       )!.childImageSharp.gatsbyImageData,
@@ -302,7 +305,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       releaseStatus: "released",
     },
     九州そら: {
-      name: "九州そら",
+      name: getCharacterInfo("九州そら").name,
       bustupImage: query.allFile.nodes.find(
         node => node.name === "bustup-sora"
       )!.childImageSharp.gatsbyImageData,
@@ -332,7 +335,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       releaseStatus: "released",
     },
     モチノキョウコ: {
-      name: "もち子さん",
+      name: getCharacterInfo("モチノキョウコ").name,
       bustupImage: query.allFile.nodes.find(
         node => node.name === "bustup-kyoko"
       )!.childImageSharp.gatsbyImageData,
@@ -341,7 +344,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       releaseStatus: "released",
     },
     剣崎雌雄: {
-      name: "剣崎雌雄",
+      name: getCharacterInfo("剣崎雌雄").name,
       bustupImage: query.allFile.nodes.find(
         node => node.name === "bustup-mesuo"
       )!.childImageSharp.gatsbyImageData,
@@ -350,7 +353,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       releaseStatus: "released",
     },
     WhiteCUL: {
-      name: "WhiteCUL",
+      name: getCharacterInfo("WhiteCUL").name,
       bustupImage: query.allFile.nodes.find(
         node => node.name === "bustup-white"
       )!.childImageSharp.gatsbyImageData,
@@ -367,7 +370,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       releaseStatus: "released",
     },
     後鬼: {
-      name: "後鬼",
+      name: getCharacterInfo("後鬼").name,
       bustupImage: query.allFile.nodes.find(
         node => node.name === "bustup-goki"
       )!.childImageSharp.gatsbyImageData,
@@ -385,7 +388,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       releaseStatus: "released",
     },
     No7: {
-      name: "No.7",
+      name: getCharacterInfo("No7").name,
       bustupImage: query.allFile.nodes.find(
         node => node.name === "bustup-seven"
       )!.childImageSharp.gatsbyImageData,

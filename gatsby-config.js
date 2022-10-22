@@ -73,5 +73,15 @@ module.exports = {
       },
     },
     `gatsby-plugin-sitemap`,
+    {
+      // デフォルトではアンダーバーがハイフンに変換されてしまうため
+      // slugifyのオプションを上書きしておく。collection routes以外には影響なし
+      // ref: https://www.gatsbyjs.com/plugins/gatsby-plugin-page-creator/#options
+      resolve: `gatsby-plugin-page-creator`,
+      options: {
+        path: `${__dirname}/src/pages`,
+        slugify: { separator: "_" },
+      },
+    },
   ],
 }

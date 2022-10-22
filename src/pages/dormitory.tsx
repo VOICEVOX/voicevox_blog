@@ -67,6 +67,7 @@ import "../components/layout.scss"
 import { Page } from "../components/page"
 import Seo from "../components/seo"
 import { CharacterContext } from "../contexts/context"
+import { useCharacterInfo } from "../hooks/useCharacterInfo"
 import shareThumb from "../images/dormitory/top-illusts/top-illust-002.png"
 import {
   CharacterInfo,
@@ -74,8 +75,14 @@ import {
   Generation,
 } from "../types/dormitoryCharacter"
 
-const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
+type DormitoryProps = {
+  setShowingHeader: (show: boolean) => void
+  initialSelectedCharacterKey?: CharacterKey
+}
+
+const Dormitory: React.FC<DormitoryProps> = ({
   setShowingHeader,
+  initialSelectedCharacterKey,
 }) => {
   const query: {
     [key: string]: {
@@ -115,13 +122,16 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
     }
   `)
 
+  const { getCharacterInfo } = useCharacterInfo()
+
   const { characterKeys } = useContext(CharacterContext)
 
   const characterInfos: {
     [key in CharacterKey]: CharacterInfo | undefined
   } = {
     四国めたん: {
-      name: "四国めたん",
+      name: getCharacterInfo("四国めたん").name,
+      id: getCharacterInfo("四国めたん").characterId,
       rubyName: "<ruby>四国<rp>(</rp><rt>しこく</rt><rp>)</rp>めたん</ruby>",
       bustupImage: query.bustup.nodes.find(
         node => node.name === "bustup-metan"
@@ -166,7 +176,8 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
     },
 
     ずんだもん: {
-      name: "ずんだもん",
+      name: getCharacterInfo("ずんだもん").name,
+      id: getCharacterInfo("ずんだもん").characterId,
       rubyName: "<ruby>ずんだもん</ruby>",
       bustupImage: query.bustup.nodes.find(
         node => node.name === "bustup-zundamon"
@@ -214,7 +225,8 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
     },
 
     春日部つむぎ: {
-      name: "春日部つむぎ",
+      name: getCharacterInfo("春日部つむぎ").name,
+      id: getCharacterInfo("春日部つむぎ").characterId,
       rubyName:
         "<ruby>春日部<rp>(</rp><rt>かすかべ</rt><rp>)</rp>つむぎ</ruby>",
       bustupImage: query.bustup.nodes.find(
@@ -258,7 +270,8 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
     },
 
     雨晴はう: {
-      name: "雨晴はう",
+      name: getCharacterInfo("雨晴はう").name,
+      id: getCharacterInfo("雨晴はう").characterId,
       rubyName: "<ruby>雨晴<rp>(</rp><rt>あめはれ</rt><rp>)</rp>はう</ruby>",
       bustupImage: query.bustup.nodes.find(node => node.name === "bustup-hau")!
         .childImageSharp.gatsbyImageData,
@@ -299,7 +312,8 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
     },
 
     波音リツ: {
-      name: "波音リツ",
+      name: getCharacterInfo("波音リツ").name,
+      id: getCharacterInfo("波音リツ").characterId,
       rubyName: "<ruby>波音<rp>(</rp><rt>なみね</rt><rp>)</rp>リツ</ruby>",
       bustupImage: query.bustup.nodes.find(
         node => node.name === "bustup-ritsu"
@@ -340,7 +354,8 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
     },
 
     玄野武宏: {
-      name: "玄野武宏",
+      name: getCharacterInfo("玄野武宏").name,
+      id: getCharacterInfo("玄野武宏").characterId,
       rubyName:
         "<ruby>玄野<rp>(</rp><rt>くろの</rt><rp>)</rp>武宏<rp>(</rp><rt>たけひろ</rt><rp>)</rp></ruby>",
       bustupImage: query.bustup.nodes.find(
@@ -381,7 +396,8 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
     },
 
     白上虎太郎: {
-      name: "白上虎太郎",
+      name: getCharacterInfo("白上虎太郎").name,
+      id: getCharacterInfo("白上虎太郎").characterId,
       rubyName:
         "<ruby>白上<rp>(</rp><rt>しらかみ</rt><rp>)</rp>虎太郎<rp>(</rp><rt>こたろう</rt><rp>)</rp></ruby>",
       bustupImage: query.bustup.nodes.find(
@@ -423,7 +439,8 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
     },
 
     青山龍星: {
-      name: "青山龍星",
+      name: getCharacterInfo("青山龍星").name,
+      id: getCharacterInfo("青山龍星").characterId,
       rubyName:
         "<ruby>青山<rp>(</rp><rt>あおやま</rt><rp>)</rp>龍星<rp>(</rp><rt>りゅうせい</rt><rp>)</rp></ruby>",
       bustupImage: query.bustup.nodes.find(
@@ -464,7 +481,8 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
     },
 
     冥鳴ひまり: {
-      name: "冥鳴ひまり",
+      name: getCharacterInfo("冥鳴ひまり").name,
+      id: getCharacterInfo("冥鳴ひまり").characterId,
       rubyName: "<ruby>冥鳴<rp>(</rp><rt>めいめい</rt><rp>)</rp>ひまり</ruby>",
       bustupImage: query.bustup.nodes.find(
         node => node.name === "bustup-himari"
@@ -506,7 +524,8 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
     },
 
     九州そら: {
-      name: "九州そら",
+      name: getCharacterInfo("九州そら").name,
+      id: getCharacterInfo("九州そら").characterId,
       rubyName:
         "<ruby>九州<rp>(</rp><rt>きゅうしゅう</rt><rp>)</rp>そら</ruby>",
       bustupImage: query.bustup.nodes.find(node => node.name === "bustup-sora")!
@@ -558,7 +577,8 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
     },
 
     モチノキョウコ: {
-      name: "もち子さん",
+      name: getCharacterInfo("モチノキョウコ").name,
+      id: getCharacterInfo("モチノキョウコ").characterId,
       rubyName:
         "<ruby>もち</ruby><ruby>子<rp>(</rp><rt>こ</rt><rp>)</rp>さん</ruby>",
       bustupImage: query.bustup.nodes.find(
@@ -605,7 +625,8 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
     },
 
     剣崎雌雄: {
-      name: "剣崎雌雄",
+      name: getCharacterInfo("剣崎雌雄").name,
+      id: getCharacterInfo("剣崎雌雄").characterId,
       rubyName:
         "<ruby>剣崎<rp>(</rp><rt>けんざき</rt><rp>)</rp>雌雄<rp>(</rp><rt>めすお</rt><rp>)</rp></ruby>",
       bustupImage: query.bustup.nodes.find(
@@ -653,7 +674,8 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
     },
 
     WhiteCUL: {
-      name: "WhiteCUL",
+      name: getCharacterInfo("WhiteCUL").name,
+      id: getCharacterInfo("WhiteCUL").characterId,
       rubyName:
         "<ruby>WhiteCUL<rp>(</rp><rt>ほわいとかる</rt><rp>)</rp></ruby>",
       bustupImage: query.bustup.nodes.find(
@@ -702,7 +724,8 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
     },
 
     後鬼: {
-      name: "後鬼",
+      name: getCharacterInfo("後鬼").name,
+      id: getCharacterInfo("後鬼").characterId,
       rubyName: "<ruby>後鬼<rp>(</rp><rt>ごき</rt><rp>)</rp></ruby>",
       bustupImage: query.bustup.nodes.find(node => node.name === "bustup-goki")!
         .childImageSharp.gatsbyImageData,
@@ -746,7 +769,8 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
     },
 
     No7: {
-      name: "No.7",
+      name: getCharacterInfo("No7").name,
+      id: getCharacterInfo("No7").characterId,
       rubyName: "<ruby>No.7<rp>(</rp><rt>なんばーせぶん</rt><rp>)</rp></ruby>",
       bustupImage: query.bustup.nodes.find(
         node => node.name === "bustup-seven"
@@ -828,27 +852,67 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
   }, [headerRef])
 
   // キャラクターモーダル
-  const [showingCharacterModal, setShowingCharacterModal] = useState(false)
-  const [selectedCharacterKey, setSelectedCharacterKey] =
-    useState<CharacterKey>()
+  // 寮生個別ページを開いていたら初期値はtrue
+  const [showingCharacterModal, setShowingCharacterModal] = useState(
+    initialSelectedCharacterKey !== undefined
+  )
+  const [selectedCharacterKey, setSelectedCharacterKey] = useState<
+    CharacterKey | undefined
+  >(initialSelectedCharacterKey)
+
+  useEffect(() => {
+    if (showingCharacterModal) {
+      document.documentElement.classList.add("is-clipped")
+    } else {
+      document.documentElement.classList.remove("is-clipped")
+    }
+  }, [showingCharacterModal])
 
   const showCharacterModal = (characterKey: CharacterKey) => {
-    document.documentElement.classList.add("is-clipped")
+    const characterId = characterInfos[characterKey]?.id
+    window.history.replaceState({}, "", `/dormitory/${characterId}`)
     setSelectedCharacterKey(characterKey)
     setShowingCharacterModal(true)
   }
   const hideCharacterModal = () => {
-    document.documentElement.classList.remove("is-clipped")
+    window.history.replaceState({}, "", `/dormitory`)
     setShowingCharacterModal(false)
+
+    // モーダルを閉じたら該当キャラクターの位置までスクロールする
+    if (selectedCharacterKey) {
+      const dom = document.querySelector(
+        `img[alt='${characterInfos[selectedCharacterKey]?.name}']`
+      )
+      if (dom) {
+        // キャラクターカードが既に画面内に表示されていた場合はスクロールしない
+        const { top, bottom } = dom.getBoundingClientRect()
+        const htmlHeight = document.documentElement.clientHeight
+        const inView = 0 < bottom && top < htmlHeight
+
+        if (!inView) dom.scrollIntoView({ block: "center" })
+      }
+    }
   }
+
+  const selectedCharacterInfo = selectedCharacterKey
+    ? characterInfos[selectedCharacterKey]
+    : undefined
 
   return (
     <>
-      <Seo
-        title="ボイボ寮 | VOICEVOX"
-        description="とある世界の不思議な建物、ボイボ寮。ここでは個性豊かな住民たちが暮らしています。"
-        image={shareThumb}
-      />
+      {showingCharacterModal && selectedCharacterKey ? (
+        <Seo
+          title={`${selectedCharacterInfo?.name} | ボイボ寮 | VOICEVOX`}
+          description={selectedCharacterInfo?.description}
+          image={selectedCharacterInfo?.bustupImage.images.fallback?.src}
+        />
+      ) : (
+        <Seo
+          title="ボイボ寮 | VOICEVOX"
+          description="とある世界の不思議な建物、ボイボ寮。ここでは個性豊かな住民たちが暮らしています。"
+          image={shareThumb}
+        />
+      )}
 
       <div className="dormitory">
         <header ref={headerRef} className="hero is-small">
@@ -1057,11 +1121,14 @@ const Dormitory: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
   )
 }
 
-export default () => {
+export default ({ pageContext: { initialSelectedCharacterKey } }) => {
   const [showingHeader, setShowingHeader] = useState(false)
   return (
     <Page showingHeader={showingHeader}>
-      <Dormitory setShowingHeader={setShowingHeader} />
+      <Dormitory
+        setShowingHeader={setShowingHeader}
+        initialSelectedCharacterKey={initialSelectedCharacterKey}
+      />
     </Page>
   )
 }

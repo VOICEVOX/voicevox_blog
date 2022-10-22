@@ -19,6 +19,7 @@ export type CharacterKey =
 
 export type CharacterInfo = {
   name: string
+  id: string
   rubyName: string
   bustupImage: IGatsbyImageData
   portraitImage: IGatsbyImageData
