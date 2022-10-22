@@ -18,7 +18,15 @@ export const characterKeys: CharacterKey[] = [
   "No7",
 ]
 
-export const characterInfos = {
+export type CharacterInfoEntry = {
+  name: string
+  id: string
+  policyUrl?: string
+}
+
+export const characterInfos: {
+  [key in CharacterKey]: CharacterInfoEntry
+} = {
   四国めたん: {
     name: "四国めたん",
     id: "shikoku_metan",

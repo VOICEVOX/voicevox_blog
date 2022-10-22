@@ -1,5 +1,5 @@
 import React from "react"
-import { characterInfos, characterKeys } from "../constants"
+import { CharacterInfoEntry, characterInfos, characterKeys } from "../constants"
 import { CharacterKey } from "../types/dormitoryCharacter"
 
 export interface GlobalContextProps {
@@ -28,13 +28,7 @@ export const GlobalContext = React.createContext<GlobalContextProps>({
 
 export interface CharacterContextProps {
   characterKeys: CharacterKey[]
-  characterInfos: {
-    [key in CharacterKey]: {
-      name: string
-      id: string
-      policyUrl: string | undefined
-    }
-  }
+  characterInfos: { [key in CharacterKey]: CharacterInfoEntry }
 }
 
 export const CharacterContext = React.createContext<CharacterContextProps>({
