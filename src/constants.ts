@@ -24,6 +24,10 @@ export type CharacterInfoEntry = {
   policyUrl?: string
 }
 
+// NOTE:
+// このデータの一部を gatsby-node.ts の sourceNodes 内でgraphqlへ登録しています
+// （実際に登録されるデータは gatsby-node.ts を参照）
+// npm run develop中にこれを書き換えた場合は再起動しないとgraphqlに反映されないので注意
 export const characterInfos: {
   [key in CharacterKey]: CharacterInfoEntry
 } = {
