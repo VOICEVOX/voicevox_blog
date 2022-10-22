@@ -59,7 +59,7 @@ export const characterInfos: {
   },
   白上虎太郎: {
     name: "白上虎太郎",
-    id: "shirakami_kotaro",
+    id: "shirakami_kotarou",
     policyUrl: "https://virvoxproject.wixsite.com/official/voicevoxの利用規約",
   },
   青山龍星: {
