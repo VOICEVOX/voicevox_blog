@@ -1,17 +1,45 @@
-import React from "react"
-import { characterInfos } from "../../constants"
-import Dormitory from "../dormitory"
+import React, { useLayoutEffect } from "react"
+import DormitoryCharacterModal from "../../components/dormitoryCharacterModal"
+import Seo from "../../components/seo"
+import { characterKeys } from "../../constants"
+import { useDetailedCharacterInfo } from "../../hooks/useDetailedCharacterInfo"
+import { CharacterKey } from "../../types/dormitoryCharacter"
 
 export default (props: { params: { characterId: string } }) => {
   const characterId: string = props.params.characterId
-  const selectedCharacterInfo = Object.entries(characterInfos).find(
-    ([, characterInfo]) => characterInfo.id === characterId
+
+  const { characterInfos, generationInfos } = useDetailedCharacterInfo()
+
+  const selectedCharacterInfoEntry = Object.entries(characterInfos).find(
+    ([, characterInfo]) => characterInfo?.id === characterId
   )
-  const selectedCharacterKey = selectedCharacterInfo?.[0]
+  const selectedCharacterKey = selectedCharacterInfoEntry![0] as CharacterKey
+  const selectedCharacterInfo = characterInfos[selectedCharacterKey]
+
+  const hideCharacterModal = () => {
+    // 仮
+    history.back()
+  }
+
+  useLayoutEffect(() => {
+    document.documentElement.classList.add("is-clipped")
+  }, [])
 
   return (
-    <Dormitory
-      pageContext={{ initialSelectedCharacterKey: selectedCharacterKey }}
-    />
+    <>
+      <Seo
+        title={`${selectedCharacterInfo?.name} | ボイボ寮 | VOICEVOX`}
+        description={selectedCharacterInfo?.description}
+        image={selectedCharacterInfo?.bustupImage.images.fallback?.src}
+      />
+      <DormitoryCharacterModal
+        isActive
+        hide={hideCharacterModal}
+        characterKey={selectedCharacterKey}
+        characterKeys={characterKeys}
+        characterInfos={characterInfos}
+        generationInfos={generationInfos}
+      />
+    </>
   )
 }
