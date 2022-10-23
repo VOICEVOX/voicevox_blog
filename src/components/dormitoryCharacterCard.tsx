@@ -21,7 +21,7 @@ export default ({
           style={{ borderColor: color, height: "100%" }}
         >
           {characterInfo ? (
-            <Link to={href}>
+            <Link to={href} state={{ fromDormitory: true }}>
               <GatsbyImage
                 className="card-image"
                 image={characterInfo.bustupImage}
