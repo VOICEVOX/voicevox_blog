@@ -17,8 +17,7 @@ export default (props: { params: { characterId: string } }) => {
   const selectedCharacterInfo = characterInfos[selectedCharacterKey]
 
   const hideCharacterModal = () => {
-    // 仮
-    history.back()
+    location.assign("/dormitory")
   }
 
   useLayoutEffect(() => {

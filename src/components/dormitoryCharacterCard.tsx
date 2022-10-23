@@ -4,14 +4,13 @@ import { CharacterInfo } from "../types/dormitoryCharacter"
 
 export default ({
   characterInfo,
-  onClick,
   className = "",
 }: {
   characterInfo: CharacterInfo | undefined
-  onClick?: () => void
   className?: string
 }) => {
   const color = characterInfo?.color || "black"
+  const href = characterInfo?.id ? `/dormitory/${characterInfo.id}` : "#"
 
   return (
     <>
@@ -19,10 +18,9 @@ export default ({
         <div
           className="card character-card"
           style={{ borderColor: color, height: "100%" }}
-          onClick={onClick}
         >
           {characterInfo ? (
-            <>
+            <a href={href}>
               <GatsbyImage
                 className="card-image"
                 image={characterInfo.bustupImage}
@@ -32,7 +30,7 @@ export default ({
               <div className="card-content has-text-centered">
                 <h3 className="title is-5">{characterInfo.name}</h3>
               </div>
-            </>
+            </a>
           ) : (
             <div className="card-content has-text-centered">Coming Soon...</div>
           )}
