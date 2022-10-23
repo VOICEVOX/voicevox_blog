@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from "react"
+import React from "react"
 import DormitoryCharacterModal from "../../components/dormitoryCharacterModal"
 import Seo from "../../components/seo"
 import { characterKeys } from "../../constants"
@@ -29,12 +29,6 @@ export default ({
       navigate("/dormitory")
     }
   }
-
-  useLayoutEffect(() => {
-    document.documentElement.classList.add("is-clipped")
-
-    return () => document.documentElement.classList.remove("is-clipped")
-  }, [])
 
   return (
     <>
