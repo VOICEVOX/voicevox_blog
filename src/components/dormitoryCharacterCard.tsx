@@ -1,3 +1,4 @@
+import { Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import React from "react"
 import { CharacterInfo } from "../types/dormitoryCharacter"
@@ -20,7 +21,7 @@ export default ({
           style={{ borderColor: color, height: "100%" }}
         >
           {characterInfo ? (
-            <a href={href}>
+            <Link to={href}>
               <GatsbyImage
                 className="card-image"
                 image={characterInfo.bustupImage}
@@ -30,7 +31,7 @@ export default ({
               <div className="card-content has-text-centered">
                 <h3 className="title is-5">{characterInfo.name}</h3>
               </div>
-            </a>
+            </Link>
           ) : (
             <div className="card-content has-text-centered">Coming Soon...</div>
           )}

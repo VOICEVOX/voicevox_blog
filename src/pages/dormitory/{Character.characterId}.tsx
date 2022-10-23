@@ -4,6 +4,7 @@ import Seo from "../../components/seo"
 import { characterKeys } from "../../constants"
 import { useDetailedCharacterInfo } from "../../hooks/useDetailedCharacterInfo"
 import { CharacterKey } from "../../types/dormitoryCharacter"
+import { navigate } from "gatsby"
 
 export default (props: { params: { characterId: string } }) => {
   const characterId: string = props.params.characterId
@@ -17,11 +18,13 @@ export default (props: { params: { characterId: string } }) => {
   const selectedCharacterInfo = characterInfos[selectedCharacterKey]
 
   const hideCharacterModal = () => {
-    location.assign("/dormitory")
+    navigate("/dormitory")
   }
 
   useLayoutEffect(() => {
     document.documentElement.classList.add("is-clipped")
+
+    return () => document.documentElement.classList.remove("is-clipped")
   }, [])
 
   return (
