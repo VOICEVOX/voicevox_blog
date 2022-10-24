@@ -40,6 +40,9 @@ import mesuo003 from "../audios/mesuo-003.wav"
 import metanAma001 from "../audios/metan-ama-001.wav"
 import metanAma002 from "../audios/metan-ama-002.wav"
 import metanAma003 from "../audios/metan-ama-003.wav"
+import metanHiso001 from "../audios/metan-hiso-001.wav"
+import metanHiso002 from "../audios/metan-hiso-002.wav"
+import metanHiso003 from "../audios/metan-hiso-003.wav"
 import metanNormal001 from "../audios/metan-normal-001.wav"
 import metanNormal002 from "../audios/metan-normal-002.wav"
 import metanNormal003 from "../audios/metan-normal-003.wav"
@@ -49,6 +52,9 @@ import metanSexy003 from "../audios/metan-sexy-003.wav"
 import metanTsun001 from "../audios/metan-tsun-001.wav"
 import metanTsun002 from "../audios/metan-tsun-002.wav"
 import metanTsun003 from "../audios/metan-tsun-003.wav"
+import metanWhis001 from "../audios/metan-whis-001.wav"
+import metanWhis002 from "../audios/metan-whis-002.wav"
+import metanWhis003 from "../audios/metan-whis-003.wav"
 import ritsu001 from "../audios/ritsu-001.wav"
 import ritsu002 from "../audios/ritsu-002.wav"
 import ritsu003 from "../audios/ritsu-003.wav"
@@ -100,6 +106,9 @@ import whiteSad003 from "../audios/white-sad-003.wav"
 import zundamonAma001 from "../audios/zundamon-ama-001.wav"
 import zundamonAma002 from "../audios/zundamon-ama-002.wav"
 import zundamonAma003 from "../audios/zundamon-ama-003.wav"
+import zundamonHiso001 from "../audios/zundamon-hiso-001.wav"
+import zundamonHiso002 from "../audios/zundamon-hiso-002.wav"
+import zundamonHiso003 from "../audios/zundamon-hiso-003.wav"
 import zundamonNormal001 from "../audios/zundamon-normal-001.wav"
 import zundamonNormal002 from "../audios/zundamon-normal-002.wav"
 import zundamonNormal003 from "../audios/zundamon-normal-003.wav"
@@ -177,6 +186,8 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         { style: "あまあま", urls: [metanAma001, metanAma002, metanAma003] },
         { style: "ツンツン", urls: [metanTsun001, metanTsun002, metanTsun003] },
         { style: "セクシー", urls: [metanSexy001, metanSexy002, metanSexy003] },
+        { style: "ささやき", urls: [metanWhis001, metanWhis002, metanWhis003] },
+        { style: "ヒソヒソ", urls: [metanHiso001, metanHiso002, metanHiso003] },
       ],
       releaseStatus: "released",
     },
@@ -206,6 +217,10 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         {
           style: "ささやき",
           urls: [zundamonWhis001, zundamonWhis002, zundamonWhis003],
+        },
+        {
+          style: "ヒソヒソ",
+          urls: [zundamonHiso001, zundamonHiso002, zundamonHiso003],
         },
       ],
       releaseStatus: "released",
