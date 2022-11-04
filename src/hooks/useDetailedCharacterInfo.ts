@@ -1,6 +1,5 @@
-import { useStaticQuery, graphql } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 import { IGatsbyImageData } from "gatsby-plugin-image"
-import { useCharacterInfo } from "./useCharacterInfo"
 import goki01 from "../audios/dormitory/goki-01.wav"
 import goki02 from "../audios/dormitory/goki-02.wav"
 import goki03 from "../audios/dormitory/goki-03.wav"
@@ -61,10 +60,11 @@ import zundamon03 from "../audios/dormitory/zundamon-03.wav"
 import zundamon04 from "../audios/dormitory/zundamon-04.wav"
 import zundamon05 from "../audios/dormitory/zundamon-05.wav"
 import {
-  CharacterKey,
   CharacterInfo,
+  CharacterKey,
   Generation,
 } from "../types/dormitoryCharacter"
+import { useCharacterInfo } from "./useCharacterInfo"
 
 export const useDetailedCharacterInfo = () => {
   const query: {
@@ -102,6 +102,19 @@ export const useDetailedCharacterInfo = () => {
           }
         }
       }
+      ogp: allFile(filter: { absolutePath: { regex: "/bustup/" } }) {
+        nodes {
+          name
+          childImageSharp {
+            # バストアップ画像のトップ部分から1200x630をクロップ
+            gatsbyImageData(
+              width: 1200
+              height: 630
+              transformOptions: { cropFocus: NORTH }
+            )
+          }
+        }
+      }
     }
   `)
 
@@ -120,6 +133,8 @@ export const useDetailedCharacterInfo = () => {
       portraitImage: query.portrait.nodes.find(
         node => node.name === "portrait-metan"
       )!.childImageSharp.gatsbyImageData,
+      ogpImage: query.ogp.nodes.find(node => node.name === "bustup-metan")!
+        .childImageSharp.gatsbyImageData,
       color: "#DF4C94",
       lightColor: "#E3ADD5",
       description:
@@ -166,6 +181,8 @@ export const useDetailedCharacterInfo = () => {
       portraitImage: query.portrait.nodes.find(
         node => node.name === "portrait-zundamon"
       )!.childImageSharp.gatsbyImageData,
+      ogpImage: query.ogp.nodes.find(node => node.name === "bustup-zundamon")!
+        .childImageSharp.gatsbyImageData,
       color: "#33A65E",
       lightColor: "#CCEBC5",
       description:
@@ -216,6 +233,8 @@ export const useDetailedCharacterInfo = () => {
       portraitImage: query.portrait.nodes.find(
         node => node.name === "portrait-tsumugi"
       )!.childImageSharp.gatsbyImageData,
+      ogpImage: query.ogp.nodes.find(node => node.name === "bustup-tsumugi")!
+        .childImageSharp.gatsbyImageData,
       color: "#FF9914",
       lightColor: "#FEE6AA",
       description:
@@ -259,6 +278,8 @@ export const useDetailedCharacterInfo = () => {
       portraitImage: query.portrait.nodes.find(
         node => node.name === "portrait-hau"
       )!.childImageSharp.gatsbyImageData,
+      ogpImage: query.ogp.nodes.find(node => node.name === "bustup-hau")!
+        .childImageSharp.gatsbyImageData,
       color: "#1D86AE",
       lightColor: "#B3D7DD",
       description: "現役看護師です！<br />看護師のあれこれお伝えします！",
@@ -302,6 +323,8 @@ export const useDetailedCharacterInfo = () => {
       portraitImage: query.portrait.nodes.find(
         node => node.name === "portrait-ritsu"
       )!.childImageSharp.gatsbyImageData,
+      ogpImage: query.ogp.nodes.find(node => node.name === "bustup-ritsu")!
+        .childImageSharp.gatsbyImageData,
       color: "#FC4E32",
       lightColor: "#FDCDB7",
       description:
@@ -345,6 +368,8 @@ export const useDetailedCharacterInfo = () => {
       portraitImage: query.portrait.nodes.find(
         node => node.name === "portrait-takehiro"
       )!.childImageSharp.gatsbyImageData,
+      ogpImage: query.ogp.nodes.find(node => node.name === "bustup-takehiro")!
+        .childImageSharp.gatsbyImageData,
       color: "#1AA18E",
       lightColor: "#B3E2D8",
       description: "サッパリした青年。<br />やや短気だが面倒見は良い。",
@@ -387,6 +412,8 @@ export const useDetailedCharacterInfo = () => {
       portraitImage: query.portrait.nodes.find(
         node => node.name === "portrait-kotarou"
       )!.childImageSharp.gatsbyImageData,
+      ogpImage: query.ogp.nodes.find(node => node.name === "bustup-kotarou")!
+        .childImageSharp.gatsbyImageData,
       color: "#99D02B",
       lightColor: "#E6F5B0",
       description:
@@ -430,6 +457,8 @@ export const useDetailedCharacterInfo = () => {
       portraitImage: query.portrait.nodes.find(
         node => node.name === "portrait-ryusei"
       )!.childImageSharp.gatsbyImageData,
+      ogpImage: query.ogp.nodes.find(node => node.name === "bustup-ryusei")!
+        .childImageSharp.gatsbyImageData,
       color: "#386CB0",
       lightColor: "#B3CDE3",
       description: "とにかく大柄で無骨な青年。<br />寡黙で冷静なストッパー枠。",
@@ -471,6 +500,8 @@ export const useDetailedCharacterInfo = () => {
       portraitImage: query.portrait.nodes.find(
         node => node.name === "portrait-himari"
       )!.childImageSharp.gatsbyImageData,
+      ogpImage: query.ogp.nodes.find(node => node.name === "bustup-himari")!
+        .childImageSharp.gatsbyImageData,
       color: "#A45AAA",
       lightColor: "#CAB2D6",
       description: "冥界から来た死神。<br />可愛いものに目がない。",
@@ -514,6 +545,8 @@ export const useDetailedCharacterInfo = () => {
       portraitImage: query.portrait.nodes.find(
         node => node.name === "portrait-sora"
       )!.childImageSharp.gatsbyImageData,
+      ogpImage: query.ogp.nodes.find(node => node.name === "bustup-sora")!
+        .childImageSharp.gatsbyImageData,
       color: "#6964AD",
       lightColor: "#B2B6D8",
       description:
@@ -568,6 +601,8 @@ export const useDetailedCharacterInfo = () => {
       portraitImage: query.portrait.nodes.find(
         node => node.name === "portrait-kyoko"
       )!.childImageSharp.gatsbyImageData,
+      ogpImage: query.ogp.nodes.find(node => node.name === "bustup-kyoko")!
+        .childImageSharp.gatsbyImageData,
       color: "#1D86AE",
       lightColor: "#B3D7DD",
       description:
@@ -616,6 +651,8 @@ export const useDetailedCharacterInfo = () => {
       portraitImage: query.portrait.nodes.find(
         node => node.name === "portrait-mesuo"
       )!.childImageSharp.gatsbyImageData,
+      ogpImage: query.ogp.nodes.find(node => node.name === "bustup-mesuo")!
+        .childImageSharp.gatsbyImageData,
       color: "#33A65E",
       lightColor: "#CCEBC5",
       description:
@@ -665,6 +702,8 @@ export const useDetailedCharacterInfo = () => {
       portraitImage: query.portrait.nodes.find(
         node => node.name === "portrait-white"
       )!.childImageSharp.gatsbyImageData,
+      ogpImage: query.ogp.nodes.find(node => node.name === "bustup-white")!
+        .childImageSharp.gatsbyImageData,
       color: "#1D86AE",
       lightColor: "#B3D7DD",
       description:
@@ -713,6 +752,8 @@ export const useDetailedCharacterInfo = () => {
       portraitImage: query.portrait.nodes.find(
         node => node.name === "portrait-goki"
       )!.childImageSharp.gatsbyImageData,
+      ogpImage: query.ogp.nodes.find(node => node.name === "bustup-goki")!
+        .childImageSharp.gatsbyImageData,
       color: "#386CB0",
       lightColor: "#B3CDE3",
       description:
@@ -759,6 +800,8 @@ export const useDetailedCharacterInfo = () => {
       portraitImage: query.portrait.nodes.find(
         node => node.name === "portrait-seven"
       )!.childImageSharp.gatsbyImageData,
+      ogpImage: query.ogp.nodes.find(node => node.name === "bustup-seven")!
+        .childImageSharp.gatsbyImageData,
       color: "#A45AAA",
       lightColor: "#CAB2D6",
       description:

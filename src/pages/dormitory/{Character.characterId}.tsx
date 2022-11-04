@@ -1,10 +1,10 @@
+import { navigate, PageProps } from "gatsby"
 import React from "react"
 import DormitoryCharacterModal from "../../components/dormitoryCharacterModal"
 import Seo from "../../components/seo"
 import { characterKeys } from "../../constants"
 import { useDetailedCharacterInfo } from "../../hooks/useDetailedCharacterInfo"
 import { CharacterKey } from "../../types/dormitoryCharacter"
-import { navigate, PageProps } from "gatsby"
 
 export default ({
   location,
@@ -35,7 +35,7 @@ export default ({
       <Seo
         title={`${selectedCharacterInfo?.name} | ボイボ寮 | VOICEVOX`}
         description={selectedCharacterInfo?.description}
-        image={selectedCharacterInfo?.bustupImage.images.fallback?.src}
+        image={selectedCharacterInfo?.ogpImage.images.fallback?.src}
       />
       <DormitoryCharacterModal
         isActive

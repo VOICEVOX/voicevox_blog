@@ -23,6 +23,7 @@ export type CharacterInfo = {
   rubyName: string
   bustupImage: IGatsbyImageData
   portraitImage: IGatsbyImageData
+  ogpImage: IGatsbyImageData
   color: string
   lightColor: string
   description: string
