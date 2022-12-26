@@ -62,7 +62,7 @@ import zundamon05 from "../audios/dormitory/zundamon-05.wav"
 import {
   CharacterInfo,
   CharacterKey,
-  Generation,
+  Generation
 } from "../types/dormitoryCharacter"
 import { useCharacterInfo } from "./useCharacterInfo"
 
@@ -532,7 +532,7 @@ export const useDetailedCharacterInfo = () => {
         me: ["私"],
         you: ["君たち"],
       },
-      detailUrl: "https://meimeihimari.wixsite.com/himari/複製-vtuber",
+      detailUrl: "https://meimeihimari.wixsite.com/himari/voicevox",
     },
 
     九州そら: {
