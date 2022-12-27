@@ -233,6 +233,7 @@ export default ({
                             key={index}
                             image={image}
                             alt={characterInfo.name}
+                            objectFit="contain"
                             style={{
                               maxHeight: "8rem",
                             }}

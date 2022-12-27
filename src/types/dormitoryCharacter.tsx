@@ -16,6 +16,10 @@ export type CharacterKey =
   | "WhiteCUL"
   | "後鬼"
   | "No7"
+  | "ちび式じい"
+  | "櫻歌ミコ"
+  | "小夜_SAYO"
+  | "ナースロボ＿タイプＴ"
 
 export type CharacterInfo = {
   name: string

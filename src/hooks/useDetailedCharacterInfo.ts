@@ -59,11 +59,7 @@ import zundamon02 from "../audios/dormitory/zundamon-02.wav"
 import zundamon03 from "../audios/dormitory/zundamon-03.wav"
 import zundamon04 from "../audios/dormitory/zundamon-04.wav"
 import zundamon05 from "../audios/dormitory/zundamon-05.wav"
-import {
-  CharacterInfo,
-  CharacterKey,
-  Generation
-} from "../types/dormitoryCharacter"
+import { CharacterInfo, CharacterKey } from "../types/dormitoryCharacter"
 import { useCharacterInfo } from "./useCharacterInfo"
 
 export const useDetailedCharacterInfo = () => {
@@ -836,12 +832,229 @@ export const useDetailedCharacterInfo = () => {
         九州そら: "九州さん",
         モチノキョウコ: "モチノさん",
         剣崎雌雄: "剣崎さん",
-        後鬼: "後鬼さん",
         WhiteCUL: "雪さん",
+        後鬼: "後鬼さん",
         me: ["私", "僕"],
         you: ["そちら様", "皆様"],
       },
       detailUrl: "https://voiceseven.com/",
+    },
+
+    ちび式じい: {
+      name: getCharacterInfo("ちび式じい").name,
+      id: getCharacterInfo("ちび式じい").characterId,
+      rubyName:
+        "<ruby>ちび</ruby><ruby>式<rp>(</rp><rt>しき</rt><rp>)</rp></ruby><ruby>じい</ruby>",
+      bustupImage: query.bustup.nodes.find(
+        node => node.name === "bustup-chibishikiji"
+      )!.childImageSharp.gatsbyImageData,
+      portraitImage: query.portrait.nodes.find(
+        node => node.name === "portrait-chibishikiji"
+      )!.childImageSharp.gatsbyImageData,
+      ogpImage: query.ogp.nodes.find(
+        node => node.name === "bustup-chibishikiji"
+      )!.childImageSharp.gatsbyImageData,
+      color: "#1D86AE",
+      lightColor: "#B3D7DD",
+      description:
+        "式じいに似た姿の小さい妖精さん。<br />世界各地に様々な個体が生息している。",
+      labelInfos: [
+        { label: "身長", value: "20 cm前後", size: 1 },
+        { label: "CV", value: "こんぺえる", size: 1 },
+        { label: "好きなもの", value: "ジャガイモ", size: 1 },
+        { label: "種族", value: "ちび式じい", size: 1 },
+      ],
+      voiceUrls: undefined,
+      infoImages: query.dormitory.nodes
+        .filter(node => node.name.includes("chibishikiji"))
+        .sort((a, b) => a.name.localeCompare(b.name))
+        .map(node => node.childImageSharp.gatsbyImageData),
+      callNames: {
+        四国めたん: "めたんちゃん",
+        ずんだもん: "ずんだの精さん",
+        春日部つむぎ: "つむぎちゃん",
+        雨晴はう: "はうちゃん",
+        波音リツ: "りっちゃん",
+        玄野武宏: "たけひろさん",
+        白上虎太郎: "こたろうくん",
+        青山龍星: "りゅうせいさん",
+        冥鳴ひまり: "めいめいちゃん/死神さん",
+        九州そら: "そらさん",
+        モチノキョウコ: "もちこさん",
+        剣崎雌雄: "メスの付喪神さん/メスのひと",
+        WhiteCUL: "ゆきさん",
+        後鬼: "ごきさん",
+        No7: "なな号さん",
+        櫻歌ミコ: "みこみこ",
+        小夜_SAYO: "小夜ちゃん",
+        ナースロボ＿タイプＴ: "TTちゃん",
+        me: ["わし"],
+        you: ["おぬし", "おぬしら"],
+      },
+      detailUrl:
+        "https://shiki-rowen-taigen.com/%e5%88%a9%e7%94%a8%e8%a6%8f%e7%b4%84%e3%83%bb%e3%82%ac%e3%82%a4%e3%83%89%e3%83%a9%e3%82%a4%e3%83%b3/",
+    },
+
+    櫻歌ミコ: {
+      name: getCharacterInfo("櫻歌ミコ").name,
+      id: getCharacterInfo("櫻歌ミコ").characterId,
+      rubyName:
+        "<ruby>櫻歌<rp>(</rp><rt>おうか</rt><rp>)</rp></ruby><ruby>ミコ</ruby>",
+      bustupImage: query.bustup.nodes.find(
+        node => node.name === "bustup-ouka_miko"
+      )!.childImageSharp.gatsbyImageData,
+      portraitImage: query.portrait.nodes.find(
+        node => node.name === "portrait-ouka_miko"
+      )!.childImageSharp.gatsbyImageData,
+      ogpImage: query.ogp.nodes.find(node => node.name === "bustup-ouka_miko")!
+        .childImageSharp.gatsbyImageData,
+      color: "#F9344C",
+      lightColor: "#FBB4C4",
+      description:
+        "ニホンオオカミの女の子。<br />もうひとりのミコ（通称：第二ちゃん）がいる。",
+      labelInfos: [
+        { label: "年齢", value: "3.5 歳", size: 1 },
+        { label: "身長", value: "135 cm", size: 1 },
+        { label: "体重", value: "35 kg", size: 1 },
+        { label: "誕生日", value: "12月24日", size: 1 },
+        { label: "性格", value: "ガブデレ", size: 1 },
+        { label: "持ち物", value: "りんご/骨", size: 1 },
+        { label: "愛称", value: "みこみこ/第二ちゃん", size: 2 },
+      ],
+      voiceUrls: undefined,
+      infoImages: query.dormitory.nodes
+        .filter(node => node.name.includes("ouka_miko"))
+        .sort((a, b) => a.name.localeCompare(b.name))
+        .map(node => node.childImageSharp.gatsbyImageData),
+      callNames: {
+        四国めたん: "めたんちゃん",
+        ずんだもん: "もんちゃん",
+        春日部つむぎ: "つむぎちゃん",
+        雨晴はう: "はうちゃん",
+        波音リツ: "りっちゃん",
+        玄野武宏: "武宏くん",
+        白上虎太郎: "虎太郎くん",
+        青山龍星: "龍星くん",
+        冥鳴ひまり: "ひまりちゃん",
+        九州そら: "そらちゃん",
+        モチノキョウコ: "もち子ちゃん",
+        剣崎雌雄: "剣崎先生",
+        WhiteCUL: "雪ちゃん",
+        後鬼: "後鬼ちゃん",
+        No7: "セブンちゃん",
+        ちび式じい: "ちいおじいちゃん",
+        小夜_SAYO: "小夜ちゃん",
+        ナースロボ＿タイプＴ: "TTちゃん",
+        me: ["ミコ/私"],
+        you: ["あなた", "あなたたち"],
+      },
+      detailUrl: "https://voicevox35miko.studio.site/",
+    },
+
+    小夜_SAYO: {
+      name: getCharacterInfo("小夜_SAYO").name,
+      id: getCharacterInfo("小夜_SAYO").characterId,
+      rubyName:
+        "<ruby>小夜<rp>(</rp><rt>さよ</rt><rp>)</rp></ruby><ruby>/SAYO</ruby>",
+      bustupImage: query.bustup.nodes.find(node => node.name === "bustup-sayo")!
+        .childImageSharp.gatsbyImageData,
+      portraitImage: query.portrait.nodes.find(
+        node => node.name === "portrait-sayo"
+      )!.childImageSharp.gatsbyImageData,
+      ogpImage: query.ogp.nodes.find(node => node.name === "bustup-sayo")!
+        .childImageSharp.gatsbyImageData,
+      color: "#FF6687",
+      lightColor: "#FBB4C4",
+      description:
+        "おしゃべりがすきなねこの女の子。<br />おいしいものを与えると懐きやすい。",
+      labelInfos: [
+        { label: "誕生日", value: "9月29日", size: 1 },
+        { label: "好きなもの", value: "缶詰", size: 1 },
+        { label: "体長", value: "135 cm（猫耳を含む）", size: 2 },
+      ],
+      voiceUrls: undefined,
+      infoImages: query.dormitory.nodes
+        .filter(node => node.name.includes("sayo"))
+        .sort((a, b) => a.name.localeCompare(b.name))
+        .map(node => node.childImageSharp.gatsbyImageData),
+      callNames: {
+        四国めたん: "めたんちゃん",
+        ずんだもん: "ずんだもん",
+        春日部つむぎ: "つむぎちゃん",
+        雨晴はう: "はうさん",
+        波音リツ: "リツさん",
+        玄野武宏: "武宏さん",
+        白上虎太郎: "虎太郎くん",
+        青山龍星: "龍星さん",
+        冥鳴ひまり: "ひまりちゃん",
+        九州そら: "そらさん",
+        モチノキョウコ: "もち子さん",
+        剣崎雌雄: "剣崎先生",
+        WhiteCUL: "雪さん",
+        後鬼: "後鬼さん",
+        No7: "ななさん",
+        ちび式じい: "ちびじい",
+        櫻歌ミコ: "ミコちゃん",
+        ナースロボ＿タイプＴ: "TTちゃん",
+        me: ["小夜"],
+        you: ["あなた", "あなたたち"],
+      },
+      detailUrl: "https://316soramegu.wixsite.com/sayo-official",
+    },
+
+    ナースロボ＿タイプＴ: {
+      name: getCharacterInfo("ナースロボ＿タイプＴ").name,
+      id: getCharacterInfo("ナースロボ＿タイプＴ").characterId,
+      rubyName:
+        "<ruby>ナースロボ＿タイプ</ruby><ruby>Ｔ<rp>(</rp><rt>てぃー</rt><rp>)</rp></ruby>",
+      bustupImage: query.bustup.nodes.find(
+        node => node.name === "bustup-nurserobo_typet"
+      )!.childImageSharp.gatsbyImageData,
+      portraitImage: query.portrait.nodes.find(
+        node => node.name === "portrait-nurserobo_typet"
+      )!.childImageSharp.gatsbyImageData,
+      ogpImage: query.ogp.nodes.find(
+        node => node.name === "bustup-nurserobo_typet"
+      )!.childImageSharp.gatsbyImageData,
+      color: "#FF9914",
+      lightColor: "#FEE6AA",
+      description:
+        "医者に作られたナース形ロボット。<br />人格は少女と設定されている。",
+      labelInfos: [
+        { label: "年齢", value: "五ヶ月", size: 1 },
+        { label: "誕生日", value: "12月3日", size: 1 },
+        { label: "身長", value: "150～160 cm（パーツによる）", size: 2 },
+        { label: "愛称", value: "ＴＴ", size: 2 },
+        { label: "製造者", value: "そばの小型ロボット（医者）", size: 2 },
+      ],
+      voiceUrls: undefined,
+      infoImages: query.dormitory.nodes
+        .filter(node => node.name.includes("nurserobo_typet"))
+        .sort((a, b) => a.name.localeCompare(b.name))
+        .map(node => node.childImageSharp.gatsbyImageData),
+      callNames: {
+        四国めたん: "四国さん",
+        ずんだもん: "ずんだもんさん",
+        春日部つむぎ: "春日部さん",
+        雨晴はう: "雨晴さん",
+        波音リツ: "波音さん",
+        玄野武宏: "玄野さん",
+        白上虎太郎: "白上さん",
+        青山龍星: "青山さん",
+        冥鳴ひまり: "冥鳴さん",
+        九州そら: "まーくつーさん",
+        モチノキョウコ: "モチノさん",
+        剣崎雌雄: "剣崎先生",
+        WhiteCUL: "ゆきさん",
+        後鬼: "後鬼さん",
+        No7: "セブンさん",
+        ちび式じい: "おじいさん",
+        櫻歌ミコ: "櫻歌さん",
+        小夜_SAYO: "小夜さん",
+        me: ["わたし"],
+        you: ["あなた", "あなたたち"],
+      },
+      detailUrl: "https://www.krnr.top/blank",
     },
   }
 
