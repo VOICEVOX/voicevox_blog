@@ -34,9 +34,6 @@ export type CharacterInfo = {
   labelInfos: { label: string; value: string; size: 1 | 2 }[]
   voiceUrls?: string[]
   infoImages?: IGatsbyImageData[]
-  callNames: {
-    [key in CharacterKey]?: string | undefined
-  } & { me: string[]; you: string[] }
   detailUrl: string | undefined
 }
 
