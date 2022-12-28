@@ -1,5 +1,10 @@
 import { graphql, useStaticQuery } from "gatsby"
 import { IGatsbyImageData } from "gatsby-plugin-image"
+import chibishikiji01 from "../audios/dormitory/chibishikiji-01.wav"
+import chibishikiji02 from "../audios/dormitory/chibishikiji-02.wav"
+import chibishikiji03 from "../audios/dormitory/chibishikiji-03.wav"
+import chibishikiji04 from "../audios/dormitory/chibishikiji-04.wav"
+import chibishikiji05 from "../audios/dormitory/chibishikiji-05.wav"
 import goki01 from "../audios/dormitory/goki-01.wav"
 import goki02 from "../audios/dormitory/goki-02.wav"
 import goki03 from "../audios/dormitory/goki-03.wav"
@@ -27,6 +32,16 @@ import metan01 from "../audios/dormitory/metan-01.wav"
 import metan02 from "../audios/dormitory/metan-02.wav"
 import metan03 from "../audios/dormitory/metan-03.wav"
 import metan04 from "../audios/dormitory/metan-04.wav"
+import typet01 from "../audios/dormitory/nurserobo_typet-01.wav"
+import typet02 from "../audios/dormitory/nurserobo_typet-02.wav"
+import typet03 from "../audios/dormitory/nurserobo_typet-03.wav"
+import typet04 from "../audios/dormitory/nurserobo_typet-04.wav"
+import typet05 from "../audios/dormitory/nurserobo_typet-05.wav"
+import miko01 from "../audios/dormitory/ouka_miko-01.wav"
+import miko02 from "../audios/dormitory/ouka_miko-02.wav"
+import miko03 from "../audios/dormitory/ouka_miko-03.wav"
+import miko04 from "../audios/dormitory/ouka_miko-04.wav"
+import miko05 from "../audios/dormitory/ouka_miko-05.wav"
 import ritsu01 from "../audios/dormitory/ritsu-01.wav"
 import ritsu02 from "../audios/dormitory/ritsu-02.wav"
 import ritsu03 from "../audios/dormitory/ritsu-03.wav"
@@ -35,6 +50,11 @@ import ritsu05 from "../audios/dormitory/ritsu-05.wav"
 import ryusei01 from "../audios/dormitory/ryusei-01.wav"
 import ryusei02 from "../audios/dormitory/ryusei-02.wav"
 import ryusei03 from "../audios/dormitory/ryusei-03.wav"
+import sayo01 from "../audios/dormitory/sayo-01.wav"
+import sayo02 from "../audios/dormitory/sayo-02.wav"
+import sayo03 from "../audios/dormitory/sayo-03.wav"
+import sayo04 from "../audios/dormitory/sayo-04.wav"
+import sayo05 from "../audios/dormitory/sayo-05.wav"
 import seven01 from "../audios/dormitory/seven-01.wav"
 import seven02 from "../audios/dormitory/seven-02.wav"
 import seven03 from "../audios/dormitory/seven-03.wav"
@@ -594,7 +614,13 @@ export const useDetailedCharacterInfo = () => {
         { label: "好きなもの", value: "ジャガイモ", size: 1 },
         { label: "種族", value: "ちび式じい", size: 1 },
       ],
-      voiceUrls: undefined,
+      voiceUrls: [
+        chibishikiji01,
+        chibishikiji02,
+        chibishikiji03,
+        chibishikiji04,
+        chibishikiji05,
+      ],
       infoImages: query.dormitory.nodes
         .filter(node => node.name.includes("chibishikiji"))
         .sort((a, b) => a.name.localeCompare(b.name))
@@ -629,7 +655,7 @@ export const useDetailedCharacterInfo = () => {
         { label: "持ち物", value: "りんご/骨", size: 1 },
         { label: "愛称", value: "みこみこ/第二ちゃん", size: 2 },
       ],
-      voiceUrls: undefined,
+      voiceUrls: [miko01, miko02, miko03, miko04, miko05],
       infoImages: query.dormitory.nodes
         .filter(node => node.name.includes("ouka_miko"))
         .sort((a, b) => a.name.localeCompare(b.name))
@@ -658,7 +684,7 @@ export const useDetailedCharacterInfo = () => {
         { label: "好きなもの", value: "缶詰", size: 1 },
         { label: "体長", value: "135 cm（猫耳を含む）", size: 2 },
       ],
-      voiceUrls: undefined,
+      voiceUrls: [sayo01, sayo02, sayo03, sayo04, sayo05],
       infoImages: query.dormitory.nodes
         .filter(node => node.name.includes("sayo"))
         .sort((a, b) => a.name.localeCompare(b.name))
@@ -691,7 +717,7 @@ export const useDetailedCharacterInfo = () => {
         { label: "愛称", value: "ＴＴ", size: 2 },
         { label: "製造者", value: "そばの小型ロボット（医者）", size: 2 },
       ],
-      voiceUrls: undefined,
+      voiceUrls: [typet01, typet02, typet03, typet04, typet05],
       infoImages: query.dormitory.nodes
         .filter(node => node.name.includes("nurserobo_typet"))
         .sort((a, b) => a.name.localeCompare(b.name))
@@ -722,6 +748,10 @@ export const useDetailedCharacterInfo = () => {
       WhiteCUL: "雪さん",
       後鬼: "後鬼さん",
       No7: "セブンさん",
+      ちび式じい: "ちび式じいさん",
+      櫻歌ミコ: "ミコさん",
+      小夜_SAYO: "小夜さん",
+      ナースロボ＿タイプＴ: "ＴＴさん",
     },
     ずんだもん: {
       me: ["ずんだもん", "僕"],
@@ -740,6 +770,10 @@ export const useDetailedCharacterInfo = () => {
       WhiteCUL: "雪",
       後鬼: "後鬼",
       No7: "セブン",
+      ちび式じい: "ちび式じい",
+      櫻歌ミコ: "ミコ",
+      小夜_SAYO: "小夜",
+      ナースロボ＿タイプＴ: "ＴＴ",
     },
     春日部つむぎ: {
       me: ["あーし"],
@@ -794,6 +828,10 @@ export const useDetailedCharacterInfo = () => {
       WhiteCUL: "ゆき",
       後鬼: "ごき",
       No7: "なな",
+      ちび式じい: "式じい",
+      櫻歌ミコ: "ミコ",
+      小夜_SAYO: "さよ",
+      ナースロボ＿タイプＴ: "TT",
     },
     玄野武宏: {
       me: ["俺"],
@@ -812,6 +850,10 @@ export const useDetailedCharacterInfo = () => {
       WhiteCUL: "雪",
       後鬼: "後鬼",
       No7: "なな",
+      ちび式じい: "小さいじいさん",
+      櫻歌ミコ: "ミコ",
+      小夜_SAYO: "小夜",
+      ナースロボ＿タイプＴ: "タイプT",
     },
     白上虎太郎: {
       me: ["おれ"],
@@ -830,6 +872,10 @@ export const useDetailedCharacterInfo = () => {
       WhiteCUL: "ユキさん",
       後鬼: "ゴキさん",
       No7: "ナナちゃんさん",
+      ちび式じい: "ちっちゃい式じい",
+      櫻歌ミコ: "ミコちゃん",
+      小夜_SAYO: "サヨちゃん",
+      ナースロボ＿タイプＴ: "Tちゃん",
     },
     青山龍星: {
       me: ["オレ"],
@@ -848,6 +894,10 @@ export const useDetailedCharacterInfo = () => {
       WhiteCUL: "雪",
       後鬼: "後鬼",
       No7: "セブン",
+      ちび式じい: "小さい大元さん",
+      櫻歌ミコ: "ミコ",
+      小夜_SAYO: "小夜",
+      ナースロボ＿タイプＴ: "T",
     },
     冥鳴ひまり: {
       me: ["私"],
@@ -870,8 +920,8 @@ export const useDetailedCharacterInfo = () => {
     九州そら: {
       me: ["まーくつー"],
       you: ["あなたさま", "みなさま"],
-      ずんだもん: "ずんだもん",
       四国めたん: "めたんさま",
+      ずんだもん: "ずんだもん",
       春日部つむぎ: "つむぎさま",
       雨晴はう: "はうさま",
       波音リツ: "リツさま",
@@ -884,12 +934,16 @@ export const useDetailedCharacterInfo = () => {
       WhiteCUL: "雪さま",
       後鬼: "後鬼さま",
       No7: "セブンさま",
+      ちび式じい: "ちび式じいさま",
+      櫻歌ミコ: "ミコさま",
+      小夜_SAYO: "小夜さま",
+      ナースロボ＿タイプＴ: "ＴＴさま",
     },
     モチノキョウコ: {
       me: ["私", "もち子"],
       you: ["あなた", "あなた達"],
-      ずんだもん: "ずんだもんちゃん",
       四国めたん: "めたんさん",
+      ずんだもん: "ずんだもんちゃん",
       春日部つむぎ: "つむぎさん",
       雨晴はう: "はうちゃん",
       波音リツ: "リッちゃん先輩",
@@ -902,6 +956,10 @@ export const useDetailedCharacterInfo = () => {
       WhiteCUL: "ユキさん",
       後鬼: "後鬼お姉さん",
       No7: "セブンちゃん",
+      ちび式じい: "ちび式さん",
+      櫻歌ミコ: "ミコさん",
+      小夜_SAYO: "小夜さん",
+      ナースロボ＿タイプＴ: "ティーさん（Tさん）",
     },
     剣崎雌雄: {
       me: ["僕"],
@@ -938,10 +996,14 @@ export const useDetailedCharacterInfo = () => {
       剣崎雌雄: "剣崎さん",
       後鬼: "後鬼さん",
       No7: "ななさん",
+      ちび式じい: "ちびじい",
+      櫻歌ミコ: "ミコちゃん",
+      小夜_SAYO: "小夜ちゃん",
+      ナースロボ＿タイプＴ: "TTちゃん",
     },
     後鬼: {
       me: ["私/ワテ"],
-      you: ["あなたorキミ", "/あんたはん"],
+      you: ["あなたorキミ/あんたはん"],
       四国めたん: "四国さん/めたんはん",
       ずんだもん: "ずんだもん",
       春日部つむぎ: "春日部さん/つむぎはん",

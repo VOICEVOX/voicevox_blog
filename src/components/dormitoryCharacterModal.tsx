@@ -17,6 +17,7 @@ export default ({
   characterKey,
   characterKeys,
   characterInfos,
+  callNameInfos,
   generationInfos,
 }: {
   isActive: boolean
@@ -25,6 +26,11 @@ export default ({
   characterKeys: CharacterKey[]
   characterInfos: {
     [key in CharacterKey]: CharacterInfo
+  }
+  callNameInfos: {
+    [key in CharacterKey]: {
+      [key in CharacterKey]?: string | undefined
+    } & { me: string[]; you: string[] }
   }
   generationInfos: {
     [key in Generation]: { characterKeys: CharacterKey[] }
@@ -95,7 +101,7 @@ export default ({
               className="description-call-text"
               style={{ borderColor: characterInfo.color }}
             >
-              {characterInfo.callNames[targetCharaterKey]}
+              {callNameInfos[characterKey][targetCharaterKey]}
             </span>
             <Arrow leftOrRight="right" />
           </div>
@@ -105,7 +111,7 @@ export default ({
               className="description-call-text"
               style={{ borderColor: characterInfos[targetCharaterKey].color }}
             >
-              {characterInfos[targetCharaterKey].callNames[characterKey]}
+              {callNameInfos[targetCharaterKey][characterKey]}
             </span>
           </div>
         </div>
@@ -251,7 +257,7 @@ export default ({
                           <span>一人称</span>
                         </div>
                         <div>
-                          {characterInfo.callNames.me.map(callName => (
+                          {callNameInfos[characterKey].me.map(callName => (
                             <p>{callName}</p>
                           ))}
                         </div>
@@ -261,7 +267,7 @@ export default ({
                           <span>二人称</span>
                         </div>
                         <div>
-                          {characterInfo.callNames.you.map(callName => (
+                          {callNameInfos[characterKey].you.map(callName => (
                             <p>{callName}</p>
                           ))}
                         </div>
