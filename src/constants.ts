@@ -16,6 +16,10 @@ export const characterKeys: CharacterKey[] = [
   "WhiteCUL",
   "後鬼",
   "No7",
+  "ちび式じい",
+  "櫻歌ミコ",
+  "小夜_SAYO",
+  "ナースロボ＿タイプＴ",
 ]
 
 export type CharacterInfoEntry = {
@@ -104,6 +108,27 @@ export const characterInfos: {
   No7: {
     name: "No.7",
     id: "number_seven",
-    policyUrl: "https://voiceseven.com/#j0400",
+    policyUrl: "https://voiceseven.com/#j0200",
+  },
+  ちび式じい: {
+    name: "ちび式じい",
+    id: "chibishikiji",
+    policyUrl:
+      "https://docs.google.com/presentation/d/1AcD8zXkfzKFf2ertHwWRwJuQXjNnijMxhz7AJzEkaI4",
+  },
+  櫻歌ミコ: {
+    name: "櫻歌ミコ",
+    id: "ouka_miko",
+    policyUrl: "https://voicevox35miko.studio.site/rule",
+  },
+  小夜_SAYO: {
+    name: "小夜/SAYO",
+    id: "sayo",
+    policyUrl: "https://316soramegu.wixsite.com/sayo-official/guideline",
+  },
+  ナースロボ＿タイプＴ: {
+    name: "ナースロボ＿タイプＴ",
+    id: "nurserobo_typet",
+    policyUrl: "https://www.krnr.top/rules",
   },
 }

@@ -4,6 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { graphql, Link, useStaticQuery } from "gatsby"
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image"
 import React, { useContext, useEffect, useRef, useState } from "react"
+import chibishikijiNormal001 from "../audios/chibishikiji-normal-001.wav"
+import chibishikijiNormal002 from "../audios/chibishikiji-normal-002.wav"
+import chibishikijiNormal003 from "../audios/chibishikiji-normal-003.wav"
 import gokiNormal001 from "../audios/goki-normal-001.wav"
 import gokiNormal002 from "../audios/goki-normal-002.wav"
 import gokiNormal003 from "../audios/goki-normal-003.wav"
@@ -85,9 +88,49 @@ import soraTsun003 from "../audios/sora-tsun-003.wav"
 import soraWhis001 from "../audios/sora-whis-001.wav"
 import soraWhis002 from "../audios/sora-whis-002.wav"
 import soraWhis003 from "../audios/sora-whis-003.wav"
-import takehiro001 from "../audios/takehiro-001.wav"
-import takehiro002 from "../audios/takehiro-002.wav"
-import takehiro003 from "../audios/takehiro-003.wav"
+import takehiroAngry001 from "../audios/takehiro-angry-001.wav"
+import takehiroAngry002 from "../audios/takehiro-angry-002.wav"
+import takehiroAngry003 from "../audios/takehiro-angry-003.wav"
+import takehiroFun001 from "../audios/takehiro-fun-001.wav"
+import takehiroFun002 from "../audios/takehiro-fun-002.wav"
+import takehiroFun003 from "../audios/takehiro-fun-003.wav"
+import takehiroNormal001 from "../audios/takehiro-normal-001.wav"
+import takehiroNormal002 from "../audios/takehiro-normal-002.wav"
+import takehiroNormal003 from "../audios/takehiro-normal-003.wav"
+import takehiroSad001 from "../audios/takehiro-sad-001.wav"
+import takehiroSad002 from "../audios/takehiro-sad-002.wav"
+import takehiroSad003 from "../audios/takehiro-sad-003.wav"
+
+import miko2nd001 from "../audios/ouka_miko-2nd-001.wav"
+import miko2nd002 from "../audios/ouka_miko-2nd-002.wav"
+import miko2nd003 from "../audios/ouka_miko-2nd-003.wav"
+import mikoLoli001 from "../audios/ouka_miko-loli-001.wav"
+import mikoLoli002 from "../audios/ouka_miko-loli-002.wav"
+import mikoLoli003 from "../audios/ouka_miko-loli-003.wav"
+import mikoNormal001 from "../audios/ouka_miko-normal-001.wav"
+import mikoNormal002 from "../audios/ouka_miko-normal-002.wav"
+import mikoNormal003 from "../audios/ouka_miko-normal-003.wav"
+
+import sayoNormal001 from "../audios/sayo-normal-001.wav"
+import sayoNormal002 from "../audios/sayo-normal-002.wav"
+import sayoNormal003 from "../audios/sayo-normal-003.wav"
+
+import typetNormal001 from "../audios/nurserobo_typet-normal-001.wav"
+import typetNormal002 from "../audios/nurserobo_typet-normal-002.wav"
+import typetNormal003 from "../audios/nurserobo_typet-normal-003.wav"
+
+import typetFun001 from "../audios/nurserobo_typet-fun-001.wav"
+import typetFun002 from "../audios/nurserobo_typet-fun-002.wav"
+import typetFun003 from "../audios/nurserobo_typet-fun-003.wav"
+
+import typetFear001 from "../audios/nurserobo_typet-fear-001.wav"
+import typetFear002 from "../audios/nurserobo_typet-fear-002.wav"
+import typetFear003 from "../audios/nurserobo_typet-fear-003.wav"
+
+import typetWhis001 from "../audios/nurserobo_typet-whis-001.wav"
+import typetWhis002 from "../audios/nurserobo_typet-whis-002.wav"
+import typetWhis003 from "../audios/nurserobo_typet-whis-003.wav"
+
 import tsumugi001 from "../audios/tsumugi-001.wav"
 import tsumugi002 from "../audios/tsumugi-002.wav"
 import tsumugi003 from "../audios/tsumugi-003.wav"
@@ -263,7 +306,22 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       )!.childImageSharp.gatsbyImageData,
       voiceFeature: "爽やかな青年の声",
       voiceUrls: [
-        { style: "ノーマル", urls: [takehiro001, takehiro002, takehiro003] },
+        {
+          style: "ノーマル",
+          urls: [takehiroNormal001, takehiroNormal002, takehiroNormal003],
+        },
+        {
+          style: "喜び",
+          urls: [takehiroFun001, takehiroFun002, takehiroFun003],
+        },
+        {
+          style: "ツンギレ",
+          urls: [takehiroAngry001, takehiroAngry002, takehiroAngry003],
+        },
+        {
+          style: "悲しみ",
+          urls: [takehiroSad001, takehiroSad002, takehiroSad003],
+        },
       ],
       releaseStatus: "released",
     },
@@ -423,6 +481,71 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         },
       ],
       releaseStatus: "released",
+    },
+    ちび式じい: {
+      name: getCharacterInfo("ちび式じい").name,
+      bustupImage: query.allFile.nodes.find(
+        node => node.name === "bustup-chibishikiji"
+      )!.childImageSharp.gatsbyImageData,
+      voiceFeature: "（準備中）",
+      voiceUrls: [
+        {
+          style: "ノーマル",
+          urls: [
+            chibishikijiNormal001,
+            chibishikijiNormal002,
+            chibishikijiNormal003,
+          ],
+        },
+      ],
+      releaseStatus: "comingSoon",
+    },
+    櫻歌ミコ: {
+      name: getCharacterInfo("櫻歌ミコ").name,
+      bustupImage: query.allFile.nodes.find(
+        node => node.name === "bustup-ouka_miko"
+      )!.childImageSharp.gatsbyImageData,
+      voiceFeature: "（準備中）",
+      voiceUrls: [
+        {
+          style: "ノーマル",
+          urls: [mikoNormal001, mikoNormal002, mikoNormal003],
+        },
+        { style: "第二形態", urls: [miko2nd001, miko2nd002, miko2nd003] },
+        { style: "ロリ", urls: [mikoLoli001, mikoLoli002, mikoLoli003] },
+      ],
+      releaseStatus: "comingSoon",
+    },
+    小夜_SAYO: {
+      name: getCharacterInfo("小夜_SAYO").name,
+      bustupImage: query.allFile.nodes.find(
+        node => node.name === "bustup-sayo"
+      )!.childImageSharp.gatsbyImageData,
+      voiceFeature: "（準備中）",
+      voiceUrls: [
+        {
+          style: "ノーマル",
+          urls: [sayoNormal001, sayoNormal002, sayoNormal003],
+        },
+      ],
+      releaseStatus: "comingSoon",
+    },
+    ナースロボ＿タイプＴ: {
+      name: getCharacterInfo("ナースロボ＿タイプＴ").name,
+      bustupImage: query.allFile.nodes.find(
+        node => node.name === "bustup-nurserobo_typet"
+      )!.childImageSharp.gatsbyImageData,
+      voiceFeature: "（準備中）",
+      voiceUrls: [
+        {
+          style: "ノーマル",
+          urls: [typetNormal001, typetNormal002, typetNormal003],
+        },
+        { style: "楽々", urls: [typetFun001, typetFun002, typetFun003] },
+        { style: "恐怖", urls: [typetFear001, typetFear002, typetFear003] },
+        { style: "内緒話", urls: [typetWhis001, typetWhis002, typetWhis003] },
+      ],
+      releaseStatus: "comingSoon",
     },
   }
 

@@ -12,7 +12,8 @@ export default ({
 }: PageProps<null, null, { fromDormitory?: boolean }>) => {
   const characterId: string = params.characterId
 
-  const { characterInfos, generationInfos } = useDetailedCharacterInfo()
+  const { characterInfos, callNameInfos, generationInfos } =
+    useDetailedCharacterInfo()
 
   const selectedCharacterInfoEntry = Object.entries(characterInfos).find(
     ([, characterInfo]) => characterInfo?.id === characterId
@@ -43,6 +44,7 @@ export default ({
         characterKey={selectedCharacterKey}
         characterKeys={characterKeys}
         characterInfos={characterInfos}
+        callNameInfos={callNameInfos}
         generationInfos={generationInfos}
       />
     </>

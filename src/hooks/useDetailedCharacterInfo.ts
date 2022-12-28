@@ -1,5 +1,10 @@
 import { graphql, useStaticQuery } from "gatsby"
 import { IGatsbyImageData } from "gatsby-plugin-image"
+import chibishikiji01 from "../audios/dormitory/chibishikiji-01.wav"
+import chibishikiji02 from "../audios/dormitory/chibishikiji-02.wav"
+import chibishikiji03 from "../audios/dormitory/chibishikiji-03.wav"
+import chibishikiji04 from "../audios/dormitory/chibishikiji-04.wav"
+import chibishikiji05 from "../audios/dormitory/chibishikiji-05.wav"
 import goki01 from "../audios/dormitory/goki-01.wav"
 import goki02 from "../audios/dormitory/goki-02.wav"
 import goki03 from "../audios/dormitory/goki-03.wav"
@@ -27,6 +32,16 @@ import metan01 from "../audios/dormitory/metan-01.wav"
 import metan02 from "../audios/dormitory/metan-02.wav"
 import metan03 from "../audios/dormitory/metan-03.wav"
 import metan04 from "../audios/dormitory/metan-04.wav"
+import typet01 from "../audios/dormitory/nurserobo_typet-01.wav"
+import typet02 from "../audios/dormitory/nurserobo_typet-02.wav"
+import typet03 from "../audios/dormitory/nurserobo_typet-03.wav"
+import typet04 from "../audios/dormitory/nurserobo_typet-04.wav"
+import typet05 from "../audios/dormitory/nurserobo_typet-05.wav"
+import miko01 from "../audios/dormitory/ouka_miko-01.wav"
+import miko02 from "../audios/dormitory/ouka_miko-02.wav"
+import miko03 from "../audios/dormitory/ouka_miko-03.wav"
+import miko04 from "../audios/dormitory/ouka_miko-04.wav"
+import miko05 from "../audios/dormitory/ouka_miko-05.wav"
 import ritsu01 from "../audios/dormitory/ritsu-01.wav"
 import ritsu02 from "../audios/dormitory/ritsu-02.wav"
 import ritsu03 from "../audios/dormitory/ritsu-03.wav"
@@ -35,6 +50,11 @@ import ritsu05 from "../audios/dormitory/ritsu-05.wav"
 import ryusei01 from "../audios/dormitory/ryusei-01.wav"
 import ryusei02 from "../audios/dormitory/ryusei-02.wav"
 import ryusei03 from "../audios/dormitory/ryusei-03.wav"
+import sayo01 from "../audios/dormitory/sayo-01.wav"
+import sayo02 from "../audios/dormitory/sayo-02.wav"
+import sayo03 from "../audios/dormitory/sayo-03.wav"
+import sayo04 from "../audios/dormitory/sayo-04.wav"
+import sayo05 from "../audios/dormitory/sayo-05.wav"
 import seven01 from "../audios/dormitory/seven-01.wav"
 import seven02 from "../audios/dormitory/seven-02.wav"
 import seven03 from "../audios/dormitory/seven-03.wav"
@@ -59,11 +79,7 @@ import zundamon02 from "../audios/dormitory/zundamon-02.wav"
 import zundamon03 from "../audios/dormitory/zundamon-03.wav"
 import zundamon04 from "../audios/dormitory/zundamon-04.wav"
 import zundamon05 from "../audios/dormitory/zundamon-05.wav"
-import {
-  CharacterInfo,
-  CharacterKey,
-  Generation
-} from "../types/dormitoryCharacter"
+import { CharacterInfo, CharacterKey } from "../types/dormitoryCharacter"
 import { useCharacterInfo } from "./useCharacterInfo"
 
 export const useDetailedCharacterInfo = () => {
@@ -149,24 +165,6 @@ export const useDetailedCharacterInfo = () => {
         .filter(node => node.name.includes("metan"))
         .sort((a, b) => a.name.localeCompare(b.name))
         .map(node => node.childImageSharp.gatsbyImageData),
-      callNames: {
-        ずんだもん: "ずんだもん",
-        春日部つむぎ: "つむぎさん",
-        雨晴はう: "はうさん",
-        波音リツ: "リツさん",
-        玄野武宏: "玄野さん",
-        白上虎太郎: "白上さん",
-        青山龍星: "青山さん",
-        冥鳴ひまり: "ひまりさん",
-        九州そら: "そら",
-        モチノキョウコ: "もち子さん",
-        剣崎雌雄: "剣崎さん",
-        WhiteCUL: "雪さん",
-        後鬼: "後鬼さん",
-        No7: "セブンさん",
-        me: ["わたくし"],
-        you: ["貴女(たち)", "アンタ(ら)"],
-      },
       detailUrl:
         "https://zunko.jp/con_voice.html#:~:text=%E3%81%AF%E3%81%93%E3%81%A1%E3%82%89%5Bsm31250786%5D-,%E5%9B%9B%E5%9B%BD%E3%82%81%E3%81%9F%E3%82%93%EF%BC%88%E6%BC%86%E9%BB%92%E3%81%AE%E3%82%81%E3%81%9F%E3%82%93%EF%BC%89,-CV%3A%E7%94%B0%E4%B8%AD%E5%B0%8F%E9%9B%AA",
     },
@@ -200,24 +198,6 @@ export const useDetailedCharacterInfo = () => {
         .filter(node => node.name.includes("zundamon"))
         .sort((a, b) => a.name.localeCompare(b.name))
         .map(node => node.childImageSharp.gatsbyImageData),
-      callNames: {
-        四国めたん: "めたん",
-        春日部つむぎ: "つむぎ",
-        雨晴はう: "はう",
-        波音リツ: "リツ",
-        玄野武宏: "たけひろ",
-        白上虎太郎: "こたろう",
-        青山龍星: "りゅうせい",
-        冥鳴ひまり: "ひまり",
-        九州そら: "そら",
-        モチノキョウコ: "もち子",
-        剣崎雌雄: "めすお",
-        WhiteCUL: "雪",
-        後鬼: "後鬼",
-        No7: "セブン",
-        me: ["ずんだもん", "僕"],
-        you: ["オマエ", "みんな"],
-      },
       detailUrl:
         "https://zunko.jp/con_voice.html#:~:text=%E3%81%AF%E3%81%93%E3%81%A1%E3%82%89%5Bsm31259177%5D-,%E3%81%9A%E3%82%93%E3%81%A0%E3%82%82%E3%82%93,-CV%3A%E4%BC%8A%E8%97%A4%E3%82%86",
     },
@@ -248,24 +228,6 @@ export const useDetailedCharacterInfo = () => {
         { label: "趣味", value: "動画配信サイトの巡回", size: 2 },
       ],
       voiceUrls: [tsumugi01, tsumugi02, tsumugi03, tsumugi04],
-      callNames: {
-        四国めたん: "めたん先輩",
-        ずんだもん: "ずんだもん先輩",
-        雨晴はう: "はうちゃん",
-        波音リツ: "りっちゃん",
-        玄野武宏: "武宏くん",
-        白上虎太郎: "虎太郎くん",
-        青山龍星: "龍星くん",
-        冥鳴ひまり: "ひまっち",
-        九州そら: "そらさん",
-        モチノキョウコ: "もち子ちゃん",
-        剣崎雌雄: "めすおちゃん",
-        WhiteCUL: "ゆきちゃん",
-        後鬼: "後鬼せんせー",
-        No7: "ななっち",
-        me: ["あーし"],
-        you: ["きみ", "きみたち"],
-      },
       detailUrl: "https://tsumugi-official.studio.site/top",
     },
 
@@ -292,24 +254,6 @@ export const useDetailedCharacterInfo = () => {
         { label: "趣味", value: "食べ歩き", size: 2 },
       ],
       voiceUrls: [hau01, hau02, hau03, hau04],
-      callNames: {
-        四国めたん: "めたんさん",
-        ずんだもん: "ずんだもん",
-        春日部つむぎ: "つむぎさん",
-        波音リツ: "リツさん",
-        玄野武宏: "玄野さん",
-        白上虎太郎: "白上さん",
-        青山龍星: "青山さん",
-        冥鳴ひまり: "ひまりさん",
-        九州そら: "そらさん",
-        モチノキョウコ: "もち子さん",
-        剣崎雌雄: "剣崎さん",
-        WhiteCUL: "ゆきさん",
-        後鬼: "ごきさん",
-        No7: "ななさん",
-        me: ["僕"],
-        you: ["あなた", "あなた達"],
-      },
       detailUrl: "https://amehau.com/",
     },
 
@@ -336,24 +280,6 @@ export const useDetailedCharacterInfo = () => {
         { label: "好きなもの", value: "チョコクリスピー", size: 2 },
       ],
       voiceUrls: [ritsu01, ritsu02, ritsu03, ritsu04, ritsu05],
-      callNames: {
-        四国めたん: "めたん",
-        ずんだもん: "ずんだもん",
-        春日部つむぎ: "つむぎ",
-        雨晴はう: "はう",
-        玄野武宏: "くろの",
-        白上虎太郎: "こたろう",
-        青山龍星: "りゅうせい",
-        冥鳴ひまり: "ひまり",
-        九州そら: "そら",
-        モチノキョウコ: "もち子",
-        剣崎雌雄: "めすお",
-        WhiteCUL: "ゆき",
-        後鬼: "ごき",
-        No7: "なな",
-        me: ["あたし"],
-        you: ["アンタ", "アンタら"],
-      },
       detailUrl: "http://www.canon-voice.com/ritsu.html",
     },
 
@@ -380,24 +306,6 @@ export const useDetailedCharacterInfo = () => {
         { label: "誕生日", value: "12月24日", size: 2 },
       ],
       voiceUrls: [takehiro01, takehiro02, takehiro03],
-      callNames: {
-        四国めたん: "めたん",
-        ずんだもん: "ずんだもん",
-        春日部つむぎ: "つむぎ",
-        雨晴はう: "はう",
-        波音リツ: "リツ",
-        白上虎太郎: "虎太郎",
-        青山龍星: "龍星",
-        冥鳴ひまり: "ひまり",
-        九州そら: "そら",
-        モチノキョウコ: "もち子",
-        剣崎雌雄: "雌雄",
-        WhiteCUL: "雪",
-        後鬼: "後鬼",
-        No7: "なな",
-        me: ["俺"],
-        you: ["お前", "お前ら"],
-      },
       detailUrl: "https://virvoxproject.wixsite.com/official",
     },
 
@@ -425,24 +333,6 @@ export const useDetailedCharacterInfo = () => {
         { label: "誕生日", value: "秋生まれ", size: 2 },
       ],
       voiceUrls: [kotarou01, kotarou02, kotarou03],
-      callNames: {
-        四国めたん: "めたんちゃん",
-        ずんだもん: "ずんずん",
-        春日部つむぎ: "つむぎちゃん",
-        雨晴はう: "はうさん",
-        波音リツ: "リツさん",
-        玄野武宏: "タケヒロ",
-        青山龍星: "リューセー",
-        冥鳴ひまり: "ひまりちゃん",
-        九州そら: "そらさん",
-        モチノキョウコ: "もち子さん",
-        剣崎雌雄: "シユー",
-        WhiteCUL: "ユキさん",
-        後鬼: "ゴキさん",
-        No7: "ナナちゃんさん",
-        me: ["おれ"],
-        you: ["きみ", "きみ達"],
-      },
       detailUrl: "https://virvoxproject.wixsite.com/official",
     },
 
@@ -469,24 +359,6 @@ export const useDetailedCharacterInfo = () => {
         { label: "誕生日", value: "春生まれ", size: 2 },
       ],
       voiceUrls: [ryusei01, ryusei02, ryusei03],
-      callNames: {
-        四国めたん: "めたん",
-        ずんだもん: "ずんだもん",
-        春日部つむぎ: "つむぎ",
-        雨晴はう: "はう",
-        波音リツ: "リツ",
-        玄野武宏: "武宏",
-        白上虎太郎: "虎太郎",
-        冥鳴ひまり: "ひまり",
-        九州そら: "そら",
-        モチノキョウコ: "もち子",
-        剣崎雌雄: "雌雄",
-        WhiteCUL: "雪",
-        後鬼: "後鬼",
-        No7: "セブン",
-        me: ["オレ"],
-        you: ["アンタ", "アンタ達", "お前達"],
-      },
       detailUrl: "https://virvoxproject.wixsite.com/official",
     },
 
@@ -514,24 +386,6 @@ export const useDetailedCharacterInfo = () => {
         { label: "性格", value: "優しくて清楚（自称）", size: 2 },
       ],
       voiceUrls: [himari01, himari02, himari03, himari04, himari05],
-      callNames: {
-        四国めたん: "めたん先輩",
-        ずんだもん: "ずんだもん先輩",
-        春日部つむぎ: "つむぎ先輩",
-        雨晴はう: "はう先輩",
-        波音リツ: "リツ先輩",
-        玄野武宏: "武宏くん",
-        白上虎太郎: "虎太郎くん",
-        青山龍星: "龍星くん",
-        九州そら: "そらちゃん",
-        モチノキョウコ: "もち子ちゃん",
-        剣崎雌雄: "メスオジ",
-        WhiteCUL: "ゆきちゃん",
-        後鬼: "後鬼ちゃん",
-        No7: "ななちゃん",
-        me: ["私"],
-        you: ["君たち"],
-      },
       detailUrl: "https://meimeihimari.wixsite.com/himari/voicevox",
     },
 
@@ -568,24 +422,6 @@ export const useDetailedCharacterInfo = () => {
         .filter(node => node.name.includes("sora"))
         .sort((a, b) => a.name.localeCompare(b.name))
         .map(node => node.childImageSharp.gatsbyImageData),
-      callNames: {
-        ずんだもん: "ずんだもん",
-        四国めたん: "めたんさま",
-        春日部つむぎ: "つむぎさま",
-        雨晴はう: "はうさま",
-        波音リツ: "リツさま",
-        玄野武宏: "武宏さま",
-        白上虎太郎: "虎太郎さま",
-        青山龍星: "龍星さま",
-        冥鳴ひまり: "ひまりさま",
-        モチノキョウコ: "もち子さま",
-        剣崎雌雄: "雌雄さま",
-        WhiteCUL: "雪さま",
-        後鬼: "後鬼さま",
-        No7: "セブンさま",
-        me: ["まーくつー"],
-        you: ["あなたさま", "みなさま"],
-      },
       detailUrl:
         "https://zunko.jp/con_voice.html#:~:text=%E3%81%8D%E3%81%BF%E3%81%8C%E3%81%9F%E3%82%81-,%E4%B9%9D%E5%B7%9E%E3%81%9D%E3%82%89mk%3DII,-CV%3A%E8%A5%BF%E7%94%B0%E6%9C%9B%E8%A6%8B",
     },
@@ -618,24 +454,6 @@ export const useDetailedCharacterInfo = () => {
         .filter(node => node.name.includes("kyoko"))
         .sort((a, b) => a.name.localeCompare(b.name))
         .map(node => node.childImageSharp.gatsbyImageData),
-      callNames: {
-        ずんだもん: "ずんだもんちゃん",
-        四国めたん: "めたんさん",
-        春日部つむぎ: "つむぎさん",
-        雨晴はう: "はうちゃん",
-        波音リツ: "リッちゃん先輩",
-        玄野武宏: "玄野くん",
-        白上虎太郎: "白上くん",
-        青山龍星: "青山くん",
-        冥鳴ひまり: "ひまりさん",
-        九州そら: "そらさん",
-        剣崎雌雄: "剣崎さん",
-        WhiteCUL: "ユキさん",
-        後鬼: "後鬼お姉さん",
-        No7: "セブンちゃん",
-        me: ["私", "もち子"],
-        you: ["あなた", "あなた達"],
-      },
       detailUrl:
         "https://vtubermochio.wixsite.com/mochizora/もち子さんとは-設定資料",
     },
@@ -670,24 +488,6 @@ export const useDetailedCharacterInfo = () => {
         .filter(node => node.name.includes("mesuo"))
         .sort((a, b) => a.name.localeCompare(b.name))
         .map(node => node.childImageSharp.gatsbyImageData),
-      callNames: {
-        四国めたん: "くにさん",
-        ずんだもん: "だーもん",
-        春日部つむぎ: "べっつー",
-        雨晴はう: "はーさん",
-        波音リツ: "ねりさん",
-        玄野武宏: "くーろん",
-        白上虎太郎: "こっちゃん",
-        青山龍星: "りゅうさん",
-        冥鳴ひまり: "めまりちゃん",
-        九州そら: "らーさん",
-        モチノキョウコ: "もっちー",
-        WhiteCUL: "とかっち",
-        後鬼: "ごっさん",
-        No7: "ぶんぶん丸",
-        me: ["僕"],
-        you: ["君等"],
-      },
       detailUrl: "https://frontier.creatia.cc/fanclubs/413/posts/4507",
     },
 
@@ -722,24 +522,6 @@ export const useDetailedCharacterInfo = () => {
         .filter(node => node.name.includes("white"))
         .sort((a, b) => a.name.localeCompare(b.name))
         .map(node => node.childImageSharp.gatsbyImageData),
-      callNames: {
-        四国めたん: "めたんちゃん",
-        ずんだもん: "ずんだもん",
-        春日部つむぎ: "つむぎ",
-        雨晴はう: "はうちゃん",
-        波音リツ: "リツちゃん",
-        玄野武宏: "武弘さん",
-        白上虎太郎: "虎太郎くん",
-        青山龍星: "りゅうちゃん",
-        冥鳴ひまり: "ひまりん",
-        九州そら: "そらさん",
-        モチノキョウコ: "もちこさん",
-        剣崎雌雄: "剣崎さん",
-        後鬼: "後鬼さん",
-        No7: "ななさん",
-        me: ["わたし"],
-        you: ["あなた", "あなたたち"],
-      },
       detailUrl: "https://www.whitecul.com/",
     },
 
@@ -769,24 +551,6 @@ export const useDetailedCharacterInfo = () => {
         .filter(node => node.name.includes("goki"))
         .sort((a, b) => a.name.localeCompare(b.name))
         .map(node => node.childImageSharp.gatsbyImageData),
-      callNames: {
-        四国めたん: "四国さん/めたんはん",
-        ずんだもん: "ずんだもん",
-        春日部つむぎ: "春日部さん/つむぎはん",
-        雨晴はう: "雨晴さん/はうはん",
-        波音リツ: "波音さん/リツはん",
-        玄野武宏: "玄野くん/玄野はん",
-        白上虎太郎: "白上くん/白上はん",
-        青山龍星: "青山くん/龍星はん",
-        冥鳴ひまり: "冥鳴さん/ひまりはん",
-        九州そら: "九州さん/九州はん",
-        モチノキョウコ: "もち子さん/もち子はん",
-        剣崎雌雄: "剣崎くん/剣崎はん",
-        WhiteCUL: "雪さん/雪はん",
-        No7: "セブンさん/セブンはん",
-        me: ["私/ワテ"],
-        you: ["あなたorキミ", "/あんたはん"],
-      },
       detailUrl: "https://ついなちゃん.com/character/?goki",
     },
 
@@ -823,25 +587,543 @@ export const useDetailedCharacterInfo = () => {
         .filter(node => node.name.includes("seven"))
         .sort((a, b) => a.name.localeCompare(b.name))
         .map(node => node.childImageSharp.gatsbyImageData),
-      callNames: {
-        四国めたん: "四国さん",
-        ずんだもん: "ずんだもん様",
-        春日部つむぎ: "春日部さん",
-        雨晴はう: "雨晴さん",
-        波音リツ: "波音さん",
-        玄野武宏: "玄野さん",
-        白上虎太郎: "白上さん",
-        青山龍星: "青山さん",
-        冥鳴ひまり: "冥鳴さん",
-        九州そら: "九州さん",
-        モチノキョウコ: "モチノさん",
-        剣崎雌雄: "剣崎さん",
-        後鬼: "後鬼さん",
-        WhiteCUL: "雪さん",
-        me: ["私", "僕"],
-        you: ["そちら様", "皆様"],
-      },
       detailUrl: "https://voiceseven.com/",
+    },
+
+    ちび式じい: {
+      name: getCharacterInfo("ちび式じい").name,
+      id: getCharacterInfo("ちび式じい").characterId,
+      rubyName:
+        "<ruby>ちび</ruby><ruby>式<rp>(</rp><rt>しき</rt><rp>)</rp></ruby><ruby>じい</ruby>",
+      bustupImage: query.bustup.nodes.find(
+        node => node.name === "bustup-chibishikiji"
+      )!.childImageSharp.gatsbyImageData,
+      portraitImage: query.portrait.nodes.find(
+        node => node.name === "portrait-chibishikiji"
+      )!.childImageSharp.gatsbyImageData,
+      ogpImage: query.ogp.nodes.find(
+        node => node.name === "bustup-chibishikiji"
+      )!.childImageSharp.gatsbyImageData,
+      color: "#1D86AE",
+      lightColor: "#B3D7DD",
+      description:
+        "式じいに似た姿の小さい妖精さん。<br />世界各地に様々な個体が生息している。",
+      labelInfos: [
+        { label: "身長", value: "20 cm前後", size: 1 },
+        { label: "CV", value: "こんぺえる", size: 1 },
+        { label: "好きなもの", value: "ジャガイモ", size: 1 },
+        { label: "種族", value: "ちび式じい", size: 1 },
+      ],
+      voiceUrls: [
+        chibishikiji01,
+        chibishikiji02,
+        chibishikiji03,
+        chibishikiji04,
+        chibishikiji05,
+      ],
+      infoImages: query.dormitory.nodes
+        .filter(node => node.name.includes("chibishikiji"))
+        .sort((a, b) => a.name.localeCompare(b.name))
+        .map(node => node.childImageSharp.gatsbyImageData),
+      detailUrl:
+        "https://shiki-rowen-taigen.com/%e5%88%a9%e7%94%a8%e8%a6%8f%e7%b4%84%e3%83%bb%e3%82%ac%e3%82%a4%e3%83%89%e3%83%a9%e3%82%a4%e3%83%b3/",
+    },
+
+    櫻歌ミコ: {
+      name: getCharacterInfo("櫻歌ミコ").name,
+      id: getCharacterInfo("櫻歌ミコ").characterId,
+      rubyName:
+        "<ruby>櫻歌<rp>(</rp><rt>おうか</rt><rp>)</rp></ruby><ruby>ミコ</ruby>",
+      bustupImage: query.bustup.nodes.find(
+        node => node.name === "bustup-ouka_miko"
+      )!.childImageSharp.gatsbyImageData,
+      portraitImage: query.portrait.nodes.find(
+        node => node.name === "portrait-ouka_miko"
+      )!.childImageSharp.gatsbyImageData,
+      ogpImage: query.ogp.nodes.find(node => node.name === "bustup-ouka_miko")!
+        .childImageSharp.gatsbyImageData,
+      color: "#F9344C",
+      lightColor: "#FBB4C4",
+      description:
+        "ニホンオオカミの女の子。<br />もうひとりのミコ（通称：第二ちゃん）がいる。",
+      labelInfos: [
+        { label: "年齢", value: "3.5 歳", size: 1 },
+        { label: "身長", value: "135 cm", size: 1 },
+        { label: "体重", value: "35 kg", size: 1 },
+        { label: "誕生日", value: "12月24日", size: 1 },
+        { label: "性格", value: "ガブデレ", size: 1 },
+        { label: "持ち物", value: "りんご/骨", size: 1 },
+        { label: "愛称", value: "みこみこ/第二ちゃん", size: 2 },
+      ],
+      voiceUrls: [miko01, miko02, miko03, miko04, miko05],
+      infoImages: query.dormitory.nodes
+        .filter(node => node.name.includes("ouka_miko"))
+        .sort((a, b) => a.name.localeCompare(b.name))
+        .map(node => node.childImageSharp.gatsbyImageData),
+      detailUrl: "https://voicevox35miko.studio.site/",
+    },
+
+    小夜_SAYO: {
+      name: getCharacterInfo("小夜_SAYO").name,
+      id: getCharacterInfo("小夜_SAYO").characterId,
+      rubyName:
+        "<ruby>小夜<rp>(</rp><rt>さよ</rt><rp>)</rp></ruby><ruby>/SAYO</ruby>",
+      bustupImage: query.bustup.nodes.find(node => node.name === "bustup-sayo")!
+        .childImageSharp.gatsbyImageData,
+      portraitImage: query.portrait.nodes.find(
+        node => node.name === "portrait-sayo"
+      )!.childImageSharp.gatsbyImageData,
+      ogpImage: query.ogp.nodes.find(node => node.name === "bustup-sayo")!
+        .childImageSharp.gatsbyImageData,
+      color: "#FF6687",
+      lightColor: "#FBB4C4",
+      description:
+        "おしゃべりがすきなねこの女の子。<br />おいしいものを与えると懐きやすい。",
+      labelInfos: [
+        { label: "誕生日", value: "9月29日", size: 1 },
+        { label: "好きなもの", value: "缶詰", size: 1 },
+        { label: "体長", value: "135 cm（猫耳を含む）", size: 2 },
+      ],
+      voiceUrls: [sayo01, sayo02, sayo03, sayo04, sayo05],
+      infoImages: query.dormitory.nodes
+        .filter(node => node.name.includes("sayo"))
+        .sort((a, b) => a.name.localeCompare(b.name))
+        .map(node => node.childImageSharp.gatsbyImageData),
+      detailUrl: "https://316soramegu.wixsite.com/sayo-official",
+    },
+
+    ナースロボ＿タイプＴ: {
+      name: getCharacterInfo("ナースロボ＿タイプＴ").name,
+      id: getCharacterInfo("ナースロボ＿タイプＴ").characterId,
+      rubyName:
+        "<ruby>ナースロボ＿タイプ</ruby><ruby>Ｔ<rp>(</rp><rt>てぃー</rt><rp>)</rp></ruby>",
+      bustupImage: query.bustup.nodes.find(
+        node => node.name === "bustup-nurserobo_typet"
+      )!.childImageSharp.gatsbyImageData,
+      portraitImage: query.portrait.nodes.find(
+        node => node.name === "portrait-nurserobo_typet"
+      )!.childImageSharp.gatsbyImageData,
+      ogpImage: query.ogp.nodes.find(
+        node => node.name === "bustup-nurserobo_typet"
+      )!.childImageSharp.gatsbyImageData,
+      color: "#FF9914",
+      lightColor: "#FEE6AA",
+      description:
+        "医者に作られたナース形ロボット。<br />人格は少女と設定されている。",
+      labelInfos: [
+        { label: "年齢", value: "五ヶ月", size: 1 },
+        { label: "誕生日", value: "12月3日", size: 1 },
+        { label: "身長", value: "150～160 cm（パーツによる）", size: 2 },
+        { label: "愛称", value: "ＴＴ", size: 2 },
+        { label: "製造者", value: "そばの小型ロボット（医者）", size: 2 },
+      ],
+      voiceUrls: [typet01, typet02, typet03, typet04, typet05],
+      infoImages: query.dormitory.nodes
+        .filter(node => node.name.includes("nurserobo_typet"))
+        .sort((a, b) => a.name.localeCompare(b.name))
+        .map(node => node.childImageSharp.gatsbyImageData),
+      detailUrl: "https://www.krnr.top/blank",
+    },
+  }
+
+  const callNameInfos: {
+    [key in CharacterKey]: {
+      [key in CharacterKey]?: string | undefined
+    } & { me: string[]; you: string[] }
+  } = {
+    四国めたん: {
+      me: ["わたくし"],
+      you: ["貴女(たち)", "アンタ(ら)"],
+      ずんだもん: "ずんだもん",
+      春日部つむぎ: "つむぎさん",
+      雨晴はう: "はうさん",
+      波音リツ: "リツさん",
+      玄野武宏: "玄野さん",
+      白上虎太郎: "白上さん",
+      青山龍星: "青山さん",
+      冥鳴ひまり: "ひまりさん",
+      九州そら: "そら",
+      モチノキョウコ: "もち子さん",
+      剣崎雌雄: "剣崎さん",
+      WhiteCUL: "雪さん",
+      後鬼: "後鬼さん",
+      No7: "セブンさん",
+      ちび式じい: "ちび式じいさん",
+      櫻歌ミコ: "ミコさん",
+      小夜_SAYO: "小夜さん",
+      ナースロボ＿タイプＴ: "ＴＴさん",
+    },
+    ずんだもん: {
+      me: ["ずんだもん", "僕"],
+      you: ["オマエ", "みんな"],
+      四国めたん: "めたん",
+      春日部つむぎ: "つむぎ",
+      雨晴はう: "はう",
+      波音リツ: "リツ",
+      玄野武宏: "たけひろ",
+      白上虎太郎: "こたろう",
+      青山龍星: "りゅうせい",
+      冥鳴ひまり: "ひまり",
+      九州そら: "そら",
+      モチノキョウコ: "もち子",
+      剣崎雌雄: "めすお",
+      WhiteCUL: "雪",
+      後鬼: "後鬼",
+      No7: "セブン",
+      ちび式じい: "ちび式じい",
+      櫻歌ミコ: "ミコ",
+      小夜_SAYO: "小夜",
+      ナースロボ＿タイプＴ: "ＴＴ",
+    },
+    春日部つむぎ: {
+      me: ["あーし"],
+      you: ["きみ", "きみたち"],
+      四国めたん: "めたん先輩",
+      ずんだもん: "ずんだもん先輩",
+      雨晴はう: "はうちゃん",
+      波音リツ: "りっちゃん",
+      玄野武宏: "武宏くん",
+      白上虎太郎: "虎太郎くん",
+      青山龍星: "龍星くん",
+      冥鳴ひまり: "ひまっち",
+      九州そら: "そらさん",
+      モチノキョウコ: "もち子ちゃん",
+      剣崎雌雄: "めすおちゃん",
+      WhiteCUL: "ゆきちゃん",
+      後鬼: "後鬼せんせー",
+      No7: "ななっち",
+    },
+    雨晴はう: {
+      me: ["僕"],
+      you: ["あなた", "あなた達"],
+      四国めたん: "めたんさん",
+      ずんだもん: "ずんだもん",
+      春日部つむぎ: "つむぎさん",
+      波音リツ: "リツさん",
+      玄野武宏: "玄野さん",
+      白上虎太郎: "白上さん",
+      青山龍星: "青山さん",
+      冥鳴ひまり: "ひまりさん",
+      九州そら: "そらさん",
+      モチノキョウコ: "もち子さん",
+      剣崎雌雄: "剣崎さん",
+      WhiteCUL: "ゆきさん",
+      後鬼: "ごきさん",
+      No7: "ななさん",
+    },
+    波音リツ: {
+      me: ["あたし"],
+      you: ["アンタ", "アンタら"],
+      四国めたん: "めたん",
+      ずんだもん: "ずんだもん",
+      春日部つむぎ: "つむぎ",
+      雨晴はう: "はう",
+      玄野武宏: "くろの",
+      白上虎太郎: "こたろう",
+      青山龍星: "りゅうせい",
+      冥鳴ひまり: "ひまり",
+      九州そら: "そら",
+      モチノキョウコ: "もち子",
+      剣崎雌雄: "めすお",
+      WhiteCUL: "ゆき",
+      後鬼: "ごき",
+      No7: "なな",
+      ちび式じい: "式じい",
+      櫻歌ミコ: "ミコ",
+      小夜_SAYO: "さよ",
+      ナースロボ＿タイプＴ: "TT",
+    },
+    玄野武宏: {
+      me: ["俺"],
+      you: ["お前", "お前ら"],
+      四国めたん: "めたん",
+      ずんだもん: "ずんだもん",
+      春日部つむぎ: "つむぎ",
+      雨晴はう: "はう",
+      波音リツ: "リツ",
+      白上虎太郎: "虎太郎",
+      青山龍星: "龍星",
+      冥鳴ひまり: "ひまり",
+      九州そら: "そら",
+      モチノキョウコ: "もち子",
+      剣崎雌雄: "雌雄",
+      WhiteCUL: "雪",
+      後鬼: "後鬼",
+      No7: "なな",
+      ちび式じい: "小さいじいさん",
+      櫻歌ミコ: "ミコ",
+      小夜_SAYO: "小夜",
+      ナースロボ＿タイプＴ: "タイプT",
+    },
+    白上虎太郎: {
+      me: ["おれ"],
+      you: ["きみ", "きみ達"],
+      四国めたん: "めたんちゃん",
+      ずんだもん: "ずんずん",
+      春日部つむぎ: "つむぎちゃん",
+      雨晴はう: "はうさん",
+      波音リツ: "リツさん",
+      玄野武宏: "タケヒロ",
+      青山龍星: "リューセー",
+      冥鳴ひまり: "ひまりちゃん",
+      九州そら: "そらさん",
+      モチノキョウコ: "もち子さん",
+      剣崎雌雄: "シユー",
+      WhiteCUL: "ユキさん",
+      後鬼: "ゴキさん",
+      No7: "ナナちゃんさん",
+      ちび式じい: "ちっちゃい式じい",
+      櫻歌ミコ: "ミコちゃん",
+      小夜_SAYO: "サヨちゃん",
+      ナースロボ＿タイプＴ: "Tちゃん",
+    },
+    青山龍星: {
+      me: ["オレ"],
+      you: ["アンタ", "アンタ達", "お前達"],
+      四国めたん: "めたん",
+      ずんだもん: "ずんだもん",
+      春日部つむぎ: "つむぎ",
+      雨晴はう: "はう",
+      波音リツ: "リツ",
+      玄野武宏: "武宏",
+      白上虎太郎: "虎太郎",
+      冥鳴ひまり: "ひまり",
+      九州そら: "そら",
+      モチノキョウコ: "もち子",
+      剣崎雌雄: "雌雄",
+      WhiteCUL: "雪",
+      後鬼: "後鬼",
+      No7: "セブン",
+      ちび式じい: "小さい大元さん",
+      櫻歌ミコ: "ミコ",
+      小夜_SAYO: "小夜",
+      ナースロボ＿タイプＴ: "T",
+    },
+    冥鳴ひまり: {
+      me: ["私"],
+      you: ["君たち"],
+      四国めたん: "めたん先輩",
+      ずんだもん: "ずんだもん先輩",
+      春日部つむぎ: "つむぎ先輩",
+      雨晴はう: "はう先輩",
+      波音リツ: "リツ先輩",
+      玄野武宏: "武宏くん",
+      白上虎太郎: "虎太郎くん",
+      青山龍星: "龍星くん",
+      九州そら: "そらちゃん",
+      モチノキョウコ: "もち子ちゃん",
+      剣崎雌雄: "メスオジ",
+      WhiteCUL: "ゆきちゃん",
+      後鬼: "後鬼ちゃん",
+      No7: "ななちゃん",
+    },
+    九州そら: {
+      me: ["まーくつー"],
+      you: ["あなたさま", "みなさま"],
+      四国めたん: "めたんさま",
+      ずんだもん: "ずんだもん",
+      春日部つむぎ: "つむぎさま",
+      雨晴はう: "はうさま",
+      波音リツ: "リツさま",
+      玄野武宏: "武宏さま",
+      白上虎太郎: "虎太郎さま",
+      青山龍星: "龍星さま",
+      冥鳴ひまり: "ひまりさま",
+      モチノキョウコ: "もち子さま",
+      剣崎雌雄: "雌雄さま",
+      WhiteCUL: "雪さま",
+      後鬼: "後鬼さま",
+      No7: "セブンさま",
+      ちび式じい: "ちび式じいさま",
+      櫻歌ミコ: "ミコさま",
+      小夜_SAYO: "小夜さま",
+      ナースロボ＿タイプＴ: "ＴＴさま",
+    },
+    モチノキョウコ: {
+      me: ["私", "もち子"],
+      you: ["あなた", "あなた達"],
+      四国めたん: "めたんさん",
+      ずんだもん: "ずんだもんちゃん",
+      春日部つむぎ: "つむぎさん",
+      雨晴はう: "はうちゃん",
+      波音リツ: "リッちゃん先輩",
+      玄野武宏: "玄野くん",
+      白上虎太郎: "白上くん",
+      青山龍星: "青山くん",
+      冥鳴ひまり: "ひまりさん",
+      九州そら: "そらさん",
+      剣崎雌雄: "剣崎さん",
+      WhiteCUL: "ユキさん",
+      後鬼: "後鬼お姉さん",
+      No7: "セブンちゃん",
+      ちび式じい: "ちび式さん",
+      櫻歌ミコ: "ミコさん",
+      小夜_SAYO: "小夜さん",
+      ナースロボ＿タイプＴ: "ティーさん（Tさん）",
+    },
+    剣崎雌雄: {
+      me: ["僕"],
+      you: ["君等"],
+      四国めたん: "くにさん",
+      ずんだもん: "だーもん",
+      春日部つむぎ: "べっつー",
+      雨晴はう: "はーさん",
+      波音リツ: "ねりさん",
+      玄野武宏: "くーろん",
+      白上虎太郎: "こっちゃん",
+      青山龍星: "りゅうさん",
+      冥鳴ひまり: "めまりちゃん",
+      九州そら: "らーさん",
+      モチノキョウコ: "もっちー",
+      WhiteCUL: "とかっち",
+      後鬼: "ごっさん",
+      No7: "ぶんぶん丸",
+    },
+    WhiteCUL: {
+      me: ["わたし"],
+      you: ["あなた", "あなたたち"],
+      四国めたん: "めたんちゃん",
+      ずんだもん: "ずんだもん",
+      春日部つむぎ: "つむぎ",
+      雨晴はう: "はうちゃん",
+      波音リツ: "リツちゃん",
+      玄野武宏: "武弘さん",
+      白上虎太郎: "虎太郎くん",
+      青山龍星: "りゅうちゃん",
+      冥鳴ひまり: "ひまりん",
+      九州そら: "そらさん",
+      モチノキョウコ: "もちこさん",
+      剣崎雌雄: "剣崎さん",
+      後鬼: "後鬼さん",
+      No7: "ななさん",
+      ちび式じい: "ちびじい",
+      櫻歌ミコ: "ミコちゃん",
+      小夜_SAYO: "小夜ちゃん",
+      ナースロボ＿タイプＴ: "TTちゃん",
+    },
+    後鬼: {
+      me: ["私/ワテ"],
+      you: ["あなたorキミ/あんたはん"],
+      四国めたん: "四国さん/めたんはん",
+      ずんだもん: "ずんだもん",
+      春日部つむぎ: "春日部さん/つむぎはん",
+      雨晴はう: "雨晴さん/はうはん",
+      波音リツ: "波音さん/リツはん",
+      玄野武宏: "玄野くん/玄野はん",
+      白上虎太郎: "白上くん/白上はん",
+      青山龍星: "青山くん/龍星はん",
+      冥鳴ひまり: "冥鳴さん/ひまりはん",
+      九州そら: "九州さん/九州はん",
+      モチノキョウコ: "もち子さん/もち子はん",
+      剣崎雌雄: "剣崎くん/剣崎はん",
+      WhiteCUL: "雪さん/雪はん",
+      No7: "セブンさん/セブンはん",
+    },
+    No7: {
+      me: ["私", "僕"],
+      you: ["そちら様", "皆様"],
+      四国めたん: "四国さん",
+      ずんだもん: "ずんだもん様",
+      春日部つむぎ: "春日部さん",
+      雨晴はう: "雨晴さん",
+      波音リツ: "波音さん",
+      玄野武宏: "玄野さん",
+      白上虎太郎: "白上さん",
+      青山龍星: "青山さん",
+      冥鳴ひまり: "冥鳴さん",
+      九州そら: "九州さん",
+      モチノキョウコ: "モチノさん",
+      剣崎雌雄: "剣崎さん",
+      WhiteCUL: "雪さん",
+      後鬼: "後鬼さん",
+    },
+    ちび式じい: {
+      me: ["わし"],
+      you: ["おぬし", "おぬしら"],
+      四国めたん: "めたんちゃん",
+      ずんだもん: "ずんだの精さん",
+      春日部つむぎ: "つむぎちゃん",
+      雨晴はう: "はうちゃん",
+      波音リツ: "りっちゃん",
+      玄野武宏: "たけひろさん",
+      白上虎太郎: "こたろうくん",
+      青山龍星: "りゅうせいさん",
+      冥鳴ひまり: "めいめいちゃん/死神さん",
+      九州そら: "そらさん",
+      モチノキョウコ: "もちこさん",
+      剣崎雌雄: "メスの付喪神さん/メスのひと",
+      WhiteCUL: "ゆきさん",
+      後鬼: "ごきさん",
+      No7: "なな号さん",
+      櫻歌ミコ: "みこみこ",
+      小夜_SAYO: "小夜ちゃん",
+      ナースロボ＿タイプＴ: "TTちゃん",
+    },
+    櫻歌ミコ: {
+      me: ["ミコ/私"],
+      you: ["あなた", "あなたたち"],
+      四国めたん: "めたんちゃん",
+      ずんだもん: "もんちゃん",
+      春日部つむぎ: "つむぎちゃん",
+      雨晴はう: "はうちゃん",
+      波音リツ: "りっちゃん",
+      玄野武宏: "武宏くん",
+      白上虎太郎: "虎太郎くん",
+      青山龍星: "龍星くん",
+      冥鳴ひまり: "ひまりちゃん",
+      九州そら: "そらちゃん",
+      モチノキョウコ: "もち子ちゃん",
+      剣崎雌雄: "剣崎先生",
+      WhiteCUL: "雪ちゃん",
+      後鬼: "後鬼ちゃん",
+      No7: "セブンちゃん",
+      ちび式じい: "ちいおじいちゃん",
+      小夜_SAYO: "小夜ちゃん",
+      ナースロボ＿タイプＴ: "TTちゃん",
+    },
+    小夜_SAYO: {
+      me: ["小夜"],
+      you: ["あなた", "あなたたち"],
+      四国めたん: "めたんちゃん",
+      ずんだもん: "ずんだもん",
+      春日部つむぎ: "つむぎちゃん",
+      雨晴はう: "はうさん",
+      波音リツ: "リツさん",
+      玄野武宏: "武宏さん",
+      白上虎太郎: "虎太郎くん",
+      青山龍星: "龍星さん",
+      冥鳴ひまり: "ひまりちゃん",
+      九州そら: "そらさん",
+      モチノキョウコ: "もち子さん",
+      剣崎雌雄: "剣崎先生",
+      WhiteCUL: "雪さん",
+      後鬼: "後鬼さん",
+      No7: "ななさん",
+      ちび式じい: "ちびじい",
+      櫻歌ミコ: "ミコちゃん",
+      ナースロボ＿タイプＴ: "TTちゃん",
+    },
+    ナースロボ＿タイプＴ: {
+      me: ["わたし"],
+      you: ["あなた", "あなたたち"],
+      四国めたん: "四国さん",
+      ずんだもん: "ずんだもんさん",
+      春日部つむぎ: "春日部さん",
+      雨晴はう: "雨晴さん",
+      波音リツ: "波音さん",
+      玄野武宏: "玄野さん",
+      白上虎太郎: "白上さん",
+      青山龍星: "青山さん",
+      冥鳴ひまり: "冥鳴さん",
+      九州そら: "まーくつーさん",
+      モチノキョウコ: "モチノさん",
+      剣崎雌雄: "剣崎先生",
+      WhiteCUL: "ゆきさん",
+      後鬼: "後鬼さん",
+      No7: "セブンさん",
+      ちび式じい: "おじいさん",
+      櫻歌ミコ: "櫻歌さん",
+      小夜_SAYO: "小夜さん",
     },
   }
 
@@ -863,5 +1145,5 @@ export const useDetailedCharacterInfo = () => {
     },
   }
 
-  return { characterInfos, generationInfos }
+  return { characterInfos, callNameInfos, generationInfos }
 }
