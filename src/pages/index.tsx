@@ -487,7 +487,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       bustupImage: query.allFile.nodes.find(
         node => node.name === "bustup-chibishikiji"
       )!.childImageSharp.gatsbyImageData,
-      voiceFeature: "（準備中）",
+      voiceFeature: "親しみのある嗄れ声",
       voiceUrls: [
         {
           style: "ノーマル",
@@ -498,14 +498,14 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
           ],
         },
       ],
-      releaseStatus: "comingSoon",
+      releaseStatus: "released",
     },
     櫻歌ミコ: {
       name: getCharacterInfo("櫻歌ミコ").name,
       bustupImage: query.allFile.nodes.find(
         node => node.name === "bustup-ouka_miko"
       )!.childImageSharp.gatsbyImageData,
-      voiceFeature: "（準備中）",
+      voiceFeature: "かわいらしい少女の声",
       voiceUrls: [
         {
           style: "ノーマル",
@@ -514,28 +514,28 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         { style: "第二形態", urls: [miko2nd001, miko2nd002, miko2nd003] },
         { style: "ロリ", urls: [mikoLoli001, mikoLoli002, mikoLoli003] },
       ],
-      releaseStatus: "comingSoon",
+      releaseStatus: "released",
     },
     小夜_SAYO: {
       name: getCharacterInfo("小夜_SAYO").name,
       bustupImage: query.allFile.nodes.find(
         node => node.name === "bustup-sayo"
       )!.childImageSharp.gatsbyImageData,
-      voiceFeature: "（準備中）",
+      voiceFeature: "和やかで温厚な声",
       voiceUrls: [
         {
           style: "ノーマル",
           urls: [sayoNormal001, sayoNormal002, sayoNormal003],
         },
       ],
-      releaseStatus: "comingSoon",
+      releaseStatus: "released",
     },
     ナースロボ＿タイプＴ: {
       name: getCharacterInfo("ナースロボ＿タイプＴ").name,
       bustupImage: query.allFile.nodes.find(
         node => node.name === "bustup-nurserobo_typet"
       )!.childImageSharp.gatsbyImageData,
-      voiceFeature: "（準備中）",
+      voiceFeature: "冷静で慎み深い声",
       voiceUrls: [
         {
           style: "ノーマル",
@@ -545,7 +545,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         { style: "恐怖", urls: [typetFear001, typetFear002, typetFear003] },
         { style: "内緒話", urls: [typetWhis001, typetWhis002, typetWhis003] },
       ],
-      releaseStatus: "comingSoon",
+      releaseStatus: "released",
     },
   }
 
@@ -676,7 +676,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
                   </span>
                   <span className="has-text-weight-semibold">ダウンロード</span>
                 </a>
-                <p className="is-align-self-center is-size-6">Version 0.13.3</p>
+                <p className="is-align-self-center is-size-6">Version 0.13.4</p>
               </div>
             </div>
           </section>
