@@ -216,16 +216,18 @@ export default ({
                         >
                           音声サンプル
                         </span>
-                        {characterInfo.voiceUrls ? (
+                        {characterInfo.dormitoryVoiceUrls ? (
                           <div className="description-samples">
-                            {characterInfo.voiceUrls.map((url, index) => (
-                              <PlayButton
-                                key={index}
-                                url={url}
-                                color={characterInfo.color}
-                                className="ml-1 mr-1"
-                              />
-                            ))}
+                            {characterInfo.dormitoryVoiceUrls.map(
+                              (url, index) => (
+                                <PlayButton
+                                  key={index}
+                                  url={url}
+                                  color={characterInfo.color}
+                                  className="ml-1 mr-1"
+                                />
+                              )
+                            )}
                           </div>
                         ) : (
                           <span className="description-text">準備中</span>

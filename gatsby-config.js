@@ -46,6 +46,13 @@ module.exports = {
         path: `${__dirname}/src/scripts`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `audio`,
+        path: `${__dirname}/src/audios`,
+      },
+    },
     `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
@@ -84,4 +91,5 @@ module.exports = {
       },
     },
   ],
+  graphqlTypegen: true,
 }
