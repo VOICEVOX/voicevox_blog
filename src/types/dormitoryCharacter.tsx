@@ -25,6 +25,7 @@ export type CharacterInfo = {
   name: string
   id: string
   rubyName: string
+  voiceFeature: string
   bustupImage: IGatsbyImageData
   portraitImage: IGatsbyImageData
   ogpImage: IGatsbyImageData
@@ -32,9 +33,11 @@ export type CharacterInfo = {
   lightColor: string
   description: string
   labelInfos: { label: string; value: string; size: 1 | 2 }[]
-  voiceUrls?: string[]
+  styleVoiceUrls: { style: string; urls: string[] }[]
+  dormitoryVoiceUrls?: string[]
   infoImages?: IGatsbyImageData[]
   detailUrl: string | undefined
+  releaseStatus: "released" | "comingSoon"
 }
 
 export type Generation = "一期生" | "二期生" | "三期生"
