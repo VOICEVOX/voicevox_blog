@@ -15,6 +15,7 @@ import landingMovieThumb from "../images/landing-movie-thumb.png"
 import shareThumb from "../images/landing-share-thumb.jpg"
 import landingMovie from "../movies/landing.mp4"
 import { CharacterKey } from "../types/dormitoryCharacter"
+import Logo from "../images/logo.svg"
 
 const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
   setShowingHeader,
@@ -101,7 +102,9 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
           <header className="hero is-primary is-small">
             <div className="hero-body">
               <div className="container has-text-centered">
-                <h1 className="title top-title">VOICEVOX</h1>
+                <div className="title top-title">
+                  <Logo alt="VOICEVOX" />
+                </div>
                 <h2 className="subtitle has-text-weight-semibold">
                   無料で使える中品質なテキスト読み上げソフトウェア
                 </h2>
