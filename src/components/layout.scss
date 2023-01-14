@@ -1,32 +1,18 @@
 @import "~bulma/sass/utilities/initial-variables";
+@import "./fonts.scss";
 
 $primary: #a5d4adff;
 $text: black;
 
 $navbar-breakpoint: $tablet;
 
-@import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;400;500;700&display=swap");
-$family-sans-serif: "M PLUS Rounded 1c", sans-serif;
+$family-sans-serif: "Unhinted Rounded M+ 1p", sans-serif;
+
 $font-smoothing: subpixel-antialiased;
 $text-rendering: optimizeLegibility;
 @media only screen and (-webkit-min-device-pixel-ratio: 2),
   (min-resolution: 2dppx) {
   $font-smoothing: antialiased;
-}
-
-//M+フォントのシャギーを解消する
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-li,
-p,
-span,
-a {
-  //ほんの少し傾けると画像的に扱われ、アンチエイリアスがかかります。
-  transform: rotate(0.03deg);
 }
 
 //もしページの内容が画面高さより小さくても、body要素は最低でも画面高さを持つようにします。
@@ -76,14 +62,25 @@ $dropdown-item-active-background-color: $primary;
   }
 
   .top-title {
-    font-size: $size-1 * 2;
+    height: $size-1 * 2.2;
+    fill: #000000b3;
+    position: relative;
+    width: 100%;
+
+    & > svg {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
 
     @include until($desktop) {
-      font-size: $size-1 * 1.5;
+      height: $size-1 * 1.7;
     }
 
     @include until($tablet) {
-      font-size: $size-1;
+      height: $size-1 * 1.1;
     }
   }
 }
