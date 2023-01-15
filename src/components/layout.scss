@@ -44,6 +44,11 @@ $dropdown-item-active-background-color: $primary;
 
 @import "~bulma";
 
+// プライマリーカラーのテキストが明るすぎるので少し暗くする
+.has-text-primary {
+  color: #468155 !important;
+}
+
 .landing {
   .first-view {
     @include desktop {
@@ -139,6 +144,61 @@ $dropdown-item-active-background-color: $primary;
 .border-icon {
   border-style: solid;
   border-radius: 0.5rem;
+}
+
+:root {
+  --character-background-color: transparent;
+}
+.product {
+  main {
+    h1 {
+      @extend .title;
+      @extend .is-3;
+    }
+
+    .main-character-pane {
+      position: relative;
+    }
+
+    .main-character-pane::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50vw;
+      height: 100%;
+      background-color: var(--character-background-color);
+      z-index: -1;
+    }
+  }
+
+  .product-feature {
+    .product-feature-separator {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      position: relative;
+
+      // 横線
+      &:before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        width: 100%;
+        border-top: 5px solid;
+        border-color: $primary;
+        z-index: -1;
+      }
+
+      .product-feature-separator-text {
+        background-color: white;
+      }
+    }
+  }
 }
 
 .markdown {

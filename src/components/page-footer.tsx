@@ -1,5 +1,5 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import React from "react"
 
 export const VVFooter: React.FC<{
@@ -38,7 +38,7 @@ export const VVFooter: React.FC<{
       <a className="is-size-7	ml-1 mr-1" onClick={privacyPolicyShower}>
         プライバシーポリシー
       </a>
-      <p className="is-size-7	ml-1 mr-1">© 2021 Hiroshiba Kazuyuki</p>
+      <p className="is-size-7	ml-1 mr-1">© Hiroshiba Kazuyuki</p>
     </div>
   </>
 )

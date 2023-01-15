@@ -7,8 +7,6 @@ import { GlobalContext } from "../contexts/context"
 import { useModalController } from "../hooks/hook"
 import icon from "../images/icon.png"
 import { DownloadModal } from "./downloadModal"
-import { ModalHowToUse } from "./modalHowToUse"
-import { ModalReadmeSoftware } from "./modalReadmeSoftware"
 import { VVFooter } from "./page-footer"
 
 export const Page: React.FC<{
@@ -38,18 +36,6 @@ export const Page: React.FC<{
 
   const context = useContext(GlobalContext)
   context.downloadModal = useModalController()
-
-  const {
-    showing: showingSoftwareReadmeModal,
-    show: showSoftwareReadmeModal,
-    hide: hideSoftwareReadmeModal,
-  } = useModalController()
-
-  const {
-    showing: showingHowToUseModal,
-    show: showHowToUseModal,
-    hide: hideHowToUseModal,
-  } = useModalController()
 
   const {
     showing: showingPrivacyPolicyModal,
@@ -92,19 +78,19 @@ export const Page: React.FC<{
             className={`navbar-menu ${isBurgerActive ? "is-active" : ""}`}
           >
             <div className="navbar-end">
-              <Link to={"/term"} className="navbar-item">
+              <Link to={"/term/"} className="navbar-item">
                 利用規約
               </Link>
-              <Link to={"/how_to_use"} className="navbar-item">
+              <Link to={"/how_to_use/"} className="navbar-item">
                 使い方
               </Link>
-              <Link to={"/qa"} className="navbar-item">
+              <Link to={"/qa/"} className="navbar-item">
                 Q&amp;A
               </Link>
-              <Link to={"/dormitory"} className="navbar-item">
+              <Link to={"/dormitory/"} className="navbar-item">
                 ボイボ寮
               </Link>
-              <Link to={"/update_history"} className="navbar-item">
+              <Link to={"/update_history/"} className="navbar-item">
                 変更履歴
               </Link>
               <a
@@ -144,22 +130,16 @@ export const Page: React.FC<{
       <DownloadModal
         isActive={context.downloadModal.showing}
         hide={context.downloadModal.hide}
-        showReadme={showSoftwareReadmeModal}
-        showHowToUse={showHowToUseModal}
-      />
-      <ModalReadmeSoftware
-        isActive={showingSoftwareReadmeModal}
-        hide={hideSoftwareReadmeModal}
       />
       <ModalPrivacyPolicy
         isActive={showingPrivacyPolicyModal}
         hide={hidePrivacyPolicyModal}
       />
-      <ModalHowToUse isActive={showingHowToUseModal} hide={hideHowToUseModal} />
       <footer className="footer appearance">
         <VVFooter privacyPolicyShower={showPrivacyPolicyModal} />
       </footer>
       <div className="footer height-holder">
+        {/* 空間を空けるために必要 */}
         <VVFooter privacyPolicyShower={() => {}} />
       </div>
     </>

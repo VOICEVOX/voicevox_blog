@@ -465,7 +465,7 @@ export const useDetailedCharacterInfo = () => {
       color: "#1D86AE",
       lightColor: "#B3D7DD",
       description:
-        "CULの姉。風雪月花四姉妹の雪。冷静に見えるが、<br>実は小心者のクールビューティー。",
+        "CULの姉。風雪月花四姉妹の雪。冷静に見えるが、<br />実は小心者のクールビューティー。",
       labelInfos: [
         { label: "年齢", value: "20 歳", size: 1 },
         { label: "身長", value: "165 cm", size: 1 },
@@ -487,7 +487,7 @@ export const useDetailedCharacterInfo = () => {
       color: "#386CB0",
       lightColor: "#B3CDE3",
       description:
-        "鬼っ子ハンターついなちゃんの式神。<br>人間態では色っぽい大人の女性の話し方になる。",
+        "鬼っ子ハンターついなちゃんの式神。<br />人間態では色っぽい大人の女性の話し方になる。",
       labelInfos: [
         { label: "CV", value: "七海映子", size: 1 },
         { label: "年齢", value: "少なくとも1300歳以上", size: 2 },
@@ -506,7 +506,7 @@ export const useDetailedCharacterInfo = () => {
       color: "#A45AAA",
       lightColor: "#CAB2D6",
       description:
-        "正体がつかめない不思議な女性。<br>得意のメイクで複数の「顔」を持つ。",
+        "正体がつかめない不思議な女性。<br />得意のメイクで複数の「顔」を持つ。",
       labelInfos: [
         { label: "年齢", value: "23 歳", size: 1 },
         { label: "身長", value: "165 cm", size: 1 },

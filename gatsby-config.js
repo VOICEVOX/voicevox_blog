@@ -1,9 +1,11 @@
+const siteUrl = "https://voicevox.hiroshiba.jp/"
+
 module.exports = {
   siteMetadata: {
     title: `VOICEVOX`,
     description: `VOICEVOXのホームページ`,
     author: `Hiroshiba Kazuyuki`,
-    siteUrl: `https://voicevox.hiroshiba.jp`,
+    siteUrl,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -89,6 +91,13 @@ module.exports = {
       options: {
         path: `${__dirname}/src/pages`,
         slugify: { separator: "_" },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+        siteUrl,
+        stripQueryString: true,
       },
     },
   ],

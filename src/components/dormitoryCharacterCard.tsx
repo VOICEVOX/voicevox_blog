@@ -11,7 +11,7 @@ export default ({
   className?: string
 }) => {
   const color = characterInfo?.color || "black"
-  const href = characterInfo?.id ? `/dormitory/${characterInfo.id}` : "#"
+  const href = characterInfo?.id ? `/dormitory/${characterInfo.id}/` : "#"
 
   return (
     <>

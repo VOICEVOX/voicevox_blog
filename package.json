@@ -9,6 +9,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "bulma": "^0.9.4",
     "gatsby": "^4.19.2",
+    "gatsby-plugin-canonical-urls": "^4.19.0",
     "gatsby-plugin-gatsby-cloud": "^4.19.0",
     "gatsby-plugin-google-gtag": "^4.19.0",
     "gatsby-plugin-image": "^2.19.0",
