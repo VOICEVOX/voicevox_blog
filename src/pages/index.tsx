@@ -64,7 +64,10 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
                 Coming Soon
               </p>
             )}
-            <AudioSample audioSamples={characterInfo.styleVoiceUrls} />
+            <AudioSample
+              audioSamples={characterInfo.styleVoiceUrls}
+              characterName={characterInfo.name}
+            />
             <div className="pt-3">
               <button
                 onClick={() =>
@@ -85,7 +88,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
   return (
     <>
       <Seo
-        title="VOICEVOX | 無料で使える中品質なテキスト読み上げソフトウェア"
+        title="VOICEVOX | 無料のテキスト読み上げソフトウェア"
         description="無料で使える中品質なテキスト読み上げソフトウェア"
         image={shareThumb}
       />
@@ -145,7 +148,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
                   href="https://github.com/VOICEVOX/voicevox/blob/main/docs/%E5%85%A8%E4%BD%93%E6%A7%8B%E6%88%90.md"
                   target="_blank"
                   rel="noreferrer"
-                  className="has-text-primary has-text-weight-bold is-underlined"
+                  className="has-text-weight-bold is-underlined"
                 >
                   VOICEVOX の全体構成
                 </a>
@@ -201,7 +204,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
                 詳しくは&nbsp;
                 <a
                   href="https://github.com/VOICEVOX/voicevox_core"
-                  className="has-text-primary has-text-weight-bold is-underlined"
+                  className="has-text-weight-bold is-underlined"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -219,7 +222,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
                 <li>
                   <Link
                     to={"/term/"}
-                    className="has-text-primary has-text-weight-bold is-underlined"
+                    className="has-text-weight-bold is-underlined"
                   >
                     利用規約
                   </Link>
@@ -227,7 +230,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
                 <li>
                   <Link
                     to={"/how_to_use/"}
-                    className="has-text-primary has-text-weight-bold is-underlined"
+                    className="has-text-weight-bold is-underlined"
                   >
                     使い方
                   </Link>
@@ -235,7 +238,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
                 <li>
                   <Link
                     to={"/qa/"}
-                    className="has-text-primary has-text-weight-bold is-underlined"
+                    className="has-text-weight-bold is-underlined"
                   >
                     Q&amp;A
                   </Link>
@@ -243,7 +246,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
                 <li>
                   <Link
                     to={"/dormitory/"}
-                    className="has-text-primary has-text-weight-bold is-underlined"
+                    className="has-text-weight-bold is-underlined"
                   >
                     ボイボ寮
                   </Link>
@@ -251,7 +254,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
                 <li>
                   <Link
                     to={"/update_history/"}
-                    className="has-text-primary has-text-weight-bold is-underlined"
+                    className="has-text-weight-bold is-underlined"
                   >
                     変更履歴
                   </Link>
@@ -261,7 +264,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
                     href="https://hiho.fanbox.cc/"
                     target={"_blank"}
                     rel={"noreferrer"}
-                    className="has-text-primary has-text-weight-bold is-underlined"
+                    className="has-text-weight-bold is-underlined"
                   >
                     pixivFANBOX
                   </a>

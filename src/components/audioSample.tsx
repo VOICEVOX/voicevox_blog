@@ -5,9 +5,11 @@ import PlayButton from "./playButton"
 
 export default ({
   audioSamples,
+  characterName,
   className,
 }: {
   audioSamples: { style: string; urls: string[] }[]
+  characterName: string
 } & React.HTMLAttributes<HTMLDivElement>) => {
   const [selectedStyle, setSelectedStyle] = useState(audioSamples[0].style)
   const [isOpenDropdown, setIsOpenDropdown] = useState(false)
@@ -30,7 +32,14 @@ export default ({
         </div>
         <div className="audio-sample-content">
           {selectedUrls.map((url, index) => (
-            <PlayButton key={index} url={url} className="is-small" />
+            <PlayButton
+              key={index}
+              url={url}
+              name={`${characterName}の${selectedStyle}スタイルのサンプルボイス${
+                index + 1
+              }`}
+              className="is-small"
+            />
           ))}
         </div>
       </div>
@@ -53,6 +62,7 @@ export default ({
                   type="button"
                   onFocus={() => setIsOpenDropdown(true)}
                   onBlur={() => setIsOpenDropdown(false)}
+                  aria-label={`${characterName}のサンプルボイスのスタイルを選択`}
                 >
                   <span>{selectedStyle}</span>
                   <span className="icon">

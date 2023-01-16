@@ -15,8 +15,18 @@ import { CharacterKey } from "../../types/dormitoryCharacter"
 export default ({ params }: PageProps) => {
   const query = useStaticQuery<Queries.ProductQuery>(graphql`
     query Product {
+      thumbImage: allFile(
+        filter: { relativePath: { regex: "/^product/thumb-.*/" } }
+      ) {
+        nodes {
+          name
+          childImageSharp {
+            gatsbyImageData
+          }
+        }
+      }
       featureImage: allFile(
-        filter: { absolutePath: { regex: "/product-feature/" } }
+        filter: { relativePath: { regex: "/product-feature/" } }
       ) {
         nodes {
           name
@@ -52,6 +62,13 @@ export default ({ params }: PageProps) => {
     )
   }, [characterInfo])
 
+  // 画像
+  const thumbImage = query.thumbImage.nodes.find(
+    node => node.name === `thumb-${characterId}`
+  )?.childImageSharp?.gatsbyImageData
+  if (thumbImage == undefined)
+    throw new Error(`thumb-${characterId} is not found`)
+
   if (query.featureImage.nodes.length != 1)
     throw new Error("featureImage is not found")
   const featureImage =
@@ -60,9 +77,9 @@ export default ({ params }: PageProps) => {
   return (
     <Page>
       <Seo
-        title="ボイボ寮 | VOICEVOX"
+        title={`VOICEVOX ${characterInfo.name} | 無料のテキスト読み上げソフトウェア`}
         description={characterInfo.description}
-        image={characterInfo.ogpImage.images.fallback?.src}
+        image={thumbImage.images.fallback?.src}
       />
       <div className="product">
         <main className="section py-0">
@@ -96,6 +113,9 @@ export default ({ params }: PageProps) => {
                           <PlayButton
                             key={index}
                             url={url}
+                            name={`${characterInfo.name}のサンプルボイス${
+                              index + 1
+                            }}`}
                             color={characterInfo.color}
                             className="ml-1 mr-1"
                           />

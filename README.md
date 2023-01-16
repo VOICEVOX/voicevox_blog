@@ -75,6 +75,16 @@ output_file=output.wav
 ffmpeg -i $audio_file -af volume=-3dB $output_file
 ```
 
+## サムネイル生成
+
+一部のサムネイルは HTML をレンダリングしたものを画像化しています。
+次のコマンドで更新してください。
+
+```bash
+# FIXME: なぜか package.json に `"type": "module",` を追加する必要がある
+npm run generate_thumb
+```
+
 ## LICENSE
 
 VOICEVOX の開発のための利用のみ許可されます。  

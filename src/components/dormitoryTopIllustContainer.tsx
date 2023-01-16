@@ -51,7 +51,7 @@ export default ({}) => {
           {
             // トップイラスト一覧
             topIllusts.map((topIllust, index) => (
-              <div className="column is-4">
+              <div className="column is-4" key={index}>
                 <div className="card" onClick={() => showTopIllustModal(index)}>
                   <GatsbyImage
                     image={topIllust}

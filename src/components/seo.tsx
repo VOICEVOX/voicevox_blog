@@ -1,9 +1,21 @@
-import * as React from "react"
+import { graphql, useStaticQuery } from "gatsby"
 import PropTypes from "prop-types"
+import * as React from "react"
 import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
 
-function Seo({ description, lang, meta, title, image }) {
+function Seo({
+  description,
+  lang,
+  title,
+  image,
+  noindex,
+}: {
+  description?: string
+  lang?: string
+  title: string
+  image?: string
+  noindex?: boolean
+}) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -88,7 +100,16 @@ function Seo({ description, lang, meta, title, image }) {
               ]
             : []
         )
-        .concat(meta)}
+        .concat(
+          noindex
+            ? [
+                {
+                  name: `robots`,
+                  content: `noindex nofollow`,
+                },
+              ]
+            : []
+        )}
     />
   )
 }
