@@ -24,7 +24,7 @@ export default ({
             <Link to={href} state={{ fromDormitory: true }}>
               <GatsbyImage
                 className="card-image"
-                image={characterInfo.bustupImage}
+                image={characterInfo.bustupImageSmall}
                 alt={characterInfo.name}
                 objectFit="contain"
               />

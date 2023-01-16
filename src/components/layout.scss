@@ -150,30 +150,119 @@ $dropdown-item-active-background-color: $primary;
   --character-background-color: transparent;
 }
 .product {
-  main {
-    h1 {
-      @extend .title;
-      @extend .is-3;
+  h1 {
+    @extend .title;
+    @extend .is-3;
+  }
+
+  .top {
+    height: calc(100vh - 3.25rem);
+    display: flex;
+    flex-direction: row-reverse;
+
+    @include mobile {
+      height: auto;
+      flex-direction: column;
+      gap: 3rem;
     }
 
-    .main-character-pane {
+    .top-character {
       position: relative;
+      flex: 0 1 50%;
+
+      @include mobile {
+        min-height: calc(100vh - 3.25rem);
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50vw;
+        height: 100%;
+        background-color: var(--character-background-color);
+        z-index: -1;
+
+        @include mobile {
+          width: 100%; // FIXME: 左右に空間が空いてしまう
+        }
+      }
+
+      .image-wrapper {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        transform: translateX(-5%);
+
+        display: flex;
+        justify-content: center;
+      }
+
+      .info {
+        position: absolute;
+        top: 0;
+        right: 5%;
+
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        gap: 1rem;
+
+        > div {
+          background-color: #fffc;
+          width: 200px;
+          border-radius: 16px;
+
+          display: flex;
+          flex-direction: column;
+        }
+
+        .detail {
+          align-items: flex-end;
+          gap: 1rem;
+        }
+
+        .sample {
+          align-items: center;
+        }
+      }
     }
 
-    .main-character-pane::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 50vw;
-      height: 100%;
-      background-color: var(--character-background-color);
-      z-index: -1;
+    .description {
+      flex: 0 1 50%;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: start;
+      @extend .px-6;
+
+      @include mobile {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        align-items: center;
+      }
+
+      .terms {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
     }
   }
 
-  .product-feature {
-    .product-feature-separator {
+  .feature {
+    @extend .my-5, .py-5;
+    @include mobile {
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+    }
+
+    .separator {
       width: 100%;
       display: flex;
       align-items: center;
@@ -194,8 +283,40 @@ $dropdown-item-active-background-color: $primary;
         z-index: -1;
       }
 
-      .product-feature-separator-text {
+      .separator-text {
         background-color: white;
+      }
+    }
+
+    .feature-content {
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+      @extend .mt-6;
+
+      @include mobile {
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .thumb {
+        width: 50%;
+        border: 1.5px solid;
+        @extend .ml-6;
+        @include mobile {
+          width: 100%;
+          margin-left: 0 !important;
+        }
+      }
+
+      .description {
+        width: 40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include mobile {
+          width: 100%;
+        }
       }
     }
   }

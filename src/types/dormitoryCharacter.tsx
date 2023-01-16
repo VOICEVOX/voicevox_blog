@@ -27,6 +27,7 @@ export type CharacterInfo = {
   rubyName: string
   voiceFeature: string
   bustupImage: IGatsbyImageData
+  bustupImageSmall: IGatsbyImageData
   portraitImage: IGatsbyImageData
   ogpImage: IGatsbyImageData
   color: string

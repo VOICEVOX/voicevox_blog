@@ -16,8 +16,11 @@ export const useDetailedCharacterInfo = () => {
       bustup: allFile(filter: { absolutePath: { regex: "/bustup/" } }) {
         nodes {
           name
-          childImageSharp {
+          childImageSharp320px: childImageSharp {
             gatsbyImageData(height: 320)
+          }
+          childImageSharp640px: childImageSharp {
+            gatsbyImageData(height: 640)
           }
         }
       }
@@ -155,9 +158,12 @@ export const useDetailedCharacterInfo = () => {
 
   const getDatas = (info: { key: CharacterKey; characterId: string }) => {
     const item = {
+      bustupImageSmall: query.bustup.nodes.find(
+        node => node.name === `bustup-${info.characterId}`
+      )!.childImageSharp320px?.gatsbyImageData!,
       bustupImage: query.bustup.nodes.find(
         node => node.name === `bustup-${info.characterId}`
-      )!.childImageSharp?.gatsbyImageData!,
+      )!.childImageSharp640px?.gatsbyImageData!,
       portraitImage: query.portrait.nodes.find(
         node => node.name === `portrait-${info.characterId}`
       )!.childImageSharp?.gatsbyImageData!,

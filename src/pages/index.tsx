@@ -50,18 +50,12 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
     return (
       <div className="column is-6-tablet is-4-desktop">
         <div className="card">
-          {/* <Link to={`/product/${characterInfo.id}/`}>
+          <Link to={`/product/${characterInfo.id}/`} className="card-image">
             <GatsbyImage
-              className="card-image"
               image={characterInfo.bustupImage}
               alt={characterInfo.name}
             />
-          </Link> */}
-          <GatsbyImage
-            className="card-image"
-            image={characterInfo.bustupImage}
-            alt={characterInfo.name}
-          />
+          </Link>
           <div className="card-content has-text-centered">
             <h3 className="title is-4">{characterInfo.name}</h3>
             <p className="subtitle is-5">{characterInfo.voiceFeature}</p>
