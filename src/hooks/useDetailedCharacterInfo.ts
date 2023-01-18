@@ -1,5 +1,9 @@
 import { graphql, useStaticQuery } from "gatsby"
-import { CharacterInfo, CharacterKey } from "../types/dormitoryCharacter"
+import {
+  CharacterInfo,
+  CharacterKey,
+  Generation,
+} from "../types/dormitoryCharacter"
 import { useCharacterInfo } from "./useCharacterInfo"
 
 export const useDetailedCharacterInfo = () => {
@@ -611,12 +615,12 @@ export const useDetailedCharacterInfo = () => {
       ],
       detailUrl: "https://www.krnr.top/blank",
     },
-  }
+  } as const
 
   const callNameInfos: {
     [key in CharacterKey]: {
       [key in CharacterKey]?: string | undefined
-    } & { me: string[]; you: string[] }
+    } & { me: readonly string[]; you: readonly string[] }
   } = {
     四国めたん: {
       me: ["わたくし"],
@@ -1036,10 +1040,10 @@ export const useDetailedCharacterInfo = () => {
       櫻歌ミコ: "櫻歌さん",
       小夜_SAYO: "小夜さん",
     },
-  }
+  } as const
 
   const generationInfos: {
-    [key in Generation]: { characterKeys: CharacterKey[] }
+    [key in Generation]: { characterKeys: readonly CharacterKey[] }
   } = {
     一期生: { characterKeys: ["四国めたん", "ずんだもん"] },
     二期生: {
@@ -1054,7 +1058,7 @@ export const useDetailedCharacterInfo = () => {
         "九州そら",
       ],
     },
-  }
+  } as const
 
-  return { characterInfos, callNameInfos, generationInfos }
+  return { characterInfos, callNameInfos, generationInfos } as const
 }

@@ -33,10 +33,10 @@ export type CharacterInfo = {
   color: string
   lightColor: string
   description: string
-  labelInfos: { label: string; value: string; size: 1 | 2 }[]
-  styleVoiceUrls: { style: string; urls: string[] }[]
-  dormitoryVoiceUrls?: string[]
-  infoImages?: IGatsbyImageData[]
+  labelInfos: readonly { label: string; value: string; size: 1 | 2 }[]
+  styleVoiceUrls: { style: string; urls: readonly string[] }[]
+  dormitoryVoiceUrls?: readonly string[]
+  infoImages?: readonly IGatsbyImageData[]
   detailUrl: string | undefined
   releaseStatus: "released" | "comingSoon"
 }

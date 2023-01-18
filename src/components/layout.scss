@@ -158,10 +158,28 @@ $dropdown-item-active-background-color: $primary;
     display: flex;
     flex-direction: row-reverse;
 
+    position: relative;
+
     @include mobile {
       height: auto;
       flex-direction: column;
       gap: 3rem;
+    }
+
+    .prev,
+    .post {
+      position: absolute;
+      z-index: 10;
+      top: 10%;
+      transform: translateY(-50%);
+      font-size: 3rem;
+      opacity: 0.25;
+    }
+    .prev {
+      left: calc(50% - 50vw + 1.2rem);
+    }
+    .post {
+      right: calc(50% - 50vw + 1.2rem);
     }
 
     .top-character {
