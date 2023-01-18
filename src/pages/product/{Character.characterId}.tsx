@@ -6,7 +6,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { graphql, Link, PageProps, useStaticQuery } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
-import React, { useContext, useEffect, useState } from "react"
+import React, { useCallback, useContext, useEffect, useState } from "react"
 import ModalReadmeLibrary from "../../components/modalReadmeLibrary"
 import { Page } from "../../components/page"
 import PlayButton from "../../components/playButton"
@@ -52,7 +52,6 @@ const ProductPage = ({ params }: PageProps) => {
   )
   const characterKey = characterInfoEntry![0] as CharacterKey
   const characterInfo = characterInfos[characterKey]!
-  console.log("out characterKey", characterKey)
 
   const [
     showingLibraryReadmeModalCharaterKey,
@@ -77,14 +76,17 @@ const ProductPage = ({ params }: PageProps) => {
     characterKeys[
       (characterKeys.indexOf(characterKey) + 1) % characterKeys.length
     ]
-  const changeToCharacter = (nextCharacterKey: CharacterKey) => {
-    setCharacterId(characterInfos[nextCharacterKey]!.id)
-    window.history.pushState(
-      { characterKey: nextCharacterKey },
-      "",
-      `/product/${characterInfos[nextCharacterKey]!.id}/`
-    )
-  }
+  const changeToCharacter = useCallback(
+    (nextCharacterKey: CharacterKey) => {
+      setCharacterId(characterInfos[nextCharacterKey]!.id)
+      window.history.pushState(
+        { characterKey: nextCharacterKey },
+        "",
+        `/product/${characterInfos[nextCharacterKey]!.id}/`
+      )
+    },
+    [characterInfos]
+  )
   useEffect(() => {
     const handlePopState = (event: PopStateEvent) => {
       if (
