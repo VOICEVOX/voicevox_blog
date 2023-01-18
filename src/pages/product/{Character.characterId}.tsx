@@ -52,6 +52,7 @@ const ProductPage = ({ params }: PageProps) => {
   )
   const characterKey = characterInfoEntry![0] as CharacterKey
   const characterInfo = characterInfos[characterKey]!
+  console.log("out characterKey", characterKey)
 
   const [
     showingLibraryReadmeModalCharaterKey,
@@ -86,7 +87,10 @@ const ProductPage = ({ params }: PageProps) => {
   }
   useEffect(() => {
     const handlePopState = (event: PopStateEvent) => {
-      if (event.state?.characterKey != characterKey) {
+      if (
+        event.state?.characterKey != undefined &&
+        event.state?.characterKey != characterKey
+      ) {
         setCharacterId(characterInfos[event.state.characterKey]!.id)
       }
     }
@@ -94,7 +98,7 @@ const ProductPage = ({ params }: PageProps) => {
     return () => {
       window.removeEventListener("popstate", handlePopState)
     }
-  }, [])
+  }, [characterKey])
 
   // 最初に来たときはそのキャラクターをセット
   useEffect(() => {
