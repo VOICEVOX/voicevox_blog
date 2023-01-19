@@ -1,6 +1,7 @@
 import { faDownload } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import React, { CSSProperties, useContext } from "react"
+import { APP_VERSION } from "../constants"
 import { GlobalContext } from "../contexts/context"
 
 export default ({
@@ -52,7 +53,7 @@ export default ({
         </span>
         <span className="has-text-weight-semibold">ダウンロード</span>
       </a>
-      <p className="is-align-self-center is-size-6">Version 0.13.4</p>
+      <p className="is-align-self-center is-size-6">Version {APP_VERSION}</p>
     </div>
   )
 }
