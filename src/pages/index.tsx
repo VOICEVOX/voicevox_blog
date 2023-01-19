@@ -13,9 +13,9 @@ import { CharacterContext, GlobalContext } from "../contexts/context"
 import { useDetailedCharacterInfo } from "../hooks/useDetailedCharacterInfo"
 import landingMovieThumb from "../images/landing-movie-thumb.png"
 import shareThumb from "../images/landing-share-thumb.jpg"
+import Logo from "../images/logo.svg"
 import landingMovie from "../movies/landing.mp4"
 import { CharacterKey } from "../types/dormitoryCharacter"
-import Logo from "../images/logo.svg"
 
 const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
   setShowingHeader,
@@ -38,18 +38,18 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
   }, [firstViewRef])
 
   const [
-    showingLibraryReadmeModalCharaterKey,
-    setShowingLibraryReadmeModalCharaterKey,
+    showingLibraryReadmeModalCharacterKey,
+    setShowingLibraryReadmeModalCharacterKey,
   ] = useState<CharacterKey | undefined>(undefined)
 
   const showLibraryReadmeModal = (characterKey: CharacterKey) => {
     document.documentElement.classList.add("is-clipped")
-    setShowingLibraryReadmeModalCharaterKey(characterKey)
+    setShowingLibraryReadmeModalCharacterKey(characterKey)
   }
 
   const hideLibraryReadmeModal = () => {
     document.documentElement.classList.remove("is-clipped")
-    setShowingLibraryReadmeModalCharaterKey(undefined)
+    setShowingLibraryReadmeModalCharacterKey(undefined)
   }
 
   // キャラクター表示
@@ -316,10 +316,10 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
       </div>
       <ModalReadmeLibrary
         hide={hideLibraryReadmeModal}
-        {...(showingLibraryReadmeModalCharaterKey != undefined
+        {...(showingLibraryReadmeModalCharacterKey != undefined
           ? {
               isActive: true,
-              characterKey: showingLibraryReadmeModalCharaterKey,
+              characterKey: showingLibraryReadmeModalCharacterKey,
             }
           : {
               isActive: false,
