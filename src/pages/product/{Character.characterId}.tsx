@@ -73,8 +73,8 @@ const ProductPage = ({ params }: PageProps) => {
   )
 
   const [
-    showingLibraryReadmeModalCharaterKey,
-    setShowingLibraryReadmeModalCharaterKey,
+    showingLibraryReadmeModalCharacterKey,
+    setShowingLibraryReadmeModalCharacterKey,
   ] = useState<CharacterKey | undefined>(undefined)
 
   useEffect(() => {
@@ -260,7 +260,7 @@ const ProductPage = ({ params }: PageProps) => {
                 </Link>
                 <button
                   onClick={() =>
-                    setShowingLibraryReadmeModalCharaterKey(characterKey)
+                    setShowingLibraryReadmeModalCharacterKey(characterKey)
                   }
                   className="button is-normal is-rounded"
                   type="button"
@@ -305,11 +305,11 @@ const ProductPage = ({ params }: PageProps) => {
         </section>
       </div>
       <ModalReadmeLibrary
-        hide={() => setShowingLibraryReadmeModalCharaterKey(undefined)}
-        {...(showingLibraryReadmeModalCharaterKey != undefined
+        hide={() => setShowingLibraryReadmeModalCharacterKey(undefined)}
+        {...(showingLibraryReadmeModalCharacterKey != undefined
           ? {
               isActive: true,
-              characterKey: showingLibraryReadmeModalCharaterKey,
+              characterKey: showingLibraryReadmeModalCharacterKey,
             }
           : {
               isActive: false,
