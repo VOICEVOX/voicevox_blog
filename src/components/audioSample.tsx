@@ -1,26 +1,25 @@
-import { faAngleDown } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import React, { useMemo, useState } from "react"
+import React, { useMemo } from "react"
 import PlayButton from "./playButton"
+import StyleDropdown, { useStyleDropdownController } from "./styleDropdown"
 
-export default ({
+const AudioSample = ({
   audioSamples,
   characterName,
   className,
 }: {
-  audioSamples: { style: string; urls: string[] }[]
+  audioSamples: { style: string; urls: readonly string[] }[]
   characterName: string
 } & React.HTMLAttributes<HTMLDivElement>) => {
-  const [selectedStyle, setSelectedStyle] = useState(audioSamples[0].style)
-  const [isOpenDropdown, setIsOpenDropdown] = useState(false)
-
   const styles = useMemo(
     () => audioSamples.map(value => value.style),
     [audioSamples]
   )
-  const selectedUrls = useMemo(
+  const { selectedStyle, setSelectedStyle } = useStyleDropdownController({
+    styles,
+  })
+  const selectedAudioUrls = useMemo(
     () => audioSamples.find(({ style }) => style == selectedStyle)!.urls,
-    [selectedStyle]
+    [audioSamples, selectedStyle]
   )
 
   return (
@@ -31,7 +30,7 @@ export default ({
           <span>音声サンプル</span>
         </div>
         <div className="audio-sample-content">
-          {selectedUrls.map((url, index) => (
+          {selectedAudioUrls.map((url, index) => (
             <PlayButton
               key={index}
               url={url}
@@ -49,47 +48,12 @@ export default ({
             <span>スタイル</span>
           </div>
           <div className="audio-sample-content">
-            <div
-              className={`dropdown ${isOpenDropdown ? "is-active" : ""}`}
-              onMouseEnter={() => setIsOpenDropdown(true)}
-              onMouseLeave={() => setIsOpenDropdown(false)}
-            >
-              <div className="dropdown-trigger">
-                <button
-                  className="button is-rounded"
-                  aria-haspopup="true"
-                  aria-controls="dropdown-menu"
-                  type="button"
-                  onFocus={() => setIsOpenDropdown(true)}
-                  onBlur={() => setIsOpenDropdown(false)}
-                  aria-label={`${characterName}のサンプルボイスのスタイルを選択`}
-                >
-                  <span>{selectedStyle}</span>
-                  <span className="icon">
-                    <FontAwesomeIcon icon={faAngleDown} />
-                  </span>
-                </button>
-              </div>
-              <div className="dropdown-menu" role="menu">
-                <div className="dropdown-content">
-                  {styles.map((style, index) => (
-                    <a
-                      key={index}
-                      className={`dropdown-item is-primary ${
-                        style == selectedStyle ? "is-active" : ""
-                      }`}
-                      onMouseDown={() => {
-                        setSelectedStyle(style)
-                        setIsOpenDropdown(false)
-                      }}
-                      tabIndex={0}
-                    >
-                      {style}
-                    </a>
-                  ))}
-                </div>
-              </div>
-            </div>
+            <StyleDropdown
+              styles={styles}
+              selectedStyle={selectedStyle}
+              setSelectedStyle={setSelectedStyle}
+              characterName={characterName}
+            />
           </div>
         </div>
       )}
@@ -97,3 +61,5 @@ export default ({
     </div>
   )
 }
+
+export default AudioSample

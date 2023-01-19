@@ -6,12 +6,21 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { graphql, Link, PageProps, useStaticQuery } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
-import React, { useCallback, useContext, useEffect, useState } from "react"
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react"
 import ModalReadmeLibrary from "../../components/modalReadmeLibrary"
 import { Page } from "../../components/page"
 import PlayButton from "../../components/playButton"
 import Seo from "../../components/seo"
 import SoftwareFeature from "../../components/softwareFeature"
+import StyleDropdown, {
+  useStyleDropdownController,
+} from "../../components/styleDropdown"
 import { CharacterContext, GlobalContext } from "../../contexts/context"
 import { useDetailedCharacterInfo } from "../../hooks/useDetailedCharacterInfo"
 import { CharacterKey } from "../../types/dormitoryCharacter"
@@ -47,11 +56,21 @@ const ProductPage = ({ params }: PageProps) => {
 
   const [characterId, setCharacterId] = useState<string>(params.characterId) // FIXME: キャラクターID型を作る
 
-  const characterInfoEntry = Object.entries(characterInfos).find(
-    ([, characterInfo]) => characterInfo?.id === characterId
+  const characterInfoEntry = useMemo(
+    () =>
+      Object.entries(characterInfos).find(
+        ([, characterInfo]) => characterInfo?.id === characterId
+      ),
+    [characterInfos, characterId]
   )
-  const characterKey = characterInfoEntry![0] as CharacterKey
-  const characterInfo = characterInfos[characterKey]!
+  const characterKey = useMemo(
+    () => characterInfoEntry![0] as CharacterKey,
+    [characterInfoEntry]
+  )
+  const characterInfo = useMemo(
+    () => characterInfos[characterKey]!,
+    [characterInfos, characterKey]
+  )
 
   const [
     showingLibraryReadmeModalCharaterKey,
@@ -64,6 +83,21 @@ const ProductPage = ({ params }: PageProps) => {
       characterInfo.lightColor
     )
   }, [characterInfo])
+
+  // サンプルボイスのスタイル選択
+  const styles = useMemo(
+    () => characterInfo.styleVoiceUrls.map(o => o.style),
+    [characterInfo]
+  )
+  const { selectedStyle, setSelectedStyle } = useStyleDropdownController({
+    styles,
+  })
+  const selectedAudioUrls = useMemo(
+    () =>
+      characterInfo.styleVoiceUrls.find(({ style }) => style == selectedStyle)!
+        .urls,
+    [characterInfo, selectedStyle]
+  )
 
   // キャラクター変更（ページ遷移）
   const { characterKeys } = useContext(CharacterContext)
@@ -79,6 +113,9 @@ const ProductPage = ({ params }: PageProps) => {
   const changeToCharacter = useCallback(
     (nextCharacterKey: CharacterKey) => {
       setCharacterId(characterInfos[nextCharacterKey]!.id)
+      setSelectedStyle(
+        characterInfos[nextCharacterKey]!.styleVoiceUrls[0].style
+      )
       window.history.pushState(
         { characterKey: nextCharacterKey },
         "",
@@ -87,6 +124,9 @@ const ProductPage = ({ params }: PageProps) => {
     },
     [characterInfos]
   )
+
+  // ブラウザバックを無効化し、コード側でキャラクター変更する
+  // TODO: なぜかうまくいかない。勝手にリロードされて404になってしまう？
   useEffect(() => {
     const handlePopState = (event: PopStateEvent) => {
       if (
@@ -165,8 +205,8 @@ const ProductPage = ({ params }: PageProps) => {
                 </div>
                 <div className="sample p-4">
                   <h3 className="is-size-6">サンプルボイス</h3>
-                  <div className="is-flex is-flex-direction-row mt-1">
-                    {characterInfo.styleVoiceUrls[0].urls.map((url, index) => (
+                  <div className="is-flex is-flex-direction-row mt-2">
+                    {selectedAudioUrls.map((url, index) => (
                       <PlayButton
                         key={index}
                         url={url}
@@ -178,6 +218,15 @@ const ProductPage = ({ params }: PageProps) => {
                       />
                     ))}
                   </div>
+                  {styles.length > 1 && (
+                    <StyleDropdown
+                      styles={styles}
+                      selectedStyle={selectedStyle}
+                      setSelectedStyle={setSelectedStyle}
+                      characterName={characterInfo.name}
+                      className="is-up mt-2"
+                    />
+                  )}
                 </div>
               </div>
             </div>

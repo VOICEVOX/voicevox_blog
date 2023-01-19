@@ -100,6 +100,8 @@ module.exports = {
         stripQueryString: true,
       },
     },
+    // スタイルが適用される前に画面が表示されてちらつくのを防ぐ
+    // `gatsby-plugin-fix-fouc`, // FIXME: フォント容量が減ったら適用しても良いかも
   ],
   graphqlTypegen: true,
 }
