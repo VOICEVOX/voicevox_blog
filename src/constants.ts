@@ -1,5 +1,7 @@
 import { CharacterKey } from "./types/dormitoryCharacter"
 
+export const APP_VERSION = "0.13.4"
+
 export const characterKeys: CharacterKey[] = [
   "四国めたん",
   "ずんだもん",
