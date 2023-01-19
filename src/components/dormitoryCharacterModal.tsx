@@ -76,9 +76,9 @@ export default ({
   }
 
   const CallBox = ({
-    targetCharaterKey,
+    targetCharacterKey,
   }: {
-    targetCharaterKey: CharacterKey
+    targetCharacterKey: CharacterKey
   }) => {
     const Arrow = ({ leftOrRight }: { leftOrRight: "left" | "right" }) => (
       <span
@@ -87,7 +87,7 @@ export default ({
           color:
             leftOrRight === "right"
               ? characterInfo.color
-              : characterInfos[targetCharaterKey].color,
+              : characterInfos[targetCharacterKey].color,
         }}
       >
         {leftOrRight === "left" ? "←" : "→"}
@@ -101,7 +101,7 @@ export default ({
               className="description-call-text"
               style={{ borderColor: characterInfo.color }}
             >
-              {callNameInfos[characterKey][targetCharaterKey]}
+              {callNameInfos[characterKey][targetCharacterKey]}
             </span>
             <Arrow leftOrRight="right" />
           </div>
@@ -109,19 +109,19 @@ export default ({
             <Arrow leftOrRight="left" />
             <span
               className="description-call-text"
-              style={{ borderColor: characterInfos[targetCharaterKey].color }}
+              style={{ borderColor: characterInfos[targetCharacterKey].color }}
             >
-              {callNameInfos[targetCharaterKey][characterKey]}
+              {callNameInfos[targetCharacterKey][characterKey]}
             </span>
           </div>
         </div>
         <div className="column is-narrow py-1" style={{ height: "100%" }}>
           <GatsbyImage
             className="border-icon"
-            image={characterInfos[targetCharaterKey].bustupImage}
-            alt={characterInfos[targetCharaterKey].name}
+            image={characterInfos[targetCharacterKey].bustupImage}
+            alt={characterInfos[targetCharacterKey].name}
             style={{
-              borderColor: characterInfos[targetCharaterKey].color,
+              borderColor: characterInfos[targetCharacterKey].color,
               height: "100%",
               aspectRatio: "1/1",
             }}
@@ -282,13 +282,13 @@ export default ({
                     <div className="column is-9 description-call-character">
                       {characterKeys
                         .filter(
-                          targetCharaterKey =>
-                            targetCharaterKey !== characterKey
+                          targetCharacterKey =>
+                            targetCharacterKey !== characterKey
                         )
-                        .map((targetCharaterKey, index) => (
+                        .map((targetCharacterKey, index) => (
                           <CallBox
                             key={index}
-                            targetCharaterKey={targetCharaterKey}
+                            targetCharacterKey={targetCharacterKey}
                           />
                         ))}
                     </div>

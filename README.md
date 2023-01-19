@@ -85,6 +85,15 @@ ffmpeg -i $audio_file -af volume=-3dB $output_file
 npm run generate_thumb
 ```
 
+## タイポチェック
+
+[typos](https://github.com/crate-ci/typos) を使ってタイポのチェックを行っています。
+[typos をインストール](https://github.com/crate-ci/typos#install) した後
+
+```bash
+typos
+```
+
 ## LICENSE
 
 VOICEVOX の開発のための利用のみ許可されます。  

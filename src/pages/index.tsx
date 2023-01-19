@@ -8,6 +8,7 @@ import "../components/layout.scss"
 import ModalReadmeLibrary from "../components/modalReadmeLibrary"
 import { Page } from "../components/page"
 import Seo from "../components/seo"
+import SoftwareFeature from "../components/softwareFeature"
 import { CharacterContext } from "../contexts/context"
 import { useDetailedCharacterInfo } from "../hooks/useDetailedCharacterInfo"
 import landingMovieThumb from "../images/landing-movie-thumb.png"
@@ -15,8 +16,6 @@ import shareThumb from "../images/landing-share-thumb.jpg"
 import Logo from "../images/logo.svg"
 import landingMovie from "../movies/landing.mp4"
 import { CharacterKey } from "../types/dormitoryCharacter"
-
-import SoftwareFeature from "../components/softwareFeature"
 
 const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
   setShowingHeader,
@@ -38,8 +37,8 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
   }, [firstViewRef])
 
   const [
-    showingLibraryReadmeModalCharaterKey,
-    setShowingLibraryReadmeModalCharaterKey,
+    showingLibraryReadmeModalCharacterKey,
+    setShowingLibraryReadmeModalCharacterKey,
   ] = useState<CharacterKey | undefined>(undefined)
 
   // キャラクター表示
@@ -71,7 +70,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
             <div className="pt-3">
               <button
                 onClick={() =>
-                  setShowingLibraryReadmeModalCharaterKey(characterKey)
+                  setShowingLibraryReadmeModalCharacterKey(characterKey)
                 }
                 className="button is-normal is-rounded"
                 type="button"
@@ -275,11 +274,11 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         </main>
       </div>
       <ModalReadmeLibrary
-        hide={() => setShowingLibraryReadmeModalCharaterKey(undefined)}
-        {...(showingLibraryReadmeModalCharaterKey != undefined
+        hide={() => setShowingLibraryReadmeModalCharacterKey(undefined)}
+        {...(showingLibraryReadmeModalCharacterKey != undefined
           ? {
               isActive: true,
-              characterKey: showingLibraryReadmeModalCharaterKey,
+              characterKey: showingLibraryReadmeModalCharacterKey,
             }
           : {
               isActive: false,
