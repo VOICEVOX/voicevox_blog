@@ -9,6 +9,7 @@ import "../components/layout.scss"
 import ModalReadmeLibrary from "../components/modalReadmeLibrary"
 import { Page } from "../components/page"
 import Seo from "../components/seo"
+import { APP_VERSION } from "../constants"
 import { CharacterContext, GlobalContext } from "../contexts/context"
 import { useDetailedCharacterInfo } from "../hooks/useDetailedCharacterInfo"
 import landingMovieThumb from "../images/landing-movie-thumb.png"
@@ -154,7 +155,9 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
                   </span>
                   <span className="has-text-weight-semibold">ダウンロード</span>
                 </a>
-                <p className="is-align-self-center is-size-6">Version 0.13.4</p>
+                <p className="is-align-self-center is-size-6">
+                  Version {APP_VERSION}
+                </p>
               </div>
             </div>
           </section>
