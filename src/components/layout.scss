@@ -216,6 +216,44 @@ $dropdown-item-active-background-color: $primary;
         display: flex;
         justify-content: center;
       }
+      .image-wrapper.entering-right {
+        animation: entering-right 0.15s ease-out;
+        animation-fill-mode: both;
+      }
+      .image-wrapper.entering-left {
+        animation: entering-left 0.15s ease-out;
+        animation-fill-mode: both;
+      }
+      .image-wrapper.leaving-right {
+        animation: entering-left 0.15s ease-in;
+        animation-fill-mode: both;
+        animation-direction: reverse;
+      }
+      .image-wrapper.leaving-left {
+        animation: entering-right 0.15s ease-in;
+        animation-fill-mode: both;
+        animation-direction: reverse;
+      }
+      @keyframes entering-right {
+        0% {
+          opacity: 0;
+          transform: translateX(-10%);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(-5%);
+        }
+      }
+      @keyframes entering-left {
+        0% {
+          opacity: 0;
+          transform: translateX(0);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(-5%);
+        }
+      }
 
       .info {
         position: absolute;

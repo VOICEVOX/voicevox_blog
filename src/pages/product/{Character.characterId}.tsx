@@ -99,6 +99,24 @@ const ProductPage = ({ params }: PageProps) => {
     [characterInfo, selectedStyle]
   )
 
+  // キャラクター変更アニメーション
+  type CharaAnimeObject = {
+    characterKey: CharacterKey
+    ref: React.MutableRefObject<HTMLDivElement | null>
+    state: "entering" | "staying" | "leaving"
+    direction: "left" | "right"
+  }
+  const [nowCharaAnimeObject, setNowCharaAnimeObject] =
+    useState<CharaAnimeObject>({
+      characterKey,
+      ref: React.createRef(),
+      state: "staying",
+      direction: "left",
+    })
+  const [prevCharaAnimeObject, setPrevCharaAnimeObject] = useState<
+    CharaAnimeObject | undefined
+  >(undefined)
+
   // キャラクター変更（ページ遷移）
   const { characterKeys } = useContext(CharacterContext)
   const prevCharacterKey =
@@ -116,6 +134,28 @@ const ProductPage = ({ params }: PageProps) => {
       setSelectedStyle(
         characterInfos[nextCharacterKey]!.styleVoiceUrls[0].style
       )
+
+      // アニメーション用
+      const diff =
+        characterKeys.indexOf(nextCharacterKey) -
+        characterKeys.indexOf(characterKey)
+      const direction =
+        (diff + characterKeys.length) % characterKeys.length <=
+        characterKeys.length / 2
+          ? "right"
+          : "left"
+      setPrevCharaAnimeObject({
+        ...nowCharaAnimeObject,
+        state: "leaving",
+        direction,
+      })
+      setNowCharaAnimeObject({
+        characterKey: nextCharacterKey,
+        ref: React.createRef(),
+        state: "entering",
+        direction,
+      })
+
       window.history.pushState(
         { characterKey: nextCharacterKey },
         "",
@@ -184,15 +224,31 @@ const ProductPage = ({ params }: PageProps) => {
               <FontAwesomeIcon icon={faCircleRight} />
             </button>
             <div className="top-character">
-              <div className="image-wrapper">
-                <GatsbyImage
-                  image={characterInfo.portraitImage}
-                  alt={characterInfo.name}
-                  objectFit="cover"
-                  imgStyle={{ height: "100%", width: "auto" }}
-                  style={{ height: "100%", width: "auto", flex: "0 0 auto" }}
-                />
-              </div>
+              {[prevCharaAnimeObject, nowCharaAnimeObject].map(
+                obj =>
+                  obj && (
+                    <div
+                      key={obj.characterKey}
+                      ref={obj.ref}
+                      className={`image-wrapper ${
+                        obj.state != "staying" &&
+                        `${obj.state}-${obj.direction}`
+                      }`}
+                    >
+                      <GatsbyImage
+                        image={characterInfos[obj.characterKey]!.portraitImage}
+                        alt={characterInfos[obj.characterKey]!.name}
+                        objectFit="cover"
+                        imgStyle={{ height: "100%", width: "auto" }}
+                        style={{
+                          height: "100%",
+                          width: "auto",
+                          flex: "0 0 auto",
+                        }}
+                      />
+                    </div>
+                  )
+              )}
               <div className="info pb-5">
                 <div className="detail p-4">
                   <p>{characterInfo.description.replaceAll("<br />", "")}</p>
