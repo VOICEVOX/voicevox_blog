@@ -94,8 +94,11 @@ const ProductPage = ({ params }: PageProps) => {
   })
   const selectedAudioUrls = useMemo(
     () =>
-      characterInfo.styleVoiceUrls.find(({ style }) => style == selectedStyle)!
-        .urls,
+      (
+        characterInfo.styleVoiceUrls.find(
+          ({ style }) => style == selectedStyle
+        ) || characterInfo.styleVoiceUrls[0]
+      ).urls, // FIXME: ブラウザバックで変なステートになるのでフォールバックしている
     [characterInfo, selectedStyle]
   )
 
@@ -161,6 +164,10 @@ const ProductPage = ({ params }: PageProps) => {
         "",
         `/product/${characterInfos[nextCharacterKey]!.id}/`
       )
+      // // FIXME: たぶん本来は↓のgatsby.navigateを使うのが正しいけど、フラッシュするので使用できない
+      // navigate(`/product/${characterInfos[nextCharacterKey]!.id}/`, {
+      //   state: { characterKey: nextCharacterKey },
+      // })
     },
     [characterInfos]
   )
