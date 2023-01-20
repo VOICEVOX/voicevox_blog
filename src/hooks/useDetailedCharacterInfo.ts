@@ -1,5 +1,9 @@
 import { graphql, useStaticQuery } from "gatsby"
-import { CharacterInfo, CharacterKey } from "../types/dormitoryCharacter"
+import {
+  CharacterInfo,
+  CharacterKey,
+  Generation,
+} from "../types/dormitoryCharacter"
 import { useCharacterInfo } from "./useCharacterInfo"
 
 export const useDetailedCharacterInfo = () => {
@@ -16,8 +20,11 @@ export const useDetailedCharacterInfo = () => {
       bustup: allFile(filter: { absolutePath: { regex: "/bustup/" } }) {
         nodes {
           name
-          childImageSharp {
+          childImageSharp320px: childImageSharp {
             gatsbyImageData(height: 320)
+          }
+          childImageSharp640px: childImageSharp {
+            gatsbyImageData(height: 640)
           }
         }
       }
@@ -155,9 +162,12 @@ export const useDetailedCharacterInfo = () => {
 
   const getDatas = (info: { key: CharacterKey; characterId: string }) => {
     const item = {
+      bustupImageSmall: query.bustup.nodes.find(
+        node => node.name === `bustup-${info.characterId}`
+      )!.childImageSharp320px?.gatsbyImageData!,
       bustupImage: query.bustup.nodes.find(
         node => node.name === `bustup-${info.characterId}`
-      )!.childImageSharp?.gatsbyImageData!,
+      )!.childImageSharp640px?.gatsbyImageData!,
       portraitImage: query.portrait.nodes.find(
         node => node.name === `portrait-${info.characterId}`
       )!.childImageSharp?.gatsbyImageData!,
@@ -465,7 +475,7 @@ export const useDetailedCharacterInfo = () => {
       color: "#1D86AE",
       lightColor: "#B3D7DD",
       description:
-        "CULの姉。風雪月花四姉妹の雪。冷静に見えるが、<br>実は小心者のクールビューティー。",
+        "CULの姉。風雪月花四姉妹の雪。冷静に見えるが、<br />実は小心者のクールビューティー。",
       labelInfos: [
         { label: "年齢", value: "20 歳", size: 1 },
         { label: "身長", value: "165 cm", size: 1 },
@@ -487,7 +497,7 @@ export const useDetailedCharacterInfo = () => {
       color: "#386CB0",
       lightColor: "#B3CDE3",
       description:
-        "鬼っ子ハンターついなちゃんの式神。<br>人間態では色っぽい大人の女性の話し方になる。",
+        "鬼っ子ハンターついなちゃんの式神。<br />人間態では色っぽい大人の女性の話し方になる。",
       labelInfos: [
         { label: "CV", value: "七海映子", size: 1 },
         { label: "年齢", value: "少なくとも1300歳以上", size: 2 },
@@ -506,7 +516,7 @@ export const useDetailedCharacterInfo = () => {
       color: "#A45AAA",
       lightColor: "#CAB2D6",
       description:
-        "正体がつかめない不思議な女性。<br>得意のメイクで複数の「顔」を持つ。",
+        "正体がつかめない不思議な女性。<br />得意のメイクで複数の「顔」を持つ。",
       labelInfos: [
         { label: "年齢", value: "23 歳", size: 1 },
         { label: "身長", value: "165 cm", size: 1 },
@@ -605,12 +615,12 @@ export const useDetailedCharacterInfo = () => {
       ],
       detailUrl: "https://www.krnr.top/blank",
     },
-  }
+  } as const
 
   const callNameInfos: {
     [key in CharacterKey]: {
       [key in CharacterKey]?: string | undefined
-    } & { me: string[]; you: string[] }
+    } & { me: readonly string[]; you: readonly string[] }
   } = {
     四国めたん: {
       me: ["わたくし"],
@@ -1030,10 +1040,10 @@ export const useDetailedCharacterInfo = () => {
       櫻歌ミコ: "櫻歌さん",
       小夜_SAYO: "小夜さん",
     },
-  }
+  } as const
 
   const generationInfos: {
-    [key in Generation]: { characterKeys: CharacterKey[] }
+    [key in Generation]: { characterKeys: readonly CharacterKey[] }
   } = {
     一期生: { characterKeys: ["四国めたん", "ずんだもん"] },
     二期生: {
@@ -1048,7 +1058,7 @@ export const useDetailedCharacterInfo = () => {
         "九州そら",
       ],
     },
-  }
+  } as const
 
-  return { characterInfos, callNameInfos, generationInfos }
+  return { characterInfos, callNameInfos, generationInfos } as const
 }

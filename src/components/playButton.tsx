@@ -6,8 +6,13 @@ export default ({
   url,
   color,
   className,
+  name,
   style,
-}: { url: string; color?: string } & React.HTMLAttributes<HTMLDivElement>) => {
+}: {
+  url: string
+  name: string
+  color?: string
+} & React.HTMLAttributes<HTMLDivElement>) => {
   const [audio, setAudio] = useState<HTMLAudioElement | null>(null)
   const [isPlaying, setIsPlaying] = useState(false)
   const [isReady, setIsReady] = useState(false)
@@ -80,6 +85,7 @@ export default ({
       disabled={!isReady}
       style={colorAddedStyle}
       type="button"
+      aria-label={`${name}を${isPlaying ? "停止" : "再生"}}`}
     >
       {isReady ? (
         <FontAwesomeIcon icon={isPlaying ? faStop : faPlay} />

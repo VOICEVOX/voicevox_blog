@@ -169,6 +169,7 @@ export default ({
                         : "hidden",
                     }}
                     href={characterInfo.detailUrl}
+                    aria-label={`${characterInfo.name}の詳細ページ`}
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -223,6 +224,9 @@ export default ({
                                 <PlayButton
                                   key={index}
                                   url={url}
+                                  name={`${characterInfo.name}のサンプルボイス${
+                                    index + 1
+                                  }`}
                                   color={characterInfo.color}
                                   className="ml-1 mr-1"
                                 />
@@ -296,7 +300,7 @@ export default ({
         </div>
         <button
           className="modal-close is-large"
-          aria-label="close"
+          aria-label="閉じる"
           onClick={hide}
           type="button"
         />

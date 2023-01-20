@@ -28,8 +28,6 @@ const packageAvailables: Record<OsType, Record<ModeType, PackageType[]>> = {
 export const DownloadModal: React.FC<{
   isActive: boolean
   hide: () => void
-  showReadme: () => void
-  showHowToUse: () => void
 }> = props => {
   const maintenanceMode = false
 
@@ -226,20 +224,6 @@ export const DownloadModal: React.FC<{
             </section>
 
             <footer className="modal-card-foot is-justify-content-flex-end">
-              <button
-                onClick={props.showReadme}
-                className="button"
-                type="button"
-              >
-                <span>利用規約</span>
-              </button>
-              <button
-                onClick={props.showHowToUse}
-                className="button"
-                type="button"
-              >
-                <span>使い方</span>
-              </button>
               <button onClick={props.hide} className="button" type="button">
                 <span>閉じる</span>
               </button>

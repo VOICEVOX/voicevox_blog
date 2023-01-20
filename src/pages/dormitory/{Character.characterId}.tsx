@@ -27,7 +27,7 @@ export default ({
       navigate(-1)
     } else {
       // 検索流入や共有されたページから直接飛んだ場合は戻れないのでボイボ寮ページのurlを指定
-      navigate("/dormitory")
+      navigate("/dormitory/")
     }
   }
 

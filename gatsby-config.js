@@ -1,9 +1,11 @@
+const siteUrl = "https://voicevox.hiroshiba.jp/"
+
 module.exports = {
   siteMetadata: {
     title: `VOICEVOX`,
     description: `VOICEVOXのホームページ`,
     author: `Hiroshiba Kazuyuki`,
-    siteUrl: `https://voicevox.hiroshiba.jp`,
+    siteUrl,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -91,6 +93,15 @@ module.exports = {
         slugify: { separator: "_" },
       },
     },
+    {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+        siteUrl,
+        stripQueryString: true,
+      },
+    },
+    // スタイルが適用される前に画面が表示されてちらつくのを防ぐ
+    // `gatsby-plugin-fix-fouc`, // FIXME: フォント容量が減ったら適用しても良いかも
   ],
   graphqlTypegen: true,
 }
