@@ -27,7 +27,7 @@ export const GlobalContext = React.createContext<GlobalContextProps>({
 })
 
 export interface CharacterContextProps {
-  characterKeys: CharacterKey[]
+  characterKeys: readonly CharacterKey[]
   characterInfos: { [key in CharacterKey]: CharacterInfoEntry }
 }
 
