@@ -2,9 +2,11 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
-const siteUrl = process.env.DEPLOY_URL // Netlifyに合わせている
+const siteUrl = process.env.NETLIFY
+  ? process.env.DEPLOY_URL
+  : process.env.SITE_URL
 if (siteUrl == undefined || siteUrl.length == 0) {
-  throw new Error("DEPLOY_URL is not defined")
+  throw new Error("siteUrl is not defined")
 }
 
 module.exports = {
