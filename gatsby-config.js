@@ -1,4 +1,17 @@
-const siteUrl = "https://voicevox.hiroshiba.jp/"
+if (process.env.PREVIEW) {
+  require("dotenv").config({
+    path: `.env.preview`,
+  })
+} else {
+  require("dotenv").config({
+    path: `.env.${process.env.NODE_ENV}`,
+  })
+}
+
+const siteUrl = process.env.SITE_URL
+if (siteUrl == undefined || siteUrl.length == 0) {
+  throw new Error("SITE_URL is not defined")
+}
 
 module.exports = {
   siteMetadata: {
