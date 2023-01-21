@@ -27,9 +27,17 @@ body {
   min-height: -webkit-fill-available;
 }
 
-//footerを最下部に固定します。
 body {
   position: relative;
+
+  // navbarを最上部に固定
+  .navbar {
+    &.height-holder {
+      visibility: hidden;
+    }
+  }
+
+  // footerを最下部に固定
   .footer {
     &.appearance {
       position: absolute;
@@ -762,7 +770,7 @@ $dropdown-item-active-background-color: $primary;
 }
 
 //ヘッダーをゆっくり表示する
-.navbar {
+.navbar.navbar-with-animation {
   animation: fadeIn 0.1s cubic-bezier(0.33, 1, 0.68, 1) 1 forwards;
 }
 @keyframes fadeIn {

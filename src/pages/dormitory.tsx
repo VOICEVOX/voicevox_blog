@@ -223,7 +223,7 @@ const Dormitory: React.FC<DormitoryProps> = ({ setShowingHeader }) => {
 export default () => {
   const [showingHeader, setShowingHeader] = useState(false)
   return (
-    <Page showingHeader={showingHeader}>
+    <Page showingHeader={showingHeader} showingHeaderOnTop={false}>
       <Dormitory setShowingHeader={setShowingHeader} />
     </Page>
   )

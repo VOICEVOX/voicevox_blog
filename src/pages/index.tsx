@@ -292,7 +292,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
 export default () => {
   const [showingHeader, setShowingHeader] = useState(false)
   return (
-    <Page showingHeader={showingHeader}>
+    <Page showingHeader={showingHeader} showingHeaderOnTop={false}>
       <Main setShowingHeader={setShowingHeader} />
     </Page>
   )
