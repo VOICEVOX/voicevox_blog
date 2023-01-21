@@ -1,16 +1,10 @@
-if (process.env.PREVIEW) {
-  require("dotenv").config({
-    path: `.env.preview`,
-  })
-} else {
-  require("dotenv").config({
-    path: `.env.${process.env.NODE_ENV}`,
-  })
-}
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 
-const siteUrl = process.env.SITE_URL
+const siteUrl = process.env.DEPLOY_URL // Netlifyに合わせている
 if (siteUrl == undefined || siteUrl.length == 0) {
-  throw new Error("SITE_URL is not defined")
+  throw new Error("DEPLOY_URL is not defined")
 }
 
 module.exports = {
