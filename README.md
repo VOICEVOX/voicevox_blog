@@ -34,12 +34,17 @@ npm run build && npm run serve
 npm run clean && npm run deploy
 ```
 
-### プレビュー版デプロイ
+### プレビュー版
 
-[プレビュー環境ページ](https://preview--voicevox.netlify.app/)
+[プレビュー版ページ](https://preview--voicevox.netlify.app/)
 
 Netlify を使ってプレビュー環境デプロイを行っています。
 `preview`ブランチに push すると、Netlify のプレビュー環境にデプロイされます。
+
+```bash
+# ビルド
+npm run preview-build
+```
 
 ## add resource
 
