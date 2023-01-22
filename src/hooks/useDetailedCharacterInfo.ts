@@ -9,15 +9,21 @@ import { useCharacterInfo } from "./useCharacterInfo"
 export const useDetailedCharacterInfo = () => {
   const query: Queries.DetailedCharacterInfoQuery = useStaticQuery(graphql`
     query DetailedCharacterInfo {
-      portrait: allFile(filter: { absolutePath: { regex: "/portrait/" } }) {
+      portrait: allFile(filter: { relativePath: { regex: "/portrait/" } }) {
         nodes {
           name
           childImageSharp {
-            gatsbyImageData(height: 640)
+            gatsbyImageData(
+              layout: FULL_WIDTH
+              height: 1280
+              aspectRatio: 1
+              transformOptions: { fit: CONTAIN }
+              backgroundColor: "#0000"
+            )
           }
         }
       }
-      bustup: allFile(filter: { absolutePath: { regex: "/bustup/" } }) {
+      bustup: allFile(filter: { relativePath: { regex: "/bustup/" } }) {
         nodes {
           name
           childImageSharp320px: childImageSharp {
@@ -31,7 +37,7 @@ export const useDetailedCharacterInfo = () => {
       dormitoryImage: allFile(
         filter: {
           sourceInstanceName: { regex: "/image/" }
-          absolutePath: { regex: "/dormitory/" }
+          relativePath: { regex: "/dormitory/" }
         }
       ) {
         nodes {
@@ -63,7 +69,7 @@ export const useDetailedCharacterInfo = () => {
           publicURL
         }
       }
-      ogp: allFile(filter: { absolutePath: { regex: "/bustup/" } }) {
+      ogp: allFile(filter: { relativePath: { regex: "/bustup/" } }) {
         nodes {
           name
           childImageSharp {

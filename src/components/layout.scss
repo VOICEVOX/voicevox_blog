@@ -165,11 +165,14 @@ $dropdown-item-active-background-color: $primary;
     height: calc(100vh - 3.25rem);
     display: flex;
     flex-direction: row-reverse;
+    min-height: calc($desktop / 2);
+    max-height: $desktop;
 
     position: relative;
 
     @include mobile {
       height: auto;
+      max-height: unset;
       flex-direction: column;
       gap: 3rem;
     }
@@ -195,7 +198,10 @@ $dropdown-item-active-background-color: $primary;
       flex: 0 1 50%;
 
       @include mobile {
+        flex: 0 1 auto;
+        height: calc(100vh - 3.25rem);
         min-height: calc(100vh - 3.25rem);
+        max-height: calc(100vh - 3.25rem);
       }
 
       &::before {
@@ -214,6 +220,7 @@ $dropdown-item-active-background-color: $primary;
       }
 
       .image-wrapper {
+        height: 100%;
         position: absolute;
         top: 0;
         bottom: 0;
@@ -221,8 +228,13 @@ $dropdown-item-active-background-color: $primary;
         right: 0;
         transform: translateX(-5%);
 
-        display: flex;
-        justify-content: center;
+        img {
+          object-fit: cover !important;
+          // 画像は1:1に加工されている
+          @media (min-aspect-ratio: 1/1) and (not (min-width: $tablet)) {
+            object-fit: contain !important;
+          }
+        }
       }
       .image-wrapper.entering-right {
         animation: entering-right 0.15s ease-out;
@@ -363,7 +375,9 @@ $dropdown-item-active-background-color: $primary;
 
       .thumb {
         width: 50%;
-        border: 1.5px solid;
+        img {
+          border: 1.5px solid;
+        }
         @extend .ml-6;
         @include mobile {
           width: 100%;
@@ -569,14 +583,21 @@ $dropdown-item-active-background-color: $primary;
         @extend .py-1;
         @extend .px-0;
 
+        // 大きい画面では左側にいっぱい画像表示
         @include tablet {
           border-right: solid;
+          img {
+            object-fit: cover !important;
+          }
         }
-
-        img {
-          object-fit: cover !important;
-          @include mobile {
-            object-fit: contain !important;
+        // スマホ画面ではファーストビューに画像を表示
+        @include mobile {
+          height: 100vh;
+          img {
+            // 画像は1:1に加工されている
+            @media (min-aspect-ratio: 1/1) {
+              object-fit: contain !important;
+            }
           }
         }
       }
