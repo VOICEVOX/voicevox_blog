@@ -100,6 +100,11 @@ module.exports = {
       options: {
         path: `${__dirname}/src/pages`,
         slugify: { separator: "_" },
+        ignore: [
+          ...(process.env.NODE_ENV != "development"
+            ? [`**/__thumb_generator/**`]
+            : []),
+        ],
       },
     },
     {

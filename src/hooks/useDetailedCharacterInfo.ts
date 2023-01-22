@@ -14,7 +14,6 @@ export const useDetailedCharacterInfo = () => {
           name
           childImageSharp {
             gatsbyImageData(
-              layout: FULL_WIDTH
               height: 1280
               aspectRatio: 1
               transformOptions: { fit: CONTAIN }
