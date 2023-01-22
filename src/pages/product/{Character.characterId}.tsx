@@ -245,13 +245,7 @@ const ProductPage = ({ params }: PageProps) => {
                       <GatsbyImage
                         image={characterInfos[obj.characterKey]!.portraitImage}
                         alt={characterInfos[obj.characterKey]!.name}
-                        objectFit="cover"
-                        imgStyle={{ height: "100%", width: "auto" }}
-                        style={{
-                          height: "100%",
-                          width: "auto",
-                          flex: "0 0 auto",
-                        }}
+                        style={{ width: "100%", height: "100%" }}
                       />
                     </div>
                   )
