@@ -72,6 +72,8 @@ const ProductPage = ({ params }: PageProps) => {
     [characterInfos, characterKey]
   )
 
+  const description = `VOICEVOXは「${characterInfo.name}」の${characterInfo.voiceFeature}で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。`
+
   const [
     showingLibraryReadmeModalCharacterKey,
     setShowingLibraryReadmeModalCharacterKey,
@@ -210,7 +212,7 @@ const ProductPage = ({ params }: PageProps) => {
     <Page>
       <Seo
         title={`VOICEVOX ${characterInfo.name} | 無料のテキスト読み上げソフトウェア`}
-        description={characterInfo.description}
+        description={description}
         image={thumbImage.images.fallback?.src}
       />
       <div className="product">
@@ -289,11 +291,7 @@ const ProductPage = ({ params }: PageProps) => {
             </div>
             <div className="description">
               <h1 className="title">VOICEVOX {characterInfo.name}</h1>
-              <p className="is-size-5">
-                VOICEVOXは「{characterInfo.name}」の
-                {characterInfo.voiceFeature}
-                で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。
-              </p>
+              <p className="is-size-5">{description}</p>
               <a
                 className="button mt-5 is-primary is-rounded is-large"
                 onClick={() => {
