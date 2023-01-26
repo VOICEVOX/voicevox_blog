@@ -46,17 +46,36 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
     const characterInfo = characterInfos[characterKey]
     if (!characterInfo)
       throw new Error(`characterInfo is undefined. (${characterKey})`)
+    const LinkToProductPage = ({
+      children,
+      className,
+      style,
+    }: React.HTMLAttributes<HTMLLinkElement>) => {
+      return (
+        <Link
+          to={`/product/${characterInfo.id}/`}
+          className={className}
+          style={style}
+        >
+          {children}
+        </Link>
+      )
+    }
     return (
       <div className="column is-6-tablet is-4-desktop">
         <div className="card">
-          <Link to={`/product/${characterInfo.id}/`} className="card-image">
+          <LinkToProductPage className="card-image">
             <GatsbyImage
               image={characterInfo.bustupImage}
               alt={characterInfo.name}
             />
-          </Link>
+          </LinkToProductPage>
           <div className="card-content has-text-centered">
-            <h3 className="title is-4">{characterInfo.name}</h3>
+            <h3 className="title is-4">
+              <LinkToProductPage style={{ color: "inherit" }}>
+                {characterInfo.name}
+              </LinkToProductPage>
+            </h3>
             <p className="subtitle is-5">{characterInfo.voiceFeature}</p>
             {characterInfo.releaseStatus === "comingSoon" && (
               <p className="py-0" style={{ marginTop: "-1rem", color: "red" }}>
