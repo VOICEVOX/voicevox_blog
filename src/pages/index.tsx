@@ -107,7 +107,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
     <>
       <Seo
         title="VOICEVOX | 無料のテキスト読み上げソフトウェア"
-        description="無料で使える中品質なテキスト読み上げソフトウェア"
+        description="無料で使える中品質なテキスト読み上げソフトウェア。商用・非商用問わず無料で、誰でも簡単にお使いいただけます。イントネーションを詳細に調整することも可能です。"
         image={shareThumb}
       />
 
