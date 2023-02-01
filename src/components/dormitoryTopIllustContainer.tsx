@@ -26,7 +26,7 @@ export default ({}) => {
   const topIllusts: IGatsbyImageData[] = query
     .sort((a, b) => a.name.localeCompare(b.name))
     .map(node => node.childImageSharp.gatsbyImageData)
-  const illustrators = ["坂本アヒル", "490", "moiky"]
+  const illustrators = ["坂本アヒル", "490", "moiky", "のほしお"]
   if (topIllusts.length !== illustrators.length) {
     throw new Error("イラストレーターの数とトップイラストの数が一致しません")
   }
