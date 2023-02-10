@@ -20,6 +20,7 @@ export type CharacterKey =
   | "櫻歌ミコ"
   | "小夜_SAYO"
   | "ナースロボ＿タイプＴ"
+  | "聖騎士紅桜"
 
 export type CharacterInfo = {
   name: string
@@ -38,7 +39,9 @@ export type CharacterInfo = {
   dormitoryVoiceUrls?: readonly string[]
   infoImages?: readonly IGatsbyImageData[]
   detailUrl: string | undefined
+  policyUrl: string | undefined
   releaseStatus: "released" | "comingSoon"
+  releaseDate?: string
 }
 
 export type Generation = "一期生" | "二期生" | "三期生"

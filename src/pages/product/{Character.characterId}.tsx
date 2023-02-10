@@ -72,7 +72,10 @@ const ProductPage = ({ params }: PageProps) => {
     [characterInfos, characterKey]
   )
 
-  const description = `VOICEVOXは「${characterInfo.name}」の${characterInfo.voiceFeature}で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。`
+  const description =
+    characterInfo.releaseStatus == "released"
+      ? `VOICEVOXは「${characterInfo.name}」の${characterInfo.voiceFeature}で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。`
+      : `${characterInfo.releaseDate} リリース予定`
 
   const [
     showingLibraryReadmeModalCharacterKey,
@@ -96,11 +99,13 @@ const ProductPage = ({ params }: PageProps) => {
   })
   const selectedAudioUrls = useMemo(
     () =>
-      (
-        characterInfo.styleVoiceUrls.find(
-          ({ style }) => style == selectedStyle
-        ) || characterInfo.styleVoiceUrls[0]
-      ).urls, // FIXME: ブラウザバックで変なステートになるのでフォールバックしている
+      styles.length > 0
+        ? (
+            characterInfo.styleVoiceUrls.find(
+              ({ style }) => style == selectedStyle
+            ) || characterInfo.styleVoiceUrls[0]
+          ).urls // FIXME: ブラウザバックで変なステートになるのでフォールバックしている
+        : undefined,
     [characterInfo, selectedStyle]
   )
 
@@ -135,9 +140,12 @@ const ProductPage = ({ params }: PageProps) => {
     ]
   const changeToCharacter = useCallback(
     (nextCharacterKey: CharacterKey) => {
-      setCharacterId(characterInfos[nextCharacterKey]!.id)
+      const nextCharacterInfo = characterInfos[nextCharacterKey]!
+      setCharacterId(nextCharacterInfo.id)
       setSelectedStyle(
-        characterInfos[nextCharacterKey]!.styleVoiceUrls[0].style
+        nextCharacterInfo.styleVoiceUrls.length > 0
+          ? nextCharacterInfo.styleVoiceUrls[0].style
+          : undefined
       )
 
       // アニメーション用
@@ -164,7 +172,7 @@ const ProductPage = ({ params }: PageProps) => {
       window.history.pushState(
         { characterKey: nextCharacterKey },
         "",
-        `/product/${characterInfos[nextCharacterKey]!.id}/`
+        `/product/${nextCharacterInfo.id}/`
       )
       // // FIXME: たぶん本来は↓のgatsby.navigateを使うのが正しいけど、フラッシュするので使用できない
       // navigate(`/product/${characterInfos[nextCharacterKey]!.id}/`, {
@@ -262,66 +270,76 @@ const ProductPage = ({ params }: PageProps) => {
                     キャラクター詳細　→
                   </Link>
                 </div>
-                <div className="sample p-4">
-                  <h3 className="is-size-6">サンプルボイス</h3>
-                  <div className="is-flex is-flex-direction-row mt-2">
-                    {selectedAudioUrls.map((url, index) => (
-                      <PlayButton
-                        key={index}
-                        url={url}
-                        name={`${characterInfo.name}のサンプルボイス${
-                          index + 1
-                        }}`}
-                        color={characterInfo.color}
-                        className="ml-1 mr-1"
-                      />
-                    ))}
-                  </div>
-                  {styles.length > 1 && (
-                    <StyleDropdown
-                      styles={styles}
-                      selectedStyle={selectedStyle}
-                      setSelectedStyle={setSelectedStyle}
-                      characterName={characterInfo.name}
-                      className="is-up mt-2"
-                    />
+
+                {/* サンプルボイス */}
+                {styles.length > 0 &&
+                  selectedAudioUrls != undefined &&
+                  selectedStyle != undefined && (
+                    <div className="sample p-4">
+                      <h3 className="is-size-6">サンプルボイス</h3>
+                      <div className="is-flex is-flex-direction-row mt-2">
+                        {selectedAudioUrls.map((url, index) => (
+                          <PlayButton
+                            key={index}
+                            url={url}
+                            name={`${characterInfo.name}のサンプルボイス${
+                              index + 1
+                            }}`}
+                            color={characterInfo.color}
+                            className="ml-1 mr-1"
+                          />
+                        ))}
+                      </div>
+                      {styles.length > 1 && (
+                        <StyleDropdown
+                          styles={styles}
+                          selectedStyle={selectedStyle}
+                          setSelectedStyle={setSelectedStyle}
+                          characterName={characterInfo.name}
+                          className="is-up mt-2"
+                        />
+                      )}
+                    </div>
                   )}
-                </div>
               </div>
             </div>
             <div className="description">
               <h1 className="title">VOICEVOX {characterInfo.name}</h1>
               <p className="is-size-5">{description}</p>
-              <a
-                className="button mt-5 is-primary is-rounded is-large"
-                onClick={() => {
-                  context.downloadModal.show()
-                  context.sendEvent("download", "software")
-                }}
-                target="_blank"
-                rel="noreferrer"
-                tabIndex={0}
-              >
-                <span className="icon">
-                  <FontAwesomeIcon icon={faDownload} />
-                </span>
-                <span className="has-text-weight-semibold">
-                  VOICEVOX を ダウンロード
-                </span>
-              </a>
+              {characterInfo.releaseStatus == "released" && (
+                <a
+                  className="button mt-5 is-primary is-rounded is-large"
+                  onClick={() => {
+                    context.downloadModal.show()
+                    context.sendEvent("download", "software")
+                  }}
+                  target="_blank"
+                  rel="noreferrer"
+                  tabIndex={0}
+                >
+                  <span className="icon">
+                    <FontAwesomeIcon icon={faDownload} />
+                  </span>
+                  <span className="has-text-weight-semibold">
+                    VOICEVOX を ダウンロード
+                  </span>
+                </a>
+              )}
               <div className="terms mt-5">
                 <Link to="/term/" className="button is-normal is-rounded">
                   <span>VOICEVOX 利用規約</span>
                 </Link>
-                <button
-                  onClick={() =>
-                    setShowingLibraryReadmeModalCharacterKey(characterKey)
-                  }
-                  className="button is-normal is-rounded"
-                  type="button"
-                >
-                  <span>{characterInfo.name} 利用規約</span>
-                </button>
+                {characterInfo.policyUrl && (
+                  <button
+                    onClick={() =>
+                      setShowingLibraryReadmeModalCharacterKey(characterKey)
+                    }
+                    className="button is-normal is-rounded"
+                    type="button"
+                  >
+                    <span>{characterInfo.name} 利用規約</span>
+                  </button>
+                )}
               </div>
             </div>
           </div>

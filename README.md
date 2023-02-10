@@ -93,6 +93,8 @@ ffmpeg -i $audio_file -af volume=-3dB $output_file
 次のコマンドで更新してください。
 
 ```bash
+# まず起動しておく
+npm run develop
 # FIXME: なぜか package.json に `"type": "module",` を追加する必要がある
 npm run generate_thumb
 ```

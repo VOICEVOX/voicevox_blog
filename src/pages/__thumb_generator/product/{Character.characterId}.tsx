@@ -1,6 +1,7 @@
 import { faDownload } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { graphql, PageProps, useStaticQuery } from "gatsby"
+import { getSrc } from "gatsby-plugin-image"
 import React from "react"
 import Seo from "../../../components/seo"
 import { useDetailedCharacterInfo } from "../../../hooks/useDetailedCharacterInfo"
@@ -162,11 +163,9 @@ export default ({ location, params }: PageProps) => {
                   top: "20%",
                   width: "39%",
                   height: "80%",
-                  backgroundImage: `url(${
-                    characterInfo.portraitImage.images
-                      .sources![0].srcSet.split(",")[3]
-                      .split(" ")[0]
-                  })`,
+                  backgroundImage: `url(${getSrc(
+                    characterInfo.portraitImage
+                  )})`,
                   backgroundPosition: "center",
                   backgroundSize: "cover",
                   backgroundRepeat: "no-repeat",
