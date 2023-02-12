@@ -1,6 +1,6 @@
 import { graphql, useStaticQuery } from "gatsby"
-import React, { useContext } from "react"
-import { CharacterContext } from "../contexts/context"
+import React from "react"
+import { useDetailedCharacterInfo } from "../hooks/useDetailedCharacterInfo"
 import { CharacterKey } from "../types/dormitoryCharacter"
 import ModalMarkdown from "./modalMarkdown"
 
@@ -51,13 +51,15 @@ export default (
     }
   `)
 
-  const { characterInfos } = useContext(CharacterContext)
+  const { characterInfos } = useDetailedCharacterInfo()
 
   let title = ""
   let html = ""
 
   if (props.characterKey) {
     const characterInfo = characterInfos[props.characterKey]
+    if (!characterInfo)
+      throw new Error(`characterInfo is undefined. (${props.characterKey})`)
 
     title = `${characterInfo.name}` + " 利用規約"
 

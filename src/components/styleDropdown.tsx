@@ -7,7 +7,9 @@ export const useStyleDropdownController = ({
 }: {
   styles: string[]
 }) => {
-  const [selectedStyle, setSelectedStyle] = useState(styles[0])
+  const [selectedStyle, setSelectedStyle] = useState(
+    styles.length > 0 ? styles[0] : undefined
+  )
   return {
     selectedStyle,
     setSelectedStyle,

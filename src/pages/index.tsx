@@ -82,10 +82,12 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
                 Coming Soon
               </p>
             )}
-            <AudioSample
-              audioSamples={characterInfo.styleVoiceUrls}
-              characterName={characterInfo.name}
-            />
+            {characterInfo.styleVoiceUrls.keys.length > 0 && (
+              <AudioSample
+                audioSamples={characterInfo.styleVoiceUrls}
+                characterName={characterInfo.name}
+              />
+            )}
             <div className="pt-3">
               <button
                 onClick={() =>

@@ -87,7 +87,7 @@ export const useDetailedCharacterInfo = () => {
   const { getCharacterInfo } = useCharacterInfo()
 
   // リリースされていないキャラクター一覧
-  const comingSoonCharacters: CharacterKey[] = []
+  const comingSoonCharacters: CharacterKey[] = ["聖騎士紅桜"]
 
   // キャラごとのスタイル一覧
   const styleNames: { [key in CharacterKey]: { name: string; id: string }[] } =
@@ -163,6 +163,7 @@ export const useDetailedCharacterInfo = () => {
         { name: "恐怖", id: "fear" },
         { name: "内緒話", id: "whis" },
       ],
+      聖騎士紅桜: [],
     }
 
   const getDatas = (info: { key: CharacterKey; characterId: string }) => {
@@ -197,10 +198,9 @@ export const useDetailedCharacterInfo = () => {
         .filter(node => node.name.includes(`${info.characterId}`))
         .sort((a, b) => a.name.localeCompare(b.name))
         .map(node => node.childImageSharp?.gatsbyImageData!),
-      releaseStatus:
-        info.key in comingSoonCharacters
-          ? ("comingSoon" as const)
-          : ("released" as const),
+      releaseStatus: comingSoonCharacters.includes(info.key)
+        ? ("comingSoon" as const)
+        : ("released" as const),
     }
     if (item.bustupImage == undefined)
       throw new Error(`bustupImage is undefined. ${info.characterId}`)
@@ -209,11 +209,11 @@ export const useDetailedCharacterInfo = () => {
     if (item.ogpImage == undefined)
       throw new Error(`ogpImage is undefined. ${info.characterId}`)
     if (item.styleVoiceUrls.length == 0)
-      throw new Error(`styleVoiceUrls is empty. ${info.characterId}`)
+      console.warn(`styleVoiceUrls is empty. ${info.characterId}`)
     if (item.styleVoiceUrls.some(v => v.urls.length != 3))
       throw new Error(`styleVoiceUrls is invalid. ${info.characterId}`)
     if (item.dormitoryVoiceUrls.length == 0)
-      throw new Error(`dormitoryVoiceUrls is empty. ${info.characterId}`)
+      console.warn(`dormitoryVoiceUrls is empty. ${info.characterId}`)
     return item
   }
 
@@ -235,6 +235,7 @@ export const useDetailedCharacterInfo = () => {
         { label: "身長", value: "150 cm", size: 1 },
         { label: "性格", value: "若干ツンデレ気味", size: 2 },
       ],
+      policyUrl: "https://zunko.jp/con_ongen_kiyaku.html",
       detailUrl:
         "https://zunko.jp/con_voice.html#:~:text=%E3%81%AF%E3%81%93%E3%81%A1%E3%82%89%5Bsm31250786%5D-,%E5%9B%9B%E5%9B%BD%E3%82%81%E3%81%9F%E3%82%93%EF%BC%88%E6%BC%86%E9%BB%92%E3%81%AE%E3%82%81%E3%81%9F%E3%82%93%EF%BC%89,-CV%3A%E7%94%B0%E4%B8%AD%E5%B0%8F%E9%9B%AA",
     },
@@ -257,6 +258,7 @@ export const useDetailedCharacterInfo = () => {
         },
         { label: "将来の夢", value: "ずんだ餅のさらなる普及", size: 2 },
       ],
+      policyUrl: "https://zunko.jp/con_ongen_kiyaku.html",
       detailUrl:
         "https://zunko.jp/con_voice.html#:~:text=%E3%81%AF%E3%81%93%E3%81%A1%E3%82%89%5Bsm31259177%5D-,%E3%81%9A%E3%82%93%E3%81%A0%E3%82%82%E3%82%93,-CV%3A%E4%BC%8A%E8%97%A4%E3%82%86",
     },
@@ -280,6 +282,7 @@ export const useDetailedCharacterInfo = () => {
         { label: "ﾁｬｰﾑﾎﾟｲﾝﾄ", value: "目元のほくろ", size: 2 },
         { label: "趣味", value: "動画配信サイトの巡回", size: 2 },
       ],
+      policyUrl: "https://tsumugi-official.studio.site/rule",
       detailUrl: "https://tsumugi-official.studio.site/top",
     },
 
@@ -300,6 +303,7 @@ export const useDetailedCharacterInfo = () => {
         { label: "好きなもの", value: "ラーメン", size: 2 },
         { label: "趣味", value: "食べ歩き", size: 2 },
       ],
+      policyUrl: "https://amehau.com/?page_id=225",
       detailUrl: "https://amehau.com/",
     },
 
@@ -319,6 +323,7 @@ export const useDetailedCharacterInfo = () => {
         { label: "体重", value: "25 トン", size: 2 },
         { label: "好きなもの", value: "チョコクリスピー", size: 2 },
       ],
+      policyUrl: "http://canon-voice.com/kiyaku.html",
       detailUrl: "http://www.canon-voice.com/ritsu.html",
     },
 
@@ -338,6 +343,8 @@ export const useDetailedCharacterInfo = () => {
         { label: "年齢", value: "20代前後", size: 2 },
         { label: "誕生日", value: "12月24日", size: 2 },
       ],
+      policyUrl:
+        "https://virvoxproject.wixsite.com/official/voicevoxの利用規約",
       detailUrl: "https://virvoxproject.wixsite.com/official",
     },
 
@@ -358,6 +365,8 @@ export const useDetailedCharacterInfo = () => {
         { label: "年齢", value: "18 歳", size: 2 },
         { label: "誕生日", value: "秋生まれ", size: 2 },
       ],
+      policyUrl:
+        "https://virvoxproject.wixsite.com/official/voicevoxの利用規約",
       detailUrl: "https://virvoxproject.wixsite.com/official",
     },
 
@@ -377,6 +386,8 @@ export const useDetailedCharacterInfo = () => {
         { label: "年齢", value: "24 歳", size: 2 },
         { label: "誕生日", value: "春生まれ", size: 2 },
       ],
+      policyUrl:
+        "https://virvoxproject.wixsite.com/official/voicevoxの利用規約",
       detailUrl: "https://virvoxproject.wixsite.com/official",
     },
 
@@ -397,6 +408,7 @@ export const useDetailedCharacterInfo = () => {
         { label: "好きなもの", value: "可愛い女の子", size: 2 },
         { label: "性格", value: "優しくて清楚（自称）", size: 2 },
       ],
+      policyUrl: "https://meimeihimari.wixsite.com/himari/terms-of-use",
       detailUrl: "https://meimeihimari.wixsite.com/himari/voicevox",
     },
 
@@ -423,6 +435,7 @@ export const useDetailedCharacterInfo = () => {
           size: 2,
         },
       ],
+      policyUrl: "https://zunko.jp/con_ongen_kiyaku.html",
       detailUrl:
         "https://zunko.jp/con_voice.html#:~:text=%E3%81%8D%E3%81%BF%E3%81%8C%E3%81%9F%E3%82%81-,%E4%B9%9D%E5%B7%9E%E3%81%9D%E3%82%89mk%3DII,-CV%3A%E8%A5%BF%E7%94%B0%E6%9C%9B%E8%A6%8B",
     },
@@ -444,6 +457,7 @@ export const useDetailedCharacterInfo = () => {
         { label: "相棒（？）", value: "あん子ちゃん", size: 1 },
         { label: "身長", value: "142 cm", size: 1 },
       ],
+      policyUrl: "https://vtubermochio.wixsite.com/mochizora/利用規約",
       detailUrl:
         "https://vtubermochio.wixsite.com/mochizora/もち子さんとは-設定資料",
     },
@@ -467,6 +481,7 @@ export const useDetailedCharacterInfo = () => {
         { label: "目的", value: "人類滅亡", size: 1 },
         { label: "年齢", value: "3600 歳", size: 1 },
       ],
+      policyUrl: "https://frontier.creatia.cc/fanclubs/413/posts/4507",
       detailUrl: "https://frontier.creatia.cc/fanclubs/413/posts/4507",
     },
 
@@ -490,6 +505,7 @@ export const useDetailedCharacterInfo = () => {
         { label: "相棒", value: "雪おこじょ", size: 1 },
         { label: "好物", value: "バニラソフトクリーム", size: 2 },
       ],
+      policyUrl: "https://www.whitecul.com/guideline",
       detailUrl: "https://www.whitecul.com/",
     },
 
@@ -509,6 +525,7 @@ export const useDetailedCharacterInfo = () => {
         { label: "身長", value: "ヒール込みで170cm", size: 2 },
         { label: "体重", value: "スイカ2つ分（某部分が）", size: 2 },
       ],
+      policyUrl: "https://ついなちゃん.com/voicevox_terms/",
       detailUrl: "https://ついなちゃん.com/character/?goki",
     },
 
@@ -534,6 +551,7 @@ export const useDetailedCharacterInfo = () => {
         },
         { label: "趣味", value: "かいわれ大根の栽培", size: 2 },
       ],
+      policyUrl: "https://voiceseven.com/#j0200",
       detailUrl: "https://voiceseven.com/",
     },
 
@@ -554,6 +572,8 @@ export const useDetailedCharacterInfo = () => {
         { label: "好きなもの", value: "ジャガイモ", size: 1 },
         { label: "種族", value: "ちび式じい", size: 1 },
       ],
+      policyUrl:
+        "https://docs.google.com/presentation/d/1AcD8zXkfzKFf2ertHwWRwJuQXjNnijMxhz7AJzEkaI4",
       detailUrl:
         "https://shiki-rowen-taigen.com/%e5%88%a9%e7%94%a8%e8%a6%8f%e7%b4%84%e3%83%bb%e3%82%ac%e3%82%a4%e3%83%89%e3%83%a9%e3%82%a4%e3%83%b3/",
     },
@@ -578,6 +598,7 @@ export const useDetailedCharacterInfo = () => {
         { label: "持ち物", value: "りんご/骨", size: 1 },
         { label: "愛称", value: "みこみこ/第二ちゃん", size: 2 },
       ],
+      policyUrl: "https://voicevox35miko.studio.site/rule",
       detailUrl: "https://voicevox35miko.studio.site/",
     },
 
@@ -597,6 +618,7 @@ export const useDetailedCharacterInfo = () => {
         { label: "好きなもの", value: "缶詰", size: 1 },
         { label: "体長", value: "135 cm（猫耳を含む）", size: 2 },
       ],
+      policyUrl: "https://316soramegu.wixsite.com/sayo-official/guideline",
       detailUrl: "https://316soramegu.wixsite.com/sayo-official",
     },
 
@@ -618,7 +640,24 @@ export const useDetailedCharacterInfo = () => {
         { label: "愛称", value: "ＴＴ", size: 2 },
         { label: "製造者", value: "そばの小型ロボット（医者）", size: 2 },
       ],
+      policyUrl: "https://www.krnr.top/rules",
       detailUrl: "https://www.krnr.top/blank",
+    },
+
+    聖騎士紅桜: {
+      name: getCharacterInfo("聖騎士紅桜").name,
+      id: getCharacterInfo("聖騎士紅桜").characterId,
+      ...getDatas(getCharacterInfo("聖騎士紅桜")),
+      rubyName:
+        "<ruby>†</ruby><ruby>聖騎士<rp>(</rp><rt>ほーりーないと</rt><rp>)</rp>紅桜<rp>(</rp><rt>べにざくら</rt><rp>)</rp>†</ruby>",
+      voiceFeature: "（準備中）",
+      color: "#F9344C",
+      lightColor: "#FBB4C4",
+      description: "（準備中）",
+      labelInfos: [{ label: "（準備中）", value: "（準備中）", size: 2 }],
+      policyUrl: undefined,
+      detailUrl: undefined,
+      releaseDate: "2023年2月22日",
     },
   } as const
 
@@ -1044,6 +1083,10 @@ export const useDetailedCharacterInfo = () => {
       ちび式じい: "おじいさん",
       櫻歌ミコ: "櫻歌さん",
       小夜_SAYO: "小夜さん",
+    },
+    聖騎士紅桜: {
+      me: ["（準備中）"],
+      you: ["（準備中）"],
     },
   } as const
 
