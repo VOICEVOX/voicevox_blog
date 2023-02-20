@@ -87,7 +87,11 @@ export const useDetailedCharacterInfo = () => {
   const { getCharacterInfo } = useCharacterInfo()
 
   // リリースされていないキャラクター一覧
-  const comingSoonCharacters: CharacterKey[] = ["聖騎士紅桜"]
+  const comingSoonCharacters: CharacterKey[] = [
+    "聖騎士紅桜",
+    "雀松朱司",
+    "麒ヶ島宗麟",
+  ]
 
   // キャラごとのスタイル一覧
   const styleNames: { [key in CharacterKey]: { name: string; id: string }[] } =
@@ -164,6 +168,8 @@ export const useDetailedCharacterInfo = () => {
         { name: "内緒話", id: "whis" },
       ],
       聖騎士紅桜: [],
+      雀松朱司: [],
+      麒ヶ島宗麟: [],
     }
 
   const getDatas = (info: { key: CharacterKey; characterId: string }) => {
@@ -339,7 +345,7 @@ export const useDetailedCharacterInfo = () => {
       description: "サッパリした青年。<br />やや短気だが面倒見は良い。",
       labelInfos: [
         { label: "身長", value: "177 cm", size: 2 },
-        { label: "体重", value: "66 Kg", size: 2 },
+        { label: "体重", value: "66 kg", size: 2 },
         { label: "年齢", value: "20代前後", size: 2 },
         { label: "誕生日", value: "12月24日", size: 2 },
       ],
@@ -361,7 +367,7 @@ export const useDetailedCharacterInfo = () => {
         "まっすぐで人懐っこい青年。<br />愛嬌はあるものの少しおばか。",
       labelInfos: [
         { label: "身長", value: "146 cm", size: 2 },
-        { label: "体重", value: "42 Kg", size: 2 },
+        { label: "体重", value: "42 kg", size: 2 },
         { label: "年齢", value: "18 歳", size: 2 },
         { label: "誕生日", value: "秋生まれ", size: 2 },
       ],
@@ -382,7 +388,7 @@ export const useDetailedCharacterInfo = () => {
       description: "とにかく大柄で無骨な青年。<br />寡黙で冷静なストッパー枠。",
       labelInfos: [
         { label: "身長", value: "194 cm", size: 2 },
-        { label: "体重", value: "94 Kg", size: 2 },
+        { label: "体重", value: "94 kg", size: 2 },
         { label: "年齢", value: "24 歳", size: 2 },
         { label: "誕生日", value: "春生まれ", size: 2 },
       ],
@@ -653,8 +659,61 @@ export const useDetailedCharacterInfo = () => {
       voiceFeature: "（準備中）",
       color: "#F9344C",
       lightColor: "#FBB4C4",
-      description: "（準備中）",
-      labelInfos: [{ label: "（準備中）", value: "（準備中）", size: 2 }],
+      description: "黒き歴史を背負いし<br />孤高の聖騎士",
+      labelInfos: [
+        { label: "年齢", value: "永遠ノLv.14", size: 1 },
+        { label: "誕生日", value: "1月22日", size: 1 },
+        { label: "種族", value: "聖騎士", size: 1 },
+        { label: "好きなもの", value: "戦い", size: 1 },
+        { label: "ﾁｬｰﾑﾎﾟｲﾝﾄ", value: "鎧に着いた返り血", size: 2 },
+        { label: "相棒", value: "聖剣「紅」（クリムゾン）", size: 2 },
+      ],
+      policyUrl: undefined,
+      detailUrl: undefined,
+      releaseDate: "2023年2月22日",
+    },
+
+    雀松朱司: {
+      name: getCharacterInfo("雀松朱司").name,
+      id: getCharacterInfo("雀松朱司").characterId,
+      ...getDatas(getCharacterInfo("雀松朱司")),
+      rubyName:
+        "<ruby>雀松<rp>(</rp><rt>わかまつ</rt><rp>)</rp>朱司<rp>(</rp><rt>あかし</rt><rp>)</rp></ruby>",
+      voiceFeature: "（準備中）",
+      color: "#FC4E32",
+      lightColor: "#FDCDB7",
+      description:
+        "温厚なしっかり者の青年。<br />ちょっぴり天然で抜けている面も･･･。",
+      labelInfos: [
+        { label: "身長", value: "182 cm", size: 1 },
+        { label: "体重", value: "68 kg", size: 1 },
+        { label: "年齢", value: "26 歳", size: 1 },
+        { label: "誕生日", value: "7月17日", size: 1 },
+        { label: "趣味", value: "読書、掃除、買い物", size: 2 },
+      ],
+      policyUrl: undefined,
+      detailUrl: undefined,
+      releaseDate: "2023年2月22日",
+    },
+
+    麒ヶ島宗麟: {
+      name: getCharacterInfo("麒ヶ島宗麟").name,
+      id: getCharacterInfo("麒ヶ島宗麟").characterId,
+      ...getDatas(getCharacterInfo("麒ヶ島宗麟")),
+      rubyName:
+        "<ruby>麒ヶ島<rp>(</rp><rt>きがしま</rt><rp>)</rp>宗麟<rp>(</rp><rt>そうりん</rt><rp>)</rp></ruby>",
+      voiceFeature: "（準備中）",
+      color: "#FF9914",
+      lightColor: "#FEE6AA",
+      description:
+        "流行に敏感ないぶし銀おじいちゃん。<br />非常にミーハーでノリが良い。",
+      labelInfos: [
+        { label: "身長", value: "175 cm", size: 1 },
+        { label: "体重", value: "79 kg", size: 1 },
+        { label: "年齢", value: "50 歳（見た目年齢）※実年齢不明", size: 2 },
+        { label: "趣味１", value: "パワースポット（霊脈？）巡り", size: 2 },
+        { label: "趣味２", value: "入浴、SNS投稿", size: 2 },
+      ],
       policyUrl: undefined,
       detailUrl: undefined,
       releaseDate: "2023年2月22日",
@@ -1085,8 +1144,42 @@ export const useDetailedCharacterInfo = () => {
       小夜_SAYO: "小夜さん",
     },
     聖騎士紅桜: {
-      me: ["（準備中）"],
-      you: ["（準備中）"],
+      me: ["我"],
+      you: ["お前", "お前ら"],
+      四国めたん: "めたん殿",
+      ずんだもん: "ずんだもん殿",
+      春日部つむぎ: "つむぎ殿",
+      雨晴はう: "はう殿",
+      波音リツ: "リツ殿",
+      玄野武宏: "武宏殿",
+      白上虎太郎: "虎太郎殿",
+      青山龍星: "龍星殿",
+      冥鳴ひまり: "ひまり殿",
+      九州そら: "そら殿",
+      モチノキョウコ: "もち子殿",
+      剣崎雌雄: "雌雄",
+      WhiteCUL: "雪殿",
+      後鬼: "後鬼殿",
+      No7: "なな殿",
+      ちび式じい: "ちびじい殿",
+      櫻歌ミコ: "ミコ殿",
+      小夜_SAYO: "小夜殿",
+      ナースロボ＿タイプＴ: "TT殿",
+      雀松朱司: "朱司殿",
+      麒ヶ島宗麟: "麒ヶ島殿",
+    },
+    雀松朱司: {
+      me: ["僕"],
+      you: [""],
+      玄野武宏: "武宏",
+      白上虎太郎: "虎坊(とらぼん)",
+      青山龍星: "龍",
+      麒ヶ島宗麟: "麒ヶ島さん",
+    },
+    麒ヶ島宗麟: {
+      me: ["私"],
+      you: [""],
+      雀松朱司: "朱司くん",
     },
   } as const
 

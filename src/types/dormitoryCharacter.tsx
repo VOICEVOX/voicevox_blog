@@ -21,6 +21,8 @@ export type CharacterKey =
   | "小夜_SAYO"
   | "ナースロボ＿タイプＴ"
   | "聖騎士紅桜"
+  | "雀松朱司"
+  | "麒ヶ島宗麟"
 
 export type CharacterInfo = {
   name: string

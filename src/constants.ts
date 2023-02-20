@@ -23,6 +23,8 @@ export const characterKeys: CharacterKey[] = [
   "小夜_SAYO",
   "ナースロボ＿タイプＴ",
   "聖騎士紅桜",
+  "雀松朱司",
+  "麒ヶ島宗麟",
 ]
 
 export type CharacterInfoEntry = {
@@ -116,5 +118,13 @@ export const characterInfos: {
   聖騎士紅桜: {
     name: "†聖騎士 紅桜†",
     id: "horinaito_benizakura",
+  },
+  雀松朱司: {
+    name: "雀松朱司",
+    id: "wakamatsu_akashi",
+  },
+  麒ヶ島宗麟: {
+    name: "麒ヶ島宗麟",
+    id: "kigashima_sourin",
   },
 }
