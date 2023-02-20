@@ -62,6 +62,22 @@ const Dormitory: React.FC<DormitoryProps> = ({ setShowingHeader }) => {
           <div className="container character-container is-max-desktop pt-1 pb-6">
             <div className="columns is-multiline">
               <div className="column is-2 generation-label">
+                <h2 className="title is-3">7 期 生</h2>
+              </div>
+
+              <DormitoryCharacterCard
+                characterInfo={characterInfos.聖騎士紅桜}
+              />
+              <DormitoryCharacterCard characterInfo={characterInfos.雀松朱司} />
+              <DormitoryCharacterCard
+                characterInfo={characterInfos.麒ヶ島宗麟}
+              />
+            </div>
+
+            <hr />
+
+            <div className="columns is-multiline">
+              <div className="column is-2 generation-label">
                 <h2 className="title is-3">6 期 生</h2>
               </div>
 
