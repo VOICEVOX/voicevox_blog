@@ -82,7 +82,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
                 Coming Soon
               </p>
             )}
-            {characterInfo.styleVoiceUrls.keys.length > 0 && (
+            {characterInfo.styleVoiceUrls.length > 0 && (
               <AudioSample
                 audioSamples={characterInfo.styleVoiceUrls}
                 characterName={characterInfo.name}
