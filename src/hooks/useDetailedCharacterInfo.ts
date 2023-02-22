@@ -87,11 +87,7 @@ export const useDetailedCharacterInfo = () => {
   const { getCharacterInfo } = useCharacterInfo()
 
   // リリースされていないキャラクター一覧
-  const comingSoonCharacters: CharacterKey[] = [
-    "聖騎士紅桜",
-    "雀松朱司",
-    "麒ヶ島宗麟",
-  ]
+  const comingSoonCharacters: CharacterKey[] = []
 
   // キャラごとのスタイル一覧
   const styleNames: { [key in CharacterKey]: { name: string; id: string }[] } =
@@ -167,9 +163,9 @@ export const useDetailedCharacterInfo = () => {
         { name: "恐怖", id: "fear" },
         { name: "内緒話", id: "whis" },
       ],
-      聖騎士紅桜: [],
-      雀松朱司: [],
-      麒ヶ島宗麟: [],
+      聖騎士紅桜: [{ name: "ノーマル", id: "normal" }],
+      雀松朱司: [{ name: "ノーマル", id: "normal" }],
+      麒ヶ島宗麟: [{ name: "ノーマル", id: "normal" }],
     }
 
   const getDatas = (info: { key: CharacterKey; characterId: string }) => {
@@ -351,7 +347,7 @@ export const useDetailedCharacterInfo = () => {
       ],
       policyUrl:
         "https://virvoxproject.wixsite.com/official/voicevoxの利用規約",
-      detailUrl: "https://virvoxproject.wixsite.com/official",
+      detailUrl: "https://virvoxproject.wixsite.com/official/玄野武宏",
     },
 
     白上虎太郎: {
@@ -373,7 +369,7 @@ export const useDetailedCharacterInfo = () => {
       ],
       policyUrl:
         "https://virvoxproject.wixsite.com/official/voicevoxの利用規約",
-      detailUrl: "https://virvoxproject.wixsite.com/official",
+      detailUrl: "https://virvoxproject.wixsite.com/official/白上虎太郎",
     },
 
     青山龍星: {
@@ -394,7 +390,7 @@ export const useDetailedCharacterInfo = () => {
       ],
       policyUrl:
         "https://virvoxproject.wixsite.com/official/voicevoxの利用規約",
-      detailUrl: "https://virvoxproject.wixsite.com/official",
+      detailUrl: "https://virvoxproject.wixsite.com/official/青山龍星",
     },
 
     冥鳴ひまり: {
@@ -656,7 +652,7 @@ export const useDetailedCharacterInfo = () => {
       ...getDatas(getCharacterInfo("聖騎士紅桜")),
       rubyName:
         "<ruby>†</ruby><ruby>聖騎士<rp>(</rp><rt>ほーりーないと</rt><rp>)</rp>紅桜<rp>(</rp><rt>べにざくら</rt><rp>)</rp>†</ruby>",
-      voiceFeature: "（準備中）",
+      voiceFeature: "快活でハキハキした声",
       color: "#F9344C",
       lightColor: "#FBB4C4",
       description: "黒き歴史を背負いし<br />孤高の聖騎士",
@@ -668,7 +664,7 @@ export const useDetailedCharacterInfo = () => {
         { label: "ﾁｬｰﾑﾎﾟｲﾝﾄ", value: "鎧に着いた返り血", size: 2 },
         { label: "相棒", value: "聖剣「紅」（クリムゾン）", size: 2 },
       ],
-      policyUrl: undefined,
+      policyUrl: "https://commons.nicovideo.jp/material/nc296132",
       detailUrl: undefined,
       releaseDate: "2023年2月22日",
     },
@@ -679,7 +675,7 @@ export const useDetailedCharacterInfo = () => {
       ...getDatas(getCharacterInfo("雀松朱司")),
       rubyName:
         "<ruby>雀松<rp>(</rp><rt>わかまつ</rt><rp>)</rp>朱司<rp>(</rp><rt>あかし</rt><rp>)</rp></ruby>",
-      voiceFeature: "（準備中）",
+      voiceFeature: "物静かで安定した声",
       color: "#FC4E32",
       lightColor: "#FDCDB7",
       description:
@@ -691,8 +687,9 @@ export const useDetailedCharacterInfo = () => {
         { label: "誕生日", value: "7月17日", size: 1 },
         { label: "趣味", value: "読書、掃除、買い物", size: 2 },
       ],
-      policyUrl: undefined,
-      detailUrl: undefined,
+      policyUrl:
+        "https://virvoxproject.wixsite.com/official/voicevoxの利用規約",
+      detailUrl: "https://virvoxproject.wixsite.com/official/雀松朱司",
       releaseDate: "2023年2月22日",
     },
 
@@ -702,7 +699,7 @@ export const useDetailedCharacterInfo = () => {
       ...getDatas(getCharacterInfo("麒ヶ島宗麟")),
       rubyName:
         "<ruby>麒ヶ島<rp>(</rp><rt>きがしま</rt><rp>)</rp>宗麟<rp>(</rp><rt>そうりん</rt><rp>)</rp></ruby>",
-      voiceFeature: "（準備中）",
+      voiceFeature: "渋いおじさん声",
       color: "#FF9914",
       lightColor: "#FEE6AA",
       description:
@@ -714,8 +711,9 @@ export const useDetailedCharacterInfo = () => {
         { label: "趣味１", value: "パワースポット（霊脈？）巡り", size: 2 },
         { label: "趣味２", value: "入浴、SNS投稿", size: 2 },
       ],
-      policyUrl: undefined,
-      detailUrl: undefined,
+      policyUrl:
+        "https://virvoxproject.wixsite.com/official/voicevoxの利用規約",
+      detailUrl: "https://virvoxproject.wixsite.com/official/麒ヶ島宗麟",
       releaseDate: "2023年2月22日",
     },
   } as const
@@ -812,6 +810,9 @@ export const useDetailedCharacterInfo = () => {
       櫻歌ミコ: "ミコちゃん",
       小夜_SAYO: "小夜さん",
       ナースロボ＿タイプＴ: "Tちゃん",
+      聖騎士紅桜: "紅桜さん",
+      雀松朱司: "雀松さん",
+      麒ヶ島宗麟: "麒ヶ島さん",
     },
     波音リツ: {
       me: ["あたし"],
@@ -856,6 +857,8 @@ export const useDetailedCharacterInfo = () => {
       櫻歌ミコ: "ミコ",
       小夜_SAYO: "小夜",
       ナースロボ＿タイプＴ: "タイプT",
+      雀松朱司: "朱司",
+      麒ヶ島宗麟: "おっちゃん",
     },
     白上虎太郎: {
       me: ["おれ"],
@@ -878,6 +881,8 @@ export const useDetailedCharacterInfo = () => {
       櫻歌ミコ: "ミコちゃん",
       小夜_SAYO: "サヨちゃん",
       ナースロボ＿タイプＴ: "Tちゃん",
+      雀松朱司: "アカシさん",
+      麒ヶ島宗麟: "親父",
     },
     青山龍星: {
       me: ["オレ"],
@@ -900,6 +905,8 @@ export const useDetailedCharacterInfo = () => {
       櫻歌ミコ: "ミコ",
       小夜_SAYO: "小夜",
       ナースロボ＿タイプＴ: "T",
+      雀松朱司: "朱司",
+      麒ヶ島宗麟: "麒ヶ島",
     },
     冥鳴ひまり: {
       me: ["私"],
@@ -922,6 +929,9 @@ export const useDetailedCharacterInfo = () => {
       櫻歌ミコ: "ミコちゃん",
       小夜_SAYO: "小夜ちゃん",
       ナースロボ＿タイプＴ: "TTちゃん",
+      聖騎士紅桜: "聖騎士さん",
+      雀松朱司: "朱司くん",
+      麒ヶ島宗麟: "宗麟くん",
     },
     九州そら: {
       me: ["まーくつー"],
@@ -966,6 +976,9 @@ export const useDetailedCharacterInfo = () => {
       櫻歌ミコ: "ミコさん",
       小夜_SAYO: "小夜さん",
       ナースロボ＿タイプＴ: "ティーさん（Tさん）",
+      聖騎士紅桜: "紅桜",
+      雀松朱司: "雀松くん",
+      麒ヶ島宗麟: "麒ヶ島さん",
     },
     剣崎雌雄: {
       me: ["僕"],
@@ -988,6 +1001,9 @@ export const useDetailedCharacterInfo = () => {
       櫻歌ミコ: "カミッコ",
       小夜_SAYO: "小夜",
       ナースロボ＿タイプＴ: "助手",
+      聖騎士紅桜: "我が強敵（とも）スカーレットチェリーブロッサム",
+      雀松朱司: "かっしー",
+      麒ヶ島宗麟: "りんちゃん",
     },
     WhiteCUL: {
       me: ["わたし"],
@@ -1032,6 +1048,9 @@ export const useDetailedCharacterInfo = () => {
       櫻歌ミコ: "櫻歌さん/ミコはん",
       小夜_SAYO: "小夜さん/小夜はん",
       ナースロボ＿タイプＴ: "TTさん/TTはん",
+      聖騎士紅桜: "紅桜さん/紅桜はん",
+      雀松朱司: "雀松くん/雀松はん",
+      麒ヶ島宗麟: "宗麟さん/宗麟はん",
     },
     No7: {
       me: ["私", "僕"],
@@ -1054,6 +1073,9 @@ export const useDetailedCharacterInfo = () => {
       櫻歌ミコ: "櫻歌さん",
       小夜_SAYO: "小夜さん",
       ナースロボ＿タイプＴ: "TTさん",
+      聖騎士紅桜: "紅桜さん",
+      雀松朱司: "雀松さん",
+      麒ヶ島宗麟: "麒ヶ島さん",
     },
     ちび式じい: {
       me: ["わし"],
@@ -1076,6 +1098,9 @@ export const useDetailedCharacterInfo = () => {
       櫻歌ミコ: "みこみこ",
       小夜_SAYO: "小夜ちゃん",
       ナースロボ＿タイプＴ: "TTちゃん",
+      聖騎士紅桜: "ほーりーないとべにざくらさん",
+      雀松朱司: "あかしさん",
+      麒ヶ島宗麟: "そうりんさん",
     },
     櫻歌ミコ: {
       me: ["ミコ/私"],
@@ -1098,6 +1123,9 @@ export const useDetailedCharacterInfo = () => {
       ちび式じい: "ちいおじいちゃん",
       小夜_SAYO: "小夜ちゃん",
       ナースロボ＿タイプＴ: "TTちゃん",
+      聖騎士紅桜: "紅桜さん",
+      雀松朱司: "朱司くん",
+      麒ヶ島宗麟: "宗麟おじちゃん",
     },
     小夜_SAYO: {
       me: ["小夜"],
@@ -1120,6 +1148,7 @@ export const useDetailedCharacterInfo = () => {
       ちび式じい: "ちびじい",
       櫻歌ミコ: "ミコちゃん",
       ナースロボ＿タイプＴ: "TTちゃん",
+      雀松朱司: "朱司さん",
     },
     ナースロボ＿タイプＴ: {
       me: ["わたし"],
@@ -1142,6 +1171,9 @@ export const useDetailedCharacterInfo = () => {
       ちび式じい: "おじいさん",
       櫻歌ミコ: "櫻歌さん",
       小夜_SAYO: "小夜さん",
+      聖騎士紅桜: "紅桜さん",
+      雀松朱司: "雀松さん",
+      麒ヶ島宗麟: "麒ヶ島さん",
     },
     聖騎士紅桜: {
       me: ["我"],
@@ -1171,14 +1203,17 @@ export const useDetailedCharacterInfo = () => {
     雀松朱司: {
       me: ["僕"],
       you: [""],
-      玄野武宏: "武宏",
-      白上虎太郎: "虎坊(とらぼん)",
-      青山龍星: "龍",
+      玄野武宏: "玄野くん",
+      白上虎太郎: "白上くん",
+      青山龍星: "龍星",
       麒ヶ島宗麟: "麒ヶ島さん",
     },
     麒ヶ島宗麟: {
       me: ["私"],
       you: [""],
+      玄野武宏: "武宏",
+      白上虎太郎: "虎坊(とらぼん)",
+      青山龍星: "龍",
       雀松朱司: "朱司くん",
     },
   } as const

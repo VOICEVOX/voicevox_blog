@@ -31,7 +31,7 @@ npm run build && npm run serve
 ## deploy
 
 ```bash
-npm run clean && npm run deploy
+npm run deploy
 ```
 
 ### プレビュー版
@@ -49,10 +49,10 @@ npm run preview-build
 ## add resource
 
 ```bash
-editor_tag="0.14.4"
+editor_tag="0.14.5"
 editor_url="https://raw.githubusercontent.com/VOICEVOX/voicevox/$editor_tag"
 
-resource_tag="0.14.0"
+resource_tag="0.14.1"
 resource_url="https://raw.githubusercontent.com/VOICEVOX/voicevox_resource/$resource_tag"
 
 # 規約
