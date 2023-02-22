@@ -167,9 +167,9 @@ export const useDetailedCharacterInfo = () => {
         { name: "恐怖", id: "fear" },
         { name: "内緒話", id: "whis" },
       ],
-      聖騎士紅桜: [],
-      雀松朱司: [],
-      麒ヶ島宗麟: [],
+      聖騎士紅桜: [{ name: "ノーマル", id: "normal" }],
+      雀松朱司: [{ name: "ノーマル", id: "normal" }],
+      麒ヶ島宗麟: [{ name: "ノーマル", id: "normal" }],
     }
 
   const getDatas = (info: { key: CharacterKey; characterId: string }) => {
@@ -351,7 +351,7 @@ export const useDetailedCharacterInfo = () => {
       ],
       policyUrl:
         "https://virvoxproject.wixsite.com/official/voicevoxの利用規約",
-      detailUrl: "https://virvoxproject.wixsite.com/official",
+      detailUrl: "https://virvoxproject.wixsite.com/official/玄野武宏",
     },
 
     白上虎太郎: {
@@ -373,7 +373,7 @@ export const useDetailedCharacterInfo = () => {
       ],
       policyUrl:
         "https://virvoxproject.wixsite.com/official/voicevoxの利用規約",
-      detailUrl: "https://virvoxproject.wixsite.com/official",
+      detailUrl: "https://virvoxproject.wixsite.com/official/白上虎太郎",
     },
 
     青山龍星: {
@@ -394,7 +394,7 @@ export const useDetailedCharacterInfo = () => {
       ],
       policyUrl:
         "https://virvoxproject.wixsite.com/official/voicevoxの利用規約",
-      detailUrl: "https://virvoxproject.wixsite.com/official",
+      detailUrl: "https://virvoxproject.wixsite.com/official/青山龍星",
     },
 
     冥鳴ひまり: {
@@ -656,7 +656,7 @@ export const useDetailedCharacterInfo = () => {
       ...getDatas(getCharacterInfo("聖騎士紅桜")),
       rubyName:
         "<ruby>†</ruby><ruby>聖騎士<rp>(</rp><rt>ほーりーないと</rt><rp>)</rp>紅桜<rp>(</rp><rt>べにざくら</rt><rp>)</rp>†</ruby>",
-      voiceFeature: "（準備中）",
+      voiceFeature: "快活でハキハキした声",
       color: "#F9344C",
       lightColor: "#FBB4C4",
       description: "黒き歴史を背負いし<br />孤高の聖騎士",
@@ -668,7 +668,7 @@ export const useDetailedCharacterInfo = () => {
         { label: "ﾁｬｰﾑﾎﾟｲﾝﾄ", value: "鎧に着いた返り血", size: 2 },
         { label: "相棒", value: "聖剣「紅」（クリムゾン）", size: 2 },
       ],
-      policyUrl: undefined,
+      policyUrl: "https://commons.nicovideo.jp/material/nc296132",
       detailUrl: undefined,
       releaseDate: "2023年2月22日",
     },
@@ -679,7 +679,7 @@ export const useDetailedCharacterInfo = () => {
       ...getDatas(getCharacterInfo("雀松朱司")),
       rubyName:
         "<ruby>雀松<rp>(</rp><rt>わかまつ</rt><rp>)</rp>朱司<rp>(</rp><rt>あかし</rt><rp>)</rp></ruby>",
-      voiceFeature: "（準備中）",
+      voiceFeature: "物静かで安定した声",
       color: "#FC4E32",
       lightColor: "#FDCDB7",
       description:
@@ -691,8 +691,9 @@ export const useDetailedCharacterInfo = () => {
         { label: "誕生日", value: "7月17日", size: 1 },
         { label: "趣味", value: "読書、掃除、買い物", size: 2 },
       ],
-      policyUrl: undefined,
-      detailUrl: undefined,
+      policyUrl:
+        "https://virvoxproject.wixsite.com/official/voicevoxの利用規約",
+      detailUrl: "https://virvoxproject.wixsite.com/official/雀松朱司",
       releaseDate: "2023年2月22日",
     },
 
@@ -702,7 +703,7 @@ export const useDetailedCharacterInfo = () => {
       ...getDatas(getCharacterInfo("麒ヶ島宗麟")),
       rubyName:
         "<ruby>麒ヶ島<rp>(</rp><rt>きがしま</rt><rp>)</rp>宗麟<rp>(</rp><rt>そうりん</rt><rp>)</rp></ruby>",
-      voiceFeature: "（準備中）",
+      voiceFeature: "渋いおじさん声",
       color: "#FF9914",
       lightColor: "#FEE6AA",
       description:
@@ -714,8 +715,9 @@ export const useDetailedCharacterInfo = () => {
         { label: "趣味１", value: "パワースポット（霊脈？）巡り", size: 2 },
         { label: "趣味２", value: "入浴、SNS投稿", size: 2 },
       ],
-      policyUrl: undefined,
-      detailUrl: undefined,
+      policyUrl:
+        "https://virvoxproject.wixsite.com/official/voicevoxの利用規約",
+      detailUrl: "https://virvoxproject.wixsite.com/official/麒ヶ島宗麟",
       releaseDate: "2023年2月22日",
     },
   } as const
