@@ -220,7 +220,7 @@ export const useDetailedCharacterInfo = () => {
   }
 
   const characterInfos: {
-    [key in CharacterKey]: CharacterInfo | undefined
+    [key in CharacterKey]: CharacterInfo
   } = {
     四国めたん: {
       name: getCharacterInfo("四国めたん").name,

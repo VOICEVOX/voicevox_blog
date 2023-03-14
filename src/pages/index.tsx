@@ -16,6 +16,7 @@ import shareThumb from "../images/landing-share-thumb.jpg"
 import Logo from "../images/logo.svg"
 import landingMovie from "../movies/landing.mp4"
 import { CharacterKey } from "../types/dormitoryCharacter"
+import { getProductPageUrl } from "../urls"
 
 const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
   setShowingHeader,
@@ -53,7 +54,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
     }: React.HTMLAttributes<HTMLLinkElement>) => {
       return (
         <Link
-          to={`/product/${characterInfo.id}/`}
+          to={getProductPageUrl(characterInfo)}
           className={className}
           style={style}
         >
