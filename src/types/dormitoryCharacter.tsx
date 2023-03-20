@@ -23,6 +23,9 @@ export type CharacterKey =
   | "聖騎士紅桜"
   | "雀松朱司"
   | "麒ヶ島宗麟"
+  | "春歌ナナ"
+  | "猫使アル"
+  | "猫使ビィ"
 
 export type CharacterInfo = {
   name: string

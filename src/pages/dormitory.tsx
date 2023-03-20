@@ -74,6 +74,12 @@ const Dormitory: React.FC<DormitoryProps> = ({ setShowingHeader }) => {
               <DormitoryCharacterCard
                 characterInfo={characterInfos.麒ヶ島宗麟}
               />
+              <DormitoryCharacterCard
+                characterInfo={characterInfos.春歌ナナ}
+                className="is-offset-2"
+              />
+              <DormitoryCharacterCard characterInfo={characterInfos.猫使アル} />
+              <DormitoryCharacterCard characterInfo={characterInfos.猫使ビィ} />
             </div>
 
             <hr />
