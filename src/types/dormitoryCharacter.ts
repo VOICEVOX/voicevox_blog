@@ -45,7 +45,6 @@ export type CharacterInfo = {
   infoImages?: readonly IGatsbyImageData[]
   detailUrl: string | undefined
   policyUrl: string | undefined
-  releaseStatus: "released" | "comingSoon"
   releaseDate?: string
 }
 

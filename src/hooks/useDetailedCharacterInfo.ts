@@ -86,9 +86,6 @@ export const useDetailedCharacterInfo = () => {
 
   const { getCharacterInfo } = useCharacterInfo()
 
-  // リリースされていないキャラクター一覧
-  const comingSoonCharacters: CharacterKey[] = []
-
   // キャラごとのスタイル一覧
   const styleNames: { [key in CharacterKey]: { name: string; id: string }[] } =
     {
@@ -203,9 +200,6 @@ export const useDetailedCharacterInfo = () => {
         .filter(node => node.name.includes(`${info.characterId}`))
         .sort((a, b) => a.name.localeCompare(b.name))
         .map(node => node.childImageSharp?.gatsbyImageData!),
-      releaseStatus: comingSoonCharacters.includes(info.key)
-        ? ("comingSoon" as const)
-        : ("released" as const),
     }
     if (item.bustupImage == undefined)
       throw new Error(`bustupImage is undefined. ${info.characterId}`)
@@ -727,10 +721,11 @@ export const useDetailedCharacterInfo = () => {
       lightColor: "#E3ADD5",
       description: "いつだって元気いっぱいな女の子です。",
       labelInfos: [
-        { label: "（準備中）", value: "（準備中）", size: 2 },
-        // { label: "年齢", value: "10 歳", size: 1 },
-        // { label: "誕生日", value: "1月30日", size: 1 },
-        // { label: "身長", value: "137 cm（アホ毛込み）", size: 2 },
+        { label: "年齢", value: "10 歳", size: 1 },
+        { label: "誕生日", value: "1月30日", size: 1 },
+        { label: "身長", value: "137 cm（アホ毛込み）", size: 2 },
+        { label: "好物", value: "サラミ、わらびもち", size: 2 },
+        { label: "CV", value: "ななひら", size: 2 },
       ],
       policyUrl: undefined,
       detailUrl: undefined,
@@ -773,7 +768,7 @@ export const useDetailedCharacterInfo = () => {
         { label: "身長", value: "140 cm", size: 1 },
         { label: "誕生日", value: "6月17日", size: 1 },
         { label: "年齢", value: "外見年齢10代前半", size: 2 },
-        { label: "性格", value: "おくびょう", size: 1 },
+        { label: "性格", value: "シャイで臆病", size: 1 },
         { label: "好きなもの", value: "サーモン", size: 1 },
         { label: "苦手なもの", value: "おばけ", size: 1 },
         { label: "趣味", value: "おひるね", size: 1 },
@@ -1351,7 +1346,7 @@ export const useDetailedCharacterInfo = () => {
       猫使ビィ: "ビィちゃん",
     },
     春歌ナナ: {
-      me: ["ナナ/わたし"],
+      me: ["ナナ", "わたし"],
       you: ["あなた", "あなたたち"],
       四国めたん: "めたんちゃん",
       ずんだもん: "ずんだもん",
@@ -1379,7 +1374,7 @@ export const useDetailedCharacterInfo = () => {
       猫使ビィ: "ビィちゃん",
     },
     猫使アル: {
-      me: ["アル/おれ/ボク"],
+      me: ["アル", "おれ", "ボク"],
       you: ["～さん", "先輩", "きみ等"],
       四国めたん: "めたん先輩",
       ずんだもん: "ずんだ先輩",
@@ -1407,7 +1402,7 @@ export const useDetailedCharacterInfo = () => {
       猫使ビィ: "ビィ",
     },
     猫使ビィ: {
-      me: ["ビィ/私/ボク"],
+      me: ["ビィ", "私", "ボク"],
       you: ["～さん", "先輩", "あなた等"],
       四国めたん: "めたん先輩",
       ずんだもん: "ずんだもん先輩",
@@ -1431,7 +1426,7 @@ export const useDetailedCharacterInfo = () => {
       聖騎士紅桜: "黒歴史先輩",
       雀松朱司: "あかしさん",
       麒ヶ島宗麟: "そーりんおじさん",
-      春歌ナナ: "ナナ",
+      春歌ナナ: "ナナちゃん",
       猫使アル: "アル",
     },
   } as const

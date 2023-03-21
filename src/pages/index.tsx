@@ -78,7 +78,7 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
               </LinkToProductPage>
             </h3>
             <p className="subtitle is-5">{characterInfo.voiceFeature}</p>
-            {characterInfo.releaseStatus === "comingSoon" && (
+            {characterInfo.releaseDate != undefined && (
               <p className="py-0" style={{ marginTop: "-1rem", color: "red" }}>
                 Coming Soon
               </p>
