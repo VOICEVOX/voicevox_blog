@@ -31,7 +31,7 @@ export type CharacterInfo = {
   name: string
   id: string
   rubyName: string
-  voiceFeature: string
+  voiceFeature: string | undefined
   bustupImage: IGatsbyImageData
   bustupImageSmall: IGatsbyImageData
   portraitImage: IGatsbyImageData

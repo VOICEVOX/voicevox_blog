@@ -72,10 +72,14 @@ const ProductPage = ({ params }: PageProps) => {
     [characterInfos, characterKey]
   )
 
+  const voiceFeature = characterInfo.voiceFeature
+    ? characterInfo.voiceFeature
+    : "声"
   const description =
-    characterInfo.releaseDate == undefined
-      ? `VOICEVOXは「${characterInfo.name}」の${characterInfo.voiceFeature}で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。`
-      : `${characterInfo.releaseDate} リリース予定`
+    `VOICEVOXは「${characterInfo.name}」の${voiceFeature}で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。` +
+    (characterInfo.releaseDate
+      ? `${characterInfo.releaseDate}にリリース予定。`
+      : "")
 
   const [
     showingLibraryReadmeModalCharacterKey,

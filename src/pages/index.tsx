@@ -77,7 +77,11 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
                 {characterInfo.name}
               </LinkToProductPage>
             </h3>
-            <p className="subtitle is-5">{characterInfo.voiceFeature}</p>
+            <p className="subtitle is-5">
+              {characterInfo.voiceFeature
+                ? characterInfo.voiceFeature
+                : "（準備中）"}
+            </p>
             {characterInfo.releaseDate != undefined && (
               <p className="py-0" style={{ marginTop: "-1rem", color: "red" }}>
                 Coming Soon

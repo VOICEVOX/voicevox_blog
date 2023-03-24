@@ -163,9 +163,17 @@ export const useDetailedCharacterInfo = () => {
       聖騎士紅桜: [{ name: "ノーマル", id: "normal" }],
       雀松朱司: [{ name: "ノーマル", id: "normal" }],
       麒ヶ島宗麟: [{ name: "ノーマル", id: "normal" }],
-      春歌ナナ: [],
-      猫使アル: [],
-      猫使ビィ: [],
+      春歌ナナ: [{ name: "ノーマル", id: "normal" }],
+      猫使アル: [
+        { name: "ノーマル", id: "normal" },
+        { name: "おちつき", id: "ochitsuki" },
+        { name: "うきうき", id: "fun" },
+      ],
+      猫使ビィ: [
+        { name: "ノーマル", id: "normal" },
+        { name: "おちつき", id: "ochitsuki" },
+        { name: "人見知り", id: "shy" },
+      ],
     }
 
   const getDatas = (info: { key: CharacterKey; characterId: string }) => {
@@ -721,7 +729,7 @@ export const useDetailedCharacterInfo = () => {
       id: getCharacterInfo("春歌ナナ").characterId,
       ...getDatas(getCharacterInfo("春歌ナナ")),
       rubyName: "<ruby>春歌<rp>(</rp><rt>はるか</rt><rp>)</rp>ナナ</ruby>",
-      voiceFeature: "（準備中）",
+      voiceFeature: "はつらつとした力強い声",
       color: "#DF4C94",
       lightColor: "#E3ADD5",
       description: "いつだって元気いっぱいな女の子です。",
@@ -742,7 +750,7 @@ export const useDetailedCharacterInfo = () => {
       id: getCharacterInfo("猫使アル").characterId,
       ...getDatas(getCharacterInfo("猫使アル")),
       rubyName: "<ruby>猫使<rp>(</rp><rt>ねこつか</rt><rp>)</rp>アル</ruby>",
-      voiceFeature: "（準備中）",
+      voiceFeature: "厚みのある気さくな声",
       color: "#F9344C",
       lightColor: "#FBB4C4",
       description: "謎の研究所で作られた<br />猫使シリーズの タイプ:Red",
@@ -765,7 +773,7 @@ export const useDetailedCharacterInfo = () => {
       id: getCharacterInfo("猫使ビィ").characterId,
       ...getDatas(getCharacterInfo("猫使ビィ")),
       rubyName: "<ruby>猫使<rp>(</rp><rt>ねこつか</rt><rp>)</rp>ビィ</ruby>",
-      voiceFeature: "（準備中）",
+      voiceFeature: "ピュアであどけない声",
       color: "#1D86AE",
       lightColor: "#B3D7DD",
       description: "謎の研究所で作られた<br />猫使シリーズの タイプ:Blue",
