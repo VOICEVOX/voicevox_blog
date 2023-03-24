@@ -306,7 +306,7 @@ const ProductPage = ({ params }: PageProps) => {
             <div className="description">
               <h1 className="title">VOICEVOX {characterInfo.name}</h1>
               <p className="is-size-5">{description}</p>
-              {characterInfo.releaseDate != undefined && (
+              {characterInfo.releaseDate == undefined && (
                 <a
                   className="button mt-5 is-primary is-rounded is-large"
                   onClick={() => {
