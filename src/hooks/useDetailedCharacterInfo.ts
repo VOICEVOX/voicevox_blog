@@ -740,9 +740,8 @@ export const useDetailedCharacterInfo = () => {
         { label: "好物", value: "サラミ、わらびもち", size: 2 },
         { label: "CV", value: "ななひら", size: 2 },
       ],
-      policyUrl: undefined,
-      detailUrl: undefined,
-      releaseDate: "2023年3月30日",
+      policyUrl: "https://nanahira.jp/haruka_nana/guideline.html",
+      detailUrl: "https://nanahira.jp/haruka_nana/",
     },
 
     猫使アル: {
@@ -763,9 +762,8 @@ export const useDetailedCharacterInfo = () => {
         { label: "苦手なもの", value: "ねずみ", size: 1 },
         { label: "趣味", value: "噛むこと", size: 1 },
       ],
-      policyUrl: undefined,
-      detailUrl: undefined,
-      releaseDate: "2023年3月30日",
+      policyUrl: "https://nekotukarb.wixsite.com/nekonohako/利用規約",
+      detailUrl: "https://nekotukarb.wixsite.com/nekonohako",
     },
 
     猫使ビィ: {
@@ -786,9 +784,8 @@ export const useDetailedCharacterInfo = () => {
         { label: "苦手なもの", value: "おばけ", size: 1 },
         { label: "趣味", value: "おひるね", size: 1 },
       ],
-      policyUrl: undefined,
-      detailUrl: undefined,
-      releaseDate: "2023年3月30日",
+      policyUrl: "https://nekotukarb.wixsite.com/nekonohako/利用規約",
+      detailUrl: "https://nekotukarb.wixsite.com/nekonohako",
     },
   } as const
 
@@ -1160,6 +1157,12 @@ const callNameInfos: {
     櫻歌ミコ: "ミコちゃん",
     小夜_SAYO: "小夜ちゃん",
     ナースロボ＿タイプＴ: "TTちゃん",
+    聖騎士紅桜: "紅桜さん",
+    雀松朱司: "朱司くん",
+    麒ヶ島宗麟: "そうりん",
+    春歌ナナ: "ナナちゃん",
+    猫使アル: "アルさん",
+    猫使ビィ: "ビィさん",
   },
   後鬼: {
     me: ["私/ワテ"],
@@ -1297,6 +1300,7 @@ const callNameInfos: {
     聖騎士紅桜: "騎士さん（ないとさん）",
     雀松朱司: "朱司さん",
     麒ヶ島宗麟: "宗麟おじちゃん",
+    春歌ナナ: "ナナちゃん",
     猫使アル: "アルちゃん",
     猫使ビィ: "ビィちゃん",
   },
@@ -1324,6 +1328,9 @@ const callNameInfos: {
     聖騎士紅桜: "紅桜さん",
     雀松朱司: "雀松さん",
     麒ヶ島宗麟: "麒ヶ島さん",
+    春歌ナナ: "ナナさん",
+    猫使アル: "アルさん",
+    猫使ビィ: "ビーさん",
   },
   聖騎士紅桜: {
     me: ["我"],
