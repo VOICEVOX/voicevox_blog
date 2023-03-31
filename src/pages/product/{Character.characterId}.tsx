@@ -72,10 +72,14 @@ const ProductPage = ({ params }: PageProps) => {
     [characterInfos, characterKey]
   )
 
+  const voiceFeature = characterInfo.voiceFeature
+    ? characterInfo.voiceFeature
+    : "声"
   const description =
-    characterInfo.releaseStatus == "released"
-      ? `VOICEVOXは「${characterInfo.name}」の${characterInfo.voiceFeature}で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。`
-      : `${characterInfo.releaseDate} リリース予定`
+    `VOICEVOXは「${characterInfo.name}」の${voiceFeature}で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。` +
+    (characterInfo.releaseDate
+      ? `${characterInfo.releaseDate}にリリース予定。`
+      : "")
 
   const [
     showingLibraryReadmeModalCharacterKey,
@@ -306,7 +310,7 @@ const ProductPage = ({ params }: PageProps) => {
             <div className="description">
               <h1 className="title">VOICEVOX {characterInfo.name}</h1>
               <p className="is-size-5">{description}</p>
-              {characterInfo.releaseStatus == "released" && (
+              {characterInfo.releaseDate == undefined && (
                 <a
                   className="button mt-5 is-primary is-rounded is-large"
                   onClick={() => {

@@ -23,12 +23,15 @@ export type CharacterKey =
   | "聖騎士紅桜"
   | "雀松朱司"
   | "麒ヶ島宗麟"
+  | "春歌ナナ"
+  | "猫使アル"
+  | "猫使ビィ"
 
 export type CharacterInfo = {
   name: string
   id: string
   rubyName: string
-  voiceFeature: string
+  voiceFeature: string | undefined
   bustupImage: IGatsbyImageData
   bustupImageSmall: IGatsbyImageData
   portraitImage: IGatsbyImageData
@@ -42,7 +45,6 @@ export type CharacterInfo = {
   infoImages?: readonly IGatsbyImageData[]
   detailUrl: string | undefined
   policyUrl: string | undefined
-  releaseStatus: "released" | "comingSoon"
   releaseDate?: string
 }
 

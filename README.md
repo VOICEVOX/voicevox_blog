@@ -49,10 +49,10 @@ npm run preview-build
 ## add resource
 
 ```bash
-editor_tag="0.14.5"
+editor_tag="0.14.6"
 editor_url="https://raw.githubusercontent.com/VOICEVOX/voicevox/$editor_tag"
 
-resource_tag="0.14.1"
+resource_tag="0.14.2"
 resource_url="https://raw.githubusercontent.com/VOICEVOX/voicevox_resource/$resource_tag"
 
 # 規約
@@ -93,10 +93,13 @@ ffmpeg -i $audio_file -af volume=-3dB $output_file
 次のコマンドで更新してください。
 
 ```bash
-# まず起動しておく
+# 起動
 npm run develop
-# FIXME: なぜか package.json に `"type": "module",` を追加する必要がある
-npm run generate_thumb
+
+# しばらくしてから実行
+cd generateThumb
+npm ci
+npm run generateThumb
 ```
 
 ## タイポチェック

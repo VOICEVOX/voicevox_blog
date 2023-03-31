@@ -8,7 +8,7 @@ export const useCharacterInfo = () => {
       nodes: { key: CharacterKey; name: string; characterId: string }[]
     }
   } = useStaticQuery(graphql`
-    {
+    query CharacterInfo {
       character: allCharacter {
         nodes {
           key
