@@ -539,6 +539,19 @@ $dropdown-item-active-background-color: $primary;
         }
       }
 
+      &.event-container {
+        .card {
+          box-shadow: none;
+
+          & > div {
+            border-style: solid;
+            border-radius: 1rem;
+            border-width: 1px;
+            border-color: #000;
+          }
+        }
+      }
+
       &.top-illust-container {
         .card {
           cursor: pointer;
