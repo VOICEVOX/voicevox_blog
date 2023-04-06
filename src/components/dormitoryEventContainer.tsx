@@ -1,16 +1,20 @@
-import { graphql, useStaticQuery } from "gatsby"
+import { Link, graphql, useStaticQuery } from "gatsby"
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image"
-import React, { useState } from "react"
+import React from "react"
 import "../components/layout.scss"
 
-export default ({}) => {
-  const query: {
-    name: string
-    childImageSharp: {
-      gatsbyImageData: IGatsbyImageData
-    }
-  }[] = useStaticQuery(graphql`
-    {
+export default ({ id }: { id: string }) => {
+  const query: Queries.DormitoryEventContainerQuery = useStaticQuery(graphql`
+    query DormitoryEventContainer {
+      allDormitoryEventsYaml {
+        edges {
+          node {
+            titles
+            day
+            link
+          }
+        }
+      }
       allFile(filter: { absolutePath: { regex: "/event-thumbnail/" } }) {
         nodes {
           name
@@ -20,72 +24,76 @@ export default ({}) => {
         }
       }
     }
-  `)["allFile"]["nodes"]
+  `)
 
-  // トップイラスト一覧
-  const topIllusts: IGatsbyImageData[] = query
+  // 過去のイベント
+  const topIllusts: IGatsbyImageData[] = query.allFile.nodes
+    .slice()
     .sort((a, b) => a.name.localeCompare(b.name))
-    .map(node => node.childImageSharp.gatsbyImageData)
-  const illustrators = ["坂本アヒル", "490", "moiky", "のほしお"]
-  if (topIllusts.length !== illustrators.length) {
-    throw new Error("イラストレーターの数とトップイラストの数が一致しません")
+    .map(node => node.childImageSharp!.gatsbyImageData)
+  const infos = query.allDormitoryEventsYaml.edges.map(edge => {
+    if (
+      edge.node.day == undefined ||
+      edge.node.titles == undefined ||
+      edge.node.link == undefined
+    )
+      throw new Error("イベント情報に不備があります")
+    return {
+      day: edge.node.day,
+      titles: edge.node.titles.filter(
+        (title): title is string => title != undefined
+      ),
+      link: edge.node.link,
+    }
+  })
+  if (topIllusts.length !== infos.length) {
+    throw new Error("イベントの数とサムネイルの数が一致しません")
   }
-
-  // モーダル
-  const [selectedTopIllustIndex, setSelectedTopIllustIndex] = useState<number>()
-
-  const showTopIllustModal = (topIllustIndex: number | undefined) => {
-    document.documentElement.classList.add("is-clipped")
-    setSelectedTopIllustIndex(topIllustIndex)
-  }
-  const hideTopIllustModal = () => {
-    document.documentElement.classList.remove("is-clipped")
-    setSelectedTopIllustIndex(undefined)
-  }
+  const events = topIllusts.map((topIllust, index) => ({
+    topIllust,
+    ...infos[index],
+  }))
 
   return (
     <>
       <div className="container top-illust-container has-text-centered py-5 is-flex is-flex-direction-column">
-        <h2 className="title is-4">トップイラスト一覧</h2>
+        <h2 id={id} className="jump-anchor-header-padding title is-4">
+          <Link to={`#${id}`} className="has-text-black">
+            過去のイベント
+          </Link>
+        </h2>
         <div className="columns is-multiline is-variable is-2 px-4">
           {
-            // トップイラスト一覧
-            topIllusts.map((topIllust, index) => (
+            // 過去のイベント
+            events.map((event, index) => (
               <div className="column is-4" key={index}>
-                <div className="card" onClick={() => showTopIllustModal(index)}>
-                  <GatsbyImage
-                    image={topIllust}
-                    alt={`${illustrators[index]}さんが描いたトップイラスト${index}`}
-                    objectFit="contain"
-                  />
-                </div>
-                <span className="is-size-7">
-                  イラスト：{illustrators[index]}
-                </span>
+                <a
+                  href={`${events[index].link}`}
+                  className="has-text-black"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <div className="card">
+                    <GatsbyImage
+                      image={event.topIllust}
+                      alt={`${events[index].titles.join(
+                        ""
+                      )}のイベントのサムネイル画像`}
+                      objectFit="contain"
+                    />
+                  </div>
+                  <p
+                    className="is-size-6 mt-2"
+                    dangerouslySetInnerHTML={{
+                      __html: events[index].titles.join("<br />"),
+                    }}
+                  ></p>
+                </a>
               </div>
             ))
           }
         </div>
       </div>
-      {selectedTopIllustIndex != undefined && (
-        <div
-          className={
-            `modal-top-illust modal` +
-            (selectedTopIllustIndex != undefined ? " is-active" : "")
-          }
-          onClick={hideTopIllustModal}
-        >
-          <div className="modal-background" onClick={hideTopIllustModal} />
-          <div className="modal-content">
-            <GatsbyImage
-              image={topIllusts[selectedTopIllustIndex]}
-              style={{ width: "100%", height: "100%" }}
-              alt={`トップイラスト${selectedTopIllustIndex}の大きな画像`}
-              objectFit="contain"
-            />
-          </div>
-        </div>
-      )}
     </>
   )
 }

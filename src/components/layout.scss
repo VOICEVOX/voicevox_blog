@@ -154,8 +154,8 @@ $dropdown-item-active-background-color: $primary;
 
 // idタグにジャンプるするときにヘッダーサイズ分ずれるのを防ぐ
 .jump-anchor-header-padding {
-  padding-top: 3.25rem;
-  margin-top: -3.25rem;
+  padding-top: calc(3.25rem + 1rem);
+  margin-top: calc(-3.25rem - 1rem);
 }
 
 :root {
