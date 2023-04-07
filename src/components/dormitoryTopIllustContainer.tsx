@@ -1,31 +1,28 @@
-import { graphql, useStaticQuery } from "gatsby"
+import { Link, graphql, useStaticQuery } from "gatsby"
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image"
 import React, { useState } from "react"
 import "../components/layout.scss"
 
-export default ({}) => {
-  const query: {
-    name: string
-    childImageSharp: {
-      gatsbyImageData: IGatsbyImageData
-    }
-  }[] = useStaticQuery(graphql`
-    {
-      allFile(filter: { absolutePath: { regex: "/top-illust/" } }) {
-        nodes {
-          name
-          childImageSharp {
-            gatsbyImageData
+export default ({ id }: { id: string }) => {
+  const query: Queries.DormitoryTopIllustContainerQuery["allFile"]["nodes"] =
+    useStaticQuery(graphql`
+      query DormitoryTopIllustContainer {
+        allFile(filter: { absolutePath: { regex: "/top-illust/" } }) {
+          nodes {
+            name
+            childImageSharp {
+              gatsbyImageData
+            }
           }
         }
       }
-    }
-  `)["allFile"]["nodes"]
+    `)["allFile"]["nodes"]
 
   // トップイラスト一覧
   const topIllusts: IGatsbyImageData[] = query
+    .slice()
     .sort((a, b) => a.name.localeCompare(b.name))
-    .map(node => node.childImageSharp.gatsbyImageData)
+    .map(node => node.childImageSharp!.gatsbyImageData)
   const illustrators = ["坂本アヒル", "490", "moiky", "のほしお", "さよなか"]
   if (topIllusts.length !== illustrators.length) {
     throw new Error("イラストレーターの数とトップイラストの数が一致しません")
@@ -46,7 +43,11 @@ export default ({}) => {
   return (
     <>
       <div className="container top-illust-container has-text-centered py-5 is-flex is-flex-direction-column">
-        <h2 className="title is-4">トップイラスト一覧</h2>
+        <h2 id={id} className="jump-anchor-header-padding title is-4">
+          <Link to={`#${id}`} className="has-text-black">
+            トップイラスト一覧
+          </Link>
+        </h2>
         <div className="columns is-multiline is-variable is-2 px-4">
           {
             // トップイラスト一覧

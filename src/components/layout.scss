@@ -154,8 +154,8 @@ $dropdown-item-active-background-color: $primary;
 
 // idタグにジャンプるするときにヘッダーサイズ分ずれるのを防ぐ
 .jump-anchor-header-padding {
-  padding-top: 3.25rem;
-  margin-top: -3.25rem;
+  padding-top: calc(3.25rem + 1rem);
+  margin-top: calc(-3.25rem - 1rem);
 }
 
 :root {
@@ -535,6 +535,19 @@ $dropdown-item-active-background-color: $primary;
               max-width: 300px;
               border-style: solid;
             }
+          }
+        }
+      }
+
+      &.event-container {
+        .card {
+          box-shadow: none;
+
+          & > div {
+            border-style: solid;
+            border-radius: 1rem;
+            border-width: 1px;
+            border-color: #000;
           }
         }
       }

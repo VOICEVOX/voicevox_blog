@@ -2,6 +2,7 @@ import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import React, { useEffect, useRef, useState } from "react"
 import DormitoryCharacterCard from "../components/dormitoryCharacterCard"
+import DormitoryEventContainer from "../components/dormitoryEventContainer"
 import DormitoryTopIllustContainer from "../components/dormitoryTopIllustContainer"
 import "../components/layout.scss"
 import { Page } from "../components/page"
@@ -63,8 +64,15 @@ const Dormitory: React.FC<DormitoryProps> = ({ setShowingHeader }) => {
         <main className="section py-0">
           <div className="container character-container is-max-desktop pt-1 pb-6">
             <div className="columns is-multiline">
-              <div className="column is-2 generation-label">
-                <h2 className="title is-3">7 期 生</h2>
+              <div
+                id="7th"
+                className="jump-anchor-header-padding column is-2 generation-label"
+              >
+                <h2 className="title is-3">
+                  <Link to="#7th" className="has-text-black">
+                    7 期 生
+                  </Link>
+                </h2>
               </div>
 
               <DormitoryCharacterCard
@@ -85,8 +93,15 @@ const Dormitory: React.FC<DormitoryProps> = ({ setShowingHeader }) => {
             <hr />
 
             <div className="columns is-multiline">
-              <div className="column is-2 generation-label">
-                <h2 className="title is-3">6 期 生</h2>
+              <div
+                id="6th"
+                className="jump-anchor-header-padding column is-2 generation-label"
+              >
+                <h2 className="title is-3">
+                  <Link to="#6th" className="has-text-black">
+                    6 期 生
+                  </Link>
+                </h2>
               </div>
 
               <DormitoryCharacterCard
@@ -105,8 +120,15 @@ const Dormitory: React.FC<DormitoryProps> = ({ setShowingHeader }) => {
             <hr />
 
             <div className="columns is-multiline">
-              <div className="column is-2 generation-label">
-                <h2 className="title is-3">5 期 生</h2>
+              <div
+                id="5th"
+                className="jump-anchor-header-padding column is-2 generation-label"
+              >
+                <h2 className="title is-3">
+                  <Link to="#5th" className="has-text-black">
+                    5 期 生
+                  </Link>
+                </h2>
               </div>
 
               <DormitoryCharacterCard characterInfo={characterInfos.WhiteCUL} />
@@ -117,8 +139,15 @@ const Dormitory: React.FC<DormitoryProps> = ({ setShowingHeader }) => {
             <hr />
 
             <div className="columns is-multiline">
-              <div className="column is-2 generation-label">
-                <h2 className="title is-3">4 期 生</h2>
+              <div
+                id="4th"
+                className="jump-anchor-header-padding column is-2 generation-label"
+              >
+                <h2 className="title is-3">
+                  <Link to="#4th" className="has-text-black">
+                    4 期 生
+                  </Link>
+                </h2>
               </div>
 
               <DormitoryCharacterCard
@@ -130,8 +159,15 @@ const Dormitory: React.FC<DormitoryProps> = ({ setShowingHeader }) => {
             <hr />
 
             <div className="columns is-multiline">
-              <div className="column is-2 generation-label">
-                <h2 className="title is-3">3 期 生</h2>
+              <div
+                id="3rd"
+                className="jump-anchor-header-padding column is-2 generation-label"
+              >
+                <h2 className="title is-3">
+                  <Link to="#3rd" className="has-text-black">
+                    3 期 生
+                  </Link>
+                </h2>
               </div>
 
               <DormitoryCharacterCard characterInfo={characterInfos.玄野武宏} />
@@ -149,8 +185,15 @@ const Dormitory: React.FC<DormitoryProps> = ({ setShowingHeader }) => {
             <hr />
 
             <div className="columns is-multiline">
-              <div className="column is-2 generation-label">
-                <h2 className="title is-3">2 期 生</h2>
+              <div
+                id="2nd"
+                className="jump-anchor-header-padding column is-2 generation-label"
+              >
+                <h2 className="title is-3">
+                  <Link to="#2nd" className="has-text-black">
+                    2 期 生
+                  </Link>
+                </h2>
               </div>
 
               <DormitoryCharacterCard
@@ -163,8 +206,15 @@ const Dormitory: React.FC<DormitoryProps> = ({ setShowingHeader }) => {
             <hr />
 
             <div className="columns is-multiline">
-              <div className="column is-2 generation-label">
-                <h2 className="title is-3">1 期 生</h2>
+              <div
+                id="1st"
+                className="jump-anchor-header-padding column is-2 generation-label"
+              >
+                <h2 className="title is-3">
+                  <Link to="#1st" className="has-text-black">
+                    1 期 生
+                  </Link>
+                </h2>
               </div>
 
               <DormitoryCharacterCard
@@ -237,7 +287,11 @@ const Dormitory: React.FC<DormitoryProps> = ({ setShowingHeader }) => {
         </section>
 
         <section className="section py-5">
-          <DormitoryTopIllustContainer />
+          <DormitoryEventContainer id="events" />
+        </section>
+
+        <section className="section py-5">
+          <DormitoryTopIllustContainer id="top_illusts" />
         </section>
       </div>
     </>

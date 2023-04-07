@@ -1,4 +1,4 @@
-import { graphql, useStaticQuery } from "gatsby"
+import { Link, graphql, useStaticQuery } from "gatsby"
 import React, { useEffect, useState } from "react"
 import { APP_VERSION } from "../constants"
 import DownloadModalSelecter from "./downloadModalSelecter"
@@ -167,7 +167,7 @@ export const DownloadModal: React.FC<{
               />
               <p className="has-text-centered is-size-7">
                 ※ GPUモードの方が快適ですが、利用するためには
-                <a href="https://voicevox.hiroshiba.jp/qa">対応するGPU</a>
+                <Link to="/qa">対応するGPU</Link>
                 が必要です
               </p>
 

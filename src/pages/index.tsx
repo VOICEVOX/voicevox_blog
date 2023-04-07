@@ -147,8 +147,10 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
         <main>
           <section className="section">
             <div className="container is-max-desktop is-flex is-flex-direction-column">
-              <h2 id="characters" className="title">
-                キャラクター一覧
+              <h2 id="characters" className="jump-anchor-header-padding title">
+                <Link to={`#characters`} className="has-text-black">
+                  キャラクター一覧
+                </Link>
               </h2>
               <div className="columns is-multiline is-centered">
                 {characterKeys.map((characterKey, index) => (
@@ -160,8 +162,10 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
 
           <section className="section">
             <div className="container is-max-desktop is-flex is-flex-direction-column">
-              <h2 id="oss" className="title">
-                オープンソース
+              <h2 id="oss" className="jump-anchor-header-padding title">
+                <Link to={`#oss`} className="has-text-black">
+                  オープンソース
+                </Link>
               </h2>
               <p className="is-size-5">
                 VOICEVOX は OSS（オープンソース・ソフトウェア）版 VOICEVOX
@@ -219,8 +223,13 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
 
           <section className="section">
             <div className="container is-max-desktop is-flex is-flex-direction-column">
-              <h2 id="core_library" className="title">
-                コアライブラリ
+              <h2
+                id="core_library"
+                className="jump-anchor-header-padding title"
+              >
+                <Link to={`#core_library`} className="has-text-black">
+                  コアライブラリ
+                </Link>
               </h2>
               <p className="is-size-5">
                 VOICEVOXの音声合成をアプリケーションやサービスに組み込める、VOICEVOXのコアライブラリを配布しています。
@@ -242,7 +251,11 @@ const Main: React.FC<{ setShowingHeader: (show: boolean) => void }> = ({
 
           <section className="section">
             <div className="container is-max-desktop is-flex is-flex-direction-column">
-              <h2 className="title">リンク</h2>
+              <h2 id="link" className="jump-anchor-header-padding title">
+                <Link to={`#link`} className="has-text-black">
+                  リンク
+                </Link>
+              </h2>
               <ul className="is-size-5">
                 <li>
                   <Link
