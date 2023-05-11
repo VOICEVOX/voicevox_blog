@@ -336,7 +336,7 @@ export const useDetailedCharacterInfo = () => {
         { label: "好きなもの", value: "チョコクリスピー", size: 2 },
       ],
       policyUrl: "http://canon-voice.com/kiyaku.html",
-      detailUrl: "http://www.canon-voice.com/ritsu.html",
+      detailUrl: "https://www.canon-voice.com/",
     },
 
     玄野武宏: {
