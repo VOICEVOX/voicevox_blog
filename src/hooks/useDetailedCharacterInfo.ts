@@ -107,7 +107,10 @@ export const useDetailedCharacterInfo = () => {
       ],
       春日部つむぎ: [{ name: "ノーマル", id: "normal" }],
       雨晴はう: [{ name: "ノーマル", id: "normal" }],
-      波音リツ: [{ name: "ノーマル", id: "normal" }],
+      波音リツ: [
+        { name: "ノーマル", id: "normal" },
+        { name: "クイーン", id: "queen" },
+      ],
       玄野武宏: [
         { name: "ノーマル", id: "normal" },
         { name: "喜び", id: "fun" },
@@ -130,7 +133,10 @@ export const useDetailedCharacterInfo = () => {
         { name: "セクシー", id: "sexy" },
         { name: "ささやき", id: "whis" },
       ],
-      モチノキョウコ: [{ name: "ノーマル", id: "normal" }],
+      モチノキョウコ: [
+        { name: "ノーマル", id: "normal" },
+        { name: "セクシー／あん子", id: "sexy" },
+      ],
       剣崎雌雄: [{ name: "ノーマル", id: "normal" }],
       WhiteCUL: [
         { name: "ノーマル", id: "normal" },
@@ -175,10 +181,10 @@ export const useDetailedCharacterInfo = () => {
         { name: "人見知り", id: "shy" },
       ],
       中国うさぎ: [
-        // { name: "ノーマル", id: "normal" },
-        // { name: "おどろき", id: "suprise" },
-        // { name: "こわがり", id: "fear" },
-        // { name: "へろへろ", id: "tired" },
+        { name: "ノーマル", id: "normal" },
+        { name: "おどろき", id: "suprise" },
+        { name: "こわがり", id: "fear" },
+        { name: "へろへろ", id: "tired" },
       ],
     }
 
