@@ -80,6 +80,9 @@ export const Page: React.FC<{
             <Link to={"/dormitory/"} className="navbar-item">
               ボイボ寮
             </Link>
+            <Link to={"/nemo/"} className="navbar-item">
+              Nemo
+            </Link>
             <Link to={"/update_history/"} className="navbar-item">
               変更履歴
             </Link>
