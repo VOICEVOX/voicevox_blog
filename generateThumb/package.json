@@ -6,6 +6,7 @@
     "generateThumb": "cp ../src/constants.ts ./src/ && cp ../src/types/dormitoryCharacter.ts ./src/types/dormitoryCharacter.ts && ts-node src/index.ts"
   },
   "devDependencies": {
+    "puppeteer": "20.4.0",
     "@types/node": "18.15.3",
     "ts-node": "10.9.1",
     "typescript": "5.0.2"

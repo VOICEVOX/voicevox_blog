@@ -174,6 +174,12 @@ export const useDetailedCharacterInfo = () => {
         { name: "おちつき", id: "ochitsuki" },
         { name: "人見知り", id: "shy" },
       ],
+      中国うさぎ: [
+        // { name: "ノーマル", id: "normal" },
+        // { name: "おどろき", id: "suprise" },
+        // { name: "こわがり", id: "fear" },
+        // { name: "へろへろ", id: "tired" },
+      ],
     }
 
   const getDatas = (info: { key: CharacterKey; characterId: string }) => {
@@ -248,8 +254,7 @@ export const useDetailedCharacterInfo = () => {
         { label: "性格", value: "若干ツンデレ気味", size: 2 },
       ],
       policyUrl: "https://zunko.jp/con_ongen_kiyaku.html",
-      detailUrl:
-        "https://zunko.jp/con_voice.html#:~:text=%E3%81%AF%E3%81%93%E3%81%A1%E3%82%89%5Bsm31250786%5D-,%E5%9B%9B%E5%9B%BD%E3%82%81%E3%81%9F%E3%82%93%EF%BC%88%E6%BC%86%E9%BB%92%E3%81%AE%E3%82%81%E3%81%9F%E3%82%93%EF%BC%89,-CV%3A%E7%94%B0%E4%B8%AD%E5%B0%8F%E9%9B%AA",
+      detailUrl: "https://zunko.jp/#charaSM",
     },
 
     ずんだもん: {
@@ -271,8 +276,7 @@ export const useDetailedCharacterInfo = () => {
         { label: "将来の夢", value: "ずんだ餅のさらなる普及", size: 2 },
       ],
       policyUrl: "https://zunko.jp/con_ongen_kiyaku.html",
-      detailUrl:
-        "https://zunko.jp/con_voice.html#:~:text=%E3%81%AF%E3%81%93%E3%81%A1%E3%82%89%5Bsm31259177%5D-,%E3%81%9A%E3%82%93%E3%81%A0%E3%82%82%E3%82%93,-CV%3A%E4%BC%8A%E8%97%A4%E3%82%86",
+      detailUrl: "https://zunko.jp/#charaZM",
     },
 
     春日部つむぎ: {
@@ -433,8 +437,7 @@ export const useDetailedCharacterInfo = () => {
       voiceFeature: "気品のある大人な声",
       color: "#6964AD",
       lightColor: "#B2B6D8",
-      description:
-        "宇宙開拓用に開発されたアンドロイド。<br />正式名称は「九州そらmk=II」（まーくつー）。",
+      description: "https://zunko.jp/#charaKS2",
       labelInfos: [
         {
           label: "年齢",
@@ -787,6 +790,27 @@ export const useDetailedCharacterInfo = () => {
       policyUrl: "https://nekotukarb.wixsite.com/nekonohako/利用規約",
       detailUrl: "https://nekotukarb.wixsite.com/nekonohako",
     },
+
+    中国うさぎ: {
+      name: getCharacterInfo("中国うさぎ").name,
+      id: getCharacterInfo("中国うさぎ").characterId,
+      ...getDatas(getCharacterInfo("中国うさぎ")),
+      rubyName:
+        "<ruby>中国<rp>(</rp><rt>ちゅうごく</rt><rp>)</rp>うさぎ</ruby>",
+      voiceFeature: undefined,
+      color: "#FC4E32",
+      lightColor: "#FDCDB7",
+      description:
+        "巫女みこネットワークの一員で、日本各地で怪異の情報を集める。ぼそぼそしゃべるタイプの無口キャラ",
+      labelInfos: [
+        { label: "身長", value: "147 cm", size: 1 },
+        { label: "年齢", value: "14 歳", size: 1 },
+        { label: "相棒", value: "ぬいぐるみ「いなば」", size: 2 },
+      ],
+      policyUrl: "https://zunko.jp/con_ongen_kiyaku.html",
+      detailUrl: "https://zunko.jp/#charaCU",
+      releaseDate: "2023年5月29日",
+    },
   } as const
 
   const generationInfos: {
@@ -839,8 +863,10 @@ const callNameInfos: {
     聖騎士紅桜: "聖騎士さん",
     雀松朱司: "雀松さん",
     麒ヶ島宗麟: "麒ヶ島さん",
+    春歌ナナ: "ナナさん",
     猫使アル: "アルさん",
     猫使ビィ: "ビィさん",
+    中国うさぎ: "うさぎ",
   },
   ずんだもん: {
     me: ["ずんだもん", "僕"],
@@ -866,8 +892,10 @@ const callNameInfos: {
     聖騎士紅桜: "紅桜",
     雀松朱司: "朱司",
     麒ヶ島宗麟: "宗麟",
+    春歌ナナ: "ナナ",
     猫使アル: "アル",
     猫使ビィ: "ビィ",
+    中国うさぎ: "うさぎ",
   },
   春日部つむぎ: {
     me: ["あーし"],
@@ -1055,6 +1083,9 @@ const callNameInfos: {
     聖騎士紅桜: "聖騎士さん",
     雀松朱司: "朱司くん",
     麒ヶ島宗麟: "宗麟くん",
+    春歌ナナ: "ナナちゃん",
+    猫使アル: "アルちゃん",
+    猫使ビィ: "ビィちゃん",
   },
   九州そら: {
     me: ["まーくつー"],
@@ -1080,8 +1111,10 @@ const callNameInfos: {
     聖騎士紅桜: "紅桜さま",
     雀松朱司: "朱司さま",
     麒ヶ島宗麟: "宗麟さま",
+    春歌ナナ: "ナナさま",
     猫使アル: "アルさま",
     猫使ビィ: "ビィさま",
+    中国うさぎ: "うさぎさま",
   },
   モチノキョウコ: {
     me: ["私", "もち子"],
@@ -1496,5 +1529,34 @@ const callNameInfos: {
     麒ヶ島宗麟: "そーりんおじさん",
     春歌ナナ: "ナナちゃん",
     猫使アル: "アル",
+  },
+  中国うさぎ: {
+    me: ["わたし"],
+    you: ["あなた", "みんな"],
+    四国めたん: "メタンハイドレートの人/めたんの人",
+    ずんだもん: "ずんだもん",
+    春日部つむぎ: "埼玉の人",
+    雨晴はう: "看護の人",
+    波音リツ: "波の人",
+    玄野武宏: "玄の人",
+    白上虎太郎: "虎の人",
+    青山龍星: "龍の人",
+    冥鳴ひまり: "死に神の人",
+    九州そら: "そらの人",
+    モチノキョウコ: "もちの人",
+    剣崎雌雄: "メスの人",
+    WhiteCUL: "白の人",
+    後鬼: "後鬼の人",
+    No7: "七（なな）の人",
+    ちび式じい: "じいの人",
+    櫻歌ミコ: "オオカミの人",
+    小夜_SAYO: "ねこみみの人",
+    ナースロボ＿タイプＴ: "ロボTの人",
+    聖騎士紅桜: "聖騎士の人",
+    雀松朱司: "朱（あか）の人",
+    麒ヶ島宗麟: "麒麟（きりん）の人",
+    春歌ナナ: "春の人",
+    猫使アル: "猫Ａの人",
+    猫使ビィ: "猫Ｂの人",
   },
 } as const
