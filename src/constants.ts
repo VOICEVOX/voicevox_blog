@@ -1,6 +1,6 @@
 import { CharacterKey } from "./types/dormitoryCharacter"
 
-export const APP_VERSION = "0.14.6"
+export const APP_VERSION = "0.14.7"
 
 export const characterKeys: CharacterKey[] = [
   "四国めたん",
@@ -28,6 +28,7 @@ export const characterKeys: CharacterKey[] = [
   "春歌ナナ",
   "猫使アル",
   "猫使ビィ",
+  "中国うさぎ",
 ]
 
 export type CharacterInfoEntry = {
@@ -141,5 +142,9 @@ export const characterInfos: {
   猫使ビィ: {
     name: "猫使ビィ",
     id: "nekotsuka_bi",
+  },
+  中国うさぎ: {
+    name: "中国うさぎ",
+    id: "chugoku_usagi",
   },
 }

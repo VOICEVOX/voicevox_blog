@@ -26,6 +26,7 @@ export type CharacterKey =
   | "春歌ナナ"
   | "猫使アル"
   | "猫使ビィ"
+  | "中国うさぎ"
 
 export type CharacterInfo = {
   name: string
