@@ -182,7 +182,7 @@ export const useDetailedCharacterInfo = () => {
       ],
       中国うさぎ: [
         { name: "ノーマル", id: "normal" },
-        { name: "おどろき", id: "suprise" },
+        { name: "おどろき", id: "surprise" },
         { name: "こわがり", id: "fear" },
         { name: "へろへろ", id: "tired" },
       ],
