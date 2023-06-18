@@ -443,7 +443,8 @@ export const useDetailedCharacterInfo = () => {
       voiceFeature: "気品のある大人な声",
       color: "#6964AD",
       lightColor: "#B2B6D8",
-      description: "宇宙開拓用に開発されたアンドロイド。<br />正式名称は「九州そらmk=II」（まーくつー）。",
+      description:
+        "宇宙開拓用に開発されたアンドロイド。<br />正式名称は「九州そらmk=II」（まーくつー）。",
       labelInfos: [
         {
           label: "年齢",
