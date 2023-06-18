@@ -4,7 +4,7 @@ import {
   faDownload,
 } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { graphql, Link, PageProps, useStaticQuery } from "gatsby"
+import { Link, PageProps, graphql, useStaticQuery } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import React, {
   useCallback,
@@ -259,7 +259,6 @@ const ProductPage = ({ params }: PageProps) => {
                       <GatsbyImage
                         image={characterInfos[obj.characterKey]!.portraitImage}
                         alt={characterInfos[obj.characterKey]!.name}
-                        style={{ width: "100%", height: "100%" }}
                       />
                     </div>
                   )
