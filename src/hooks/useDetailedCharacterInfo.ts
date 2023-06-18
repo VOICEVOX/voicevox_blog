@@ -443,7 +443,8 @@ export const useDetailedCharacterInfo = () => {
       voiceFeature: "気品のある大人な声",
       color: "#6964AD",
       lightColor: "#B2B6D8",
-      description: "https://zunko.jp/#charaKS2",
+      description:
+        "宇宙開拓用に開発されたアンドロイド。<br />正式名称は「九州そらmk=II」（まーくつー）。",
       labelInfos: [
         {
           label: "年齢",
@@ -457,8 +458,7 @@ export const useDetailedCharacterInfo = () => {
         },
       ],
       policyUrl: "https://zunko.jp/con_ongen_kiyaku.html",
-      detailUrl:
-        "https://zunko.jp/con_voice.html#:~:text=%E3%81%8D%E3%81%BF%E3%81%8C%E3%81%9F%E3%82%81-,%E4%B9%9D%E5%B7%9E%E3%81%9D%E3%82%89mk%3DII,-CV%3A%E8%A5%BF%E7%94%B0%E6%9C%9B%E8%A6%8B",
+      detailUrl: "https://zunko.jp/#charaKS2",
     },
 
     モチノキョウコ: {
