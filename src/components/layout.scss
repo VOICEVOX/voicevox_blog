@@ -29,6 +29,7 @@ body {
 
 body {
   position: relative;
+  overflow: hidden;
 
   .navbar {
     // navbarを最上部に固定するためのクラス
@@ -238,12 +239,13 @@ $dropdown-item-active-background-color: $primary;
         left: 0;
         right: 0;
 
-        img {
-          object-fit: cover !important;
-          // 画像は1:1に加工されている
-          @media (min-aspect-ratio: 1/1) and (not (min-width: $tablet)) {
-            object-fit: contain !important;
-          }
+        // 正方形の画像を中央に配置する
+        display: flex;
+        justify-content: center;
+        * {
+          height: 100%;
+          aspect-ratio: 1/1;
+          flex: 0 0 auto;
         }
       }
       .image-wrapper.entering-right {
