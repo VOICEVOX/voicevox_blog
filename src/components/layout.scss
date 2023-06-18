@@ -30,15 +30,20 @@ body {
 body {
   position: relative;
 
-  // navbarを最上部に固定
   .navbar {
+    // navbarを最上部に固定するためのクラス
     &.height-holder {
       visibility: hidden;
     }
+
+    &.is-black {
+      // FIXME: is-blackで影が変わらないBulmaのバグ
+      box-shadow: 0 2px 0 0 hsl(0deg, 0%, 4%);
+    }
   }
 
-  // footerを最下部に固定
   .footer {
+    // footerを最下部に固定するためのクラス
     &.appearance {
       position: absolute;
       bottom: 0;
@@ -218,7 +223,6 @@ $dropdown-item-active-background-color: $primary;
         width: 50vw;
         height: 100%;
         background-color: var(--character-background-color);
-        z-index: -1;
 
         @include mobile {
           width: 100%; // FIXME: 左右に空間が空いてしまう
@@ -406,42 +410,137 @@ $dropdown-item-active-background-color: $primary;
 
 .nemo {
   color: white;
+  font-family: "LINE Seed", sans-serif;
+  background-image: url(../images/nemo/top-bg.png);
+  background-size: cover;
+  background-position: top;
 
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background: radial-gradient(
-        circle at 0 0,
-        rgba(87, 188, 162, 1),
-        rgba(87, 188, 162, 0.05) 50%,
-        rgba(0, 0, 0, 0) 100%
-      ),
-      radial-gradient(
-        circle at 100% 0,
-        rgba(47, 93, 235, 1),
-        rgba(0, 0, 0, 0) 80%
-      ),
-      radial-gradient(
-        circle at 0 100%,
-        rgba(31, 35, 51, 1),
-        rgba(0, 0, 0, 0) 100%
-      ),
-      linear-gradient(0deg, rgba(31, 35, 51, 1), rgba(0, 0, 0, 0) 100%),
-      rgba(255, 255, 255, 1);
-    filter: brightness(50%);
+  .title {
+    color: white !important;
   }
-  // background: linear-gradient(
-  //     135deg,
-  //     rgba(87, 188, 162, 1),
-  //     rgba(0, 0, 0, 0) 100%
-  //   ),
-  //   linear-gradient(225deg, rgba(47, 93, 235, 1), rgba(0, 0, 0, 0) 100%),
-  //   rgba(0, 0, 0, 1);
+
+  .top {
+    height: calc(100vh - 3.25rem);
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    gap: 3rem;
+
+    .description {
+      flex: 0 0 auto;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-content: start;
+
+      .powered-by {
+        @extend .mb-1;
+
+        &::before {
+          content: "";
+          display: inline-block;
+          background: url("../images/icon.png") no-repeat center/contain;
+          margin-right: 0.3em;
+          height: 1.2em;
+          width: 1.2em;
+          vertical-align: middle;
+        }
+      }
+
+      .buttons {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+    }
+
+    .teaser {
+      flex: 1 1 auto;
+      max-width: 650px;
+      filter: drop-shadow(20px 20px 15px rgba(0, 0, 0, 0.5));
+    }
+  }
+
+  .feature {
+    @extend .mb-6, .pb-6;
+
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+
+    .feature-cell {
+      background-color: #21212139;
+      flex: 1 1 auto;
+      @extend .is-size-5;
+      text-align: center;
+      padding: 2rem 0;
+      border-radius: 1rem;
+    }
+  }
+
+  .explain {
+    @extend .my-6, .py-6;
+    @extend .is-size-3;
+    text-align: center;
+  }
+
+  .speakers-container {
+    @extend .my-6, .py-6;
+
+    .speaker {
+      display: flex;
+      flex-direction: row;
+      padding-right: 1rem;
+
+      position: relative; // 背景用
+      filter: drop-shadow(12px 12px 8px rgba(0, 0, 0, 0.5));
+
+      * {
+        z-index: 2;
+      }
+
+      // 背景
+      &::before {
+        content: "";
+        background: #20242d;
+        position: absolute;
+        top: 0.4rem;
+        left: 0.4rem;
+        bottom: 0.4rem;
+        right: 0;
+        border-top-left-radius: calc(8rem - 0.4rem);
+        border-bottom-left-radius: calc(8rem - 0.4rem);
+        z-index: 1;
+      }
+
+      .speaker-icon-wrapper {
+        height: 8rem;
+        width: 8rem;
+        flex: 0 0 auto;
+      }
+
+      .speaker-labels {
+        flex: 1 1 auto;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .sample-voices {
+        flex: 0 0 auto;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+      }
+    }
+  }
 }
 
 .markdown {

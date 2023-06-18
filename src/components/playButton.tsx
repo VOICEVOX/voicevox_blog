@@ -26,10 +26,10 @@ export default ({
       !color
         ? style
         : {
-            ...style,
             backgroundColor: "white",
             borderColor: color,
             color: color,
+            ...style,
           },
     [color, style]
   )

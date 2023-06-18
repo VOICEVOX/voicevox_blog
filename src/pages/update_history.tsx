@@ -30,9 +30,7 @@ export default () => {
       }
     }
   `)
-  const events = data.allUpdateInfosJson.edges.map(edge => {
-    return edge.node
-  })
+  const events = data.allUpdateInfosJson.edges.map(edge => edge.node)
   return (
     <Page>
       <Seo
@@ -44,9 +42,9 @@ export default () => {
         <div className="container is-max-desktop">
           <div className="update-history">
             <h1 className="title">変更履歴</h1>
-            {events.map((e, index) => (
+            {events.map((e, i) => (
               <>
-                <div key={index}>
+                <div key={i}>
                   <h2 className="subtitle is-4">ver {e.version}</h2>
                   <ul>
                     {e.descriptions.map((d, index) => (
@@ -64,7 +62,7 @@ export default () => {
                     </>
                   )}
                 </div>
-                {events.length !== index + 1 && <hr />}
+                {events.length !== i + 1 && <hr />}
               </>
             ))}
           </div>

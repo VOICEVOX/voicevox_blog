@@ -1,23 +1,47 @@
 @font-face {
   font-family: "Unhinted Rounded M+ 1p";
   src: url("../fonts/unhinted-rounded-mplus-1p-light.woff2");
-  font-weight: 300;
+  font-weight: 300; /* Light */
 }
-
 @font-face {
   font-family: "Unhinted Rounded M+ 1p";
   src: url("../fonts/unhinted-rounded-mplus-1p-regular.woff2");
-  font-weight: 400;
+  font-weight: normal;
 }
-
 @font-face {
   font-family: "Unhinted Rounded M+ 1p";
   src: url("../fonts/unhinted-rounded-mplus-1p-medium.woff2");
-  font-weight: 500;
+  font-weight: 500; /* Medium */
 }
-
 @font-face {
   font-family: "Unhinted Rounded M+ 1p";
   src: url("../fonts/unhinted-rounded-mplus-1p-bold.woff2");
-  font-weight: 700;
+  font-weight: bold;
+}
+
+/*
+ * 本製品では「LINE Seed」フォントを使用しています。このフォントはLINE Corp.によって作成され、
+ * SIL Open Font License 1.1のもとでリリースされています。
+ * ライセンスの詳細については、https://scripts.sil.org/OFL をご覧ください。
+ */
+
+@font-face {
+  font-family: "LINE Seed";
+  src: url("../fonts/LINESeedJP_OTF_Th.woff2");
+  font-weight: 100; /* Thin */
+}
+@font-face {
+  font-family: "LINE Seed";
+  src: url("../fonts/LINESeedJP_OTF_Rg.woff2");
+  font-weight: normal;
+}
+@font-face {
+  font-family: "LINE Seed";
+  src: url("../fonts/LINESeedJP_OTF_Bd.woff2");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "LINE Seed";
+  src: url("../fonts/LINESeedJP_OTF_Eb.woff2");
+  font-weight: 800; /* Extra Bold */
 }

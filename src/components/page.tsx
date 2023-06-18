@@ -1,7 +1,7 @@
 import { faDownload } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Link } from "gatsby"
-import React, { useContext, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import ModalPrivacyPolicy from "../components/modalPrivacyPolicy"
 import { GlobalContext } from "../contexts/context"
 import { useModalController } from "../hooks/hook"
@@ -13,8 +13,27 @@ export const Page: React.FC<{
   showingHeader?: boolean
   showingHeaderOnTop?: boolean // ページ最上部でヘッダーを表示するかどうか
   children: React.ReactNode
-}> = ({ showingHeader = true, showingHeaderOnTop = true, children }) => {
+  isNemo?: boolean // Nemo用のページか
+}> = ({
+  showingHeader = true,
+  showingHeaderOnTop = true,
+  children,
+  isNemo = false,
+}) => {
   const [isBurgerActive, setIsBurgerActive] = useState(false)
+
+  // Nemoの場合は背景色を変更する
+  useEffect(() => {
+    if (isNemo) {
+      document.body.classList.add("has-background-black")
+    } else {
+      document.body.classList.add("has-background-white")
+    }
+    return () => {
+      document.body.classList.remove("has-background-black")
+      document.body.classList.remove("has-background-white")
+    }
+  }, [isNemo])
 
   // google analytics
   const sendEvent = (event: string, eventCategory: string) => {
@@ -37,7 +56,9 @@ export const Page: React.FC<{
       <nav
         className={`navbar is-fixed-top has-shadow ${
           showingHeader ? "" : "is-hidden"
-        } ${!showingHeaderOnTop ? "navbar-with-animation" : ""}`}
+        } ${!showingHeaderOnTop ? "navbar-with-animation" : ""} ${
+          isNemo ? "is-black" : ""
+        }`}
         role="navigation"
         aria-label="main navigation"
       >
@@ -133,12 +154,17 @@ export const Page: React.FC<{
         isActive={showingPrivacyPolicyModal}
         hide={hidePrivacyPolicyModal}
       />
-      <footer className="footer appearance">
-        <VVFooter privacyPolicyShower={showPrivacyPolicyModal} />
+      <footer
+        className={`footer appearance ${isNemo ? "has-background-black" : ""}`}
+      >
+        <VVFooter
+          privacyPolicyShower={showPrivacyPolicyModal}
+          isNemo={isNemo}
+        />
       </footer>
       <div className="footer height-holder">
         {/* 空間を空けるために必要 */}
-        <VVFooter privacyPolicyShower={() => {}} />
+        <VVFooter privacyPolicyShower={() => {}} isNemo={isNemo} />
       </div>
     </>
   )

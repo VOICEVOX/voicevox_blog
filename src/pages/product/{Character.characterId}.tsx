@@ -4,7 +4,7 @@ import {
   faDownload,
 } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { graphql, Link, PageProps, useStaticQuery } from "gatsby"
+import { Link, PageProps, graphql, useStaticQuery } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import React, {
   useCallback,
@@ -227,8 +227,8 @@ const ProductPage = ({ params }: PageProps) => {
         description={description}
         image={thumbImage.images.fallback?.src}
       />
-      <div className="product">
-        <main className="section py-0">
+      <main className="product">
+        <div className="section py-0">
           <div className="top container">
             <button
               className="button prev circle-icon"
@@ -347,7 +347,7 @@ const ProductPage = ({ params }: PageProps) => {
               </div>
             </div>
           </div>
-        </main>
+        </div>
 
         <section className="section">
           <div
@@ -380,7 +380,7 @@ const ProductPage = ({ params }: PageProps) => {
             </div>
           </div>
         </section>
-      </div>
+      </main>
       <ModalReadmeLibrary
         hide={() => setShowingLibraryReadmeModalCharacterKey(undefined)}
         {...(showingLibraryReadmeModalCharacterKey != undefined
