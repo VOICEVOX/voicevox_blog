@@ -428,6 +428,14 @@ $dropdown-item-active-background-color: $primary;
     justify-content: center;
     gap: 3rem;
 
+    @include touch {
+      height: auto;
+      flex-direction: column-reverse;
+      align-items: center;
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+
     .description {
       flex: 0 0 auto;
 
@@ -435,6 +443,28 @@ $dropdown-item-active-background-color: $primary;
       flex-direction: column;
       justify-content: center;
       align-content: start;
+
+      @include touch {
+        align-items: center;
+        text-align: center;
+      }
+
+      h1 {
+        @extend .is-size-3-touch;
+        @extend .is-size-2-desktop;
+        @extend .is-size-1-widescreen;
+      }
+      h2 {
+        @extend .is-size-4-touch;
+        @extend .is-size-4-desktop;
+        @extend .is-size-3-widescreen;
+      }
+      .buttons {
+        * {
+          @extend .is-medium;
+          @extend .is-responsive;
+        }
+      }
 
       .powered-by {
         @extend .mb-1;
@@ -468,14 +498,18 @@ $dropdown-item-active-background-color: $primary;
     @extend .mb-6, .pb-6;
 
     width: 100%;
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
     gap: 1rem;
+
+    @include touch {
+      grid-template-columns: repeat(2, 1fr);
+    }
 
     .feature-cell {
       background-color: #21212139;
-      flex: 1 1 auto;
       @extend .is-size-5;
+      @extend .is-size-6-mobile;
       text-align: center;
       padding: 2rem 0;
       border-radius: 1rem;
@@ -484,12 +518,23 @@ $dropdown-item-active-background-color: $primary;
 
   .explain {
     @extend .my-6, .py-6;
+    @extend .is-size-5-mobile;
+    @extend .is-size-4-tablet;
     @extend .is-size-3;
     text-align: center;
   }
 
   .speakers-container {
-    @extend .my-6, .py-6;
+    @extend .mt-6, .pt-6;
+
+    display: grid;
+    gap: $gap;
+    grid-template-columns: repeat(2, 1fr);
+    place-content: center;
+
+    @include mobile {
+      grid-template-columns: repeat(1, minmax(0, 25rem));
+    }
 
     .speaker {
       display: flex;
@@ -503,6 +548,14 @@ $dropdown-item-active-background-color: $primary;
         z-index: 2;
       }
 
+      --height: 8rem;
+      @include touch {
+        --height: 6rem;
+      }
+      @include mobile {
+        --height: 4rem;
+      }
+
       // 背景
       &::before {
         content: "";
@@ -512,14 +565,14 @@ $dropdown-item-active-background-color: $primary;
         left: 0.4rem;
         bottom: 0.4rem;
         right: 0;
-        border-top-left-radius: calc(8rem - 0.4rem);
-        border-bottom-left-radius: calc(8rem - 0.4rem);
+        border-top-left-radius: calc(var(--height) - 0.4rem);
+        border-bottom-left-radius: calc(var(--height) - 0.4rem);
         z-index: 1;
       }
 
       .speaker-icon-wrapper {
-        height: 8rem;
-        width: 8rem;
+        height: var(--height);
+        width: var(--height);
         flex: 0 0 auto;
       }
 
@@ -530,6 +583,16 @@ $dropdown-item-active-background-color: $primary;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        text-align: center;
+        gap: 0.5rem;
+
+        .cv {
+          @extend .is-size-7;
+          @extend .is-size-6-desktop;
+        }
+        h3 {
+          @extend .is-size-5-desktop;
+        }
       }
 
       .sample-voices {
@@ -542,6 +605,12 @@ $dropdown-item-active-background-color: $primary;
         gap: 1rem;
       }
     }
+  }
+
+  .speaker-contact-explain {
+    @extend .my-6, .pb-6;
+    @extend .is-size-5;
+    text-align: center;
   }
 }
 

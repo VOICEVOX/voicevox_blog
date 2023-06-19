@@ -139,6 +139,32 @@ export default () => {
   // 女性と男性を並べる
   const sortedSpeakerInfos = [...speakerInfos.female, ...speakerInfos.male]
 
+  // 話者のサンプルボイスなどのコンポーネント
+  const SpeakerComponent = ({ info }: { info: SpeakerInfo }) => {
+    return (
+      <div className="speaker">
+        <div className="speaker-icon-wrapper">
+          <GatsbyImage image={info.icon} alt={`${info.name}のアイコン`} />
+        </div>
+        <div className="speaker-labels">
+          <span className="cv">CV</span>
+          <h3>{info.cv}</h3>
+        </div>
+        <div className="sample-voices">
+          {info.audios.map((url, index) => (
+            <PlayButton
+              key={index}
+              url={url}
+              name={`${info.name}のサンプルボイス${index + 1}}`}
+              color={info.color}
+              style={{ backgroundColor: info.backgroundColor }}
+            />
+          ))}
+        </div>
+      </div>
+    )
+  }
+
   return (
     <Page showingHeader={true} isNemo={true}>
       <Seo
@@ -159,8 +185,8 @@ export default () => {
             </div>
 
             <div className="description">
-              <h1 className="title is-1">VOICEVOX Nemo</h1>
-              <h2 className="title is-3">
+              <h1 className="title">VOICEVOX Nemo</h1>
+              <h2 className="title">
                 あらゆる場面に対応する
                 <br />
                 無料の中品質読み上げソフトウェア
@@ -169,7 +195,7 @@ export default () => {
 
               <div className="buttons">
                 <a
-                  className="button is-medium is-primary is-rounded"
+                  className="button is-primary is-rounded"
                   onClick={() => {}}
                   target="_blank"
                   rel="noreferrer"
@@ -180,10 +206,7 @@ export default () => {
                   </span>
                   <span className="has-text-weight-semibold">ダウンロード</span>
                 </a>
-                <Link
-                  to="/nemo/term/"
-                  className="button is-medium is-normal is-rounded"
-                >
+                <Link to="/nemo/term/" className="button is-normal is-rounded">
                   <span>利用規約</span>
                 </Link>
               </div>
@@ -222,36 +245,15 @@ export default () => {
         </section>
 
         <section className="section py-0">
-          <div className="container speakers-container is-max-desktop">
-            <div className="columns is-multiline">
-              {sortedSpeakerInfos.map((info, i) => (
-                <div className="column is-6" key={i}>
-                  <div className="speaker">
-                    <div className="speaker-icon-wrapper">
-                      <GatsbyImage
-                        image={info.icon}
-                        alt={`${info.name}のアイコン`}
-                      />
-                    </div>
-                    <div className="speaker-labels">
-                      <h2 className="title is-5">{info.name}</h2>
-                      <span>CV: {info.cv}</span>
-                    </div>
-                    <div className="sample-voices">
-                      {info.audios.map((url, index) => (
-                        <PlayButton
-                          key={index}
-                          url={url}
-                          name={`${info.name}のサンプルボイス${index + 1}}`}
-                          color={info.color}
-                          style={{ backgroundColor: info.backgroundColor }}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+          <div className="speakers-container container is-max-desktop">
+            {sortedSpeakerInfos.map((info, i) => (
+              <SpeakerComponent key={i} info={info} />
+            ))}
+          </div>
+          <div className="speaker-contact-explain container is-max-desktop">
+            より柔軟な演技や高品質な音声をお求めの場合は、
+            <br />
+            上記のリンク先にてご本人へご依頼いただくことができます。
           </div>
         </section>
       </main>
