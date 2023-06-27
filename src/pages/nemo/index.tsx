@@ -1,13 +1,21 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import React from "react"
-import "../components/layout.scss"
-import { Page } from "../components/page"
-import Seo from "../components/seo"
+import React, { useContext } from "react"
+import "../../components/layout.scss"
+import { Page } from "../../components/page"
+import Seo from "../../components/seo"
 
-import { faDownload } from "@fortawesome/free-solid-svg-icons"
-import { Link, graphql, useStaticQuery } from "gatsby"
+import { faTwitter } from "@fortawesome/free-brands-svg-icons"
+import {
+  faDownload,
+  faEnvelope,
+  faHome,
+} from "@fortawesome/free-solid-svg-icons"
+import { graphql, useStaticQuery } from "gatsby"
 import { GatsbyImage, IGatsbyImageData, StaticImage } from "gatsby-plugin-image"
-import PlayButton from "../components/playButton"
+import { NemoReadmeModal } from "../../components/nemoReadmeModal"
+import PlayButton from "../../components/playButton"
+import { GlobalContext } from "../../contexts/context"
+import { useModalController } from "../../hooks/hook"
 
 export default () => {
   const query: Queries.NemoQuery = useStaticQuery(graphql`
@@ -48,29 +56,71 @@ export default () => {
     }
     `)
 
+  const context = useContext(GlobalContext)
+
   type SpeakerInfo = {
+    id: string
     name: string
     icon: IGatsbyImageData
     audios: [string, string, string]
     color: string
     backgroundColor: string
     cv: string
+    link: { twitter?: string; homepage?: string; email?: string }
   }
 
   // 話者ごとの名前などのメタ情報
-  const speakerMetaInfos = {
+  type SpeakerMetaInfo = {
+    cv: string
+    link: {
+      homepage?: string
+      twitter?: string
+      email?: string
+    }
+  }
+  const speakerMetaInfos: {
+    female: readonly SpeakerMetaInfo[]
+    male: readonly SpeakerMetaInfo[]
+  } = {
     female: [
-      { cv: "女性1" },
-      { cv: "女性22" },
-      { cv: "女性333" },
-      { cv: "女性4444" },
-      { cv: "女性55555" },
-      { cv: "女性666666" },
+      {
+        cv: "亜咲比 凛",
+        link: { homepage: "https://www.instagram.com/rin_asahi00" },
+      },
+      {
+        cv: "透川ナナ",
+        link: {
+          homepage: "https://skeb.jp/@kyoso_movie",
+          twitter: "https://twitter.com/kyoso_movie",
+        },
+      },
+      { cv: "ゆう", link: { twitter: "https://twitter.com/yuuyuuasa" } },
+      { cv: "ぬっぴぃ", link: { twitter: "https://twitter.com/hisano_nuppy" } },
+      { cv: "たけだまり", link: { email: "mailto:rasenline@yahoo.co.jp" } },
+      {
+        cv: "藤田昌代",
+        link: {
+          homepage: "http://selfish11.blog54.fc2.com/blog-entry-681.html",
+        },
+      },
     ],
-    male: [{ cv: "男性1" }, { cv: "男性22" }, { cv: "男性333" }],
+    male: [
+      {
+        cv: "レナード・ジン",
+        link: { email: "mailto:renerdgyink@gmail.com" },
+      },
+      {
+        cv: "かちょゴリラ",
+        link: { twitter: "https://twitter.com/Kacho_Gorilla" },
+      },
+      {
+        cv: "待ち人",
+        link: { twitter: "https://twitter.com/mochi_jin_voice" },
+      },
+    ],
   } as const
 
-  function getSpeakerInfos(femaleOrMale: "female" | "male"): SpeakerInfo[] {
+  const getSpeakerInfos = (femaleOrMale: "female" | "male"): SpeakerInfo[] => {
     const count = speakerMetaInfos[femaleOrMale].length
 
     const iconNodes =
@@ -105,6 +155,7 @@ export default () => {
     return [...Array(count).keys()].map(
       i =>
         ({
+          id: `${femaleOrMale}${i + 1}`,
           name: (femaleOrMale == "female" ? "女性" : "男性") + `${i + 1}`,
           icon: icons[i],
           audios: audios[i],
@@ -121,34 +172,84 @@ export default () => {
     male: getSpeakerInfos("male"),
   } as const
 
-  // // 男女交互になるようにする
-  // const minCount = Math.min(
-  //   speakerInfos.female.length,
-  //   speakerInfos.male.length
-  // )
-  // const sortedSpeakerInfos: SpeakerInfo[] = []
-  // for (let i = 0; i < minCount; i++) {
-  //   sortedSpeakerInfos.push(speakerInfos.female[i], speakerInfos.male[i])
-  // }
-  // if (speakerInfos.female.length > minCount) {
-  //   sortedSpeakerInfos.push(...speakerInfos.female.slice(minCount))
-  // } else if (speakerInfos.male.length > minCount) {
-  //   sortedSpeakerInfos.push(...speakerInfos.male.slice(minCount))
-  // }
-
   // 女性と男性を並べる
   const sortedSpeakerInfos = [...speakerInfos.female, ...speakerInfos.male]
 
+  // モーダル
+  const {
+    showing: showingNemoReadmeModal,
+    show: showNemoReadmeModal,
+    hide: hideNemoReadmeModal,
+  } = useModalController()
+
   // 話者のサンプルボイスなどのコンポーネント
-  const SpeakerComponent = ({ info }: { info: SpeakerInfo }) => {
+  const SpeakerComponent = ({
+    info,
+    style,
+  }: { info: SpeakerInfo } & React.HTMLAttributes<HTMLDivElement>) => {
     return (
-      <div className="speaker">
+      <div className="speaker" style={style}>
         <div className="speaker-icon-wrapper">
           <GatsbyImage image={info.icon} alt={`${info.name}のアイコン`} />
         </div>
         <div className="speaker-labels">
           <span className="cv">CV</span>
-          <h3>{info.cv}</h3>
+          <div className="dropdown is-hoverable">
+            <div className="dropdown-trigger">
+              <button
+                className="button"
+                aria-haspopup="true"
+                aria-controls={`dropdown-${info.id}`}
+                type="button"
+              >
+                <h3>{info.cv}</h3>
+              </button>
+            </div>
+            <div
+              className="dropdown-menu"
+              id={`dropdown-${info.id}`}
+              role="menu"
+            >
+              <div className="dropdown-content">
+                <div className="dropdown-item">
+                  <span>音声収録のご依頼先</span>
+                  <div className="buttons">
+                    {[
+                      {
+                        link: info.link.homepage,
+                        label: "ホームページ",
+                        icon: faHome,
+                      },
+                      {
+                        link: info.link.twitter,
+                        label: "ツイッター",
+                        icon: faTwitter,
+                      },
+                      {
+                        link: info.link.email,
+                        label: "メールアドレス",
+                        icon: faEnvelope,
+                      },
+                    ].map(
+                      ({ link, label, icon }) =>
+                        link && (
+                          <a
+                            key={label}
+                            className="button"
+                            href={link}
+                            aria-label={`${info.cv}の${label}`}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            <FontAwesomeIcon icon={icon} />
+                          </a>
+                        )
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div className="sample-voices">
           {info.audios.map((url, index) => (
@@ -177,7 +278,7 @@ export default () => {
           <div className="top container is-max-widescreen">
             <div className="teaser">
               <StaticImage
-                src="../images/nemo/top-teaser.png"
+                src="../../images/nemo/top-teaser.png"
                 alt="VOICEVOX Nemoを利用中のソフトウェアのスクリーンショット"
                 objectFit="contain"
                 style={{ width: "auto", height: "100%" }}
@@ -196,7 +297,10 @@ export default () => {
               <div className="buttons">
                 <a
                   className="button is-primary is-rounded"
-                  onClick={() => {}}
+                  onClick={() => {
+                    context.nemoGuidanceModal.show()
+                    context.sendEvent("download", "nemo")
+                  }}
                   target="_blank"
                   rel="noreferrer"
                   tabIndex={0}
@@ -206,9 +310,13 @@ export default () => {
                   </span>
                   <span className="has-text-weight-semibold">ダウンロード</span>
                 </a>
-                <Link to="/nemo/term/" className="button is-normal is-rounded">
+                <button
+                  onClick={showNemoReadmeModal}
+                  className="button is-normal is-rounded"
+                  type="button"
+                >
                   <span>利用規約</span>
-                </Link>
+                </button>
               </div>
             </div>
           </div>
@@ -246,9 +354,16 @@ export default () => {
 
         <section className="section py-0">
           <div className="speakers-container container is-max-desktop">
-            {sortedSpeakerInfos.map((info, i) => (
-              <SpeakerComponent key={i} info={info} />
-            ))}
+            {
+              // 内部で表示するドロップメニューが兄弟要素で隠れてしまうのでz-indexを指定している
+              sortedSpeakerInfos.map((info, i) => (
+                <SpeakerComponent
+                  key={i}
+                  info={info}
+                  style={{ zIndex: sortedSpeakerInfos.length - i }}
+                />
+              ))
+            }
           </div>
           <div className="speaker-contact-explain container is-max-desktop">
             より柔軟な演技や高品質な音声をお求めの場合は、
@@ -256,7 +371,16 @@ export default () => {
             上記のリンク先にてご本人へご依頼いただくことができます。
           </div>
         </section>
+
+        {/* コアライブラリ
+VOICEVOXの音声合成をアプリケーションやサービスに組み込める、VOICEVOXのコアライブラリを配布しています。
+
+詳しくは VOICEVOX CORE をご参照ください。 */}
       </main>
+      <NemoReadmeModal
+        isActive={showingNemoReadmeModal}
+        hide={hideNemoReadmeModal}
+      />
     </Page>
   )
 }

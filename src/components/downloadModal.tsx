@@ -29,8 +29,6 @@ export const DownloadModal: React.FC<{
   isActive: boolean
   hide: () => void
 }> = props => {
-  const maintenanceMode = false
-
   const scriptNodes: { name: string; publicURL: string }[] =
     useStaticQuery(graphql`
       query {
@@ -78,7 +76,7 @@ export const DownloadModal: React.FC<{
       CPU: {
         インストーラー: {
           url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/VOICEVOX.${APP_VERSION}.dmg`,
-          name: `VOICEVOX.${APP_VERSION}.Mac.dmg`,
+          name: `VOICEVOX-CPU.${APP_VERSION}.Mac.dmg`,
         },
         Zip: {
           url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/voicevox-macos-cpu-${APP_VERSION}.zip`,
@@ -137,99 +135,68 @@ export const DownloadModal: React.FC<{
         role="presentation"
       />
       <div className="modal-card">
-        {!maintenanceMode ? (
-          <>
-            <header className="modal-card-head has-text-centered">
-              <p className="modal-card-title">ダウンロード選択</p>
-              <button
-                className="delete"
-                aria-label="close"
-                onClick={props.hide}
-                type="button"
-              ></button>
-            </header>
+        <header className="modal-card-head has-text-centered">
+          <p className="modal-card-title">VOICEVOX ダウンロード</p>
+          <button
+            className="delete"
+            aria-label="close"
+            onClick={props.hide}
+            type="button"
+          ></button>
+        </header>
 
-            <section className="modal-card-body">
-              <DownloadModalSelecter
-                label="OS"
-                selected={selectedOs}
-                setSelected={setSelectedOs}
-                candidates={["Windows", "Mac", "Linux"]}
-              />
+        <section className="modal-card-body">
+          <DownloadModalSelecter
+            label="OS"
+            selected={selectedOs}
+            setSelected={setSelectedOs}
+            candidates={["Windows", "Mac", "Linux"]}
+          />
 
-              <hr className="my-3" />
+          <hr className="my-3" />
 
-              <DownloadModalSelecter
-                label="対応モード"
-                selected={selectedMode}
-                setSelected={setSelectedMode}
-                candidates={modeAvailables[selectedOs]}
-              />
-              <p className="has-text-centered is-size-7">
-                ※ GPUモードの方が快適ですが、利用するためには
-                <Link to="/qa">対応するGPU</Link>
-                が必要です
-              </p>
+          <DownloadModalSelecter
+            label="対応モード"
+            selected={selectedMode}
+            setSelected={setSelectedMode}
+            candidates={modeAvailables[selectedOs]}
+          />
+          <p className="has-text-centered is-size-7">
+            ※ GPUモードの方が快適ですが、利用するためには
+            <Link to="/qa">対応するGPU</Link>
+            が必要です
+          </p>
 
-              <hr className="my-3" />
+          <hr className="my-3" />
 
-              <DownloadModalSelecter
-                label="パッケージ"
-                selected={selectedPackage}
-                setSelected={setSelectedPackage}
-                candidates={packageAvailables[selectedOs][selectedMode]}
-              />
-              <p className="has-text-centered is-size-7">
-                ※ 推奨パッケージはインストーラー版です
-              </p>
-            </section>
+          <DownloadModalSelecter
+            label="パッケージ"
+            selected={selectedPackage}
+            setSelected={setSelectedPackage}
+            candidates={packageAvailables[selectedOs][selectedMode]}
+          />
+          <p className="has-text-centered is-size-7">
+            ※ 推奨パッケージはインストーラー版です
+          </p>
+        </section>
 
-            <footer className="modal-card-foot is-justify-content-flex-end">
-              <a
-                href={
-                  downloadUrls[selectedOs][selectedMode]?.[selectedPackage]?.url
-                }
-                download={
-                  downloadUrls[selectedOs][selectedMode]?.[selectedPackage]
-                    ?.name
-                }
-                target="_blank"
-                rel="noreferrer"
-                className="button is-primary"
-                type="button"
-                role={"button"}
-              >
-                <span className="has-text-weight-semibold">ダウンロード</span>
-              </a>
-            </footer>
-          </>
-        ) : (
-          <>
-            <header className="modal-card-head has-text-centered">
-              <p className="modal-card-title">メンテナンス中です</p>
-              <button
-                className="delete"
-                aria-label="close"
-                onClick={props.hide}
-                type="button"
-              ></button>
-            </header>
-
-            <section className="modal-card-body">
-              <p className="has-text-centered is-size-5">
-                アップデートのためのメンテナンス中です。
-                <br />
-                しばらくお待ち下さい。
-              </p>
-            </section>
-
-            <footer className="modal-card-foot is-justify-content-flex-end">
-              <button onClick={props.hide} className="button" type="button">
-                <span>閉じる</span>
-              </button>
-            </footer>
-          </>
-        )}
+        <footer className="modal-card-foot is-justify-content-flex-end">
+          <a
+            href={
+              downloadUrls[selectedOs][selectedMode]?.[selectedPackage]?.url
+            }
+            download={
+              downloadUrls[selectedOs][selectedMode]?.[selectedPackage]?.name
+            }
+            target="_blank"
+            rel="noreferrer"
+            className="button is-primary"
+            type="button"
+            role={"button"}
+          >
+            <span className="has-text-weight-semibold">ダウンロード</span>
+          </a>
+        </footer>
       </div>
     </div>
   )

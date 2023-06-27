@@ -518,9 +518,15 @@ $dropdown-item-active-background-color: $primary;
 
   .explain {
     @extend .my-6, .py-6;
-    @extend .is-size-5-mobile;
-    @extend .is-size-4-tablet;
-    @extend .is-size-3;
+    @include desktop {
+      font-size: $size-3;
+    }
+    @include tablet-only {
+      font-size: $size-4;
+    }
+    @include mobile {
+      font-size: $size-5;
+    }
     text-align: center;
   }
 
@@ -586,12 +592,55 @@ $dropdown-item-active-background-color: $primary;
         text-align: center;
         gap: 0.5rem;
 
+        @include touch {
+          gap: 0.25rem;
+        }
+
         .cv {
           @extend .is-size-7;
           @extend .is-size-6-desktop;
         }
         h3 {
           @extend .is-size-5-desktop;
+        }
+
+        .dropdown {
+          .dropdown-trigger {
+            .button {
+              @extend .is-ghost;
+              color: white;
+              text-decoration: underline;
+              @extend .py-0;
+              height: auto;
+              &:active,
+              &:focus,
+              &:hover {
+                color: white;
+              }
+            }
+          }
+
+          .dropdown-content {
+            @extend .has-background-dark;
+
+            .dropdown-item {
+              display: flex;
+              flex-direction: column;
+              text-align: center;
+              align-items: center;
+
+              @extend .has-text-white;
+
+              .button {
+                @extend .circle-icon;
+                @extend .ml-auto;
+                @extend .is-dark;
+                @extend .is-medium;
+                @extend .has-text-white;
+                @extend .mb-0;
+              }
+            }
+          }
         }
       }
 
@@ -611,6 +660,33 @@ $dropdown-item-active-background-color: $primary;
     @extend .my-6, .pb-6;
     @extend .is-size-5;
     text-align: center;
+  }
+}
+
+.modal-nemo-guidance {
+  .modal-card-body {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+
+    .step-by-step {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+      gap: 0.75rem;
+
+      h3 {
+        @extend .mb-0;
+        @extend .title;
+        @extend .is-size-5;
+      }
+    }
+
+    .policy-note {
+      @extend .has-text-grey-dark;
+    }
   }
 }
 

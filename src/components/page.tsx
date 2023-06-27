@@ -7,6 +7,7 @@ import { GlobalContext } from "../contexts/context"
 import { useModalController } from "../hooks/hook"
 import icon from "../images/icon.png"
 import { DownloadModal } from "./downloadModal"
+import { NemoGuidanceModal } from "./nemoGuidanceModal"
 import { VVFooter } from "./page-footer"
 
 export const Page: React.FC<{
@@ -35,15 +36,9 @@ export const Page: React.FC<{
     }
   }, [isNemo])
 
-  // google analytics
-  const sendEvent = (event: string, eventCategory: string) => {
-    typeof window !== "undefined" &&
-      window.gtag &&
-      window.gtag("event", event, { event_category: eventCategory })
-  }
-
   const context = useContext(GlobalContext)
   context.downloadModal = useModalController()
+  context.nemoGuidanceModal = useModalController()
 
   const {
     showing: showingPrivacyPolicyModal,
@@ -119,8 +114,13 @@ export const Page: React.FC<{
               <a
                 className="button is-primary is-rounded"
                 onClick={() => {
-                  context.downloadModal.show()
-                  sendEvent("download", "software")
+                  if (!isNemo) {
+                    context.downloadModal.show()
+                    context.sendEvent("download", "software")
+                  } else {
+                    context.nemoGuidanceModal.show()
+                    context.sendEvent("download", "nemo")
+                  }
                 }}
                 target="_blank"
                 rel="noreferrer"
@@ -146,6 +146,10 @@ export const Page: React.FC<{
         {children}
       </GlobalContext.Provider>
 
+      <NemoGuidanceModal
+        isActive={context.nemoGuidanceModal.showing}
+        hide={context.nemoGuidanceModal.hide}
+      />
       <DownloadModal
         isActive={context.downloadModal.showing}
         hide={context.downloadModal.hide}
