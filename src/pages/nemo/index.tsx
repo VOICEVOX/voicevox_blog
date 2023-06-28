@@ -16,6 +16,7 @@ import { NemoReadmeModal } from "../../components/nemoReadmeModal"
 import PlayButton from "../../components/playButton"
 import { GlobalContext } from "../../contexts/context"
 import { useModalController } from "../../hooks/hook"
+import shareThumb from "../../images/nemo/share-thumbnail.png"
 
 export default () => {
   const query: Queries.NemoQuery = useStaticQuery(graphql`
@@ -271,7 +272,7 @@ export default () => {
       <Seo
         title="VOICEVOX Nemo"
         description="プレゼンから動画作成、ナレーションまで様々なTPOに合わせて利用できる、キャラクター無しの無料中品質読み上げソフトウェア"
-        // image={shareThumb}
+        image={shareThumb}
       />
       <main className="nemo">
         <section className="section py-0">

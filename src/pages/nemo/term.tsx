@@ -3,7 +3,7 @@ import React from "react"
 import "../../components/layout.scss"
 import { Page } from "../../components/page"
 import Seo from "../../components/seo"
-import shareThumb from "../../images/landing-share-thumb.jpg"
+import shareThumb from "../../images/nemo/share-thumbnail.png"
 
 export default () => {
   const html = useStaticQuery(graphql`
