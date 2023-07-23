@@ -324,7 +324,8 @@ const ProductPage = ({ params }: PageProps) => {
                     <FontAwesomeIcon icon={faDownload} />
                   </span>
                   <span className="has-text-weight-semibold">
-                    VOICEVOX を ダウンロード
+                    <span className="is-hidden-mobile">VOICEVOX を </span>
+                    ダウンロード
                   </span>
                 </a>
               )}
