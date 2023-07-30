@@ -8,7 +8,7 @@ import "../components/layout.scss"
 import { Page } from "../components/page"
 import Seo from "../components/seo"
 import { useDetailedCharacterInfo } from "../hooks/useDetailedCharacterInfo"
-import shareThumb from "../images/dormitory/top-illusts/top-illust-005.png"
+import shareThumb from "../images/dormitory/top-illusts/top-illust-006.png"
 
 type DormitoryProps = {
   setShowingHeader: (show: boolean) => void
@@ -51,7 +51,7 @@ const Dormitory: React.FC<DormitoryProps> = ({ setShowingHeader }) => {
         <section className="section py-0">
           <div className="container is-max-desktop">
             <StaticImage
-              src="../images/dormitory/top-illusts/top-illust-005.png"
+              src="../images/dormitory/top-illusts/top-illust-006.png"
               alt="トップイラスト"
             />
           </div>
