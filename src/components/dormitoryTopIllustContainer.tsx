@@ -23,7 +23,14 @@ export default ({ id }: { id: string }) => {
     .slice()
     .sort((a, b) => a.name.localeCompare(b.name))
     .map(node => node.childImageSharp!.gatsbyImageData)
-  const illustrators = ["坂本アヒル", "490", "moiky", "のほしお", "さよなか"]
+  const illustrators = [
+    "坂本アヒル",
+    "490",
+    "moiky",
+    "のほしお",
+    "さよなか",
+    "レイア",
+  ]
   if (topIllusts.length !== illustrators.length) {
     throw new Error("イラストレーターの数とトップイラストの数が一致しません")
   }
