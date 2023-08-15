@@ -1,6 +1,6 @@
 import { graphql, useStaticQuery } from "gatsby"
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image"
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import "../components/layout.scss"
 
 export default () => {
@@ -28,12 +28,12 @@ export default () => {
   const [topIllust, setTopIllust] = useState<IGatsbyImageData>(
     topIllusts[topIllusts.length - 1]
   )
-  useEffect(() => {
-    // トップイラストを後ろ２枚からランダムに選択
-    // FIXME: なぜかリロードしても変わらない
-    const randomIndex = topIllusts.length - 1 - Math.floor(Math.random() * 2)
-    setTopIllust(topIllusts[randomIndex])
-  }, [])
+  // useEffect(() => {
+  //   // トップイラストを後ろ２枚からランダムに選択
+  //   // FIXME: なぜかリロードしても変わらない
+  //   const randomIndex = topIllusts.length - 1 - Math.floor(Math.random() * 2)
+  //   setTopIllust(topIllusts[randomIndex])
+  // }, [])
 
   return (
     <>
