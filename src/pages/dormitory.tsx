@@ -4,11 +4,12 @@ import React, { useEffect, useRef, useState } from "react"
 import DormitoryCharacterCard from "../components/dormitoryCharacterCard"
 import DormitoryEventContainer from "../components/dormitoryEventContainer"
 import DormitoryTopIllustContainer from "../components/dormitoryTopIllustContainer"
+import DormitoryTopIllustsContainer from "../components/dormitoryTopIllustsContainer"
 import "../components/layout.scss"
 import { Page } from "../components/page"
 import Seo from "../components/seo"
 import { useDetailedCharacterInfo } from "../hooks/useDetailedCharacterInfo"
-import shareThumb from "../images/dormitory/top-illusts/top-illust-006.png"
+import shareThumb from "../images/dormitory/top-illusts/top-illust-007.png"
 
 type DormitoryProps = {
   setShowingHeader: (show: boolean) => void
@@ -49,12 +50,7 @@ const Dormitory: React.FC<DormitoryProps> = ({ setShowingHeader }) => {
         </header>
 
         <section className="section py-0">
-          <div className="container is-max-desktop">
-            <StaticImage
-              src="../images/dormitory/top-illusts/top-illust-006.png"
-              alt="トップイラスト"
-            />
-          </div>
+          <DormitoryTopIllustContainer />
           <div className="container is-max-desktop has-text-centered is-size-5 py-6">
             <p>とある世界の不思議な建物、ボイボ寮。</p>
             <p>ここでは個性豊かな住民たちが暮らしています。</p>
@@ -295,7 +291,7 @@ const Dormitory: React.FC<DormitoryProps> = ({ setShowingHeader }) => {
         </section>
 
         <section className="section py-5">
-          <DormitoryTopIllustContainer id="top_illusts" />
+          <DormitoryTopIllustsContainer id="top_illusts" />
         </section>
       </div>
     </>
