@@ -12,7 +12,7 @@ function hex2rgba(hex: string, alpha = 1): [number, number, number, number] {
   return [red, green, blue, alpha]
 }
 
-function rgba2rgb(
+function rgba2rgbOnWhite(
   red: number,
   green: number,
   blue: number,
@@ -35,9 +35,10 @@ export default function CallNamePage() {
       <GatsbyImage
         image={characterInfo.bustupImage}
         alt={characterInfo.name}
+        imgStyle={{ width: "50px" }}
         style={{
           borderColor: characterInfo.color,
-          height: "50px",
+          width: "50px",
           aspectRatio: "1/1",
         }}
         objectFit="contain"
@@ -53,20 +54,37 @@ export default function CallNamePage() {
       const callName = callNameInfo[_characterKey]
       const callNameSplit = callName ? callName.split("/") : []
 
-      if (characterKey === _characterKey) return <td key={_characterKey} />
+      if (characterKey === _characterKey) {
+        return (
+          <td key={_characterKey}>
+            <span className="same">
+              {callNameInfo.me.map((part, index) => (
+                <span key={index}>
+                  {part}
+                  {index !== callNameSplit.length - 1 ? <br /> : ""}
+                </span>
+              ))}
+            </span>
+          </td>
+        )
+      }
+
+      if (callName == undefined) {
+        return (
+          <td key={_characterKey}>
+            <span className="unknown">?</span>
+          </td>
+        )
+      }
 
       return (
         <td key={_characterKey}>
-          {callName ? (
-            callNameSplit.map((part, index) => (
-              <span key={index}>
-                {part}
-                {index !== callNameSplit.length - 1 ? <br /> : ""}
-              </span>
-            ))
-          ) : (
-            <span className="unknown">?</span>
-          )}
+          {callNameSplit.map((part, index) => (
+            <span key={index}>
+              {part}
+              {index !== callNameSplit.length - 1 ? <br /> : ""}
+            </span>
+          ))}
         </td>
       )
     })
@@ -74,11 +92,21 @@ export default function CallNamePage() {
 
   return (
     <Page>
+      <section style={{ padding: "20px" }}>
+        <h1 className="title">キャラクターの呼称表</h1>
+        <p>
+          ボイボ寮のキャラクターの呼び方一覧表です。必ずしも遵守する必要はなく、自由に改変して頂いても問題ありません。
+        </p>
+      </section>
       <div className="call-name">
         <table border={1}>
           <thead>
             <tr>
-              <th className="origin"></th>
+              <th className="origin">
+                <span>誰が</span>
+                <span>誰を</span>
+                <div />
+              </th>
               {characterKeys.map(characterKey => {
                 const characterInfo = characterInfos[characterKey]
                 return (
@@ -94,28 +122,19 @@ export default function CallNamePage() {
           <tbody>
             {characterKeys.map(characterKey => {
               const characterInfo = characterInfos[characterKey]
-              const [_red, _green, _blue, _alpha] = hex2rgba(
-                characterInfo.lightColor,
-                0.5
-              )
-              const [red, green, blue] = rgba2rgb(_red, _green, _blue, _alpha)
 
-              console.log([_red, _green, _blue, _alpha], [red, green, blue])
+              // 色を半透明するとセルが重なったとき, スクロール時にセルが
+              // 透けて見えてしまうので, 白地での RGB に変換する
+              const [red, green, blue] = rgba2rgbOnWhite(
+                ...hex2rgba(characterInfo.lightColor, 0.5)
+              )
+              const backgroundColor = `rgb(${red}, ${green}, ${blue})`
 
               return (
-                <tr
-                  key={characterKey}
-                  style={{
-                    background: `rgb(${red}, ${green}, ${blue})`,
-                  }}
-                >
-                  <th
-                    style={{
-                      background: `rgb(${red}, ${green}, ${blue})`,
-                    }}
-                  >
+                <tr key={characterKey} style={{ backgroundColor }}>
+                  <th style={{ backgroundColor }}>
                     {getCharacterImage(characterKey)}
-                    {characterInfo.name}
+                    <p>{characterInfo.name}</p>
                   </th>
                   {getColumn(characterKey)}
                 </tr>

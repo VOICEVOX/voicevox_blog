@@ -844,9 +844,9 @@ $dropdown-item-active-background-color: $primary;
 
 // キャラの呼称表
 .call-name {
-  height: 90vh;
+  height: 85vh;
   width: auto;
-  margin: 20px;
+  margin: 0 20px;
   overflow-y: auto;
 
   table {
@@ -858,6 +858,12 @@ $dropdown-item-active-background-color: $primary;
     border: none;
   }
 
+  th {
+    position: sticky;
+    top: 0;
+    left: 0;
+  }
+
   th,
   td {
     height: 60px;
@@ -865,27 +871,33 @@ $dropdown-item-active-background-color: $primary;
     padding: 5px;
 
     // FIXME:
-    // `table td:not([align]), table th:not([align])` で
+    // `table td:not([align]), table th:not([align])`セレクター によって
     // text-align: inherit になっている
     text-align: center !important;
+
     vertical-align: middle;
     border: none;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    &:hover {
+      overflow: auto;
+      white-space: normal;
+      text-overflow: initial;
+    }
   }
 
-  th {
-    position: sticky;
-    top: 0;
-    left: 0;
-  }
+  thead tr {
+    th {
+      background: white;
+      border-bottom: 1px solid gray;
 
-  thead tr th {
-    background: white;
-    border-bottom: 1px solid gray;
-
-    &:first-child {
-      width: 180px;
-      z-index: 1;
-      border-right: 1px solid gray;
+      &:first-child {
+        width: 180px;
+        z-index: 1;
+        border-right: 1px solid gray;
+      }
     }
   }
 
@@ -897,26 +909,58 @@ $dropdown-item-active-background-color: $primary;
         gap: 20px;
         text-align: center;
         justify-content: flex-start;
+        align-items: center;
         border-right: 1px solid gray;
+
+        // キャラクター名
+        p {
+          width: calc(180px - 50px);
+          white-space: normal;
+          text-align: left;
+          justify-content: flex-end;
+        }
       }
     }
 
     td {
+      .same,
       .unknown {
         color: gray;
-        font-style: italic;
       }
+    }
+  }
 
-      &:empty {
-        // workaround: 斜線の描画
-        background: linear-gradient(
-          to right top,
-          transparent calc(50% - 0.5px),
-          gray 50%,
-          gray calc(50% + 0.5px),
-          transparent calc(50% + 1px)
-        );
+  .origin {
+    padding: 5px 0 0 5px;
+
+    span {
+      font-weight: normal;
+
+      &:nth-child(1) {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: 10px;
       }
+      &:nth-child(2) {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 10px;
+      }
+    }
+
+    div {
+      height: 100%;
+      width: 100%;
+      // workaround: 斜線の描画
+      background: linear-gradient(
+        to right top,
+        transparent calc(50% - 0.5px),
+        gray 50%,
+        gray calc(50% + 0.5px),
+        transparent calc(50% + 1px)
+      );
     }
   }
 }
