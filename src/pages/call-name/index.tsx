@@ -3,14 +3,25 @@ import React, { ReactElement, useContext } from "react"
 import { useDetailedCharacterInfo } from "../../hooks/useDetailedCharacterInfo"
 import { CharacterContext } from "../../contexts/context"
 import { CharacterKey } from "../../types/dormitoryCharacter"
+import { GatsbyImage } from "gatsby-plugin-image"
 
-const hex2rgba = (hex: string, alpha = 1) => {
+function hex2rgba(hex: string, alpha = 1): [number, number, number, number] {
   const match = hex.match(/\w\w/g)
-
   if (!match) throw new Error("Invalid hex")
+  const [red, green, blue] = match.map(x => parseInt(x, 16))
+  return [red, green, blue, alpha]
+}
 
-  const [r, g, b] = match.map(x => parseInt(x, 16))
-  return `rgba(${r},${g},${b},${alpha})`
+function rgba2rgb(
+  red: number,
+  green: number,
+  blue: number,
+  alpha: number
+): [number, number, number] {
+  const _red = Math.round((1 - alpha) * 255 + alpha * red)
+  const _green = Math.round((1 - alpha) * 255 + alpha * green)
+  const _blue = Math.round((1 - alpha) * 255 + alpha * blue)
+  return [_red, _green, _blue]
 }
 
 export default function CallNamePage() {
@@ -18,8 +29,21 @@ export default function CallNamePage() {
   const { characterKeys } = useContext(CharacterContext)
   console.log(characterInfos, characterKeys)
 
-  const getColumnRGB = (characterKey: CharacterKey): string =>
-    characterInfos[characterKey].lightColor
+  function getCharacterImage(characterKey: CharacterKey): ReactElement {
+    const characterInfo = characterInfos[characterKey]
+    return (
+      <GatsbyImage
+        image={characterInfo.bustupImage}
+        alt={characterInfo.name}
+        style={{
+          borderColor: characterInfo.color,
+          height: "50px",
+          aspectRatio: "1/1",
+        }}
+        objectFit="contain"
+      />
+    )
+  }
 
   function getColumn(characterKey: CharacterKey): ReactElement[] {
     return characterKeys.map(_characterKey => {
@@ -29,15 +53,20 @@ export default function CallNamePage() {
       const callName = callNameInfo[_characterKey]
       const callNameSplit = callName ? callName.split("/") : []
 
+      if (characterKey === _characterKey) return <td key={_characterKey} />
+
       return (
-        <td key={_characterKey} style={{ verticalAlign: "middle" }}>
-          {callName &&
+        <td key={_characterKey}>
+          {callName ? (
             callNameSplit.map((part, index) => (
               <span key={index}>
                 {part}
                 {index !== callNameSplit.length - 1 ? <br /> : ""}
               </span>
-            ))}
+            ))
+          ) : (
+            <span className="unknown">?</span>
+          )}
         </td>
       )
     })
@@ -45,33 +74,17 @@ export default function CallNamePage() {
 
   return (
     <Page>
-      <div
-        style={{
-          padding: "20px",
-          width: "200%",
-          overflow: "auto",
-        }}
-      >
-        <table
-          border={1}
-          style={{
-            tableLayout: "fixed",
-            width: "100%",
-            textAlign: "center",
-          }}
-        >
+      <div className="call-name">
+        <table border={1}>
           <thead>
             <tr>
-              <th></th>
+              <th className="origin"></th>
               {characterKeys.map(characterKey => {
                 const characterInfo = characterInfos[characterKey]
                 return (
-                  <th
-                    key={characterKey}
-                    style={{
-                      verticalAlign: "middle",
-                    }}
-                  >
+                  <th key={characterKey}>
+                    {getCharacterImage(characterKey)}
+                    <br />
                     {characterInfo.name}
                   </th>
                 )
@@ -81,21 +94,29 @@ export default function CallNamePage() {
           <tbody>
             {characterKeys.map(characterKey => {
               const characterInfo = characterInfos[characterKey]
+              const [_red, _green, _blue, _alpha] = hex2rgba(
+                characterInfo.lightColor,
+                0.5
+              )
+              const [red, green, blue] = rgba2rgb(_red, _green, _blue, _alpha)
+
+              console.log([_red, _green, _blue, _alpha], [red, green, blue])
+
               return (
                 <tr
                   key={characterKey}
                   style={{
-                    backgroundColor: hex2rgba(getColumnRGB(characterKey), 0.5),
+                    background: `rgb(${red}, ${green}, ${blue})`,
                   }}
                 >
-                  <td
-                    height={40}
+                  <th
                     style={{
-                      verticalAlign: "middle",
+                      background: `rgb(${red}, ${green}, ${blue})`,
                     }}
                   >
+                    {getCharacterImage(characterKey)}
                     {characterInfo.name}
-                  </td>
+                  </th>
                   {getColumn(characterKey)}
                 </tr>
               )

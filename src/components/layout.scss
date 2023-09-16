@@ -841,3 +841,82 @@ $dropdown-item-active-background-color: $primary;
     opacity: 1;
   }
 }
+
+// キャラの呼称表
+.call-name {
+  height: 90vh;
+  width: auto;
+  margin: 20px;
+  overflow-y: auto;
+
+  table {
+    width: 100%;
+    padding: 0;
+    margin: 0 auto;
+    border-collapse: separate;
+    table-layout: fixed;
+    border: none;
+  }
+
+  th,
+  td {
+    height: 60px;
+    width: 150px;
+    padding: 5px;
+
+    // FIXME:
+    // `table td:not([align]), table th:not([align])` で
+    // text-align: inherit になっている
+    text-align: center !important;
+    vertical-align: middle;
+    border: none;
+  }
+
+  th {
+    position: sticky;
+    top: 0;
+    left: 0;
+  }
+
+  thead tr th {
+    background: white;
+    border-bottom: 1px solid gray;
+
+    &:first-child {
+      width: 180px;
+      z-index: 1;
+      border-right: 1px solid gray;
+    }
+  }
+
+  tbody tr {
+    th {
+      &:first-child {
+        display: flex;
+        width: 180px;
+        gap: 20px;
+        text-align: center;
+        justify-content: flex-start;
+        border-right: 1px solid gray;
+      }
+    }
+
+    td {
+      .unknown {
+        color: gray;
+        font-style: italic;
+      }
+
+      &:empty {
+        // workaround: 斜線の描画
+        background: linear-gradient(
+          to right top,
+          transparent calc(50% - 0.5px),
+          gray 50%,
+          gray calc(50% + 0.5px),
+          transparent calc(50% + 1px)
+        );
+      }
+    }
+  }
+}
