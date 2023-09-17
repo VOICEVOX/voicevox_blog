@@ -1,9 +1,11 @@
-import { Page } from "../../components/page"
+import { Page } from "../../../components/page"
 import React, { ReactElement, useContext } from "react"
-import { useDetailedCharacterInfo } from "../../hooks/useDetailedCharacterInfo"
-import { CharacterContext } from "../../contexts/context"
-import { CharacterKey } from "../../types/dormitoryCharacter"
+import { useDetailedCharacterInfo } from "../../../hooks/useDetailedCharacterInfo"
+import { CharacterContext } from "../../../contexts/context"
+import { CharacterKey } from "../../../types/dormitoryCharacter"
 import { GatsbyImage } from "gatsby-plugin-image"
+import { Link } from "gatsby"
+import Seo from "../../../components/seo"
 
 function hex2rgba(hex: string, alpha = 1): [number, number, number, number] {
   const match = hex.match(/\w\w/g)
@@ -36,7 +38,6 @@ export default function CallNamePage() {
         alt={characterInfo.name}
         imgStyle={{ width: "50px" }}
         style={{
-          borderColor: characterInfo.color,
           width: "50px",
           aspectRatio: "1/1",
         }}
@@ -75,6 +76,13 @@ export default function CallNamePage() {
 
   return (
     <Page>
+      <Seo
+        title={`キャラクターの呼称表 | ボイボ寮 | VOICEVOX`}
+        description={
+          "ボイボ寮のキャラクターの呼び方一覧表です。必ずしも遵守する必要はなく、自由に改変して頂いても問題ありません。"
+        }
+      />
+
       <section style={{ padding: "20px" }}>
         <h1 className="title">キャラクターの呼称表</h1>
         <p>
@@ -98,8 +106,10 @@ export default function CallNamePage() {
                 const characterInfo = characterInfos[characterKey]
                 return (
                   <th key={characterKey}>
-                    {getCharacterImage(characterKey)}
-                    <p>{characterInfo.name}</p>
+                    <Link to={`/dormitory/${characterInfo.id}/`}>
+                      {getCharacterImage(characterKey)}
+                      <p>{characterInfo.name}</p>
+                    </Link>
                   </th>
                 )
               })}
@@ -113,7 +123,7 @@ export default function CallNamePage() {
               // 色を半透明するとセルが重なったとき, スクロール時にセルが
               // 透けて見えてしまうので, 白地での RGB に変換する
               const [red, green, blue] = rgba2rgbOnWhite(
-                ...hex2rgba(characterInfo.lightColor, 0.5)
+                ...hex2rgba(characterInfo.lightColor, 0.4)
               )
               const backgroundColor = `rgb(${red}, ${green}, ${blue})`
 
@@ -124,9 +134,15 @@ export default function CallNamePage() {
                       <p>{callName}</p>
                     ))}
                   </td>
-                  <th style={{ backgroundColor }}>
-                    {getCharacterImage(characterKey)}
-                    <p>{characterInfo.name}</p>
+                  <th
+                    style={{
+                      backgroundColor,
+                    }}
+                  >
+                    <Link to={`/dormitory/${characterInfo.id}/`}>
+                      {getCharacterImage(characterKey)}
+                      <p>{characterInfo.name}</p>
+                    </Link>
                   </th>
                   {getColumn(characterKey)}
                 </tr>
