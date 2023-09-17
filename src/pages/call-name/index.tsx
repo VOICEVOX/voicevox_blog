@@ -27,7 +27,6 @@ function rgba2rgbOnWhite(
 export default function CallNamePage() {
   const { characterInfos, callNameInfos } = useDetailedCharacterInfo()
   const { characterKeys } = useContext(CharacterContext)
-  console.log(characterInfos, characterKeys)
 
   function getCharacterImage(characterKey: CharacterKey): ReactElement {
     const characterInfo = characterInfos[characterKey]
@@ -47,44 +46,28 @@ export default function CallNamePage() {
   }
 
   function getColumn(characterKey: CharacterKey): ReactElement[] {
+    const callNameInfo = callNameInfos[characterKey]
+
     return characterKeys.map(_characterKey => {
-      const characterInfo = characterInfos[_characterKey]
-      const callNameInfo = callNameInfos[characterKey]
-
       const callName = callNameInfo[_characterKey]
-      const callNameSplit = callName ? callName.split("/") : []
-
-      if (characterKey === _characterKey) {
-        return (
-          <td key={_characterKey}>
-            <span className="same">
-              {callNameInfo.me.map((part, index) => (
-                <span key={index}>
-                  {part}
-                  {index !== callNameSplit.length - 1 ? <br /> : ""}
-                </span>
-              ))}
-            </span>
-          </td>
-        )
-      }
-
-      if (callName == undefined) {
-        return (
-          <td key={_characterKey}>
-            <span className="unknown">?</span>
-          </td>
-        )
-      }
 
       return (
         <td key={_characterKey}>
-          {callNameSplit.map((part, index) => (
-            <span key={index}>
-              {part}
-              {index !== callNameSplit.length - 1 ? <br /> : ""}
-            </span>
-          ))}
+          {(() => {
+            if (characterKey === _characterKey) {
+              return callNameInfo.me.map(part => (
+                <p key={part} className="me">
+                  {part}
+                </p>
+              ))
+            }
+
+            if (callName == undefined) {
+              return <p className="unknown">?</p>
+            }
+
+            return callName.split("/").map(part => <p key={part}>{part}</p>)
+          })()}
         </td>
       )
     })
@@ -102,9 +85,13 @@ export default function CallNamePage() {
         <table border={1}>
           <thead>
             <tr>
+              <th className="you">
+                <p>全員</p>
+                <p>(二人称)</p>
+              </th>
               <th className="origin">
-                <span>誰が</span>
-                <span>誰を</span>
+                <p>誰が</p>
+                <p>誰を</p>
                 <div />
               </th>
               {characterKeys.map(characterKey => {
@@ -112,8 +99,7 @@ export default function CallNamePage() {
                 return (
                   <th key={characterKey}>
                     {getCharacterImage(characterKey)}
-                    <br />
-                    {characterInfo.name}
+                    <p>{characterInfo.name}</p>
                   </th>
                 )
               })}
@@ -122,6 +108,7 @@ export default function CallNamePage() {
           <tbody>
             {characterKeys.map(characterKey => {
               const characterInfo = characterInfos[characterKey]
+              const callNameInfo = callNameInfos[characterKey]
 
               // 色を半透明するとセルが重なったとき, スクロール時にセルが
               // 透けて見えてしまうので, 白地での RGB に変換する
@@ -132,6 +119,11 @@ export default function CallNamePage() {
 
               return (
                 <tr key={characterKey} style={{ backgroundColor }}>
+                  <td className="you">
+                    {callNameInfo.you.map(callName => (
+                      <p>{callName}</p>
+                    ))}
+                  </td>
                   <th style={{ backgroundColor }}>
                     {getCharacterImage(characterKey)}
                     <p>{characterInfo.name}</p>

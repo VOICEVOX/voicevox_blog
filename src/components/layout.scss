@@ -866,7 +866,7 @@ $dropdown-item-active-background-color: $primary;
 
   th,
   td {
-    height: 60px;
+    height: 80px;
     width: 150px;
     padding: 5px;
 
@@ -877,6 +877,10 @@ $dropdown-item-active-background-color: $primary;
 
     vertical-align: middle;
     border: none;
+  }
+
+  // はみ出すときは省略して表示, ホバーで全文表示
+  td p {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -893,7 +897,11 @@ $dropdown-item-active-background-color: $primary;
       background: white;
       border-bottom: 1px solid gray;
 
-      &:first-child {
+      &.you {
+        border-right: 1px solid gray;
+      }
+
+      &.origin {
         width: 180px;
         z-index: 1;
         border-right: 1px solid gray;
@@ -902,28 +910,30 @@ $dropdown-item-active-background-color: $primary;
   }
 
   tbody tr {
-    th {
-      &:first-child {
-        display: flex;
-        width: 180px;
-        gap: 20px;
-        text-align: center;
-        justify-content: flex-start;
-        align-items: center;
-        border-right: 1px solid gray;
+    td.you {
+      border-right: 1px solid gray;
+    }
 
-        // キャラクター名
-        p {
-          width: calc(180px - 50px);
-          white-space: normal;
-          text-align: left;
-          justify-content: flex-end;
-        }
+    th {
+      display: flex;
+      width: 180px;
+      gap: 20px;
+      text-align: center;
+      justify-content: flex-start;
+      align-items: center;
+      border-right: 1px solid gray;
+
+      // キャラクター名
+      p {
+        width: calc(180px - 50px);
+        white-space: normal;
+        text-align: left;
+        justify-content: flex-end;
       }
     }
 
     td {
-      .same,
+      .me,
       .unknown {
         color: gray;
       }
@@ -931,9 +941,9 @@ $dropdown-item-active-background-color: $primary;
   }
 
   .origin {
-    padding: 5px 0 0 5px;
+    padding: 0;
 
-    span {
+    p {
       font-weight: normal;
 
       &:nth-child(1) {
