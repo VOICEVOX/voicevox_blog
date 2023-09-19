@@ -55,22 +55,34 @@ export default function CallNamePage() {
     return characterKeys.map(_characterKey => {
       const callName = callNameInfo[_characterKey]
 
+      const borderStyle: CSSProperties = {
+        borderColor: characterInfo.color,
+      }
+
       return (
-        <td key={_characterKey} style={{ borderColor: characterInfo.color }}>
+        <td key={_characterKey}>
           {(() => {
             if (characterKey === _characterKey) {
               return callNameInfo.me.map(part => (
-                <p key={part} className="me">
+                <p key={part} className="me" style={borderStyle}>
                   {part}
                 </p>
               ))
             }
 
             if (callName == undefined) {
-              return <p className="unknown">?</p>
+              return (
+                <p className="unknown" style={borderStyle}>
+                  ?
+                </p>
+              )
             }
 
-            return callName.split("/").map(part => <p key={part}>{part}</p>)
+            return callName.split("/").map(part => (
+              <p key={part} style={borderStyle}>
+                {part}
+              </p>
+            ))
           })()}
         </td>
       )
@@ -112,7 +124,13 @@ export default function CallNamePage() {
                     <th key={characterKey}>
                       <Link to={`/dormitory/${characterInfo.id}/`}>
                         {getCharacterImage(characterKey)}
-                        <p>{characterInfo.name}</p>
+                        <p
+                          style={{
+                            color: characterInfo.color,
+                          }}
+                        >
+                          {characterInfo.name}
+                        </p>
                       </Link>
                     </th>
                   )
@@ -132,7 +150,11 @@ export default function CallNamePage() {
                 const backgroundColor = `rgb(${red}, ${green}, ${blue})`
 
                 return (
-                  <tr key={characterKey} style={{ backgroundColor }}>
+                  <tr
+                    key={characterKey}
+                    id={characterInfo.id}
+                    style={{ backgroundColor }}
+                  >
                     <td className="you">
                       {callNameInfo.you.map(callName => (
                         <p>{callName}</p>
@@ -145,7 +167,13 @@ export default function CallNamePage() {
                     >
                       <Link to={`/dormitory/${characterInfo.id}/`}>
                         {getCharacterImage(characterKey)}
-                        <p>{characterInfo.name}</p>
+                        <p
+                          style={{
+                            color: characterInfo.color,
+                          }}
+                        >
+                          {characterInfo.name}
+                        </p>
                       </Link>
                     </th>
                     {getColumn(characterKey)}

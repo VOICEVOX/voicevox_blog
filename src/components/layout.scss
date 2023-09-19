@@ -897,24 +897,23 @@ $call-names-cell-width-column: 180px;
     // はみ出すときは省略して表示, ホバーで全文表示
     td {
       cursor: pointer;
+
       p {
+        height: 100%;
+        width: 100%;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-      }
 
-      &:hover {
-        border-radius: 5px;
-        border: 2px solid;
-
-        p {
+        &:hover {
+          border-radius: 5px;
+          border: 2px solid;
           overflow: auto;
           white-space: normal;
           text-overflow: initial;
         }
       }
     }
-
     thead > tr {
       th {
         background: white;
@@ -928,6 +927,12 @@ $call-names-cell-width-column: 180px;
           width: $call-names-cell-width-column;
           z-index: 1;
           border-right: $call-names-border;
+        }
+
+        &:hover {
+          a p {
+            text-decoration: underline;
+          }
         }
 
         @include mobile {
@@ -960,9 +965,14 @@ $call-names-cell-width-column: 180px;
           }
         }
 
+        &:hover {
+          a p {
+            text-decoration: underline;
+          }
+        }
+
         @include mobile {
           width: 100px;
-
           a {
             justify-content: center;
             p {
@@ -983,11 +993,14 @@ $call-names-cell-width-column: 180px;
           &.me,
           &.unknown {
             color: gray;
+          }
+        }
 
-            &.unknown {
-              user-select: none;
-              cursor: not-allowed;
-            }
+        &:has(.unknown) {
+          cursor: not-allowed;
+
+          p {
+            user-select: none;
           }
         }
       }
