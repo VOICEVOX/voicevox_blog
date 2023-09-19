@@ -75,7 +75,7 @@ export default function CallNamePage() {
   }
 
   return (
-    <Page>
+    <Page showingHeaderOnTop={true}>
       <Seo
         title={`キャラクターの呼称表 | ボイボ寮 | VOICEVOX`}
         description={
@@ -83,73 +83,75 @@ export default function CallNamePage() {
         }
       />
 
-      <section style={{ padding: "20px" }}>
-        <h1 className="title">キャラクターの呼称表</h1>
-        <p>
-          ボイボ寮のキャラクターの呼び方一覧表です。必ずしも遵守する必要はなく、自由に改変して頂いても問題ありません。
-        </p>
-      </section>
-      <div className="call-name">
-        <table border={1}>
-          <thead>
-            <tr>
-              <th className="you">
-                <p>全員</p>
-                <p>(二人称)</p>
-              </th>
-              <th className="origin">
-                <p>誰が</p>
-                <p>誰を</p>
-                <div />
-              </th>
+      <div className="call-names-wrapper">
+        <section>
+          <h1 className="title">キャラクターの呼称表</h1>
+          <p>
+            ボイボ寮のキャラクターの呼び方一覧表です。必ずしも遵守する必要はなく、自由に改変して頂いても問題ありません。
+          </p>
+        </section>
+        <div className="call-names">
+          <table border={1}>
+            <thead>
+              <tr>
+                <th className="you">
+                  <p>全員</p>
+                  <p>(二人称)</p>
+                </th>
+                <th className="origin">
+                  <p>誰が</p>
+                  <p>誰を</p>
+                  <div />
+                </th>
+                {characterKeys.map(characterKey => {
+                  const characterInfo = characterInfos[characterKey]
+                  return (
+                    <th key={characterKey}>
+                      <Link to={`/dormitory/${characterInfo.id}/`}>
+                        {getCharacterImage(characterKey)}
+                        <p>{characterInfo.name}</p>
+                      </Link>
+                    </th>
+                  )
+                })}
+              </tr>
+            </thead>
+            <tbody>
               {characterKeys.map(characterKey => {
                 const characterInfo = characterInfos[characterKey]
+                const callNameInfo = callNameInfos[characterKey]
+
+                // 色を半透明するとセルが重なったとき, スクロール時にセルが
+                // 透けて見えてしまうので, 白地での RGB に変換する
+                const [red, green, blue] = rgba2rgbOnWhite(
+                  ...hex2rgba(characterInfo.lightColor, 0.4)
+                )
+                const backgroundColor = `rgb(${red}, ${green}, ${blue})`
+
                 return (
-                  <th key={characterKey}>
-                    <Link to={`/dormitory/${characterInfo.id}/`}>
-                      {getCharacterImage(characterKey)}
-                      <p>{characterInfo.name}</p>
-                    </Link>
-                  </th>
+                  <tr key={characterKey} style={{ backgroundColor }}>
+                    <td className="you">
+                      {callNameInfo.you.map(callName => (
+                        <p>{callName}</p>
+                      ))}
+                    </td>
+                    <th
+                      style={{
+                        backgroundColor,
+                      }}
+                    >
+                      <Link to={`/dormitory/${characterInfo.id}/`}>
+                        {getCharacterImage(characterKey)}
+                        <p>{characterInfo.name}</p>
+                      </Link>
+                    </th>
+                    {getColumn(characterKey)}
+                  </tr>
                 )
               })}
-            </tr>
-          </thead>
-          <tbody>
-            {characterKeys.map(characterKey => {
-              const characterInfo = characterInfos[characterKey]
-              const callNameInfo = callNameInfos[characterKey]
-
-              // 色を半透明するとセルが重なったとき, スクロール時にセルが
-              // 透けて見えてしまうので, 白地での RGB に変換する
-              const [red, green, blue] = rgba2rgbOnWhite(
-                ...hex2rgba(characterInfo.lightColor, 0.4)
-              )
-              const backgroundColor = `rgb(${red}, ${green}, ${blue})`
-
-              return (
-                <tr key={characterKey} style={{ backgroundColor }}>
-                  <td className="you">
-                    {callNameInfo.you.map(callName => (
-                      <p>{callName}</p>
-                    ))}
-                  </td>
-                  <th
-                    style={{
-                      backgroundColor,
-                    }}
-                  >
-                    <Link to={`/dormitory/${characterInfo.id}/`}>
-                      {getCharacterImage(characterKey)}
-                      <p>{characterInfo.name}</p>
-                    </Link>
-                  </th>
-                  {getColumn(characterKey)}
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div>
       </div>
     </Page>
   )
