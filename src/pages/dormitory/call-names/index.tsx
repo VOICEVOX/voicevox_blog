@@ -1,11 +1,13 @@
 import { Page } from "../../../components/page"
-import React, { ReactElement, useContext } from "react"
+import React, { ReactElement, useContext, CSSProperties, useRef } from "react"
 import { useDetailedCharacterInfo } from "../../../hooks/useDetailedCharacterInfo"
 import { CharacterContext } from "../../../contexts/context"
 import { CharacterKey } from "../../../types/dormitoryCharacter"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 import Seo from "../../../components/seo"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCopy } from "@fortawesome/free-solid-svg-icons"
 
 function hex2rgba(hex: string, alpha = 1): [number, number, number, number] {
   const match = hex.match(/\w\w/g)
@@ -48,12 +50,13 @@ export default function CallNamePage() {
 
   function getColumn(characterKey: CharacterKey): ReactElement[] {
     const callNameInfo = callNameInfos[characterKey]
+    const characterInfo = characterInfos[characterKey]
 
     return characterKeys.map(_characterKey => {
       const callName = callNameInfo[_characterKey]
 
       return (
-        <td key={_characterKey}>
+        <td key={_characterKey} style={{ borderColor: characterInfo.color }}>
           {(() => {
             if (characterKey === _characterKey) {
               return callNameInfo.me.map(part => (

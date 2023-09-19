@@ -895,15 +895,23 @@ $call-names-cell-width-column: 180px;
     }
 
     // はみ出すときは省略して表示, ホバーで全文表示
-    td > p {
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
+    td {
+      cursor: pointer;
+      p {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
 
       &:hover {
-        overflow: auto;
-        white-space: normal;
-        text-overflow: initial;
+        border-radius: 5px;
+        border: 2px solid;
+
+        p {
+          overflow: auto;
+          white-space: normal;
+          text-overflow: initial;
+        }
       }
     }
 
