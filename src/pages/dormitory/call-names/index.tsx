@@ -28,7 +28,7 @@ function rgba2rgbOnWhite(
   return [_red, _green, _blue]
 }
 
-export default function CallNamePage() {
+export default function CallNamesPage() {
   const { characterInfos, callNameInfos } = useDetailedCharacterInfo()
   const { characterKeys } = useContext(CharacterContext)
 
@@ -48,45 +48,58 @@ export default function CallNamePage() {
     )
   }
 
-  function getColumn(characterKey: CharacterKey): ReactElement[] {
+  function getColumn(characterKey: CharacterKey): ReactElement {
     const callNameInfo = callNameInfos[characterKey]
     const characterInfo = characterInfos[characterKey]
 
-    return characterKeys.map(_characterKey => {
-      const callName = callNameInfo[_characterKey]
+    const outlineStyle: CSSProperties = {
+      outlineColor: characterInfo.color,
+    }
 
-      const borderStyle: CSSProperties = {
-        borderColor: characterInfo.color,
-      }
+    return (
+      <>
+        {characterKeys.map(_characterKey => {
+          const callName = callNameInfo[_characterKey]
 
-      return (
-        <td key={_characterKey}>
-          {(() => {
-            if (characterKey === _characterKey) {
-              return callNameInfo.me.map(part => (
-                <p key={part} className="me" style={borderStyle}>
-                  {part}
-                </p>
-              ))
-            }
+          return (
+            <td key={_characterKey}>
+              <div>
+                {(() => {
+                  if (characterKey === _characterKey) {
+                    return callNameInfo.me.map(part => (
+                      <p style={outlineStyle} key={part} className="me">
+                        {part}
+                      </p>
+                    ))
+                  }
 
-            if (callName == undefined) {
-              return (
-                <p className="unknown" style={borderStyle}>
-                  ?
-                </p>
-              )
-            }
+                  if (callName == undefined) {
+                    return (
+                      <p style={outlineStyle} className="unknown">
+                        ?
+                      </p>
+                    )
+                  }
 
-            return callName.split("/").map(part => (
-              <p key={part} style={borderStyle}>
-                {part}
-              </p>
-            ))
-          })()}
+                  return callName.split("/").map(part => (
+                    <p style={outlineStyle} key={part}>
+                      {part}
+                    </p>
+                  ))
+                })()}
+              </div>
+            </td>
+          )
+        })}
+        <td className="you">
+          <div>
+            {callNameInfo.you.map(part => (
+              <p style={outlineStyle}>{part}</p>
+            ))}
+          </div>
         </td>
-      )
-    })
+      </>
+    )
   }
 
   return (
@@ -109,15 +122,12 @@ export default function CallNamePage() {
           <table border={1}>
             <thead>
               <tr>
-                <th className="you">
-                  <p>全員</p>
-                  <p>(二人称)</p>
-                </th>
                 <th className="origin">
                   <p>誰が</p>
                   <p>誰を</p>
                   <div />
                 </th>
+
                 {characterKeys.map(characterKey => {
                   const characterInfo = characterInfos[characterKey]
                   return (
@@ -135,12 +145,15 @@ export default function CallNamePage() {
                     </th>
                   )
                 })}
+                <th className="you">
+                  <p>全員</p>
+                  <p>(二人称)</p>
+                </th>
               </tr>
             </thead>
             <tbody>
               {characterKeys.map(characterKey => {
                 const characterInfo = characterInfos[characterKey]
-                const callNameInfo = callNameInfos[characterKey]
 
                 // 色を半透明するとセルが重なったとき, スクロール時にセルが
                 // 透けて見えてしまうので, 白地での RGB に変換する
@@ -155,11 +168,6 @@ export default function CallNamePage() {
                     id={characterInfo.id}
                     style={{ backgroundColor }}
                   >
-                    <td className="you">
-                      {callNameInfo.you.map(callName => (
-                        <p>{callName}</p>
-                      ))}
-                    </td>
                     <th
                       style={{
                         backgroundColor,

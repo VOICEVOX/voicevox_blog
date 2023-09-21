@@ -892,36 +892,44 @@ $call-names-cell-width-column: 180px;
 
       vertical-align: middle;
       border: none;
+
+      &.you {
+        border-left: $call-names-border;
+      }
     }
 
     // はみ出すときは省略して表示, ホバーで全文表示
     td {
       cursor: pointer;
 
-      p {
+      div {
         height: 100%;
         width: 100%;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
 
-        &:hover {
-          border-radius: 5px;
-          border: 2px solid;
-          overflow: auto;
-          white-space: normal;
-          text-overflow: initial;
+        display: flex;
+        flex-direction: column;
+
+        p {
+          height: 100%;
+          width: 100%;
+
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+
+          &:hover {
+            // NOTE: ちらつくので border ではなく outline
+            outline: 2px solid;
+            border-radius: 5px;
+          }
         }
       }
     }
+
     thead > tr {
       th {
         background: white;
         border-bottom: $call-names-border;
-
-        &.you {
-          border-right: $call-names-border;
-        }
 
         &.origin {
           width: $call-names-cell-width-column;
@@ -929,9 +937,18 @@ $call-names-cell-width-column: 180px;
           border-right: $call-names-border;
         }
 
-        &:hover {
-          a p {
-            text-decoration: underline;
+        a {
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+          text-align: center;
+          justify-content: center;
+          align-items: center;
+
+          p {
+            &:hover {
+              text-decoration: underline;
+            }
           }
         }
 
@@ -954,7 +971,6 @@ $call-names-cell-width-column: 180px;
           text-align: center;
           justify-content: flex-start;
           align-items: center;
-          cursor: pointer;
 
           // キャラクター名
           p {
@@ -983,10 +999,6 @@ $call-names-cell-width-column: 180px;
       }
 
       td {
-        &.you {
-          border-right: $call-names-border;
-        }
-
         p {
           user-select: all;
 
@@ -1000,8 +1012,13 @@ $call-names-cell-width-column: 180px;
           cursor: not-allowed;
 
           p {
+            outline: none;
             user-select: none;
           }
+        }
+
+        &:has(.me) {
+          background: white;
         }
       }
     }
