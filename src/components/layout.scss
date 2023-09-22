@@ -913,6 +913,7 @@ $call-names-cell-width-column: 180px;
           height: 100%;
           width: 100%;
 
+          // 当たり判定を大きくしつつ中央寄せ
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -974,7 +975,7 @@ $call-names-cell-width-column: 180px;
 
           // キャラクター名
           p {
-            width: calc($call-names-cell-width-column - 50px);
+            width: calc($call-names-cell-width-column - 50px /* 画像サイズ */);
             white-space: normal;
             text-align: left;
             justify-content: flex-end;
@@ -1009,7 +1010,7 @@ $call-names-cell-width-column: 180px;
         }
 
         &:has(.unknown) {
-          cursor: not-allowed;
+          cursor: default;
 
           p {
             outline: none;

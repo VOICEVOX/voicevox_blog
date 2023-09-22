@@ -147,7 +147,7 @@ export default function CallNamesPage() {
                 })}
                 <th className="you">
                   <p>全員</p>
-                  <p>(二人称)</p>
+                  <p>（二人称）</p>
                 </th>
               </tr>
             </thead>
