@@ -849,6 +849,9 @@ $call-names-cell-width-column: 180px;
 
 .call-names-wrapper {
   // sticky にするために明示的に高さを指定
+  //  → ほかに overflow の指定などでも sticky にできるが, 親レイアウトの
+  //    Page コンポーネントのフッターやスタイルを変更すると他ページに影響が出るかもなので,
+  //    画面が埋まるように高さを指定した.
   height: calc(100vh - 52px /* navbar の高さ */);
   overflow: auto;
 
@@ -898,7 +901,6 @@ $call-names-cell-width-column: 180px;
       }
     }
 
-    // はみ出すときは省略して表示, ホバーで全文表示
     td {
       cursor: pointer;
 
@@ -946,8 +948,8 @@ $call-names-cell-width-column: 180px;
           justify-content: center;
           align-items: center;
 
-          p {
-            &:hover {
+          &:hover {
+            p {
               text-decoration: underline;
             }
           }

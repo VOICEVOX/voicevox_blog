@@ -3,11 +3,9 @@ import React, { ReactElement, useContext, CSSProperties, useRef } from "react"
 import { useDetailedCharacterInfo } from "../../../hooks/useDetailedCharacterInfo"
 import { CharacterContext } from "../../../contexts/context"
 import { CharacterKey } from "../../../types/dormitoryCharacter"
-import { GatsbyImage } from "gatsby-plugin-image"
+import { getSrc, getSrcSet } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 import Seo from "../../../components/seo"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faCopy } from "@fortawesome/free-solid-svg-icons"
 
 function hex2rgba(hex: string, alpha = 1): [number, number, number, number] {
   const match = hex.match(/\w\w/g)
@@ -35,15 +33,11 @@ export default function CallNamesPage() {
   function getCharacterImage(characterKey: CharacterKey): ReactElement {
     const characterInfo = characterInfos[characterKey]
     return (
-      <GatsbyImage
-        image={characterInfo.bustupImage}
+      <img
+        src={getSrc(characterInfo.bustupImage)}
+        srcSet={getSrcSet(characterInfo.bustupImage)}
         alt={characterInfo.name}
-        imgStyle={{ width: "50px" }}
-        style={{
-          width: "50px",
-          aspectRatio: "1/1",
-        }}
-        objectFit="contain"
+        style={{ width: "50px" }}
       />
     )
   }
@@ -94,7 +88,9 @@ export default function CallNamesPage() {
         <td className="you">
           <div>
             {callNameInfo.you.map(part => (
-              <p style={outlineStyle}>{part}</p>
+              <p style={outlineStyle} key={part}>
+                {part}
+              </p>
             ))}
           </div>
         </td>
