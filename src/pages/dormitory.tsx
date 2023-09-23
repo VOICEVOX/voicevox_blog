@@ -272,7 +272,7 @@ const Dormitory: React.FC<DormitoryProps> = ({ setShowingHeader }) => {
                   className="button is-normal is-rounded"
                   type="button"
                 >
-                  <span>キャラクター呼称表</span>
+                  <span>キャラクターの呼称表</span>
                 </button>
               </Link>
             </div>
