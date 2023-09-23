@@ -856,6 +856,7 @@ $call-names-cell-width-column: 190px;
   overflow: auto;
 
   section {
+    z-index: -1; // スクロール時にタイトルと説明が隠れるように
     position: sticky;
     top: 0;
     left: 0;
