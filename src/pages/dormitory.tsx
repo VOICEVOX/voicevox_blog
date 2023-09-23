@@ -265,6 +265,17 @@ const Dormitory: React.FC<DormitoryProps> = ({ setShowingHeader }) => {
             <p className="is-size-6">
               必ずしも遵守する必要はなく、自由に改変して頂いても問題ありません。
             </p>
+            <div style={{ padding: "20px" }}>
+              <Link to="/dormitory/call-names">
+                <button
+                  onClick={() => {}}
+                  className="button is-normal is-rounded"
+                  type="button"
+                >
+                  <span>キャラクター呼称表</span>
+                </button>
+              </Link>
+            </div>
           </div>
 
           <div className="container has-text-centered py-5 is-flex is-flex-direction-column">

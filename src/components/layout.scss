@@ -845,13 +845,13 @@ $dropdown-item-active-background-color: $primary;
 $call-names-border: 1px solid gray;
 $call-names-cell-height: 80px;
 $call-names-cell-width: 150px;
-$call-names-cell-width-column: 180px;
+$call-names-cell-width-column: 190px;
 
 .call-names-wrapper {
   // sticky にするために明示的に高さを指定
   //  → ほかに overflow の指定などでも sticky にできるが, 親レイアウトの
-  //    Page コンポーネントのフッターやスタイルを変更すると他ページに影響が出るかもなので,
-  //    画面が埋まるように高さを指定した.
+  //    Page コンポーネントのフッターやスタイルを変更すると他ページに影響が
+  //    出る可能性があるので, 画面が埋まるように高さを指定した.
   height: calc(100vh - 52px /* navbar の高さ */);
   overflow: auto;
 
@@ -967,17 +967,17 @@ $call-names-cell-width-column: 180px;
       th {
         border-right: $call-names-border;
         width: $call-names-cell-width-column;
+        padding: 0 10px;
 
         a {
           display: flex;
-          gap: 20px;
+          gap: 10px;
           text-align: center;
           justify-content: flex-start;
           align-items: center;
 
           // キャラクター名
           p {
-            width: calc($call-names-cell-width-column - 50px /* 画像サイズ */);
             white-space: normal;
             text-align: left;
             justify-content: flex-end;
