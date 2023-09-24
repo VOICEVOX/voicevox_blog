@@ -267,11 +267,7 @@ const Dormitory: React.FC<DormitoryProps> = ({ setShowingHeader }) => {
             </p>
             <div style={{ padding: "20px" }}>
               <Link to="/dormitory/call-names">
-                <button
-                  onClick={() => {}}
-                  className="button is-normal is-rounded"
-                  type="button"
-                >
+                <button className="button is-normal is-rounded" type="button">
                   <span>キャラクターの呼称表</span>
                 </button>
               </Link>
