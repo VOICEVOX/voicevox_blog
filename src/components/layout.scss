@@ -849,28 +849,28 @@ $call-names-cell-width-column: 190px;
 
 .call-names-wrapper {
   // sticky にするために明示的に高さを指定
-  //  → ほかに overflow の指定などでも sticky にできるが, 親レイアウトの
+  //  → ほかに overflow の指定などでも sticky にできるが、親レイアウトの
   //    Page コンポーネントのフッターやスタイルを変更すると他ページに影響が
-  //    出る可能性があるので, 画面が埋まるように高さを指定した.
-  height: calc(100vh - 52px /* navbar の高さ */);
+  //    出る可能性があるので、画面が埋まるように高さを指定した。
+  // FIXME: 二重スクロールをなくす
+  height: calc(100vh - $navbar-height);
   overflow: auto;
 
-  section {
-    z-index: -1; // スクロール時にタイトルと説明が隠れるように
+  .top-explain {
     position: sticky;
-    top: 0;
-    left: 0;
-    height: max-content;
-    padding: 20px;
+    left: 0; // 横スクロール時についてこないように
   }
 
   // キャラの呼称表
   .call-names {
-    width: auto;
+    img {
+      width: 3rem;
+      aspect-ratio: 1 / 1;
+    }
 
     table {
       width: 100%;
-      padding: 0;
+      @extend .p-0;
       margin: 0 auto;
       border-collapse: separate;
       table-layout: fixed;
@@ -887,7 +887,7 @@ $call-names-cell-width-column: 190px;
     td {
       height: $call-names-cell-height;
       width: $call-names-cell-width;
-      padding: 5px;
+      @extend .p-1;
 
       // FIXME:
       // `table td:not([align]), table th:not([align])`セレクター によって
@@ -924,17 +924,19 @@ $call-names-cell-width-column: 190px;
           &:hover {
             // NOTE: ちらつくので border ではなく outline
             outline: 2px solid;
-            border-radius: 5px;
+            border-radius: $radius;
           }
         }
       }
     }
 
     thead > tr {
+      // 一番上の行
       th {
         background: white;
         border-bottom: $call-names-border;
 
+        // 左上のセル
         &.origin {
           width: $call-names-cell-width-column;
           z-index: 1;
@@ -944,7 +946,7 @@ $call-names-cell-width-column: 190px;
         a {
           display: flex;
           flex-direction: column;
-          gap: 5px;
+          gap: 0.25rem; // = padding size
           text-align: center;
           justify-content: center;
           align-items: center;
@@ -958,21 +960,22 @@ $call-names-cell-width-column: 190px;
 
         @include mobile {
           &.origin {
-            width: 100px;
+            width: 6rem;
           }
         }
       }
     }
 
     tbody > tr {
+      // 左端のキャラクター
       th {
         border-right: $call-names-border;
         width: $call-names-cell-width-column;
-        padding: 0 10px;
+        @extend .px-2;
 
         a {
           display: flex;
-          gap: 10px;
+          gap: 0.75rem;
           text-align: center;
           justify-content: flex-start;
           align-items: center;
@@ -992,7 +995,7 @@ $call-names-cell-width-column: 190px;
         }
 
         @include mobile {
-          width: 100px;
+          width: 6rem;
           a {
             justify-content: center;
             p {
@@ -1028,7 +1031,7 @@ $call-names-cell-width-column: 190px;
     }
 
     .origin {
-      padding: 0;
+      @extend .p-0;
 
       p {
         font-weight: normal;
@@ -1037,13 +1040,13 @@ $call-names-cell-width-column: 190px;
           position: absolute;
           bottom: 0;
           left: 0;
-          padding: 10px;
+          @extend .p-2;
         }
         &:nth-child(2) {
           position: absolute;
           top: 0;
           right: 0;
-          padding: 10px;
+          @extend .p-2;
         }
       }
 
