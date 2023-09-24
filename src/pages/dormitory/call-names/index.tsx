@@ -37,7 +37,10 @@ export default function CallNamesPage() {
         src={getSrc(characterInfo.bustupImage)}
         srcSet={getSrcSet(characterInfo.bustupImage)}
         alt={characterInfo.name}
-        style={{ width: "50px" }}
+        style={{
+          width: "50px",
+          aspectRatio: "1 / 1",
+        }}
       />
     )
   }
