@@ -1,11 +1,13 @@
-import { Page } from "../../../components/page"
-import React, { ReactElement, useContext, CSSProperties, useRef } from "react"
-import { useDetailedCharacterInfo } from "../../../hooks/useDetailedCharacterInfo"
-import { CharacterContext } from "../../../contexts/context"
-import { CharacterKey } from "../../../types/dormitoryCharacter"
-import { getSrc, getSrcSet } from "gatsby-plugin-image"
 import { Link } from "gatsby"
+import { getSrc, getSrcSet } from "gatsby-plugin-image"
+import React, { CSSProperties, ReactElement, useContext } from "react"
+import { Page } from "../../../components/page"
 import Seo from "../../../components/seo"
+import { CharacterContext } from "../../../contexts/context"
+import { useDetailedCharacterInfo } from "../../../hooks/useDetailedCharacterInfo"
+import { CharacterKey } from "../../../types/dormitoryCharacter"
+
+import { DormitoryExplainComponent } from "../../dormitory"
 
 function hex2rgba(hex: string, alpha = 1): [number, number, number, number] {
   const match = hex.match(/\w\w/g)
@@ -37,10 +39,6 @@ export default function CallNamesPage() {
         src={getSrc(characterInfo.bustupImage)}
         srcSet={getSrcSet(characterInfo.bustupImage)}
         alt={characterInfo.name}
-        style={{
-          width: "50px",
-          aspectRatio: "1 / 1",
-        }}
       />
     )
   }
@@ -104,20 +102,28 @@ export default function CallNamesPage() {
   return (
     <Page showingHeaderOnTop={true}>
       <Seo
-        title={`キャラクターの呼称表 | ボイボ寮 | VOICEVOX`}
+        title={`ボイボ寮キャラクターの呼称表 | ボイボ寮 | VOICEVOX`}
         description={
-          "ボイボ寮のキャラクターの呼び方一覧表です。必ずしも遵守する必要はなく、自由に改変して頂いても問題ありません。"
+          "ボイボ寮キャラクターの呼び方一覧表です。必ずしも遵守する必要はなく、自由に改変して頂いても問題ありません。"
         }
       />
 
       <div className="call-names-wrapper">
-        <section>
-          <h1 className="title">キャラクターの呼称表</h1>
-          <p>
-            ボイボ寮のキャラクターの呼び方一覧表です。必ずしも遵守する必要はなく、自由に改変して頂いても問題ありません。
-          </p>
+        <section className="section top-explain">
+          <div className="container has-text-centered">
+            <h1 className="title">ボイボ寮キャラクターの呼称表</h1>
+            <p>
+              <Link
+                to="/dormitory/"
+                className="has-text-weight-bold is-underlined"
+              >
+                ボイボ寮
+              </Link>
+              キャラクターの呼び方一覧表です。必ずしも遵守する必要はなく、自由に改変して頂いても問題ありません。
+            </p>
+          </div>
         </section>
-        <div className="call-names">
+        <main className="call-names">
           <table border={1}>
             <thead>
               <tr>
@@ -162,6 +168,7 @@ export default function CallNamesPage() {
                 const backgroundColor = `rgb(${red}, ${green}, ${blue})`
 
                 return (
+                  // FIXME: #id でキャラクターに直接アクセスするとスクロールがずれるのを直す
                   <tr
                     key={characterKey}
                     id={characterInfo.id}
@@ -189,8 +196,10 @@ export default function CallNamesPage() {
               })}
             </tbody>
           </table>
-        </div>
+        </main>
       </div>
+
+      <DormitoryExplainComponent showingDormitoryPageButton />
     </Page>
   )
 }

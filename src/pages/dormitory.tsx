@@ -57,7 +57,7 @@ const Dormitory: React.FC<DormitoryProps> = ({ setShowingHeader }) => {
           </div>
         </section>
 
-        <main className="section py-0">
+        <main className="section pt-0 pb-5">
           <div className="container character-container is-max-desktop pt-1 pb-6">
             <div className="columns is-multiline">
               <div
@@ -252,46 +252,24 @@ const Dormitory: React.FC<DormitoryProps> = ({ setShowingHeader }) => {
                 </div>
               </div>
             </div>
-          </div>
-        </main>
 
-        <section className="section py-5">
-          <div className="container has-text-centered py-5 is-flex is-flex-direction-column">
-            <h2 className="title is-4">ボイボ寮とは</h2>
-            <p className="is-size-6">
-              VOICEVOX
-              のキャラたちの設定があると動画制作の参考になるかと思って用意した世界観です。
-            </p>
-            <p className="is-size-6">
-              必ずしも遵守する必要はなく、自由に改変して頂いても問題ありません。
-            </p>
-            <div style={{ padding: "20px" }}>
-              <Link to="/dormitory/call-names">
-                <button className="button is-normal is-rounded" type="button">
-                  <span>キャラクターの呼称表</span>
-                </button>
+            <hr />
+
+            <div className="has-text-centered pt-2 pb-0">
+              <h2 className="title is-4">関連コンテンツ</h2>
+              <Link
+                to="/dormitory/call-names/"
+                className="button is-normal is-rounded"
+                type="button"
+                role={"button"}
+              >
+                <span>キャラクターの呼称表</span>
               </Link>
             </div>
           </div>
+        </main>
 
-          <div className="container has-text-centered py-5 is-flex is-flex-direction-column">
-            <h2 className="title is-4">VOICEVOX とは</h2>
-            <p className="is-size-6">
-              無料で使える中品質なテキスト読み上げソフトウェアです。
-            </p>
-            <p className="is-size-6">
-              商用・非商用問わず無料で、イントネーションの詳細な調整ができることが特徴です。
-            </p>
-            <Link
-              to={"/"}
-              className="button is-align-self-center mt-5 is-primary is-rounded"
-              type="button"
-              role={"button"}
-            >
-              <span className="has-text-weight-semibold">ダウンロード</span>
-            </Link>
-          </div>
-        </section>
+        <DormitoryExplainComponent />
 
         <section className="section py-5">
           <DormitoryEventContainer id="events" />
@@ -302,6 +280,56 @@ const Dormitory: React.FC<DormitoryProps> = ({ setShowingHeader }) => {
         </section>
       </div>
     </>
+  )
+}
+
+/**
+ * ボイボ寮とVOICEVOXをちょっとだけ紹介するコンポーネント
+ */
+export const DormitoryExplainComponent: React.FC<{
+  showingDormitoryPageButton?: boolean
+}> = ({ showingDormitoryPageButton = false }) => {
+  return (
+    <section className="section py-5">
+      <div className="container has-text-centered py-5 is-flex is-flex-direction-column">
+        <h2 className="title is-4">ボイボ寮とは</h2>
+        <p className="is-size-6">
+          VOICEVOX
+          のキャラたちの設定があると動画制作の参考になるかと思って用意した世界観です。
+        </p>
+        <p className="is-size-6">
+          必ずしも遵守する必要はなく、自由に改変して頂いても問題ありません。
+        </p>
+        {showingDormitoryPageButton && (
+          <Link
+            to="/dormitory/"
+            className="button is-align-self-center mt-5 is-normal is-rounded"
+            type="button"
+            role={"button"}
+          >
+            <span>ボイボ寮ページへ</span>
+          </Link>
+        )}
+      </div>
+
+      <div className="container has-text-centered py-5 is-flex is-flex-direction-column">
+        <h2 className="title is-4">VOICEVOX とは</h2>
+        <p className="is-size-6">
+          無料で使える中品質なテキスト読み上げソフトウェアです。
+        </p>
+        <p className="is-size-6">
+          商用・非商用問わず無料で、イントネーションの詳細な調整ができることが特徴です。
+        </p>
+        <Link
+          to={"/"}
+          className="button is-align-self-center mt-5 is-primary is-rounded"
+          type="button"
+          role={"button"}
+        >
+          <span className="has-text-weight-semibold">ダウンロード</span>
+        </Link>
+      </div>
+    </section>
   )
 }
 
