@@ -1,13 +1,21 @@
 import { Link } from "gatsby"
 import { getSrc, getSrcSet } from "gatsby-plugin-image"
-import React, { CSSProperties, ReactElement, useContext } from "react"
+import React, {
+  CSSProperties,
+  ReactElement,
+  useContext,
+  MouseEvent,
+  useState,
+  useEffect,
+} from "react"
 import { Page } from "../../../components/page"
 import Seo from "../../../components/seo"
 import { CharacterContext } from "../../../contexts/context"
 import { useDetailedCharacterInfo } from "../../../hooks/useDetailedCharacterInfo"
 import { CharacterKey } from "../../../types/dormitoryCharacter"
-
 import { DormitoryExplainComponent } from "../../dormitory"
+import { faCopy, faCheck } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 function hex2rgba(hex: string, alpha = 1): [number, number, number, number] {
   const match = hex.match(/\w\w/g)
@@ -32,6 +40,26 @@ export default function CallNamesPage() {
   const { characterInfos, callNameInfos } = useDetailedCharacterInfo()
   const { characterKeys } = useContext(CharacterContext)
 
+  const [selectedCallName, setSelectedCallName] = useState<{
+    characterKey: CharacterKey
+    callName: string
+  }>()
+
+  useEffect(() => {
+    if (selectedCallName == null) return
+
+    navigator.clipboard.writeText(selectedCallName.callName)
+
+    const timer = setTimeout(() => {
+      setSelectedCallName(undefined)
+    }, 3000)
+
+    // クリーンアップ; 他のセルのクリックでタイマークリア
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [selectedCallName])
+
   function getCharacterImage(characterKey: CharacterKey): ReactElement {
     const characterInfo = characterInfos[characterKey]
     return (
@@ -51,6 +79,43 @@ export default function CallNamesPage() {
       outlineColor: characterInfo.color,
     }
 
+    function copyToClipboard(event: MouseEvent<HTMLInputElement>): void {
+      const callName = event.currentTarget.innerText
+      console.log(callName)
+
+      setSelectedCallName({
+        characterKey,
+        callName,
+      })
+    }
+
+    function getCell(
+      characterKey: string,
+      callName: string,
+      externalClassName?: string
+    ): ReactElement {
+      const isSelected =
+        selectedCallName?.characterKey === characterKey &&
+        selectedCallName?.callName === callName
+
+      return (
+        <p
+          key={callName}
+          className={externalClassName}
+          onClick={copyToClipboard}
+          style={outlineStyle}
+        >
+          <span className={`icon ${isSelected ? "selected" : ""}`}>
+            <FontAwesomeIcon
+              icon={isSelected ? faCheck : faCopy}
+              color={characterInfo.color}
+            />
+          </span>
+          {callName}
+        </p>
+      )
+    }
+
     return (
       <>
         {characterKeys.map(_characterKey => {
@@ -61,39 +126,29 @@ export default function CallNamesPage() {
               <div>
                 {(() => {
                   if (characterKey === _characterKey) {
-                    return callNameInfo.me.map(part => (
-                      <p style={outlineStyle} key={part} className="me">
-                        {part}
-                      </p>
-                    ))
+                    return callNameInfo.me.map(part =>
+                      getCell(characterKey, part, "me")
+                    )
                   }
 
                   if (callName == undefined) {
                     return (
-                      <p style={outlineStyle} className="unknown">
+                      <p className="unknown" style={outlineStyle}>
                         ?
                       </p>
                     )
                   }
 
-                  return callName.split("/").map(part => (
-                    <p style={outlineStyle} key={part}>
-                      {part}
-                    </p>
-                  ))
+                  return callName
+                    .split("/")
+                    .map(part => getCell(characterKey, part))
                 })()}
               </div>
             </td>
           )
         })}
         <td className="you">
-          <div>
-            {callNameInfo.you.map(part => (
-              <p style={outlineStyle} key={part}>
-                {part}
-              </p>
-            ))}
-          </div>
+          <div>{callNameInfo.you.map(part => getCell(characterKey, part))}</div>
         </td>
       </>
     )
