@@ -8,12 +8,12 @@ import React, {
   useState,
   useEffect,
 } from "react"
-import { Page } from "../../../components/page"
-import Seo from "../../../components/seo"
-import { CharacterContext } from "../../../contexts/context"
-import { useDetailedCharacterInfo } from "../../../hooks/useDetailedCharacterInfo"
-import { CharacterKey } from "../../../types/dormitoryCharacter"
-import { DormitoryExplainComponent } from "../../dormitory"
+import { Page } from "../../components/page"
+import Seo from "../../components/seo"
+import { CharacterContext } from "../../contexts/context"
+import { useDetailedCharacterInfo } from "../../hooks/useDetailedCharacterInfo"
+import { CharacterKey } from "../../types/dormitoryCharacter"
+import { DormitoryExplainComponent } from "../dormitory"
 import { faCopy, faCheck } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
