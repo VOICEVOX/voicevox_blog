@@ -52,7 +52,7 @@ export default function CallNamesPage() {
 
     const timer = setTimeout(() => {
       setSelectedCallName(undefined)
-    }, 3000)
+    }, 1500)
 
     // クリーンアップ; 他のセルのクリックでタイマークリア
     return () => {
