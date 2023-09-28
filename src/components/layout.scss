@@ -523,6 +523,7 @@ $dropdown-item-active-background-color: $primary;
           .card-content {
             @extend .px-0;
             @extend .has-text-centered;
+            border-top: solid 3px;
           }
         }
 
