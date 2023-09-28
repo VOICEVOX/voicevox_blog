@@ -66,9 +66,12 @@ export default function CallNamesPage() {
       throw new Error("Character element not found")
     }
 
-    // 中心にキャラクターが来るようにスクロール
+    // 該当列をハイライトする
+    characterElem.classList.add("highlight")
+
+    // 画面の中心にキャラクターが来るようにスクロール
     characterElem.scrollIntoView({ block: "center", behavior: "instant" })
-    // 微妙に親スクロールが動くので, もとに戻す
+    // 微妙に親スクロールの y 軸が動くので, もとに戻す
     window.scrollTo(0, 0)
   }
 
@@ -252,19 +255,15 @@ export default function CallNamesPage() {
                   ...hex2rgba(characterInfo.lightColor, 0.4)
                 )
                 const backgroundColor = `rgb(${red}, ${green}, ${blue})`
+                const outlineColor = characterInfo.color
 
                 return (
-                  // FIXME: #id でキャラクターに直接アクセスするとスクロールがずれるのを直す
                   <tr
                     key={characterKey}
                     id={characterInfo.id}
-                    style={{ backgroundColor }}
+                    style={{ backgroundColor, outlineColor }}
                   >
-                    <th
-                      style={{
-                        backgroundColor,
-                      }}
-                    >
+                    <th>
                       <Link to={`/dormitory/${characterInfo.id}/`}>
                         {getCharacterImage(characterKey)}
                         <p
