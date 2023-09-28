@@ -847,18 +847,6 @@ $call-names-cell-height: 80px;
 $call-names-cell-width: 150px;
 $call-names-cell-width-column: 190px;
 
-@keyframes call-names-column-highlight {
-  0% {
-    outline-width: 0px;
-  }
-  99% {
-    outline-width: 4px;
-  }
-  100% {
-    outline-width: 0px;
-  }
-}
-
 .call-names-wrapper {
   // sticky にするために明示的に高さを指定
   //  → ほかに overflow の指定などでも sticky にできるが、親レイアウトの
@@ -962,14 +950,6 @@ $call-names-cell-width-column: 190px;
             }
           }
         }
-      }
-    }
-
-    tr {
-      &.highlight {
-        animation: call-names-column-highlight 1.25s 3 forwards;
-        outline-style: solid;
-        border-radius: $radius;
       }
     }
 
