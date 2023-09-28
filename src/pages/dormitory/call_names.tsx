@@ -45,37 +45,6 @@ export default function CallNamesPage() {
     callName: string
   }>()
 
-  const jump2characterColumn = async (): Promise<void> => {
-    const urlAnchor = window.location.hash
-    if (!urlAnchor.length) return
-
-    window.scrollTo(0, 0)
-
-    const characterKeyFromAnchor = urlAnchor.slice(1)
-    const characterIdList = characterKeys.map(
-      characterKey => characterInfos[characterKey].id
-    )
-
-    if (!characterIdList.includes(characterKeyFromAnchor)) {
-      console.warn(`Unknown anchor: ${urlAnchor}`)
-      return
-    }
-
-    const characterElem = document.getElementById(characterKeyFromAnchor)
-    if (characterElem == null) {
-      throw new Error("Character element not found")
-    }
-
-    // 中心にキャラクターが来るようにスクロール
-    characterElem.scrollIntoView({ block: "center", behavior: "instant" })
-    // 微妙に親スクロールが動くので, もとに戻す
-    window.scrollTo(0, 0)
-  }
-
-  useEffect(() => {
-    void jump2characterColumn()
-  }, [])
-
   useEffect(() => {
     if (selectedCallName == null) return
 
@@ -254,12 +223,7 @@ export default function CallNamesPage() {
                 const backgroundColor = `rgb(${red}, ${green}, ${blue})`
 
                 return (
-                  // FIXME: #id でキャラクターに直接アクセスするとスクロールがずれるのを直す
-                  <tr
-                    key={characterKey}
-                    id={characterInfo.id}
-                    style={{ backgroundColor }}
-                  >
+                  <tr key={characterKey} style={{ backgroundColor }}>
                     <th
                       style={{
                         backgroundColor,
