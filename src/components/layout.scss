@@ -484,6 +484,10 @@ $dropdown-item-active-background-color: $primary;
       background-color: white;
 
       &.character-container {
+        .columns:not(:last-child) {
+          margin-bottom: -0.75rem;
+        }
+
         .generation-label {
           @extend .has-text-centered;
           display: flex;
@@ -495,6 +499,11 @@ $dropdown-item-active-background-color: $primary;
           }
         }
 
+        .jump-anchor-header-padding {
+          // カード間の余白を均等にする
+          padding-top: calc(3.25rem + 1rem + 0.75rem);
+        }
+
         .card {
           box-shadow: none;
           border-style: solid;
@@ -503,6 +512,7 @@ $dropdown-item-active-background-color: $primary;
         }
 
         .character-card {
+          @extend .pt-5;
           cursor: pointer;
 
           .card-image {
@@ -512,6 +522,7 @@ $dropdown-item-active-background-color: $primary;
           .card-content {
             @extend .px-0;
             @extend .has-text-centered;
+            border-top: solid 3px;
           }
         }
 
@@ -523,7 +534,6 @@ $dropdown-item-active-background-color: $primary;
           .card-content {
             @extend .px-0;
             @extend .has-text-centered;
-            border-top: solid 3px;
           }
         }
 
