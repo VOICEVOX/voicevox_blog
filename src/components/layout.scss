@@ -485,7 +485,7 @@ $dropdown-item-active-background-color: $primary;
 
       &.character-container {
         .columns:not(:last-child) {
-          margin-bottom: -0.75rem;
+          margin-bottom: -0.75rem; // columnsは下方向のmargin調整がないので、hrの辻褄を合わせに必要
         }
 
         .generation-label {
@@ -501,7 +501,7 @@ $dropdown-item-active-background-color: $primary;
 
         .jump-anchor-header-padding {
           // カード間の余白を均等にする
-          padding-top: calc(3.25rem + 1rem + 0.75rem);
+          padding-top: calc(3.25rem + 1rem + 0.75rem); // 元が3.25rem + 1rem、column分が0.75rem
         }
 
         .card {
@@ -512,7 +512,7 @@ $dropdown-item-active-background-color: $primary;
         }
 
         .character-card {
-          @extend .pt-5;
+          @extend .pt-3;
           cursor: pointer;
 
           .card-image {
@@ -522,7 +522,7 @@ $dropdown-item-active-background-color: $primary;
           .card-content {
             @extend .px-0;
             @extend .has-text-centered;
-            border-top: solid 3px;
+            border-top: solid 2.5px;
           }
         }
 

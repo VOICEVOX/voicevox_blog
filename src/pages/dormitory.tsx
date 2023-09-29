@@ -59,8 +59,6 @@ const Dormitory: React.FC<DormitoryProps> = ({ setShowingHeader }) => {
 
         <main className="section pt-0 pb-5">
           <div className="container character-container is-max-desktop pt-1 pb-6">
-            <hr />
-
             <div className="columns is-multiline">
               <div
                 id="7th"
