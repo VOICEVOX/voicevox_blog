@@ -103,7 +103,7 @@ export default function CallNamesPage() {
           className={externalClassName}
           onClick={copyToClipboard}
           style={outlineStyle}
-          title={`クリックして呼称をコピー: 「${callName}」`}
+          title={`クリックして呼称をコピー：「${callName}」`}
         >
           <span className={`icon ${isSelected ? "selected" : ""}`}>
             <FontAwesomeIcon
@@ -134,7 +134,7 @@ export default function CallNamesPage() {
                   if (callName == undefined) {
                     return (
                       <p className="unknown" style={outlineStyle}>
-                        ?
+                        ？
                       </p>
                     )
                   }
