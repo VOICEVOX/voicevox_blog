@@ -36,7 +36,7 @@ function rgba2rgbOnWhite(
   return [_red, _green, _blue]
 }
 
-function CallNamesColumn({
+function Column({
   characterKey,
 }: {
   characterKey: CharacterKey
@@ -48,28 +48,23 @@ function CallNamesColumn({
     characterKey: CharacterKey
     callName: string
   }>()
-
-  useEffect(() => {
-    if (selectedCallName == null) return
-
-    navigator.clipboard.writeText(selectedCallName.callName)
-
-    const timer = setTimeout(() => {
-      setSelectedCallName(undefined)
-    }, 1500)
-
-    // クリーンアップ; 他のセルのクリックでタイマークリア
-    return () => {
-      clearTimeout(timer)
-    }
-  }, [selectedCallName])
+  const [showCopiedIcon, setShowCopiedIcon] = useState(false)
 
   const callNameInfo = callNameInfos[characterKey]
   const characterInfo = characterInfos[characterKey]
-
   const outlineStyle: CSSProperties = {
     outlineColor: characterInfo.color,
   }
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowCopiedIcon(false)
+    }, 1500)
+
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [showCopiedIcon])
 
   function copyToClipboard(event: MouseEvent<HTMLInputElement>): void {
     const callName = event.currentTarget.innerText
@@ -78,6 +73,8 @@ function CallNamesColumn({
       characterKey,
       callName,
     })
+    navigator.clipboard.writeText(callName)
+    setShowCopiedIcon(true)
   }
 
   function Cell({
@@ -91,7 +88,8 @@ function CallNamesColumn({
   }): ReactElement {
     const isSelected =
       selectedCallName?.characterKey === characterKey &&
-      selectedCallName?.callName === callName
+      selectedCallName?.callName === callName &&
+      showCopiedIcon
 
     return (
       <p
@@ -134,7 +132,7 @@ function CallNamesColumn({
                 if (callName == undefined) {
                   return (
                     <p
-                      key={`${_characterKey}-?`}
+                      key={`${_characterKey}-unknown`}
                       className="unknown"
                       style={outlineStyle}
                     >
@@ -277,7 +275,7 @@ export default function CallNamesPage() {
                         </p>
                       </Link>
                     </th>
-                    <CallNamesColumn characterKey={characterKey} />
+                    <Column characterKey={characterKey} />
                   </tr>
                 )
               })}
