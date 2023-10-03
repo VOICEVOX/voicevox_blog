@@ -44,10 +44,7 @@ function Column({
   const { characterInfos, callNameInfos } = useDetailedCharacterInfo()
   const { characterKeys } = useContext(CharacterContext)
 
-  const [selectedCallName, setSelectedCallName] = useState<{
-    characterKey: CharacterKey
-    callName: string
-  }>()
+  const [selectedCallName, setSelectedCallName] = useState<string>()
   const [showCopiedIcon, setShowCopiedIcon] = useState(false)
 
   const callNameInfo = callNameInfos[characterKey]
@@ -57,6 +54,8 @@ function Column({
   }
 
   useEffect(() => {
+    if (selectedCallName == undefined) return
+
     const timer = setTimeout(() => {
       setShowCopiedIcon(false)
     }, 1500)
@@ -64,15 +63,12 @@ function Column({
     return () => {
       clearTimeout(timer)
     }
-  }, [showCopiedIcon])
+  }, [showCopiedIcon, selectedCallName])
 
   function copyToClipboard(event: MouseEvent<HTMLInputElement>): void {
     const callName = event.currentTarget.innerText
 
-    setSelectedCallName({
-      characterKey,
-      callName,
-    })
+    setSelectedCallName(callName)
     navigator.clipboard.writeText(callName)
     setShowCopiedIcon(true)
   }
@@ -86,10 +82,7 @@ function Column({
     callName: string
     externalClassName?: string
   }): ReactElement {
-    const isSelected =
-      selectedCallName?.characterKey === characterKey &&
-      selectedCallName?.callName === callName &&
-      showCopiedIcon
+    const isSelected = selectedCallName === callName && showCopiedIcon
 
     return (
       <p
