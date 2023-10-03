@@ -74,11 +74,9 @@ function Column({
   }
 
   function Cell({
-    characterKey,
     callName,
     externalClassName,
   }: {
-    characterKey: string
     callName: string
     externalClassName?: string
   }): ReactElement {
@@ -115,7 +113,6 @@ function Column({
                   return callNameInfo.me.map(part => (
                     <Cell
                       key={`me-${part}`}
-                      characterKey={characterKey}
                       callName={part}
                       externalClassName="me"
                     />
@@ -137,11 +134,7 @@ function Column({
                 return callName
                   .split("/")
                   .map(part => (
-                    <Cell
-                      key={`${_characterKey}-${part}`}
-                      characterKey={characterKey}
-                      callName={part}
-                    />
+                    <Cell key={`${_characterKey}-${part}`} callName={part} />
                   ))
               })()}
             </div>
@@ -151,11 +144,7 @@ function Column({
       <td className="you">
         <div>
           {callNameInfo.you.map(part => (
-            <Cell
-              key={`you-${part}`}
-              characterKey={characterKey}
-              callName={part}
-            />
+            <Cell key={`you-${part}`} callName={part} />
           ))}
         </div>
       </td>
