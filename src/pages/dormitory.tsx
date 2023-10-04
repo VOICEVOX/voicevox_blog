@@ -65,6 +65,33 @@ const Dormitory: React.FC<DormitoryProps> = ({ setShowingHeader }) => {
                 className="jump-anchor-header-padding column is-2 generation-label"
               >
                 <h2 className="title is-3">
+                  <Link to="#8th" className="has-text-black">
+                    8 期 生
+                  </Link>
+                </h2>
+              </div>
+
+              <DormitoryCharacterCard
+                characterInfo={characterInfos.栗田まろん}
+              />
+              <DormitoryCharacterCard
+                characterInfo={characterInfos.藍田ノエル}
+              />
+              <DormitoryCharacterCard characterInfo={characterInfos.満別花丸} />
+              <DormitoryCharacterCard
+                characterInfo={characterInfos.琴詠ニア}
+                className="is-offset-2"
+              />
+            </div>
+
+            <hr />
+
+            <div className="columns is-multiline">
+              <div
+                id="7th"
+                className="jump-anchor-header-padding column is-2 generation-label"
+              >
+                <h2 className="title is-3">
                   <Link to="#7th" className="has-text-black">
                     7 期 生
                   </Link>

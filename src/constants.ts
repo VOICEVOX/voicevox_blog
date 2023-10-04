@@ -29,6 +29,10 @@ export const characterKeys: CharacterKey[] = [
   "猫使アル",
   "猫使ビィ",
   "中国うさぎ",
+  "栗田まろん",
+  "藍田ノエル",
+  "満別花丸",
+  "琴詠ニア",
 ]
 
 export type CharacterInfoEntry = {
@@ -146,5 +150,21 @@ export const characterInfos: {
   中国うさぎ: {
     name: "中国うさぎ",
     id: "chugoku_usagi",
+  },
+  栗田まろん: {
+    name: "栗田まろん",
+    id: "kurita_maron",
+  },
+  藍田ノエル: {
+    name: "あいえるたん",
+    id: "aierutan",
+  },
+  満別花丸: {
+    name: "満別花丸",
+    id: "manbetsu_hanamaru",
+  },
+  琴詠ニア: {
+    name: "琴詠ニア",
+    id: "kotoyomi_nia",
   },
 }

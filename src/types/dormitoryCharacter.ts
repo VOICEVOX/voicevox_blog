@@ -27,6 +27,10 @@ export type CharacterKey =
   | "猫使アル"
   | "猫使ビィ"
   | "中国うさぎ"
+  | "栗田まろん"
+  | "藍田ノエル"
+  | "満別花丸"
+  | "琴詠ニア"
 
 export type CharacterInfo = {
   name: string
