@@ -36,6 +36,7 @@ function rgba2rgbOnWhite(
   return [_red, _green, _blue]
 }
 
+// FIXME: Row
 function Column({
   characterKey,
 }: {
