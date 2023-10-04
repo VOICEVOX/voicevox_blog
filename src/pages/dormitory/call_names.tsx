@@ -1,13 +1,21 @@
 import { Link } from "gatsby"
 import { getSrc, getSrcSet } from "gatsby-plugin-image"
-import React, { CSSProperties, ReactElement, useContext } from "react"
-import { Page } from "../../../components/page"
-import Seo from "../../../components/seo"
-import { CharacterContext } from "../../../contexts/context"
-import { useDetailedCharacterInfo } from "../../../hooks/useDetailedCharacterInfo"
-import { CharacterKey } from "../../../types/dormitoryCharacter"
-
-import { DormitoryExplainComponent } from "../../dormitory"
+import React, {
+  CSSProperties,
+  ReactElement,
+  useContext,
+  MouseEvent,
+  useState,
+  useEffect,
+} from "react"
+import { Page } from "../../components/page"
+import Seo from "../../components/seo"
+import { CharacterContext } from "../../contexts/context"
+import { useDetailedCharacterInfo } from "../../hooks/useDetailedCharacterInfo"
+import { CharacterKey } from "../../types/dormitoryCharacter"
+import { DormitoryExplainComponent } from "../dormitory"
+import { faCopy, faCheck } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 function hex2rgba(hex: string, alpha = 1): [number, number, number, number] {
   const match = hex.match(/\w\w/g)
@@ -28,11 +36,132 @@ function rgba2rgbOnWhite(
   return [_red, _green, _blue]
 }
 
-export default function CallNamesPage() {
+// FIXME: Row
+function Column({
+  characterKey,
+}: {
+  characterKey: CharacterKey
+}): ReactElement {
   const { characterInfos, callNameInfos } = useDetailedCharacterInfo()
   const { characterKeys } = useContext(CharacterContext)
 
-  function getCharacterImage(characterKey: CharacterKey): ReactElement {
+  const [selectedCallName, setSelectedCallName] = useState<string>()
+  const [showCopiedIcon, setShowCopiedIcon] = useState(false)
+
+  const callNameInfo = callNameInfos[characterKey]
+  const characterInfo = characterInfos[characterKey]
+  const outlineStyle: CSSProperties = {
+    outlineColor: characterInfo.color,
+  }
+
+  useEffect(() => {
+    if (selectedCallName == undefined) return
+
+    const timer = setTimeout(() => {
+      setShowCopiedIcon(false)
+    }, 1500)
+
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [showCopiedIcon, selectedCallName])
+
+  function copyToClipboard(event: MouseEvent<HTMLInputElement>): void {
+    const callName = event.currentTarget.innerText
+
+    setSelectedCallName(callName)
+    navigator.clipboard.writeText(callName)
+    setShowCopiedIcon(true)
+  }
+
+  function Cell({
+    callName,
+    externalClassName,
+  }: {
+    callName: string
+    externalClassName?: string
+  }): ReactElement {
+    const isSelected = selectedCallName === callName && showCopiedIcon
+
+    return (
+      <p
+        className={externalClassName}
+        onClick={copyToClipboard}
+        style={outlineStyle}
+        title={`クリックして呼称をコピー：「${callName}」`}
+      >
+        <span className={`icon ${isSelected ? "selected" : ""}`}>
+          <FontAwesomeIcon
+            icon={isSelected ? faCheck : faCopy}
+            color={characterInfo.color}
+          />
+        </span>
+        {callName}
+      </p>
+    )
+  }
+
+  return (
+    <>
+      {characterKeys.map(_characterKey => {
+        const callName = callNameInfo[_characterKey]
+
+        return (
+          <td key={_characterKey}>
+            <div>
+              {(() => {
+                if (_characterKey === characterKey) {
+                  return callNameInfo.me.map(part => (
+                    <Cell
+                      key={`me-${part}`}
+                      callName={part}
+                      externalClassName="me"
+                    />
+                  ))
+                }
+
+                if (callName == undefined) {
+                  return (
+                    <p
+                      key={`${_characterKey}-unknown`}
+                      className="unknown"
+                      style={outlineStyle}
+                    >
+                      ？
+                    </p>
+                  )
+                }
+
+                return callName
+                  .split("/")
+                  .map(part => (
+                    <Cell key={`${_characterKey}-${part}`} callName={part} />
+                  ))
+              })()}
+            </div>
+          </td>
+        )
+      })}
+      <td className="you">
+        <div>
+          {callNameInfo.you.map(part => (
+            <Cell key={`you-${part}`} callName={part} />
+          ))}
+        </div>
+      </td>
+    </>
+  )
+}
+
+export default function CallNamesPage() {
+  const { characterInfos } = useDetailedCharacterInfo()
+  const { characterKeys } = useContext(CharacterContext)
+
+  function CharacterImage({
+    characterKey,
+  }: {
+    characterKey: CharacterKey
+  }): ReactElement {
     const characterInfo = characterInfos[characterKey]
     return (
       <img
@@ -40,62 +169,6 @@ export default function CallNamesPage() {
         srcSet={getSrcSet(characterInfo.bustupImage)}
         alt={characterInfo.name}
       />
-    )
-  }
-
-  function getColumn(characterKey: CharacterKey): ReactElement {
-    const callNameInfo = callNameInfos[characterKey]
-    const characterInfo = characterInfos[characterKey]
-
-    const outlineStyle: CSSProperties = {
-      outlineColor: characterInfo.color,
-    }
-
-    return (
-      <>
-        {characterKeys.map(_characterKey => {
-          const callName = callNameInfo[_characterKey]
-
-          return (
-            <td key={_characterKey}>
-              <div>
-                {(() => {
-                  if (characterKey === _characterKey) {
-                    return callNameInfo.me.map(part => (
-                      <p style={outlineStyle} key={part} className="me">
-                        {part}
-                      </p>
-                    ))
-                  }
-
-                  if (callName == undefined) {
-                    return (
-                      <p style={outlineStyle} className="unknown">
-                        ?
-                      </p>
-                    )
-                  }
-
-                  return callName.split("/").map(part => (
-                    <p style={outlineStyle} key={part}>
-                      {part}
-                    </p>
-                  ))
-                })()}
-              </div>
-            </td>
-          )
-        })}
-        <td className="you">
-          <div>
-            {callNameInfo.you.map(part => (
-              <p style={outlineStyle} key={part}>
-                {part}
-              </p>
-            ))}
-          </div>
-        </td>
-      </>
     )
   }
 
@@ -138,7 +211,7 @@ export default function CallNamesPage() {
                   return (
                     <th key={characterKey}>
                       <Link to={`/dormitory/${characterInfo.id}/`}>
-                        {getCharacterImage(characterKey)}
+                        <CharacterImage characterKey={characterKey} />
                         <p
                           style={{
                             color: characterInfo.color,
@@ -168,19 +241,14 @@ export default function CallNamesPage() {
                 const backgroundColor = `rgb(${red}, ${green}, ${blue})`
 
                 return (
-                  // FIXME: #id でキャラクターに直接アクセスするとスクロールがずれるのを直す
-                  <tr
-                    key={characterKey}
-                    id={characterInfo.id}
-                    style={{ backgroundColor }}
-                  >
+                  <tr key={characterKey} style={{ backgroundColor }}>
                     <th
                       style={{
                         backgroundColor,
                       }}
                     >
                       <Link to={`/dormitory/${characterInfo.id}/`}>
-                        {getCharacterImage(characterKey)}
+                        <CharacterImage characterKey={characterKey} />
                         <p
                           style={{
                             color: characterInfo.color,
@@ -190,7 +258,7 @@ export default function CallNamesPage() {
                         </p>
                       </Link>
                     </th>
-                    {getColumn(characterKey)}
+                    <Column characterKey={characterKey} />
                   </tr>
                 )
               })}

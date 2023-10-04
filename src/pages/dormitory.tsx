@@ -285,7 +285,7 @@ const Dormitory: React.FC<DormitoryProps> = ({ setShowingHeader }) => {
             <div className="has-text-centered pt-2 pb-0">
               <h2 className="title is-4">関連コンテンツ</h2>
               <Link
-                to="/dormitory/call-names/"
+                to="/dormitory/call_names/"
                 className="button is-normal is-rounded"
                 type="button"
                 role={"button"}
