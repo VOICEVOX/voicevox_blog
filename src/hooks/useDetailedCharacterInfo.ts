@@ -847,6 +847,7 @@ export const useDetailedCharacterInfo = () => {
       ],
       policyUrl: "https://aivoice.jp/character/maron/",
       detailUrl: "https://aivoice.jp/character/maron/",
+      releaseDate: "2023/10/06",
     },
 
     藍田ノエル: {
@@ -870,6 +871,7 @@ export const useDetailedCharacterInfo = () => {
       ],
       policyUrl: "https://www.infiniteloop.co.jp/special/iltan/terms/",
       detailUrl: "https://www.infiniteloop.co.jp/special/iltan/",
+      releaseDate: "2023/10/06",
     },
 
     満別花丸: {
@@ -890,6 +892,7 @@ export const useDetailedCharacterInfo = () => {
       ],
       policyUrl: "https://100hanamaru.wixsite.com/manbetsu-hanamaru/rule",
       detailUrl: "https://100hanamaru.wixsite.com/manbetsu-hanamaru",
+      releaseDate: "2023/10/06",
     },
 
     琴詠ニア: {
@@ -910,6 +913,7 @@ export const useDetailedCharacterInfo = () => {
       ],
       policyUrl: "https://commons.nicovideo.jp/works/nc315435",
       detailUrl: "https://n-air-app.nicovideo.jp/",
+      releaseDate: "2023/10/06",
     },
   } as const
 
