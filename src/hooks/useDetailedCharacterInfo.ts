@@ -1,9 +1,6 @@
 import { graphql, useStaticQuery } from "gatsby"
-import {
-  CharacterInfo,
-  CharacterKey,
-  Generation,
-} from "../types/dormitoryCharacter"
+import { useMemo } from "react"
+import { CharacterInfo, CharacterKey } from "../types/dormitoryCharacter"
 import { useCharacterInfo } from "./useCharacterInfo"
 
 export const useDetailedCharacterInfo = () => {
@@ -251,7 +248,9 @@ export const useDetailedCharacterInfo = () => {
     return item
   }
 
-  const characterInfos: {
+  // キャラクターの詳細情報
+  // ネストを浅くするために一旦変数に格納
+  const _characterInfos: {
     [key in CharacterKey]: CharacterInfo
   } = {
     四国めたん: {
@@ -917,28 +916,16 @@ export const useDetailedCharacterInfo = () => {
     },
   } as const
 
-  const generationInfos: {
-    [key in Generation]: { characterKeys: readonly CharacterKey[] }
-  } = {
-    一期生: { characterKeys: ["四国めたん", "ずんだもん"] },
-    二期生: {
-      characterKeys: ["春日部つむぎ", "雨晴はう", "波音リツ"],
-    },
-    三期生: {
-      characterKeys: [
-        "玄野武宏",
-        "白上虎太郎",
-        "青山龍星",
-        "冥鳴ひまり",
-        "九州そら",
-      ],
-    },
-  } as const
+  const characterInfos = useMemo(() => _characterInfos, [])
+  const callNameInfos = useMemo(() => _callNameInfos, [])
 
-  return { characterInfos, callNameInfos, generationInfos } as const
+  return {
+    characterInfos,
+    callNameInfos,
+  } as const
 }
 
-const callNameInfos: {
+const _callNameInfos: {
   [key in CharacterKey]: {
     [key in CharacterKey]?: string | undefined
   } & { me: readonly string[]; you: readonly string[] }
