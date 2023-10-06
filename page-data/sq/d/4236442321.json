@@ -1,1 +1,1 @@
-{"data":{"allFile":{"nodes":[{"name":"linuxInstallCpu","publicURL":"/static/99be91eae8b9307aa57230f886b6da48/linuxInstallCpu.sh"},{"name":"linuxInstallNvidia","publicURL":"/static/47ef6b344e66e54f1318dbd70804148c/linuxInstallNvidia.sh"}]}}}
+{"data":{"allFile":{"nodes":[{"name":"linuxInstallNvidia","publicURL":"/static/4ce73278d6843ac53e009a4b45bff72a/linuxInstallNvidia.sh"},{"name":"linuxInstallCpu","publicURL":"/static/fc70af03e46d5bd83329e61236a9cd3d/linuxInstallCpu.sh"}]}}}
