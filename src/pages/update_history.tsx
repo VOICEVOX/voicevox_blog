@@ -45,12 +45,12 @@ export default () => {
           <div className="update-history">
             <h1 className="title">変更履歴</h1>
             {events.map((e, index) => (
-              <>
-                <div key={index}>
+              <React.Fragment key={`${e.version}-${index}`}>
+                <div>
                   <h2 className="subtitle is-4">ver {e.version}</h2>
                   <ul>
                     {e.descriptions.map((d, index) => (
-                      <li key={index}>{d}</li>
+                      <li key={`${index}`}>{d}</li>
                     ))}
                   </ul>
                   {e.contributors.length > 0 && (
@@ -64,8 +64,8 @@ export default () => {
                     </>
                   )}
                 </div>
-                {events.length !== index + 1 && <hr />}
-              </>
+                {events.length !== index + 1 && <hr key={`hr-${e.version}`} />}
+              </React.Fragment>
             ))}
           </div>
         </div>
