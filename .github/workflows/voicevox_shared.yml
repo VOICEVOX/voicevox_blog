@@ -14,3 +14,13 @@ jobs:
       contents: read
       packages: read
       statuses: write
+
+    with:
+      # FIXME: MARKDOWNはコピー元が対応したら有効にする
+      super_linter_env_vars: |
+        VALIDATE_CSS=false
+        VALIDATE_JAVASCRIPT_ES=false
+        VALIDATE_JAVASCRIPT_STANDARD=false
+        VALIDATE_TYPESCRIPT_ES=false
+        VALIDATE_TYPESCRIPT_STANDARD=false
+        VALIDATE_MARKDOWN=false

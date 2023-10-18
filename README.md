@@ -1,7 +1,6 @@
 # VOICEVOX BLOG
 
-VOICEVOX の公式サイトのリポジトリです。  
-https://voicevox.hiroshiba.jp/
+[VOICEVOX の公式サイト](https://voicevox.hiroshiba.jp/)のリポジトリです。
 
 ## 環境構築
 
@@ -118,4 +117,4 @@ VOICEVOX の開発のための利用のみ許可されます。
 
 ## 謝辞
 
-`src/images/nc238325.jpg` ･･･ https://commons.nicovideo.jp/material/nc238325
+[`src/images/nc238325.jpg`](https://commons.nicovideo.jp/material/nc238325)
