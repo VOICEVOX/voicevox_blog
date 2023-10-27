@@ -31,7 +31,10 @@ export default ({
               alt={characterInfo.name}
               objectFit="contain"
             />
-            <div className="card-content has-text-centered">
+            <div
+              className="card-content has-text-centered"
+              style={{ borderColor: color }}
+            >
               <h3 className="title is-5">{characterInfo.name}</h3>
             </div>
           </Link>
