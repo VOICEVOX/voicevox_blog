@@ -105,7 +105,9 @@ export const NemoDownloadModal: React.FC<{
           <hr className="my-3" />
 
           <p className="has-text-centered">
-            ダウンロードした .vvpp ファイルをダブルクリックするか、VOICEVOX 内の
+            VOICEVOX 内の「マルチエンジン機能」を ON にしたあと、
+            <br />
+            ダウンロードした .vvpp ファイルをダブルクリックするか
             <br />
             「エンジン」→「エンジンの管理」で Nemo 音声を追加できます。
           </p>

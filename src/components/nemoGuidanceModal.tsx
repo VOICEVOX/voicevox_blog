@@ -65,16 +65,22 @@ export const NemoGuidanceModal: React.FC<{
               </a>
             </div>
 
-            <hr className="my-3" />
+            <hr />
 
             <div className="step-by-step">
               <h3>- Step 2 -</h3>
               <p>
-                {/* インストール完了後、Nemo エンジンを
-              <br />
-              追加することで音声を利用できるようになります */}
-                インストール完了後に Nemo エンジンを追加
+                VOICEVOX ソフトウェアを起動して
+                <br />
+                設定→オプション→高度な設定→<b>マルチエンジン機能</b>をON
               </p>
+            </div>
+
+            <hr />
+
+            <div className="step-by-step">
+              <h3>- Step 3 -</h3>
+              <p>Nemo エンジンを追加</p>
               <a
                 className="button is-align-self-center is-primary is-rounded is-medium"
                 onClick={showNemoDownloadModal}
@@ -91,12 +97,12 @@ export const NemoGuidanceModal: React.FC<{
               </a>
             </div>
 
-            <hr className="my-3" />
+            <hr />
 
             <p className="policy-note">
               ※ VOICEVOX ソフトウェアにはキャラクターの音声も含まれます。
               <br />
-              キャラクターの音声と Nemo の音声は利用規約が異なるので、
+              キャラクターの音声と Nemo の音声は利用規約が異なるので
               <br />
               ご利用の際は各音声の利用規約をご確認ください。
             </p>

@@ -684,6 +684,12 @@ $dropdown-item-active-background-color: $primary;
       }
     }
 
+    hr {
+      @extend .my-4;
+      flex-shrink: 0;
+      align-self: stretch;
+    }
+
     .policy-note {
       @extend .has-text-grey-dark;
     }
@@ -785,7 +791,9 @@ $dropdown-item-active-background-color: $primary;
 
         .jump-anchor-header-padding {
           // カード間の余白を均等にする
-          padding-top: calc(3.25rem + 1rem + 0.75rem); // 元が3.25rem + 1rem、column分が0.75rem
+          padding-top: calc(
+            3.25rem + 1rem + 0.75rem
+          ); // 元が3.25rem + 1rem、column分が0.75rem
         }
 
         .card {
