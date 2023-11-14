@@ -3,6 +3,7 @@
 import { faDownload } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import React, { useContext } from "react"
+import { NEMO_RELEASE_DATE } from "../constants"
 import { GlobalContext } from "../contexts/context"
 import { useModalController } from "../hooks/hook"
 import { NemoDownloadModal } from "./nemoDownloadModal"
@@ -81,20 +82,26 @@ export const NemoGuidanceModal: React.FC<{
             <div className="step-by-step">
               <h3>- Step 3 -</h3>
               <p>Nemo エンジンを追加</p>
-              <a
-                className="button is-align-self-center is-primary is-rounded is-medium"
-                onClick={showNemoDownloadModal}
-                target="_blank"
-                rel="noreferrer"
-                tabIndex={0}
-              >
-                <span className="icon">
-                  <FontAwesomeIcon icon={faDownload} />
-                </span>
-                <span className="has-text-weight-semibold">
-                  Nemo エンジン ダウンロード
-                </span>
-              </a>
+              {NEMO_RELEASE_DATE ? (
+                <p className="has-text-weight-semibold has-text-danger">
+                  {NEMO_RELEASE_DATE} リリース予定
+                </p>
+              ) : (
+                <a
+                  className="button is-align-self-center is-primary is-rounded is-medium"
+                  onClick={showNemoDownloadModal}
+                  target="_blank"
+                  rel="noreferrer"
+                  tabIndex={0}
+                >
+                  <span className="icon">
+                    <FontAwesomeIcon icon={faDownload} />
+                  </span>
+                  <span className="has-text-weight-semibold">
+                    Nemo エンジン ダウンロード
+                  </span>
+                </a>
+              )}
             </div>
 
             <hr />
