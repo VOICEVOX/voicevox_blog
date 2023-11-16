@@ -369,7 +369,7 @@ export default () => {
           <div className="speaker-contact-explain container is-max-desktop">
             より柔軟な演技や高品質な音声をお求めの場合は、
             <br />
-            上記のリンク先にてご本人へご依頼いただくことができます。
+            上記のリンク先にてご本人へご依頼いただけます。
           </div>
         </section>
 
