@@ -1,6 +1,8 @@
 import { CharacterKey } from "./types/dormitoryCharacter"
 
 export const APP_VERSION = "0.14.8"
+export const NEMO_VERSION = "0.14.0"
+export const NEMO_RELEASE_DATE: string | undefined = "2023年11月17日"
 
 export const characterKeys: CharacterKey[] = [
   "四国めたん",

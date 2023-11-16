@@ -182,6 +182,29 @@ const Main = React.memo(
 
             <section className="section">
               <div className="container is-max-desktop is-flex is-flex-direction-column">
+                <h2 id="nemo" className="jump-anchor-header-padding title">
+                  <Link to={`#nemo`} className="has-text-black">
+                    VOICEVOX Nemo
+                  </Link>
+                </h2>
+                <p className="is-size-5">
+                  VOICEVOX Nemo はキャラクターのいない音声ライブラリです。
+                </p>
+                <p className="is-size-5">
+                  詳しくは&nbsp;
+                  <Link
+                    to={"/term/"}
+                    className="has-text-weight-bold is-underlined"
+                  >
+                    VOICEVOX Nemo
+                  </Link>
+                  &nbsp;をご参照ください。
+                </p>
+              </div>
+            </section>
+
+            <section className="section">
+              <div className="container is-max-desktop is-flex is-flex-direction-column">
                 <h2 id="oss" className="jump-anchor-header-padding title">
                   <Link to={`#oss`} className="has-text-black">
                     オープンソース

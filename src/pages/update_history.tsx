@@ -30,9 +30,7 @@ export default () => {
       }
     }
   `)
-  const events = data.allUpdateInfosJson.edges.map(edge => {
-    return edge.node
-  })
+  const events = data.allUpdateInfosJson.edges.map(edge => edge.node)
   return (
     <Page>
       <Seo
