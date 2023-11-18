@@ -193,7 +193,7 @@ const Main = React.memo(
                 <p className="is-size-5">
                   詳しくは&nbsp;
                   <Link
-                    to={"/term/"}
+                    to={"/nemo/"}
                     className="has-text-weight-bold is-underlined"
                   >
                     VOICEVOX Nemo
