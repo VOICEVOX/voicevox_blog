@@ -114,8 +114,8 @@ typos
 ## LICENSE
 
 VOICEVOX の開発のための利用のみ許可されます。  
-異なるライセンスを取得したい場合は、ヒホ（twitter: @hiho_karuta）に求めてください。
-
+異なるライセンスを取得したい場合は、ヒホに求めてください。
+X アカウント: @hiho_karuta
 ## 謝辞
 
 `src/images/nc238325.jpg` ･･･ https://commons.nicovideo.jp/material/nc238325
