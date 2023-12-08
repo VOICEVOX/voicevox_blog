@@ -135,7 +135,15 @@ export default ({
       <div className="dormitory-character">
         <main className="section py-1">
           <div className="container is-max-desktop">
-            <div className="box" style={{ borderColor: characterInfo.color }}>
+            <div
+              className="box"
+              style={{
+                borderColor: characterInfo.color,
+                position: "absolute",
+                marginRight: "30%",
+                width: "100%",
+              }}
+            >
               <div className="columns m-0" style={{ height: "100%" }}>
                 <div
                   className="column is-4 portrait-column"
@@ -299,7 +307,14 @@ export default ({
                 </div>
               </div>
             </div>
-            <div className="link-buttons has-text-weight-bold">
+            <div
+              className="link-buttons has-text-weight-bold"
+              style={{
+                position: "absolute",
+                marginLeft: "100%",
+                bottom: "2rem",
+              }}
+            >
               <Link
                 to={getProductPageUrl(characterInfo)}
                 className="button is-normal is-rounded character-list-button"
