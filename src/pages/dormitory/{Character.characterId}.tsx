@@ -147,14 +147,18 @@ export default ({
                   display: "inline-flex",
                   flexDirection: "column",
                   position: "absolute",
-                  left: "102%",
+                  left: "100%",
                   top: "70%",
+                  height: "25%",
+                  width: "25%",
                 }}
               >
                 <Link
                   to={getProductPageUrl(characterInfo)}
                   className="button is-normal is-rounded character-list-button"
-                  style={{ borderColor: characterInfo.color }}
+                  style={{
+                    borderColor: characterInfo.color,
+                  }}
                 >
                   ダウンロードページ
                 </Link>
@@ -167,7 +171,9 @@ export default ({
                       : `/dormitory/`
                   }
                   className="button is-normal is-rounded character-list-button"
-                  style={{ borderColor: characterInfo.color }}
+                  style={{
+                    borderColor: characterInfo.color,
+                  }}
                 >
                   キャラクター一覧
                 </Link>
