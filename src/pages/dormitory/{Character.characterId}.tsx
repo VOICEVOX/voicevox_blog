@@ -139,11 +139,39 @@ export default ({
               className="box"
               style={{
                 borderColor: characterInfo.color,
-                position: "absolute",
-                marginRight: "30%",
-                width: "100%",
               }}
             >
+              <div
+                className="link-buttons has-text-weight-bold"
+                style={{
+                  display: "inline-flex",
+                  flexDirection: "column",
+                  position: "absolute",
+                  left: "102%",
+                  top: "70%",
+                }}
+              >
+                <Link
+                  to={getProductPageUrl(characterInfo)}
+                  className="button is-normal is-rounded character-list-button"
+                  style={{ borderColor: characterInfo.color }}
+                >
+                  ダウンロードページ
+                </Link>
+                <Link
+                  to={
+                    // ボイボ寮ページから遷移した場合は前のキャラクターへ戻る
+                    // 検索流入や共有されたページから直接飛んだ場合は先頭へ戻る
+                    location.state?.fromDormitory
+                      ? `/dormitory/#${characterInfo.id}`
+                      : `/dormitory/`
+                  }
+                  className="button is-normal is-rounded character-list-button"
+                  style={{ borderColor: characterInfo.color }}
+                >
+                  キャラクター一覧
+                </Link>
+              </div>
               <div className="columns m-0" style={{ height: "100%" }}>
                 <div
                   className="column is-4 portrait-column"
@@ -306,35 +334,6 @@ export default ({
                   </div>
                 </div>
               </div>
-            </div>
-            <div
-              className="link-buttons has-text-weight-bold"
-              style={{
-                position: "absolute",
-                marginLeft: "100%",
-                bottom: "2rem",
-              }}
-            >
-              <Link
-                to={getProductPageUrl(characterInfo)}
-                className="button is-normal is-rounded character-list-button"
-                style={{ borderColor: characterInfo.color }}
-              >
-                ダウンロードページ
-              </Link>
-              <Link
-                to={
-                  // ボイボ寮ページから遷移した場合は前のキャラクターへ戻る
-                  // 検索流入や共有されたページから直接飛んだ場合は先頭へ戻る
-                  location.state?.fromDormitory
-                    ? `/dormitory/#${characterInfo.id}`
-                    : `/dormitory/`
-                }
-                className="button is-normal is-rounded character-list-button"
-                style={{ borderColor: characterInfo.color }}
-              >
-                キャラクター一覧
-              </Link>
             </div>
           </div>
         </main>
