@@ -125,7 +125,7 @@ export default ({
   }
 
   // pcのみキャラ一覧とダウンロードページへのリンクボタンをファーストビューに表示する
-  const responsiveButtonGroupeStyle = navigator.userAgent.match(
+  const responsiveButtonGroupStyle = navigator.userAgent.match(
     /iPhone|Android.+Mobile/
   )
     ? {}
@@ -321,7 +321,7 @@ export default ({
             </div>
             <div
               className="link-buttons has-text-weight-bold"
-              style={responsiveButtonGroupeStyle}
+              style={responsiveButtonGroupStyle}
             >
               <Link
                 to={getProductPageUrl(characterInfo)}
