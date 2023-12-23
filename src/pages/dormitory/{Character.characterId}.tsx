@@ -2,7 +2,7 @@ import { faHome } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Link, navigate, PageProps } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
-import React, { useMemo, useState } from "react"
+import React, { useMemo, useState, useEffect } from "react"
 import { Page } from "../../components/page"
 import PlayButton from "../../components/playButton"
 import Seo from "../../components/seo"
@@ -124,6 +124,21 @@ export default ({
     }
   }
 
+  // pcのみキャラ一覧とダウンロードページへのリンクボタンをファーストビューに表示する
+  const responsiveButtonGroupeStyle = navigator.userAgent.match(
+    /iPhone|Android.+Mobile/
+  )
+    ? {}
+    : {
+        display: "inline-flex",
+        flexDirection: "column" as const,
+        position: "absolute" as const,
+        left: "100%",
+        top: "70%",
+        height: "25%",
+        width: "25%",
+      }
+
   return (
     <Page>
       <Seo
@@ -141,43 +156,6 @@ export default ({
                 borderColor: characterInfo.color,
               }}
             >
-              <div
-                className="link-buttons has-text-weight-bold"
-                style={{
-                  display: "inline-flex",
-                  flexDirection: "column",
-                  position: "absolute",
-                  left: "100%",
-                  top: "70%",
-                  height: "25%",
-                  width: "25%",
-                }}
-              >
-                <Link
-                  to={getProductPageUrl(characterInfo)}
-                  className="button is-normal is-rounded character-list-button"
-                  style={{
-                    borderColor: characterInfo.color,
-                  }}
-                >
-                  ダウンロードページ
-                </Link>
-                <Link
-                  to={
-                    // ボイボ寮ページから遷移した場合は前のキャラクターへ戻る
-                    // 検索流入や共有されたページから直接飛んだ場合は先頭へ戻る
-                    location.state?.fromDormitory
-                      ? `/dormitory/#${characterInfo.id}`
-                      : `/dormitory/`
-                  }
-                  className="button is-normal is-rounded character-list-button"
-                  style={{
-                    borderColor: characterInfo.color,
-                  }}
-                >
-                  キャラクター一覧
-                </Link>
-              </div>
               <div className="columns m-0" style={{ height: "100%" }}>
                 <div
                   className="column is-4 portrait-column"
@@ -340,6 +318,35 @@ export default ({
                   </div>
                 </div>
               </div>
+            </div>
+            <div
+              className="link-buttons has-text-weight-bold"
+              style={responsiveButtonGroupeStyle}
+            >
+              <Link
+                to={getProductPageUrl(characterInfo)}
+                className="button is-normal is-rounded character-list-button"
+                style={{
+                  borderColor: characterInfo.color,
+                }}
+              >
+                ダウンロードページ
+              </Link>
+              <Link
+                to={
+                  // ボイボ寮ページから遷移した場合は前のキャラクターへ戻る
+                  // 検索流入や共有されたページから直接飛んだ場合は先頭へ戻る
+                  location.state?.fromDormitory
+                    ? `/dormitory/#${characterInfo.id}`
+                    : `/dormitory/`
+                }
+                className="button is-normal is-rounded character-list-button"
+                style={{
+                  borderColor: characterInfo.color,
+                }}
+              >
+                キャラクター一覧
+              </Link>
             </div>
           </div>
         </main>
