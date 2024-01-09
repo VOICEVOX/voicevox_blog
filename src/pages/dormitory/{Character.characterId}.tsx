@@ -2,7 +2,7 @@ import { faHome } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Link, navigate, PageProps } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
-import React, { useMemo, useState } from "react"
+import React, { useMemo, useState, useEffect } from "react"
 import { Page } from "../../components/page"
 import PlayButton from "../../components/playButton"
 import Seo from "../../components/seo"
@@ -124,19 +124,30 @@ export default ({
     }
   }
 
-  // pcのみキャラ一覧とダウンロードページへのリンクボタンをファーストビューに表示する
-  const responsiveButtonGroupStyle = navigator.userAgent.match(
-    /iPhone|Android.+Mobile/
-  )
+  function useMediaQuery(query: string) {
+    const [matches, setMatches] = useState(window.matchMedia(query).matches)
+
+    useEffect(() => {
+      const media = window.matchMedia(query)
+      const listener = () => setMatches(media.matches)
+      media.addEventListener("change", listener)
+      return () => media.removeEventListener("change", listener)
+    }, [query])
+
+    return matches
+  }
+
+  // 1180px以下の場合はボタンをキャラクター紹介欄の下に表示する
+  // (ウインドウ幅の変動によって、ボタンが隠れ始めるタイミングが1180pxだった)
+  const isMobile = useMediaQuery("(max-width: 1180px)")
+  const responsiveButtonGroupStyle = isMobile
     ? {}
     : {
         display: "inline-flex",
         flexDirection: "column" as const,
         position: "absolute" as const,
         left: "100%",
-        top: "70%",
-        height: "25%",
-        width: "25%",
+        bottom: "25%",
       }
 
   return (
