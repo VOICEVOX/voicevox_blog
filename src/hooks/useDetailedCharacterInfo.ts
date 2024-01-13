@@ -101,6 +101,8 @@ export const useDetailedCharacterInfo = () => {
         { name: "セクシー", id: "sexy" },
         { name: "ささやき", id: "whis" },
         { name: "ヒソヒソ", id: "hiso" },
+        { name: "ヘロヘロ", id: "herohero" },
+        { name: "なみだめ", id: "namidame" },
       ],
       春日部つむぎ: [{ name: "ノーマル", id: "normal" }],
       雨晴はう: [{ name: "ノーマル", id: "normal" }],
@@ -121,7 +123,15 @@ export const useDetailedCharacterInfo = () => {
         { name: "びくびく", id: "biku" },
         { name: "びえーん", id: "cry" },
       ],
-      青山龍星: [{ name: "ノーマル", id: "normal" }],
+      青山龍星: [
+        { name: "ノーマル", id: "normal" },
+        { name: "熱血", id: "eager" },
+        { name: "不機嫌", id: "grumpy" },
+        { name: "喜び", id: "happy" },
+        { name: "しっとり", id: "mellow" },
+        { name: "かなしみ", id: "sad" },
+        { name: "囁き", id: "whisper" },
+      ],
       冥鳴ひまり: [{ name: "ノーマル", id: "normal" }],
       九州そら: [
         { name: "ノーマル", id: "normal" },
@@ -133,6 +143,10 @@ export const useDetailedCharacterInfo = () => {
       モチノキョウコ: [
         { name: "ノーマル", id: "normal" },
         { name: "セクシー／あん子", id: "sexy" },
+        { name: "泣き", id: "cry" },
+        { name: "怒り", id: "angry" },
+        { name: "喜び", id: "joy" },
+        { name: "のんびり", id: "relax" },
       ],
       剣崎雌雄: [{ name: "ノーマル", id: "normal" }],
       WhiteCUL: [
