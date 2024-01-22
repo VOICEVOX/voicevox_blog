@@ -714,6 +714,7 @@ $dropdown-item-active-background-color: $primary;
   h4 {
     @extend .title;
     @extend .is-6;
+    @extend .mt-5;
     @extend .mb-3;
   }
 

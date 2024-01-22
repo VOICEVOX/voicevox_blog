@@ -22,7 +22,6 @@ export default () => {
       />
       <section className="section">
         <div className="container is-max-desktop">
-          <h1 className="title">使い方</h1>
           <div
             className="markdown"
             dangerouslySetInnerHTML={{ __html: html }}
