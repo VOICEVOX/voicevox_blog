@@ -123,8 +123,8 @@ const Main = React.memo(
     return (
       <>
         <Seo
-          title="VOICEVOX | 無料のテキスト読み上げソフトウェア"
-          description="無料で使える中品質なテキスト読み上げソフトウェア。商用・非商用問わず無料で、誰でも簡単にお使いいただけます。イントネーションを詳細に調整することも可能です。"
+          title="VOICEVOX | 無料のテキスト読み上げ・歌声合成ソフトウェア"
+          description="無料で使える中品質なテキスト読み上げ・歌声合成ソフトウェア。商用・非商用問わず無料で、誰でも簡単にお使いいただけます。イントネーションを詳細に調整することも可能です。"
           image={shareThumb}
         />
 
@@ -137,7 +137,7 @@ const Main = React.memo(
                     <Logo alt="VOICEVOX" />
                   </div>
                   <h2 className="subtitle has-text-weight-semibold">
-                    無料で使える中品質なテキスト読み上げソフトウェア
+                    無料で使える中品質なテキスト読み上げ・歌声合成ソフトウェア
                   </h2>
                 </div>
               </div>
