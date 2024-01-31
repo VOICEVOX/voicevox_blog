@@ -32,6 +32,7 @@ export default ({
             <span style={{ fontSize: "0.7em" }}>(※2)</span>
           </li>
           <li>イントネーションの詳細な調整が可能</li>
+          <li>喋り声で歌えるハミング機能搭載</li>
         </ul>
       </div>
       <p className="is-size-7">
