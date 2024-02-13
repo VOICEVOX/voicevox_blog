@@ -55,6 +55,13 @@ export default ({
         <span className="has-text-weight-semibold">ダウンロード</span>
       </a>
       <p className="is-align-self-center is-size-6">Version {APP_VERSION}</p>
+      <a
+        className="button is-align-self-center mt-5 is-normal is-large is-rounded"
+        href="https://voicevox.hiroshiba.jp/term/"
+        target="_blank"
+      >
+        <span>VOICEVOX 利用規約</span>
+      </a>
     </div>
   )
 }
