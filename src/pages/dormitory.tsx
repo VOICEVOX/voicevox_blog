@@ -9,7 +9,7 @@ import "../components/layout.scss"
 import { Page } from "../components/page"
 import Seo from "../components/seo"
 import { useDetailedCharacterInfo } from "../hooks/useDetailedCharacterInfo"
-import shareThumb from "../images/dormitory/top-illusts/top-illust-007.png"
+import shareThumb from "../images/dormitory/top-illusts/top-illust-008.png"
 
 type DormitoryProps = {
   setShowingHeader: (show: boolean) => void
