@@ -31,9 +31,12 @@ export default ({ id }: { id: string }) => {
     "さよなか",
     "レイア",
     "のんたお",
+    "菊の字",
   ]
   if (topIllusts.length !== illustrators.length) {
-    throw new Error("イラストレーターの数とトップイラストの数が一致しません")
+    throw new Error(
+      `イラストレーターの数とトップイラストの数が一致しません ${topIllusts.length} !== ${illustrators.length}`
+    )
   }
 
   // モーダル
