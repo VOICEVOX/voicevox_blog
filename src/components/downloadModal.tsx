@@ -181,13 +181,9 @@ export const DownloadModal: React.FC<{
         </section>
 
         <footer className="modal-card-foot is-justify-content-flex-end">
-          <a
-            className="button is-normal is-rounded"
-            href="https://voicevox.hiroshiba.jp/term/"
-            target="_blank"
-          >
-            <span>VOICEVOX 利用規約</span>
-          </a>
+          <Link to="/term/" className="button">
+            <span>利用規約</span>
+          </Link>
           <a
             href={
               downloadUrls[selectedOs][selectedMode]?.[selectedPackage]?.url
