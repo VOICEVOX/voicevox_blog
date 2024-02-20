@@ -181,6 +181,9 @@ export const DownloadModal: React.FC<{
         </section>
 
         <footer className="modal-card-foot is-justify-content-flex-end">
+          <Link to="/term/" className="button">
+            <span>利用規約</span>
+          </Link>
           <a
             href={
               downloadUrls[selectedOs][selectedMode]?.[selectedPackage]?.url
