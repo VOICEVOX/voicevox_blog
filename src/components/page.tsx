@@ -87,6 +87,9 @@ export const Page: React.FC<{
             <Link to={"/term/"} className="navbar-item">
               利用規約
             </Link>
+            <Link to={"/news/"} className="navbar-item">
+              ニュース
+            </Link>
             <Link to={"/how_to_use/"} className="navbar-item">
               使い方
             </Link>
