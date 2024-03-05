@@ -23,7 +23,13 @@
 
 その際は Finder で `Ctrl` キーを押しながら VOICEVOX アプリケーションアイコンをクリックし、ショートカットメニューから「開く」を選択してから、「開く」をクリックしてください。
 
-もしくは、アップルメニューから「システム環境設定」を選択して「セキュリティとプライバシー」 をクリックし、「一般」パネルで「このまま開く」選んでください。
+もしくは、アップルメニューから「システム設定」を選択して「プライバシーとセキュリティ」 をクリックし、ページの下にあるセキュリティの「このまま開く」を選んでください。
+
+<img src="https://github.com/VOICEVOX/voicevox/assets/162051377/431f354c-6802-48b2-bb5f-130bedc7011d" style="max-height: 20rem" alt="現バージョンのmacOSを利用している場合のVOICEVOXアプリケーションの開き方" />
+
+macOS Ventura以前をお使いの場合は、アップルメニューから「システム環境設定」を選択して「セキュリティとプライバシー」 をクリックし、「一般」パネルで「このまま開く」選んでください。
+
+<img src="https://github.com/VOICEVOX/voicevox/assets/162051377/8897b729-df11-4e1b-8a7c-d3db27e79b1e" style="max-height: 20rem" alt="macOS Ventura以前のMacOSを利用してる場合のVOICEVOXアプリケーションの開き方" />
 
 #### Apple Silicon 搭載の Mac をお使いの場合
 
