@@ -49,10 +49,10 @@ npm run preview-build
 ## add resource
 
 ```bash
-editor_tag="0.16.1"
+editor_tag="0.17.1"
 editor_url="https://raw.githubusercontent.com/VOICEVOX/voicevox/$editor_tag"
 
-resource_tag="0.16.0"
+resource_tag="0.17.1"
 resource_url="https://raw.githubusercontent.com/VOICEVOX/voicevox_resource/$resource_tag"
 
 # 規約
