@@ -15,17 +15,18 @@ export const Page: React.FC<{
   showingHeaderOnTop?: boolean // ページ最上部でヘッダーを表示するかどうか
   children: React.ReactNode
   isNemo?: boolean // Nemo用のページか
+  isDark?: boolean // 黒基調のページか
 }> = ({
   showingHeader = true,
   showingHeaderOnTop = true,
   children,
   isNemo = false,
+  isDark = false,
 }) => {
   const [isBurgerActive, setIsBurgerActive] = useState(false)
 
-  // Nemoの場合は背景色を変更する
   useEffect(() => {
-    if (isNemo) {
+    if (isDark) {
       document.body.classList.add("has-background-black")
     } else {
       document.body.classList.add("has-background-white")
@@ -34,7 +35,7 @@ export const Page: React.FC<{
       document.body.classList.remove("has-background-black")
       document.body.classList.remove("has-background-white")
     }
-  }, [isNemo])
+  }, [isDark])
 
   const context = useContext(GlobalContext)
   context.downloadModal = useModalController()
@@ -52,7 +53,7 @@ export const Page: React.FC<{
         className={`navbar is-fixed-top has-shadow ${
           showingHeader ? "" : "is-hidden"
         } ${!showingHeaderOnTop ? "navbar-with-animation" : ""} ${
-          isNemo ? "is-black" : ""
+          isDark ? "is-black" : ""
         }`}
         role="navigation"
         aria-label="main navigation"
@@ -159,16 +160,16 @@ export const Page: React.FC<{
         hide={hidePrivacyPolicyModal}
       />
       <footer
-        className={`footer appearance ${isNemo ? "has-background-black" : ""}`}
+        className={`footer appearance ${isDark ? "has-background-black" : ""}`}
       >
         <VVFooter
           privacyPolicyShower={showPrivacyPolicyModal}
-          isNemo={isNemo}
+          isDark={isDark}
         />
       </footer>
       <div className="footer height-holder">
         {/* 空間を空けるために必要 */}
-        <VVFooter privacyPolicyShower={() => {}} isNemo={isNemo} />
+        <VVFooter privacyPolicyShower={() => {}} isDark={isDark} />
       </div>
     </>
   )

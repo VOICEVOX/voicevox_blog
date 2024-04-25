@@ -268,7 +268,7 @@ export default () => {
   }
 
   return (
-    <Page showingHeader={true} isNemo={true}>
+    <Page showingHeader={true} isNemo={true} isDark={true}>
       <Seo
         title="VOICEVOX Nemo"
         description="プレゼンから動画作成、ナレーションまで様々なTPOに合わせて利用できる、キャラクター無しの無料中品質読み上げソフトウェア"
