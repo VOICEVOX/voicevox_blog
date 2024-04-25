@@ -72,32 +72,38 @@ const VoiceCard = React.memo(
             </LinkToProductPage>
           </h3>
 
-          <div className="buttons">
-            <button
-              className={`button circle-icon is-small`}
-              style={coloredStyle}
-              type="button"
-              aria-label="次のサンプル音声へ"
-            >
-              <FontAwesomeIcon icon={faBackwardStep} />
-            </button>
+          {characterInfo.songVoiceUrls.length > 0 && (
+            <div className="buttons">
+              <button
+                className={`button circle-icon is-small`}
+                style={coloredStyle}
+                type="button"
+                aria-label="次のサンプル音声へ"
+              >
+                <FontAwesomeIcon icon={faBackwardStep} />
+              </button>
 
-            <PlayButton
-              url={"url"}
-              name={`${characterInfo.name}のサンプル音声${index + 1}}`}
-              color={characterInfo.color}
-              style={{ backgroundColor: "transparent" }}
-            />
+              {/* 
+とりあえずどんぐりころころを先頭に持ってくる
+んでスタイル変える方法を、← →にするかスタイル変更ボタンにするか考える
+ */}
+              <PlayButton
+                url={characterInfo.songVoiceUrls[0].urls[0]}
+                name={`${characterInfo.name}のサンプル音声${index + 1}}`}
+                color={characterInfo.color}
+                style={{ backgroundColor: "transparent" }}
+              />
 
-            <button
-              className={`button circle-icon is-small`}
-              style={coloredStyle}
-              type="button"
-              aria-label="次のサンプル音声へ"
-            >
-              <FontAwesomeIcon icon={faForwardStep} />
-            </button>
-          </div>
+              <button
+                className={`button circle-icon is-small`}
+                style={coloredStyle}
+                type="button"
+                aria-label="次のサンプル音声へ"
+              >
+                <FontAwesomeIcon icon={faForwardStep} />
+              </button>
+            </div>
+          )}
         </div>
       </div>
     )
