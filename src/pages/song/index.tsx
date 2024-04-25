@@ -14,7 +14,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import PlayButton from "../../components/playButton"
 import { CharacterContext, GlobalContext } from "../../contexts/context"
 import { useDetailedCharacterInfo } from "../../hooks/useDetailedCharacterInfo"
-import shareThumb from "../../images/nemo/share-thumbnail.png"
+import shareThumb from "../../images/song/share-thumb.png"
 import { CharacterInfo, CharacterKey } from "../../types/dormitoryCharacter"
 import { getProductPageUrl } from "../../urls"
 
@@ -212,8 +212,11 @@ export default () => {
 
   return (
     <Page showingHeader={true} isDark={true}>
-      {/* TODO: SEOワードいれる */}
-      <Seo title="VOICEVOX Song" description="TODO" image={shareThumb} />
+      <Seo
+        title="VOICEVOX Song"
+        description="無料で使える中品質なテキスト読み上げ・歌声合成ソフトウェア。商用・非商用問わず無料で、誰でも簡単にお使いいただけます。喋り声に近い声で歌えるハミング機能も搭載。"
+        image={shareThumb}
+      />
 
       <main className="song">
         <section className="section px-0 py-0">
