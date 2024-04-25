@@ -783,10 +783,37 @@ $dropdown-item-active-background-color: $primary;
     }
   }
 
-  .voices-container {
+  .feature {
+    width: 100%;
+    @extend .is-max-widescreen;
+    @extend .mb-6;
+
+    .feature-cells {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+      gap: 1rem;
+
+      @include touch {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .feature-cell {
+        background-color: #43554239;
+        @extend .is-size-5;
+        @extend .is-size-6-mobile;
+        text-align: center;
+        padding: 2rem 0;
+        border-radius: 1rem;
+      }
+    }
+  }
+
+  .voices {
     display: flex;
     flex-direction: column;
     @extend .is-max-widescreen;
+    @extend .mb-6;
 
     .voice-cards {
       display: flex;
@@ -843,7 +870,7 @@ $dropdown-item-active-background-color: $primary;
     }
   }
 
-  .explain-humming-container {
+  .explain-humming {
     @extend .is-max-widescreen;
   }
 }

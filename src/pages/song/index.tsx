@@ -184,16 +184,31 @@ export default () => {
   const { characterKeys } = useContext(CharacterContext)
 
   // ソングを持つキャラクターを前に表示する
+  // ソング・ハミングどちらも無いキャラクターはフィルター
   const orderedCharacterKeys = useMemo(() => {
-    return characterKeys.toSorted((a, b) => {
-      const hasSong = (songVoiceUrls: { styleType: "song" | "humming" }[]) =>
-        songVoiceUrls.some(({ styleType }) => styleType === "song")
-      return hasSong(characterInfos[a].songVoiceUrls) &&
-        !hasSong(characterInfos[b].songVoiceUrls)
-        ? -1
-        : 1
-    })
+    return characterKeys
+      .filter(key => characterInfos[key].songVoiceUrls.length > 0)
+      .toSorted((a, b) => {
+        const hasSong = (songVoiceUrls: { styleType: "song" | "humming" }[]) =>
+          songVoiceUrls.some(({ styleType }) => styleType === "song")
+        return hasSong(characterInfos[a].songVoiceUrls) &&
+          !hasSong(characterInfos[b].songVoiceUrls)
+          ? -1
+          : 1
+      })
   }, [characterKeys, characterInfos])
+
+  // キャラクター数
+  const characterCount = useMemo(() => {
+    return orderedCharacterKeys.length
+  }, [orderedCharacterKeys])
+
+  // スタイル数
+  const styleCount = useMemo(() => {
+    return orderedCharacterKeys.reduce((acc, key) => {
+      return acc + characterInfos[key].songVoiceUrls.length
+    }, 0)
+  }, [orderedCharacterKeys, characterInfos])
 
   return (
     <Page showingHeader={true} isDark={true}>
@@ -241,7 +256,33 @@ export default () => {
         </section>
 
         <section className="section">
-          <div className="container voices-container">
+          <div className="feature container">
+            <h2 className="title">特徴</h2>
+            <div className="feature-cells">
+              <div className="feature-cell">
+                商用利用可能な
+                <br />
+                フリーソフトウェア
+              </div>
+              <div className="feature-cell">
+                マルチOSに対応
+                <br />
+                (Win / Mac / Linux)
+              </div>
+              <div className="feature-cell">
+                {characterCount} 名のキャラクターと
+                <br />
+                {styleCount} 種類のボイス
+              </div>
+              <div className="feature-cell">
+                すぐ使える GUI と
+                <br />
+                歌唱 AI で創作支援
+              </div>
+            </div>
+          </div>
+
+          <div className="container voices">
             <h2 className="title">音声ライブラリ一覧</h2>
             <div className="voice-cards">
               {orderedCharacterKeys.map(characterKey => (
@@ -254,16 +295,18 @@ export default () => {
             </div>
           </div>
 
-          <div className="container explain-humming-container">
+          <div className="container explain-humming">
             <h2 className="title">ハミングとは？</h2>
             <p>
               喋り声のデータを用いて音声ライブラリを作成し、
               歌えるキャラクターに歌い方を倣うことで、
-              キャラクターの喋り声に近い声で歌える技術で実現された機能です。
+              キャラクターの喋り声に近い声で歌える機能です。
             </p>
             <p>キャラクターによっていろんなスタイルで歌うことができます。</p>
           </div>
         </section>
+
+        {/* TODO: トーク側にあるOSSとかの案内を追加 */}
       </main>
     </Page>
   )

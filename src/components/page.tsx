@@ -85,6 +85,12 @@ export const Page: React.FC<{
           className={`navbar-menu ${isBurgerActive ? "is-active" : ""}`}
         >
           <div className="navbar-end">
+            <Link to={"/"} className="navbar-item">
+              トーク
+            </Link>
+            <Link to={"/song/"} className="navbar-item">
+              ソング
+            </Link>
             <Link to={"/term/"} className="navbar-item">
               利用規約
             </Link>
