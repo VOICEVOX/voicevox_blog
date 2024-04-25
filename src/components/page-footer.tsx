@@ -4,12 +4,12 @@ import React from "react"
 
 export const VVFooter: React.FC<{
   privacyPolicyShower: () => void
-  isNemo: boolean // Nemoのページかどうか
-}> = ({ privacyPolicyShower, isNemo }) => (
+  isDark: boolean // Nemoのページかどうか
+}> = ({ privacyPolicyShower, isDark }) => (
   <>
     <div className={`container is-flex is-justify-content-center`}>
       <a
-        className={`button ml-1 mr-1 ${!isNemo ? "is-outlined" : "is-dark"}`}
+        className={`button ml-1 mr-1 ${!isDark ? "is-outlined" : "is-dark"}`}
         href="https://github.com/VOICEVOX/voicevox"
         target="_blank"
         rel="noreferrer"
@@ -23,7 +23,7 @@ export const VVFooter: React.FC<{
       </a>
       <a
         className={`button is-info ml-1 mr-1 ${
-          !isNemo ? "is-outlined" : "is-dark"
+          !isDark ? "is-outlined" : "is-dark"
         }`}
         href="https://twitter.com/voicevox_pj"
         target="_blank"
@@ -39,12 +39,12 @@ export const VVFooter: React.FC<{
     </div>
     <div className="container is-flex is-justify-content-center mt-2">
       <a
-        className={`is-size-7 ml-1 mr-1 ${isNemo ? "has-text-primary" : ""}`}
+        className={`is-size-7 ml-1 mr-1 ${isDark ? "has-text-primary" : ""}`}
         onClick={privacyPolicyShower}
       >
         プライバシーポリシー
       </a>
-      <p className={`is-size-7	ml-1 mr-1 ${isNemo ? "has-text-white-bis" : ""}`}>
+      <p className={`is-size-7	ml-1 mr-1 ${isDark ? "has-text-white-bis" : ""}`}>
         © Hiroshiba Kazuyuki
       </p>
     </div>

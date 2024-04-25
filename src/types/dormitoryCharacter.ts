@@ -46,6 +46,11 @@ export type CharacterInfo = {
   description: string
   labelInfos: readonly { label: string; value: string; size: 1 | 2 }[]
   talkVoiceUrls: { style: string; urls: readonly string[] }[]
+  songVoiceUrls: {
+    style: string
+    styleType: "song" | "humming"
+    urls: readonly string[]
+  }[]
   dormitoryVoiceUrls?: readonly string[]
   infoImages?: readonly IGatsbyImageData[]
   detailUrl: string | undefined
