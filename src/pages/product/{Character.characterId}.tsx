@@ -95,7 +95,7 @@ const ProductPage = ({ params }: PageProps) => {
 
   // サンプルボイスのスタイル選択
   const styles = useMemo(
-    () => characterInfo.styleVoiceUrls.map(o => o.style),
+    () => characterInfo.talkVoiceUrls.map(o => o.style),
     [characterInfo]
   )
   const { selectedStyle, setSelectedStyle } = useStyleDropdownController({
@@ -105,9 +105,9 @@ const ProductPage = ({ params }: PageProps) => {
     () =>
       styles.length > 0
         ? (
-            characterInfo.styleVoiceUrls.find(
+            characterInfo.talkVoiceUrls.find(
               ({ style }) => style == selectedStyle
-            ) || characterInfo.styleVoiceUrls[0]
+            ) || characterInfo.talkVoiceUrls[0]
           ).urls // FIXME: ブラウザバックで変なステートになるのでフォールバックしている
         : undefined,
     [characterInfo, selectedStyle]
@@ -147,8 +147,8 @@ const ProductPage = ({ params }: PageProps) => {
       const nextCharacterInfo = characterInfos[nextCharacterKey]!
       setCharacterId(nextCharacterInfo.id)
       setSelectedStyle(
-        nextCharacterInfo.styleVoiceUrls.length > 0
-          ? nextCharacterInfo.styleVoiceUrls[0].style
+        nextCharacterInfo.talkVoiceUrls.length > 0
+          ? nextCharacterInfo.talkVoiceUrls[0].style
           : undefined
       )
 
