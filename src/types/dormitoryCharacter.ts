@@ -45,7 +45,7 @@ export type CharacterInfo = {
   lightColor: string
   description: string
   labelInfos: readonly { label: string; value: string; size: 1 | 2 }[]
-  styleVoiceUrls: { style: string; urls: readonly string[] }[]
+  talkVoiceUrls: { style: string; urls: readonly string[] }[]
   dormitoryVoiceUrls?: readonly string[]
   infoImages?: readonly IGatsbyImageData[]
   detailUrl: string | undefined
