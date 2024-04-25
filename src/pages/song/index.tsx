@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from "react"
+import React, { useContext, useMemo, useState } from "react"
 import "../../components/layout.scss"
 import { Page } from "../../components/page"
 import Seo from "../../components/seo"
@@ -41,6 +41,68 @@ const VoiceCard = React.memo(
       }
     }, [color])
 
+    const audioSamples = useMemo(
+      () => characterInfo.songVoiceUrls,
+      [characterInfo]
+    )
+
+    // スタイルがまだ時を考慮している
+    const [styleState, setStyleState] = useState<
+      | {
+          styles: { name: string; type: string }[]
+          selectedStyleIndex: number
+        }
+      | undefined
+    >(
+      audioSamples.length > 0
+        ? {
+            styles: audioSamples.map(value => {
+              return { name: value.style, type: value.styleType }
+            }),
+            selectedStyleIndex: 0,
+          }
+        : undefined
+    )
+
+    // スタイルタイプを含んだスタイル名
+    const fullStyleName = useMemo(() => {
+      if (styleState == undefined) {
+        return undefined
+      }
+      return (
+        (styleState.styles[styleState.selectedStyleIndex].type == "humming"
+          ? "ハミング"
+          : "ソング") +
+        "：" +
+        styleState.styles[styleState.selectedStyleIndex].name
+      )
+    }, [styleState])
+
+    // 次のスタイルへ
+    const nextStyle = () => {
+      if (!styleState) {
+        throw new Error("styleState is undefined.")
+      }
+      setStyleState({
+        ...styleState,
+        selectedStyleIndex:
+          (styleState.selectedStyleIndex + 1) % styleState.styles.length,
+      })
+    }
+
+    // 前のスタイルへ
+    const prevStyle = () => {
+      if (!styleState) {
+        throw new Error("styleState is undefined.")
+      }
+      setStyleState({
+        ...styleState,
+        selectedStyleIndex:
+          (styleState.selectedStyleIndex - 1 + styleState.styles.length) %
+          styleState.styles.length,
+      })
+    }
+
     const LinkToProductPage = ({
       children,
       className,
@@ -72,33 +134,45 @@ const VoiceCard = React.memo(
             </LinkToProductPage>
           </h3>
 
-          {characterInfo.songVoiceUrls.length > 0 && (
-            <div className="buttons">
-              <button
-                className={`button circle-icon is-small`}
-                style={coloredStyle}
-                type="button"
-                aria-label="前のサンプル音声へ"
-              >
-                <FontAwesomeIcon icon={faBackwardStep} />
-              </button>
+          {styleState && (
+            <>
+              <div className="buttons">
+                {styleState.styles.length > 1 && (
+                  <button
+                    className={`button circle-icon is-small`}
+                    style={coloredStyle}
+                    type="button"
+                    aria-label="前のサンプル音声へ"
+                    onClick={prevStyle}
+                  >
+                    <FontAwesomeIcon icon={faBackwardStep} />
+                  </button>
+                )}
 
-              <PlayButton
-                url={characterInfo.songVoiceUrls[0].urls[0]}
-                name={`${characterInfo.name}のサンプル音声${index + 1}}`}
-                color={characterInfo.color}
-                style={{ backgroundColor: "transparent" }}
-              />
+                <PlayButton
+                  url={
+                    characterInfo.songVoiceUrls[styleState.selectedStyleIndex]
+                      .urls[0]
+                  }
+                  name={`${fullStyleName}のサンプル音声}`}
+                  color={characterInfo.color}
+                  style={{ backgroundColor: "transparent" }}
+                />
 
-              <button
-                className={`button circle-icon is-small`}
-                style={coloredStyle}
-                type="button"
-                aria-label="次のサンプル音声へ"
-              >
-                <FontAwesomeIcon icon={faForwardStep} />
-              </button>
-            </div>
+                {styleState.styles.length > 1 && (
+                  <button
+                    className={`button circle-icon is-small`}
+                    style={coloredStyle}
+                    type="button"
+                    aria-label="次のサンプル音声へ"
+                    onClick={nextStyle}
+                  >
+                    <FontAwesomeIcon icon={faForwardStep} />
+                  </button>
+                )}
+              </div>
+              <h4 className="style-name">{fullStyleName}</h4>
+            </>
           )}
         </div>
       </div>

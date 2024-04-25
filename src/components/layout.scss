@@ -784,15 +784,29 @@ $dropdown-item-active-background-color: $primary;
         .voice-card-content {
           @extend .has-text-centered;
 
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+
           .title {
             @extend .is-6;
             @extend .has-text-weight-medium;
-            @extend .mb-3;
+            @extend .mb-0;
           }
 
           .buttons {
             align-items: center;
             justify-content: center;
+            @extend .mb-0;
+
+            .button {
+              @extend .mb-0;
+            }
+          }
+
+          .style-name {
+            @extend .is-size-7;
+            // @extend .has-text-weight-light;
           }
         }
       }
