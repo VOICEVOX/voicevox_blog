@@ -699,7 +699,8 @@ $dropdown-item-active-background-color: $primary;
 .song {
   color: white;
 
-  .title {
+  .title,
+  .subtitle {
     color: white !important;
   }
 
@@ -731,14 +732,44 @@ $dropdown-item-active-background-color: $primary;
       // filter: blur(1px) brightness(50%);
     }
 
-    h1 {
-      color: rgba($primary, 0.75) !important;
-      // @extend .is-size-3-touch;
-      // @extend .is-size-2-desktop;
-      // @extend .is-size-1-widescreen;
-      // @extend .is-size-1;
-      font-size: 7.5rem;
-      text-shadow: 0 0 10px rgba(mix($link, black, 90%), 0.75);
+    .titles {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      h1 {
+        color: rgba($primary, 0.75) !important;
+        font-size: 7.5rem;
+        text-shadow: 0 0 10px rgba(mix($link, black, 90%), 0.75);
+      }
+
+      .subtitle {
+        @extend .is-4;
+        @extend .has-text-weight-bold;
+        text-shadow: 0 0 10px rgba(black, 0.75);
+
+        // <wbr>で良い感じに改行するようにする
+        word-break: keep-all;
+        overflow-wrap: break-word;
+      }
+
+      @include touch {
+        h1 {
+          font-size: 6rem;
+        }
+      }
+
+      @include mobile {
+        gap: 0.5rem;
+        margin-bottom: 5rem;
+
+        h1 {
+          font-size: 3rem;
+        }
+      }
     }
 
     .buttons {
@@ -806,11 +837,14 @@ $dropdown-item-active-background-color: $primary;
 
           .style-name {
             @extend .is-size-7;
-            // @extend .has-text-weight-light;
           }
         }
       }
     }
+  }
+
+  .explain-humming-container {
+    @extend .is-max-widescreen;
   }
 }
 

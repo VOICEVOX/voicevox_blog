@@ -12,14 +12,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import PlayButton from "../../components/playButton"
-import { CharacterContext } from "../../contexts/context"
+import { CharacterContext, GlobalContext } from "../../contexts/context"
 import { useDetailedCharacterInfo } from "../../hooks/useDetailedCharacterInfo"
 import shareThumb from "../../images/nemo/share-thumbnail.png"
 import { CharacterInfo, CharacterKey } from "../../types/dormitoryCharacter"
 import { getProductPageUrl } from "../../urls"
 
-// 音声カード表示
-const VoiceCard = React.memo(
+// キャラクターごとのカード表示
+const CharacterCard = React.memo(
   ({
     characterInfo,
     characterKey,
@@ -29,8 +29,6 @@ const VoiceCard = React.memo(
   }) => {
     if (!characterInfo)
       throw new Error(`characterInfo is undefined. (${characterKey})`)
-
-    const index = 0
 
     const color = characterInfo.color
     const coloredStyle = useMemo(() => {
@@ -46,13 +44,12 @@ const VoiceCard = React.memo(
       [characterInfo]
     )
 
-    // スタイルがまだ時を考慮している
     const [styleState, setStyleState] = useState<
       | {
           styles: { name: string; type: string }[]
           selectedStyleIndex: number
         }
-      | undefined
+      | undefined // スタイルが未発表な場合はundefined
     >(
       audioSamples.length > 0
         ? {
@@ -181,11 +178,22 @@ const VoiceCard = React.memo(
 )
 
 export default () => {
-  // const query = useStaticQuery(graphql``)
-
   const { characterInfos } = useDetailedCharacterInfo()
 
+  const context = useContext(GlobalContext)
   const { characterKeys } = useContext(CharacterContext)
+
+  // ソングを持つキャラクターを前に表示する
+  const orderedCharacterKeys = useMemo(() => {
+    return characterKeys.toSorted((a, b) => {
+      const hasSong = (songVoiceUrls: { styleType: "song" | "humming" }[]) =>
+        songVoiceUrls.some(({ styleType }) => styleType === "song")
+      return hasSong(characterInfos[a].songVoiceUrls) &&
+        !hasSong(characterInfos[b].songVoiceUrls)
+        ? -1
+        : 1
+    })
+  }, [characterKeys, characterInfos])
 
   return (
     <Page showingHeader={true} isDark={true}>
@@ -195,14 +203,21 @@ export default () => {
       <main className="song">
         <section className="section px-0 py-0">
           <div className="top">
-            <h1 className="title">VOICEVOX Song</h1>
+            <div className="titles">
+              <h1 className="title">VOICEVOX Song</h1>
+              <span className="subtitle">
+                無料で使える中品質な
+                <wbr />
+                テキスト読み上げ・歌声合成ソフトウェア
+              </span>
+            </div>
 
             <div className="buttons">
               <a
                 className="button is-primary is-large is-rounded"
                 onClick={() => {
-                  // context.nemoGuidanceModal.show()
-                  // context.sendEvent("download", "nemo")
+                  context.downloadModal.show()
+                  context.sendEvent("download", "software")
                 }}
                 target="_blank"
                 rel="noreferrer"
@@ -213,29 +228,40 @@ export default () => {
                 </span>
                 <span className="has-text-weight-semibold">ダウンロード</span>
               </a>
-              <button
-                // onClick={showNemoReadmeModal}
+              <Link
+                to="/term/"
                 className="button is-normal is-rounded"
                 type="button"
+                role="button"
               >
-                <span>利用規約</span>
-              </button>
+                利用規約
+              </Link>
             </div>
           </div>
         </section>
 
         <section className="section">
-          <div className="voices-container container">
+          <div className="container voices-container">
             <h2 className="title">音声ライブラリ一覧</h2>
             <div className="voice-cards">
-              {characterKeys.map(characterKey => (
-                <VoiceCard
+              {orderedCharacterKeys.map(characterKey => (
+                <CharacterCard
                   key={characterKey}
                   characterInfo={characterInfos[characterKey]}
                   characterKey={characterKey}
                 />
               ))}
             </div>
+          </div>
+
+          <div className="container explain-humming-container">
+            <h2 className="title">ハミングとは？</h2>
+            <p>
+              喋り声のデータを用いて音声ライブラリを作成し、
+              歌えるキャラクターに歌い方を倣うことで、
+              キャラクターの喋り声に近い声で歌える技術で実現された機能です。
+            </p>
+            <p>キャラクターによっていろんなスタイルで歌うことができます。</p>
           </div>
         </section>
       </main>
