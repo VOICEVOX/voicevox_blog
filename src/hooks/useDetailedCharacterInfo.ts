@@ -43,10 +43,21 @@ export const useDetailedCharacterInfo = () => {
           }
         }
       }
-      styleAudio: allFile(
+      talkAudio: allFile(
         filter: {
           sourceInstanceName: { eq: "audio" }
-          relativePath: { regex: "/^(?!dormitory)/" }
+          relativePath: { regex: "/^talk/[^/]+$/" }
+        }
+      ) {
+        nodes {
+          name
+          publicURL
+        }
+      }
+      songAudio: allFile(
+        filter: {
+          sourceInstanceName: { eq: "audio" }
+          relativePath: { regex: "/^song/[^/]+$/" }
         }
       ) {
         nodes {
@@ -84,130 +95,243 @@ export const useDetailedCharacterInfo = () => {
   const { getCharacterInfo } = useCharacterInfo()
 
   // キャラごとのスタイル一覧
-  const styleNames: { [key in CharacterKey]: { name: string; id: string }[] } =
-    {
-      四国めたん: [
-        { name: "ノーマル", id: "normal" },
-        { name: "あまあま", id: "ama" },
-        { name: "ツンツン", id: "tsun" },
-        { name: "セクシー", id: "sexy" },
-        { name: "ささやき", id: "whis" },
-        { name: "ヒソヒソ", id: "hiso" },
-      ],
-      ずんだもん: [
-        { name: "ノーマル", id: "normal" },
-        { name: "あまあま", id: "ama" },
-        { name: "ツンツン", id: "tsun" },
-        { name: "セクシー", id: "sexy" },
-        { name: "ささやき", id: "whis" },
-        { name: "ヒソヒソ", id: "hiso" },
-        { name: "ヘロヘロ", id: "herohero" },
-        { name: "なみだめ", id: "namidame" },
-      ],
-      春日部つむぎ: [{ name: "ノーマル", id: "normal" }],
-      雨晴はう: [{ name: "ノーマル", id: "normal" }],
-      波音リツ: [
-        { name: "ノーマル", id: "normal" },
-        { name: "クイーン", id: "queen" },
-      ],
-      玄野武宏: [
-        { name: "ノーマル", id: "normal" },
-        { name: "喜び", id: "fun" },
-        { name: "ツンギレ", id: "angry" },
-        { name: "悲しみ", id: "sad" },
-      ],
-      白上虎太郎: [
-        { name: "ふつう", id: "normal" },
-        { name: "わーい", id: "joy" },
-        { name: "おこ", id: "angry" },
-        { name: "びくびく", id: "biku" },
-        { name: "びえーん", id: "cry" },
-      ],
-      青山龍星: [
-        { name: "ノーマル", id: "normal" },
-        { name: "熱血", id: "eager" },
-        { name: "不機嫌", id: "grumpy" },
-        { name: "喜び", id: "happy" },
-        { name: "しっとり", id: "mellow" },
-        { name: "かなしみ", id: "sad" },
-        { name: "囁き", id: "whisper" },
-      ],
-      冥鳴ひまり: [{ name: "ノーマル", id: "normal" }],
-      九州そら: [
-        { name: "ノーマル", id: "normal" },
-        { name: "あまあま", id: "ama" },
-        { name: "ツンツン", id: "tsun" },
-        { name: "セクシー", id: "sexy" },
-        { name: "ささやき", id: "whis" },
-      ],
-      モチノキョウコ: [
-        { name: "ノーマル", id: "normal" },
-        { name: "セクシー／あん子", id: "sexy" },
-        { name: "泣き", id: "cry" },
-        { name: "怒り", id: "angry" },
-        { name: "喜び", id: "joy" },
-        { name: "のんびり", id: "relax" },
-      ],
-      剣崎雌雄: [{ name: "ノーマル", id: "normal" }],
-      WhiteCUL: [
-        { name: "ノーマル", id: "normal" },
-        { name: "たのしい", id: "joy" },
-        { name: "かなしい", id: "sad" },
-        { name: "びえーん", id: "cry" },
-      ],
-      後鬼: [
-        { name: "人間ver.", id: "normal" },
-        { name: "ぬいぐるみver.", id: "nuigurumi" },
-      ],
-      No7: [
-        { name: "ノーマル", id: "normal" },
-        { name: "アナウンス", id: "announce" },
-        { name: "読み聞かせ", id: "reading" },
-      ],
-      ちび式じい: [{ name: "ノーマル", id: "normal" }],
-      櫻歌ミコ: [
-        { name: "ノーマル", id: "normal" },
-        { name: "第二形態", id: "2nd" },
-        { name: "ロリ", id: "loli" },
-      ],
-      小夜_SAYO: [{ name: "ノーマル", id: "normal" }],
-      ナースロボ＿タイプＴ: [
-        { name: "ノーマル", id: "normal" },
-        { name: "楽々", id: "fun" },
-        { name: "恐怖", id: "fear" },
-        { name: "内緒話", id: "whis" },
-      ],
-      聖騎士紅桜: [{ name: "ノーマル", id: "normal" }],
-      雀松朱司: [{ name: "ノーマル", id: "normal" }],
-      麒ヶ島宗麟: [{ name: "ノーマル", id: "normal" }],
-      春歌ナナ: [{ name: "ノーマル", id: "normal" }],
-      猫使アル: [
-        { name: "ノーマル", id: "normal" },
-        { name: "おちつき", id: "ochitsuki" },
-        { name: "うきうき", id: "fun" },
-      ],
-      猫使ビィ: [
-        { name: "ノーマル", id: "normal" },
-        { name: "おちつき", id: "ochitsuki" },
-        { name: "人見知り", id: "shy" },
-      ],
-      中国うさぎ: [
-        { name: "ノーマル", id: "normal" },
-        { name: "おどろき", id: "surprise" },
-        { name: "こわがり", id: "fear" },
-        { name: "へろへろ", id: "tired" },
-      ],
-      栗田まろん: [{ name: "ノーマル", id: "normal" }],
-      藍田ノエル: [{ name: "ノーマル", id: "normal" }],
-      満別花丸: [
-        { name: "ノーマル", id: "normal" },
-        { name: "元気", id: "fun" },
-        { name: "ささやき", id: "whis" },
-        { name: "ぶりっ子", id: "cute" },
-        { name: "ボーイ", id: "boy" },
-      ],
-      琴詠ニア: [{ name: "ノーマル", id: "normal" }],
-    }
+  const styleNames: {
+    [key in CharacterKey]: {
+      name: string
+      id: string
+      type: "talk" | "song" | "humming"
+    }[]
+  } = {
+    四国めたん: [
+      { name: "ノーマル", id: "normal", type: "talk" },
+      { name: "あまあま", id: "ama", type: "talk" },
+      { name: "ツンツン", id: "tsun", type: "talk" },
+      { name: "セクシー", id: "sexy", type: "talk" },
+      { name: "ささやき", id: "whis", type: "talk" },
+      { name: "ヒソヒソ", id: "hiso", type: "talk" },
+      { name: "ノーマル", id: "normal", type: "humming" },
+      { name: "あまあま", id: "ama", type: "humming" },
+      { name: "ツンツン", id: "tsun", type: "humming" },
+      { name: "セクシー", id: "sexy", type: "humming" },
+      { name: "ヒソヒソ", id: "hiso", type: "humming" },
+    ],
+    ずんだもん: [
+      { name: "ノーマル", id: "normal", type: "talk" },
+      { name: "あまあま", id: "ama", type: "talk" },
+      { name: "ツンツン", id: "tsun", type: "talk" },
+      { name: "セクシー", id: "sexy", type: "talk" },
+      { name: "ささやき", id: "whis", type: "talk" },
+      { name: "ヒソヒソ", id: "hiso", type: "talk" },
+      { name: "ヘロヘロ", id: "herohero", type: "talk" },
+      { name: "なみだめ", id: "namidame", type: "talk" },
+      { name: "ノーマル", id: "normal", type: "humming" },
+      { name: "あまあま", id: "ama", type: "humming" },
+      { name: "ツンツン", id: "tsun", type: "humming" },
+      { name: "セクシー", id: "sexy", type: "humming" },
+      { name: "ヒソヒソ", id: "hiso", type: "humming" },
+      { name: "ヘロヘロ", id: "herohero", type: "humming" },
+      { name: "なみだめ", id: "namidame", type: "humming" },
+    ],
+    春日部つむぎ: [
+      { name: "ノーマル", id: "normal", type: "talk" },
+      { name: "ノーマル", id: "normal", type: "humming" },
+    ],
+    雨晴はう: [
+      { name: "ノーマル", id: "normal", type: "talk" },
+      { name: "ノーマル", id: "normal", type: "humming" },
+    ],
+    波音リツ: [
+      { name: "ノーマル", id: "normal", type: "talk" },
+      { name: "クイーン", id: "queen", type: "talk" },
+      { name: "ノーマル", id: "normal", type: "song" },
+      { name: "ノーマル", id: "normal", type: "humming" },
+      { name: "クイーン", id: "queen", type: "humming" },
+    ],
+    玄野武宏: [
+      { name: "ノーマル", id: "normal", type: "talk" },
+      { name: "喜び", id: "fun", type: "talk" },
+      { name: "ツンギレ", id: "angry", type: "talk" },
+      { name: "悲しみ", id: "sad", type: "talk" },
+      { name: "ノーマル", id: "normal", type: "humming" },
+      { name: "喜び", id: "fun", type: "humming" },
+      { name: "ツンギレ", id: "angry", type: "humming" },
+      { name: "悲しみ", id: "sad", type: "humming" },
+    ],
+    白上虎太郎: [
+      { name: "ふつう", id: "normal", type: "talk" },
+      { name: "わーい", id: "joy", type: "talk" },
+      { name: "おこ", id: "angry", type: "talk" },
+      { name: "びくびく", id: "biku", type: "talk" },
+      { name: "びえーん", id: "cry", type: "talk" },
+      { name: "ふつう", id: "normal", type: "humming" },
+      { name: "わーい", id: "joy", type: "humming" },
+      { name: "おこ", id: "angry", type: "humming" },
+      { name: "びくびく", id: "biku", type: "humming" },
+      { name: "びえーん", id: "cry", type: "humming" },
+    ],
+    青山龍星: [
+      { name: "ノーマル", id: "normal", type: "talk" },
+      { name: "熱血", id: "eager", type: "talk" },
+      { name: "不機嫌", id: "grumpy", type: "talk" },
+      { name: "喜び", id: "happy", type: "talk" },
+      { name: "しっとり", id: "mellow", type: "talk" },
+      { name: "かなしみ", id: "sad", type: "talk" },
+      { name: "囁き", id: "whisper", type: "talk" },
+      { name: "ノーマル", id: "normal", type: "humming" },
+      { name: "熱血", id: "eager", type: "humming" },
+      { name: "不機嫌", id: "grumpy", type: "humming" },
+      { name: "喜び", id: "happy", type: "humming" },
+      { name: "しっとり", id: "mellow", type: "humming" },
+      { name: "かなしみ", id: "sad", type: "humming" },
+    ],
+    冥鳴ひまり: [
+      { name: "ノーマル", id: "normal", type: "talk" },
+      { name: "ノーマル", id: "normal", type: "humming" },
+    ],
+    九州そら: [
+      { name: "ノーマル", id: "normal", type: "talk" },
+      { name: "あまあま", id: "ama", type: "talk" },
+      { name: "ツンツン", id: "tsun", type: "talk" },
+      { name: "セクシー", id: "sexy", type: "talk" },
+      { name: "ささやき", id: "whis", type: "talk" },
+      { name: "ノーマル", id: "normal", type: "humming" },
+      { name: "あまあま", id: "ama", type: "humming" },
+      { name: "ツンツン", id: "tsun", type: "humming" },
+      { name: "セクシー", id: "sexy", type: "humming" },
+    ],
+    モチノキョウコ: [
+      { name: "ノーマル", id: "normal", type: "talk" },
+      { name: "セクシー／あん子", id: "sexy", type: "talk" },
+      { name: "泣き", id: "cry", type: "talk" },
+      { name: "怒り", id: "angry", type: "talk" },
+      { name: "喜び", id: "joy", type: "talk" },
+      { name: "のんびり", id: "relax", type: "talk" },
+      { name: "ノーマル", id: "normal", type: "humming" },
+      { name: "セクシー／あん子", id: "sexy", type: "humming" },
+      { name: "泣き", id: "cry", type: "humming" },
+      { name: "怒り", id: "angry", type: "humming" },
+      { name: "喜び", id: "joy", type: "humming" },
+      { name: "のんびり", id: "relax", type: "humming" },
+    ],
+    剣崎雌雄: [
+      { name: "ノーマル", id: "normal", type: "talk" },
+      { name: "ノーマル", id: "normal", type: "humming" },
+    ],
+    WhiteCUL: [
+      { name: "ノーマル", id: "normal", type: "talk" },
+      { name: "たのしい", id: "joy", type: "talk" },
+      { name: "かなしい", id: "sad", type: "talk" },
+      { name: "びえーん", id: "cry", type: "talk" },
+      { name: "ノーマル", id: "normal", type: "humming" },
+      { name: "たのしい", id: "joy", type: "humming" },
+      { name: "かなしい", id: "sad", type: "humming" },
+      { name: "びえーん", id: "cry", type: "humming" },
+    ],
+    後鬼: [
+      { name: "人間ver.", id: "normal", type: "talk" },
+      { name: "ぬいぐるみver.", id: "nuigurumi", type: "talk" },
+      { name: "人間ver.", id: "normal", type: "humming" },
+      { name: "ぬいぐるみver.", id: "nuigurumi", type: "humming" },
+    ],
+    No7: [
+      { name: "ノーマル", id: "normal", type: "talk" },
+      { name: "アナウンス", id: "announce", type: "talk" },
+      { name: "読み聞かせ", id: "reading", type: "talk" },
+      { name: "ノーマル", id: "normal", type: "humming" },
+      { name: "アナウンス", id: "announce", type: "humming" },
+      { name: "読み聞かせ", id: "reading", type: "humming" },
+    ],
+    ちび式じい: [
+      { name: "ノーマル", id: "normal", type: "talk" },
+      { name: "ノーマル", id: "normal", type: "humming" },
+    ],
+    櫻歌ミコ: [
+      { name: "ノーマル", id: "normal", type: "talk" },
+      { name: "第二形態", id: "2nd", type: "talk" },
+      { name: "ロリ", id: "loli", type: "talk" },
+      { name: "ノーマル", id: "normal", type: "humming" },
+      { name: "第二形態", id: "2nd", type: "humming" },
+      { name: "ロリ", id: "loli", type: "humming" },
+    ],
+    小夜_SAYO: [
+      { name: "ノーマル", id: "normal", type: "talk" },
+      { name: "ノーマル", id: "normal", type: "humming" },
+    ],
+    ナースロボ＿タイプＴ: [
+      { name: "ノーマル", id: "normal", type: "talk" },
+      { name: "楽々", id: "fun", type: "talk" },
+      { name: "恐怖", id: "fear", type: "talk" },
+      { name: "内緒話", id: "whis", type: "talk" },
+      { name: "ノーマル", id: "normal", type: "humming" },
+      { name: "楽々", id: "fun", type: "humming" },
+      { name: "恐怖", id: "fear", type: "humming" },
+    ],
+    聖騎士紅桜: [
+      { name: "ノーマル", id: "normal", type: "talk" },
+      { name: "ノーマル", id: "normal", type: "humming" },
+    ],
+    雀松朱司: [
+      { name: "ノーマル", id: "normal", type: "talk" },
+      { name: "ノーマル", id: "normal", type: "humming" },
+    ],
+    麒ヶ島宗麟: [
+      { name: "ノーマル", id: "normal", type: "talk" },
+      { name: "ノーマル", id: "normal", type: "humming" },
+    ],
+    春歌ナナ: [
+      { name: "ノーマル", id: "normal", type: "talk" },
+      { name: "ノーマル", id: "normal", type: "humming" },
+    ],
+    猫使アル: [
+      { name: "ノーマル", id: "normal", type: "talk" },
+      { name: "おちつき", id: "ochitsuki", type: "talk" },
+      { name: "うきうき", id: "fun", type: "talk" },
+      { name: "ノーマル", id: "normal", type: "humming" },
+      { name: "おちつき", id: "ochitsuki", type: "humming" },
+      { name: "うきうき", id: "fun", type: "humming" },
+    ],
+    猫使ビィ: [
+      { name: "ノーマル", id: "normal", type: "talk" },
+      { name: "おちつき", id: "ochitsuki", type: "talk" },
+      { name: "人見知り", id: "shy", type: "talk" },
+      { name: "ノーマル", id: "normal", type: "humming" },
+      { name: "おちつき", id: "ochitsuki", type: "humming" },
+    ],
+    中国うさぎ: [
+      { name: "ノーマル", id: "normal", type: "talk" },
+      { name: "おどろき", id: "surprise", type: "talk" },
+      { name: "こわがり", id: "fear", type: "talk" },
+      { name: "へろへろ", id: "tired", type: "talk" },
+      { name: "ノーマル", id: "normal", type: "humming" },
+      { name: "おどろき", id: "surprise", type: "humming" },
+      { name: "こわがり", id: "fear", type: "humming" },
+      { name: "へろへろ", id: "tired", type: "humming" },
+    ],
+    栗田まろん: [
+      { name: "ノーマル", id: "normal", type: "talk" },
+      { name: "ノーマル", id: "normal", type: "humming" },
+    ],
+    藍田ノエル: [
+      { name: "ノーマル", id: "normal", type: "talk" },
+      { name: "ノーマル", id: "normal", type: "humming" },
+    ],
+    満別花丸: [
+      { name: "ノーマル", id: "normal", type: "talk" },
+      { name: "元気", id: "fun", type: "talk" },
+      { name: "ささやき", id: "whis", type: "talk" },
+      { name: "ぶりっ子", id: "cute", type: "talk" },
+      { name: "ボーイ", id: "boy", type: "talk" },
+      { name: "ノーマル", id: "normal", type: "humming" },
+      { name: "元気", id: "fun", type: "humming" },
+      { name: "ささやき", id: "whis", type: "humming" },
+      { name: "ぶりっ子", id: "cute", type: "humming" },
+      { name: "ボーイ", id: "boy", type: "humming" },
+    ],
+    琴詠ニア: [
+      { name: "ノーマル", id: "normal", type: "talk" },
+      { name: "ノーマル", id: "normal", type: "humming" },
+    ],
+  }
 
   const getDatas = (info: { key: CharacterKey; characterId: string }) => {
     let dormitoryVoiceUrls: string[] | undefined = query.dormitoryAudio.nodes
@@ -228,16 +352,32 @@ export const useDetailedCharacterInfo = () => {
       ogpImage: query.ogp.nodes.find(
         node => node.name === `bustup-${info.characterId}`
       )!.childImageSharp?.gatsbyImageData!,
-      styleVoiceUrls: styleNames[info.key].map(v => {
-        return {
-          style: v.name,
-          urls: query.styleAudio.nodes
-            .filter(node => node.name.includes(`${info.characterId}`))
-            .filter(node => node.name.includes(`${v.id}`))
-            .sort((a, b) => a.name.localeCompare(b.name))
-            .map(node => node.publicURL!),
-        }
-      }),
+      talkVoiceUrls: styleNames[info.key]
+        .filter(v => v.type == "talk")
+        .map(v => {
+          return {
+            style: v.name,
+            urls: query.talkAudio.nodes
+              .filter(node => node.name.includes(`${info.characterId}`))
+              .filter(node => node.name.includes(`${v.id}`))
+              .sort((a, b) => a.name.localeCompare(b.name))
+              .map(node => node.publicURL!),
+          }
+        }),
+      songVoiceUrls: styleNames[info.key]
+        .filter(v => ["song", "humming"].includes(v.type))
+        .map(v => {
+          return {
+            style: v.name,
+            styleType: v.type,
+            urls: query.songAudio.nodes
+              .filter(node => node.name.includes(`${info.characterId}`))
+              .filter(node => node.name.includes(`${v.id}`))
+              .filter(node => node.name.includes(`${v.type}`))
+              .sort((a, b) => a.name.localeCompare(b.name))
+              .map(node => node.publicURL!),
+          }
+        }),
       dormitoryVoiceUrls,
       infoImages: query.dormitoryImage.nodes
         .filter(node => node.name.includes(`${info.characterId}`))
@@ -250,10 +390,14 @@ export const useDetailedCharacterInfo = () => {
       throw new Error(`portraitImage is undefined. ${info.characterId}`)
     if (item.ogpImage == undefined)
       throw new Error(`ogpImage is undefined. ${info.characterId}`)
-    if (item.styleVoiceUrls.length == 0)
-      console.warn(`styleVoiceUrls is empty. ${info.characterId}`)
-    if (item.styleVoiceUrls.some(v => v.urls.length != 3))
-      throw new Error(`styleVoiceUrls is invalid. ${info.characterId}`)
+    if (item.talkVoiceUrls.length == 0)
+      console.warn(`talkVoiceUrls is empty. ${info.characterId}`)
+    if (item.talkVoiceUrls.some(v => v.urls.length != 3))
+      throw new Error(`talkVoiceUrls is invalid. ${info.characterId}`)
+    if (item.songVoiceUrls.length == 0)
+      console.warn(`songVoiceUrls is empty. ${info.characterId}`)
+    if (item.songVoiceUrls.some(v => v.urls.length != 3))
+      throw new Error(`songVoiceUrls is invalid. ${info.characterId}`)
     if (
       item.dormitoryVoiceUrls != undefined &&
       item.dormitoryVoiceUrls.length == 0

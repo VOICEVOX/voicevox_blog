@@ -73,9 +73,9 @@ const CharacterCard = React.memo(
                 Coming Soon
               </p>
             )}
-            {characterInfo.styleVoiceUrls.length > 0 && (
+            {characterInfo.talkVoiceUrls.length > 0 && (
               <AudioSample
-                audioSamples={characterInfo.styleVoiceUrls}
+                audioSamples={characterInfo.talkVoiceUrls}
                 characterName={characterInfo.name}
               />
             )}
