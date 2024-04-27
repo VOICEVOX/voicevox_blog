@@ -1,6 +1,6 @@
 import { CharacterKey } from "./types/dormitoryCharacter"
 
-export const APP_VERSION = "0.18.1"
+export const APP_VERSION = "0.19.0"
 export const NEMO_VERSION = "0.14.0"
 
 export const characterKeys: CharacterKey[] = [
