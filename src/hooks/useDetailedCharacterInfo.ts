@@ -230,6 +230,8 @@ export const useDetailedCharacterInfo = () => {
     後鬼: [
       { name: "人間ver.", id: "normal", type: "talk" },
       { name: "ぬいぐるみver.", id: "nuigurumi", type: "talk" },
+      { name: "人間（怒り）ver.", id: "angry", type: "talk" },
+      { name: "鬼ver.", id: "oni", type: "talk" },
       { name: "人間ver.", id: "normal", type: "humming" },
       { name: "ぬいぐるみver.", id: "nuigurumi", type: "humming" },
     ],
