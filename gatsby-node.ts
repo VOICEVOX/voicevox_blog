@@ -6,7 +6,6 @@
 import type { GatsbyNode } from "gatsby"
 import { characterKeys, characterInfos } from "./src/constants"
 import path from "path"
-import { NewsPostResult } from "./src/types/newsPostResult"
 
 export const sourceNodes: GatsbyNode["sourceNodes"] = async ({
   actions,
@@ -38,6 +37,8 @@ export const createPages: GatsbyNode["createPages"] = async ({
   graphql
 }) => {
   const { createPage } = actions
+
+  // ニュースページ
   const newsPostTemplate = path.resolve("src/templates/newsPost.tsx")
 
   const result = await graphql(`
@@ -58,7 +59,17 @@ export const createPages: GatsbyNode["createPages"] = async ({
     throw result.errors
   }
 
-  const data = result.data as NewsPostResult
+  const data = result.data as {
+    allMarkdownRemark: {
+      edges: {
+        node: {
+          frontmatter: {
+            slug: string
+          }
+        }
+      }[]
+    }
+  }
 
   data.allMarkdownRemark.edges.forEach(({ node }) => {
     createPage({
