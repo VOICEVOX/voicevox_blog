@@ -310,14 +310,6 @@ const Main = React.memo(
                   </li>
                   <li>
                     <Link
-                      to={"/news/"}
-                      className="has-text-weight-bold is-underlined"
-                    >
-                      ニュース
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
                       to={"/how_to_use/"}
                       className="has-text-weight-bold is-underlined"
                     >
@@ -346,6 +338,14 @@ const Main = React.memo(
                       className="has-text-weight-bold is-underlined"
                     >
                       変更履歴
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to={"/news/"}
+                      className="has-text-weight-bold is-underlined"
+                    >
+                      ニュース
                     </Link>
                   </li>
                   <li>

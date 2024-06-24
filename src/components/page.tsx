@@ -87,9 +87,6 @@ export const Page: React.FC<{
             <Link to={"/term/"} className="navbar-item">
               利用規約
             </Link>
-            <Link to={"/news/"} className="navbar-item">
-              ニュース
-            </Link>
             <Link to={"/how_to_use/"} className="navbar-item">
               使い方
             </Link>
@@ -104,6 +101,9 @@ export const Page: React.FC<{
             </Link>
             <Link to={"/update_history/"} className="navbar-item">
               変更履歴
+            </Link>
+            <Link to={"/news/"} className="navbar-item">
+              ニュース
             </Link>
             <a
               href="https://hiho.fanbox.cc/"
