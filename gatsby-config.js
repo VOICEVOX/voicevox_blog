@@ -43,13 +43,6 @@ module.exports = {
         path: `${__dirname}/src/markdowns`,
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `news`,
-        path: `${__dirname}/src/markdowns/news`,
-      },
-    },
     `gatsby-transformer-json`,
     `gatsby-transformer-yaml`,
     {
