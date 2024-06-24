@@ -340,6 +340,7 @@ const Main = React.memo(
                       変更履歴
                     </Link>
                   </li>
+                  {/* TODO: リリース時にコメントアウトを外す
                   <li>
                     <Link
                       to={"/news/"}
@@ -347,7 +348,7 @@ const Main = React.memo(
                     >
                       ニュース
                     </Link>
-                  </li>
+                  </li> */}
                   <li>
                     <a
                       href="https://hiho.fanbox.cc/"
