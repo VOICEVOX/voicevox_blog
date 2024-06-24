@@ -4,8 +4,8 @@
  * See: https://www.gatsbyjs.com/docs/node-apis/
  */
 import type { GatsbyNode } from "gatsby"
-import { characterKeys, characterInfos } from "./src/constants"
 import path from "path"
+import { characterInfos, characterKeys } from "./src/constants"
 
 export const sourceNodes: GatsbyNode["sourceNodes"] = async ({
   actions,
@@ -34,7 +34,7 @@ export const sourceNodes: GatsbyNode["sourceNodes"] = async ({
 
 export const createPages: GatsbyNode["createPages"] = async ({
   actions,
-  graphql
+  graphql,
 }) => {
   const { createPage } = actions
 

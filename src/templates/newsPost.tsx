@@ -1,12 +1,12 @@
+import { graphql } from "gatsby"
 import React from "react"
 import "../components/layout.scss"
 import { Page } from "../components/page"
 import Seo from "../components/seo"
-import { graphql } from "gatsby"
 
 const NewsPost = ({ data }) => {
-  const { markdownRemark } = data;
-  const { frontmatter, html } = markdownRemark;
+  const { markdownRemark } = data
+  const { frontmatter, html } = markdownRemark
 
   return (
     <Page>
@@ -30,7 +30,7 @@ const NewsPost = ({ data }) => {
 }
 
 export const query = graphql`
-  query($slug: String!) {
+  query ($slug: String!) {
     markdownRemark(frontmatter: { slug: { eq: $slug } }) {
       html
       frontmatter {
@@ -40,6 +40,6 @@ export const query = graphql`
       }
     }
   }
-`;
+`
 
 export default NewsPost
