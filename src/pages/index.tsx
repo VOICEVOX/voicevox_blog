@@ -340,6 +340,15 @@ const Main = React.memo(
                       変更履歴
                     </Link>
                   </li>
+                  {/* TODO: リリース時にコメントアウトを外す
+                  <li>
+                    <Link
+                      to={"/news/"}
+                      className="has-text-weight-bold is-underlined"
+                    >
+                      ニュース
+                    </Link>
+                  </li> */}
                   <li>
                     <a
                       href="https://hiho.fanbox.cc/"

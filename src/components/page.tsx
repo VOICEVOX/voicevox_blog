@@ -109,6 +109,10 @@ export const Page: React.FC<{
             <Link to={"/update_history/"} className="navbar-item">
               変更履歴
             </Link>
+            {/* TODO: リリース時にコメントアウトを外す
+            <Link to={"/news/"} className="navbar-item">
+              ニュース
+            </Link> */}
             <a
               href="https://hiho.fanbox.cc/"
               target={"_blank"}
