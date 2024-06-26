@@ -3,7 +3,7 @@ import React from "react"
 import "../../components/layout.scss"
 import { Page } from "../../components/page"
 import Seo from "../../components/seo"
-import shareThumb from "../../images/nemo/share-thumbnail.png"
+import shareThumb from "../../images/landing-share-news-thumb.jpg"
 
 const NewsIndex = () => {
   const data = useStaticQuery<Queries.IndexPageQuery>(graphql`
