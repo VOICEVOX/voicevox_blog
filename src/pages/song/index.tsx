@@ -17,6 +17,7 @@ import { useDetailedCharacterInfo } from "../../hooks/useDetailedCharacterInfo"
 import shareThumb from "../../images/song/share-thumb.png"
 import { CharacterInfo, CharacterKey } from "../../types/dormitoryCharacter"
 import { getProductPageUrl } from "../../urls"
+import { OssGuidance } from "../../components/ossGuidance"
 
 // キャラクターごとのカード表示
 const CharacterCard = React.memo(
@@ -298,7 +299,7 @@ export default () => {
             </div>
           </div>
 
-          <div className="container explain-humming">
+          <div className="container is-max-desktop">
             <h2 className="title">ハミングとは？</h2>
             <p>
               喋り声のデータを用いて音声ライブラリを作成し、
@@ -309,7 +310,7 @@ export default () => {
           </div>
         </section>
 
-        {/* TODO: トーク側にあるOSSとかの案内を追加 */}
+        <OssGuidance isDark={true} />
       </main>
     </Page>
   )
