@@ -11,6 +11,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
+import { OssGuidanceSection } from "../../components/ossGuidance"
 import PlayButton from "../../components/playButton"
 import { CharacterContext, GlobalContext } from "../../contexts/context"
 import { useDetailedCharacterInfo } from "../../hooks/useDetailedCharacterInfo"
@@ -297,8 +298,10 @@ export default () => {
               ))}
             </div>
           </div>
+        </section>
 
-          <div className="container explain-humming">
+        <section className="section">
+          <div className="container is-max-desktop">
             <h2 className="title">ハミングとは？</h2>
             <p>
               喋り声のデータを用いて音声ライブラリを作成し、
@@ -309,7 +312,7 @@ export default () => {
           </div>
         </section>
 
-        {/* TODO: トーク側にあるOSSとかの案内を追加 */}
+        <OssGuidanceSection isDark={true} />
       </main>
     </Page>
   )
