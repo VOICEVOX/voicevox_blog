@@ -4,7 +4,7 @@ import React from "react"
 
 export const VVFooter: React.FC<{
   privacyPolicyShower: () => void
-  isDark: boolean // Nemoのページかどうか
+  isDark: boolean // Nemoやソングのページかどうか
 }> = ({ privacyPolicyShower, isDark }) => (
   <>
     <div className={`container is-flex is-justify-content-center`}>

@@ -1,11 +1,11 @@
 import { faGithub } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Link } from "gatsby"
-import React, { CSSProperties } from "react"
+import React from "react"
 
-export const OssGuidance: React.FC<{
+export const OssGuidanceSection: React.FC<{
   className?: string
-  isDark: boolean // Nemoのページかどうか
+  isDark: boolean // Nemoやソングのページかどうか
 }> = ({ className, isDark }) => {
   return (
     <section className="section">

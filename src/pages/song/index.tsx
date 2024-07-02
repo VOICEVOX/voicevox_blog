@@ -11,13 +11,13 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
+import { OssGuidanceSection } from "../../components/ossGuidance"
 import PlayButton from "../../components/playButton"
 import { CharacterContext, GlobalContext } from "../../contexts/context"
 import { useDetailedCharacterInfo } from "../../hooks/useDetailedCharacterInfo"
 import shareThumb from "../../images/song/share-thumb.png"
 import { CharacterInfo, CharacterKey } from "../../types/dormitoryCharacter"
 import { getProductPageUrl } from "../../urls"
-import { OssGuidance } from "../../components/ossGuidance"
 
 // キャラクターごとのカード表示
 const CharacterCard = React.memo(
@@ -298,7 +298,9 @@ export default () => {
               ))}
             </div>
           </div>
+        </section>
 
+        <section className="section">
           <div className="container is-max-desktop">
             <h2 className="title">ハミングとは？</h2>
             <p>
@@ -310,7 +312,7 @@ export default () => {
           </div>
         </section>
 
-        <OssGuidance isDark={true} />
+        <OssGuidanceSection isDark={true} />
       </main>
     </Page>
   )

@@ -4,6 +4,7 @@ import React, { useContext, useEffect, useRef, useState } from "react"
 import AudioSample from "../components/audioSample"
 import "../components/layout.scss"
 import ModalReadmeLibrary from "../components/modalReadmeLibrary"
+import { OssGuidanceSection } from "../components/ossGuidance"
 import { Page } from "../components/page"
 import Seo from "../components/seo"
 import SoftwareFeature from "../components/softwareFeature"
@@ -15,7 +16,6 @@ import Logo from "../images/logo.svg"
 import landingMovie from "../movies/landing.mp4"
 import { CharacterInfo, CharacterKey } from "../types/dormitoryCharacter"
 import { getProductPageUrl } from "../urls"
-import { OssGuidance } from "../components/ossGuidance"
 
 // キャラクター表示
 const CharacterCard = React.memo(
@@ -202,7 +202,7 @@ const Main = React.memo(
               </div>
             </section>
 
-            <OssGuidance isDark={false} />
+            <OssGuidanceSection isDark={false} />
 
             <section className="section">
               <div className="container is-max-desktop is-flex is-flex-direction-column">
