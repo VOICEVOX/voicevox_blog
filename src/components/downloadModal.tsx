@@ -1,26 +1,29 @@
 import { Link, graphql, useStaticQuery } from "gatsby"
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { APP_VERSION } from "../constants"
 import DownloadModalSelecter from "./downloadModalSelecter"
 
 type OsType = "Windows" | "Mac" | "Linux"
-type ModeType = "GPU / CPU" | "CPU"
+type ModeType = "GPU / CPU" | "CPU" | "CPU (Intel)" | "CPU (Apple)"
 type PackageType = "インストーラー" | "Zip" | "tar.gz"
 
 const modeAvailables: Record<OsType, ModeType[]> = {
   Windows: ["GPU / CPU", "CPU"],
-  Mac: ["CPU"],
+  Mac: ["CPU (Intel)", "CPU (Apple)"],
   Linux: ["GPU / CPU", "CPU"],
 }
 
-const packageAvailables: Record<OsType, Record<ModeType, PackageType[]>> = {
+const packageAvailables: Record<
+  OsType,
+  Partial<Record<ModeType, PackageType[]>>
+> = {
   Windows: {
     "GPU / CPU": ["インストーラー", "Zip"],
     CPU: ["インストーラー", "Zip"],
   },
   Mac: {
-    "GPU / CPU": ["インストーラー", "Zip"],
-    CPU: ["インストーラー", "Zip"],
+    "CPU (Intel)": ["インストーラー", "Zip"],
+    "CPU (Apple)": ["インストーラー", "Zip"],
   },
   Linux: { "GPU / CPU": ["インストーラー"], CPU: ["インストーラー", "tar.gz"] },
 }
@@ -73,14 +76,24 @@ export const DownloadModal: React.FC<{
       },
     },
     Mac: {
-      CPU: {
+      "CPU (Intel)": {
         インストーラー: {
-          url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/VOICEVOX.${APP_VERSION}.dmg`,
-          name: `VOICEVOX-CPU.${APP_VERSION}.Mac.dmg`,
+          url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/VOICEVOX.${APP_VERSION}-x64.dmg`,
+          name: `VOICEVOX-CPU-x64.${APP_VERSION}.Mac.dmg`,
         },
         Zip: {
-          url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/voicevox-macos-cpu-${APP_VERSION}.zip`,
-          name: `VOICEVOX-CPU.${APP_VERSION}.Mac.zip`,
+          url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/voicevox-macos-x64-cpu-${APP_VERSION}.zip`,
+          name: `VOICEVOX-CPU-x64.${APP_VERSION}.Mac.zip`,
+        },
+      },
+      "CPU (Apple)": {
+        インストーラー: {
+          url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/VOICEVOX.${APP_VERSION}-arm64.dmg`,
+          name: `VOICEVOX-CPU-arm64.${APP_VERSION}.Mac.dmg`,
+        },
+        Zip: {
+          url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/voicevox-macos-arm64-cpu-${APP_VERSION}.zip`,
+          name: `VOICEVOX-CPU-arm64.${APP_VERSION}.Mac.zip`,
         },
       },
     },
@@ -111,19 +124,17 @@ export const DownloadModal: React.FC<{
   const [selectedPackage, setSelectedPackage] =
     useState<PackageType>("インストーラー")
 
-  // 存在しない組み合わせのときに選択中のものを変更する
-  useEffect(() => {
-    if (!modeAvailables[selectedOs].find(value => value == selectedMode)) {
-      setSelectedMode(modeAvailables[selectedOs][0])
-    }
-    if (
-      !packageAvailables[selectedOs][selectedMode].find(
-        value => value == selectedPackage
-      )
-    ) {
-      setSelectedPackage(packageAvailables[selectedOs][selectedMode][0])
-    }
-  }, [selectedOs, selectedMode, selectedPackage])
+  const selectedOrDefaultMode = modeAvailables[selectedOs].includes(
+    selectedMode
+  )
+    ? selectedMode
+    : modeAvailables[selectedOs][0]
+
+  const selectedOrDefaultPackage = packageAvailables[selectedOs][
+    selectedOrDefaultMode
+  ]!.includes(selectedPackage)
+    ? selectedPackage
+    : packageAvailables[selectedOs][selectedOrDefaultMode]![0]
 
   return (
     <div
@@ -157,7 +168,7 @@ export const DownloadModal: React.FC<{
 
           <DownloadModalSelecter
             label="対応モード"
-            selected={selectedMode}
+            selected={selectedOrDefaultMode}
             setSelected={setSelectedMode}
             candidates={modeAvailables[selectedOs]}
           />
@@ -171,9 +182,9 @@ export const DownloadModal: React.FC<{
 
           <DownloadModalSelecter
             label="パッケージ"
-            selected={selectedPackage}
+            selected={selectedOrDefaultPackage}
             setSelected={setSelectedPackage}
-            candidates={packageAvailables[selectedOs][selectedMode]}
+            candidates={packageAvailables[selectedOs][selectedOrDefaultMode]!}
           />
           <p className="has-text-centered is-size-7">
             ※ 推奨パッケージはインストーラー版です
