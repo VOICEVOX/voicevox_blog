@@ -32,6 +32,7 @@ export default ({ id }: { id: string }) => {
     "レイア",
     "のんたお",
     "菊の字",
+    "坂本アヒル",
   ]
   if (topIllusts.length !== illustrators.length) {
     throw new Error(

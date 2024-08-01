@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 
 export default <T extends string>({
   label,
@@ -11,12 +11,6 @@ export default <T extends string>({
   setSelected: (selected: T) => void
   candidates: T[]
 }) => {
-  useEffect(() => {
-    if (!candidates.find(value => value == selected)) {
-      setSelected(candidates[0])
-    }
-  }, [candidates])
-
   return (
     <div className="columns is-tablet is-centered is-vcentered py-0 my-2">
       <div className="column is-3 py-0 my-1">
