@@ -6,11 +6,11 @@ import { NEMO_VERSION } from "../constants"
 import DownloadModalSelecter from "./downloadModalSelecter"
 
 type OsType = "Windows" | "Mac" | "Linux"
-type ModeType = "GPU / CPU" | "CPU"
+type ModeType = "GPU / CPU" | "CPU" | "CPU (Intel)" | "CPU (Apple)"
 
 const modeAvailables: Record<OsType, ModeType[]> = {
   Windows: ["GPU / CPU", "CPU"],
-  Mac: ["CPU"],
+  Mac: ["CPU (Intel)", "CPU (Apple)"],
   Linux: ["GPU / CPU", "CPU"],
 }
 
@@ -33,9 +33,13 @@ export const NemoDownloadModal: React.FC<{
       },
     },
     Mac: {
-      CPU: {
+      "CPU (Intel)": {
         url: `https://github.com/VOICEVOX/voicevox_nemo_engine/releases/download/${NEMO_VERSION}/voicevox_engine-macos-x64-${NEMO_VERSION}.vvpp`,
-        name: `VOICEVOX-CPU.Nemo.${NEMO_VERSION}.Mac.vvpp`,
+        name: `VOICEVOX-CPU-x64.Nemo.${NEMO_VERSION}.Mac.vvpp`,
+      },
+      "CPU (Apple)": {
+        url: `https://github.com/VOICEVOX/voicevox_nemo_engine/releases/download/${NEMO_VERSION}/voicevox_engine-macos-arm64-${NEMO_VERSION}.vvpp`,
+        name: `VOICEVOX-CPU-arm64.Nemo.${NEMO_VERSION}.Mac.vvpp`,
       },
     },
     Linux: {
