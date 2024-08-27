@@ -97,8 +97,6 @@ ffmpeg -i $audio_file -af volume=-3dB $output_file
 npm run develop
 
 # しばらくしてから実行
-cd generateThumb
-npm ci
 npm run generateThumb
 ```
 

@@ -36,6 +36,8 @@
     "@types/gtag.js": "0.0.12",
     "gh-pages": "4.0.0",
     "prettier": "2.8.8",
+    "puppeteer": "23.2.0",
+    "tsx": "4.19.0",
     "typescript": "4.9.4"
   },
   "scripts": {
@@ -46,7 +48,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-    "generate_thumb": "node --loader ts-node/esm ./src/generateThumb.ts",
+    "generateThumb": "tsx ./src/generateThumb.ts",
     "deploy": "gatsby build && gh-pages -d public"
   },
   "repository": {
