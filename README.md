@@ -67,6 +67,9 @@ curl -s "$editor_url/public/qAndA.md" > src/markdowns/qAndA.md
 
 # 変更履歴
 curl -s "$editor_url/public/updateInfos.json" > src/data/updateInfos.json
+
+# デフォルトエンジンの更新情報
+npm run latestDefaultEngineInfos
 ```
 
 ## 音量に関して
