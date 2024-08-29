@@ -34,11 +34,13 @@
   },
   "devDependencies": {
     "@types/gtag.js": "0.0.12",
+    "@types/yargs": "^17.0.33",
     "gh-pages": "4.0.0",
     "prettier": "2.8.8",
     "puppeteer": "23.2.0",
     "tsx": "4.19.0",
-    "typescript": "4.9.4"
+    "typescript": "4.9.4",
+    "yargs": "17.7.2"
   },
   "scripts": {
     "build": "gatsby build",
@@ -49,6 +51,7 @@
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "generateThumb": "tsx ./src/generateThumb.ts",
+    "generateLatestDefaultEngineInfos": "tsx ./src/generateLatestDefaultEngineInfos.ts",
     "deploy": "gatsby build && gh-pages -d public"
   },
   "repository": {
