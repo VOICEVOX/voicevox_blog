@@ -266,7 +266,7 @@ export default () => {
               <div className="feature-cell">
                 商用利用可能な
                 <br />
-                フリーソフトウェア
+                フリーソフト
               </div>
               <div className="feature-cell">
                 マルチOSに対応
