@@ -52,6 +52,7 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "generateThumb": "tsx ./src/generateThumb.ts",
     "generateLatestDefaultEngineInfos": "tsx ./src/generateLatestDefaultEngineInfos.ts",
+    "updateVersion": "tsx ./src/updateVersion.ts",
     "deploy": "gatsby build && gh-pages -d public"
   },
   "repository": {
