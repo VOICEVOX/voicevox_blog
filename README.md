@@ -46,7 +46,22 @@ Netlify を使ってプレビュー環境デプロイを行っています。
 npm run preview-build
 ```
 
-## add resource
+## リソース情報の更新
+
+コードの更新
+
+```bash
+EDITOR_VERSION="0.21.0"
+RESOURCE_VERSION="0.21.0"
+NEMO_VERSION="0.21.0"
+
+npm run updateVersion -- \
+  --editor_version="$EDITOR_VERSION" \
+  --resource_version="$RESOURCE_VERSION" \
+  --nemo_version="$NEMO_VERSION"
+```
+
+リソースの更新
 
 ```bash
 editor_tag="0.21.0"
