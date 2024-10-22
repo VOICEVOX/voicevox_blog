@@ -49,10 +49,10 @@ npm run preview-build
 ## add resource
 
 ```bash
-editor_tag="0.20.0"
+editor_tag="0.21.0"
 editor_url="https://raw.githubusercontent.com/VOICEVOX/voicevox/$editor_tag"
 
-resource_tag="0.20.0"
+resource_tag="0.21.0"
 resource_url="https://raw.githubusercontent.com/VOICEVOX/voicevox_resource/$resource_tag"
 
 # 規約
@@ -69,7 +69,7 @@ curl -s "$editor_url/public/qAndA.md" > src/markdowns/qAndA.md
 curl -s "$editor_url/public/updateInfos.json" > src/data/updateInfos.json
 
 # デフォルトエンジンの更新情報
-npm run latestDefaultEngineInfos
+npm run generateLatestDefaultEngineInfos
 ```
 
 ## 音量に関して
