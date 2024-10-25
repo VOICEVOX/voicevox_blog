@@ -1082,6 +1082,8 @@ export const useDetailedCharacterInfo = () => {
       lightColor: "#B3D7DD",
       description:
         "「#コンパス」を管理するAIロボ<br />人間の戦い方を監視/分析している。",
+      additionalProductDescription:
+        "話速：0.90、音高：0.03、抑揚：0.90とすれば、「#コンパス 戦闘摂理解析システム」ゲーム内のボイスに近い仕上がりとなります。",
       labelInfos: [
         { label: "CV", value: "丹下桜", size: 2 },
         { label: "アビリティ", value: "緊急回避プログラム", size: 2 },
