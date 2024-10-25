@@ -333,6 +333,7 @@ export const useDetailedCharacterInfo = () => {
       { name: "ノーマル", id: "normal", type: "talk" },
       { name: "ノーマル", id: "normal", type: "humming" },
     ],
+    Voidoll: [{ name: "ノーマル", id: "normal", type: "talk" }],
   }
 
   const getDatas = (info: { key: CharacterKey; characterId: string }) => {
@@ -371,7 +372,7 @@ export const useDetailedCharacterInfo = () => {
         .map(v => {
           return {
             style: v.name,
-            styleType: v.type,
+            styleType: v.type as "song" | "humming",
             urls: query.songAudio.nodes
               .filter(node => node.name.includes(`${info.characterId}`))
               .filter(node => node.name.includes(`${v.id}`))
@@ -1069,6 +1070,27 @@ export const useDetailedCharacterInfo = () => {
       ],
       policyUrl: "https://commons.nicovideo.jp/works/nc315435",
       detailUrl: "https://n-air-app.nicovideo.jp/",
+    },
+
+    Voidoll: {
+      name: getCharacterInfo("Voidoll").name,
+      id: getCharacterInfo("Voidoll").characterId,
+      ...getDatas(getCharacterInfo("Voidoll")),
+      rubyName: "<ruby>Voidoll<rp>(</rp><rt>ぼいどーる</rt><rp>)</rp></ruby>",
+      voiceFeature: "慎ましやかで電子的な声",
+      color: "#1D86AE",
+      lightColor: "#B3D7DD",
+      description:
+        "「#コンパス」を管理するAIロボ<br />人間の戦い方を監視/分析している。",
+      labelInfos: [
+        { label: "CV", value: "丹下桜", size: 2 },
+        { label: "アビリティ", value: "緊急回避プログラム", size: 2 },
+        { label: "年齢", value: "？？？", size: 2 },
+        { label: "身長", value: "？？？", size: 1 },
+        { label: "誕生日", value: "？？？", size: 1 },
+      ],
+      policyUrl: "https://blog.nicovideo.jp/niconews/224589.html",
+      detailUrl: "https://app.nhn-playart.com/compass/index.nhn",
     },
   } as const
 
@@ -2062,5 +2084,39 @@ const _callNameInfos: {
     栗田まろん: "まろんちゃん",
     藍田ノエル: "あいえるたん",
     満別花丸: "花丸ちゃん",
+  },
+  Voidoll: {
+    me: ["ワタシ"],
+    you: ["～さん", "皆さん"],
+    四国めたん: "めたんさん",
+    ずんだもん: "ずんだもんさん",
+    春日部つむぎ: "つむぎさん",
+    雨晴はう: "はうさん",
+    波音リツ: "リツさん",
+    玄野武宏: "武宏さん",
+    白上虎太郎: "虎太郎さん",
+    青山龍星: "龍星さん",
+    冥鳴ひまり: "ひまりさん",
+    九州そら: "そらさん",
+    モチノキョウコ: "もち子さん",
+    剣崎雌雄: "雌雄さん",
+    WhiteCUL: "WhiteCULさん",
+    後鬼: "後鬼さん",
+    No7: "No.7さん",
+    ちび式じい: "ちび式じいさん",
+    櫻歌ミコ: "ミコさん",
+    小夜_SAYO: "小夜さん",
+    ナースロボ＿タイプＴ: "タイプTさん",
+    聖騎士紅桜: "紅桜さん",
+    雀松朱司: "朱司さん",
+    麒ヶ島宗麟: "宗麟さん",
+    春歌ナナ: "ナナさん",
+    猫使アル: "アルさん",
+    猫使ビィ: "ビィさん",
+    中国うさぎ: "うさぎさん",
+    栗田まろん: "まろんさん",
+    藍田ノエル: "あいえるさん",
+    満別花丸: "花丸さん",
+    琴詠ニア: "ニアさん",
   },
 } as const

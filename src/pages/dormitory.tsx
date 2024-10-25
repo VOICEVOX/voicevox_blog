@@ -61,7 +61,23 @@ const Dormitory: React.FC<DormitoryProps> = ({ setShowingHeader }) => {
           <div className="container character-container is-max-desktop pt-1 pb-6">
             <div className="columns is-multiline">
               <div
-                id="7th"
+                id="9th"
+                className="jump-anchor-header-padding column is-2 generation-label"
+              >
+                <h2 className="title is-3">
+                  <Link to="#8th" className="has-text-black">
+                    9 期 生
+                  </Link>
+                </h2>
+              </div>
+
+              <DormitoryCharacterCard characterInfo={characterInfos.Voidoll} />
+            </div>
+
+            <hr />
+            <div className="columns is-multiline">
+              <div
+                id="8th"
                 className="jump-anchor-header-padding column is-2 generation-label"
               >
                 <h2 className="title is-3">

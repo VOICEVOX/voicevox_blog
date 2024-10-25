@@ -31,6 +31,7 @@ export type CharacterKey =
   | "藍田ノエル"
   | "満別花丸"
   | "琴詠ニア"
+  | "Voidoll"
 
 export type CharacterInfo = {
   name: string

@@ -48,6 +48,11 @@ export default (
       ) {
         html
       }
+      voidoll: markdownRemark(
+        fileAbsolutePath: { regex: "/libraryReadmeVoidoll/" }
+      ) {
+        html
+      }
     }
   `)
 
@@ -71,6 +76,8 @@ export default (
       html = query.goki.html
     } else if (props.characterKey == "No7") {
       html = query.seven.html
+    } else if (props.characterKey == "Voidoll") {
+      html = query.voidoll.html
     } else {
       if (!characterInfo.policyUrl) {
         html = "<p>準備中</p>"
