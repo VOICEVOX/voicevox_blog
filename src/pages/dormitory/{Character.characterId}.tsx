@@ -78,20 +78,28 @@ export default ({
         <div className="column description-call-line">
           <div className="description-call-one">
             <span
-              className="description-call-text"
+              className={`description-call-text ${
+                callNameInfos[selectedCharacterKey][targetCharacterKey]
+                  ? ""
+                  : "unknown"
+              }`}
               style={{ borderColor: characterInfo.color }}
             >
-              {callNameInfos[selectedCharacterKey][targetCharacterKey]}
+              {callNameInfos[selectedCharacterKey][targetCharacterKey] || "？"}
             </span>
             <Arrow leftOrRight="right" />
           </div>
           <div className="description-call-one">
             <Arrow leftOrRight="left" />
             <span
-              className="description-call-text"
+              className={`description-call-text ${
+                callNameInfos[targetCharacterKey][selectedCharacterKey]
+                  ? ""
+                  : "unknown"
+              }`}
               style={{ borderColor: characterInfos[targetCharacterKey].color }}
             >
-              {callNameInfos[targetCharacterKey][selectedCharacterKey]}
+              {callNameInfos[targetCharacterKey][selectedCharacterKey] || "？"}
             </span>
           </div>
         </div>

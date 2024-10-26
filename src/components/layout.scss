@@ -1254,6 +1254,10 @@ $dropdown-item-active-background-color: $primary;
                   border-style: solid;
                   border-radius: 8px;
                   text-align: center;
+
+                  &.unknown {
+                    color: gray;
+                  }
                 }
               }
             }
