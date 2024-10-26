@@ -29,6 +29,8 @@ const sleep = (msec: number) =>
       continue
     }
 
+    console.log(`Generating ${savePath}`)
+
     await page.goto(
       `http://localhost:8000/__thumb_generator/product/${characterInfos[key].id}/`
     )

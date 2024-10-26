@@ -161,16 +161,15 @@ export default ({ location, params }: PageProps) => {
                 style={{
                   position: "absolute",
                   top: "20%",
-                  width: "39%",
-                  height: "80%",
-                  backgroundImage: `url(${getSrc(
-                    characterInfo.portraitImage
-                  )})`,
+                  left: "2px",
+                  width: "38.5%",
+                  height: "52.1%",
+                  backgroundImage: `url(${getSrc(characterInfo.bustupImage)})`,
                   backgroundPosition: "center",
                   backgroundSize: "cover",
                   backgroundRepeat: "no-repeat",
                   backgroundClip: "content-box",
-                  paddingBottom: "39.2%",
+                  paddingBottom: "10%",
                 }}
               />
             </div>

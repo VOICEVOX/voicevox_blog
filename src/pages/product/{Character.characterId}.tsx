@@ -80,6 +80,7 @@ const ProductPage = ({ params }: PageProps) => {
     (characterInfo.releaseDate
       ? `${characterInfo.releaseDate}にリリース予定。`
       : "")
+  const additionalDescription = characterInfo.additionalProductDescription
 
   const [
     showingLibraryReadmeModalCharacterKey,
@@ -308,7 +309,10 @@ const ProductPage = ({ params }: PageProps) => {
             </div>
             <div className="description">
               <h1 className="title">VOICEVOX {characterInfo.name}</h1>
-              <p className="is-size-5">{description}</p>
+              <p className="is-size-5">
+                {description}
+                {additionalDescription && additionalDescription}
+              </p>
               {characterInfo.releaseDate == undefined && (
                 <a
                   className="button mt-5 is-primary is-rounded is-large"

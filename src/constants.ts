@@ -1,6 +1,6 @@
 import { CharacterKey } from "./types/dormitoryCharacter"
 
-export const APP_VERSION = "0.21.0"
+export const APP_VERSION = "0.21.1"
 export const NEMO_VERSION = "0.21.0"
 
 export const characterKeys: CharacterKey[] = [
@@ -34,6 +34,7 @@ export const characterKeys: CharacterKey[] = [
   "藍田ノエル",
   "満別花丸",
   "琴詠ニア",
+  "Voidoll",
 ]
 
 export type CharacterInfoEntry = {
@@ -167,5 +168,9 @@ export const characterInfos: {
   琴詠ニア: {
     name: "琴詠ニア",
     id: "kotoyomi_nia",
+  },
+  Voidoll: {
+    name: "Voidoll",
+    id: "voidoll",
   },
 }

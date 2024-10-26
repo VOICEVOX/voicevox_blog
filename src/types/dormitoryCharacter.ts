@@ -31,6 +31,7 @@ export type CharacterKey =
   | "藍田ノエル"
   | "満別花丸"
   | "琴詠ニア"
+  | "Voidoll"
 
 export type CharacterInfo = {
   name: string
@@ -43,7 +44,8 @@ export type CharacterInfo = {
   ogpImage: IGatsbyImageData
   color: string
   lightColor: string
-  description: string
+  description: string // ボイボ寮ページでの紹介文
+  additionalProductDescription?: string // 製品ページでの追加の紹介文
   labelInfos: readonly { label: string; value: string; size: 1 | 2 }[]
   talkVoiceUrls: { style: string; urls: readonly string[] }[]
   songVoiceUrls: {
