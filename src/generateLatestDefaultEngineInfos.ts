@@ -12,52 +12,54 @@ jsonファイルの形式は以下の通り
   //[number] ファイル構造バージョン（仕様変更毎にインクリメントされる）
   "formatVersion": 1,
 
-  // Windowsの情報
-  "windows": {
-    "x64": {
-      "CPU": {
-        //[string] バージョン
-        "version": "x.x.x",
+  // エンジンの情報
+  "00000000-0000-0000-0000-000000000001": {
+    // Windowsの情報
+    "windows": {
+      "x64": {
+        "CPU": {
+          //[string] バージョン
+          "version": "x.x.x",
 
-        // vvppやvvpppの情報
-        "packages": [
-          {
-            //[string] ダウンロードURL
-            "url": "https://example.com/",
+          // vvppやvvpppの情報
+          "packages": [
+            {
+              //[string] ダウンロードURL
+              "url": "https://example.com/",
 
-            //[string] ファイル名
-            "name": "example.vvpp",
+              //[string] ファイル名
+              "name": "example.vvpp",
 
-            //[number] バイト数
-            "size": 123456,
+              //[number] バイト数
+              "size": 123456,
 
-            //[string(Optional)] ハッシュ値
-            "hash": "xxxxxxx",
-          },
-          //...
-        ]
-      },
-      "GPU/CPU": {}
-    }
-  },
-
-  "macos": {
-    "x64": {
-      "CPU": {}
+              //[string(Optional)] ハッシュ値
+              "hash": "xxxxxxx",
+            },
+            //...
+          ]
+        },
+        "GPU/CPU": {}
+      }
     },
-    "arm64": {
-      "CPU": {}
-    }
-  },
 
-  "linux": {
-    "x64": {
-      "CPU": {},
-      "GPU/CPU": {}
+    "macos": {
+      "x64": {
+        "CPU": {}
+      },
+      "arm64": {
+        "CPU": {}
+      }
+    },
+
+    "linux": {
+      "x64": {
+        "CPU": {},
+        "GPU/CPU": {}
+      }
     }
   }
 }
-
 */
 
 import fs from "fs"
@@ -77,6 +79,7 @@ const argv = yargs(hideBin(process.argv))
 
 const GITHUB_RELEASES_URL =
   "https://api.github.com/repos/VOICEVOX/voicevox_engine/releases"
+const ENGINE_ID = "074fc39e-678b-4c13-8916-ffca8d505d1d"
 
 /** 対応するvvpp.txtの名前 */
 function getVvppTxtName(version: string) {
@@ -107,6 +110,7 @@ function getVvppTxtName(version: string) {
 async function main() {
   const output = {
     formatVersion: 1,
+    [ENGINE_ID]: {},
   }
 
   let releases = await (await fetch(GITHUB_RELEASES_URL)).json()
@@ -168,9 +172,9 @@ async function main() {
     })
 
     // 記録
-    output[os] = output[os] || {}
-    output[os][arch] = output[os][arch] || {}
-    output[os][arch][device] = {
+    output[ENGINE_ID][os] = output[ENGINE_ID][os] || {}
+    output[ENGINE_ID][os][arch] = output[ENGINE_ID][os][arch] || {}
+    output[ENGINE_ID][os][arch][device] = {
       version,
       packages,
     }
