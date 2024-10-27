@@ -133,10 +133,21 @@ export const DownloadModal: React.FC<{
     ? selectedPackage
     : packageAvailables[selectedOs][selectedOrDefaultMode]![0]
 
-  const onSelectedOsChange = (os: OsType) => {
+  const selectOs = (os: OsType) => {
     setSelectedOs(os)
-    setSelectedMode(modeAvailables[os][0])
-    setSelectedPackage(packageAvailables[os][modeAvailables[os][0]][0])
+    // 変更先のOSで選択できないモードの場合、最初のモードを選択する
+    selectMode(
+      modeAvailables[os].includes(selectedMode)
+        ? selectedMode
+        : modeAvailables[os][0],
+      os
+    )
+  }
+  const selectMode = (mode: ModeType, os?: OsType) => {
+    setSelectedMode(mode)
+    if (!packageAvailables[os ?? selectedOs][mode]!.includes(selectedPackage)) {
+      setSelectedPackage(packageAvailables[os ?? selectedOs][mode]![0])
+    }
   }
 
   return (
@@ -163,7 +174,7 @@ export const DownloadModal: React.FC<{
           <DownloadModalSelecter
             label="OS"
             selected={selectedOs}
-            setSelected={onSelectedOsChange}
+            setSelected={selectOs}
             candidates={["Windows", "Mac", "Linux"]}
           />
 
@@ -172,7 +183,7 @@ export const DownloadModal: React.FC<{
           <DownloadModalSelecter
             label="対応モード"
             selected={selectedOrDefaultMode}
-            setSelected={setSelectedMode}
+            setSelected={selectMode}
             candidates={modeAvailables[selectedOs]}
           />
           <p className="has-text-centered is-size-7">
