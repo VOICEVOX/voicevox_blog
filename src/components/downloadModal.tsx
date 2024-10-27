@@ -13,10 +13,7 @@ const modeAvailables: Record<OsType, ModeType[]> = {
   Linux: ["GPU / CPU", "CPU"],
 }
 
-const packageAvailables: Record<
-  OsType,
-  Partial<Record<ModeType, PackageType[]>>
-> = {
+const packageAvailables = {
   Windows: {
     "GPU / CPU": ["インストーラー", "Zip"],
     CPU: ["インストーラー", "Zip"],
@@ -26,7 +23,7 @@ const packageAvailables: Record<
     "CPU (Apple)": ["インストーラー", "Zip"],
   },
   Linux: { "GPU / CPU": ["インストーラー"], CPU: ["インストーラー", "tar.gz"] },
-}
+} as const satisfies Record<OsType, Partial<Record<ModeType, PackageType[]>>>
 
 export const DownloadModal: React.FC<{
   isActive: boolean
@@ -136,6 +133,12 @@ export const DownloadModal: React.FC<{
     ? selectedPackage
     : packageAvailables[selectedOs][selectedOrDefaultMode]![0]
 
+  const onSelectedOsChange = (os: OsType) => {
+    setSelectedOs(os)
+    setSelectedMode(modeAvailables[os][0])
+    setSelectedPackage(packageAvailables[os][modeAvailables[os][0]][0])
+  }
+
   return (
     <div
       className={"modal-download modal" + (props.isActive ? " is-active" : "")}
@@ -160,7 +163,7 @@ export const DownloadModal: React.FC<{
           <DownloadModalSelecter
             label="OS"
             selected={selectedOs}
-            setSelected={setSelectedOs}
+            setSelected={onSelectedOsChange}
             candidates={["Windows", "Mac", "Linux"]}
           />
 
