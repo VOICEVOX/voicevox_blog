@@ -1,5 +1,5 @@
 import { Link, graphql, useStaticQuery } from "gatsby"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { APP_VERSION } from "../constants"
 import DownloadModalSelecter from "./downloadModalSelecter"
 
@@ -132,6 +132,17 @@ export const DownloadModal: React.FC<{
   ]!.includes(selectedPackage)
     ? selectedPackage
     : packageAvailables[selectedOs][selectedOrDefaultMode]![0]
+
+  useEffect(() => {
+    const userAgent = window.navigator.userAgent
+    if (userAgent.includes("Windows")) {
+      setSelectedOs("Windows")
+    } else if (userAgent.includes("Mac")) {
+      setSelectedOs("Mac")
+    } else if (userAgent.includes("Linux")) {
+      setSelectedOs("Linux")
+    }
+  }, [])
 
   const selectOs = (os: OsType) => {
     setSelectedOs(os)
