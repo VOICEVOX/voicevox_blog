@@ -136,11 +136,11 @@ export const DownloadModal: React.FC<{
   useEffect(() => {
     const userAgent = window.navigator.userAgent
     if (userAgent.includes("Windows")) {
-      setSelectedOs("Windows")
+      selectOs("Windows")
     } else if (userAgent.includes("Mac")) {
-      setSelectedOs("Mac")
+      selectOs("Mac")
     } else if (userAgent.includes("Linux")) {
-      setSelectedOs("Linux")
+      selectOs("Linux")
     }
   }, [])
 
