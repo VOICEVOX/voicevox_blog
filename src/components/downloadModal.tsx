@@ -1,5 +1,5 @@
 import { Link, graphql, useStaticQuery } from "gatsby"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { APP_VERSION } from "../constants"
 import DownloadModalSelecter from "./downloadModalSelecter"
 
@@ -13,10 +13,7 @@ const modeAvailables: Record<OsType, ModeType[]> = {
   Linux: ["GPU / CPU", "CPU"],
 }
 
-const packageAvailables: Record<
-  OsType,
-  Partial<Record<ModeType, PackageType[]>>
-> = {
+const packageAvailables = {
   Windows: {
     "GPU / CPU": ["インストーラー", "Zip"],
     CPU: ["インストーラー", "Zip"],
@@ -26,7 +23,7 @@ const packageAvailables: Record<
     "CPU (Apple)": ["インストーラー", "Zip"],
   },
   Linux: { "GPU / CPU": ["インストーラー"], CPU: ["インストーラー", "tar.gz"] },
-}
+} as const satisfies Record<OsType, Partial<Record<ModeType, PackageType[]>>>
 
 export const DownloadModal: React.FC<{
   isActive: boolean
@@ -136,6 +133,34 @@ export const DownloadModal: React.FC<{
     ? selectedPackage
     : packageAvailables[selectedOs][selectedOrDefaultMode]![0]
 
+  useEffect(() => {
+    const userAgent = window.navigator.userAgent
+    if (userAgent.includes("Windows")) {
+      selectOs("Windows")
+    } else if (userAgent.includes("Mac")) {
+      selectOs("Mac")
+    } else if (userAgent.includes("Linux")) {
+      selectOs("Linux")
+    }
+  }, [])
+
+  const selectOs = (os: OsType) => {
+    setSelectedOs(os)
+    // 変更先のOSで選択できないモードの場合、最初のモードを選択する
+    selectMode(
+      os,
+      modeAvailables[os].includes(selectedMode)
+        ? selectedMode
+        : modeAvailables[os][0]
+    )
+  }
+  const selectMode = (os: OsType, mode: ModeType) => {
+    setSelectedMode(mode)
+    if (!packageAvailables[os][mode]!.includes(selectedPackage)) {
+      setSelectedPackage(packageAvailables[os][mode]![0])
+    }
+  }
+
   return (
     <div
       className={"modal-download modal" + (props.isActive ? " is-active" : "")}
@@ -160,7 +185,7 @@ export const DownloadModal: React.FC<{
           <DownloadModalSelecter
             label="OS"
             selected={selectedOs}
-            setSelected={setSelectedOs}
+            setSelected={selectOs}
             candidates={["Windows", "Mac", "Linux"]}
           />
 
@@ -169,7 +194,7 @@ export const DownloadModal: React.FC<{
           <DownloadModalSelecter
             label="対応モード"
             selected={selectedOrDefaultMode}
-            setSelected={setSelectedMode}
+            setSelected={mode => selectMode(selectedOs, mode)}
             candidates={modeAvailables[selectedOs]}
           />
           <p className="has-text-centered is-size-7">
