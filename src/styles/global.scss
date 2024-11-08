@@ -1,0 +1,61 @@
+@use "./vars.scss" as *;
+
+@use "./fonts.scss";
+
+$font-smoothing: subpixel-antialiased;
+$text-rendering: optimizeLegibility;
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+  (min-resolution: 2dppx) {
+  $font-smoothing: antialiased;
+}
+
+// ページの高さを最低でも画面の高さに合わせる
+html {
+  height: -webkit-fill-available;
+}
+body {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+}
+
+body {
+  position: relative;
+  overflow: hidden;
+
+  .navbar {
+    // navbarを最上部に固定するためのクラス
+    &.height-holder {
+      visibility: hidden;
+    }
+
+    &.is-black {
+      // FIXME: is-blackで影が変わらないBulmaのバグ
+      box-shadow: 0 2px 0 0 hsl(0deg, 0%, 4%);
+    }
+  }
+
+  .footer {
+    // footerを最下部に固定するためのクラス
+    &.appearance {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+    &.height-holder {
+      visibility: hidden;
+    }
+  }
+}
+
+//ヘッダーをゆっくり表示する
+.navbar.navbar-with-animation {
+  animation: fadeIn 0.1s cubic-bezier(0.33, 1, 0.68, 1) 1 forwards;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

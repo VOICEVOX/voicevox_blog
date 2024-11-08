@@ -1,5 +1,99 @@
 ---
-
+// TODO: ちゃんと設定可能にする
+const showingHeader = true;
+const showingHeaderOnTop = true;
+const isDark = false;
+const isBurgerActive = false;
 ---
 
-<div>ヘッダー</div>
+<nav
+  class={`navbar is-fixed-top has-shadow ${
+    showingHeader ? "" : "is-hidden"
+  } ${!showingHeaderOnTop ? "navbar-with-animation" : ""} ${
+    isDark ? "is-black" : ""
+  }`}
+  role="navigation"
+  aria-label="main navigation"
+>
+  <div class="navbar-brand">
+    <a href="/" class="navbar-item">
+      {/* TODO: <img src={icon} alt="VOICEVOXのロゴ" />*/}
+      <span class="has-text-weight-bold is-size-5 pl-2"> VOICEVOX </span>
+    </a>
+
+    <a
+      role="button"
+      class={`navbar-burger ${isBurgerActive ? "is-active" : ""}`}
+      aria-label="menu"
+      aria-expanded="false"
+      data-target="navbar"
+      {/* TODO: onClick={() => setIsBurgerActive(!isBurgerActive)} */}
+    >
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbar" class={`navbar-menu ${isBurgerActive ? "is-active" : ""}`}>
+    <div class="navbar-end">
+      <a href="/" class="navbar-item"> トーク </a>
+      <a href="/song/" class="navbar-item"> ソング </a>
+      <a href="/term/" class="navbar-item"> 利用規約 </a>
+      <a href="/how_to_use/" class="navbar-item"> 使い方 </a>
+      <a href="/qa/" class="navbar-item"> Q&amp;A </a>
+      <a href="/dormitory/" class="navbar-item"> ボイボ寮 </a>
+      <a href="/nemo/" class="navbar-item"> Nemo </a>
+      <a href="/update_history/" class="navbar-item"> 変更履歴 </a>
+      {
+        /* TODO: リリース時にコメントアウトを外す
+        <a to={"/news/"} class="navbar-item">
+          ニュース
+        </a>
+        */
+      }
+      <a
+        href="https://hiho.fanbox.cc/"
+        target={"_blank"}
+        rel={"noreferrer"}
+        class="navbar-item"
+      >
+        pixivFANBOX
+      </a>
+      <div class="navbar-item py-0">
+        <a
+          class="button is-primary is-rounded"
+          {/*
+          onClick={() => {
+            if (!isNemo) {
+              context.downloadModal.show();
+              context.sendEvent("download", "software");
+            } else {
+              context.nemoGuidanceModal.show();
+              context.sendEvent("download", "nemo");
+            }
+          }}*/}
+          target="_blank"
+          rel="noreferrer"
+          tabIndex={0}
+        >
+          {
+            /* TODO:
+            <span class="icon">
+            <FontAwesomeIcon icon={faDownload} />
+            </span>
+            <span class="has-text-weight-semibold">ダウンロード</span>}
+            */
+          }
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+{/* 空間を空けるために必要 */}
+<div
+  class={`navbar height-holder ${
+    showingHeader && showingHeaderOnTop ? "" : "is-hidden"
+  }`}
+>
+</div>

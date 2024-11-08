@@ -1,0 +1,14 @@
+@use "./vars.scss" as *;
+
+@use "bulma/sass" with (
+  $primary: $primary,
+  $link: $link,
+  $family-sans-serif: '"Unhinted Rounded M+ 1p", sans-serif'
+);
+
+@use "bulma/sass/utilities/initial-variables" as bulma;
+
+// TODO: Bulma 1でなくなったっぽい設定、要確認
+// $navbar-breakpoint: bulma.$tablet;
+// $dropdown-item-active-color: hsl(0, 0%, 4%);
+// $dropdown-item-active-background-color: $primary;

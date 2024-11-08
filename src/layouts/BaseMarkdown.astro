@@ -10,5 +10,12 @@ const { frontmatter } = Astro.props;
 ---
 
 <Base {...frontmatter}>
-  <slot />
+  <div class="markdown">
+    <slot />
+  </div>
 </Base>
+
+<style lang="scss" is:global>
+  // FIXME: globalやめたいけどやり方がわからない
+  @use "@/styles/markdown";
+</style>
