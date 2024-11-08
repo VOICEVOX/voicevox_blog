@@ -1,3 +1,8 @@
+---
+layout: "@/layouts/BaseMarkdown.astro"
+title: 利用規約
+---
+
 # VOICEVOX ソフトウェア利用規約
 
 ## 許諾内容
