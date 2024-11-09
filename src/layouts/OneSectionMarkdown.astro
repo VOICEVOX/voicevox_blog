@@ -1,0 +1,20 @@
+---
+import Base, { type Props as BaseProps } from "./Base.astro";
+
+import Markdown from "@/components/Markdown.astro";
+
+export interface Props {
+  frontmatter: BaseProps;
+  children: any;
+}
+
+const { frontmatter } = Astro.props;
+---
+
+<Base {...frontmatter}>
+  <section class="section">
+    <div class="container is-max-desktop">
+      <Markdown><slot /></Markdown>
+    </div>
+  </section>
+</Base>

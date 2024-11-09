@@ -6,6 +6,11 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   integrations: [mdx(), sitemap()],
 
+  site: "https://voicevox.hiroshiba.jp",
+
+  devToolbar: {
+    enabled: false,
+  },
   vite: {
     css: {
       preprocessorOptions: {

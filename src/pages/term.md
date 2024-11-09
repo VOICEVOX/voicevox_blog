@@ -1,6 +1,7 @@
 ---
-layout: "@/layouts/BaseMarkdown.astro"
-title: 利用規約
+layout: "@/layouts/OneSectionMarkdown.astro"
+title: ソフトウェア利用規約 | VOICEVOX
+description: VOICEVOXソフトウェアの利用規約です
 ---
 
 # VOICEVOX ソフトウェア利用規約

@@ -1,10 +1,16 @@
 ---
 export interface Props {
   title: string;
+  description: string;
+  imagePath?: string;
+  imageAlt?: string;
+  noindex?: boolean;
   children: any;
 }
 
 import { ViewTransitions } from "astro:transitions";
+
+import { SEO } from "astro-seo";
 
 import "@/styles/global.scss";
 import "@/styles/bulma.scss";
@@ -12,15 +18,68 @@ import "@/styles/bulma.scss";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 
-const { title } = Astro.props;
+const { title, description, imagePath, imageAlt, noindex } = Astro.props;
+const hasImage = imagePath != undefined && imageAlt != undefined;
+
+// imagePathとimageAltが片方だけ指定されている場合はエラーを出す
+if ((imagePath == undefined) != (imageAlt == undefined)) {
+  throw new Error("imagePathとimageAltが片方だけ指定されています");
+}
 ---
 
 <html lang="ja" transition:animate="none">
   <head>
-    <meta charset="utf-8" />
+    <SEO
+      title={title}
+      charset="utf-8"
+      description={description}
+      canonical={String(new URL(Astro.url.pathname, Astro.site))}
+      openGraph={hasImage
+        ? {
+            basic: {
+              title,
+              type: "website",
+              image: String(new URL(imagePath, Astro.url)),
+            },
+            optional: {
+              description,
+            },
+            image: {
+              alt: imageAlt,
+            },
+          }
+        : undefined}
+      twitter={{
+        card: hasImage ? "summary_large_image" : "summary",
+        title,
+        description,
+        image: hasImage ? new URL(imagePath, Astro.url) : undefined,
+        imageAlt: hasImage ? imageAlt : undefined,
+      }}
+      noindex={noindex}
+      nofollow={noindex}
+    />
+
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+
+    {
+      // セキュリティ対策。というよりSEO対策。
+      import.meta.env.PROD && (
+        <>
+          <meta
+            http-equiv="Content-Security-Policy"
+            content="default-src 'self'"
+          />
+          <meta
+            http-equiv="Content-Security-Policy"
+            content="upgrade-insecure-requests"
+          />
+          <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
+          <meta http-equiv="X-FRAME-OPTIONS" content="DENY" />
+        </>
+      )
+    }
   </head>
   <body>
     <Header />
