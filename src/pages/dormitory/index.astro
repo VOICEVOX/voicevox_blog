@@ -1,0 +1,29 @@
+---
+import { Image } from "astro:assets";
+
+import Base from "@/layouts/Base.astro";
+
+import { characterKeys, characterInfos } from "@/constants/characterInfos";
+import { bustupImages } from "@/constants/characaterImages";
+
+import shareThumb from "./top-illusts/top-illust-009.png";
+---
+
+<Base
+  title="ボイボ寮 | VOICEVOX"
+  description="とある世界の不思議な建物、ボイボ寮。ここでは個性豊かな住民たちが暮らしています。"
+  image={shareThumb}
+  imageAlt=""
+>
+  <div>dom</div>
+  <div>
+    {
+      characterKeys.map((key) => (
+        <>
+          <span>{characterInfos[key].name}</span>
+          <Image src={bustupImages[key]()} alt="hero" width={128} />
+        </>
+      ))
+    }
+  </div>
+</Base>

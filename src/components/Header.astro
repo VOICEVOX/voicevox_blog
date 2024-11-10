@@ -27,8 +27,8 @@ const isBurgerActive = false;
       aria-label="menu"
       aria-expanded="false"
       data-target="navbar"
-      {/* TODO: onClick={() => setIsBurgerActive(!isBurgerActive)} */}
     >
+      {/* TODO: onClick={() => setIsBurgerActive(!isBurgerActive)} */}
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
@@ -63,20 +63,22 @@ const isBurgerActive = false;
       <div class="navbar-item py-0">
         <a
           class="button is-primary is-rounded"
-          {/*
-          onClick={() => {
-            if (!isNemo) {
-              context.downloadModal.show();
-              context.sendEvent("download", "software");
-            } else {
-              context.nemoGuidanceModal.show();
-              context.sendEvent("download", "nemo");
-            }
-          }}*/}
           target="_blank"
           rel="noreferrer"
-          tabIndex={0}
+          tabindex={0}
         >
+          {
+            /*
+        onClick={() => {
+          if (!isNemo) {
+            context.downloadModal.show();
+            context.sendEvent("download", "software");
+          } else {
+            context.nemoGuidanceModal.show();
+            context.sendEvent("download", "nemo");
+          }
+        }}*/
+          }
           {
             /* TODO:
             <span class="icon">

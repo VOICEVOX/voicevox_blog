@@ -2,12 +2,13 @@
 export interface Props {
   title: string;
   description: string;
-  imagePath?: string;
+  image?: string | ImageMetadata;
   imageAlt?: string;
   noindex?: boolean;
   children: any;
 }
 
+import { getImage } from "astro:assets";
 import { ViewTransitions } from "astro:transitions";
 
 import { SEO } from "astro-seo";
@@ -18,13 +19,19 @@ import "@/styles/bulma.scss";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 
-const { title, description, imagePath, imageAlt, noindex } = Astro.props;
-const hasImage = imagePath != undefined && imageAlt != undefined;
+const { title, description, image: _image, imageAlt, noindex } = Astro.props;
 
-// imagePathとimageAltが片方だけ指定されている場合はエラーを出す
-if ((imagePath == undefined) != (imageAlt == undefined)) {
-  throw new Error("imagePathとimageAltが片方だけ指定されています");
+// imageとimageAltが片方だけ指定されている場合はエラーを出す
+if ((_image == undefined) != (imageAlt == undefined)) {
+  throw new Error("imageとimageAltが片方だけ指定されています");
 }
+
+const imageUrl = _image
+  ? typeof _image === "string"
+    ? String(new URL(_image, Astro.url))
+    : (await getImage({ src: _image })).src // importされた画像を取得する
+  : undefined;
+const hasImage = imageUrl != undefined && imageAlt != undefined;
 ---
 
 <html lang="ja" transition:animate="none">
@@ -39,7 +46,7 @@ if ((imagePath == undefined) != (imageAlt == undefined)) {
             basic: {
               title,
               type: "website",
-              image: String(new URL(imagePath, Astro.url)),
+              image: imageUrl,
             },
             optional: {
               description,
@@ -53,7 +60,7 @@ if ((imagePath == undefined) != (imageAlt == undefined)) {
         card: hasImage ? "summary_large_image" : "summary",
         title,
         description,
-        image: hasImage ? new URL(imagePath, Astro.url) : undefined,
+        image: hasImage ? imageUrl : undefined,
         imageAlt: hasImage ? imageAlt : undefined,
       }}
       noindex={noindex}
