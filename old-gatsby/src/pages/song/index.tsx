@@ -17,7 +17,7 @@ import { CharacterContext, GlobalContext } from "../../contexts/context"
 import { useDetailedCharacterInfo } from "../../hooks/useDetailedCharacterInfo"
 import shareThumb from "../../images/song/share-thumb.png"
 import { CharacterInfo, CharacterKey } from "../../types/dormitoryCharacter"
-import { getProductPageUrl } from "../../urls"
+import { getProductPageUrl } from "../../../../src/constants/url"
 
 // キャラクターごとのカード表示
 const CharacterCard = React.memo(

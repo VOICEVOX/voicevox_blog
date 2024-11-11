@@ -9,7 +9,7 @@ import Seo from "../../components/seo"
 import { characterKeys } from "../../constants"
 import { useDetailedCharacterInfo } from "../../hooks/useDetailedCharacterInfo"
 import { CharacterKey } from "../../types/dormitoryCharacter"
-import { getProductPageUrl } from "../../urls"
+import { getProductPageUrl } from "../../../../src/constants/url"
 
 type DescriptionType = "プロフィール" | "呼び方"
 

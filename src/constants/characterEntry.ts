@@ -31,14 +31,15 @@ export const characterKeys = [
   "琴詠ニア",
   "Voidoll",
 ] as const;
+
 export type CharacterKey = (typeof characterKeys)[number];
 
-export type CharacterInfoEntry = {
+type CharacterEntry = {
   name: string;
   id: string;
 };
 
-export const characterInfos = {
+export const characterEntries = {
   四国めたん: {
     name: "四国めたん",
     id: "shikoku_metan",
@@ -164,5 +165,5 @@ export const characterInfos = {
     id: "voidoll",
   },
 } as const satisfies {
-  [key in CharacterKey]: CharacterInfoEntry;
+  [key in CharacterKey]: CharacterEntry;
 };

@@ -15,7 +15,7 @@ import shareThumb from "../images/landing-share-thumb.jpg"
 import Logo from "../images/logo.svg"
 import landingMovie from "../movies/landing.mp4"
 import { CharacterInfo, CharacterKey } from "../types/dormitoryCharacter"
-import { getProductPageUrl } from "../urls"
+import { getProductPageUrl } from "../../../src/constants/url"
 
 // キャラクター表示
 const CharacterCard = React.memo(

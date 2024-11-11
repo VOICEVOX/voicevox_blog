@@ -1,7 +1,7 @@
 import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import React, { useEffect, useRef, useState } from "react"
-import DormitoryCharacterCard from "../components/dormitoryCharacterCard"
+import DormitoryCharacterCard from "../../../src/pages/dormitory/dormitoryCharacterCard"
 import DormitoryEventContainer from "../components/dormitoryEventContainer"
 import DormitoryTopIllustContainer from "../components/dormitoryTopIllustContainer"
 import DormitoryTopIllustsContainer from "../components/dormitoryTopIllustsContainer"

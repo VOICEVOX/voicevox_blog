@@ -1,11 +1,7 @@
 ---
-import { Image } from "astro:assets";
-
 import Base from "@/layouts/Base.astro";
 import TopIllustContainer from "./_TopIllustContainer.astro";
-
-import { characterKeys, characterInfos } from "@/constants/characterInfos";
-import { bustupImages } from "@/constants/characaterImages";
+import CharacterCard from "./_CharacterCard.astro";
 
 import shareThumb from "./top-illusts/top-illust-009.png";
 ---
@@ -34,8 +30,6 @@ import shareThumb from "./top-illusts/top-illust-009.png";
       </div>
     </section>
 
-    <!-- 
-
     <main class="section pt-0 pb-5">
       <div class="container character-container is-max-desktop pt-1 pb-6">
         <div class="columns is-multiline">
@@ -44,21 +38,24 @@ import shareThumb from "./top-illusts/top-illust-009.png";
             class="jump-anchor-header-padding column is-2 generation-label"
           >
             <h2 class="title is-3">
-              <Link to="#8th" class="has-text-black"> 9 期 生 </Link>
+              <a href="#9th" class="has-text-black"> 9 期 生 </a>
             </h2>
           </div>
 
-          <DormitoryCharacterCard characterInfo={characterInfos.Voidoll} />
+          <CharacterCard characterKey={"Voidoll"} />
         </div>
 
+        <!--
+
         <hr />
+
         <div class="columns is-multiline">
           <div
             id="8th"
             class="jump-anchor-header-padding column is-2 generation-label"
           >
             <h2 class="title is-3">
-              <Link to="#8th" class="has-text-black"> 8 期 生 </Link>
+              <a href="#8th" class="has-text-black"> 8 期 生 </a>
             </h2>
           </div>
 
@@ -79,7 +76,7 @@ import shareThumb from "./top-illusts/top-illust-009.png";
             class="jump-anchor-header-padding column is-2 generation-label"
           >
             <h2 class="title is-3">
-              <Link to="#7th" class="has-text-black"> 7 期 生 </Link>
+              <a href="#7th" class="has-text-black"> 7 期 生 </a>
             </h2>
           </div>
 
@@ -106,7 +103,7 @@ import shareThumb from "./top-illusts/top-illust-009.png";
             class="jump-anchor-header-padding column is-2 generation-label"
           >
             <h2 class="title is-3">
-              <Link to="#6th" class="has-text-black"> 6 期 生 </Link>
+              <a href="#6th" class="has-text-black"> 6 期 生 </a>
             </h2>
           </div>
 
@@ -127,7 +124,7 @@ import shareThumb from "./top-illusts/top-illust-009.png";
             class="jump-anchor-header-padding column is-2 generation-label"
           >
             <h2 class="title is-3">
-              <Link to="#5th" class="has-text-black"> 5 期 生 </Link>
+              <a href="#5th" class="has-text-black"> 5 期 生 </a>
             </h2>
           </div>
 
@@ -144,7 +141,7 @@ import shareThumb from "./top-illusts/top-illust-009.png";
             class="jump-anchor-header-padding column is-2 generation-label"
           >
             <h2 class="title is-3">
-              <Link to="#4th" class="has-text-black"> 4 期 生 </Link>
+              <a href="#4th" class="has-text-black"> 4 期 生 </a>
             </h2>
           </div>
 
@@ -162,7 +159,7 @@ import shareThumb from "./top-illusts/top-illust-009.png";
             class="jump-anchor-header-padding column is-2 generation-label"
           >
             <h2 class="title is-3">
-              <Link to="#3rd" class="has-text-black"> 3 期 生 </Link>
+              <a href="#3rd" class="has-text-black"> 3 期 生 </a>
             </h2>
           </div>
 
@@ -184,7 +181,7 @@ import shareThumb from "./top-illusts/top-illust-009.png";
             class="jump-anchor-header-padding column is-2 generation-label"
           >
             <h2 class="title is-3">
-              <Link to="#2nd" class="has-text-black"> 2 期 生 </Link>
+              <a href="#2nd" class="has-text-black"> 2 期 生 </a>
             </h2>
           </div>
 
@@ -201,7 +198,7 @@ import shareThumb from "./top-illusts/top-illust-009.png";
             class="jump-anchor-header-padding column is-2 generation-label"
           >
             <h2 class="title is-3">
-              <Link to="#1st" class="has-text-black"> 1 期 生 </Link>
+              <a href="#1st" class="has-text-black"> 1 期 生 </a>
             </h2>
           </div>
 
@@ -250,8 +247,12 @@ import shareThumb from "./top-illusts/top-illust-009.png";
             <span>キャラクターの呼称表</span>
           </Link>
         </div>
+
+        -->
       </div>
     </main>
+
+    <!-- 
 
     <DormitoryExplainComponent />
 
@@ -261,6 +262,8 @@ import shareThumb from "./top-illusts/top-illust-009.png";
 
     <section class="section py-5">
       <DormitoryTopIllustsContainer id="top_illusts" />
-    </section> -->
+    </section>
+
+    -->
   </div>
 </Base>

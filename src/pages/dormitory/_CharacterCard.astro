@@ -1,0 +1,48 @@
+---
+import type { CharacterKey } from "@constants/characterEntry";
+
+interface Props {
+  characterKey: CharacterKey;
+  additionalClass?: string;
+}
+
+import { Image } from "astro:assets";
+
+import { getDormitoryCharacterPageUrl } from "@/constants/url";
+import { characterInfos } from "@constants/characterInfo";
+
+const { characterKey, additionalClass } = Astro.props;
+
+const characterInfo = characterInfos[characterKey];
+const color = characterInfo.color || "black";
+const href = getDormitoryCharacterPageUrl(characterInfo);
+---
+
+<div
+  id={characterInfo.id}
+  class={"jump-anchor-header-padding column is-3 " + additionalClass}
+>
+  <div
+    class="card character-card"
+    style={{ borderColor: color, height: "100%" }}
+  >
+    <a href={href}>
+      <!-- TODO: state={{ fromDormitory: true }} -->
+      <Image
+        class="card-image"
+        src={characterInfo.bustupImage}
+        alt={characterInfo.name}
+        width={128}
+        height={128}
+        style={{ objectFit: "contain" }}
+      />
+      <!-- TODO: src={characterInfo.bustupImageSmall} -->
+      <div
+        class="card-content has-text-centered"
+        style={{ borderColor: color }}
+      >
+        <h3 class="title is-5">{characterInfo.name}</h3>
+      </div>
+    </a>
+  </div>
+</div>
