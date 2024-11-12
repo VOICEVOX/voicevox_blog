@@ -13,14 +13,15 @@ export type CharacterInfo = {
   id: string;
   rubyName: string;
   voiceFeature: string | undefined;
-  bustupImage: Promise<AstroImage>;
-  portraitImage: Promise<AstroImage>;
-  // ogpImage: Promise<AstroImage>;
   color: string;
   lightColor: string;
   description: string; // ボイボ寮ページでの紹介文
   additionalProductDescription?: string; // 製品ページでの追加の紹介文
   labelInfos: { label: string; value: string; size: 1 | 2 }[];
+  detailUrl: string | undefined;
+  policyUrl: string | undefined;
+  bustupImage: Promise<AstroImage>;
+  portraitImage: Promise<AstroImage>;
   talkVoiceUrls: { style: string; urls: Promise<string>[] }[];
   songVoiceUrls: {
     style: string;
@@ -28,8 +29,7 @@ export type CharacterInfo = {
     urls: Promise<string>[];
   }[];
   dormitoryVoiceUrls?: Promise<string>[];
-  infoImages?: Promise<AstroImage>[];
-  detailUrl: string | undefined;
-  policyUrl: string | undefined;
+  dormitoryImages?: Promise<AstroImage>[];
+  // ogpImage: Promise<AstroImage>;
   releaseDate?: string;
 };

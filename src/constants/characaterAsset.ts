@@ -127,3 +127,8 @@ export const songAudiosAndPaths = makeCharacterAssetsRecordWithPath(
 export const dormitoryAudios = makeCharacterAssetsRecordOptional(
   import.meta.glob<string>("./dormitory-audios/*.wav"),
 );
+
+/** ボイボ寮用画像。１つもないときもある。 */
+export const dormitoryImages = makeCharacterAssetsRecordOptional(
+  import.meta.glob<AstroImage>("./dormitory-images/*.wav"),
+);
