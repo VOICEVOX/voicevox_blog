@@ -4,6 +4,7 @@ pnpm start
 
 ### TODO
 
+- [ ] FontAwesomeIcon の設定
 - [ ] favicon 等の設定
 - [ ] sitemap 確認
 - [ ] ニュースの RSS？

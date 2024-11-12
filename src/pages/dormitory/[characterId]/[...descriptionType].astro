@@ -1,0 +1,233 @@
+---
+import type { InferGetStaticPropsType, GetStaticPaths } from "astro";
+
+import { characterEntries, characterKeys } from "@constants/characterEntry";
+import { characterInfos } from "@constants/characterInfo";
+import { descriptionTypes } from "./constants";
+
+export const getStaticPaths = (async () => {
+  return characterKeys.flatMap((key) =>
+    descriptionTypes.map((d) => ({
+      params: {
+        characterId: characterEntries[key].id,
+        descriptionType: d == "profile" ? undefined : d, // NOTE: 以前に合わせるため、プロフィールページはURLをネストしない
+      },
+      props: { characterInfo: characterInfos[key], descriptionType: d },
+    })),
+  );
+}) satisfies GetStaticPaths;
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+import { Image } from "astro:assets";
+
+import Base from "@layouts/Base.astro";
+import CallBox from "./_CallBox.astro";
+import TypeButton from "./_TypeButton.astro";
+
+import { callNameInfos } from "@constants/characterInfos/callNameInfo";
+
+const { characterInfo, descriptionType } = Astro.props;
+const characterKey = characterInfo.key;
+---
+
+<Base
+  title={`${characterInfo.name} | ボイボ寮 | VOICEVOX`}
+  description={characterInfo.description}
+>
+  <!-- TODO: image={selectedCharacterInfo.ogpImage.images.fallback?.src} -->
+  <div class="dormitory-character">
+    <main class="section py-1">
+      <div class="container is-max-desktop">
+        <div class="box" style={{ borderColor: characterInfo.color }}>
+          <div class="columns m-0" style={{ height: "100%" }}>
+            <div
+              class="column is-4 portrait-column"
+              style={{ borderColor: characterInfo.color }}
+            >
+              <Image
+                src={characterInfo.portraitImage}
+                alt={characterInfo.name}
+                style={{ height: "100%", width: "100%" }}
+              />
+            </div>
+            <div class="column description-column">
+              <div class="section">
+                <div class="description-top">
+                  <h1 class="title" set:html={characterInfo.rubyName} />
+                  <a
+                    class="button description-top-button"
+                    style={{
+                      color: characterInfo.color,
+                      borderColor: characterInfo.color,
+                      visibility: characterInfo.detailUrl
+                        ? "visible"
+                        : "hidden",
+                    }}
+                    href={characterInfo.detailUrl}
+                    aria-label={`${characterInfo.name}の詳細ページ`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <!-- TODO: <FontAwesomeIcon icon={faHome} /> -->
+                  </a>
+                </div>
+                <div class="buttons has-addons">
+                  <TypeButton
+                    characterInfo={characterInfo}
+                    selectedType={descriptionType}
+                    targetType="profile"
+                  />
+                  <TypeButton
+                    characterInfo={characterInfo}
+                    selectedType={descriptionType}
+                    targetType="calls"
+                  />
+                </div>
+                {
+                  descriptionType === "profile" && (
+                    <>
+                      <div
+                        class="description-profile"
+                        set:html={characterInfo.description}
+                      />
+                      <div class="columns is-variable is-1 is-multiline">
+                        {characterInfo.labelInfos.map((labelInfo, index) => (
+                          <div
+                            key={index}
+                            class={`column ${
+                              labelInfo.size == 1 ? "is-6" : "is-12"
+                            } description-box`}
+                          >
+                            <span
+                              class="description-label"
+                              style={{ backgroundColor: characterInfo.color }}
+                            >
+                              {labelInfo.label}
+                            </span>
+                            <span
+                              class="description-text"
+                              set:html={labelInfo.value}
+                            />
+                          </div>
+                        ))}
+                        <div class="column is-12 description-box">
+                          <span
+                            class="description-label"
+                            style={{ backgroundColor: characterInfo.color }}
+                          >
+                            音声サンプル
+                          </span>
+                          {characterInfo.dormitoryVoiceUrls ? (
+                            <div class="description-samples">
+                              {characterInfo.dormitoryVoiceUrls.map(
+                                (url, index) => (
+                                  // <PlayButton
+                                  //   key={index}
+                                  //   url={url}
+                                  //   name={`${
+                                  //     characterInfo.name
+                                  //   }のサンプルボイス${index + 1}`}
+                                  //   color={characterInfo.color}
+                                  //   class="ml-1 mr-1"
+                                  // />
+                                  // TODO: PlayButton
+                                  <div>TODO</div>
+                                ),
+                              )}
+                            </div>
+                          ) : (
+                            <span class="description-text">準備中</span>
+                          )}
+                        </div>
+                      </div>
+                      {characterInfo.infoImages && (
+                        <div class="description-info-images">
+                          {characterInfo.infoImages.map((image, index) => (
+                            <Image
+                              src={image}
+                              alt={characterInfo.name}
+                              style={{
+                                maxHeight: "8rem",
+                                objectFit: "contain",
+                              }}
+                            />
+                          ))}
+                        </div>
+                      )}
+                    </>
+                  )
+                }
+                {
+                  descriptionType === "calls" && (
+                    <div class="columns description-call">
+                      <div class="column is-3 description-call-other-column">
+                        <div class="description-call-other-cell">
+                          <div>
+                            <span>一人称</span>
+                          </div>
+                          <div>
+                            {callNameInfos[characterKey].me.map((callName) => (
+                              <p>{callName}</p>
+                            ))}
+                          </div>
+                        </div>
+                        <div class="description-call-other-cell">
+                          <div>
+                            <span>二人称</span>
+                          </div>
+                          <div>
+                            {callNameInfos[characterKey].you.map((callName) => (
+                              <p>{callName}</p>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                      <div class="column is-9 description-call-character">
+                        {characterKeys
+                          .filter(
+                            (targetCharacterKey) =>
+                              targetCharacterKey !== characterKey,
+                          )
+                          .map((targetCharacterKey, index) => (
+                            <CallBox
+                              characterInfo={characterInfo}
+                              baseCharacterKey={characterKey}
+                              targetCharacterKey={targetCharacterKey}
+                            />
+                          ))}
+                      </div>
+                    </div>
+                  )
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="link-buttons has-text-weight-bold">
+          {
+            /*
+          TODO:
+          <Link
+            to={getProductPageUrl(characterInfo)}
+            class="button is-normal is-rounded character-list-button"
+            style={{ borderColor: characterInfo.color }}
+          >
+            ダウンロードページ
+          </Link>
+          <Link
+            to={// ボイボ寮ページから遷移した場合は前のキャラクターへ戻る
+            // 検索流入や共有されたページから直接飛んだ場合は先頭へ戻る
+            location.state?.fromDormitory
+              ? `/dormitory/#${characterInfo.id}`
+              : `/dormitory/`}
+            class="button is-normal is-rounded character-list-button"
+            style={{ borderColor: characterInfo.color }}
+          >
+            キャラクター一覧
+          </Link>*/
+          }
+        </div>
+      </div>
+    </main>
+  </div>
+</Base>

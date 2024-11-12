@@ -1,0 +1,72 @@
+---
+import type { CharacterKey } from "@constants/characterEntry";
+import type { CharacterInfo } from "@constants/type";
+
+interface Props {
+  characterInfo: CharacterInfo;
+  baseCharacterKey: CharacterKey;
+  targetCharacterKey: CharacterKey;
+}
+
+import { Image } from "astro:assets";
+
+import { characterInfos } from "@constants/characterInfo";
+import { callNameInfos } from "@constants/characterInfos/callNameInfo";
+
+const { characterInfo, baseCharacterKey, targetCharacterKey } = Astro.props;
+
+const callTo: string | undefined =
+  // @ts-ignore UnreachableError
+  callNameInfos[baseCharacterKey][targetCharacterKey];
+const callFrom: string | undefined =
+  // @ts-ignore UnreachableError
+  callNameInfos[targetCharacterKey][baseCharacterKey];
+---
+
+<div
+  class="columns is-mobile is-vcentered is-variable is-1 description-call-box"
+>
+  <div class="column description-call-line">
+    <div class="description-call-one">
+      <span
+        class={`description-call-text ${callTo ? "" : "unknown"}`}
+        style={{ borderColor: characterInfo.color }}
+      >
+        {callTo || "？"}
+      </span>
+      <span
+        class="description-call-arrow"
+        style={{ color: characterInfo.color }}
+      >
+        →
+      </span>
+    </div>
+    <div class="description-call-one">
+      <span
+        class="description-call-arrow"
+        style={{ color: characterInfos[targetCharacterKey].color }}
+      >
+        ←
+      </span>
+      <span
+        class={`description-call-text ${callFrom ? "" : "unknown"}`}
+        style={{ borderColor: characterInfos[targetCharacterKey].color }}
+      >
+        {callFrom || "？"}
+      </span>
+    </div>
+  </div>
+  <div class="column is-narrow py-1" style={{ height: "100%" }}>
+    <Image
+      class="border-icon"
+      src={characterInfos[targetCharacterKey].bustupImage}
+      alt={characterInfos[targetCharacterKey].name}
+      style={{
+        borderColor: characterInfos[targetCharacterKey].color,
+        height: "100%",
+        aspectRatio: "1/1",
+        objectFit: "contain",
+      }}
+    />
+  </div>
+</div>

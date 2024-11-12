@@ -8,12 +8,16 @@ import {
 
 /**
  * キャラクターごとに複数のアセットを分配する。
+ * 元のパスも返す。
  * １つもない場合は空配列を返す。
  */
-export function makeCharacterAssetsRecord<T>(
+export function makeCharacterAssetsRecordWithPath<T>(
   globRecord: Record<string, () => Promise<T>>,
-): Record<CharacterKey, Promise<T>[]> {
-  const record = {} as Record<CharacterKey, Promise<T>[]>;
+): Record<CharacterKey, { path: string; asset: Promise<T> }[]> {
+  const record = {} as Record<
+    CharacterKey,
+    { path: string; asset: Promise<T> }[]
+  >;
   for (const key of characterKeys) {
     record[key] = [];
   }
@@ -23,7 +27,25 @@ export function makeCharacterAssetsRecord<T>(
       path.includes(characterEntries[key].id),
     );
     if (key == undefined) throw new Error(`Unknown character: ${path}`);
-    record[key].push(globRecord[path]());
+    record[key].push({ path, asset: globRecord[path]() });
+  }
+  return record;
+}
+
+/**
+ * キャラクターごとに複数のアセットを分配する。
+ * １つもない場合は空配列を返す。
+ */
+export function makeCharacterAssetsRecord<T>(
+  globRecord: Record<string, () => Promise<T>>,
+): Record<CharacterKey, Promise<T>[]> {
+  const baseRecord = makeCharacterAssetsRecordWithPath(globRecord);
+  const record: Record<CharacterKey, Promise<T>[]> = {} as Record<
+    CharacterKey,
+    Promise<T>[]
+  >;
+  for (const key of characterKeys) {
+    record[key] = baseRecord[key].map(({ asset }) => asset);
   }
   return record;
 }
@@ -91,7 +113,17 @@ export const portraitImages = makeCharacterAssetsRecordSingle(
   import.meta.glob<AstroImage>("./portrait-images/*.png"),
 );
 
+/** トーク用音声とそのパス。１つもないときもある。 */
+export const talkAudiosAndPaths = makeCharacterAssetsRecordWithPath(
+  import.meta.glob<string>("./talk-audios/*.wav"),
+);
+
+/** ソング用音声とそのパス。１つもないときもある。 */
+export const songAudiosAndPaths = makeCharacterAssetsRecordWithPath(
+  import.meta.glob<string>("./song-audios/*.wav"),
+);
+
 /** ボイボ寮用音声。１つもないときもある。 */
-export const dormitoryAudioArrays = makeCharacterAssetsRecordOptional(
+export const dormitoryAudios = makeCharacterAssetsRecordOptional(
   import.meta.glob<string>("./dormitory-audios/*.wav"),
 );

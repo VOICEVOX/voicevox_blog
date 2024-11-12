@@ -1,0 +1,30 @@
+---
+import type { CharacterInfo } from "@constants/type";
+import type { descriptionTypes } from "./constants";
+
+interface Props {
+  characterInfo: CharacterInfo;
+  selectedType: (typeof descriptionTypes)[number];
+  targetType: (typeof descriptionTypes)[number];
+}
+
+const { characterInfo, selectedType, targetType } = Astro.props;
+const selected = selectedType == targetType;
+---
+
+<a
+  class={`button is-rounded description-type-button ${
+    selected && "description-type-button-selected"
+  }`}
+  style={{
+    color: characterInfo.color,
+    borderColor: characterInfo.color,
+    backgroundColor: selected ? characterInfo.lightColor : undefined,
+  }}
+  href={`/dormitory/${characterInfo.id}/${
+    targetType == "profile" ? "" : targetType + "/"
+  }`}
+  type="button"
+>
+  <span>{targetType == "profile" ? "プロフィール" : "呼び方"}</span>
+</a>

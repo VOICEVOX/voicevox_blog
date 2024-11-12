@@ -1,19 +1,17 @@
 ---
-import type { CharacterKey } from "@constants/characterEntry";
+import type { CharacterInfo } from "@constants/type";
 
 interface Props {
-  characterKey: CharacterKey;
+  characterInfo: CharacterInfo;
   additionalClass?: string;
 }
 
 import { Image } from "astro:assets";
 
 import { getDormitoryCharacterPageUrl } from "@/constants/url";
-import { characterInfos } from "@constants/characterInfo";
 
-const { characterKey, additionalClass } = Astro.props;
+const { characterInfo, additionalClass } = Astro.props;
 
-const characterInfo = characterInfos[characterKey];
 const color = characterInfo.color || "black";
 const href = getDormitoryCharacterPageUrl(characterInfo);
 ---
@@ -32,11 +30,10 @@ const href = getDormitoryCharacterPageUrl(characterInfo);
         class="card-image"
         src={characterInfo.bustupImage}
         alt={characterInfo.name}
-        width={128}
-        height={128}
+        width={256}
+        height={256}
         style={{ objectFit: "contain" }}
       />
-      <!-- TODO: src={characterInfo.bustupImageSmall} -->
       <div
         class="card-content has-text-centered"
         style={{ borderColor: color }}

@@ -4,6 +4,7 @@ import TopIllustContainer from "./_TopIllustContainer.astro";
 import CharacterCard from "./_CharacterCard.astro";
 
 import shareThumb from "./top-illusts/top-illust-009.png";
+import { characterInfos } from "@constants/characterInfo";
 ---
 
 <Base
@@ -42,7 +43,7 @@ import shareThumb from "./top-illusts/top-illust-009.png";
             </h2>
           </div>
 
-          <CharacterCard characterKey={"Voidoll"} />
+          <CharacterCard characterInfo={characterInfos.Voidoll} />
         </div>
 
         <!--
