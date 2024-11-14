@@ -1,0 +1,44 @@
+---
+interface Props {
+  id: string;
+}
+
+import { Image } from "astro:assets";
+
+import { dormitoryEvents } from "@constants/dormitoryEvent";
+
+const { id } = Astro.props;
+---
+
+<div
+  class="container top-illust-container has-text-centered py-5 is-flex is-flex-direction-column"
+>
+  <h2 id={id} class="jump-anchor-header-padding title is-4">
+    <a href={`#${id}`} class="has-text-black"> 過去のイベント </a>
+  </h2>
+  <div class="columns is-multiline is-variable is-2 px-4">
+    {
+      // 過去のイベント
+      dormitoryEvents.map((event) => (
+        <div class="column is-4">
+          <a
+            href={`${event.link}`}
+            class="has-text-black"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <div class="card">
+              <Image
+                src={event.image}
+                alt=""
+                width="320"
+                style={{ objectFit: "contain" }}
+              />
+            </div>
+            <p class="is-size-6 mt-2" set:html={event.titles.join("<br />")} />
+          </a>
+        </div>
+      ))
+    }
+  </div>
+</div>

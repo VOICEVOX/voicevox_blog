@@ -1,8 +1,15 @@
 ---
+/**
+ * 全てのページのベースになるレイアウト。
+ * ヘッダーとフッターがある。
+ */
+
+import type { AstroImage } from "@types";
+
 export interface Props {
   title: string;
   description: string;
-  image?: string | ImageMetadata;
+  image?: string | ImageMetadata | Promise<AstroImage>;
   imageAlt?: string;
   noindex?: boolean;
   children: any;

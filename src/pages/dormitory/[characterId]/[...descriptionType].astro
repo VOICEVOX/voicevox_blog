@@ -25,6 +25,7 @@ import CallBox from "./_CallBox.astro";
 import TypeButton from "./_TypeButton.astro";
 
 import { callNameInfos } from "@constants/characterInfos/callNameInfo";
+import { getProductPageUrl } from "@constants/url";
 
 const { characterInfo, descriptionType } = Astro.props;
 const characterKey = characterInfo.key;
@@ -47,6 +48,7 @@ const characterKey = characterInfo.key;
               <Image
                 src={characterInfo.portraitImage}
                 alt={characterInfo.name}
+                width={640}
                 style={{ height: "100%", width: "100%" }}
               />
             </div>
@@ -93,7 +95,6 @@ const characterKey = characterInfo.key;
                       <div class="columns is-variable is-1 is-multiline">
                         {characterInfo.labelInfos.map((labelInfo, index) => (
                           <div
-                            key={index}
                             class={`column ${
                               labelInfo.size == 1 ? "is-6" : "is-12"
                             } description-box`}
@@ -140,12 +141,13 @@ const characterKey = characterInfo.key;
                           )}
                         </div>
                       </div>
-                      {characterInfo.infoImages && (
+                      {characterInfo.dormitoryImages && (
                         <div class="description-info-images">
-                          {characterInfo.infoImages.map((image, index) => (
+                          {characterInfo.dormitoryImages.map((image) => (
                             <Image
                               src={image}
                               alt={characterInfo.name}
+                              width={256}
                               style={{
                                 maxHeight: "8rem",
                                 objectFit: "contain",
@@ -204,27 +206,28 @@ const characterKey = characterInfo.key;
           </div>
         </div>
         <div class="link-buttons has-text-weight-bold">
-          {
-            /*
-          TODO:
-          <Link
-            to={getProductPageUrl(characterInfo)}
+          <a
+            href={getProductPageUrl(characterInfo)}
             class="button is-normal is-rounded character-list-button"
             style={{ borderColor: characterInfo.color }}
           >
             ダウンロードページ
-          </Link>
-          <Link
-            to={// ボイボ寮ページから遷移した場合は前のキャラクターへ戻る
-            // 検索流入や共有されたページから直接飛んだ場合は先頭へ戻る
-            location.state?.fromDormitory
-              ? `/dormitory/#${characterInfo.id}`
-              : `/dormitory/`}
+          </a>
+          <a
+            href={`/dormitory/`}
             class="button is-normal is-rounded character-list-button"
             style={{ borderColor: characterInfo.color }}
           >
             キャラクター一覧
-          </Link>*/
+          </a>
+          {
+            /*
+            // ボイボ寮ページから遷移した場合は前のキャラクターへ戻る
+            // 検索流入や共有されたページから直接飛んだ場合は先頭へ戻る
+            location.state?.fromDormitory
+              ? `/dormitory/#${characterInfo.id}`
+              : `/dormitory/`
+            */
           }
         </div>
       </div>

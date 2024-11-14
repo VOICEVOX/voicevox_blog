@@ -2,8 +2,12 @@
 import Base from "@/layouts/Base.astro";
 import TopIllustContainer from "./_TopIllustContainer.astro";
 import CharacterCard from "./_CharacterCard.astro";
+import Nakayoshi from "./_Nakayoshi/index.astro";
+import ExplainSection from "./_ExplainSection.astro";
+import EventsContainer from "./_EventsContainer.astro";
+import TopIllustsContainer from "./_TopIllustsContainer.astro";
 
-import shareThumb from "./top-illusts/top-illust-009.png";
+import shareThumb from "@/constants/dormitory-top-illust-images/top-illust-009.png";
 import { characterInfos } from "@constants/characterInfo";
 ---
 
@@ -46,8 +50,6 @@ import { characterInfos } from "@constants/characterInfo";
           <CharacterCard characterInfo={characterInfos.Voidoll} />
         </div>
 
-        <!--
-
         <hr />
 
         <div class="columns is-multiline">
@@ -60,12 +62,12 @@ import { characterInfos } from "@constants/characterInfo";
             </h2>
           </div>
 
-          <DormitoryCharacterCard characterInfo={characterInfos.栗田まろん} />
-          <DormitoryCharacterCard characterInfo={characterInfos.藍田ノエル} />
-          <DormitoryCharacterCard characterInfo={characterInfos.満別花丸} />
-          <DormitoryCharacterCard
+          <CharacterCard characterInfo={characterInfos.栗田まろん} />
+          <CharacterCard characterInfo={characterInfos.藍田ノエル} />
+          <CharacterCard characterInfo={characterInfos.満別花丸} />
+          <CharacterCard
             characterInfo={characterInfos.琴詠ニア}
-            class="is-offset-2"
+            additionalClass="is-offset-2"
           />
         </div>
 
@@ -81,18 +83,18 @@ import { characterInfos } from "@constants/characterInfo";
             </h2>
           </div>
 
-          <DormitoryCharacterCard characterInfo={characterInfos.聖騎士紅桜} />
-          <DormitoryCharacterCard characterInfo={characterInfos.雀松朱司} />
-          <DormitoryCharacterCard characterInfo={characterInfos.麒ヶ島宗麟} />
-          <DormitoryCharacterCard
+          <CharacterCard characterInfo={characterInfos.聖騎士紅桜} />
+          <CharacterCard characterInfo={characterInfos.雀松朱司} />
+          <CharacterCard characterInfo={characterInfos.麒ヶ島宗麟} />
+          <CharacterCard
             characterInfo={characterInfos.春歌ナナ}
-            class="is-offset-2"
+            additionalClass="is-offset-2"
           />
-          <DormitoryCharacterCard characterInfo={characterInfos.猫使アル} />
-          <DormitoryCharacterCard characterInfo={characterInfos.猫使ビィ} />
-          <DormitoryCharacterCard
+          <CharacterCard characterInfo={characterInfos.猫使アル} />
+          <CharacterCard characterInfo={characterInfos.猫使ビィ} />
+          <CharacterCard
             characterInfo={characterInfos.中国うさぎ}
-            class="is-offset-2"
+            additionalClass="is-offset-2"
           />
         </div>
 
@@ -108,12 +110,12 @@ import { characterInfos } from "@constants/characterInfo";
             </h2>
           </div>
 
-          <DormitoryCharacterCard characterInfo={characterInfos.ちび式じい} />
-          <DormitoryCharacterCard characterInfo={characterInfos.櫻歌ミコ} />
-          <DormitoryCharacterCard characterInfo={characterInfos.小夜_SAYO} />
-          <DormitoryCharacterCard
+          <CharacterCard characterInfo={characterInfos.ちび式じい} />
+          <CharacterCard characterInfo={characterInfos.櫻歌ミコ} />
+          <CharacterCard characterInfo={characterInfos.小夜_SAYO} />
+          <CharacterCard
             characterInfo={characterInfos.ナースロボ＿タイプＴ}
-            class="is-offset-2"
+            additionalClass="is-offset-2"
           />
         </div>
 
@@ -129,9 +131,9 @@ import { characterInfos } from "@constants/characterInfo";
             </h2>
           </div>
 
-          <DormitoryCharacterCard characterInfo={characterInfos.WhiteCUL} />
-          <DormitoryCharacterCard characterInfo={characterInfos.後鬼} />
-          <DormitoryCharacterCard characterInfo={characterInfos.No7} />
+          <CharacterCard characterInfo={characterInfos.WhiteCUL} />
+          <CharacterCard characterInfo={characterInfos.後鬼} />
+          <CharacterCard characterInfo={characterInfos.No7} />
         </div>
 
         <hr />
@@ -146,10 +148,8 @@ import { characterInfos } from "@constants/characterInfo";
             </h2>
           </div>
 
-          <DormitoryCharacterCard
-            characterInfo={characterInfos.モチノキョウコ}
-          />
-          <DormitoryCharacterCard characterInfo={characterInfos.剣崎雌雄} />
+          <CharacterCard characterInfo={characterInfos.モチノキョウコ} />
+          <CharacterCard characterInfo={characterInfos.剣崎雌雄} />
         </div>
 
         <hr />
@@ -164,14 +164,14 @@ import { characterInfos } from "@constants/characterInfo";
             </h2>
           </div>
 
-          <DormitoryCharacterCard characterInfo={characterInfos.玄野武宏} />
-          <DormitoryCharacterCard characterInfo={characterInfos.白上虎太郎} />
-          <DormitoryCharacterCard characterInfo={characterInfos.青山龍星} />
-          <DormitoryCharacterCard
+          <CharacterCard characterInfo={characterInfos.玄野武宏} />
+          <CharacterCard characterInfo={characterInfos.白上虎太郎} />
+          <CharacterCard characterInfo={characterInfos.青山龍星} />
+          <CharacterCard
             characterInfo={characterInfos.冥鳴ひまり}
-            class="is-offset-2"
+            additionalClass="is-offset-2"
           />
-          <DormitoryCharacterCard characterInfo={characterInfos.九州そら} />
+          <CharacterCard characterInfo={characterInfos.九州そら} />
         </div>
 
         <hr />
@@ -186,9 +186,9 @@ import { characterInfos } from "@constants/characterInfo";
             </h2>
           </div>
 
-          <DormitoryCharacterCard characterInfo={characterInfos.春日部つむぎ} />
-          <DormitoryCharacterCard characterInfo={characterInfos.雨晴はう} />
-          <DormitoryCharacterCard characterInfo={characterInfos.波音リツ} />
+          <CharacterCard characterInfo={characterInfos.春日部つむぎ} />
+          <CharacterCard characterInfo={characterInfos.雨晴はう} />
+          <CharacterCard characterInfo={characterInfos.波音リツ} />
         </div>
 
         <hr />
@@ -203,32 +203,15 @@ import { characterInfos } from "@constants/characterInfo";
             </h2>
           </div>
 
-          <DormitoryCharacterCard characterInfo={characterInfos.四国めたん} />
-          <DormitoryCharacterCard characterInfo={characterInfos.ずんだもん} />
+          <CharacterCard characterInfo={characterInfos.四国めたん} />
+          <CharacterCard characterInfo={characterInfos.ずんだもん} />
 
           <div class="tile is-parent is-3 tohoku">
             <div class="tile is-child">
               <h3 class="title is-4">仲良し</h3>
               <a href="https://zunko.jp/" target="_blank" rel="noreferrer">
                 <div class="is-flex">
-                  <StaticImage
-                    class="tile is-child"
-                    src="../images/icon-kiritan.png"
-                    alt="東北きりたん"
-                    width={128}
-                  />
-                  <StaticImage
-                    class="tile is-child"
-                    src="../images/icon-zunko.png"
-                    alt="東北ずん子"
-                    width={128}
-                  />
-                  <StaticImage
-                    class="tile is-child"
-                    src="../images/icon-itako.png"
-                    alt="東北イタコ"
-                    width={128}
-                  />
+                  <Nakayoshi class="tile is-child" />
                 </div>
               </a>
             </div>
@@ -239,32 +222,28 @@ import { characterInfos } from "@constants/characterInfo";
 
         <div class="has-text-centered pt-2 pb-0">
           <h2 class="title is-4">関連コンテンツ</h2>
-          <Link
-            to="/dormitory/call_names/"
+          <a
+            href="/dormitory/call_names/"
             class="button is-normal is-rounded"
             type="button"
             role={"button"}
           >
             <span>キャラクターの呼称表</span>
-          </Link>
+          </a>
         </div>
-
-        -->
       </div>
     </main>
 
-    <!-- 
-
-    <DormitoryExplainComponent />
+    <ExplainSection />
 
     <section class="section py-5">
-      <DormitoryEventContainer id="events" />
+      <EventsContainer id="events" />
     </section>
 
     <section class="section py-5">
-      <DormitoryTopIllustsContainer id="top_illusts" />
+      <TopIllustsContainer id="top_illusts" />
     </section>
-
-    -->
   </div>
+
+  <slot name="modal" />
 </Base>

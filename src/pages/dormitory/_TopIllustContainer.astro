@@ -1,15 +1,10 @@
 ---
+import { dormitoryTopIllustInfos } from "@constants/dormitoryTopIllustInfo";
 import { Image } from "astro:assets";
 
-import { topIllustImages } from "./topIllust";
-
-const topIllustImage = topIllustImages[topIllustImages.length - 1];
+const { image } = dormitoryTopIllustInfos[dormitoryTopIllustInfos.length - 1];
 ---
 
 <div class="container is-max-desktop">
-  <Image
-    src={topIllustImage}
-    alt="トップイラスト"
-    style="object-fit: contain"
-  />
+  <Image src={image} alt="トップイラスト" style="object-fit: contain" />
 </div>

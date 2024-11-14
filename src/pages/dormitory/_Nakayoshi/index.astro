@@ -1,0 +1,17 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"img"> {}
+
+import { Image } from "astro:assets";
+
+import kiritanImage from "./icon-kiritan.png";
+import zunkoImage from "./icon-zunko.png";
+import itakoImage from "./icon-itako.png";
+
+const { class: className } = Astro.props;
+---
+
+<Image class={className} src={kiritanImage} alt="東北きりたん" width={128} />
+<Image class={className} src={zunkoImage} alt="東北ずん子" width={128} />
+<Image class={className} src={itakoImage} alt="東北イタコ" width={128} />
