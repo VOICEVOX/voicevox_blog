@@ -1,0 +1,376 @@
+---
+import Base from "@layouts/Base.astro";
+import ExplainSection from "../_ExplainSection.astro";
+import CharacterImage from "./_CharacterImage.astro";
+import Row from "./_Row.astro";
+
+import { characterInfos } from "@constants/characterInfo";
+import { characterKeys } from "@constants/characterEntry";
+
+function hex2rgba(hex: string, alpha = 1): [number, number, number, number] {
+  const match = hex.match(/\w\w/g);
+  if (!match) throw new Error("Invalid hex");
+  const [red, green, blue] = match.map((x) => parseInt(x, 16));
+  return [red, green, blue, alpha];
+}
+
+function rgba2rgbOnWhite(
+  red: number,
+  green: number,
+  blue: number,
+  alpha: number,
+): [number, number, number] {
+  const _red = Math.round((1 - alpha) * 255 + alpha * red);
+  const _green = Math.round((1 - alpha) * 255 + alpha * green);
+  const _blue = Math.round((1 - alpha) * 255 + alpha * blue);
+  return [_red, _green, _blue];
+}
+---
+
+<Base
+  title={`ボイボ寮キャラクターの呼称表 | ボイボ寮 | VOICEVOX`}
+  description={"ボイボ寮キャラクターの呼び方一覧表です。必ずしも遵守する必要はなく、自由に改変して頂いても問題ありません。"}
+>
+  {/* TODO: showingHeaderOnTop={true} */}
+  <div class="call-names-wrapper">
+    <section class="section top-explain">
+      <div class="container has-text-centered">
+        <h1 class="title">ボイボ寮キャラクターの呼称表</h1>
+        <p>
+          <a href="/dormitory/" class="has-text-weight-bold is-underlined"
+            >ボイボ寮</a
+          >キャラクターの呼び方一覧表です。必ずしも遵守する必要はなく、自由に改変して頂いても問題ありません。
+        </p>
+      </div>
+    </section>
+    <main class="call-names">
+      <table border={1}>
+        <thead>
+          <tr>
+            <th class="origin">
+              <p>誰が</p>
+              <p>誰を</p>
+              <div></div>
+            </th>
+
+            {
+              characterKeys.map((characterKey) => {
+                const characterInfo = characterInfos[characterKey];
+                return (
+                  <th>
+                    <a href={`/dormitory/${characterInfo.id}/`}>
+                      <CharacterImage characterInfo={characterInfo} />
+                      <p
+                        style={{
+                          color: characterInfo.color,
+                        }}
+                      >
+                        {characterInfo.name}
+                      </p>
+                    </a>
+                  </th>
+                );
+              })
+            }
+            <th class="you">
+              <p>全員</p>
+              <p>（二人称）</p>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            characterKeys.map((characterKey) => {
+              const characterInfo = characterInfos[characterKey];
+
+              // 色を半透明するとセルが重なったとき, スクロール時にセルが
+              // 透けて見えてしまうので, 白地での RGB に変換する
+              const [red, green, blue] = rgba2rgbOnWhite(
+                ...hex2rgba(characterInfo.lightColor, 0.4),
+              );
+              const backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+
+              return (
+                <tr style={{ backgroundColor }}>
+                  <th
+                    style={{
+                      backgroundColor,
+                    }}
+                  >
+                    <a href={`/dormitory/${characterInfo.id}/`}>
+                      <CharacterImage characterInfo={characterInfo} />
+                      <p
+                        style={{
+                          color: characterInfo.color,
+                        }}
+                      >
+                        {characterInfo.name}
+                      </p>
+                    </a>
+                  </th>
+                  <Row characterKey={characterKey} />
+                </tr>
+              );
+            })
+          }
+        </tbody>
+      </table>
+    </main>
+  </div>
+
+  <ExplainSection showingDormitoryPageButton={true} />
+</Base>
+
+<style lang="scss" is:global>
+  @use "bulma/sass/utilities/initial-variables" as *;
+  @use "bulma/sass/components/navbar" as *;
+  @use "bulma/sass/utilities/mixins" as *;
+  @use "bulma/sass/helpers" as *;
+
+  $call-names-border: 1px solid gray;
+  $call-names-cell-height: 80px;
+  $call-names-cell-width: 150px;
+  $call-names-cell-width-column: 190px;
+
+  .call-names-wrapper {
+    // sticky にするために明示的に高さを指定
+    //  → ほかに overflow の指定などでも sticky にできるが、親レイアウトの
+    //    Page コンポーネントのフッターやスタイルを変更すると他ページに影響が
+    //    出る可能性があるので、画面が埋まるように高さを指定した。
+    // FIXME: 二重スクロールをなくす
+    height: calc(100vh - $navbar-height);
+    overflow: auto;
+
+    .top-explain {
+      position: sticky;
+      left: 0; // 横スクロール時についてこないように
+    }
+
+    // キャラの呼称表
+    .call-names {
+      img {
+        width: 3rem;
+        aspect-ratio: 1 / 1;
+      }
+
+      table {
+        width: 100%;
+        @extend .p-0;
+        margin: 0 auto;
+        border-collapse: separate;
+        table-layout: fixed;
+        border: none;
+      }
+
+      th {
+        position: sticky;
+        top: 0;
+        left: 0;
+        z-index: 1;
+      }
+
+      th,
+      td {
+        height: $call-names-cell-height;
+        width: $call-names-cell-width;
+        @extend .p-1;
+
+        // FIXME:
+        // `table td:not([align]), table th:not([align])`セレクター によって
+        // text-align: inherit になっている
+        text-align: center !important;
+
+        vertical-align: middle;
+        border: none;
+
+        &.you {
+          border-left: $call-names-border;
+        }
+      }
+
+      td {
+        cursor: pointer;
+
+        div {
+          height: 100%;
+          width: 100%;
+
+          display: flex;
+          flex-direction: column;
+
+          p {
+            height: 100%;
+            width: 100%;
+
+            // 当たり判定を大きくしつつ中央寄せ
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            position: relative;
+
+            // コピーボタン
+            .icon {
+              @extend .m-1;
+
+              visibility: hidden;
+              position: absolute;
+              height: 1rem;
+              width: 1rem;
+              top: 0;
+              right: 0;
+
+              &.selected {
+                visibility: visible;
+              }
+            }
+
+            &:hover {
+              // NOTE: ちらつくので border ではなく outline
+              outline: 2px solid;
+              border-radius: $radius;
+
+              .icon {
+                visibility: visible;
+              }
+            }
+          }
+        }
+      }
+
+      thead > tr {
+        // 一番上の行
+        th {
+          background: white;
+          border-bottom: $call-names-border;
+
+          // 左上のセル
+          &.origin {
+            width: $call-names-cell-width-column;
+            z-index: 2;
+            border-right: $call-names-border;
+          }
+
+          a {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem; // = padding size
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+
+            &:hover {
+              p {
+                text-decoration: underline;
+              }
+            }
+          }
+
+          @include mobile {
+            &.origin {
+              width: 6rem;
+            }
+          }
+        }
+      }
+
+      tbody > tr {
+        // 左端のキャラクター
+        th {
+          border-right: $call-names-border;
+          width: $call-names-cell-width-column;
+          @extend .px-2;
+
+          a {
+            display: flex;
+            gap: 0.75rem;
+            text-align: center;
+            justify-content: flex-start;
+            align-items: center;
+
+            // キャラクター名
+            p {
+              white-space: normal;
+              text-align: left;
+              justify-content: flex-end;
+            }
+          }
+
+          &:hover {
+            a p {
+              text-decoration: underline;
+            }
+          }
+
+          @include mobile {
+            width: 6rem;
+            a {
+              justify-content: center;
+              p {
+                display: none;
+              }
+            }
+          }
+        }
+
+        td {
+          p {
+            user-select: all;
+
+            &.me,
+            &.unknown {
+              color: gray;
+            }
+          }
+
+          &:has(.unknown) {
+            cursor: default;
+
+            p {
+              outline: none;
+              user-select: none;
+            }
+          }
+
+          &:has(.me) {
+            background: white;
+          }
+        }
+      }
+
+      .origin {
+        @extend .p-0;
+
+        p {
+          font-weight: normal;
+
+          &:nth-child(1) {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            @extend .p-2;
+          }
+          &:nth-child(2) {
+            position: absolute;
+            top: 0;
+            right: 0;
+            @extend .p-2;
+          }
+        }
+
+        div {
+          height: 100%;
+          width: 100%;
+          // workaround: 斜線の描画
+          background: linear-gradient(
+            to right top,
+            transparent calc(50% - 0.5px),
+            gray 50%,
+            gray calc(50% + 0.5px),
+            transparent calc(50% + 1px)
+          );
+        }
+      }
+    }
+  }
+</style>

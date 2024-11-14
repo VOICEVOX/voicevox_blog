@@ -1,0 +1,36 @@
+---
+import FontAwesomeIcon from "@components/FontAwesomeIcon.astro";
+import type { CharacterInfo } from "@constants/type";
+import { faCheck, faCopy } from "@fortawesome/free-solid-svg-icons";
+
+interface Props {
+  callNames: string[];
+  characterInfo: CharacterInfo;
+  additionalClass?: string;
+}
+
+const { callNames, characterInfo, additionalClass } = Astro.props;
+---
+
+<td class={additionalClass ?? ""}>
+  <div>
+    {
+      callNames.map((callName) => (
+        <p
+          style={{ outlineColor: characterInfo.color }}
+          title={`クリックして呼称をコピー：「${callName}」`}
+        >
+          {/* TODO: onClick={copyToClipboard} */}
+          <span class="icon">
+            <FontAwesomeIcon
+              icon={faCopy}
+              style={{ color: characterInfo.color }}
+            />
+            {/* TODO: icon={isSelected ? faCheck : faCopy} */}
+          </span>
+          {callName}
+        </p>
+      ))
+    }
+  </div>
+</td>

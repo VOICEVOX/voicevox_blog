@@ -1,0 +1,52 @@
+---
+import { characterKeys, type CharacterKey } from "@constants/characterEntry";
+
+interface Props {
+  characterKey: CharacterKey;
+}
+
+import { callNameInfos } from "@constants/characterInfos/callNameInfo";
+import Cell from "./_Cell.astro";
+import { characterInfos } from "@constants/characterInfo";
+
+const { characterKey } = Astro.props;
+
+const characterInfo = characterInfos[characterKey];
+const callNameInfo = callNameInfos[characterKey];
+---
+
+{
+  characterKeys.map((_characterKey) => {
+    if (_characterKey == characterKey) {
+      return (
+        <Cell
+          callNames={callNameInfo.me}
+          characterInfo={characterInfo}
+          additionalClass="me"
+        />
+      );
+    }
+
+    const callNames: string[] | undefined =
+      /* @ts-ignore なぜか型エラーになる */
+      callNameInfo[_characterKey]?.split("/");
+
+    if (callNames == undefined) {
+      return (
+        <td>
+          <p class="unknown" style={{ outlineColor: characterInfo.color }}>
+            ？
+          </p>
+        </td>
+      );
+    } else {
+      return <Cell callNames={callNames} characterInfo={characterInfo} />;
+    }
+  })
+}
+
+<Cell
+  callNames={callNameInfo.you}
+  characterInfo={characterInfo}
+  additionalClass="you"
+/>
