@@ -122,6 +122,9 @@ function rgba2rgbOnWhite(
 </Base>
 
 <style lang="scss" is:global>
+  // NOTE: is:global指定は入れ子になってる要素にも適用するため
+  // FIXME: is:global指定を不要にする
+
   @use "bulma/sass/utilities/initial-variables" as *;
   @use "bulma/sass/components/navbar" as *;
   @use "bulma/sass/utilities/mixins" as *;

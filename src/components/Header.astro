@@ -1,4 +1,13 @@
 ---
+import { Image, getImage } from "astro:assets";
+
+import { faDownload } from "@fortawesome/free-solid-svg-icons";
+
+import iconImage from "@assets/icon.png";
+import FontAwesomeIcon from "./FontAwesomeIcon.astro";
+
+const iconUrl = (await getImage({ src: iconImage, width: 64 })).src;
+
 // TODO: ちゃんと設定可能にする
 const showingHeader = true;
 const showingHeaderOnTop = true;
@@ -17,8 +26,8 @@ const isBurgerActive = false;
 >
   <div class="navbar-brand">
     <a href="/" class="navbar-item">
-      {/* TODO: <img src={icon} alt="VOICEVOXのロゴ" />*/}
-      <span class="has-text-weight-bold is-size-5 pl-2"> VOICEVOX </span>
+      <img src={iconUrl} alt="VOICEVOXのロゴ" />
+      <span class="has-text-weight-bold is-size-5"> VOICEVOX </span>
     </a>
 
     <a
@@ -47,7 +56,7 @@ const isBurgerActive = false;
       <a href="/update_history/" class="navbar-item"> 変更履歴 </a>
       {
         /* TODO: リリース時にコメントアウトを外す
-        <a to={"/news/"} class="navbar-item">
+        <a href={"/news/"} class="navbar-item">
           ニュース
         </a>
         */
@@ -79,14 +88,10 @@ const isBurgerActive = false;
           }
         }}*/
           }
-          {
-            /* TODO:
-            <span class="icon">
+          <span class="icon">
             <FontAwesomeIcon icon={faDownload} />
-            </span>
-            <span class="has-text-weight-semibold">ダウンロード</span>}
-            */
-          }
+          </span>
+          <span class="has-text-weight-semibold">ダウンロード</span>
         </a>
       </div>
     </div>

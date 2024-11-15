@@ -1,4 +1,6 @@
 ---
+import { getImage } from "astro:assets";
+
 import Base from "@/layouts/Base.astro";
 import TopIllustContainer from "./_TopIllustContainer.astro";
 import CharacterCard from "./_CharacterCard.astro";
@@ -8,7 +10,10 @@ import EventsContainer from "./_EventsContainer.astro";
 import TopIllustsContainer from "./_TopIllustsContainer.astro";
 
 import shareThumb from "@/constants/dormitory-top-illust-images/top-illust-009.png";
+import backgroundImage from "./images/nc238325.jpg";
 import { characterInfos } from "@constants/characterInfo";
+
+const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src})`;
 ---
 
 <Base
@@ -67,7 +72,7 @@ import { characterInfos } from "@constants/characterInfo";
           <CharacterCard characterInfo={characterInfos.満別花丸} />
           <CharacterCard
             characterInfo={characterInfos.琴詠ニア}
-            additionalClass="is-offset-2"
+            class="is-offset-2"
           />
         </div>
 
@@ -88,13 +93,13 @@ import { characterInfos } from "@constants/characterInfo";
           <CharacterCard characterInfo={characterInfos.麒ヶ島宗麟} />
           <CharacterCard
             characterInfo={characterInfos.春歌ナナ}
-            additionalClass="is-offset-2"
+            class="is-offset-2"
           />
           <CharacterCard characterInfo={characterInfos.猫使アル} />
           <CharacterCard characterInfo={characterInfos.猫使ビィ} />
           <CharacterCard
             characterInfo={characterInfos.中国うさぎ}
-            additionalClass="is-offset-2"
+            class="is-offset-2"
           />
         </div>
 
@@ -115,7 +120,7 @@ import { characterInfos } from "@constants/characterInfo";
           <CharacterCard characterInfo={characterInfos.小夜_SAYO} />
           <CharacterCard
             characterInfo={characterInfos.ナースロボ＿タイプＴ}
-            additionalClass="is-offset-2"
+            class="is-offset-2"
           />
         </div>
 
@@ -169,7 +174,7 @@ import { characterInfos } from "@constants/characterInfo";
           <CharacterCard characterInfo={characterInfos.青山龍星} />
           <CharacterCard
             characterInfo={characterInfos.冥鳴ひまり}
-            additionalClass="is-offset-2"
+            class="is-offset-2"
           />
           <CharacterCard characterInfo={characterInfos.九州そら} />
         </div>
@@ -206,15 +211,11 @@ import { characterInfos } from "@constants/characterInfo";
           <CharacterCard characterInfo={characterInfos.四国めたん} />
           <CharacterCard characterInfo={characterInfos.ずんだもん} />
 
-          <div class="tile is-parent is-3 tohoku">
-            <div class="tile is-child">
-              <h3 class="title is-4">仲良し</h3>
-              <a href="https://zunko.jp/" target="_blank" rel="noreferrer">
-                <div class="is-flex">
-                  <Nakayoshi class="tile is-child" />
-                </div>
-              </a>
-            </div>
+          <div class="column is-3 tohoku">
+            <h3 class="title is-4">仲良し</h3>
+            <a href="https://zunko.jp/" target="_blank" rel="noreferrer">
+              <Nakayoshi />
+            </a>
           </div>
         </div>
 
@@ -244,6 +245,124 @@ import { characterInfos } from "@constants/characterInfo";
       <TopIllustsContainer id="top_illusts" />
     </section>
   </div>
-
-  <slot name="modal" />
 </Base>
+
+<style lang="scss" define:vars={{ backgroundImageUrl }} is:global>
+  // NOTE: is:global指定は入れ子になってる要素にも適用するため
+  // FIXME: is:global指定を不要にする
+
+  @use "@/styles/vars.scss" as *;
+  @use "bulma/sass/utilities/initial-variables" as *;
+  @use "bulma/sass/utilities/mixins" as *;
+  @use "bulma/sass/helpers" as *;
+
+  .dormitory {
+    background-image: var(--backgroundImageUrl);
+    background-color: rgba(255, 255, 255, 0.7);
+    background-blend-mode: lighten;
+    background-size: cover;
+    background-attachment: fixed;
+
+    .hero {
+      background-color: $primary;
+    }
+
+    .section {
+      .container {
+        max-width: $desktop;
+        background-color: white;
+
+        &.character-container {
+          .columns:not(:last-child) {
+            margin-bottom: -0.75rem; // columnsは下方向のmargin調整がないので、hrの辻褄を合わせに必要
+          }
+
+          .generation-label {
+            @extend .has-text-centered;
+            display: flex;
+            align-items: center;
+            justify-content: end;
+
+            @include mobile {
+              justify-content: center;
+            }
+          }
+
+          .jump-anchor-header-padding {
+            // カード間の余白を均等にする
+            padding-top: calc(
+              3.25rem + 1rem + 0.75rem
+            ); // 元が3.25rem + 1rem、column分が0.75rem
+          }
+
+          .card {
+            box-shadow: none;
+            border-style: solid;
+            border-radius: 1rem;
+            border-width: 3px;
+          }
+
+          .character-card {
+            @extend .pt-3;
+            cursor: pointer;
+
+            .card-image {
+              display: block !important;
+            }
+
+            .card-content {
+              @extend .px-0;
+              @extend .has-text-centered;
+              border-top: solid 2.5px;
+            }
+          }
+
+          .coming-card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .card-content {
+              @extend .px-0;
+              @extend .has-text-centered;
+            }
+          }
+
+          .tohoku {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+
+        &.event-container {
+          .card {
+            box-shadow: none;
+
+            & > div {
+              border-style: solid;
+              border-radius: 1rem;
+              border-width: 1px;
+              border-color: #000;
+            }
+          }
+        }
+
+        &.top-illust-container {
+          .card {
+            cursor: pointer;
+            box-shadow: none;
+
+            & > div {
+              border-style: solid;
+              border-radius: 1rem;
+              border-width: 1px;
+              border-color: #000;
+            }
+          }
+        }
+      }
+    }
+  }
+</style>

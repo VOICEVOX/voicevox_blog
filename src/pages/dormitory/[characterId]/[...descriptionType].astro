@@ -20,9 +20,12 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 import { Image } from "astro:assets";
 
+import { faHome } from "@fortawesome/free-solid-svg-icons";
+
 import Base from "@layouts/Base.astro";
 import CallBox from "./_CallBox.astro";
 import TypeButton from "./_TypeButton.astro";
+import FontAwesomeIcon from "@components/FontAwesomeIcon.astro";
 
 import { callNameInfos } from "@constants/characterInfos/callNameInfo";
 import { getProductPageUrl } from "@constants/url";
@@ -70,7 +73,7 @@ const characterKey = characterInfo.key;
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <!-- TODO: <FontAwesomeIcon icon={faHome} /> -->
+                    <FontAwesomeIcon icon={faHome} />
                   </a>
                 </div>
                 <div class="buttons has-addons">
@@ -234,3 +237,228 @@ const characterKey = characterInfo.key;
     </main>
   </div>
 </Base>
+
+<style lang="scss">
+  @use "bulma/sass/utilities/mixins" as *;
+  @use "bulma/sass/helpers" as *;
+
+  @use "@/styles/helper" as *;
+
+  .dormitory-character {
+    background-image: url(../images/nc238325.jpg);
+    background-color: rgba(255, 255, 255, 0.7);
+    background-blend-mode: lighten;
+    background-size: cover;
+    background-attachment: fixed;
+
+    .section {
+      .container {
+        min-height: calc(100vh - 3.25rem);
+        display: flex;
+        flex-direction: column;
+
+        justify-content: center;
+        align-items: center;
+        gap: 0.75rem;
+
+        max-width: 820px;
+
+        @include mobile {
+          min-height: auto;
+          max-height: unset;
+        }
+
+        @include tablet {
+          min-width: 768px;
+        }
+
+        .box {
+          height: 550px;
+          @include mobile {
+            height: auto;
+          }
+
+          padding: 0;
+          margin-bottom: 0;
+
+          border-style: solid;
+          border-width: 3px;
+
+          .portrait-column {
+            @extend .py-1;
+            @extend .px-0;
+
+            // 大きい画面では左側にいっぱい画像表示
+            @include tablet {
+              border-right: solid;
+              img {
+                object-fit: cover !important;
+              }
+            }
+            // スマホ画面ではファーストビューに画像を表示
+            @include mobile {
+              height: 100vh;
+              img {
+                // 画像は1:1に加工されている
+                @media (min-aspect-ratio: 1/1) {
+                  object-fit: contain !important;
+                }
+              }
+            }
+          }
+        }
+
+        .link-buttons {
+          display: flex;
+
+          justify-content: center;
+          align-items: center;
+          gap: 0.5rem;
+          flex-wrap: wrap;
+
+          .button {
+            border-width: 1.5px;
+          }
+        }
+      }
+
+      .description-column {
+        .section {
+          height: 100%;
+          @extend .p-3;
+
+          display: flex;
+          flex-direction: column;
+        }
+
+        .description-top {
+          display: flex;
+
+          .description-top-button {
+            @extend .circle-icon;
+            @extend .ml-auto;
+          }
+        }
+
+        .description-type-button {
+          box-shadow: none;
+          border-width: 1.5px;
+
+          &.description-type-button-selected {
+            @extend .has-text-weight-bold;
+          }
+        }
+
+        .description-profile {
+          @extend .is-size-5;
+          @extend .has-text-weight-bold;
+          @extend .mb-4;
+        }
+
+        .description-box {
+          @extend .pb-0;
+          @extend .pt-3;
+
+          display: flex;
+          align-items: center;
+
+          .description-label {
+            @extend .py-2;
+            width: 7rem;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+          }
+          .description-text {
+            flex-grow: 1;
+            @extend .pl-3;
+          }
+          .description-samples {
+            flex-grow: 1;
+            @extend .pl-3;
+          }
+        }
+
+        .description-info-images {
+          display: flex;
+        }
+
+        .description-call {
+          flex-grow: 1;
+          overflow: hidden;
+
+          .description-call-other-column {
+            height: 100%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 2rem;
+
+            @include mobile {
+              flex-direction: row;
+              height: 8rem;
+            }
+
+            .description-call-other-cell {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+
+              border-style: solid;
+              border-radius: 14px;
+              aspect-ratio: 1/1;
+              white-space: nowrap;
+
+              div {
+                text-align: center;
+              }
+
+              div:first-child {
+                @extend .has-text-weight-bold;
+                @extend .mb-1;
+              }
+            }
+          }
+
+          .description-call-character {
+            overflow: auto;
+
+            .description-call-box {
+              height: 65px;
+              .description-call-line {
+                display: flex;
+                .description-call-one {
+                  @extend .p-0;
+
+                  flex: 1;
+
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  .description-call-arrow {
+                    margin: -1rem 0;
+                    font-size: 1.5rem;
+                  }
+                  .description-call-text {
+                    @extend .py-1;
+                    font-size: 0.8rem;
+                    flex-grow: 1;
+                    border-style: solid;
+                    border-radius: 8px;
+                    text-align: center;
+
+                    &.unknown {
+                      color: gray;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+</style>

@@ -1,0 +1,31 @@
+@use "bulma/sass/elements/button" as *;
+@use "bulma/sass/utilities/initial-variables" as *;
+@use "bulma/sass/helpers" as *;
+
+.circle-icon {
+  @extend .is-outlined;
+  @extend .is-rounded;
+
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+
+  width: $size-1;
+  height: $size-1;
+  border-width: 1.8px;
+
+  &.is-small {
+    width: $size-2;
+    height: $size-2;
+    border-width: 1px;
+  }
+  &.is-medium {
+    width: $size-1 * 1.2;
+    height: $size-1 * 1.2;
+    border-width: 2px;
+  }
+  &.is-large {
+    width: $size-1 * 1.4;
+    height: $size-1 * 1.4;
+    border-width: 2.4px;
+  }
+}
