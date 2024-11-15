@@ -1,4 +1,4 @@
-import type { AstroImage } from "@types";
+import type { AstroAudio, AstroImage } from "@types";
 
 import {
   characterEntries,
@@ -115,17 +115,17 @@ export const portraitImages = makeCharacterAssetsRecordSingle(
 
 /** トーク用音声とそのパス。１つもないときもある。 */
 export const talkAudiosAndPaths = makeCharacterAssetsRecordWithPath(
-  import.meta.glob<string>("./talk-audios/*.wav"),
+  import.meta.glob<AstroAudio>("./talk-audios/*.wav"),
 );
 
 /** ソング用音声とそのパス。１つもないときもある。 */
 export const songAudiosAndPaths = makeCharacterAssetsRecordWithPath(
-  import.meta.glob<string>("./song-audios/*.wav"),
+  import.meta.glob<AstroAudio>("./song-audios/*.wav"),
 );
 
 /** ボイボ寮用音声。１つもないときもある。 */
 export const dormitoryAudios = makeCharacterAssetsRecordOptional(
-  import.meta.glob<string>("./dormitory-audios/*.wav"),
+  import.meta.glob<AstroAudio>("./dormitory-audios/*.wav"),
 );
 
 /** ボイボ寮用画像。１つもないときもある。 */

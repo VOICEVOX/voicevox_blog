@@ -6,6 +6,10 @@
     "baseUrl": ".",
     "paths": {
       "@*": ["src/*"]
-    }
+    },
+
+    // react
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
   }
 }

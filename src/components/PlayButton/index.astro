@@ -1,0 +1,29 @@
+---
+import type { AstroAudio } from "@types";
+
+interface Props {
+  audio: Promise<AstroAudio>;
+  name: string;
+  color?: string;
+  class?: string;
+  style?: Record<string, string>;
+}
+
+import PlayButton from "./PlayButton";
+
+const { audio, name, color, class: className, style } = Astro.props;
+const audioUrl = (await audio).default;
+---
+
+<PlayButton
+  client:visible
+  url={audioUrl}
+  name={name}
+  color={color}
+  className={className}
+  style={style}
+/>
+
+<style lang="scss" is:global>
+  @use "@/styles/helper.scss" as *;
+</style>

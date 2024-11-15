@@ -1,5 +1,5 @@
 import type { CharacterKey } from "@constants/characterEntry";
-import type { AstroImage } from "@types";
+import type { AstroAudio, AstroImage } from "@types";
 
 export type Styles = {
   name: string;
@@ -22,13 +22,13 @@ export type CharacterInfo = {
   policyUrl: string | undefined;
   bustupImage: Promise<AstroImage>;
   portraitImage: Promise<AstroImage>;
-  talkVoiceUrls: { style: string; urls: Promise<string>[] }[];
-  songVoiceUrls: {
+  talkVoiceAudios: { style: string; urls: Promise<AstroAudio>[] }[];
+  songVoiceAudios: {
     style: string;
     styleType: "song" | "humming";
-    urls: Promise<string>[];
+    urls: Promise<AstroAudio>[];
   }[];
-  dormitoryVoiceUrls?: Promise<string>[];
+  dormitoryVoiceAudios?: Promise<AstroAudio>[];
   dormitoryImages?: Promise<AstroImage>[];
   // ogpImage: Promise<AstroImage>;
   releaseDate?: string;

@@ -10,7 +10,7 @@ import {
 } from "@constants/characaterAsset";
 
 /** トーク用音声をスタイルごとに分ける */
-function makeTalkVoiceUrls(key: CharacterKey, styles: Styles) {
+function maketalkVoiceAudios(key: CharacterKey, styles: Styles) {
   return styles
     .filter((v) => v.type == "talk")
     .map((v) => ({
@@ -22,7 +22,7 @@ function makeTalkVoiceUrls(key: CharacterKey, styles: Styles) {
 }
 
 /** ソング音声をスタイルごとに分ける */
-function makeSongVoiceUrls(key: CharacterKey, styles: Styles) {
+function makesongVoiceAudios(key: CharacterKey, styles: Styles) {
   return styles
     .filter((v) => ["song", "humming"].includes(v.type))
     .map((v) => ({
@@ -39,9 +39,9 @@ export function getCharacterAssets(key: CharacterKey, styles: Styles) {
   return {
     bustupImage: bustupImages[key],
     portraitImage: portraitImages[key],
-    talkVoiceUrls: makeTalkVoiceUrls(key, styles),
-    songVoiceUrls: makeSongVoiceUrls(key, styles),
-    dormitoryVoiceUrls: dormitoryAudios[key],
+    talkVoiceAudios: maketalkVoiceAudios(key, styles),
+    songVoiceAudios: makesongVoiceAudios(key, styles),
+    dormitoryVoiceAudios: dormitoryAudios[key],
     dormitoryImages: dormitoryImages[key],
     // ogpImage: AstroImage;
   };

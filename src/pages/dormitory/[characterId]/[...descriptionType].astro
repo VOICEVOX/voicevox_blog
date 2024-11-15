@@ -26,6 +26,7 @@ import Base from "@layouts/Base.astro";
 import CallBox from "./_CallBox.astro";
 import TypeButton from "./_TypeButton.astro";
 import FontAwesomeIcon from "@components/FontAwesomeIcon.astro";
+import PlayButton from "@components/PlayButton/index.astro";
 
 import { callNameInfos } from "@constants/characterInfos/callNameInfo";
 import { getProductPageUrl } from "@constants/url";
@@ -121,21 +122,18 @@ const characterKey = characterInfo.key;
                           >
                             音声サンプル
                           </span>
-                          {characterInfo.dormitoryVoiceUrls ? (
+                          {characterInfo.dormitoryVoiceAudios ? (
                             <div class="description-samples">
-                              {characterInfo.dormitoryVoiceUrls.map(
-                                (url, index) => (
-                                  // <PlayButton
-                                  //   key={index}
-                                  //   url={url}
-                                  //   name={`${
-                                  //     characterInfo.name
-                                  //   }のサンプルボイス${index + 1}`}
-                                  //   color={characterInfo.color}
-                                  //   class="ml-1 mr-1"
-                                  // />
-                                  // TODO: PlayButton
-                                  <div>TODO</div>
+                              {characterInfo.dormitoryVoiceAudios.map(
+                                (audio, index) => (
+                                  <PlayButton
+                                    audio={audio}
+                                    name={`${
+                                      characterInfo.name
+                                    }のサンプルボイス${index + 1}`}
+                                    color={characterInfo.color}
+                                    class="ml-1 mr-1"
+                                  />
                                 ),
                               )}
                             </div>

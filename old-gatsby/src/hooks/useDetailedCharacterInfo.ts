@@ -62,11 +62,11 @@ export const useDetailedCharacterInfo = () => {
   const { getCharacterInfo } = useCharacterInfo()
 
   const getDatas = (info: { key: CharacterKey; characterId: string }) => {
-    let dormitoryVoiceUrls: string[] | undefined = query.dormitoryAudio.nodes
+    let dormitoryVoiceAudios: string[] | undefined = query.dormitoryAudio.nodes
       .filter(node => node.name.includes(`${info.characterId}`))
       .sort((a, b) => a.name.localeCompare(b.name))
       .map(node => node.publicURL!)
-    if (dormitoryVoiceUrls.length == 0) dormitoryVoiceUrls = undefined
+    if (dormitoryVoiceAudios.length == 0) dormitoryVoiceAudios = undefined
     const item = {
       bustupImageSmall: query.bustup.nodes.find(
         node => node.name === `bustup-${info.characterId}`
@@ -80,7 +80,7 @@ export const useDetailedCharacterInfo = () => {
       ogpImage: query.ogp.nodes.find(
         node => node.name === `bustup-${info.characterId}`
       )!.childImageSharp?.gatsbyImageData!,
-      talkVoiceUrls: styleNames[info.key]
+      talkVoiceAudios: styleNames[info.key]
         .filter(v => v.type == "talk")
         .map(v => {
           return {
@@ -92,7 +92,7 @@ export const useDetailedCharacterInfo = () => {
               .map(node => node.publicURL!),
           }
         }),
-      songVoiceUrls: styleNames[info.key]
+      songVoiceAudios: styleNames[info.key]
         .filter(v => ["song", "humming"].includes(v.type))
         .map(v => {
           return {
@@ -106,7 +106,7 @@ export const useDetailedCharacterInfo = () => {
               .map(node => node.publicURL!),
           }
         }),
-      dormitoryVoiceUrls,
+      dormitoryVoiceAudios,
       infoImages: query.dormitoryImage.nodes
         .filter(node => node.name.includes(`${info.characterId}`))
         .sort((a, b) => a.name.localeCompare(b.name))
@@ -118,19 +118,19 @@ export const useDetailedCharacterInfo = () => {
       throw new Error(`portraitImage is undefined. ${info.characterId}`)
     if (item.ogpImage == undefined)
       throw new Error(`ogpImage is undefined. ${info.characterId}`)
-    if (item.talkVoiceUrls.length == 0)
-      console.warn(`talkVoiceUrls is empty. ${info.characterId}`)
-    if (item.talkVoiceUrls.some(v => v.urls.length != 3))
-      throw new Error(`talkVoiceUrls is invalid. ${info.characterId}`)
-    if (item.songVoiceUrls.length == 0)
-      console.warn(`songVoiceUrls is empty. ${info.characterId}`)
-    if (item.songVoiceUrls.some(v => v.urls.length != 3))
-      throw new Error(`songVoiceUrls is invalid. ${info.characterId}`)
+    if (item.talkVoiceAudios.length == 0)
+      console.warn(`talkVoiceAudios is empty. ${info.characterId}`)
+    if (item.talkVoiceAudios.some(v => v.urls.length != 3))
+      throw new Error(`talkVoiceAudios is invalid. ${info.characterId}`)
+    if (item.songVoiceAudios.length == 0)
+      console.warn(`songVoiceAudios is empty. ${info.characterId}`)
+    if (item.songVoiceAudios.some(v => v.urls.length != 3))
+      throw new Error(`songVoiceAudios is invalid. ${info.characterId}`)
     if (
-      item.dormitoryVoiceUrls != undefined &&
-      item.dormitoryVoiceUrls.length == 0
+      item.dormitoryVoiceAudios != undefined &&
+      item.dormitoryVoiceAudios.length == 0
     )
-      console.warn(`dormitoryVoiceUrls is empty. ${info.characterId}`)
+      console.warn(`dormitoryVoiceAudios is empty. ${info.characterId}`)
     return item
   }
 
