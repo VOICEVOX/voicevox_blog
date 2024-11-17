@@ -1,0 +1,91 @@
+---
+import type { SpeakerInfo } from "./constants";
+
+interface Props {
+  info: SpeakerInfo;
+  style: Record<string, string | number>;
+}
+
+import { Image } from "astro:assets";
+
+import FontAwesomeIcon from "@components/FontAwesomeIcon.astro";
+import { faEnvelope, faHome } from "@fortawesome/free-solid-svg-icons";
+import { faXTwitter } from "@fortawesome/free-brands-svg-icons";
+import PlayButton from "@/components/PlayButton/index.astro";
+
+const { info, style } = Astro.props;
+---
+
+<div class="speaker" style={style}>
+  <div class="speaker-icon-wrapper">
+    <Image src={info.icon} alt={`${info.name}のアイコン`} />
+  </div>
+  <div class="speaker-labels">
+    <span class="cv">CV</span>
+    <div class="dropdown is-hoverable">
+      <div class="dropdown-trigger">
+        <button
+          class="button"
+          aria-haspopup="true"
+          aria-controls={`dropdown-${info.id}`}
+          type="button"
+        >
+          <h3>{info.cv}</h3>
+        </button>
+      </div>
+      <div class="dropdown-menu" id={`dropdown-${info.id}`} role="menu">
+        <div class="dropdown-content">
+          <div class="dropdown-item">
+            <span>音声収録のご依頼先</span>
+            <div class="buttons">
+              {
+                [
+                  {
+                    link: info.link.homepage,
+                    label: "ホームページ",
+                    icon: faHome,
+                  },
+                  {
+                    link: info.link.twitter,
+                    label: "SNS",
+                    icon: faXTwitter,
+                  },
+                  {
+                    link: info.link.email,
+                    label: "メールアドレス",
+                    icon: faEnvelope,
+                  },
+                ].map(
+                  ({ link, label, icon }) =>
+                    link && (
+                      <a
+                        class="button"
+                        href={link}
+                        aria-label={`${info.cv}の${label}`}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <FontAwesomeIcon icon={icon} />
+                      </a>
+                    ),
+                )
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sample-voices">
+    {
+      info.audios.map((audio, index) => (
+        <PlayButton
+          audio={audio}
+          name={`${info.name}のサンプルボイス${index + 1}}`}
+          color={info.color}
+          style={{ backgroundColor: info.backgroundColor }}
+        />
+      ))
+    }
+  </div>
+</div>
