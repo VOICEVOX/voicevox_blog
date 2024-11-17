@@ -1,0 +1,25 @@
+---
+import OneSectionMarkdown, {
+  type Props,
+} from "@layouts/OneSectionMarkdown.astro";
+
+const props = Astro.props;
+---
+
+<OneSectionMarkdown {...props}><slot /></OneSectionMarkdown>
+
+<style lang="scss" is:global>
+  @use "@/styles/vars.scss" as *;
+  @use "bulma/sass/helpers" as *;
+
+  h2 {
+    @extend .p-4;
+    background-color: $primary;
+    color: #3f213a;
+  }
+
+  h3 {
+    @extend .p-2;
+    background-color: rgb(208, 253, 216);
+  }
+</style>

@@ -1,3 +1,10 @@
+---
+layout: "./_layout.astro"
+title: Q&A | VOICEVOX
+headerTitle: Q&A
+description: VOICEVOXのよくあるご質問です
+---
+
 # よくあるご質問
 
 ## 動作環境・仕様に関する質問

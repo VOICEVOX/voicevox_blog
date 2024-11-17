@@ -1,12 +1,14 @@
 ---
 import Base, { type Props as BaseProps } from "./Base.astro";
 
-import Markdown from "@/components/Markdown.astro";
-
 export interface Props {
-  frontmatter: BaseProps;
+  frontmatter: BaseProps & {
+    headerTitle?: string; // ページの一番上に表示するタイトル。指定しない場合は表示されない。
+  };
   children: any;
 }
+
+import Markdown from "@/components/Markdown.astro";
 
 const { frontmatter } = Astro.props;
 ---
@@ -14,6 +16,11 @@ const { frontmatter } = Astro.props;
 <Base {...frontmatter}>
   <section class="section">
     <div class="container is-max-desktop">
+      {
+        frontmatter.headerTitle && (
+          <h1 class="title">{frontmatter.headerTitle}</h1>
+        )
+      }
       <Markdown><slot /></Markdown>
     </div>
   </section>

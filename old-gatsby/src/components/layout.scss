@@ -773,19 +773,6 @@
   @extend .content;
 }
 
-.qa {
-  h2 {
-    @extend .p-4;
-    background-color: $primary;
-    color: #3f213a;
-  }
-
-  h3 {
-    @extend .p-2;
-    background-color: rgb(208, 253, 216);
-  }
-}
-
 .modal-download {
   @include tablet {
     .modal-card {
