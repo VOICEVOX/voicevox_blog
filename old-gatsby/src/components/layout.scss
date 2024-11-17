@@ -769,10 +769,6 @@
   }
 }
 
-.update-history {
-  @extend .content;
-}
-
 .modal-download {
   @include tablet {
     .modal-card {
