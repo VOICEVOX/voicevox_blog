@@ -8,11 +8,12 @@ import { Image } from "astro:assets";
 import { dormitoryTopIllustInfos } from "@constants/dormitoryTopIllustInfo";
 
 const { id } = Astro.props;
+
+import "./style.scss";
+import "@/styles/helper.scss";
 ---
 
-<div
-  class="container top-illust-container has-text-centered py-5 is-flex is-flex-direction-column"
->
+<div class="container has-text-centered py-5 is-flex is-flex-direction-column">
   <h2 id={id} class="jump-anchor-header-padding title is-4">
     <a href={`#${id}`} class="has-text-black"> トップイラスト一覧 </a>
   </h2>
@@ -21,13 +22,13 @@ const { id } = Astro.props;
       // トップイラスト一覧
       dormitoryTopIllustInfos.map(({ image, illustrator }, index) => (
         <div class="column is-4">
-          <a href=`/dormitory/top_illust/${index}`>
-            <div class="card">
+          <a href={`/dormitory/top_illust/${index + 1}`}>
+            <div class="thumbnail-wrapper">
               <Image
                 src={image}
                 alt={`${illustrator}さんが描いたトップイラスト`}
                 width={480}
-                style={{ objectFit: "contain" }}
+                style={{ objectFit: "contain", display: "block" }}
               />
             </div>
           </a>

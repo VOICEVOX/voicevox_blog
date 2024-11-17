@@ -8,11 +8,12 @@ import { Image } from "astro:assets";
 import { dormitoryEvents } from "@constants/dormitoryEvent";
 
 const { id } = Astro.props;
+
+import "./style.scss";
+import "@/styles/helper.scss";
 ---
 
-<div
-  class="container top-illust-container has-text-centered py-5 is-flex is-flex-direction-column"
->
+<div class="container has-text-centered py-5 is-flex is-flex-direction-column">
   <h2 id={id} class="jump-anchor-header-padding title is-4">
     <a href={`#${id}`} class="has-text-black"> 過去のイベント </a>
   </h2>
@@ -27,12 +28,12 @@ const { id } = Astro.props;
             target="_blank"
             rel="noreferrer"
           >
-            <div class="card">
+            <div class="thumbnail-wrapper">
               <Image
                 src={event.image}
                 alt=""
-                width="320"
-                style={{ objectFit: "contain" }}
+                width={480}
+                style={{ objectFit: "contain", display: "block" }}
               />
             </div>
             <p class="is-size-6 mt-2" set:html={event.titles.join("<br />")} />

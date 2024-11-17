@@ -13,6 +13,7 @@ export interface Props {
   imageAlt?: string;
   noindex?: boolean;
   children: any;
+  isDark?: boolean;
 }
 
 import { getImage } from "astro:assets";
@@ -26,7 +27,14 @@ import "@/styles/bulma.scss";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 
-const { title, description, image: _image, imageAlt, noindex } = Astro.props;
+const {
+  title,
+  description,
+  image: _image,
+  imageAlt,
+  noindex,
+  isDark,
+} = Astro.props;
 
 // imageとimageAltが片方だけ指定されている場合はエラーを出す
 if ((_image == undefined) != (imageAlt == undefined)) {
@@ -97,8 +105,16 @@ const hasImage = imageUrl != undefined && imageAlt != undefined;
   </head>
   <body>
     <Header />
+
     <slot />
-    <Footer />
+
+    <footer class={`footer appearance ${isDark ? "has-background-black" : ""}`}>
+      <Footer isDark={isDark} />
+    </footer>
+    <div class="footer height-holder">
+      {/* 空間を空けるために必要 */}
+      <Footer isDark={isDark} />
+    </div>
   </body>
 </html>
 

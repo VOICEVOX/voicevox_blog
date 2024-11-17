@@ -191,7 +191,7 @@ const characterKey = characterInfo.key;
                             (targetCharacterKey) =>
                               targetCharacterKey !== characterKey,
                           )
-                          .map((targetCharacterKey, index) => (
+                          .map((targetCharacterKey) => (
                             <CallBox
                               characterInfo={characterInfo}
                               baseCharacterKey={characterKey}
@@ -236,7 +236,7 @@ const characterKey = characterInfo.key;
   </div>
 </Base>
 
-<style lang="scss">
+<style lang="scss" is:global>
   @use "bulma/sass/utilities/mixins" as *;
   @use "bulma/sass/helpers" as *;
 
@@ -271,6 +271,7 @@ const characterKey = characterInfo.key;
         }
 
         .box {
+          width: 100%;
           height: 550px;
           @include mobile {
             height: auto;

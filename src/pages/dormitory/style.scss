@@ -1,0 +1,11 @@
+.thumbnail-wrapper {
+  cursor: pointer;
+  box-shadow: none;
+
+  img {
+    border-style: solid;
+    border-radius: 1rem;
+    border-width: 1px;
+    border-color: #000;
+  }
+}

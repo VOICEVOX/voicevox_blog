@@ -57,17 +57,20 @@ const callFrom: string | undefined =
     </div>
   </div>
   <div class="column is-narrow py-1" style={{ height: "100%" }}>
-    <Image
-      class="border-icon"
-      src={characterInfos[targetCharacterKey].bustupImage}
-      alt={characterInfos[targetCharacterKey].name}
-      width={64}
-      style={{
-        borderColor: characterInfos[targetCharacterKey].color,
-        height: "100%",
-        aspectRatio: "1/1",
-        objectFit: "contain",
-      }}
-    />
+    <div>
+      <Image
+        class="border-icon"
+        src={characterInfos[targetCharacterKey].bustupImage}
+        alt={characterInfos[targetCharacterKey].name}
+        width={64}
+        style={{
+          borderColor: characterInfos[targetCharacterKey].color,
+          borderStyle: "solid",
+          borderRadius: "0.5rem",
+          objectFit: "contain",
+          display: "block",
+        }}
+      />
+    </div>
   </div>
 </div>

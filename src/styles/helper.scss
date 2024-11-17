@@ -29,3 +29,9 @@
     border-width: 2.4px;
   }
 }
+
+/** idタグにジャンプるするときにヘッダーサイズ分ずれるのを防ぐ */
+.jump-anchor-header-padding {
+  padding-top: calc(3.25rem + 1rem);
+  margin-top: calc(-3.25rem - 1rem);
+}

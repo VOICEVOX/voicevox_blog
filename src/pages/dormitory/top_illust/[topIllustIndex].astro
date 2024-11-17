@@ -19,7 +19,7 @@ import Base from "@layouts/Base.astro";
 
 const { topIllustIndex } = Astro.params;
 
-const index = parseInt(topIllustIndex);
+const index = parseInt(topIllustIndex) - 1;
 const { image, illustrator } = dormitoryTopIllustInfos[index];
 ---
 
@@ -29,7 +29,7 @@ const { image, illustrator } = dormitoryTopIllustInfos[index];
   image={image}
   imageAlt=""
 >
-  {/* TODO: コンテナとか入れる */}
+  {/* TODO: bulmaのクラスとか入れる */}
   <div>
     <Image
       src={image}
