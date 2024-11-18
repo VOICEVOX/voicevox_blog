@@ -6,6 +6,7 @@ import Row from "./_Row.astro";
 
 import { characterInfos } from "@constants/characterInfo";
 import { characterKeys } from "@constants/characterEntry";
+import { getDormitoryCharacterPageUrl } from "@constants/url";
 
 function hex2rgba(hex: string, alpha = 1): [number, number, number, number] {
   const match = hex.match(/\w\w/g);
@@ -58,7 +59,7 @@ function rgba2rgbOnWhite(
                 const characterInfo = characterInfos[characterKey];
                 return (
                   <th>
-                    <a href={`/dormitory/${characterInfo.id}/`}>
+                    <a href={getDormitoryCharacterPageUrl(characterInfo)}>
                       <CharacterImage characterInfo={characterInfo} />
                       <p
                         style={{
@@ -97,7 +98,7 @@ function rgba2rgbOnWhite(
                       backgroundColor,
                     }}
                   >
-                    <a href={`/dormitory/${characterInfo.id}/`}>
+                    <a href={getDormitoryCharacterPageUrl(characterInfo)}>
                       <CharacterImage characterInfo={characterInfo} />
                       <p
                         style={{

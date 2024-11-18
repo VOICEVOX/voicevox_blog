@@ -101,8 +101,8 @@ const hasImage = imageUrl != undefined && imageAlt != undefined;
       )
     }
   </head>
-  <body>
-    <Header />
+  <body class=`${isDark ? "has-background-black" : "has-background-white"}`>
+    <Header isDark={isDark} />
 
     <slot />
 

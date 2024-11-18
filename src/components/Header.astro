@@ -1,5 +1,12 @@
 ---
-import { Image, getImage } from "astro:assets";
+interface Props {
+  // showingHeader: boolean;
+  // showingHeaderOnTop: boolean;
+  isDark?: boolean;
+  // isBurgerActive: boolean;
+}
+
+import { getImage } from "astro:assets";
 
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 
@@ -8,10 +15,11 @@ import FontAwesomeIcon from "./FontAwesomeIcon.astro";
 
 const iconUrl = (await getImage({ src: iconImage, width: 64 })).src;
 
+const { isDark } = Astro.props;
+
 // TODO: ちゃんと設定可能にする
 const showingHeader = true;
 const showingHeaderOnTop = true;
-const isDark = false;
 const isBurgerActive = false;
 ---
 
