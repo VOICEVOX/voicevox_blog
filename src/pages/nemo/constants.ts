@@ -1,5 +1,4 @@
 import { makeAssetsRecordRequired, makeAssetsRecordSingle } from "@helper";
-import type { AstroAudio, AstroImage } from "@types";
 
 type FemaleOrMale = "female" | "male";
 
@@ -92,20 +91,26 @@ export const speakerKeys = Object.keys(speakerMetaInfos) as SpeakerKey[];
 export type SpeakerInfo = SpeakerMetaInfo & {
   color: string;
   backgroundColor: string;
-  icon: Promise<AstroImage>;
-  audios: Promise<AstroAudio>[];
+  icon: ImageMetadata;
+  audios: string[];
 };
 
 const iconImages = makeAssetsRecordSingle(
   speakerKeys,
   speakerMetaInfos,
-  import.meta.glob<AstroImage>("./icon-images/*.png"),
+  import.meta.glob<ImageMetadata>("./icon-images/*.png", {
+    eager: true,
+    import: "default",
+  }),
 );
 
 const audios = makeAssetsRecordRequired(
   speakerKeys,
   speakerMetaInfos,
-  import.meta.glob<AstroAudio>("./audios/*.wav"),
+  import.meta.glob<string>("./audios/*.wav", {
+    eager: true,
+    import: "default",
+  }),
 );
 
 export function getSpeakerInfo(speakerKey: SpeakerKey) {

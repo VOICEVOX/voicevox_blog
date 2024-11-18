@@ -4,12 +4,10 @@
  * ヘッダーとフッターがある。
  */
 
-import type { AstroImage } from "@types";
-
 export interface Props {
   title: string;
   description: string;
-  image?: string | ImageMetadata | Promise<AstroImage>;
+  image?: string | ImageMetadata;
   imageAlt?: string;
   noindex?: boolean;
   children: any;

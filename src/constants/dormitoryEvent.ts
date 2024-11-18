@@ -1,15 +1,17 @@
 import { sortedImportGlob } from "@helper";
-import type { AstroImage } from "@types";
 
 type DormitoryEvent = {
   titles: string[];
   day: string;
   link: string;
-  image: Promise<AstroImage>;
+  image: ImageMetadata;
 };
 
 const images = sortedImportGlob(
-  import.meta.glob<AstroImage>("./dormitory-event-images/*.png"),
+  import.meta.glob<ImageMetadata>("./dormitory-event-images/*.png", {
+    eager: true,
+    import: "default",
+  }),
 );
 
 export const dormitoryEvents = [
@@ -28,5 +30,5 @@ export const dormitoryEvents = [
   if (image == undefined) {
     throw new Error(`Image not found for ${e.titles[0]}`);
   }
-  return { ...e, image: image() };
+  return { ...e, image: image };
 }) satisfies DormitoryEvent[];

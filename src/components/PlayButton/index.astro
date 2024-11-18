@@ -1,8 +1,6 @@
 ---
-import type { AstroAudio } from "@types";
-
 interface Props {
-  audio: Promise<AstroAudio>;
+  audio: string;
   name: string;
   color?: string;
   class?: string;
@@ -12,12 +10,11 @@ interface Props {
 import PlayButton from "./PlayButton";
 
 const { audio, name, color, class: className, style } = Astro.props;
-const audioUrl = (await audio).default;
 ---
 
 <PlayButton
   client:visible
-  url={audioUrl}
+  url={audio}
   name={name}
   color={color}
   className={className}

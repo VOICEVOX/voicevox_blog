@@ -43,6 +43,6 @@ export function getCharacterAssets(key: CharacterKey, styles: Styles) {
     songVoiceAudios: makesongVoiceAudios(key, styles),
     dormitoryVoiceAudios: dormitoryAudios[key],
     dormitoryImages: dormitoryImages[key],
-    // ogpImage: AstroImage;
+    // ogpImage: ImageMetadata;
   };
 }

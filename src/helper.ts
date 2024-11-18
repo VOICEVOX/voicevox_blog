@@ -6,9 +6,9 @@
 export function makeAssetsRecordWithPath<K extends string, T>(
   keys: readonly K[],
   ids: Record<K, { id: string }>,
-  globRecord: Record<string, () => Promise<T>>,
-): Record<K, { path: string; asset: Promise<T> }[]> {
-  const record = {} as Record<K, { path: string; asset: Promise<T> }[]>;
+  globRecord: Record<string, T>,
+): Record<K, { path: string; asset: T }[]> {
+  const record = {} as Record<K, { path: string; asset: T }[]>;
   for (const key of keys) {
     record[key] = [];
   }
@@ -16,7 +16,7 @@ export function makeAssetsRecordWithPath<K extends string, T>(
   for (const path of sortedPaths) {
     const key = keys.find((key) => path.includes(ids[key].id));
     if (key == undefined) continue;
-    record[key].push({ path, asset: globRecord[path]() });
+    record[key].push({ path, asset: globRecord[path] });
   }
   return record;
 }
@@ -28,10 +28,10 @@ export function makeAssetsRecordWithPath<K extends string, T>(
 export function makeAssetsRecord<K extends string, T>(
   keys: readonly K[],
   ids: Record<K, { id: string }>,
-  globRecord: Record<string, () => Promise<T>>,
-): Record<K, Promise<T>[]> {
+  globRecord: Record<string, T>,
+): Record<K, T[]> {
   const baseRecord = makeAssetsRecordWithPath(keys, ids, globRecord);
-  const record = {} as Record<K, Promise<T>[]>;
+  const record = {} as Record<K, T[]>;
   for (const key of keys) {
     record[key] = baseRecord[key].map(({ asset }) => asset);
   }
@@ -45,10 +45,10 @@ export function makeAssetsRecord<K extends string, T>(
 export function makeAssetsRecordOptional<K extends string, T>(
   keys: readonly K[],
   ids: Record<K, { id: string }>,
-  globRecord: Record<string, () => Promise<T>>,
-): Record<K, Promise<T>[] | undefined> {
+  globRecord: Record<string, T>,
+): Record<K, T[] | undefined> {
   const baseRecord = makeAssetsRecord(keys, ids, globRecord);
-  const record: Record<K, Promise<T>[] | undefined> = {
+  const record: Record<K, T[] | undefined> = {
     ...baseRecord,
   };
   for (const key of keys) {
@@ -66,8 +66,8 @@ export function makeAssetsRecordOptional<K extends string, T>(
 export function makeAssetsRecordRequired<K extends string, T>(
   keys: readonly K[],
   ids: Record<K, { id: string }>,
-  globRecord: Record<string, () => Promise<T>>,
-): Record<K, Promise<T>[]> {
+  globRecord: Record<string, T>,
+): Record<K, T[]> {
   const record = makeAssetsRecord(keys, ids, globRecord);
   for (const key of keys) {
     if (record[key].length === 0) {
@@ -84,10 +84,10 @@ export function makeAssetsRecordRequired<K extends string, T>(
 export function makeAssetsRecordSingle<K extends string, T>(
   keys: readonly K[],
   ids: Record<K, { id: string }>,
-  globRecord: Record<string, () => Promise<T>>,
-): Record<K, Promise<T>> {
+  globRecord: Record<string, T>,
+): Record<K, T> {
   const baseRecord = makeAssetsRecord(keys, ids, globRecord);
-  const record = {} as Record<K, Promise<T>>;
+  const record = {} as Record<K, T>;
   for (const key of keys) {
     if (baseRecord[key].length !== 1) {
       throw new Error(`Not a single asset for ${key}`);

@@ -1,10 +1,12 @@
 import { sortedImportGlob } from "@helper";
-import type { AstroImage } from "@types";
 
 // トップイラスト
 const topIllustImages = sortedImportGlob(
-  import.meta.glob<AstroImage>("./dormitory-top-illust-images/*.png"),
-).map((value) => value());
+  import.meta.glob<ImageMetadata>("./dormitory-top-illust-images/*.png", {
+    eager: true,
+    import: "default",
+  }),
+);
 
 // イラストレーター
 const illustrators = [
