@@ -7,6 +7,22 @@ import { faPlay, faStop } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useMemo, useState } from "react";
 
+/** 値の変更を遅延させる */
+export function useDebounce<T>(value: T, delay: number) {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [value, delay]);
+
+  return debouncedValue;
+}
+
 export default ({
   url,
   name,
@@ -16,11 +32,13 @@ export default ({
 }: {
   url: string;
   name: string;
-  color?: string;
+  color?: string; // 無指定の場合はprimary
 } & React.HTMLAttributes<HTMLButtonElement>) => {
   const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isReady, setIsReady] = useState(false);
+
+  const debouncedIsReady = useDebounce(isReady, 300);
 
   useEffect(() => {
     setAudio(new Audio(url));
@@ -29,11 +47,15 @@ export default ({
   const colorAddedStyle = useMemo(
     () =>
       !color
-        ? style
+        ? {
+            "--bulma-loading-color": "var(--bulma-primary)",
+            ...style,
+          }
         : {
             backgroundColor: "white",
             borderColor: color,
             color: color,
+            "--bulma-loading-color": color,
             ...style,
           },
     [color, style],
@@ -85,14 +107,13 @@ export default ({
     <button
       onClick={isPlaying ? stop : play}
       className={`button circle-icon ${color || "is-primary"} ${
-        !isReady ? "is-loading" : ""
+        !(isReady || debouncedIsReady) ? "is-loading" : ""
       } ${className}`}
-      disabled={!isReady}
       style={colorAddedStyle}
       type="button"
       aria-label={`${name}を${isPlaying ? "停止" : "再生"}}`}
     >
-      {isReady ? (
+      {isReady || debouncedIsReady ? (
         <FontAwesomeIcon icon={isPlaying ? faStop : faPlay} />
       ) : undefined}
     </button>

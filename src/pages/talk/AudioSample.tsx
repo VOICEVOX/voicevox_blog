@@ -1,27 +1,29 @@
-import React, { useMemo } from "react"
-import PlayButton from "./playButton"
-import StyleDropdown, { useStyleDropdownController } from "./styleDropdown"
+import React, { useMemo } from "react";
+import StyleDropdown, {
+  useStyleDropdownController,
+} from "@/components/StyleDropdown";
+import PlayButton from "@components/PlayButton/PlayButton";
 
-const AudioSample = React.memo(
+export default React.memo(
   ({
     audioSamples,
     characterName,
     className,
   }: {
-    audioSamples: { style: string; urls: readonly string[] }[]
-    characterName: string
+    audioSamples: { style: string; urls: readonly string[] }[];
+    characterName: string;
   } & React.HTMLAttributes<HTMLDivElement>) => {
     const styles = useMemo(
-      () => audioSamples.map(value => value.style),
-      [audioSamples]
-    )
+      () => audioSamples.map((value) => value.style),
+      [audioSamples],
+    );
     const { selectedStyle, setSelectedStyle } = useStyleDropdownController({
       styles,
-    })
+    });
     const selectedAudioUrls = useMemo(
       () => audioSamples.find(({ style }) => style == selectedStyle)!.urls,
-      [audioSamples, selectedStyle]
-    )
+      [audioSamples, selectedStyle],
+    );
 
     return (
       <div className={"audio-sample " + className}>
@@ -51,7 +53,7 @@ const AudioSample = React.memo(
             <div className="audio-sample-content">
               <StyleDropdown
                 styles={styles}
-                selectedStyle={selectedStyle}
+                selectedStyle={selectedStyle!}
                 setSelectedStyle={setSelectedStyle}
                 characterName={characterName}
               />
@@ -60,8 +62,6 @@ const AudioSample = React.memo(
         )}
         <hr className="my-3" />
       </div>
-    )
-  }
-)
-
-export default AudioSample
+    );
+  },
+);

@@ -6,9 +6,19 @@
   $family-sans-serif: '"Unhinted Rounded M+ 1p", sans-serif'
 );
 
-@use "bulma/sass/utilities/initial-variables" as bulma;
+@use "bulma/sass/utilities/css-variables" as cv;
+@use "bulma/sass/utilities/initial-variables" as iv;
+
+:root {
+  @include cv.register-vars(
+    (
+      // アニメーションをなくす
+      "duration": "0s"
+    )
+  );
+}
 
 // TODO: Bulma 1でなくなったっぽい設定、要確認
-// $navbar-breakpoint: bulma.$tablet;
+// $navbar-breakpoint: iv.$tablet;
 // $dropdown-item-active-color: hsl(0, 0%, 4%);
 // $dropdown-item-active-background-color: $primary;

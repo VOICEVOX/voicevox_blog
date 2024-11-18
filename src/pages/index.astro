@@ -1,9 +1,242 @@
 ---
+import { Image, getImage } from "astro:assets";
+
 import Base from "@/layouts/Base.astro";
+import SoftwareFeature from "./_SoftwareFeature.astro";
+import OssGuidanceSection from "./_OssGuidanceSection.astro";
+import CharacterCard from "./talk/_CharacterCard.astro";
+
+import { characterKeys } from "@constants/characterEntry";
+import { characterInfos } from "@constants/characterInfo";
+import shareThumb from "./talk/share.jpg";
+import logo from "./talk/logo.svg";
+import landingMovieThumb from "./talk/landing-movie-thumb.png";
+import landingMovie from "./talk/landing.mp4";
+
+const landingMovieThumbUrl = (await getImage({ src: landingMovieThumb })).src;
 ---
 
-<Base title="VOICEVOX" description="テスト">
-  <div>
-    <a href="/term">term</a>
+<Base
+  title="VOICEVOX | 無料のテキスト読み上げ・歌声合成ソフトウェア"
+  description="無料で使える中品質なテキスト読み上げ・歌声合成ソフトウェア。商用・非商用問わず無料で、誰でも簡単にお使いいただけます。イントネーションを詳細に調整することも可能です。"
+  image={shareThumb}
+  imageAlt=""
+>
+  {/* TOOD: showingHeader={showingHeader} showingHeaderOnTop={false} */}
+  <!-- <Main setShowingHeader={setShowingHeader} /> -->
+
+  <div class="landing">
+    <div class="first-view">
+      {/* TODO: ref={firstViewRef}  */}
+      <header class="hero is-primary is-small">
+        <div class="hero-body">
+          <div class="container has-text-centered">
+            <div class="title top-title">
+              <Image src={logo} alt="VOICEVOX" />
+            </div>
+            <h2 class="subtitle has-text-weight-semibold">
+              無料で使える中品質なテキスト読み上げ・歌声合成ソフトウェア
+            </h2>
+          </div>
+        </div>
+      </header>
+      <section class="section not-header is-flex is-justify-content-center">
+        <div class="container is-max-desktop columns is-desktop is-vcentered">
+          <div class="column has-text-centered">
+            <video controls poster={landingMovieThumbUrl}>
+              <source src={landingMovie} type="video/mp4" />
+            </video>
+          </div>
+          <SoftwareFeature class="column is-narrow" />
+        </div>
+      </section>
+    </div>
+
+    <main>
+      <section class="section">
+        <div class="container is-max-desktop is-flex is-flex-direction-column">
+          <h2 id="characters" class="jump-anchor-header-padding title">
+            <a href={`#characters`} class="has-text-black">
+              キャラクター一覧
+            </a>
+          </h2>
+          <div class="columns is-multiline is-centered">
+            {
+              characterKeys.map((characterKey) => (
+                <CharacterCard characterInfo={characterInfos[characterKey]} />
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container is-max-desktop is-flex is-flex-direction-column">
+          <h2 id="nemo" class="jump-anchor-header-padding title">
+            <a href={`#nemo`} class="has-text-black"> VOICEVOX Nemo </a>
+          </h2>
+          <p class="is-size-5">
+            VOICEVOX Nemo はキャラクターのいない音声ライブラリです。
+          </p>
+          <p class="is-size-5">
+            詳しくは&nbsp;<a
+              href={"/nemo/"}
+              class="has-text-weight-bold is-underlined">VOICEVOX Nemo</a
+            >&nbsp;をご参照ください。
+          </p>
+        </div>
+      </section>
+
+      <OssGuidanceSection isDark={false} />
+
+      <section class="section">
+        <div class="container is-max-desktop is-flex is-flex-direction-column">
+          <h2 id="core_library" class="jump-anchor-header-padding title">
+            <a href={`#core_library`} class="has-text-black">
+              コアライブラリ
+            </a>
+          </h2>
+          <p class="is-size-5">
+            VOICEVOXの音声合成をアプリケーションやサービスに組み込める、VOICEVOXのコアライブラリを配布しています。
+          </p>
+          <p class="is-size-5">
+            詳しくは&nbsp;<a
+              href="https://github.com/VOICEVOX/voicevox_core"
+              class="has-text-weight-bold is-underlined"
+              target="_blank"
+              rel="noreferrer">VOICEVOX CORE</a
+            >&nbsp;をご参照ください。
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container is-max-desktop is-flex is-flex-direction-column">
+          <h2 id="link" class="jump-anchor-header-padding title">
+            <a href={`#link`} class="has-text-black"> リンク </a>
+          </h2>
+          <ul class="is-size-5">
+            <li>
+              <a href={"/term/"} class="has-text-weight-bold is-underlined">
+                利用規約
+              </a>
+            </li>
+            <li>
+              <a
+                href={"/how_to_use/"}
+                class="has-text-weight-bold is-underlined"
+              >
+                使い方
+              </a>
+            </li>
+            <li>
+              <a href={"/qa/"} class="has-text-weight-bold is-underlined">
+                Q&amp;A
+              </a>
+            </li>
+            <li>
+              <a
+                href={"/dormitory/"}
+                class="has-text-weight-bold is-underlined"
+              >
+                ボイボ寮
+              </a>
+            </li>
+            <li>
+              <a
+                href={"/update_history/"}
+                class="has-text-weight-bold is-underlined"
+              >
+                変更履歴
+              </a>
+            </li>
+            {
+              /* TODO: リリース時にコメントアウトを外す
+              <li>
+                <a
+                  href={"/news/"}
+                  class="has-text-weight-bold is-underlined"
+                >
+                  ニュース
+                </a>
+              </li>
+              */
+            }
+            <li>
+              <a
+                href="https://hiho.fanbox.cc/"
+                target={"_blank"}
+                rel={"noreferrer"}
+                class="has-text-weight-bold is-underlined"
+              >
+                pixivFANBOX
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
   </div>
+  {
+    /*
+    <ModalReadmeLibrary
+      hide={() => setShowingLibraryReadmeModalCharacterKey(undefined)}
+      {...showingLibraryReadmeModalCharacterKey != undefined
+        ? {
+            isActive: true,
+            characterKey: showingLibraryReadmeModalCharacterKey,
+          }
+        : {
+            isActive: false,
+            characterKey: undefined,
+          }}
+    />
+    */
+  }
 </Base>
+
+<style lang="scss" is:global>
+  @use "bulma/sass/utilities/initial-variables" as *;
+  @use "bulma/sass/utilities/mixins" as *;
+
+  .landing {
+    .first-view {
+      @include desktop {
+        height: 100vh;
+      }
+
+      display: flex;
+      flex-direction: column;
+      .not-header {
+        flex-grow: 1;
+      }
+    }
+
+    video {
+      border: 1.5px solid;
+    }
+
+    .top-title {
+      height: $size-1 * 2.2;
+      fill: #000000b3;
+      position: relative;
+      width: 100%;
+
+      & > svg {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      @include until($desktop) {
+        height: $size-1 * 1.7;
+      }
+
+      @include until($tablet) {
+        height: $size-1 * 1.1;
+      }
+    }
+  }
+</style>

@@ -1,35 +1,35 @@
-import { faAngleDown } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import React, { useId, useState } from "react"
+import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useId, useState } from "react";
 
 export const useStyleDropdownController = ({
   styles,
 }: {
-  styles: string[]
+  styles: string[];
 }) => {
   const [selectedStyle, setSelectedStyle] = useState(
-    styles.length > 0 ? styles[0] : undefined
-  )
+    styles.length > 0 ? styles[0] : undefined,
+  );
   return {
     selectedStyle,
     setSelectedStyle,
-  }
-}
+  };
+};
 
-const StyleDropdown = ({
+export default ({
   styles,
   selectedStyle,
   setSelectedStyle,
   characterName,
   className,
 }: {
-  styles: string[]
-  selectedStyle: string
-  setSelectedStyle: (style: string) => void
-  characterName: string
+  styles: string[];
+  selectedStyle: string;
+  setSelectedStyle: (style: string) => void;
+  characterName: string;
 } & React.HTMLAttributes<HTMLDivElement>) => {
-  const [isOpenDropdown, setIsOpenDropdown] = useState(false)
-  const id = useId()
+  const [isOpenDropdown, setIsOpenDropdown] = useState(false);
+  const id = useId();
   return (
     <div
       className={`dropdown ${isOpenDropdown ? "is-active" : ""} ${className}`}
@@ -61,8 +61,8 @@ const StyleDropdown = ({
                 style == selectedStyle ? "is-active" : ""
               }`}
               onMouseDown={() => {
-                setSelectedStyle(style)
-                setIsOpenDropdown(false)
+                setSelectedStyle(style);
+                setIsOpenDropdown(false);
               }}
               tabIndex={0}
             >
@@ -72,7 +72,5 @@ const StyleDropdown = ({
         </div>
       </div>
     </div>
-  )
-}
-
-export default StyleDropdown
+  );
+};

@@ -1,0 +1,111 @@
+---
+import type { CharacterInfo } from "@constants/type";
+
+interface Props {
+  characterInfo: CharacterInfo;
+}
+
+import { Image } from "astro:assets";
+
+import AudioSample from "./AudioSample";
+
+import { getProductPageUrl } from "@constants/url";
+
+const { characterInfo } = Astro.props;
+
+import "@/styles/helper.scss"; // NOTE: PlayButtonのため
+---
+
+{
+  /* 
+  TODO:
+  // ファーストビュー用のビューを超えたらヘッダーを表示する
+  const firstViewRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    if (!firstViewRef.current) return
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        setShowingHeader(!entry.isIntersecting)
+      })
+    })
+    observer.observe(firstViewRef.current)
+  }, [firstViewRef])
+  */
+}
+
+<div class="column is-6-tablet is-4-desktop">
+  <div class="card">
+    <a href={getProductPageUrl(characterInfo)} class="card-image">
+      <Image
+        src={characterInfo.bustupImage}
+        alt={characterInfo.name}
+        width="320"
+        style={{ objectFit: "contain", display: "block" }}
+      />
+    </a>
+    <div class="card-content has-text-centered">
+      <h3 class="title is-4">
+        <a href={getProductPageUrl(characterInfo)} style={{ color: "inherit" }}>
+          {characterInfo.name}
+        </a>
+      </h3>
+      <p class="subtitle is-5">
+        {characterInfo.voiceFeature ? characterInfo.voiceFeature : "（準備中）"}
+      </p>
+      {
+        characterInfo.releaseDate != undefined && (
+          <p class="py-0" style={{ marginTop: "-1rem", color: "red" }}>
+            Coming Soon
+          </p>
+        )
+      }
+      {
+        characterInfo.talkVoiceAudios.length > 0 && (
+          <AudioSample
+            client:visible
+            audioSamples={characterInfo.talkVoiceAudios}
+            characterName={characterInfo.name}
+          />
+        )
+      }
+      <div class="pt-3">
+        <button class="button is-normal is-rounded" type="button">
+          {
+            /*
+            TODO:
+            onClick={() => setShowingLibraryReadmeModalCharacterKey(characterKey)}
+            */
+          }
+          <span>{characterInfo.name} 利用規約</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style lang="scss" is:global>
+  @use "bulma/sass/helpers" as *;
+
+  .audio-sample {
+    .audio-sample-pair {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 3px 10px;
+
+      @extend .py-1;
+
+      .audio-sample-label {
+        width: 100px;
+        // @include from($tablet) {
+        //   text-align: right !important;
+        // }
+      }
+      .audio-sample-content {
+        display: flex;
+        gap: 3px;
+      }
+    }
+  }
+</style>

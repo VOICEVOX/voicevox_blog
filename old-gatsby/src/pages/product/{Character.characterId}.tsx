@@ -20,7 +20,7 @@ import Seo from "../../components/seo"
 import SoftwareFeature from "../../components/softwareFeature"
 import StyleDropdown, {
   useStyleDropdownController,
-} from "../../components/styleDropdown"
+} from "../../../../src/components/StyleDropdown"
 import { CharacterContext, GlobalContext } from "../../contexts/context"
 import { useDetailedCharacterInfo } from "../../hooks/useDetailedCharacterInfo"
 import { CharacterKey } from "../../types/dormitoryCharacter"
