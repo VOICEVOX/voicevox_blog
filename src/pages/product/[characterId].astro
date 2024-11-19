@@ -1,0 +1,589 @@
+---
+/**
+ * キャラクターごとの製品ページ
+ */
+
+import type { InferGetStaticPropsType, GetStaticPaths } from "astro";
+import { Image } from "astro:assets";
+
+import { characterEntries, characterKeys } from "@constants/characterEntry";
+import { characterInfos } from "@constants/characterInfo";
+
+export const getStaticPaths = (async () =>
+  characterKeys.map((key) => ({
+    params: { characterId: characterEntries[key].id },
+    props: { characterKey: key, characterInfo: characterInfos[key] },
+  }))) satisfies GetStaticPaths;
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+import Base from "@layouts/Base.astro";
+import SoftwareFeature from "@pages/_SoftwareFeature.astro";
+import FontAwesomeIcon from "@components/FontAwesomeIcon.astro";
+import AudioSample from "./AudioSample";
+
+import {
+  faCircleLeft,
+  faCircleRight,
+  faDownload,
+} from "@fortawesome/free-solid-svg-icons";
+
+import {
+  getDormitoryCharacterPageUrl,
+  getProductPageUrl,
+} from "@constants/url";
+
+import featureImage from "./feature.png";
+
+// TODO: product/thumb-.*
+
+const { characterKey, characterInfo } = Astro.props;
+
+const voiceFeature = characterInfo.voiceFeature
+  ? characterInfo.voiceFeature
+  : "声";
+const description =
+  `VOICEVOXは「${characterInfo.name}」の${voiceFeature}で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。` +
+  (characterInfo.releaseDate
+    ? `${characterInfo.releaseDate}にリリース予定。`
+    : "");
+const additionalDescription = characterInfo.additionalProductDescription;
+
+const prevCharacterKey =
+  characterKeys[
+    (characterKeys.indexOf(characterKey) + characterKeys.length - 1) %
+      characterKeys.length
+  ];
+const postCharacterKey =
+  characterKeys[
+    (characterKeys.indexOf(characterKey) + 1) % characterKeys.length
+  ];
+
+const characterBackgroundColor = characterInfo.lightColor;
+
+/*
+  const [
+    showingLibraryReadmeModalCharacterKey,
+    setShowingLibraryReadmeModalCharacterKey,
+  ] = useState<CharacterKey | undefined>(undefined)
+
+  // キャラクター変更アニメーション
+  type CharaAnimeObject = {
+    characterKey: CharacterKey
+    ref: React.MutableRefObject<HTMLDivElement | null>
+    state: "entering" | "staying" | "leaving"
+    direction: "left" | "right"
+  }
+  const [nowCharaAnimeObject, setNowCharaAnimeObject] =
+    useState<CharaAnimeObject>({
+      characterKey,
+      ref: React.createRef(),
+      state: "staying",
+      direction: "left",
+    })
+  const [prevCharaAnimeObject, setPrevCharaAnimeObject] = useState<
+    CharaAnimeObject | undefined
+  >(undefined)
+
+  // キャラクター変更（ページ遷移）
+  const { characterKeys } = useContext(CharacterContext)
+  const changeToCharacter = useCallback(
+    (nextCharacterKey: CharacterKey) => {
+      const nextCharacterInfo = characterInfos[nextCharacterKey]!
+      setCharacterId(nextCharacterInfo.id)
+      setSelectedStyle(
+        nextCharacterInfo.talkVoiceUrls.length > 0
+          ? nextCharacterInfo.talkVoiceUrls[0].style
+          : undefined
+      )
+
+      // アニメーション用
+      const diff =
+        characterKeys.indexOf(nextCharacterKey) -
+        characterKeys.indexOf(characterKey)
+      const direction =
+        (diff + characterKeys.length) % characterKeys.length <=
+        characterKeys.length / 2
+          ? "right"
+          : "left"
+      setPrevCharaAnimeObject({
+        ...nowCharaAnimeObject,
+        state: "leaving",
+        direction,
+      })
+      setNowCharaAnimeObject({
+        characterKey: nextCharacterKey,
+        ref: React.createRef(),
+        state: "entering",
+        direction,
+      })
+
+      window.history.pushState(
+        { characterKey: nextCharacterKey },
+        "",
+        `/product/${nextCharacterInfo.id}/`
+      )
+      // // FIXME: たぶん本来は↓のgatsby.navigateを使うのが正しいけど、フラッシュするので使用できない
+      // navigate(`/product/${characterInfos[nextCharacterKey]!.id}/`, {
+      //   state: { characterKey: nextCharacterKey },
+      // })
+    },
+    [characterInfos]
+  )
+
+  // ブラウザバックを無効化し、コード側でキャラクター変更する
+  // TODO: なぜかうまくいかない。勝手にリロードされて404になってしまう？
+  useEffect(() => {
+    const handlePopState = (event: PopStateEvent) => {
+      if (
+        event.state?.characterKey != undefined &&
+        event.state?.characterKey != characterKey
+      ) {
+        setCharacterId(characterInfos[event.state.characterKey]!.id)
+      }
+    }
+    window.addEventListener("popstate", handlePopState)
+    return () => {
+      window.removeEventListener("popstate", handlePopState)
+    }
+  }, [characterKey])
+
+  // 最初に来たときはそのキャラクターをセット
+  useEffect(() => {
+    history.replaceState({ characterKey }, "")
+  }, [])
+
+  // 画像
+  const thumbImage = query.thumbImage.nodes.find(
+    node => node.name === `thumb-${characterId}`
+  )?.childImageSharp?.gatsbyImageData
+  if (thumbImage == undefined)
+    throw new Error(`thumb-${characterId} is not found`)
+*/
+---
+
+<Base
+  title={`VOICEVOX ${characterInfo.name} | 無料のテキスト読み上げソフトウェア`}
+  description={description}
+>
+  {/* TODO: image={thumbImage.images.fallback?.src}*/}
+  <main class="product">
+    <div class="section py-0">
+      <div class="top container">
+        <a
+          href={getProductPageUrl(characterInfos[prevCharacterKey])}
+          class="button prev circle-icon is-black"
+          aria-label="前のキャラクターを表示"
+          type="button"
+        >
+          {/* TODO: onClick={() => changeToCharacter(prevCharacterKey)}*/}
+          <FontAwesomeIcon icon={faCircleLeft} />
+        </a>
+        <a
+          href={getProductPageUrl(characterInfos[postCharacterKey])}
+          class="button post circle-icon is-black"
+          aria-label="次のキャラクターを表示"
+          type="button"
+        >
+          {/* TODO: onClick={() => changeToCharacter(postCharacterKey)}*/}
+          <FontAwesomeIcon icon={faCircleRight} />
+        </a>
+        <div class="top-character">
+          {
+            /*
+            TODO:
+            [prevCharaAnimeObject, nowCharaAnimeObject].map(
+              (obj) =>
+                obj && (
+                  <div
+                    key={obj.characterKey}
+                    ref={obj.ref}
+                    class={`image-wrapper ${
+                      obj.state != "staying" && `${obj.state}-${obj.direction}`
+                    }`}
+                  >
+                    <GatsbyImage
+                      image={characterInfos[obj.characterKey]!.portraitImage}
+                      alt={characterInfos[obj.characterKey]!.name}
+                    />
+                  </div>
+                ),
+            )
+            */
+          }
+          <div class={`image-wrapper`}>
+            <div>
+              <Image
+                src={characterInfo.portraitImage}
+                alt={characterInfo.name}
+                height={1280}
+                style={{ display: "block", objectFit: "contain" }}
+              />
+            </div>
+          </div>
+          <div class="info pb-5">
+            <div class="detail p-4">
+              <p>{characterInfo.description.replaceAll("<br />", "")}</p>
+              <a
+                href={getDormitoryCharacterPageUrl(characterInfo)}
+                class="has-text-weight-bold has-text-black"
+                >キャラクター詳細　→</a
+              >
+            </div>
+
+            <AudioSample client:visible characterInfo={characterInfo} />
+          </div>
+        </div>
+        <div class="description">
+          <h1 class="title">VOICEVOX {characterInfo.name}</h1>
+          <p class="is-size-5">
+            {description}
+            {additionalDescription && additionalDescription}
+          </p>
+          {
+            characterInfo.releaseDate == undefined && (
+              <a
+                class="button mt-5 is-primary is-rounded is-large"
+                target="_blank"
+                rel="noreferrer"
+                tab-index={0}
+              >
+                {/*
+                  TODO:
+                  onClick={() => {
+                    context.downloadModal.show();
+                    context.sendEvent("download", "software");
+                  }}
+                */}
+                <span class="icon">
+                  <FontAwesomeIcon icon={faDownload} />
+                </span>
+                <span class="has-text-weight-semibold">
+                  <span class="is-hidden-mobile">VOICEVOX を </span>
+                  ダウンロード
+                </span>
+              </a>
+            )
+          }
+          <div class="terms mt-5">
+            <a href="/term/" class="button is-normal is-rounded">
+              <span>VOICEVOX 利用規約</span>
+            </a>
+            {
+              characterInfo.policyUrl && (
+                <button class="button is-normal is-rounded" type="button">
+                  {/*
+                    TODO:
+                    onClick={() =>
+                      setShowingLibraryReadmeModalCharacterKey(characterKey)
+                    }
+                  */}
+                  <span>{characterInfo.name} 利用規約</span>
+                </button>
+              )
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="section">
+      <div
+        class="feature section"
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <div class="separator">
+          <h2 class="separator-text title is-size-2 has-text-weight-bold px-5">
+            VOICEVOX
+          </h2>
+        </div>
+        <h3 class="separator-text is-size-5 has-text-weight-bold mt-5">
+          無料で使える中品質なテキスト読み上げソフトウェア
+        </h3>
+
+        <div class="feature-content">
+          <Image
+            src={featureImage}
+            alt="VOICEVOXのソフトウェアの画面のスクリーンショット画像"
+            class="thumb"
+            style={{ display: "block", objectFit: "contain" }}
+          />
+          <div class="description">
+            <SoftwareFeature />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  {
+    /*
+    TODO:
+    <ModalReadmeLibrary
+      hide={() => setShowingLibraryReadmeModalCharacterKey(undefined)}
+      {...showingLibraryReadmeModalCharacterKey != undefined
+        ? {
+            isActive: true,
+            characterKey: showingLibraryReadmeModalCharacterKey,
+          }
+        : {
+            isActive: false,
+            characterKey: undefined,
+          }}
+    />
+    */
+  }
+</Base>
+
+<style lang="scss" define:vars={{ characterBackgroundColor }} is:global>
+  @use "@/styles/vars.scss" as *;
+  @use "@/styles/helper.scss" as *;
+
+  @use "bulma/sass/elements" as *;
+  @use "bulma/sass/utilities/initial-variables" as *;
+  @use "bulma/sass/utilities/mixins" as *;
+  @use "bulma/sass/helpers" as *;
+
+  .product {
+    h1 {
+      @extend .title;
+      @extend .is-3;
+    }
+
+    .top {
+      height: calc(100vh - 3.25rem);
+      display: flex;
+      flex-direction: row-reverse;
+      min-height: calc($desktop / 2);
+      max-height: $desktop;
+
+      position: relative;
+
+      @include mobile {
+        height: auto;
+        max-height: unset;
+        flex-direction: column;
+        gap: 3rem;
+      }
+
+      .prev,
+      .post {
+        position: absolute;
+        z-index: 10;
+        top: 10%;
+        transform: translateY(-50%);
+        font-size: 3rem;
+        opacity: 0.25;
+      }
+      .prev {
+        left: calc(50% - 50vw + 1.2rem);
+      }
+      .post {
+        right: calc(50% - 50vw + 1.2rem);
+      }
+
+      .top-character {
+        position: relative;
+        flex: 0 1 50%;
+
+        @include mobile {
+          flex: 0 1 auto;
+          height: calc(100vh - 3.25rem);
+          min-height: calc(100vh - 3.25rem);
+          max-height: calc(100vh - 3.25rem);
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 50vw;
+          height: 100%;
+          background-color: var(--characterBackgroundColor);
+
+          @include mobile {
+            width: 100%; // FIXME: 左右に空間が空いてしまう
+          }
+        }
+
+        .image-wrapper {
+          max-width: 100vw; // iOSで突き抜けたので
+          height: 100%;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+
+          // 画像を中央に配置する
+          display: flex;
+          justify-content: center;
+          * {
+            height: 100%;
+            flex: 0 0 auto;
+          }
+        }
+        .image-wrapper.entering-right {
+          animation: entering-right 0.15s ease-out;
+          animation-fill-mode: both;
+        }
+        .image-wrapper.entering-left {
+          animation: entering-left 0.15s ease-out;
+          animation-fill-mode: both;
+        }
+        .image-wrapper.leaving-right {
+          animation: entering-left 0.15s ease-in;
+          animation-fill-mode: both;
+          animation-direction: reverse;
+        }
+        .image-wrapper.leaving-left {
+          animation: entering-right 0.15s ease-in;
+          animation-fill-mode: both;
+          animation-direction: reverse;
+        }
+        @keyframes entering-right {
+          0% {
+            opacity: 0;
+            transform: translateX(-5%);
+          }
+          100% {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        @keyframes entering-left {
+          0% {
+            opacity: 0;
+            transform: translateX(5%);
+          }
+          100% {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        .info {
+          position: absolute;
+          top: 0;
+          right: 5%;
+
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          gap: 1rem;
+
+          .detail,
+          .sample {
+            background-color: #fffc;
+            width: 200px;
+            border-radius: 16px;
+
+            display: flex;
+            flex-direction: column;
+          }
+
+          .detail {
+            align-items: flex-end;
+            gap: 1rem;
+          }
+
+          .sample {
+            align-items: center;
+          }
+        }
+      }
+
+      .description {
+        flex: 0 1 50%;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        @extend .px-6;
+
+        @include mobile {
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+          align-items: center;
+        }
+
+        .terms {
+          display: flex;
+          gap: 0.5rem;
+          flex-wrap: wrap;
+        }
+      }
+    }
+
+    .feature {
+      @extend .my-5, .py-5;
+      @include mobile {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+      }
+
+      .separator {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        position: relative;
+
+        // 横線
+        &:before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 0;
+          right: 0;
+          width: 100%;
+          border-top: 5px solid;
+          border-color: $primary;
+          z-index: -1;
+        }
+
+        .separator-text {
+          background-color: white;
+        }
+      }
+
+      .feature-content {
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        @extend .mt-6;
+
+        @include mobile {
+          flex-direction: column;
+          gap: 2rem;
+        }
+
+        .thumb {
+          width: 50%;
+          border: 1.5px solid;
+          @extend .ml-6;
+          @include mobile {
+            width: 100%;
+            margin-left: 0 !important;
+          }
+        }
+
+        .description {
+          width: 40%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          @include mobile {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+</style>

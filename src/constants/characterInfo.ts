@@ -33,7 +33,9 @@ import manbetsu_hanamaru_info from "./characterInfos/manbetsu_hanamaru";
 import kotoyomi_nia_info from "./characterInfos/kotoyomi_nia";
 import voidoll_info from "./characterInfos/voidoll";
 
-export const characterInfos = {
+export const characterInfos: {
+  [key in CharacterKey]: CharacterInfo;
+} = {
   四国めたん: shikoku_metan_info,
   ずんだもん: zundamon_info,
   春日部つむぎ: kasukabe_tsumugi_info,
@@ -65,6 +67,4 @@ export const characterInfos = {
   満別花丸: manbetsu_hanamaru_info,
   琴詠ニア: kotoyomi_nia_info,
   Voidoll: voidoll_info,
-} as const satisfies {
-  [key in CharacterKey]: CharacterInfo;
 };
