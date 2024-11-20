@@ -3,7 +3,7 @@ import type { InferGetStaticPropsType, GetStaticPaths } from "astro";
 
 import { characterEntries, characterKeys } from "@constants/characterEntry";
 import { characterInfos } from "@constants/characterInfo";
-import { descriptionTypes } from "./constants";
+import { descriptionTypes } from "./_constants";
 
 export const getStaticPaths = (async () => {
   return characterKeys.flatMap((key) =>

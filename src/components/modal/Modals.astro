@@ -1,10 +1,47 @@
 ---
-import PrivacyPolicyModal from "./PrivacyPolicyModal";
+import type { MarkdownInstance } from "astro";
 
-import { compiledContent as privacyPolicyHtml } from "./privacyPolicy.md";
+import LibraryTermIntroModal from "./LibraryTermIntroModal";
+import { PrivacyPolicyModal, NemoTermModel } from "./MarkdownModals";
+
+import { compiledContent as privacyPolicyHtml } from "@/assets/privacy-policy.md";
+import { compiledContent as nemoReadmeHtml } from "@/assets/nemo-term.md";
+import { makeAssetsRecordSingleOptional } from "@helper";
+import {
+  characterEntries,
+  characterKeys,
+  type CharacterKey,
+} from "@constants/characterEntry";
+import { compiledContent as libraryTermIntroTemplateHtml } from "@/assets/library-term-intro-template.md";
+
+/** 利用規約の導入文 */
+export const libraryTermIntroMarkdowns = makeAssetsRecordSingleOptional(
+  characterKeys,
+  characterEntries,
+  import.meta.glob<MarkdownInstance<{}>>(
+    "@/assets/library-term-intro-markdowns/*.md",
+    {
+      eager: true,
+    },
+  ),
+);
+
+const libraryTermIntroHtmls = (() => {
+  const htmls = {} as Record<CharacterKey, string | undefined>;
+  for (const key of characterKeys) {
+    htmls[key] = libraryTermIntroMarkdowns[key]?.compiledContent();
+  }
+  return htmls;
+})();
 ---
 
+<LibraryTermIntroModal
+  client:load
+  htmls={libraryTermIntroHtmls}
+  templateHtml={libraryTermIntroTemplateHtml()}
+/>
 <PrivacyPolicyModal client:load html={privacyPolicyHtml()} />
+<NemoTermModel client:load html={nemoReadmeHtml()} />
 
 <style lang="scss" is:global>
   @use "@/styles/markdown";
@@ -50,14 +87,6 @@ import { compiledContent as privacyPolicyHtml } from "./privacyPolicy.md";
     @include tablet {
       .modal-card {
         width: 670px;
-      }
-    }
-  }
-
-  .modal-how-to-use {
-    @include tablet {
-      .modal-card {
-        width: 770px;
       }
     }
   }

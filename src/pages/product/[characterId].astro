@@ -270,13 +270,12 @@ const characterBackgroundColor = characterInfo.lightColor;
             </a>
             {
               characterInfo.policyUrl && (
-                <button class="button is-normal is-rounded" type="button">
-                  {/*
-                    TODO:
-                    onClick={() =>
-                      setShowingLibraryReadmeModalCharacterKey(characterKey)
-                    }
-                  */}
+                <button
+                  data-ilbrary-term-intro-shower
+                  data-character-key={characterKey}
+                  class="button is-normal is-rounded"
+                  type="button"
+                >
                   <span>{characterInfo.name} 利用規約</span>
                 </button>
               )
@@ -318,24 +317,25 @@ const characterBackgroundColor = characterInfo.lightColor;
       </div>
     </section>
   </main>
-  {
-    /*
-    TODO:
-    <ModalReadmeLibrary
-      hide={() => setShowingLibraryReadmeModalCharacterKey(undefined)}
-      {...showingLibraryReadmeModalCharacterKey != undefined
-        ? {
-            isActive: true,
-            characterKey: showingLibraryReadmeModalCharacterKey,
-          }
-        : {
-            isActive: false,
-            characterKey: undefined,
-          }}
-    />
-    */
-  }
 </Base>
+
+<script>
+  import type { CharacterKey } from "@constants/characterEntry";
+  import { $libraryTermIntroModal } from "@/store";
+
+  document.addEventListener("astro:page-load", () => {
+    document
+      .querySelectorAll("[data-ilbrary-term-intro-shower]")
+      .forEach((elem) => {
+        elem.addEventListener("click", () => {
+          const characterKey = elem.getAttribute(
+            "data-character-key",
+          ) as CharacterKey;
+          $libraryTermIntroModal.set({ show: true, characterKey });
+        });
+      });
+  });
+</script>
 
 <style lang="scss" define:vars={{ characterBackgroundColor }} is:global>
   @use "@/styles/vars.scss" as *;

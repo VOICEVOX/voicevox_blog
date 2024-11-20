@@ -97,6 +97,30 @@ export function makeAssetsRecordSingle<K extends string, T>(
   return record;
 }
 
+/**
+ * キーごとに１つのアセットを分配する。
+ * ２つ以上ある場合はエラーを投げる。
+ * １つもない場合はundefinedを返す。
+ */
+export function makeAssetsRecordSingleOptional<K extends string, T>(
+  keys: readonly K[],
+  ids: Record<K, { id: string }>,
+  globRecord: Record<string, T>,
+): Record<K, T | undefined> {
+  const baseRecord = makeAssetsRecord(keys, ids, globRecord);
+  const record = {} as Record<K, T | undefined>;
+  for (const key of keys) {
+    if (baseRecord[key].length > 1) {
+      throw new Error(`Multiple assets for ${key}`);
+    } else if (baseRecord[key].length === 1) {
+      record[key] = baseRecord[key][0];
+    } else {
+      record[key] = undefined;
+    }
+  }
+  return record;
+}
+
 /** import.meta.glob()で取得したものを、パスをソートした順番で返す */
 export function sortedImportGlob<T>(record: Record<string, T>) {
   return Object.entries(record)

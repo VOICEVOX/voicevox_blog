@@ -6,9 +6,6 @@ import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import Base from "@/layouts/Base.astro";
 import FontAwesomeIcon from "@components/FontAwesomeIcon.astro";
 
-import { NemoReadmeModal } from "../../components/nemoReadmeModal";
-import { GlobalContext } from "../../contexts/context";
-import { useModalController } from "../../hooks/hook";
 import SpeakerComponent from "./_SpeakerComponent.astro";
 import { getSpeakerInfo, speakerKeys } from "./constants";
 import shareThumb from "./share.png";
@@ -16,22 +13,6 @@ import teaserImage from "./teaser.png";
 import voicevoxIconImage from "@/assets/icon.png";
 
 const voicevoxIconImageUrl = `url(${(await getImage({ src: voicevoxIconImage })).src})`;
-
-//   // モーダル
-//   const {
-//     showing: showingNemoReadmeModal,
-//     show: showNemoReadmeModal,
-//     hide: hideNemoReadmeModal,
-//   } = useModalController();
-
-//   // 話者のサンプルボイスなどのコンポーネント
-//   const SpeakerComponent = ({
-//     info,
-//     style,
-//   }: { info: SpeakerInfo } & React.HTMLAttributes<HTMLDivElement>) => {
-//     return (
-//     );
-//   };
 ---
 
 <Base
@@ -83,12 +64,11 @@ const voicevoxIconImageUrl = `url(${(await getImage({ src: voicevoxIconImage }))
               </span>
               <span class="has-text-weight-semibold">ダウンロード</span>
             </a>
-            <button class="button is-normal is-rounded" type="button">
-              {
-                /*
-                TODO: onClick={showNemoReadmeModal}
-                 */
-              }
+            <button
+              data-nemo-term-shower
+              class="button is-normal is-rounded"
+              type="button"
+            >
               <span>利用規約</span>
             </button>
           </div>
@@ -152,16 +132,19 @@ VOICEVOXの音声合成をアプリケーションやサービスに組み込め
 詳しくは VOICEVOX CORE をご参照ください。 */
     }
   </main>
-  {
-    /*
-    TODO:
-    <NemoReadmeModal
-      isActive={showingNemoReadmeModal}
-      hide={hideNemoReadmeModal}
-    />
-    */
-  }
 </Base>
+
+<script>
+  import { $nemoTermModal } from "@/store";
+
+  document.addEventListener("astro:page-load", () => {
+    document.querySelectorAll("[data-nemo-term-shower]").forEach((elem) => {
+      elem.addEventListener("click", () => {
+        $nemoTermModal.set(true);
+      });
+    });
+  });
+</script>
 
 <style lang="scss" define:vars={{ voicevoxIconImageUrl }} is:global>
   @use "@/styles/helper.scss" as *;

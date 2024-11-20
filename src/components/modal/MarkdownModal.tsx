@@ -7,14 +7,6 @@ export default (props: {
   hide: () => void;
   className?: string;
 }) => {
-  useEffect(() => {
-    if (props.isActive) {
-      document.body.classList.add("is-clipped");
-    } else {
-      document.body.classList.remove("is-clipped");
-    }
-  }, [props.isActive]);
-
   return (
     <div
       className={

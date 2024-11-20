@@ -51,11 +51,15 @@ const { isDark } = Astro.props;
 </div>
 
 <script>
-  import { $modal } from "@/store";
+  import { $privacyPolicyModal } from "@/store";
 
-  document.querySelectorAll("[data-privacy-policy-shower]").forEach((elem) => {
-    elem.addEventListener("click", () => {
-      $modal.setKey("privacyPolicy", true);
-    });
+  document.addEventListener("astro:page-load", () => {
+    document
+      .querySelectorAll("[data-privacy-policy-shower]")
+      .forEach((elem) => {
+        elem.addEventListener("click", () => {
+          $privacyPolicyModal.set(true);
+        });
+      });
   });
 </script>
