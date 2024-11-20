@@ -1,3 +1,10 @@
+---
+layout: "@/layouts/OneSectionMarkdown.astro"
+title: Nemo 利用規約 | VOICEVOX
+headerTitle: VOICEVOX Nemo 利用規約
+description: VOICEVOX Nemoの利用規約です
+---
+
 ## 利用許諾
 
 VOICEVOX Nemo を用いて制作された音声は、クレジットを表記すれば商用・非商用問わずご利用いただけます。

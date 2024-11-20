@@ -1,0 +1,64 @@
+---
+import PrivacyPolicyModal from "./PrivacyPolicyModal";
+
+import { compiledContent as privacyPolicyHtml } from "./privacyPolicy.md";
+---
+
+<PrivacyPolicyModal client:load html={privacyPolicyHtml()} />
+
+<style lang="scss" is:global>
+  @use "@/styles/markdown";
+
+  @use "bulma/sass/layout" as *;
+  @use "bulma/sass/utilities/mixins" as *;
+  @use "bulma/sass/helpers" as *;
+
+  .modal-nemo-guidance {
+    .modal-card-body {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+
+      .step-by-step {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        gap: 0.75rem;
+
+        h3 {
+          @extend .mb-0;
+          @extend .title;
+          @extend .is-size-5;
+        }
+      }
+
+      hr {
+        @extend .my-4;
+        flex-shrink: 0;
+        align-self: stretch;
+      }
+
+      .policy-note {
+        @extend .has-text-grey-dark;
+      }
+    }
+  }
+
+  .modal-download {
+    @include tablet {
+      .modal-card {
+        width: 670px;
+      }
+    }
+  }
+
+  .modal-how-to-use {
+    @include tablet {
+      .modal-card {
+        width: 770px;
+      }
+    }
+  }
+</style>

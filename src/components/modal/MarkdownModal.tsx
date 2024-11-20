@@ -1,19 +1,19 @@
-import React, { useEffect } from "react"
+import { useEffect } from "react";
 
 export default (props: {
-  isActive: boolean
-  title: string
-  html: string
-  hide: () => void
-  className?: string
+  isActive: boolean;
+  title: string;
+  html: string;
+  hide: () => void;
+  className?: string;
 }) => {
   useEffect(() => {
     if (props.isActive) {
-      document.body.classList.add("is-clipped")
+      document.body.classList.add("is-clipped");
     } else {
-      document.body.classList.remove("is-clipped")
+      document.body.classList.remove("is-clipped");
     }
-  }, [props.isActive])
+  }, [props.isActive]);
 
   return (
     <div
@@ -43,5 +43,5 @@ export default (props: {
         <footer className="modal-card-foot is-justify-content-flex-end"></footer>
       </div>
     </div>
-  )
-}
+  );
+};

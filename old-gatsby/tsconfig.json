@@ -16,10 +16,5 @@
     "noEmit": true,
     "jsx": "react"
   },
-  "include": [
-    "./src/**/*",
-    "../src/pages/update_history.tsx",
-    "../src/pages/talk/AudioSample.tsx",
-    "../src/components/StyleDropdown.tsx"
-  ]
+  "include": ["./src/**/*"]
 }

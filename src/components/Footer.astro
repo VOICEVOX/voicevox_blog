@@ -38,7 +38,10 @@ const { isDark } = Astro.props;
   </a>
 </div>
 <div class="container is-flex is-justify-content-center mt-2">
-  <a class={`is-size-7 ml-1 mr-1 ${isDark ? "has-text-primary" : ""}`}>
+  <a
+    data-privacy-policy-shower
+    class={`is-size-7 ml-1 mr-1 ${isDark ? "has-text-primary" : ""}`}
+  >
     {/* TODO: onClick={privacyPolicyShower} */}
     プライバシーポリシー
   </a>
@@ -46,3 +49,13 @@ const { isDark } = Astro.props;
     © Hiroshiba Kazuyuki
   </p>
 </div>
+
+<script>
+  import { $modal } from "@/store";
+
+  document.querySelectorAll("[data-privacy-policy-shower]").forEach((elem) => {
+    elem.addEventListener("click", () => {
+      $modal.setKey("privacyPolicy", true);
+    });
+  });
+</script>
