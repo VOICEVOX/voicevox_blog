@@ -11,6 +11,7 @@ export interface Props {
   imageAlt?: string;
   noindex?: boolean;
   children: any;
+  defaultHideHeader?: boolean; // アクセスした直後にヘッダーを隠すか
   isDark?: boolean;
   isNemo?: boolean;
 }
@@ -33,6 +34,7 @@ const {
   image: _image,
   imageAlt,
   noindex,
+  defaultHideHeader,
   isDark,
   isNemo,
 } = Astro.props;
@@ -105,7 +107,7 @@ const hasImage = imageUrl != undefined && imageAlt != undefined;
     }
   </head>
   <body class=`${isDark ? "has-background-black" : "has-background-white"}`>
-    <Header isDark={isDark} isNemo={isNemo} />
+    <Header defaultHide={defaultHideHeader} isDark={isDark} isNemo={isNemo} />
 
     <slot />
 

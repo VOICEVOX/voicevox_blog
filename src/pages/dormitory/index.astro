@@ -12,6 +12,7 @@ import TopIllustsContainer from "./_TopIllustsContainer.astro";
 import shareThumb from "@/constants/dormitory-top-illust-images/top-illust-009.png";
 import backgroundImage from "./images/nc238325.jpg";
 import { characterInfos } from "@constants/characterInfo";
+import { hideHeaderAttr } from "@store";
 
 const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src})`;
 ---
@@ -21,10 +22,10 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
   description="とある世界の不思議な建物、ボイボ寮。ここでは個性豊かな住民たちが暮らしています。"
   image={shareThumb}
   imageAlt=""
+  defaultHideHeader={true}
 >
   <div class="dormitory">
-    <header class="hero is-small">
-      {/* TODO: ref={headerRef}  */}
+    <header {...{ [hideHeaderAttr]: true }} class="hero is-small">
       <div class="hero-body">
         <div class="container has-text-centered">
           <h1 class="title is-2">ボイボ寮の住民たち</h1>

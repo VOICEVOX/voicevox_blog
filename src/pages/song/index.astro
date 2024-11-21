@@ -10,6 +10,7 @@ import shareThumb from "./share.png";
 import backgroundImage from "./background.png";
 import { characterInfos } from "@constants/characterInfo";
 import { characterKeys } from "@constants/characterEntry";
+import { showDownloadModalAttr } from "@store";
 
 import CharacterCard from "./CharacterCard";
 import OssGuidanceSection from "../_OssGuidanceSection.astro";
@@ -47,13 +48,6 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
   imageAlt=""
   isDark={true}
 >
-  {
-    /*
-    TODO:
-    showingHeader={true}
-    */
-  }
-
   <main class="song">
     <section class="section px-0 py-0">
       <div class="top">
@@ -67,7 +61,7 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
 
         <div class="buttons">
           <a
-            data-download-shower
+            {...{ [showDownloadModalAttr]: true }}
             class="button is-primary is-large is-rounded"
             target="_blank"
             rel="noreferrer"
@@ -148,19 +142,6 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
     <OssGuidanceSection isDark={true} />
   </main>
 </Base>
-
-<script>
-  import { $downloadModal } from "@/store";
-
-  document.addEventListener("astro:page-load", () => {
-    document.querySelectorAll("[data-download-shower]").forEach((elem) => {
-      elem.addEventListener("click", () => {
-        $downloadModal.set(true);
-        // TODO: context.sendEvent("download", "software");
-      });
-    });
-  });
-</script>
 
 <style lang="scss" define:vars={{ backgroundImageUrl }} is:global>
   @use "@/styles/vars.scss" as *;

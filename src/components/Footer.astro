@@ -5,6 +5,7 @@ interface Props {
 
 import { faGithub, faXTwitter } from "@fortawesome/free-brands-svg-icons";
 import FontAwesomeIcon from "./FontAwesomeIcon.astro";
+import { showPrivacyPolicyModalAttr } from "@store";
 
 const { isDark } = Astro.props;
 ---
@@ -37,27 +38,12 @@ const { isDark } = Astro.props;
 </div>
 <div class="container is-flex is-justify-content-center mt-2">
   <a
-    data-privacy-policy-shower
+    {...{ [showPrivacyPolicyModalAttr]: true }}
     class={`is-size-7 ml-1 mr-1 ${isDark ? "has-text-primary" : ""}`}
   >
-    {/* TODO: onClick={privacyPolicyShower} */}
     プライバシーポリシー
   </a>
   <p class={`is-size-7	ml-1 mr-1 ${isDark ? "has-text-white-bis" : ""}`}>
     © Hiroshiba Kazuyuki
   </p>
 </div>
-
-<script>
-  import { $privacyPolicyModal } from "@/store";
-
-  document.addEventListener("astro:page-load", () => {
-    document
-      .querySelectorAll("[data-privacy-policy-shower]")
-      .forEach((elem) => {
-        elem.addEventListener("click", () => {
-          $privacyPolicyModal.set(true);
-        });
-      });
-  });
-</script>

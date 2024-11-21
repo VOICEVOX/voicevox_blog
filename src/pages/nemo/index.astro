@@ -11,6 +11,7 @@ import { getSpeakerInfo, speakerKeys } from "./constants";
 import shareThumb from "./share.png";
 import teaserImage from "./teaser.png";
 import voicevoxIconImage from "@/assets/icon.png";
+import { showNemoGuidanceModalAttr, showNemoTermModalAttr } from "@store";
 
 const voicevoxIconImageUrl = `url(${(await getImage({ src: voicevoxIconImage })).src})`;
 ---
@@ -23,7 +24,6 @@ const voicevoxIconImageUrl = `url(${(await getImage({ src: voicevoxIconImage }))
   isDark={true}
   isNemo={true}
 >
-  {/* TODO: showingHeader={true} */}
   <main class="nemo">
     <section class="section py-0">
       <div class="top container is-max-widescreen">
@@ -46,7 +46,7 @@ const voicevoxIconImageUrl = `url(${(await getImage({ src: voicevoxIconImage }))
 
           <div class="buttons">
             <a
-              data-nemo-guidance-shower
+              {...{ [showNemoGuidanceModalAttr]: true }}
               class="button is-primary is-rounded"
               target="_blank"
               rel="noreferrer"
@@ -59,7 +59,7 @@ const voicevoxIconImageUrl = `url(${(await getImage({ src: voicevoxIconImage }))
               <span class="has-text-weight-semibold">ダウンロード</span>
             </a>
             <button
-              data-nemo-term-shower
+              {...{ [showNemoTermModalAttr]: true }}
               class="button is-normal is-rounded"
               type="button"
             >
@@ -127,25 +127,6 @@ VOICEVOXの音声合成をアプリケーションやサービスに組み込め
     }
   </main>
 </Base>
-
-<script>
-  import { $nemoTermModal, $nemoGuidanceModal } from "@/store";
-
-  document.addEventListener("astro:page-load", () => {
-    document.querySelectorAll("[data-nemo-term-shower]").forEach((elem) => {
-      elem.addEventListener("click", () => {
-        $nemoTermModal.set(true);
-      });
-    });
-
-    document.querySelectorAll("[data-nemo-guidance-shower]").forEach((elem) => {
-      elem.addEventListener("click", () => {
-        $nemoGuidanceModal.set(true);
-        // TODO: context.sendEvent("download", "nemo");
-      });
-    });
-  });
-</script>
 
 <style lang="scss" define:vars={{ voicevoxIconImageUrl }} is:global>
   @use "@/styles/helper.scss" as *;

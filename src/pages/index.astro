@@ -12,6 +12,7 @@ import shareThumb from "./talk/share.jpg";
 import logo from "./talk/logo.svg";
 import landingMovieThumb from "./talk/landing-movie-thumb.png";
 import landingMovie from "./talk/landing.mp4";
+import { hideHeaderAttr } from "@store";
 
 const landingMovieThumbUrl = (await getImage({ src: landingMovieThumb })).src;
 ---
@@ -21,13 +22,10 @@ const landingMovieThumbUrl = (await getImage({ src: landingMovieThumb })).src;
   description="無料で使える中品質なテキスト読み上げ・歌声合成ソフトウェア。商用・非商用問わず無料で、誰でも簡単にお使いいただけます。イントネーションを詳細に調整することも可能です。"
   image={shareThumb}
   imageAlt=""
+  defaultHideHeader={true}
 >
-  {/* TOOD: showingHeader={showingHeader} showingHeaderOnTop={false} */}
-  <!-- <Main setShowingHeader={setShowingHeader} /> -->
-
   <div class="landing">
-    <div class="first-view">
-      {/* TODO: ref={firstViewRef}  */}
+    <div {...{ [hideHeaderAttr]: true }} class="first-view">
       <header class="hero is-primary is-small">
         <div class="hero-body">
           <div class="container has-text-centered">

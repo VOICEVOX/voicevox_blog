@@ -31,6 +31,10 @@ import {
   getDormitoryCharacterPageUrl,
   getProductPageUrl,
 } from "@constants/url";
+import {
+  showDownloadModalAttr,
+  showLibraryTermIntroModalCharacterKeyAttr,
+} from "@store";
 
 import featureImage from "./feature.png";
 
@@ -242,18 +246,13 @@ const characterBackgroundColor = characterInfo.lightColor;
           {
             characterInfo.releaseDate == undefined && (
               <a
+                {...{ [showDownloadModalAttr]: true }}
                 class="button mt-5 is-primary is-rounded is-large"
                 target="_blank"
                 rel="noreferrer"
                 tab-index={0}
+                role="button"
               >
-                {/*
-                  TODO:
-                  onClick={() => {
-                    context.downloadModal.show();
-                    context.sendEvent("download", "software");
-                  }}
-                */}
                 <span class="icon">
                   <FontAwesomeIcon icon={faDownload} />
                 </span>
@@ -271,8 +270,9 @@ const characterBackgroundColor = characterInfo.lightColor;
             {
               characterInfo.policyUrl && (
                 <button
-                  data-ilbrary-term-intro-shower
-                  data-character-key={characterKey}
+                  {...{
+                    [showLibraryTermIntroModalCharacterKeyAttr]: characterKey,
+                  }}
                   class="button is-normal is-rounded"
                   type="button"
                 >
@@ -318,24 +318,6 @@ const characterBackgroundColor = characterInfo.lightColor;
     </section>
   </main>
 </Base>
-
-<script>
-  import type { CharacterKey } from "@constants/characterEntry";
-  import { $libraryTermIntroModal } from "@/store";
-
-  document.addEventListener("astro:page-load", () => {
-    document
-      .querySelectorAll("[data-ilbrary-term-intro-shower]")
-      .forEach((elem) => {
-        elem.addEventListener("click", () => {
-          const characterKey = elem.getAttribute(
-            "data-character-key",
-          ) as CharacterKey;
-          $libraryTermIntroModal.set({ show: true, characterKey });
-        });
-      });
-  });
-</script>
 
 <style lang="scss" define:vars={{ characterBackgroundColor }} is:global>
   @use "@/styles/vars.scss" as *;

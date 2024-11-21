@@ -55,6 +55,65 @@ const libraryTermIntroHtmls = (() => {
 
 <NemoTermModel client:load html={nemoReadmeHtml()} />
 
+<script>
+  import {
+    $downloadModal,
+    showDownloadModalAttr,
+    $libraryTermIntroModal,
+    showLibraryTermIntroModalCharacterKeyAttr,
+    $privacyPolicyModal,
+    showPrivacyPolicyModalAttr,
+    $nemoGuidanceModal,
+    showNemoGuidanceModalAttr,
+    $nemoTermModal,
+    showNemoTermModalAttr,
+  } from "@/store";
+  import type { CharacterKey } from "@constants/characterEntry";
+
+  document.addEventListener("astro:page-load", () => {
+    document.querySelectorAll(`[${showDownloadModalAttr}]`).forEach((elem) => {
+      elem.addEventListener("click", () => {
+        $downloadModal.set(true);
+        // TODO: context.sendEvent("download", "software");
+      });
+    });
+
+    document
+      .querySelectorAll(`[${showLibraryTermIntroModalCharacterKeyAttr}]`)
+      .forEach((elem) => {
+        elem.addEventListener("click", () => {
+          const characterKey = elem.getAttribute(
+            showLibraryTermIntroModalCharacterKeyAttr,
+          ) as CharacterKey;
+          $libraryTermIntroModal.set({ show: true, characterKey });
+        });
+      });
+
+    document
+      .querySelectorAll(`[${showPrivacyPolicyModalAttr}]`)
+      .forEach((elem) => {
+        elem.addEventListener("click", () => {
+          $privacyPolicyModal.set(true);
+        });
+      });
+
+    document
+      .querySelectorAll(`[${showNemoGuidanceModalAttr}]`)
+      .forEach((elem) => {
+        elem.addEventListener("click", () => {
+          $nemoGuidanceModal.set(true);
+          // TODO: context.sendEvent("download", "nemo");
+        });
+      });
+
+    document.querySelectorAll(`[${showNemoTermModalAttr}]`).forEach((elem) => {
+      elem.addEventListener("click", () => {
+        $nemoTermModal.set(true);
+      });
+    });
+  });
+</script>
+
 <style lang="scss" is:global>
   @use "@/styles/markdown";
 

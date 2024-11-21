@@ -1,7 +1,6 @@
 ---
 interface Props {
-  // showingHeader: boolean;
-  // showingHeaderOnTop: boolean;
+  defaultHide?: boolean; // アクセスした直後にヘッダーを隠すか
   isDark?: boolean;
   isNemo?: boolean;
   // isBurgerActive: boolean;
@@ -16,20 +15,15 @@ import FontAwesomeIcon from "./FontAwesomeIcon.astro";
 
 const iconUrl = (await getImage({ src: iconImage, width: 64 })).src;
 
-const { isDark, isNemo } = Astro.props;
+const { defaultHide, isDark, isNemo } = Astro.props;
 
 // TODO: ちゃんと設定可能にする
-const showingHeader = true;
-const showingHeaderOnTop = true;
 const isBurgerActive = false;
 ---
 
 <nav
-  class={`navbar is-fixed-top has-shadow ${
-    showingHeader ? "" : "is-hidden"
-  } ${!showingHeaderOnTop ? "navbar-with-animation" : ""} ${
-    isDark ? "is-black" : ""
-  }`}
+  data-voicevox-header
+  class={`navbar is-fixed-top has-shadow ${defaultHide ? "is-hidden" : ""} ${isDark ? "is-black" : ""}`}
   role="navigation"
   aria-label="main navigation"
 >
@@ -95,16 +89,31 @@ const isBurgerActive = false;
     </div>
   </div>
 </nav>
+
 {/* 空間を空けるために必要 */}
 <div
-  class={`navbar height-holder ${
-    showingHeader && showingHeaderOnTop ? "" : "is-hidden"
-  }`}
+  data-voicevox-header-holder
+  class={`navbar height-holder ${defaultHide ? "is-hidden" : ""}`}
 >
 </div>
 
+<script is:inline define:vars={{ defaultHide }}>
+  window.__voicevoxDefaultHide = defaultHide;
+</script>
+
 <script>
-  import { $downloadModal, $nemoGuidanceModal } from "@/store";
+  declare global {
+    interface Window {
+      __voicevoxDefaultHide: boolean;
+    }
+  }
+
+  import {
+    $downloadModal,
+    $nemoGuidanceModal,
+    $showingHeader,
+    hideHeaderAttr,
+  } from "@/store";
 
   document.addEventListener("astro:page-load", () => {
     document
@@ -121,5 +130,36 @@ const isBurgerActive = false;
           }
         });
       });
+
+    const header = document.querySelector("[data-voicevox-header]");
+    const headerHolder = document.querySelector(
+      "[data-voicevox-header-holder]",
+    );
+
+    $showingHeader.set(!window.__voicevoxDefaultHide);
+
+    // ヘッダーの表示状態に応じてCSSを切り替える
+    $showingHeader.subscribe((showingHeader) => {
+      if (!header || !headerHolder)
+        throw new Error("header or headerHolder is not found");
+
+      if (showingHeader) {
+        header.classList.remove("is-hidden");
+        headerHolder.classList.remove("is-hidden");
+      } else {
+        header.classList.add("is-hidden");
+        headerHolder.classList.add("is-hidden");
+      }
+    });
+
+    // ヘッダーを隠すための属性を持つ要素が表示されている間はヘッダーを隠す
+    document.querySelectorAll(`[${hideHeaderAttr}]`).forEach((elem) => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          $showingHeader.set(!entry.isIntersecting);
+        });
+      });
+      observer.observe(elem);
+    });
   });
 </script>

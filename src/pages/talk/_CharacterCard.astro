@@ -10,29 +10,13 @@ import { Image } from "astro:assets";
 import AudioSample from "./AudioSample";
 
 import { getProductPageUrl } from "@constants/url";
+import { showLibraryTermIntroModalCharacterKeyAttr } from "@store";
 
 const { characterInfo } = Astro.props;
 const characterKey = characterInfo.key;
 
 import "@/styles/helper.scss"; // NOTE: PlayButtonのため
 ---
-
-{
-  /* 
-  TODO:
-  // ファーストビュー用のビューを超えたらヘッダーを表示する
-  const firstViewRef = useRef<HTMLDivElement>(null)
-  useEffect(() => {
-    if (!firstViewRef.current) return
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        setShowingHeader(!entry.isIntersecting)
-      })
-    })
-    observer.observe(firstViewRef.current)
-  }, [firstViewRef])
-  */
-}
 
 <div class="column is-6-tablet is-4-desktop">
   <div class="card">
@@ -71,8 +55,7 @@ import "@/styles/helper.scss"; // NOTE: PlayButtonのため
       }
       <div class="pt-3">
         <button
-          data-ilbrary-term-intro-shower
-          data-character-key={characterKey}
+          {...{ [showLibraryTermIntroModalCharacterKeyAttr]: characterKey }}
           class="button is-normal is-rounded"
           type="button"
         >
@@ -82,24 +65,6 @@ import "@/styles/helper.scss"; // NOTE: PlayButtonのため
     </div>
   </div>
 </div>
-
-<script>
-  import type { CharacterKey } from "@constants/characterEntry";
-  import { $libraryTermIntroModal } from "@/store";
-
-  document.addEventListener("astro:page-load", () => {
-    document
-      .querySelectorAll("[data-ilbrary-term-intro-shower]")
-      .forEach((elem) => {
-        elem.addEventListener("click", () => {
-          const characterKey = elem.getAttribute(
-            "data-character-key",
-          ) as CharacterKey;
-          $libraryTermIntroModal.set({ show: true, characterKey });
-        });
-      });
-  });
-</script>
 
 <style lang="scss" is:global>
   @use "bulma/sass/helpers" as *;
