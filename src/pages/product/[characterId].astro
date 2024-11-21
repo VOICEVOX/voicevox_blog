@@ -201,7 +201,7 @@ const characterBackgroundColor = characterInfo.lightColor;
                   <div
                     key={obj.characterKey}
                     ref={obj.ref}
-                    class={`image-wrapper ${
+                    class={`height-image-wrapper ${
                       obj.state != "staying" && `${obj.state}-${obj.direction}`
                     }`}
                   >
@@ -214,7 +214,7 @@ const characterBackgroundColor = characterInfo.lightColor;
             )
             */
           }
-          <div class={`image-wrapper`}>
+          <div class="height-image-wrapper">
             <div>
               <Image
                 src={characterInfo.portraitImage}
@@ -264,6 +264,7 @@ const characterBackgroundColor = characterInfo.lightColor;
             )
           }
           <div class="terms mt-5">
+            {/* TODO: スマホビューのときはボタンを縦配置にしたい */}
             <a href="/term/" class="button is-normal is-rounded">
               <span>VOICEVOX 利用規約</span>
             </a>
@@ -391,23 +392,7 @@ const characterBackgroundColor = characterInfo.lightColor;
           }
         }
 
-        .image-wrapper {
-          max-width: 100vw; // iOSで突き抜けたので
-          height: 100%;
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          left: 0;
-          right: 0;
-
-          // 画像を中央に配置する
-          display: flex;
-          justify-content: center;
-          * {
-            height: 100%;
-            flex: 0 0 auto;
-          }
-        }
+        /*
         .image-wrapper.entering-right {
           animation: entering-right 0.15s ease-out;
           animation-fill-mode: both;
@@ -446,6 +431,7 @@ const characterBackgroundColor = characterInfo.lightColor;
             transform: translateX(0);
           }
         }
+        */
 
         .info {
           position: absolute;

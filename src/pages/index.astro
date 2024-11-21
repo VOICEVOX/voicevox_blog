@@ -25,12 +25,18 @@ const landingMovieThumbUrl = (await getImage({ src: landingMovieThumb })).src;
   defaultHideHeader={true}
 >
   <div class="landing">
-    <div {...{ [hideHeaderAttr]: true }} class="first-view">
-      <header class="hero is-primary is-small">
+    <div class="first-view">
+      <header {...{ [hideHeaderAttr]: true }} class="hero is-primary is-small">
         <div class="hero-body">
           <div class="container has-text-centered">
             <div class="title top-title">
-              <Image src={logo} alt="VOICEVOX" />
+              <Image
+                src={logo}
+                alt="VOICEVOX"
+                style={{
+                  height: "100%",
+                }}
+              />
             </div>
             <h2 class="subtitle has-text-weight-semibold">
               無料で使える中品質なテキスト読み上げ・歌声合成ソフトウェア

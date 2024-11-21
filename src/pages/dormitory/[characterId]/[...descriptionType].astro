@@ -47,14 +47,22 @@ const characterKey = characterInfo.key;
           <div class="columns m-0" style={{ height: "100%" }}>
             <div
               class="column is-4 portrait-column"
-              style={{ borderColor: characterInfo.color }}
+              style={{ borderColor: characterInfo.color, position: "relative" }}
             >
-              <Image
-                src={characterInfo.portraitImage}
-                alt={characterInfo.name}
-                width={640}
-                style={{ height: "100%", width: "100%" }}
-              />
+              <div class="height-image-wrapper">
+                <div>
+                  <Image
+                    src={characterInfo.portraitImage}
+                    alt={characterInfo.name}
+                    width={640}
+                    style={{
+                      height: "100%",
+                      display: "block",
+                      objectFit: "contain",
+                    }}
+                  />
+                </div>
+              </div>
             </div>
             <div class="column description-column">
               <div class="section">
@@ -290,19 +298,10 @@ const characterKey = characterInfo.key;
             // 大きい画面では左側にいっぱい画像表示
             @include tablet {
               border-right: solid;
-              img {
-                object-fit: cover !important;
-              }
             }
             // スマホ画面ではファーストビューに画像を表示
             @include mobile {
               height: 100vh;
-              img {
-                // 画像は1:1に加工されている
-                @media (min-aspect-ratio: 1/1) {
-                  object-fit: contain !important;
-                }
-              }
             }
           }
         }
