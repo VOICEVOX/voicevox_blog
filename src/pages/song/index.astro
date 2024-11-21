@@ -67,31 +67,19 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
 
         <div class="buttons">
           <a
+            data-download-shower
             class="button is-primary is-large is-rounded"
             target="_blank"
             rel="noreferrer"
             tab-index={0}
+            role="button"
           >
-            {
-              /*
-              TODO:
-              onClick={() => {
-                context.downloadModal.show();
-                context.sendEvent("download", "software");
-              }}
-              */
-            }
             <span class="icon">
               <FontAwesomeIcon icon={faDownload} />
             </span>
             <span class="has-text-weight-semibold">ダウンロード</span>
           </a>
-          <a
-            href="/term/"
-            class="button is-normal is-rounded"
-            type="button"
-            role="button"
-          >
+          <a href="/term/" class="button is-normal is-rounded" role="button">
             利用規約
           </a>
         </div>
@@ -160,6 +148,19 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
     <OssGuidanceSection isDark={true} />
   </main>
 </Base>
+
+<script>
+  import { $downloadModal } from "@/store";
+
+  document.addEventListener("astro:page-load", () => {
+    document.querySelectorAll("[data-download-shower]").forEach((elem) => {
+      elem.addEventListener("click", () => {
+        $downloadModal.set(true);
+        // TODO: context.sendEvent("download", "software");
+      });
+    });
+  });
+</script>
 
 <style lang="scss" define:vars={{ backgroundImageUrl }} is:global>
   @use "@/styles/vars.scss" as *;

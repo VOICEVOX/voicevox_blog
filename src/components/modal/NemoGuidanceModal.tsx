@@ -1,43 +1,34 @@
-// Nemoの案内モーダル
+/**
+ * Nemoの案内モーダル
+ */
 
-import { faDownload } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import React, { useContext } from "react"
-import { GlobalContext } from "../contexts/context"
-import { useModalController } from "../hooks/hook"
-import { NemoDownloadModal } from "./nemoDownloadModal"
+import { faDownload } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useStore } from "@nanostores/react";
 
-export const NemoGuidanceModal: React.FC<{
-  isActive: boolean
-  hide: () => void
-}> = props => {
-  const context = useContext(GlobalContext)
+import {
+  $downloadModal,
+  $nemoDownloadModal,
+  $nemoGuidanceModal,
+} from "@/store";
 
-  const {
-    showing: showingNemoDownloadModal,
-    show: showNemoDownloadModal,
-    hide: hideNemoDownloadModal,
-  } = useModalController()
+export default () => {
+  const isActive = useStore($nemoGuidanceModal);
+  const hide = () => $nemoGuidanceModal.set(false);
 
   return (
     <>
       <div
-        className={
-          "modal-nemo-guidance modal" + (props.isActive ? " is-active" : "")
-        }
+        className={"modal-nemo-guidance modal" + (isActive ? " is-active" : "")}
       >
-        <div
-          className="modal-background"
-          onClick={props.hide}
-          role="presentation"
-        />
+        <div className="modal-background" onClick={hide} role="presentation" />
         <div className="modal-card">
           <header className="modal-card-head has-text-centered">
             <p className="modal-card-title">VOICEVOX Nemo ご利用案内</p>
             <button
               className="delete"
               aria-label="close"
-              onClick={props.hide}
+              onClick={hide}
               type="button"
             ></button>
           </header>
@@ -49,8 +40,8 @@ export const NemoGuidanceModal: React.FC<{
               <a
                 className="button is-align-self-center is-primary is-rounded is-medium"
                 onClick={() => {
-                  context.downloadModal.show()
-                  context.sendEvent("download", "software")
+                  $downloadModal.set(true);
+                  // TODO: context.sendEvent("download", "software");
                 }}
                 target="_blank"
                 rel="noreferrer"
@@ -83,7 +74,7 @@ export const NemoGuidanceModal: React.FC<{
               <p>Nemo エンジンを追加</p>
               <a
                 className="button is-align-self-center is-primary is-rounded is-medium"
-                onClick={showNemoDownloadModal}
+                onClick={() => $nemoDownloadModal.set(true)}
                 target="_blank"
                 rel="noreferrer"
                 tabIndex={0}
@@ -111,10 +102,6 @@ export const NemoGuidanceModal: React.FC<{
           <footer className="modal-card-foot"></footer>
         </div>
       </div>
-      <NemoDownloadModal
-        isActive={showingNemoDownloadModal}
-        hide={hideNemoDownloadModal}
-      />
     </>
-  )
-}
+  );
+};

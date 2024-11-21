@@ -1,15 +1,13 @@
-import React from "react"
-
 export default <T extends string>({
   label,
   selected,
   setSelected,
   candidates,
 }: {
-  label: string
-  selected: T
-  setSelected: (selected: T) => void
-  candidates: T[]
+  label: string;
+  selected: T;
+  setSelected: (selected: T) => void;
+  candidates: T[];
 }) => {
   return (
     <div className="columns is-tablet is-centered is-vcentered py-0 my-2">
@@ -37,5 +35,5 @@ export default <T extends string>({
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

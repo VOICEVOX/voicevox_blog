@@ -1,19 +1,27 @@
-import { Link, graphql, useStaticQuery } from "gatsby"
-import React, { useEffect, useState } from "react"
-import { APP_VERSION } from "../constants"
-import DownloadModalSelecter from "./downloadModalSelecter"
+import { useEffect, useState } from "react";
+import { useStore } from "@nanostores/react";
 
-type OsType = "Windows" | "Mac" | "Linux"
-type ModeType = "GPU / CPU" | "CPU" | "CPU (Intel)" | "CPU (Apple)"
-type PackageType = "インストーラー" | "Zip" | "tar.gz"
+import Selector from "./Selector";
+
+import { APP_VERSION } from "@constants";
+import linuxInstallCpu from "@/assets/script/linuxInstallCpu.sh?url";
+import linuxInstallNvidia from "@/assets/script/linuxInstallNvidia.sh?url";
+import { $downloadModal } from "@store";
+
+type OsType = "Windows" | "Mac" | "Linux";
+type ModeType = "GPU / CPU" | "CPU" | "CPU (Intel)" | "CPU (Apple)";
+type PackageType = "インストーラー" | "Zip" | "tar.gz";
 
 const modeAvailables: Record<OsType, ModeType[]> = {
   Windows: ["GPU / CPU", "CPU"],
   Mac: ["CPU (Intel)", "CPU (Apple)"],
   Linux: ["GPU / CPU", "CPU"],
-}
+};
 
-const packageAvailables = {
+const packageAvailables: Record<
+  OsType,
+  Partial<Record<ModeType, PackageType[]>>
+> = {
   Windows: {
     "GPU / CPU": ["インストーラー", "Zip"],
     CPU: ["インストーラー", "Zip"],
@@ -23,23 +31,11 @@ const packageAvailables = {
     "CPU (Apple)": ["インストーラー", "Zip"],
   },
   Linux: { "GPU / CPU": ["インストーラー"], CPU: ["インストーラー", "tar.gz"] },
-} as const satisfies Record<OsType, Partial<Record<ModeType, PackageType[]>>>
+};
 
-export const DownloadModal: React.FC<{
-  isActive: boolean
-  hide: () => void
-}> = props => {
-  const scriptNodes: { name: string; publicURL: string }[] =
-    useStaticQuery(graphql`
-      query {
-        allFile(filter: { dir: { regex: "/scripts$/" } }) {
-          nodes {
-            name
-            publicURL
-          }
-        }
-      }
-    `).allFile.nodes
+export default function DownloadModal() {
+  const isActive = useStore($downloadModal);
+  const hide = () => $downloadModal.set(false);
 
   const downloadUrls: Record<
     OsType,
@@ -97,15 +93,13 @@ export const DownloadModal: React.FC<{
     Linux: {
       "GPU / CPU": {
         インストーラー: {
-          url: scriptNodes.find(value => value.name == "linuxInstallNvidia")!
-            .publicURL,
+          url: linuxInstallNvidia,
           name: `VOICEVOX.Installer.${APP_VERSION}.Linux.sh`,
         },
       },
       CPU: {
         インストーラー: {
-          url: scriptNodes.find(value => value.name == "linuxInstallCpu")!
-            .publicURL,
+          url: linuxInstallCpu,
           name: `VOICEVOX-CPU.Installer.${APP_VERSION}.Linux.sh`,
         },
         "tar.gz": {
@@ -114,75 +108,69 @@ export const DownloadModal: React.FC<{
         },
       },
     },
-  }
+  };
 
-  const [selectedOs, setSelectedOs] = useState<OsType>("Windows")
-  const [selectedMode, setSelectedMode] = useState<ModeType>("GPU / CPU")
+  const [selectedOs, setSelectedOs] = useState<OsType>("Windows");
+  const [selectedMode, setSelectedMode] = useState<ModeType>("GPU / CPU");
   const [selectedPackage, setSelectedPackage] =
-    useState<PackageType>("インストーラー")
+    useState<PackageType>("インストーラー");
 
   const selectedOrDefaultMode = modeAvailables[selectedOs].includes(
-    selectedMode
+    selectedMode,
   )
     ? selectedMode
-    : modeAvailables[selectedOs][0]
+    : modeAvailables[selectedOs][0];
 
   const selectedOrDefaultPackage = packageAvailables[selectedOs][
     selectedOrDefaultMode
   ]!.includes(selectedPackage)
     ? selectedPackage
-    : packageAvailables[selectedOs][selectedOrDefaultMode]![0]
+    : packageAvailables[selectedOs][selectedOrDefaultMode]![0];
 
   useEffect(() => {
-    const userAgent = window.navigator.userAgent
+    const userAgent = window.navigator.userAgent;
     if (userAgent.includes("Windows")) {
-      selectOs("Windows")
+      selectOs("Windows");
     } else if (userAgent.includes("Mac")) {
-      selectOs("Mac")
+      selectOs("Mac");
     } else if (userAgent.includes("Linux")) {
-      selectOs("Linux")
+      selectOs("Linux");
     }
-  }, [])
+  }, []);
 
   const selectOs = (os: OsType) => {
-    setSelectedOs(os)
+    setSelectedOs(os);
     // 変更先のOSで選択できないモードの場合、最初のモードを選択する
     selectMode(
       os,
       modeAvailables[os].includes(selectedMode)
         ? selectedMode
-        : modeAvailables[os][0]
-    )
-  }
+        : modeAvailables[os][0],
+    );
+  };
   const selectMode = (os: OsType, mode: ModeType) => {
-    setSelectedMode(mode)
+    setSelectedMode(mode);
     if (!packageAvailables[os][mode]!.includes(selectedPackage)) {
-      setSelectedPackage(packageAvailables[os][mode]![0])
+      setSelectedPackage(packageAvailables[os][mode]![0]);
     }
-  }
+  };
 
   return (
-    <div
-      className={"modal-download modal" + (props.isActive ? " is-active" : "")}
-    >
-      <div
-        className="modal-background"
-        onClick={props.hide}
-        role="presentation"
-      />
+    <div className={"modal-download modal" + (isActive ? " is-active" : "")}>
+      <div className="modal-background" onClick={hide} role="presentation" />
       <div className="modal-card">
         <header className="modal-card-head has-text-centered">
           <p className="modal-card-title">VOICEVOX ダウンロード</p>
           <button
             className="delete"
             aria-label="close"
-            onClick={props.hide}
+            onClick={hide}
             type="button"
-          ></button>
+          />
         </header>
 
         <section className="modal-card-body">
-          <DownloadModalSelecter
+          <Selector
             label="OS"
             selected={selectedOs}
             setSelected={selectOs}
@@ -191,21 +179,21 @@ export const DownloadModal: React.FC<{
 
           <hr className="my-3" />
 
-          <DownloadModalSelecter
+          <Selector
             label="対応モード"
             selected={selectedOrDefaultMode}
-            setSelected={mode => selectMode(selectedOs, mode)}
+            setSelected={(mode) => selectMode(selectedOs, mode)}
             candidates={modeAvailables[selectedOs]}
           />
           <p className="has-text-centered is-size-7">
             ※ GPUモードの方が快適ですが、利用するためには
-            <Link to="/qa">対応するGPU</Link>
+            <a href="/qa/">対応するGPU</a>
             が必要です
           </p>
 
           <hr className="my-3" />
 
-          <DownloadModalSelecter
+          <Selector
             label="パッケージ"
             selected={selectedOrDefaultPackage}
             setSelected={setSelectedPackage}
@@ -217,9 +205,9 @@ export const DownloadModal: React.FC<{
         </section>
 
         <footer className="modal-card-foot is-justify-content-flex-end">
-          <Link to="/term/" className="button">
+          <a href="/term/" className="button" role="button">
             <span>利用規約</span>
-          </Link>
+          </a>
           <a
             href={
               downloadUrls[selectedOs][selectedMode]?.[selectedPackage]?.url
@@ -230,13 +218,12 @@ export const DownloadModal: React.FC<{
             target="_blank"
             rel="noreferrer"
             className="button is-primary"
-            type="button"
-            role={"button"}
+            role="button"
           >
             <span className="has-text-weight-semibold">ダウンロード</span>
           </a>
         </footer>
       </div>
     </div>
-  )
+  );
 }

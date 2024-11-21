@@ -22,7 +22,7 @@ export default (props: {
             aria-label="close"
             onClick={props.hide}
             type="button"
-          ></button>
+          />
         </header>
         <section className="modal-card-body">
           <div

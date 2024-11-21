@@ -3,7 +3,6 @@
  */
 
 import { useStore } from "@nanostores/react";
-import { useMemo } from "react";
 
 import ModalMarkdown from "./MarkdownModal";
 

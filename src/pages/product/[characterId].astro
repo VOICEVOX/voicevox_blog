@@ -173,7 +173,7 @@ const characterBackgroundColor = characterInfo.lightColor;
           href={getProductPageUrl(characterInfos[prevCharacterKey])}
           class="button prev circle-icon is-black"
           aria-label="前のキャラクターを表示"
-          type="button"
+          role="button"
         >
           {/* TODO: onClick={() => changeToCharacter(prevCharacterKey)}*/}
           <FontAwesomeIcon icon={faCircleLeft} />
@@ -182,7 +182,7 @@ const characterBackgroundColor = characterInfo.lightColor;
           href={getProductPageUrl(characterInfos[postCharacterKey])}
           class="button post circle-icon is-black"
           aria-label="次のキャラクターを表示"
-          type="button"
+          role="button"
         >
           {/* TODO: onClick={() => changeToCharacter(postCharacterKey)}*/}
           <FontAwesomeIcon icon={faCircleRight} />

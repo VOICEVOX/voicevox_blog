@@ -21,8 +21,9 @@ const voicevoxIconImageUrl = `url(${(await getImage({ src: voicevoxIconImage }))
   image={shareThumb}
   imageAlt=""
   isDark={true}
+  isNemo={true}
 >
-  {/* TODO: showingHeader={true} isNemo={true} */}
+  {/* TODO: showingHeader={true} */}
   <main class="nemo">
     <section class="section py-0">
       <div class="top container is-max-widescreen">
@@ -45,20 +46,13 @@ const voicevoxIconImageUrl = `url(${(await getImage({ src: voicevoxIconImage }))
 
           <div class="buttons">
             <a
+              data-nemo-guidance-shower
               class="button is-primary is-rounded"
               target="_blank"
               rel="noreferrer"
               tab-index={0}
+              role="button"
             >
-              {
-                /*
-                TODO:
-                onClick={() => {
-                  context.nemoGuidanceModal.show();
-                  context.sendEvent("download", "nemo");
-                }}
-                */
-              }
               <span class="icon">
                 <FontAwesomeIcon icon={faDownload} />
               </span>
@@ -135,12 +129,19 @@ VOICEVOXの音声合成をアプリケーションやサービスに組み込め
 </Base>
 
 <script>
-  import { $nemoTermModal } from "@/store";
+  import { $nemoTermModal, $nemoGuidanceModal } from "@/store";
 
   document.addEventListener("astro:page-load", () => {
     document.querySelectorAll("[data-nemo-term-shower]").forEach((elem) => {
       elem.addEventListener("click", () => {
         $nemoTermModal.set(true);
+      });
+    });
+
+    document.querySelectorAll("[data-nemo-guidance-shower]").forEach((elem) => {
+      elem.addEventListener("click", () => {
+        $nemoGuidanceModal.set(true);
+        // TODO: context.sendEvent("download", "nemo");
       });
     });
   });

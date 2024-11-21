@@ -1,23 +1,25 @@
 // Nemoのダウンロードモーダル
+import { useStore } from "@nanostores/react";
+import { useEffect, useState } from "react";
 
-import { Link } from "gatsby"
-import React, { useEffect, useState } from "react"
-import { NEMO_VERSION } from "../constants"
-import DownloadModalSelecter from "./downloadModalSelecter"
+import DownloadModalSelecter from "./Selector";
 
-type OsType = "Windows" | "Mac" | "Linux"
-type ModeType = "GPU / CPU" | "CPU" | "CPU (Intel)" | "CPU (Apple)"
+import { NEMO_VERSION } from "@/constants";
+import { $nemoDownloadModal } from "@/store";
+
+type OsType = "Windows" | "Mac" | "Linux";
+type ModeType = "GPU / CPU" | "CPU" | "CPU (Intel)" | "CPU (Apple)";
 
 const modeAvailables: Record<OsType, ModeType[]> = {
   Windows: ["GPU / CPU", "CPU"],
   Mac: ["CPU (Intel)", "CPU (Apple)"],
   Linux: ["GPU / CPU", "CPU"],
-}
+};
 
-export const NemoDownloadModal: React.FC<{
-  isActive: boolean
-  hide: () => void
-}> = props => {
+export default () => {
+  const isActive = useStore($nemoDownloadModal);
+  const hide = () => $nemoDownloadModal.set(false);
+
   const downloadUrls: Record<
     OsType,
     Partial<Record<ModeType, { url: string; name: string }>>
@@ -52,36 +54,30 @@ export const NemoDownloadModal: React.FC<{
         name: `VOICEVOX-CPU.Nemo.${NEMO_VERSION}.Linux.vvpp`,
       },
     },
-  }
+  };
 
-  const [selectedOs, setSelectedOs] = useState<OsType>("Windows")
-  const [selectedMode, setSelectedMode] = useState<ModeType>("GPU / CPU")
+  const [selectedOs, setSelectedOs] = useState<OsType>("Windows");
+  const [selectedMode, setSelectedMode] = useState<ModeType>("GPU / CPU");
 
   // 存在しない組み合わせのときに選択中のものを変更する
   useEffect(() => {
-    if (!modeAvailables[selectedOs].find(value => value == selectedMode)) {
-      setSelectedMode(modeAvailables[selectedOs][0])
+    if (!modeAvailables[selectedOs].find((value) => value == selectedMode)) {
+      setSelectedMode(modeAvailables[selectedOs][0]);
     }
-  }, [selectedOs, selectedMode])
+  }, [selectedOs, selectedMode]);
 
   return (
-    <div
-      className={"modal-download modal" + (props.isActive ? " is-active" : "")}
-    >
-      <div
-        className="modal-background"
-        onClick={props.hide}
-        role="presentation"
-      />
+    <div className={"modal-download modal" + (isActive ? " is-active" : "")}>
+      <div className="modal-background" onClick={hide} role="presentation" />
       <div className="modal-card">
         <header className="modal-card-head has-text-centered">
           <p className="modal-card-title">Nemo エンジン ダウンロード</p>
           <button
             className="delete"
             aria-label="close"
-            onClick={props.hide}
+            onClick={hide}
             type="button"
-          ></button>
+          />
         </header>
 
         <section className="modal-card-body">
@@ -102,7 +98,7 @@ export const NemoDownloadModal: React.FC<{
           />
           <p className="has-text-centered is-size-7">
             ※ GPUモードの方が快適ですが、利用するためには
-            <Link to="/qa">対応するGPU</Link>
+            <a href="/qa/">対応するGPU</a>
             が必要です
           </p>
 
@@ -124,13 +120,12 @@ export const NemoDownloadModal: React.FC<{
             target="_blank"
             rel="noreferrer"
             className="button is-primary"
-            type="button"
-            role={"button"}
+            role="button"
           >
             <span className="has-text-weight-semibold">ダウンロード</span>
           </a>
         </footer>
       </div>
     </div>
-  )
-}
+  );
+};

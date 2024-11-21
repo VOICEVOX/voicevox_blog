@@ -3,6 +3,7 @@ interface Props {
   // showingHeader: boolean;
   // showingHeaderOnTop: boolean;
   isDark?: boolean;
+  isNemo?: boolean;
   // isBurgerActive: boolean;
 }
 
@@ -15,7 +16,7 @@ import FontAwesomeIcon from "./FontAwesomeIcon.astro";
 
 const iconUrl = (await getImage({ src: iconImage, width: 64 })).src;
 
-const { isDark } = Astro.props;
+const { isDark, isNemo } = Astro.props;
 
 // TODO: ちゃんと設定可能にする
 const showingHeader = true;
@@ -71,31 +72,20 @@ const isBurgerActive = false;
       }
       <a
         href="https://hiho.fanbox.cc/"
-        target={"_blank"}
-        rel={"noreferrer"}
+        target="_blank"
+        rel="noreferrer"
         class="navbar-item"
       >
         pixivFANBOX
       </a>
       <div class="navbar-item py-0">
         <a
+          data-header-download-shower
+          data-is-nemo={isNemo}
           class="button is-primary is-rounded"
-          target="_blank"
-          rel="noreferrer"
-          tabindex={0}
+          tab-index={0}
+          role="button"
         >
-          {
-            /*
-        onClick={() => {
-          if (!isNemo) {
-            context.downloadModal.show();
-            context.sendEvent("download", "software");
-          } else {
-            context.nemoGuidanceModal.show();
-            context.sendEvent("download", "nemo");
-          }
-        }}*/
-          }
           <span class="icon">
             <FontAwesomeIcon icon={faDownload} />
           </span>
@@ -112,3 +102,24 @@ const isBurgerActive = false;
   }`}
 >
 </div>
+
+<script>
+  import { $downloadModal, $nemoGuidanceModal } from "@/store";
+
+  document.addEventListener("astro:page-load", () => {
+    document
+      .querySelectorAll("[data-header-download-shower]")
+      .forEach((elem) => {
+        elem.addEventListener("click", () => {
+          const isNemo = elem.hasAttribute("data-is-nemo");
+          if (!isNemo) {
+            $downloadModal.set(true);
+            // TODO: context.sendEvent("download", "software");
+          } else {
+            $nemoGuidanceModal.set(true);
+            // TODO: context.sendEvent("download", "nemo");
+          }
+        });
+      });
+  });
+</script>

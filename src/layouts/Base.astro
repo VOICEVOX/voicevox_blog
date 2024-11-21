@@ -12,6 +12,7 @@ export interface Props {
   noindex?: boolean;
   children: any;
   isDark?: boolean;
+  isNemo?: boolean;
 }
 
 import { getImage } from "astro:assets";
@@ -33,6 +34,7 @@ const {
   imageAlt,
   noindex,
   isDark,
+  isNemo,
 } = Astro.props;
 
 // imageとimageAltが片方だけ指定されている場合はエラーを出す
@@ -103,7 +105,7 @@ const hasImage = imageUrl != undefined && imageAlt != undefined;
     }
   </head>
   <body class=`${isDark ? "has-background-black" : "has-background-white"}`>
-    <Header isDark={isDark} />
+    <Header isDark={isDark} isNemo={isNemo} />
 
     <slot />
 

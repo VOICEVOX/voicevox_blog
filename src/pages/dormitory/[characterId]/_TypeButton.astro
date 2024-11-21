@@ -25,7 +25,7 @@ const selected = selectedType == targetType;
   href={`${getDormitoryCharacterPageUrl(characterInfo)}${
     targetType == "profile" ? "" : targetType + "/"
   }`}
-  type="button"
+  role="button"
 >
   <span>{targetType == "profile" ? "プロフィール" : "呼び方"}</span>
 </a>

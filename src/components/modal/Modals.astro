@@ -1,8 +1,11 @@
 ---
 import type { MarkdownInstance } from "astro";
 
+import DownloadModal from "./download/DownloadModal";
+import DownloadNemoModal from "./download/DownloadNemoModal";
 import LibraryTermIntroModal from "./LibraryTermIntroModal";
 import { PrivacyPolicyModal, NemoTermModel } from "./MarkdownModals";
+import NemoGuidanceModal from "./NemoGuidanceModal";
 
 import { compiledContent as privacyPolicyHtml } from "@/assets/privacy-policy.md";
 import { compiledContent as nemoReadmeHtml } from "@/assets/nemo-term.md";
@@ -35,12 +38,21 @@ const libraryTermIntroHtmls = (() => {
 })();
 ---
 
+{/* 他のモーダルを開くので手前に表示 */}
+<NemoGuidanceModal client:load />
+
+<DownloadModal client:load />
+
+<DownloadNemoModal client:load />
+
 <LibraryTermIntroModal
   client:load
   htmls={libraryTermIntroHtmls}
   templateHtml={libraryTermIntroTemplateHtml()}
 />
+
 <PrivacyPolicyModal client:load html={privacyPolicyHtml()} />
+
 <NemoTermModel client:load html={nemoReadmeHtml()} />
 
 <style lang="scss" is:global>
