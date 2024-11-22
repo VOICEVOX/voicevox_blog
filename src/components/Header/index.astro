@@ -1,0 +1,17 @@
+---
+interface Props {
+  defaultHide?: boolean; // アクセスした直後にヘッダーを隠すか
+  isDark?: boolean;
+  isNemo?: boolean;
+}
+
+import { getImage } from "astro:assets";
+
+import Header from "./Header.tsx";
+
+import iconImage from "@assets/icon.png";
+
+const iconUrl = (await getImage({ src: iconImage, width: 64 })).src;
+---
+
+<Header client:load {...Astro.props} iconUrl={iconUrl} />

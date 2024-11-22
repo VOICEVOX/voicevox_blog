@@ -59,7 +59,7 @@ export const dormitoryAudios = makeAssetsRecordOptional(
 export const dormitoryImages = makeAssetsRecordOptional(
   characterKeys,
   characterEntries,
-  import.meta.glob<ImageMetadata>("./dormitory-images/*.png", {
+  import.meta.glob<ImageMetadata>("./dormitory-images/*.{png,jpg}", {
     eager: true,
     import: "default",
   }),

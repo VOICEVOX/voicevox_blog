@@ -46,9 +46,3 @@ export const $nemoGuidanceModal = atom<boolean>(false);
 /** Nemo案内モーダルを表示するための属性。この属性を持つ要素がクリックされるとモーダルを表示する */
 export const showNemoGuidanceModalAttr =
   "data-voicevox-show-nemo-guidance-modal";
-
-/** ヘッダーの表示 */
-export const $showingHeader = atom<boolean>(true);
-
-/** ヘッダーを隠すための属性。この属性を持つ要素が表示されている間はヘッダーを隠す */
-export const hideHeaderAttr = "data-voicevox-hide-header";

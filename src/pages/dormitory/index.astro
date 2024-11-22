@@ -12,7 +12,7 @@ import TopIllustsContainer from "./_TopIllustsContainer.astro";
 import shareThumb from "@/constants/dormitory-top-illust-images/top-illust-009.png";
 import backgroundImage from "./images/nc238325.jpg";
 import { characterInfos } from "@constants/characterInfo";
-import { hideHeaderAttr } from "@store";
+import { hideHeaderAttr } from "@components/Header/Header";
 
 const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src})`;
 ---
