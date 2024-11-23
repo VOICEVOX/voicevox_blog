@@ -1,5 +1,7 @@
 ```sh
 pnpm start
+
+pnpm run eslint
 ```
 
 ### TODO

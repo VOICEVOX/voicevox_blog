@@ -104,8 +104,8 @@ const characterKey = characterInfo.key;
                         class="description-profile"
                         set:html={characterInfo.description}
                       />
-                      <div class="columns is-variable is-1 is-multiline">
-                        {characterInfo.labelInfos.map((labelInfo, index) => (
+                      <div class="columns is-variable is-1 is-multiline mb-3">
+                        {characterInfo.labelInfos.map((labelInfo) => (
                           <div
                             class={`column ${
                               labelInfo.size == 1 ? "is-6" : "is-12"
@@ -140,7 +140,7 @@ const characterKey = characterInfo.key;
                                       characterInfo.name
                                     }のサンプルボイス${index + 1}`}
                                     color={characterInfo.color}
-                                    class="ml-1 mr-1"
+                                    class="mr-1"
                                   />
                                 ),
                               )}
@@ -223,21 +223,12 @@ const characterKey = characterInfo.key;
             ダウンロードページ
           </a>
           <a
-            href={`/dormitory/`}
+            href={`/dormitory/#${characterInfo.id}`}
             class="button is-normal is-rounded character-list-button"
             style={{ borderColor: characterInfo.color }}
           >
             キャラクター一覧
           </a>
-          {
-            /*
-            // ボイボ寮ページから遷移した場合は前のキャラクターへ戻る
-            // 検索流入や共有されたページから直接飛んだ場合は先頭へ戻る
-            location.state?.fromDormitory
-              ? `/dormitory/#${characterInfo.id}`
-              : `/dormitory/`
-            */
-          }
         </div>
       </div>
     </main>
@@ -350,7 +341,7 @@ const characterKey = characterInfo.key;
         .description-profile {
           @extend .is-size-5;
           @extend .has-text-weight-bold;
-          @extend .mb-4;
+          @extend .mb-2;
         }
 
         .description-box {
@@ -422,11 +413,17 @@ const characterKey = characterInfo.key;
 
           .description-call-character {
             overflow: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
 
             .description-call-box {
-              height: 65px;
+              display: flex;
+              gap: 0.5rem;
+
               .description-call-line {
                 display: flex;
+                flex: 1;
                 .description-call-one {
                   @extend .p-0;
 

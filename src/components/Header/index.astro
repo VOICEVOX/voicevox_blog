@@ -15,3 +15,19 @@ const iconUrl = (await getImage({ src: iconImage, width: 64 })).src;
 ---
 
 <Header client:load {...Astro.props} iconUrl={iconUrl} />
+
+<style lang="scss" is:global>
+  // ヘッダーをゆっくり表示する
+  // FIXME: 非表示の際もアニメーション適用したい
+  .navbar.with-animation {
+    animation: fadeIn 0.1s cubic-bezier(0.33, 1, 0.68, 1) 1 forwards;
+  }
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+</style>

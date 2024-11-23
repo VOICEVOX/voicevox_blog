@@ -2,6 +2,7 @@
 import type { CharacterInfo } from "@constants/type";
 import type { descriptionTypes } from "./_constants";
 import { getDormitoryCharacterPageUrl } from "@constants/url";
+import KeepScrollAnchor from "@components/KeepScrollAnchor.astro";
 
 interface Props {
   characterInfo: CharacterInfo;
@@ -13,7 +14,7 @@ const { characterInfo, selectedType, targetType } = Astro.props;
 const selected = selectedType == targetType;
 ---
 
-<a
+<KeepScrollAnchor
   class={`button is-rounded description-type-button ${
     selected && "description-type-button-selected"
   }`}
@@ -22,10 +23,8 @@ const selected = selectedType == targetType;
     borderColor: characterInfo.color,
     backgroundColor: selected ? characterInfo.lightColor : undefined,
   }}
-  href={`${getDormitoryCharacterPageUrl(characterInfo)}${
-    targetType == "profile" ? "" : targetType + "/"
-  }`}
+  href={`${getDormitoryCharacterPageUrl(characterInfo, targetType)}`}
   role="button"
 >
   <span>{targetType == "profile" ? "プロフィール" : "呼び方"}</span>
-</a>
+</KeepScrollAnchor>

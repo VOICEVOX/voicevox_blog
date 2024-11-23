@@ -28,7 +28,7 @@ const callNameInfo = callNameInfos[characterKey];
     }
 
     const callNames: string[] | undefined =
-      /* @ts-ignore なぜか型エラーになる */
+      /* @ts-expect-error なぜか型エラーになる */
       callNameInfo[_characterKey]?.split("/");
 
     if (callNames == undefined) {

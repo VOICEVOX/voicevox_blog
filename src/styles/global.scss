@@ -3,7 +3,6 @@
 @use "./fonts.scss";
 
 $font-smoothing: subpixel-antialiased;
-$text-rendering: optimizeLegibility;
 @media only screen and (-webkit-min-device-pixel-ratio: 2),
   (min-resolution: 2dppx) {
   $font-smoothing: antialiased;
@@ -44,18 +43,5 @@ body {
     &.height-holder {
       visibility: hidden;
     }
-  }
-}
-
-//ヘッダーをゆっくり表示する
-.navbar.navbar-with-animation {
-  animation: fadeIn 0.1s cubic-bezier(0.33, 1, 0.68, 1) 1 forwards;
-}
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
   }
 }

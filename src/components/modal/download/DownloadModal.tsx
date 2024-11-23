@@ -205,23 +205,25 @@ export default function DownloadModal() {
         </section>
 
         <footer className="modal-card-foot is-justify-content-flex-end">
-          <a href="/term/" className="button" role="button">
-            <span>利用規約</span>
-          </a>
-          <a
-            href={
-              downloadUrls[selectedOs][selectedMode]?.[selectedPackage]?.url
-            }
-            download={
-              downloadUrls[selectedOs][selectedMode]?.[selectedPackage]?.name
-            }
-            target="_blank"
-            rel="noreferrer"
-            className="button is-primary"
-            role="button"
-          >
-            <span className="has-text-weight-semibold">ダウンロード</span>
-          </a>
+          <div className="buttons">
+            <a href="/term/" className="button" role="button">
+              <span>利用規約</span>
+            </a>
+            <a
+              href={
+                downloadUrls[selectedOs][selectedMode]?.[selectedPackage]?.url
+              }
+              download={
+                downloadUrls[selectedOs][selectedMode]?.[selectedPackage]?.name
+              }
+              target="_blank"
+              rel="noreferrer"
+              className="button is-primary"
+              role="button"
+            >
+              <span className="has-text-weight-semibold">ダウンロード</span>
+            </a>
+          </div>
         </footer>
       </div>
     </div>

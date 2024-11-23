@@ -38,7 +38,7 @@ export default function Header({
       <nav
         className={`navbar is-fixed-top has-shadow ${
           showingHeader ? "" : "is-hidden"
-        } ${isDark ? "is-black" : ""}`}
+        } ${defaultHide ? "with-animation" : ""} ${isDark ? "is-black" : ""}`}
         role="navigation"
         aria-label="main navigation"
       >
@@ -55,7 +55,12 @@ export default function Header({
             aria-expanded={`${isBurgerActive}`}
             data-target="navbar"
             onClick={() => setIsBurgerActive(!isBurgerActive)}
-          />
+          >
+            <span aria-hidden="true" />
+            <span aria-hidden="true" />
+            <span aria-hidden="true" />
+            <span aria-hidden="true" />
+          </a>
         </div>
 
         <div

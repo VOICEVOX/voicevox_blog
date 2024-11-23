@@ -114,16 +114,18 @@ export default () => {
         </section>
 
         <footer className="modal-card-foot is-justify-content-flex-end">
-          <a
-            href={downloadUrls[selectedOs][selectedMode]?.url}
-            download={downloadUrls[selectedOs][selectedMode]?.name}
-            target="_blank"
-            rel="noreferrer"
-            className="button is-primary"
-            role="button"
-          >
-            <span className="has-text-weight-semibold">ダウンロード</span>
-          </a>
+          <div className="buttons">
+            <a
+              href={downloadUrls[selectedOs][selectedMode]?.url}
+              download={downloadUrls[selectedOs][selectedMode]?.name}
+              target="_blank"
+              rel="noreferrer"
+              className="button is-primary"
+              role="button"
+            >
+              <span className="has-text-weight-semibold">ダウンロード</span>
+            </a>
+          </div>
         </footer>
       </div>
     </div>

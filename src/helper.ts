@@ -125,7 +125,7 @@ export function makeAssetsRecordSingleOptional<K extends string, T>(
 export function sortedImportGlob<T>(record: Record<string, T>) {
   return Object.entries(record)
     .sort(([key1], [key2]) => key1.localeCompare(key2))
-    .map(([_, value]) => value);
+    .map(([, value]) => value);
 }
 
 /** 到達しないであろうコードに到達したことを示すエラー */

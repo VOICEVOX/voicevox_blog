@@ -1,6 +1,10 @@
 import type { CharacterKey } from "@constants/characterEntry";
 
-export const callNameInfos = {
+export const callNameInfos: {
+  [key in CharacterKey]: {
+    [key in CharacterKey]?: string | undefined;
+  } & { me: readonly string[]; you: readonly string[] };
+} = {
   四国めたん: {
     me: ["わたくし"],
     you: ["貴女(たち)", "アンタ(ら)"],
@@ -1036,8 +1040,4 @@ export const callNameInfos = {
     満別花丸: "花丸さん",
     琴詠ニア: "ニアさん",
   },
-} satisfies {
-  [key1 in CharacterKey]: {
-    [key2 in Exclude<CharacterKey, key1>]?: string | undefined;
-  } & { me: readonly string[]; you: readonly string[] };
 };

@@ -21,7 +21,7 @@ import { compiledContent as libraryTermIntroTemplateHtml } from "@/assets/librar
 export const libraryTermIntroMarkdowns = makeAssetsRecordSingleOptional(
   characterKeys,
   characterEntries,
-  import.meta.glob<MarkdownInstance<{}>>(
+  import.meta.glob<MarkdownInstance<object>>(
     "@/assets/library-term-intro-markdowns/*.md",
     {
       eager: true,

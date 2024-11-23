@@ -5,7 +5,7 @@ export interface Props {
   frontmatter: BaseProps & {
     headerTitle?: string; // ページの一番上に表示するタイトル。指定しない場合は表示されない。
   };
-  children: any;
+  children: unknown;
 }
 
 import Markdown from "@/components/Markdown.astro";

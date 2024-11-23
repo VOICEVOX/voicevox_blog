@@ -13,7 +13,7 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
-import { Image } from "astro:assets";
+import { getImage, Image } from "astro:assets";
 
 import Base from "@layouts/Base.astro";
 
@@ -21,21 +21,34 @@ const { topIllustIndex } = Astro.params;
 
 const index = parseInt(topIllustIndex) - 1;
 const { image, illustrator } = dormitoryTopIllustInfos[index];
+
+const shareThumb = (await getImage({ src: image, width: 1200 })).src;
 ---
 
 <Base
   title={`トップイラスト ${index + 1} | ボイボ寮 | VOICEVOX`}
   description=`以前のトップイラストをご覧いただけます。イラスト：${illustrator}`
-  image={image}
+  image={shareThumb}
   imageAlt=""
 >
-  {/* TODO: bulmaのクラスとか入れる */}
-  <div>
-    <Image
-      src={image}
-      style={{ width: "100%", height: "100%", objectFit: "contain" }}
-      alt=`トップイラスト${index + 1}の大きな画像`
-      `
-    />
-  </div>
+  <main>
+    <section class="section">
+      <div class="container">
+        <h1 class="title is-3">トップイラスト {index + 1}</h1>
+        <div>
+          <Image
+            src={image}
+            style={{
+              width: "100%",
+              height: "100%",
+              display: "block",
+              objectFit: "contain",
+            }}
+            alt=`トップイラスト${index + 1}の大きな画像`
+          />
+        </div>
+        <p class="mt-4">イラスト：{illustrator}</p>
+      </div>
+    </section>
+  </main>
 </Base>

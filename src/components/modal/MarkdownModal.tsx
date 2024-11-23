@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 export default (props: {
   isActive: boolean;
   title: string;
