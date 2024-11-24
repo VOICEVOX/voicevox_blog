@@ -5,7 +5,13 @@ import sitemap from "@astrojs/sitemap";
 import react from "@astrojs/react";
 import partytown from "@astrojs/partytown";
 
+const site = process.env.NETLIFY
+  ? process.env.DEPLOY_URL
+  : "https://voicevox.hiroshiba.jp";
+
 export default defineConfig({
+  site,
+
   integrations: [
     mdx(),
     sitemap(),
@@ -16,8 +22,6 @@ export default defineConfig({
       },
     }),
   ],
-
-  site: "https://voicevox.hiroshiba.jp",
 
   vite: {
     css: {
