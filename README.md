@@ -13,6 +13,7 @@ pnpm run eslint
 - [ ] Google Analytics の疎通チェック
 - [ ] ダウンロードボタンから利用規約に飛ぶと React から`Invalid hook call`エラーが出てモーダルが出なくなる
 - [ ] たぶん font-smoothing が効いてないけど macOS でちゃんと動くか確認
+- [ ] Google Analytics を Partytown にしたい issue 作る、sendEvent が Partytown 上からしかできなくなるのをどう解決するか
 
 ### なんとなくのコーディングルールメモ
 

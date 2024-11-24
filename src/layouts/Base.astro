@@ -41,6 +41,8 @@ const {
   isNemo,
 } = Astro.props;
 
+const isProduction = import.meta.env.PROD;
+
 // imageとimageAltが片方だけ指定されている場合はエラーを出す
 if ((_image == undefined) != (imageAlt == undefined)) {
   throw new Error("imageとimageAltが片方だけ指定されています");
@@ -116,23 +118,24 @@ const hasImage = imageUrl != undefined && imageAlt != undefined;
     }
 
     {/* Google Analytics */}
-    <script
-      type="text/partytown"
-      src=`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`
+    <script src=`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`
     ></script>
-    <script type="text/partytown">
-      if ((navigator.doNotTrack || window.doNotTrack) != "1") {
-        window.dataLayer = window.dataLayer || [];
-        function gtag(...args) {
-          dataLayer.push(args);
+    <script is:inline define:vars={{ isProduction, GA_TRACKING_ID }}>
+      if (isProduction) {
+        if ((navigator.doNotTrack || window.doNotTrack) != "1") {
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function gtag(...args) {
+            dataLayer.push(args);
+          };
+          gtag("js", new Date());
+          gtag("config", `${GA_TRACKING_ID}`);
         }
-        gtag("js", new Date());
-        gtag("config", `${GA_TRACKING_ID}`);
       }
     </script>
 
     <ViewTransitions />
   </head>
+
   <body class=`${isDark ? "has-background-black" : "has-background-white"}`>
     <Header defaultHide={defaultHideHeader} isDark={isDark} isNemo={isNemo} />
 
