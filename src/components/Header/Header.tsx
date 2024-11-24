@@ -34,6 +34,123 @@ export default function Header({
     return () => observer.disconnect();
   }, []);
 
+  // メニュー。画面サイズに応じてハンバーガーメニュー内に表示される。
+  type HideType =
+    | "tablet" // タブレット・スマホでは表示しない
+    | "mobile"; // スマホでは表示しない
+  const menus = [
+    {
+      Component: ({ className }: { className?: string }) => (
+        <a href="/" className={`navbar-item ${className}`}>
+          トーク
+        </a>
+      ),
+    },
+    {
+      Component: ({ className }: { className?: string }) => (
+        <a href="/song/" className={`navbar-item ${className}`}>
+          ソング
+        </a>
+      ),
+    },
+    {
+      Component: ({ className }: { className?: string }) => (
+        <a href="/dormitory/" className={`navbar-item ${className}`}>
+          ボイボ寮
+        </a>
+      ),
+      hideType: "mobile" as HideType,
+    },
+    {
+      Component: ({ className }: { className?: string }) => (
+        <a href="/nemo/" className={`navbar-item ${className}`}>
+          Nemo
+        </a>
+      ),
+      hideType: "mobile" as HideType,
+    },
+    {
+      Component: ({ className }: { className?: string }) => (
+        <a href="/how_to_use/" className={`navbar-item ${className}`}>
+          使い方
+        </a>
+      ),
+      hideType: "tablet" as HideType,
+    },
+    {
+      Component: ({ className }: { className?: string }) => (
+        <a href="/term/" className={`navbar-item ${className}`}>
+          利用規約
+        </a>
+      ),
+      hideType: "tablet" as HideType,
+    },
+    {
+      Component: ({ className }: { className?: string }) => (
+        <a href="/qa/" className={`navbar-item ${className}`}>
+          Q&amp;A
+        </a>
+      ),
+      hideType: "tablet" as HideType,
+    },
+    {
+      Component: ({ className }: { className?: string }) => (
+        <a href="/update_history/" className={`navbar-item ${className}`}>
+          変更履歴
+        </a>
+      ),
+      hideType: "tablet" as HideType,
+    },
+    /*
+    {
+      Component: ({ className }: { className?: string }) => (
+        <a href="/news/" className={`navbar-item ${className}`}>
+          ニュース
+        </a>
+      ),
+    },
+    */
+    {
+      Component: ({ className }: { className?: string }) => (
+        <a
+          href="https://hiho.fanbox.cc/"
+          target="_blank"
+          rel="noreferrer"
+          className={`navbar-item ${className}`}
+        >
+          pixivFANBOX
+        </a>
+      ),
+      hideType: "tablet" as HideType,
+    },
+    {
+      Component: ({ className }: { className?: string }) => (
+        <div className={`navbar-item py-0 ${className}`}>
+          <a
+            className="button is-primary is-rounded"
+            onClick={() => {
+              if (!isNemo) {
+                $downloadModal.set(true);
+                sendEvent("download", "software");
+              } else {
+                $nemoGuidanceModal.set(true);
+                sendEvent("download", "nemo");
+              }
+            }}
+            tab-index={0}
+            role="button"
+          >
+            <span className="icon">
+              <FontAwesomeIcon icon={faDownload} />
+            </span>
+            <span className="has-text-weight-semibold">ダウンロード</span>
+          </a>
+        </div>
+      ),
+      hideType: "mobile" as HideType,
+    },
+  ];
+
   return (
     <>
       <nav
@@ -48,6 +165,19 @@ export default function Header({
             <img src={iconUrl} alt="" />
             <span className="has-text-weight-bold is-size-5"> VOICEVOX </span>
           </a>
+
+          {menus.map(({ Component, hideType }, i) => (
+            <Component
+              key={i}
+              className={
+                hideType == undefined
+                  ? "is-hidden-desktop"
+                  : hideType == "tablet"
+                  ? "is-hidden"
+                  : "is-hidden-desktop is-hidden-mobile"
+              }
+            />
+          ))}
 
           <a
             role="button"
@@ -69,65 +199,18 @@ export default function Header({
           className={`navbar-menu ${isBurgerActive ? "is-active" : ""}`}
         >
           <div className="navbar-end">
-            <a href="/" className="navbar-item">
-              トーク
-            </a>
-            <a href="/song/" className="navbar-item">
-              ソング
-            </a>
-            <a href="/term/" className="navbar-item">
-              利用規約
-            </a>
-            <a href="/how_to_use/" className="navbar-item">
-              使い方
-            </a>
-            <a href="/qa/" className="navbar-item">
-              Q&amp;A
-            </a>
-            <a href="/dormitory/" className="navbar-item">
-              ボイボ寮
-            </a>
-            <a href="/nemo/" className="navbar-item">
-              Nemo
-            </a>
-            <a href="/update_history/" className="navbar-item">
-              変更履歴
-            </a>
-            {/*
-            TODO: リリース時にコメントアウトを外す
-            <a href={"/news/"} className="navbar-item">
-              ニュース
-            </a>
-            */}
-            <a
-              href="https://hiho.fanbox.cc/"
-              target="_blank"
-              rel="noreferrer"
-              className="navbar-item"
-            >
-              pixivFANBOX
-            </a>
-            <div className="navbar-item py-0">
-              <a
-                className="button is-primary is-rounded"
-                onClick={() => {
-                  if (!isNemo) {
-                    $downloadModal.set(true);
-                    sendEvent("download", "software");
-                  } else {
-                    $nemoGuidanceModal.set(true);
-                    sendEvent("download", "nemo");
-                  }
-                }}
-                tab-index={0}
-                role="button"
-              >
-                <span className="icon">
-                  <FontAwesomeIcon icon={faDownload} />
-                </span>
-                <span className="has-text-weight-semibold">ダウンロード</span>
-              </a>
-            </div>
+            {menus.map(({ Component, hideType }, i) => (
+              <Component
+                key={i}
+                className={
+                  hideType == undefined
+                    ? "is-hidden-touch"
+                    : hideType == "mobile"
+                    ? "is-hidden-tablet-only"
+                    : ""
+                }
+              />
+            ))}
           </div>
         </div>
       </nav>
