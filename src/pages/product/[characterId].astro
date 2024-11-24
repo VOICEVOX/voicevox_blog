@@ -4,7 +4,6 @@
  */
 
 import type { InferGetStaticPropsType, GetStaticPaths } from "astro";
-import { Image } from "astro:assets";
 
 import { characterEntries, characterKeys } from "@constants/characterEntry";
 import { characterInfos } from "@constants/characterInfo";
@@ -15,6 +14,8 @@ export const getStaticPaths = (async () =>
     props: { characterKey: key, characterInfo: characterInfos[key] },
   }))) satisfies GetStaticPaths;
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+import { Image } from "astro:assets";
 
 import Base from "@layouts/Base.astro";
 import SoftwareFeature from "@pages/_SoftwareFeature.astro";
@@ -37,8 +38,6 @@ import {
 } from "@store";
 
 import featureImage from "./feature.png";
-
-// TODO: product/thumb-.*
 
 const { characterKey, characterInfo } = Astro.props;
 
@@ -168,8 +167,9 @@ const characterBackgroundColor = characterInfo.lightColor;
 <Base
   title={`VOICEVOX ${characterInfo.name} | 無料のテキスト読み上げソフトウェア`}
   description={description}
+  image={characterInfo.productShareImage}
+  imageAlt=`${characterInfo.productShareImage ? "" : undefined}`
 >
-  {/* TODO: image={thumbImage.images.fallback?.src}*/}
   <main class="product">
     <div class="section py-0">
       <div class="top container">

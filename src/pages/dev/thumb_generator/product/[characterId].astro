@@ -1,0 +1,182 @@
+---
+/**
+ * 製品ページのサムネイル生成
+ */
+
+import type { InferGetStaticPropsType, GetStaticPaths } from "astro";
+
+import { characterEntries, characterKeys } from "@constants/characterEntry";
+import { characterInfos } from "@constants/characterInfo";
+
+export const getStaticPaths = (async () =>
+  characterKeys.map((key) => ({
+    params: { characterId: characterEntries[key].id },
+    props: { characterInfo: characterInfos[key] },
+  }))) satisfies GetStaticPaths;
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+import { getImage } from "astro:assets";
+
+import "@/styles/global.scss";
+import "@/styles/bulma.scss";
+
+import { faDownload } from "@fortawesome/free-solid-svg-icons";
+import FontAwesomeIcon from "@/components/FontAwesomeIcon.astro";
+import backgroundImage from "./background.png";
+
+const { characterInfo } = Astro.props;
+const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src})`;
+const bustupImageUrl = `url(${(await getImage({ src: characterInfo.bustupImage })).src})`;
+
+const isDebug = false;
+---
+
+<meta charset="utf-8" />
+<meta name="robots" content="noindex, nofollow" />
+
+<div
+  style={{
+    width: "1200px",
+    height: "630px",
+
+    backgroundColor: characterInfo.lightColor,
+    display: "flex",
+    position: "relative",
+  }}
+>
+  {/* 白枠 */}
+  <div
+    style={{
+      position: "absolute",
+      width: "72%",
+      height: "90%",
+      top: "5%",
+      left: "12%",
+      borderRadius: "60px",
+      backgroundColor: "white",
+    }}
+  >
+  </div>
+
+  {/* ロゴと説明とダウンロードボタン */}
+  <div
+    style={{
+      flexGrow: 1,
+      height: "100%",
+      position: "relative",
+    }}
+  >
+    <div
+      style={{
+        position: "absolute",
+        top: "21%",
+        left: "33%",
+
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "start",
+      }}
+    >
+      <span
+        style={{
+          fontSize: "80px",
+          fontWeight: "bold",
+        }}
+      >
+        VOICEVOX
+      </span>
+      <span
+        style={{
+          fontSize: "37.1px",
+          fontWeight: "bold",
+          textAlign: "start",
+          marginTop: "10px",
+        }}
+      >
+        無料のテキスト読み上げ
+        <br />
+        ソフトウェア
+      </span>
+      <span
+        class="button is-primary is-rounded is-large"
+        style={{
+          fontSize: "40px",
+          marginTop: "38px",
+          height: "70px",
+        }}
+      >
+        <span class="icon">
+          <FontAwesomeIcon icon={faDownload} />
+        </span>
+        <span class="has-text-weight-semibold">ダウンロード</span>
+      </span>
+    </div>
+  </div>
+
+  {/* スクショ */}
+  <div
+    style={{
+      width: "40%",
+      height: "100%",
+
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    }}
+  >
+    <div
+      style={{
+        width: "100%",
+        height: "80%",
+        overflow: "hidden",
+      }}
+    >
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          backgroundImage: backgroundImageUrl,
+          backgroundSize: "cover",
+          backgroundPosition: "left",
+          position: "relative",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            top: "20%",
+            left: "2px",
+            width: "38.5%",
+            height: "52.1%",
+            backgroundImage: bustupImageUrl,
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            backgroundClip: "content-box",
+            paddingBottom: "10%",
+          }}
+        >
+        </div>
+      </div>
+    </div>
+
+    {/* 枠表示、中央630px部分 */}
+    {
+      isDebug ? (
+        <div
+          style={{
+            position: "absolute",
+            width: "630px",
+            height: "630px",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+
+            border: "1px dashed black",
+          }}
+        />
+      ) : undefined
+    }
+  </div>
+</div>

@@ -27,6 +27,7 @@ export type CharacterInfo = {
     styleType: "song" | "humming";
     urls: string[];
   }[];
+  productShareImage?: ImageMetadata;
   dormitoryVoiceAudios?: string[];
   dormitoryImages?: ImageMetadata[];
   // ogpImage: ImageMetadata;

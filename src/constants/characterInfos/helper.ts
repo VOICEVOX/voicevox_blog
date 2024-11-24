@@ -7,6 +7,7 @@ import {
   dormitoryImages,
   songAudiosAndPaths,
   talkAudiosAndPaths,
+  productShareImages,
 } from "@constants/characaterAsset";
 
 /** トーク用音声をスタイルごとに分ける */
@@ -41,6 +42,7 @@ export function getCharacterAssets(key: CharacterKey, styles: Styles) {
     portraitImage: portraitImages[key],
     talkVoiceAudios: makeTalkVoiceAudios(key, styles),
     songVoiceAudios: makeSongVoiceAudios(key, styles),
+    productShareImage: productShareImages[key],
     dormitoryVoiceAudios: dormitoryAudios[key],
     dormitoryImages: dormitoryImages[key],
     // ogpImage: ImageMetadata;
