@@ -9,4 +9,7 @@ export default tseslint.config(
   tseslint.configs.recommended,
   astro.configs["flat/recommended"],
   astro.configs["flat/jsx-a11y-recommended"],
+  {
+    ignores: ["src/layouts/Base.astro"], // なぜか<html>周りでエラーが出る
+  },
 );

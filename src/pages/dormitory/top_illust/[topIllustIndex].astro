@@ -27,7 +27,7 @@ const shareThumb = (await getImage({ src: image, width: 1200 })).src;
 
 <Base
   title={`トップイラスト ${index + 1} | ボイボ寮 | VOICEVOX`}
-  description=`以前のトップイラストをご覧いただけます。イラスト：${illustrator}`
+  description={`以前のトップイラストをご覧いただけます。イラスト：${illustrator}`}
   image={shareThumb}
   imageAlt=""
 >
@@ -44,7 +44,7 @@ const shareThumb = (await getImage({ src: image, width: 1200 })).src;
               display: "block",
               objectFit: "contain",
             }}
-            alt=`トップイラスト${index + 1}の大きな画像`
+            alt={`トップイラスト${index + 1}の大きな画像`}
           />
         </div>
         <p class="has-text-right mt-4">イラスト：{illustrator}</p>

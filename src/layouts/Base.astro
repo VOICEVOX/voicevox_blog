@@ -118,7 +118,8 @@ const hasImage = imageUrl != undefined && imageAlt != undefined;
     }
 
     {/* Google Analytics */}
-    <script src=`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`
+    <script
+      src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
     ></script>
     <script is:inline define:vars={{ isProduction, GA_TRACKING_ID }}>
       if (isProduction) {
@@ -136,7 +137,7 @@ const hasImage = imageUrl != undefined && imageAlt != undefined;
     <ViewTransitions />
   </head>
 
-  <body class=`${isDark ? "has-background-black" : "has-background-white"}`>
+  <body class={isDark ? "has-background-black" : "has-background-white"}>
     <Header defaultHide={defaultHideHeader} isDark={isDark} isNemo={isNemo} />
 
     <slot />

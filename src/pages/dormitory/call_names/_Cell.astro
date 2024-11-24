@@ -4,7 +4,7 @@ import type { CharacterInfo } from "@constants/type";
 import { faCopy } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
-  callNames: string[];
+  callNames: readonly string[];
   characterInfo: CharacterInfo;
   additionalClass?: string;
 }
@@ -12,21 +12,21 @@ interface Props {
 const { callNames, characterInfo, additionalClass } = Astro.props;
 ---
 
-<td class={additionalClass ?? ""}>
+<td class={additionalClass}>
   <div>
     {
       callNames.map((callName) => (
         <p
+          data-voicevox-call-name={callName}
           style={{ outlineColor: characterInfo.color }}
           title={`クリックして呼称をコピー：「${callName}」`}
         >
-          {/* TODO: onClick={copyToClipboard} */}
           <span class="icon">
+            {/* TODO: クリック直後は faCheck にしたい */}
             <FontAwesomeIcon
               icon={faCopy}
               style={{ color: characterInfo.color }}
             />
-            {/* TODO: icon={isSelected ? faCheck : faCopy} */}
           </span>
           {callName}
         </p>
@@ -34,3 +34,14 @@ const { callNames, characterInfo, additionalClass } = Astro.props;
     }
   </div>
 </td>
+
+<script>
+  // クリックしたときにクリップボードにコピー
+  document.querySelectorAll(`[data-voicevox-call-name]`).forEach((elem) => {
+    elem.addEventListener("click", () => {
+      const callName = elem.getAttribute(`data-voicevox-call-name`);
+      if (callName == undefined) throw new Error("callName is undefined");
+      navigator.clipboard.writeText(callName);
+    });
+  });
+</script>

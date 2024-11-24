@@ -59,6 +59,9 @@ importers:
       '@types/react-dom':
         specifier: 18.3.1
         version: 18.3.1
+      '@types/semver':
+        specifier: 7.5.8
+        version: 7.5.8
       '@typescript-eslint/parser':
         specifier: 8.15.0
         version: 8.15.0(eslint@9.15.0)(typescript@5.6.3)
@@ -95,6 +98,9 @@ importers:
       sass:
         specifier: 1.80.6
         version: 1.80.6
+      semver:
+        specifier: 7.6.3
+        version: 7.6.3
       sharp:
         specifier: 0.33.5
         version: 0.33.5
@@ -110,6 +116,9 @@ importers:
       vite:
         specifier: 5.4.11
         version: 5.4.11(@types/node@22.9.3)(sass@1.80.6)
+      zod:
+        specifier: 3.23.8
+        version: 3.23.8
 
 packages:
 
@@ -1085,6 +1094,9 @@ packages:
 
   '@types/sax@1.2.7':
     resolution: {integrity: sha512-rO73L89PJxeYM3s3pPPjiPgVVcymqU490g0YO5n5By0k2Erzj6tay/4lr1CHAAU4JyOWd1rpQ8bCf6cZfHU96A==}
+
+  '@types/semver@7.5.8':
+    resolution: {integrity: sha512-I8EUhyrgfLrcTkzV3TSsGyl1tSuPrEDzr0yd5m90UgNxQkyDXULk3b6MlQqTCpZpNtWe1K0hzclnZkTcLBe2UQ==}
 
   '@types/unist@2.0.11':
     resolution: {integrity: sha512-CmBKiL6NNo/OqgmMn95Fk9Whlp2mtvIv+KNpQKN2F4SjvrEesubTRWGYSg+BnWZOnlCaSTU1sMpsBOzgbYhnsA==}
@@ -4194,6 +4206,8 @@ snapshots:
   '@types/sax@1.2.7':
     dependencies:
       '@types/node': 22.9.3
+
+  '@types/semver@7.5.8': {}
 
   '@types/unist@2.0.11': {}
 
