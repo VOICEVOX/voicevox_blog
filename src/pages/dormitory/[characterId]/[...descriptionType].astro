@@ -33,13 +33,20 @@ import { getProductPageUrl } from "@constants/url";
 
 const { characterInfo, descriptionType } = Astro.props;
 const characterKey = characterInfo.key;
+const descriptionNames = {
+  profile: "プロフィール",
+  calls: "呼び方",
+} satisfies Record<(typeof descriptionTypes)[number], string>;
 ---
 
 <Base
-  title={`${characterInfo.name} | ボイボ寮 | VOICEVOX`}
+  title={`${characterInfo.name} | ボイボ寮 ${
+    descriptionNames[descriptionType]
+  } | VOICEVOX`}
   description={characterInfo.description}
+  image={characterInfo.dormitoryShareImage}
+  imageAlt={characterInfo.dormitoryShareImage ? "" : undefined}
 >
-  <!-- TODO: image={selectedCharacterInfo.ogpImage.images.fallback?.src} -->
   <div class="dormitory-character">
     <main class="section py-1">
       <div class="container is-max-desktop">
@@ -90,11 +97,13 @@ const characterKey = characterInfo.key;
                     characterInfo={characterInfo}
                     selectedType={descriptionType}
                     targetType="profile"
+                    targetName={descriptionNames.profile}
                   />
                   <TypeButton
                     characterInfo={characterInfo}
                     selectedType={descriptionType}
                     targetType="calls"
+                    targetName={descriptionNames.calls}
                   />
                 </div>
                 {

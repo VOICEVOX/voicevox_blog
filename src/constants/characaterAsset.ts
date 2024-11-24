@@ -77,3 +77,15 @@ export const dormitoryImages = makeAssetsRecordOptional(
     import: "default",
   }),
 );
+
+/** ボイボ寮個別ページのサムネイル画像。開発時は１つもないときもある。製品時は必ず１つある。 */
+export const dormitoryShareImages = (
+  import.meta.env.DEV ? makeAssetsRecordSingleOptional : makeAssetsRecordSingle
+)(
+  characterKeys,
+  characterEntries,
+  import.meta.glob<ImageMetadata>("./dormitory-share-images/*.png", {
+    eager: true,
+    import: "default",
+  }),
+);

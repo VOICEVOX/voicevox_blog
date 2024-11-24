@@ -8,9 +8,10 @@ interface Props {
   characterInfo: CharacterInfo;
   selectedType: (typeof descriptionTypes)[number];
   targetType: (typeof descriptionTypes)[number];
+  targetName: string;
 }
 
-const { characterInfo, selectedType, targetType } = Astro.props;
+const { characterInfo, selectedType, targetType, targetName } = Astro.props;
 const selected = selectedType == targetType;
 ---
 
@@ -26,5 +27,5 @@ const selected = selectedType == targetType;
   href={`${getDormitoryCharacterPageUrl(characterInfo, targetType)}`}
   role="button"
 >
-  <span>{targetType == "profile" ? "プロフィール" : "呼び方"}</span>
+  <span>{targetName}</span>
 </KeepScrollAnchor>

@@ -30,6 +30,6 @@ export type CharacterInfo = {
   productShareImage?: ImageMetadata;
   dormitoryVoiceAudios?: string[];
   dormitoryImages?: ImageMetadata[];
-  // ogpImage: ImageMetadata;
+  dormitoryShareImage?: ImageMetadata;
   releaseDate?: string;
 };

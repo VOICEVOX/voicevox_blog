@@ -1,0 +1,49 @@
+---
+/**
+ * ボイボ寮の個別ページのサムネイル生成
+ */
+import type { InferGetStaticPropsType } from "astro";
+
+import Base, {
+  getStaticPaths as baseGetStaticPaths,
+} from "@/pages/dormitory/[characterId]/[...descriptionType].astro";
+
+export const getStaticPaths = baseGetStaticPaths;
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+---
+
+<meta charset="utf-8" />
+<meta name="robots" content="noindex, nofollow" />
+
+<Base {...Astro.props} descriptionType="profile" />
+
+<script>
+  // 比率を1200:630に
+  const target = document
+    .querySelector(".dormitory-character")
+    ?.querySelector<HTMLDivElement>(".box");
+  if (!target) throw new Error("dormitory-character not found");
+  target.style.setProperty("width", "800px");
+  target.style.setProperty("height", (800 * 630) / 1200 + "px");
+
+  // 音声サンプルを削除
+  document.querySelectorAll("span").forEach(function (span) {
+    if (span.textContent?.trim() === "音声サンプル") {
+      span.parentElement?.style.setProperty("display", "none");
+    }
+  });
+
+  // プロフィール・呼び方ボタンを削除
+  document.querySelectorAll("a").forEach(function (button) {
+    if (button.textContent?.trim() === "プロフィール") {
+      button.parentElement?.style.setProperty("display", "none");
+    }
+  });
+
+  // ホームボタンを非表示
+  document.querySelectorAll("a").forEach(function (button) {
+    if (button.getElementsByClassName("fa-house")[0]) {
+      button.style.setProperty("visibility", "hidden");
+    }
+  });
+</script>
