@@ -11,6 +11,7 @@ import {
   $nemoDownloadModal,
   $nemoGuidanceModal,
 } from "@/store";
+import { sendEvent } from "@helper";
 
 export default () => {
   const isActive = useStore($nemoGuidanceModal);
@@ -41,7 +42,7 @@ export default () => {
                 className="button is-align-self-center is-primary is-rounded is-medium"
                 onClick={() => {
                   $downloadModal.set(true);
-                  // TODO: context.sendEvent("download", "software");
+                  sendEvent("download", "software");
                 }}
                 target="_blank"
                 rel="noreferrer"

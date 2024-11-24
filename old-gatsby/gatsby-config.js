@@ -78,20 +78,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-gatsby-cloud`,
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
-    `gatsby-plugin-sass`,
-    {
-      resolve: `gatsby-plugin-google-gtag`,
-      options: {
-        trackingIds: ["G-NZL33X0EQV"],
-        pluginConfig: {
-          head: true,
-          respectDNT: false,
-        },
-      },
-    },
     `gatsby-plugin-sitemap`,
     {
       // デフォルトではアンダーバーがハイフンに変換されてしまうため

@@ -1,5 +1,6 @@
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { sendEvent } from "@helper";
 import { $downloadModal, $nemoGuidanceModal } from "@store";
 import { useEffect, useState } from "react";
 
@@ -112,10 +113,10 @@ export default function Header({
                 onClick={() => {
                   if (!isNemo) {
                     $downloadModal.set(true);
-                    // TODO: context.sendEvent("download", "software");
+                    sendEvent("download", "software");
                   } else {
                     $nemoGuidanceModal.set(true);
-                    // TODO: context.sendEvent("download", "nemo");
+                    sendEvent("download", "nemo");
                   }
                 }}
                 tab-index={0}

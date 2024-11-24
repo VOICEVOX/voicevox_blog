@@ -17,6 +17,18 @@ const iconUrl = (await getImage({ src: iconImage, width: 64 })).src;
 <Header client:load {...Astro.props} iconUrl={iconUrl} />
 
 <style lang="scss" is:global>
+  .navbar {
+    // navbarを最上部に固定するためのクラス
+    &.height-holder {
+      visibility: hidden;
+    }
+
+    &.is-black {
+      // FIXME: is-blackで影が変わらないBulmaのバグ
+      box-shadow: 0 2px 0 0 hsl(0deg, 0%, 4%);
+    }
+  }
+
   // ヘッダーをゆっくり表示する
   // FIXME: 非表示の際もアニメーション適用したい
   .navbar.with-animation {

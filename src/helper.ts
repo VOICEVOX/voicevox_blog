@@ -135,3 +135,10 @@ export class UnreachableError extends Error {
     this.name = "UnreachableError";
   }
 }
+
+/** Google Analyticsのイベントを送信 */
+export function sendEvent(event: string, eventCategory: string) {
+  if (typeof window !== "undefined" && window.gtag) {
+    window.gtag("event", event, { event_category: eventCategory });
+  }
+}

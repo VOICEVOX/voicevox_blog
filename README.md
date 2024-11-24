@@ -11,8 +11,9 @@ pnpm run eslint
 - [ ] ニュースの RSS？
 - [ ] Bulma の scss が重い
 - [ ] canonical URL が以前と一致することを確認
-- [ ] Google Analytics の設定
+- [ ] Google Analytics の疎通チェック
 - [ ] ダウンロードボタンから利用規約に飛ぶと React から`Invalid hook call`エラーが出てモーダルが出なくなる
+- [ ] たぶん font-smoothing が効いてないけど macOS でちゃんと動くか確認
 
 ### なんとなくのコーディングルールメモ
 

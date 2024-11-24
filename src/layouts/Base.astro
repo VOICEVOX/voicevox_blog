@@ -21,6 +21,7 @@ import { getImage } from "astro:assets";
 import { ViewTransitions } from "astro:transitions";
 
 import { SEO } from "astro-seo";
+import { GA_TRACKING_ID } from "@constants";
 
 import "@/styles/global.scss";
 import "@/styles/bulma.scss";
@@ -107,6 +108,22 @@ const hasImage = imageUrl != undefined && imageAlt != undefined;
       )
     }
 
+    {/* Google Analytics */}
+    <script
+      type="text/partytown"
+      src=`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`
+    ></script>
+    <script type="text/partytown">
+      if ((navigator.doNotTrack || window.doNotTrack) != "1") {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(...args) {
+          dataLayer.push(args);
+        }
+        gtag("js", new Date());
+        gtag("config", `${GA_TRACKING_ID}`);
+      }
+    </script>
+
     <ViewTransitions />
   </head>
   <body class=`${isDark ? "has-background-black" : "has-background-white"}`>
@@ -125,3 +142,31 @@ const hasImage = imageUrl != undefined && imageAlt != undefined;
     <Modals />
   </body>
 </html>
+
+<style lang="scss" is:global>
+  // ページの高さを最低でも画面の高さに合わせる
+  html {
+    height: -webkit-fill-available;
+  }
+  body {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+  }
+
+  body {
+    position: relative;
+    overflow: hidden;
+
+    .footer {
+      // footerを最下部に固定するためのクラス
+      &.appearance {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+      }
+      &.height-holder {
+        visibility: hidden;
+      }
+    }
+  }
+</style>

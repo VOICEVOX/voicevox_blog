@@ -71,13 +71,14 @@ const libraryTermIntroHtmls = (() => {
     showNemoTermModalAttr,
   } from "@/store";
   import type { CharacterKey } from "@constants/characterEntry";
+  import { sendEvent } from "@helper";
 
   document.addEventListener("astro:page-load", () => {
     $downloadModal.set(false);
     document.querySelectorAll(`[${showDownloadModalAttr}]`).forEach((elem) => {
       elem.addEventListener("click", () => {
         $downloadModal.set(true);
-        // TODO: context.sendEvent("download", "software");
+        sendEvent("download", "software");
       });
     });
 
@@ -108,7 +109,7 @@ const libraryTermIntroHtmls = (() => {
       .forEach((elem) => {
         elem.addEventListener("click", () => {
           $nemoGuidanceModal.set(true);
-          // TODO: context.sendEvent("download", "nemo");
+          sendEvent("download", "nemo");
         });
       });
 
