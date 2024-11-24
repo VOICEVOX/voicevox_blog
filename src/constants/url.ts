@@ -7,9 +7,9 @@ export const getProductPageUrl = (characterInfo: CharacterInfo) => {
 
 export const getDormitoryCharacterPageUrl = (
   characterInfo: CharacterInfo,
-  descriptonType: (typeof descriptionTypes)[number] = "profile",
+  descriptionType: (typeof descriptionTypes)[number] = "profile",
 ) => {
   return `/dormitory/${characterInfo.id}/${
-    descriptonType == "profile" ? "" : descriptonType + "/"
+    descriptionType == "profile" ? "" : descriptionType + "/"
   }`;
 };

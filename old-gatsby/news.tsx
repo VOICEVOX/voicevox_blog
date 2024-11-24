@@ -1,3 +1,8 @@
+/**
+ * gatsby時代のNews一覧ページ。
+ * TODO: Astro化する。
+ */
+
 import { Link, graphql, useStaticQuery } from "gatsby"
 import React from "react"
 import "../../components/layout.scss"

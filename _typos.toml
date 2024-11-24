@@ -8,4 +8,4 @@ datas="datas"
 whis="whis" # whisperの略
 
 [files]
-extend-exclude = ["*.svg"]
+extend-exclude = ["*.svg", "pnpm-lock.yaml"]
