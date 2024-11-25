@@ -1,10 +1,118 @@
-```sh
-pnpm start
+# VOICEVOX BLOG
 
-pnpm run eslint
+VOICEVOX の公式サイトのリポジトリです。  
+https://voicevox.hiroshiba.jp/
+
+## 環境構築
+
+Node v20.12.2、pnpm v9.12.3 を用いて開発されています。
+
+```bash
+npm install -g pnpm
+pnpm install
 ```
 
-### TODO
+## ローカル環境でチェック
+
+```bash
+pnpm start
+```
+
+## deploy
+
+```bash
+pnpm run deploy
+```
+
+### プレビュー版
+
+[プレビュー版ページ](https://preview--voicevox.netlify.app/)
+
+Netlify を使ってプレビュー環境デプロイを行っています。
+`preview`ブランチに push すると、Netlify のプレビュー環境にデプロイされます。
+
+## リソース情報の更新
+
+コードの更新
+
+```bash
+EDITOR_VERSION="0.21.1"
+RESOURCE_VERSION="0.21.1"
+NEMO_VERSION="0.21.0"
+
+pnpm run updateVersion \
+  --editor_version="$EDITOR_VERSION" \
+  --resource_version="$RESOURCE_VERSION" \
+  --nemo_version="$NEMO_VERSION"
+```
+
+リソースの更新
+
+```bash
+editor_tag="0.21.1"
+editor_url="https://raw.githubusercontent.com/VOICEVOX/voicevox/$editor_tag"
+
+resource_tag="0.21.1"
+resource_url="https://raw.githubusercontent.com/VOICEVOX/voicevox_resource/$resource_tag"
+
+# 規約
+curl -s "$resource_url/editor/README.md" |
+  pnpm run updateMarkdown -t "src/pages/term.md"
+
+# 使い方
+curl -s "$editor_url/public/howtouse.md" |
+  sed -r 's|src="([^"]+?)"|src="'$editor_url'/public/\1"|g' |
+  pnpm run updateMarkdown -t "src/pages/how_to_use.md"
+
+# Q&A
+curl -s "$editor_url/public/qAndA.md" |
+  pnpm run updateMarkdown -t "src/pages/qa/index.md"
+
+# 変更履歴
+curl -s "$editor_url/public/updateInfos.json" \
+  >src/pages/update_history/updateInfos.json
+
+# デフォルトエンジンの更新情報
+pnpm run generateLatestDefaultEngineInfos
+```
+
+## 音量に関して
+
+ffmpeg で音量を調べて、だいたい LUFS 値が -20~-23 になるように調整しています。
+
+```bash
+# 音量を調べる
+audio_file=audio.wav
+ffmpeg -nostats -i $audio_file -filter_complex ebur128 -f null - </dev/null 2>&1 |
+  grep -3 "Integrated loudness:" |
+  grep "I:" |
+  tail -n1
+
+# 音量を調整する（例えば -17 LUFS を -20 LUFS くらいにしたい場合は volume=-3dB にする）
+audio_file=audio.wav
+output_file=output.wav
+ffmpeg -i $audio_file -af volume=-3dB $output_file
+```
+
+## サムネイル生成
+
+一部のサムネイルは HTML をレンダリングしたものを画像化しています。
+次のコマンドで更新してください。
+
+```bash
+# 起動
+pnpm start
+
+# しばらくしてから実行
+pnpm run generateThumb
+```
+
+## タイポチェック
+
+[typos](https://github.com/crate-ci/typos) を使ってタイポのチェックを行っています。  
+ブランチをプッシュすると自動でテストされます。
+
+## TODO
 
 - [ ] sitemap の比較、dev が含まれてないことを確認
 - [ ] ニュースの RSS？
@@ -14,7 +122,7 @@ pnpm run eslint
 - [ ] たぶん font-smoothing が効いてないけど macOS でちゃんと動くか確認
 - [ ] Google Analytics を Partytown にしたい issue 作る、sendEvent が Partytown 上からしかできなくなるのをどう解決するか
 
-### なんとなくのコーディングルールメモ
+## なんとなくのコーディングルールメモ
 
 - pages に置くアセット用のディレクトリはスネークケース
 - インポート済みの画像は定数(constants)として良い
@@ -30,3 +138,12 @@ pnpm run eslint
 - 静的ページやコンポーネントは Astro で作るのを意識すると楽
   - 画像の読み込みとか、ディレクティブとかが便利
 - 子へのスタイル適用は Astro 内の is:global を使うと楽
+
+## LICENSE
+
+VOICEVOX の開発のための利用のみ許可されます。  
+異なるライセンスを取得したい場合は、ヒホ（twitter: @hiho_karuta）に求めてください。
+
+## 謝辞
+
+- https://commons.nicovideo.jp/material/nc238325

@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  lint:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -27,3 +27,5 @@ jobs:
       - run: pnpm install
 
       - run: pnpm run lint
+
+      - run: pnpm run build

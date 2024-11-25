@@ -12,7 +12,8 @@
     "fmt": "eslint src/ --fix",
     "generateThumb": "tsx ./src/tools/generateThumb.mts",
     "generateLatestDefaultEngineInfos": "tsx ./src/tools/generateLatestDefaultEngineInfos.ts",
-    "updateVersion": "tsx ./src/tools/updateVersion.ts"
+    "updateVersion": "tsx ./src/tools/updateVersion.mts",
+    "updateMarkdown": "tsx ./src/tools/updateMarkdown.mts"
   },
   "dependencies": {
     "@astrojs/check": "0.9.4",

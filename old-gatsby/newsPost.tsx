@@ -1,3 +1,4 @@
+/*
 import { graphql } from "gatsby"
 import React from "react"
 import "../components/layout.scss"
@@ -45,3 +46,4 @@ export const query = graphql`
 `
 
 export default NewsPost
+*/
