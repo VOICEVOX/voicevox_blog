@@ -15,7 +15,7 @@ export default defineConfig({
   integrations: [
     mdx(),
     sitemap({
-      filter: (page) => page.includes("/dev/"),
+      filter: (page) => !page.includes("/dev/"),
     }),
     react(),
     partytown({

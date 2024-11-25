@@ -35,12 +35,13 @@ const {
   description,
   image: _image,
   imageAlt,
-  noindex,
+  noindex: noindex_,
   defaultHideHeader,
   isDark,
   isNemo,
 } = Astro.props;
 
+const noindex = import.meta.env.PREVIEW || noindex_;
 const isProduction = import.meta.env.PROD;
 
 // imageとimageAltが片方だけ指定されている場合はエラーを出す
@@ -98,24 +99,6 @@ const hasImage = imageUrl != undefined && imageAlt != undefined;
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
-
-    {/* セキュリティ対策。というよりSEO対策。 */}
-    {
-      import.meta.env.PROD && (
-        <>
-          <meta
-            http-equiv="Content-Security-Policy"
-            content="default-src 'self'"
-          />
-          <meta
-            http-equiv="Content-Security-Policy"
-            content="upgrade-insecure-requests"
-          />
-          <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
-          <meta http-equiv="X-FRAME-OPTIONS" content="DENY" />
-        </>
-      )
-    }
 
     {/* Google Analytics */}
     <script

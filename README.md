@@ -31,6 +31,11 @@ pnpm run deploy
 Netlify を使ってプレビュー環境デプロイを行っています。
 `preview`ブランチに push すると、Netlify のプレビュー環境にデプロイされます。
 
+```bash
+# ビルド
+pnpm run preview-build
+```
+
 ## リソース情報の更新
 
 コードの更新
