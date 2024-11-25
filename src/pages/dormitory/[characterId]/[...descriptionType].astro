@@ -18,7 +18,7 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
-import { Image } from "astro:assets";
+import { getImage, Image } from "astro:assets";
 
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 
@@ -30,6 +30,7 @@ import PlayButton from "@components/PlayButton/index.astro";
 
 import { callNameInfos } from "@constants/characterInfos/callNameInfo";
 import { getProductPageUrl } from "@constants/url";
+import backgroundImage from "../images/nc238325.jpg";
 
 const { characterInfo, descriptionType } = Astro.props;
 const characterKey = characterInfo.key;
@@ -37,6 +38,8 @@ const descriptionNames = {
   profile: "プロフィール",
   calls: "呼び方",
 } satisfies Record<(typeof descriptionTypes)[number], string>;
+
+const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src})`;
 ---
 
 <Base
@@ -62,6 +65,7 @@ const descriptionNames = {
                     src={characterInfo.portraitImage}
                     alt={characterInfo.name}
                     width={640}
+                    densities={[1, 1.5, 2]}
                     style={{
                       height: "100%",
                       display: "block",
@@ -244,14 +248,14 @@ const descriptionNames = {
   </div>
 </Base>
 
-<style lang="scss" is:global>
+<style lang="scss" define:vars={{ backgroundImageUrl }} is:global>
   @use "bulma/sass/utilities/mixins" as *;
   @use "bulma/sass/helpers" as *;
 
   @use "@/styles/helper" as *;
 
   .dormitory-character {
-    background-image: url(../images/nc238325.jpg);
+    background-image: var(--backgroundImageUrl);
     background-color: rgba(255, 255, 255, 0.7);
     background-blend-mode: lighten;
     background-size: cover;

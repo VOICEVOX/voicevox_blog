@@ -10,9 +10,11 @@ import SpeakerComponent from "./_SpeakerComponent.astro";
 import { getSpeakerInfo, speakerKeys } from "./constants";
 import shareThumb from "./share.png";
 import teaserImage from "./teaser.png";
+import backgroundImage from "./background.png";
 import voicevoxIconImage from "@/assets/icon.png";
 import { showNemoGuidanceModalAttr, showNemoTermModalAttr } from "@store";
 
+const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src})`;
 const voicevoxIconImageUrl = `url(${(await getImage({ src: voicevoxIconImage })).src})`;
 ---
 
@@ -128,7 +130,11 @@ VOICEVOXの音声合成をアプリケーションやサービスに組み込め
   </main>
 </Base>
 
-<style lang="scss" define:vars={{ voicevoxIconImageUrl }} is:global>
+<style
+  lang="scss"
+  define:vars={{ backgroundImageUrl, voicevoxIconImageUrl }}
+  is:global
+>
   @use "@/styles/helper.scss" as *;
   @use "bulma/sass/utilities/initial-variables" as *;
   @use "bulma/sass/utilities/mixins" as *;
@@ -136,7 +142,7 @@ VOICEVOXの音声合成をアプリケーションやサービスに組み込め
   .nemo {
     color: white;
     font-family: "LINE Seed", sans-serif;
-    background-image: url(./background.png);
+    background-image: var(--backgroundImageUrl);
     background-size: cover;
     background-position: top;
 

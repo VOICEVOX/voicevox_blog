@@ -18,11 +18,14 @@ export default defineConfig({
       filter: (page) => !page.includes("/dev/"),
     }),
     react(),
+    /*
+    // ViewTransitions を使う場合gtagがうまく動かない。ページの移動のたびにロードされてしまう。
     partytown({
       config: {
         forward: ["dataLayer.push"], // for `gtag`
       },
     }),
+    */
   ],
 
   vite: {

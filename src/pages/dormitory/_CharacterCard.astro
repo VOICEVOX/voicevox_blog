@@ -29,8 +29,9 @@ const href = getDormitoryCharacterPageUrl(characterInfo);
         class="card-image"
         src={characterInfo.bustupImage}
         alt={characterInfo.name}
-        width={256}
-        height={256}
+        width={320}
+        height={320}
+        densities={[1, 1.5, 2]}
         style={{ display: "block", objectFit: "contain" }}
       />
       <div

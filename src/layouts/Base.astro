@@ -42,7 +42,6 @@ const {
 } = Astro.props;
 
 const noindex = import.meta.env.PREVIEW || noindex_;
-const isProduction = import.meta.env.PROD;
 
 // imageとimageAltが片方だけ指定されている場合はエラーを出す
 if ((_image == undefined) != (imageAlt == undefined)) {
@@ -55,6 +54,12 @@ const imageUrl = _image
     : (await getImage({ src: _image })).src // importされた画像を取得する
   : undefined;
 const hasImage = imageUrl != undefined && imageAlt != undefined;
+
+// Google Analytics。実際のページ以外では読み込まない。
+const googleAnalyticsSrc =
+  import.meta.env.DEV || import.meta.env.PREVIEW
+    ? undefined
+    : `https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`;
 ---
 
 <html lang="ja" transition:animate="none">
@@ -101,20 +106,18 @@ const hasImage = imageUrl != undefined && imageAlt != undefined;
     <link rel="manifest" href="/site.webmanifest" />
 
     {/* Google Analytics */}
-    <script
-      src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-    ></script>
-    <script is:inline define:vars={{ isProduction, GA_TRACKING_ID }}>
-      if (isProduction) {
+    <script is:inline src={googleAnalyticsSrc}></script>
+    <script is:inline define:vars={{ GA_TRACKING_ID }}>
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function gtag(...args) {
+        dataLayer.push(args);
+      };
+      document.addEventListener("astro:page-load", () => {
         if ((navigator.doNotTrack || window.doNotTrack) != "1") {
-          window.dataLayer = window.dataLayer || [];
-          window.gtag = function gtag(...args) {
-            dataLayer.push(args);
-          };
           gtag("js", new Date());
-          gtag("config", `${GA_TRACKING_ID}`);
+          gtag("config", GA_TRACKING_ID);
         }
-      }
+      });
     </script>
 
     <ViewTransitions />
