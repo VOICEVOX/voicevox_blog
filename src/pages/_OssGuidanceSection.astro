@@ -41,7 +41,7 @@ const { class: className, isDark } = Astro.props;
     </p>
     <div class="buttons mt-3">
       <a
-        class={`button ${!isDark ? "is-outlined" : "is-dark"}`}
+        class={`button ${!isDark ? "" : "is-dark"}`}
         href="https://github.com/VOICEVOX/voicevox"
         target="_blank"
         rel="noreferrer"
@@ -53,7 +53,7 @@ const { class: className, isDark } = Astro.props;
         <span>VOICEVOX エディター</span>
       </a>
       <a
-        class={`button ${!isDark ? "is-outlined" : "is-dark"}`}
+        class={`button ${!isDark ? "" : "is-dark"}`}
         href="https://github.com/VOICEVOX/voicevox_engine"
         target="_blank"
         rel="noreferrer"

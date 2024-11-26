@@ -10,4 +10,9 @@ import { Image } from "astro:assets";
 const { characterInfo } = Astro.props;
 ---
 
-<Image src={characterInfo.bustupImage} alt={characterInfo.name} width="64" />
+<Image
+  src={characterInfo.bustupImage}
+  alt={characterInfo.name}
+  width="64"
+  densities={[1, 1.5, 2]}
+/>
