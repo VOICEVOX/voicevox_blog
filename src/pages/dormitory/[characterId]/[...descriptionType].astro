@@ -166,15 +166,18 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
                       {characterInfo.dormitoryImages && (
                         <div class="description-info-images">
                           {characterInfo.dormitoryImages.map((image) => (
-                            <Image
-                              src={image}
-                              alt={characterInfo.name}
-                              width={256}
-                              style={{
-                                maxHeight: "8rem",
-                                objectFit: "contain",
-                              }}
-                            />
+                            <div>
+                              <Image
+                                src={image}
+                                alt={characterInfo.name}
+                                height={256}
+                                densities={[1, 1.5, 2]}
+                                style={{
+                                  display: "block",
+                                  objectFit: "contain",
+                                }}
+                              />
+                            </div>
                           ))}
                         </div>
                       )}
@@ -382,7 +385,15 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
         }
 
         .description-info-images {
+          max-height: 8rem;
           display: flex;
+          div {
+            display: flex;
+            justify-content: center;
+            img {
+              flex: 1 1 auto;
+            }
+          }
         }
 
         .description-call {

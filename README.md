@@ -119,12 +119,10 @@ pnpm run generateThumb
 
 ## TODO
 
-- [ ] ボイボ寮ページで背景が読まれてないかも
-- [ ] Nemo のヘッダーのとこの見た目が変
-- [ ] Nemo の背景が重い
-- [ ] sitemap の比較、dev が含まれてないことを確認
 - [ ] ニュースの RSS？
-- [ ] Bulma の scss が重い
+- [ ] スマホ画面でのソングの売り文句が見切れてる
+- [ ] [iOS の chrome で戻るの挙動がおかしい](https://github.com/withastro/astro/issues/11919)
+- [ ] iOS の Chrome でボイボ寮一覧の背景が追従してきてるかも
 - [ ] canonical URL が以前と一致することを確認
 - [ ] Google Analytics の疎通チェック
 - [ ] たぶん font-smoothing が効いてないけど macOS でちゃんと動くか確認
