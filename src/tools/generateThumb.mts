@@ -3,6 +3,7 @@
  */
 
 import { characterKeys, characterEntries } from "@constants/characterEntry";
+import { waitForImages } from "@helper";
 import fs from "fs";
 import path from "path";
 import { chromium } from "playwright";
@@ -25,13 +26,6 @@ async function retry<T>(fn: () => Promise<T>, count: number = 5): Promise<T> {
     }
   }
   throw error;
-}
-
-/** 画像の読み込みが完了するまで待つ */
-async function waitForImages(page: Page) {
-  await page.waitForFunction(() =>
-    Array.from(document.images).every((img) => img.complete),
-  );
 }
 
 // キャラクターごとの製品ページ

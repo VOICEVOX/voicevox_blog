@@ -34,7 +34,7 @@ export const characterKeys = [
 
 export type CharacterKey = (typeof characterKeys)[number];
 
-type CharacterEntry = {
+export type CharacterEntry = {
   name: string;
   id: string;
 };

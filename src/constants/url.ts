@@ -1,15 +1,15 @@
 import { descriptionTypes } from "@/pages/dormitory/[characterId]/_constants";
-import type { CharacterInfo } from "./type";
+import type { CharacterEntry } from "./characterEntry";
 
-export const getProductPageUrl = (characterInfo: CharacterInfo) => {
-  return `/product/${characterInfo.id}/`;
+export const getProductPageUrl = (characterEntry: CharacterEntry) => {
+  return `/product/${characterEntry.id}/`;
 };
 
 export const getDormitoryCharacterPageUrl = (
-  characterInfo: CharacterInfo,
+  characterEntry: CharacterEntry,
   descriptionType: (typeof descriptionTypes)[number] = "profile",
 ) => {
-  return `/dormitory/${characterInfo.id}/${
+  return `/dormitory/${characterEntry.id}/${
     descriptionType == "profile" ? "" : descriptionType + "/"
   }`;
 };
