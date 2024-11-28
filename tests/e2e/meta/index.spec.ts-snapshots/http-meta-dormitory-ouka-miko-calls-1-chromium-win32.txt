@@ -1,0 +1,3 @@
+canonicalUrl: https://voicevox.hiroshiba.jp/dormitory/ouka_miko/calls/
+title: 櫻歌ミコ | ボイボ寮 呼び方 | VOICEVOX
+description: ニホンオオカミの女の子。<br />もうひとりのミコ（通称：第二ちゃん）がいる。

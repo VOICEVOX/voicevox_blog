@@ -1,0 +1,3 @@
+canonicalUrl: https://voicevox.hiroshiba.jp/product/namine_ritsu/
+title: VOICEVOX 波音リツ | 無料のテキスト読み上げソフトウェア
+description: VOICEVOXは「波音リツ」の低めのクールな声で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。

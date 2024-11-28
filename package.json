@@ -11,6 +11,7 @@
     "deploy": "astro check && astro build && gh-pages -d dist",
     "lint": "eslint src/",
     "fmt": "eslint src/ --fix",
+    "test:e2e": "playwright test --ui",
     "generateThumb": "tsx ./src/tools/generateThumb.mts",
     "generateLatestDefaultEngineInfos": "tsx ./src/tools/generateLatestDefaultEngineInfos.ts",
     "updateVersion": "tsx ./src/tools/updateVersion.mts",
@@ -55,6 +56,7 @@
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.16.0",
     "vite": "^5.4.11",
+    "xml-formatter": "^3.6.3",
     "zod": "^3.23.8"
   },
   "repository": {

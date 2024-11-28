@@ -1,0 +1,3 @@
+canonicalUrl: https://voicevox.hiroshiba.jp/product/wakamatsu_akashi/
+title: VOICEVOX 雀松朱司 | 無料のテキスト読み上げソフトウェア
+description: VOICEVOXは「雀松朱司」の物静かで安定した声で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。

@@ -112,13 +112,25 @@ pnpm start
 pnpm run generateThumb
 ```
 
-## タイポチェック
+## テスト
+
+### e2e テスト
+
+ビルドしたあと Playwright を使って e2e テストを行っています。
+
+```bash
+pnpm run preview-build
+pnpm run test:e2e
+```
+
+### タイポチェック
 
 [typos](https://github.com/crate-ci/typos) を使ってタイポのチェックを行っています。  
 ブランチをプッシュすると自動でテストされます。
 
 ## TODO
 
+- [ ] noindex になってないことを確認
 - [ ] ニュースの RSS？
 - [ ] スマホ画面でのソングの売り文句が見切れてる
 - [ ] [iOS の chrome で戻るの挙動がおかしい](https://github.com/withastro/astro/issues/11919)
