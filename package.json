@@ -11,7 +11,7 @@
     "deploy": "astro check && astro build && gh-pages -d dist",
     "lint": "eslint src/",
     "fmt": "eslint src/ --fix",
-    "test:e2e": "playwright test --ui",
+    "test:e2e": "playwright test",
     "generateThumb": "tsx ./src/tools/generateThumb.mts",
     "generateLatestDefaultEngineInfos": "tsx ./src/tools/generateLatestDefaultEngineInfos.ts",
     "updateVersion": "tsx ./src/tools/updateVersion.mts",

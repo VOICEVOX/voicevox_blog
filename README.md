@@ -121,6 +121,12 @@ pnpm run generateThumb
 ```bash
 pnpm run preview-build
 pnpm run test:e2e
+
+# スナップショットを更新する場合
+pnpm run test:e2e --update-snapshots
+
+# 開発時は UI モードが便利
+pnpm run test:e2e --ui
 ```
 
 ### タイポチェック

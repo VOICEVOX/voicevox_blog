@@ -20,8 +20,13 @@ export default defineConfig({
 
   projects: [
     {
-      name: "chromium",
+      name: "Desktop Chrome",
       use: { ...devices["Desktop Chrome"] },
+    },
+    {
+      name: "iPhone X",
+      use: { ...devices["iPhone X"], defaultBrowserType: "chromium" },
+      testDir: "./tests/e2e/screenshot",
     },
   ],
 });

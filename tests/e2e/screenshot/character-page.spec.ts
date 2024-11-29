@@ -1,18 +1,10 @@
 import { test } from "@playwright/test";
-import { expect, type Page } from "playwright/test";
-import { waitForAudios, waitForImages } from "@helper";
 import { characterKeys, characterEntries } from "@/constants/characterEntry";
 import {
   getDormitoryCharacterPageUrl,
   getProductPageUrl,
 } from "@/constants/url";
-
-/** スクリーンショットを撮る */
-async function takeScreenshot(page: Page) {
-  await waitForImages(page);
-  await waitForAudios(page);
-  await expect(page).toHaveScreenshot();
-}
+import { takeScreenshots } from "./helper";
 
 characterKeys.forEach((characterKey) => {
   const characterEntry = characterEntries[characterKey];
@@ -20,17 +12,17 @@ characterKeys.forEach((characterKey) => {
   test.describe(`${characterId}`, () => {
     test("product", async ({ page }) => {
       await page.goto(getProductPageUrl(characterEntry));
-      await takeScreenshot(page);
+      await takeScreenshots(page);
     });
 
     test("dormitory profile", async ({ page }) => {
       await page.goto(getDormitoryCharacterPageUrl(characterEntry, "profile"));
-      await takeScreenshot(page);
+      await takeScreenshots(page);
     });
 
     test("dormitory calls", async ({ page }) => {
       await page.goto(getDormitoryCharacterPageUrl(characterEntry, "calls"));
-      await takeScreenshot(page);
+      await takeScreenshots(page);
     });
   });
 });
