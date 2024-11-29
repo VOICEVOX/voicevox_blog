@@ -6,26 +6,49 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
-          run_install: false
+      - name: Setup environment
+        uses: ./.github/actions/setup-environment
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: ".node-version"
-          cache: "pnpm"
+      - name: Lint
+        run: pnpm run lint
 
-      - run: pnpm install
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - run: pnpm run lint
+      - name: Setup environment
+        uses: ./.github/actions/setup-environment
 
-      - run: pnpm run build
+      - name: Build
+        run: pnpm run build
+
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup environment
+        uses: ./.github/actions/setup-environment
+
+      - name: Build
+        run: pnpm run preview-build
+
+      - name: Test e2e
+        run: pnpm run test:e2e
+
+  typos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: typos-action
+        uses: crate-ci/typos@v1.12.12
