@@ -4,7 +4,7 @@ export default defineConfig({
   testDir: "./tests",
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 0,
+  retries: process.env.CI ? 3 : 0,
   workers: process.env.CI ? 1 : undefined,
   reporter: "html",
   use: {
@@ -26,7 +26,10 @@ export default defineConfig({
     {
       name: "iPhone X",
       use: { ...devices["iPhone X"], defaultBrowserType: "chromium" },
-      testDir: "./tests/e2e/screenshot",
+      testIgnore: [
+        "tests/e2e/meta/**/*.spec.ts",
+        "tests/e2e/sitemap/**/*.spec.ts",
+      ],
     },
   ],
 });

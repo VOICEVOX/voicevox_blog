@@ -1,8 +1,12 @@
 import { test, expect } from "@playwright/test";
 import fs from "node:fs";
 import { buffer } from "node:stream/consumers";
+import path from "node:path";
 
-const sitemapPath = import.meta.dirname + "../../../../dist/sitemap-0.xml";
+const sitemapPath = path.join(
+  import.meta.dirname,
+  "../../../dist/sitemap-0.xml",
+);
 const xmlText = fs.readFileSync(sitemapPath, "utf-8");
 const pagePaths = Array.from(
   xmlText.matchAll(/<loc>(.*?)<\/loc>/g),

@@ -31,7 +31,7 @@ jobs:
         run: pnpm run build
 
   e2e:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -39,11 +39,21 @@ jobs:
       - name: Setup environment
         uses: ./.github/actions/setup-environment
 
+      - name: Setup playwright
+        run: pnpm exec playwright install
+
       - name: Build
         run: pnpm run preview-build
 
       - name: Test e2e
         run: pnpm run test:e2e
+
+      - name: Upload playwright report
+        uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: playwright-report/
 
   typos:
     runs-on: ubuntu-latest
