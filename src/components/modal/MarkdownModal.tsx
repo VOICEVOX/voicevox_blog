@@ -10,6 +10,7 @@ export default (props: {
       className={
         `${props.className} modal` + (props.isActive ? " is-active" : "")
       }
+      role="dialog"
     >
       <div className="modal-background" onClick={props.hide}></div>
       <div className="modal-card">

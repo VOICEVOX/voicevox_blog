@@ -1,3 +1,5 @@
-canonicalUrl: https://voicevox.hiroshiba.jp/dormitory/ouka_miko/
-title: 櫻歌ミコ | ボイボ寮 プロフィール | VOICEVOX
-description: ニホンオオカミの女の子。<br />もうひとりのミコ（通称：第二ちゃん）がいる。
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/ouka_miko/",
+  "title": "櫻歌ミコ | ボイボ寮 プロフィール | VOICEVOX",
+  "description": "ニホンオオカミの女の子。<br />もうひとりのミコ（通称：第二ちゃん）がいる。"
+}

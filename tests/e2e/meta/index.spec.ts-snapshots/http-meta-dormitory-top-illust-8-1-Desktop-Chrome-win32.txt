@@ -1,3 +1,5 @@
-canonicalUrl: https://voicevox.hiroshiba.jp/dormitory/top_illust/8/
-title: トップイラスト 8 | ボイボ寮 | VOICEVOX
-description: 以前のトップイラストをご覧いただけます。イラスト：菊の字
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/top_illust/8/",
+  "title": "トップイラスト 8 | ボイボ寮 | VOICEVOX",
+  "description": "以前のトップイラストをご覧いただけます。イラスト：菊の字"
+}

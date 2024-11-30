@@ -1,44 +1,55 @@
 import { test } from "@playwright/test";
 import { takeScreenshots } from "./helper";
+import { gotoAndWait } from "../helper";
 
 test.describe("screenshots", () => {
   test("talk", async ({ page }) => {
-    await page.goto("/");
+    await gotoAndWait(page, "/");
     await takeScreenshots(page);
   });
 
   test("song", async ({ page }) => {
-    await page.goto("/song/");
+    await gotoAndWait(page, "/song/");
     await takeScreenshots(page);
   });
 
   test("dormitory", async ({ page }) => {
-    await page.goto("/dormitory/");
+    await gotoAndWait(page, "/dormitory/");
+    await takeScreenshots(page);
+  });
+
+  test("dormitory call_names", async ({ page }) => {
+    await gotoAndWait(page, "/dormitory/call_names/");
     await takeScreenshots(page);
   });
 
   test("nemo", async ({ page }) => {
-    await page.goto("/nemo/");
+    await gotoAndWait(page, "/nemo/");
+    await takeScreenshots(page);
+  });
+
+  test("nemo term", async ({ page }) => {
+    await gotoAndWait(page, "/nemo/term/b");
     await takeScreenshots(page);
   });
 
   test("how_to_use", async ({ page }) => {
-    await page.goto("/how_to_use/");
+    await gotoAndWait(page, "/how_to_use/");
     await takeScreenshots(page);
   });
 
   test("term", async ({ page }) => {
-    await page.goto("/term/");
+    await gotoAndWait(page, "/term/");
     await takeScreenshots(page);
   });
 
   test("qa", async ({ page }) => {
-    await page.goto("/qa/");
+    await gotoAndWait(page, "/qa/");
     await takeScreenshots(page);
   });
 
   test("update_history", async ({ page }) => {
-    await page.goto("/update_history/");
+    await gotoAndWait(page, "/update_history/");
     await takeScreenshots(page);
   });
 });

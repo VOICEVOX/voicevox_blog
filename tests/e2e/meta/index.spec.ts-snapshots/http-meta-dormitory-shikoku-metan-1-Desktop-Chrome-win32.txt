@@ -1,3 +1,5 @@
-canonicalUrl: https://voicevox.hiroshiba.jp/dormitory/shikoku_metan/
-title: 四国めたん | ボイボ寮 プロフィール | VOICEVOX
-description: 高等部二年生。常に金欠。趣味は中二病妄想。<br />誰にでも遠慮しないので、基本的にタメ口。
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/shikoku_metan/",
+  "title": "四国めたん | ボイボ寮 プロフィール | VOICEVOX",
+  "description": "高等部二年生。常に金欠。趣味は中二病妄想。<br />誰にでも遠慮しないので、基本的にタメ口。"
+}

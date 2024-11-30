@@ -1,3 +1,5 @@
-canonicalUrl: https://voicevox.hiroshiba.jp/product/kasukabe_tsumugi/
-title: VOICEVOX 春日部つむぎ | 無料のテキスト読み上げソフトウェア
-description: VOICEVOXは「春日部つむぎ」の元気な明るい声で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/product/kasukabe_tsumugi/",
+  "title": "VOICEVOX 春日部つむぎ | 無料のテキスト読み上げソフトウェア",
+  "description": "VOICEVOXは「春日部つむぎ」の元気な明るい声で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。"
+}

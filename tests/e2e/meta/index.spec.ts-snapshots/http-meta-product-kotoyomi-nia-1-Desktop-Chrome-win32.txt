@@ -1,3 +1,5 @@
-canonicalUrl: https://voicevox.hiroshiba.jp/product/kotoyomi_nia/
-title: VOICEVOX 琴詠ニア | 無料のテキスト読み上げソフトウェア
-description: VOICEVOXは「琴詠ニア」の滑らかで無機質な声で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/product/kotoyomi_nia/",
+  "title": "VOICEVOX 琴詠ニア | 無料のテキスト読み上げソフトウェア",
+  "description": "VOICEVOXは「琴詠ニア」の滑らかで無機質な声で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。"
+}

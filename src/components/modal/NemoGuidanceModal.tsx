@@ -21,6 +21,7 @@ export default () => {
     <>
       <div
         className={"modal-nemo-guidance modal" + (isActive ? " is-active" : "")}
+        role="dialog"
       >
         <div className="modal-background" onClick={hide} role="presentation" />
         <div className="modal-card">
@@ -47,6 +48,7 @@ export default () => {
                 target="_blank"
                 rel="noreferrer"
                 tabIndex={0}
+                role="button"
               >
                 <span className="icon">
                   <FontAwesomeIcon icon={faDownload} />
@@ -79,6 +81,7 @@ export default () => {
                 target="_blank"
                 rel="noreferrer"
                 tabIndex={0}
+                role="button"
               >
                 <span className="icon">
                   <FontAwesomeIcon icon={faDownload} />

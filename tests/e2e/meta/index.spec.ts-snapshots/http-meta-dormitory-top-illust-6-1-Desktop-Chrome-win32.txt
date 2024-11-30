@@ -1,3 +1,5 @@
-canonicalUrl: https://voicevox.hiroshiba.jp/dormitory/top_illust/6/
-title: トップイラスト 6 | ボイボ寮 | VOICEVOX
-description: 以前のトップイラストをご覧いただけます。イラスト：レイア
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/top_illust/6/",
+  "title": "トップイラスト 6 | ボイボ寮 | VOICEVOX",
+  "description": "以前のトップイラストをご覧いただけます。イラスト：レイア"
+}

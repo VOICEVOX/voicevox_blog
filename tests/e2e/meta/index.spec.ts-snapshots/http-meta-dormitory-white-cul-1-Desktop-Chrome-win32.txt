@@ -1,3 +1,5 @@
-canonicalUrl: https://voicevox.hiroshiba.jp/dormitory/white_cul/
-title: WhiteCUL | ボイボ寮 プロフィール | VOICEVOX
-description: CULの姉。風雪月花四姉妹の雪。冷静に見えるが、<br />実は小心者のクールビューティー。
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/white_cul/",
+  "title": "WhiteCUL | ボイボ寮 プロフィール | VOICEVOX",
+  "description": "CULの姉。風雪月花四姉妹の雪。冷静に見えるが、<br />実は小心者のクールビューティー。"
+}

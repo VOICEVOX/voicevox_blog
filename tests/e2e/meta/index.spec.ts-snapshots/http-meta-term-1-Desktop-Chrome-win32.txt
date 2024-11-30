@@ -1,3 +1,5 @@
-canonicalUrl: https://voicevox.hiroshiba.jp/term/
-title: ソフトウェア利用規約 | VOICEVOX
-description: VOICEVOXソフトウェアの利用規約です
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/term/",
+  "title": "ソフトウェア利用規約 | VOICEVOX",
+  "description": "VOICEVOXソフトウェアの利用規約です"
+}

@@ -1,3 +1,5 @@
-canonicalUrl: https://voicevox.hiroshiba.jp/dormitory/zundamon/
-title: ずんだもん | ボイボ寮 プロフィール | VOICEVOX
-description: ずんだ餅の精。やや不幸属性が備わっており、<br />ないがしろにされることもしばしば。
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/zundamon/",
+  "title": "ずんだもん | ボイボ寮 プロフィール | VOICEVOX",
+  "description": "ずんだ餅の精。やや不幸属性が備わっており、<br />ないがしろにされることもしばしば。"
+}

@@ -1,3 +1,5 @@
-canonicalUrl: https://voicevox.hiroshiba.jp/dormitory/top_illust/3/
-title: トップイラスト 3 | ボイボ寮 | VOICEVOX
-description: 以前のトップイラストをご覧いただけます。イラスト：moiky
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/top_illust/3/",
+  "title": "トップイラスト 3 | ボイボ寮 | VOICEVOX",
+  "description": "以前のトップイラストをご覧いただけます。イラスト：moiky"
+}

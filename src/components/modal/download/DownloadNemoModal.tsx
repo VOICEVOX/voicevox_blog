@@ -67,7 +67,10 @@ export default () => {
   }, [selectedOs, selectedMode]);
 
   return (
-    <div className={"modal-download modal" + (isActive ? " is-active" : "")}>
+    <div
+      className={"modal-download modal" + (isActive ? " is-active" : "")}
+      role="dialog"
+    >
       <div className="modal-background" onClick={hide} role="presentation" />
       <div className="modal-card">
         <header className="modal-card-head has-text-centered">

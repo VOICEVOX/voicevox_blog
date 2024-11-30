@@ -19,29 +19,26 @@ test.describe("http meta", () => {
       const http = await fetch(baseURL + pathname).then((res) => res.text());
 
       // メタ情報のテスト
-      let metaText = "";
+      const metaInfo = {} as Record<string, string | undefined>;
 
-      const canonicalUrl = http.match(
+      metaInfo.canonicalUrl = http.match(
         /<link rel="canonical" href="(.*?)"/,
       )?.[1];
-      metaText += `canonicalUrl: ${canonicalUrl}\n`;
 
-      const title = http.match(/<title>(.*?)<\/title>/)?.[1];
-      metaText += `title: ${title}\n`;
+      metaInfo.title = http.match(/<title>(.*?)<\/title>/)?.[1];
 
-      const description = http.match(
+      metaInfo.description = http.match(
         /<meta name="description" content="(.*?)"/,
       )?.[1];
-      metaText += `description: ${description}\n`;
 
-      expect(metaText).toMatchSnapshot();
+      expect(JSON.stringify(metaInfo, null, 2)).toMatchSnapshot();
 
       // og:imageのテスト
       const ogImageUrl = http.match(
         /<meta property="og:image" content="(.*?)"/,
       )?.[1];
       if (ogImageUrl != undefined) {
-        // 相対パスになっているものとURLになっているものがある
+        // 相対パスになっているものとURLになっているものがあるので両方に対応
         const ogImagePathname = ogImageUrl.startsWith("/")
           ? ogImageUrl
           : new URL(ogImageUrl).pathname;
@@ -54,4 +51,12 @@ test.describe("http meta", () => {
       }
     });
   }
+});
+
+test("末尾スラッシュがないURLは末尾スラッシュと同じcanonicalUrlを持つ", async ({
+  baseURL,
+}) => {
+  const http = await fetch(baseURL + "/song").then((res) => res.text());
+  const canonicalUrl = http.match(/<link rel="canonical" href="(.*?)"/)?.[1];
+  expect(new URL(canonicalUrl!).pathname).toBe("/song/");
 });

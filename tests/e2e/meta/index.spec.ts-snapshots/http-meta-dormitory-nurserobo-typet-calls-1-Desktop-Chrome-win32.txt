@@ -1,3 +1,5 @@
-canonicalUrl: https://voicevox.hiroshiba.jp/dormitory/nurserobo_typet/calls/
-title: ナースロボ＿タイプＴ | ボイボ寮 呼び方 | VOICEVOX
-description: 医者に作られたナース形ロボット。<br />人格は少女と設定されている。
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/nurserobo_typet/calls/",
+  "title": "ナースロボ＿タイプＴ | ボイボ寮 呼び方 | VOICEVOX",
+  "description": "医者に作られたナース形ロボット。<br />人格は少女と設定されている。"
+}

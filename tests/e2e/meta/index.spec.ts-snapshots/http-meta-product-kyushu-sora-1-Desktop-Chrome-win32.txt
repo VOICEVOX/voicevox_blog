@@ -1,3 +1,5 @@
-canonicalUrl: https://voicevox.hiroshiba.jp/product/kyushu_sora/
-title: VOICEVOX 九州そら | 無料のテキスト読み上げソフトウェア
-description: VOICEVOXは「九州そら」の気品のある大人な声で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/product/kyushu_sora/",
+  "title": "VOICEVOX 九州そら | 無料のテキスト読み上げソフトウェア",
+  "description": "VOICEVOXは「九州そら」の気品のある大人な声で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。"
+}
