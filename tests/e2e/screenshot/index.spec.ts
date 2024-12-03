@@ -5,6 +5,14 @@ import { gotoAndWait } from "../helper";
 test.describe("screenshots", () => {
   test("talk", async ({ page }) => {
     await gotoAndWait(page, "/");
+
+    // <video> の controls が差異になってしまうので削除する
+    await page.evaluate(() => {
+      document.querySelectorAll("video").forEach((video) => {
+        video.removeAttribute("controls");
+      });
+    });
+
     await takeScreenshots(page);
   });
 
