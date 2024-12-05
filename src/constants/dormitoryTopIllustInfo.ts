@@ -1,4 +1,4 @@
-import { sortedImportGlob } from "@helper";
+import { sortedImportGlob } from "@/helper";
 
 // トップイラスト
 const topIllustImages = sortedImportGlob(

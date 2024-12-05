@@ -1,10 +1,10 @@
 ---
+import { characterKeys } from "@/constants/characterEntry";
+import { characterInfos } from "@/constants/characterInfo";
 import Base from "@/layouts/Base.astro";
-import { characterKeys } from "@constants/characterEntry";
-import { characterInfos } from "@constants/characterInfo";
+import { showDownloadModalAttr } from "@/store";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { showDownloadModalAttr } from "@store";
 import { getImage, Image } from "astro:assets";
 import OssGuidanceSection from "../_OssGuidanceSection.astro";
 import backgroundImage from "./background.png";

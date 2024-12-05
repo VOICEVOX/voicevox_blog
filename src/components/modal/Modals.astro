@@ -6,8 +6,8 @@ import {
   characterEntries,
   characterKeys,
   type CharacterKey,
-} from "@constants/characterEntry";
-import { makeAssetsRecordSingleOptional } from "@helper";
+} from "@/constants/characterEntry";
+import { makeAssetsRecordSingleOptional } from "@/helper";
 import type { MarkdownInstance } from "astro";
 import DownloadModal from "./download/DownloadModal";
 import DownloadNemoModal from "./download/DownloadNemoModal";
@@ -56,6 +56,8 @@ const libraryTermIntroHtmls = (() => {
 <script>
   // TODO: <script>をやめてReactにする
 
+  import type { CharacterKey } from "@/constants/characterEntry";
+  import { sendEvent } from "@/helper";
   import {
     $downloadModal,
     $libraryTermIntroModal,
@@ -68,8 +70,6 @@ const libraryTermIntroHtmls = (() => {
     showNemoTermModalAttr,
     showPrivacyPolicyModalAttr,
   } from "@/store";
-  import type { CharacterKey } from "@constants/characterEntry";
-  import { sendEvent } from "@helper";
 
   document.addEventListener("astro:page-load", () => {
     $downloadModal.set(false);

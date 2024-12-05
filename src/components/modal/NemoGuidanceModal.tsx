@@ -1,6 +1,7 @@
 /**
  * Nemoの案内モーダル
  */
+import { sendEvent } from "@/helper";
 import {
   $downloadModal,
   $nemoDownloadModal,
@@ -8,7 +9,6 @@ import {
 } from "@/store";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { sendEvent } from "@helper";
 import { useStore } from "@nanostores/react";
 
 export default () => {

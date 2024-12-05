@@ -10,7 +10,7 @@
     "preview-build": "cross-env PREVIEW=1 astro build",
     "test-build": "cross-env TEST=1 astro build",
     "deploy": "astro check && astro build && gh-pages -d dist",
-    "lint": "eslint src/ && prettier --check src/",
+    "lint": "astro check && eslint src/ && prettier --check src/",
     "fmt": "eslint src/ --fix && prettier --write src/",
     "test:e2e": "cross-env TEST=1 playwright test",
     "generateThumb": "tsx ./src/tools/generateThumb.mts",

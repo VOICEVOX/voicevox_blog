@@ -2,9 +2,9 @@
  * 利用規約の導入文モーダル
  */
 import ModalMarkdown from "./MarkdownModal";
+import type { CharacterKey } from "@/constants/characterEntry";
+import { characterInfos } from "@/constants/characterInfo";
 import { $libraryTermIntroModal } from "@/store";
-import type { CharacterKey } from "@constants/characterEntry";
-import { characterInfos } from "@constants/characterInfo";
 import { useStore } from "@nanostores/react";
 
 export default (props: {

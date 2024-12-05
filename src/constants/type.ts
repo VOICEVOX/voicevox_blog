@@ -1,4 +1,4 @@
-import type { CharacterKey } from "@constants/characterEntry";
+import type { CharacterKey } from "@/constants/characterEntry";
 
 export type Styles = {
   name: string;

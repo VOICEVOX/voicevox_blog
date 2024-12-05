@@ -1,8 +1,8 @@
 /**
  * サムネイル画像を生成する
  */
-import { characterKeys, characterEntries } from "@constants/characterEntry";
-import { waitForImages } from "@helper";
+import { characterKeys, characterEntries } from "@/constants/characterEntry";
+import { waitForImages } from "@/helper";
 import fs from "fs";
 import path from "path";
 import { chromium } from "playwright";

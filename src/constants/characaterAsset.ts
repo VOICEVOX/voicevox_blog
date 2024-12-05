@@ -5,7 +5,7 @@ import {
   makeAssetsRecordSingle,
   makeAssetsRecordSingleOptional,
   makeAssetsRecordWithPath,
-} from "@helper";
+} from "@/helper";
 
 /** バストアップ画像。必ず１つある。 */
 export const bustupImages = makeAssetsRecordSingle(

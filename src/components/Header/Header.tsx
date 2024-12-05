@@ -1,7 +1,7 @@
+import { sendEvent } from "@/helper";
+import { $downloadModal, $nemoGuidanceModal } from "@/store";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { sendEvent } from "@helper";
-import { $downloadModal, $nemoGuidanceModal } from "@store";
 import { useEffect, useState } from "react";
 
 /** ヘッダーを隠すための属性。この属性を持つ要素が表示されている間はヘッダーを隠す */

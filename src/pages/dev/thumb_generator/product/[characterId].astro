@@ -4,10 +4,10 @@
  */
 
 import FontAwesomeIcon from "@/components/FontAwesomeIcon.astro";
+import { characterEntries, characterKeys } from "@/constants/characterEntry";
+import { characterInfos } from "@/constants/characterInfo";
 import "@/styles/bulma.scss";
 import "@/styles/global.scss";
-import { characterEntries, characterKeys } from "@constants/characterEntry";
-import { characterInfos } from "@constants/characterInfo";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 import { getImage } from "astro:assets";

@@ -1,6 +1,6 @@
 import ModalMarkdown from "./MarkdownModal";
+import { $privacyPolicyModal, $nemoTermModal } from "@/store";
 import { useStore } from "@nanostores/react";
-import { $privacyPolicyModal, $nemoTermModal } from "@store";
 
 export function PrivacyPolicyModal(props: { html: string }) {
   return (

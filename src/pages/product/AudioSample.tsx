@@ -1,8 +1,8 @@
-import PlayButton from "@components/PlayButton/PlayButton";
+import PlayButton from "@/components/PlayButton/PlayButton";
 import StyleDropdown, {
   useStyleDropdownController,
-} from "@components/StyleDropdown";
-import type { CharacterInfo } from "@constants/type";
+} from "@/components/StyleDropdown";
+import type { CharacterInfo } from "@/constants/type";
 import { useMemo } from "react";
 
 export default (props: { characterInfo: CharacterInfo }) => {

@@ -8,8 +8,8 @@ import {
   talkAudiosAndPaths,
   productShareImages,
   dormitoryShareImages,
-} from "@constants/characaterAsset";
-import type { CharacterKey } from "@constants/characterEntry";
+} from "@/constants/characaterAsset";
+import type { CharacterKey } from "@/constants/characterEntry";
 
 /** トーク用音声をスタイルごとに分ける */
 function makeTalkVoiceAudios(key: CharacterKey, styles: Styles) {

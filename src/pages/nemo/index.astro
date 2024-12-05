@@ -1,9 +1,9 @@
 ---
 import voicevoxIconImage from "@/assets/icon.png";
+import FontAwesomeIcon from "@/components/FontAwesomeIcon.astro";
 import Base from "@/layouts/Base.astro";
-import FontAwesomeIcon from "@components/FontAwesomeIcon.astro";
+import { showNemoGuidanceModalAttr, showNemoTermModalAttr } from "@/store";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
-import { showNemoGuidanceModalAttr, showNemoTermModalAttr } from "@store";
 import { getImage, Image } from "astro:assets";
 import SpeakerComponent from "./_SpeakerComponent.astro";
 import backgroundImage from "./background.png";

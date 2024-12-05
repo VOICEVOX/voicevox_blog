@@ -1,9 +1,9 @@
 /**
  * キャラクターごとのカード表示
  */
-import PlayButton from "@components/PlayButton/PlayButton";
-import type { CharacterInfo } from "@constants/type";
-import { getProductPageUrl } from "@constants/url";
+import PlayButton from "@/components/PlayButton/PlayButton";
+import type { CharacterInfo } from "@/constants/type";
+import { getProductPageUrl } from "@/constants/url";
 import {
   faBackwardStep,
   faForwardStep,

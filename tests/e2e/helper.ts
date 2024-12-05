@@ -1,4 +1,4 @@
-import { waitForAudios, waitForImages } from "@helper";
+import { waitForAudios, waitForImages } from "@/helper";
 import { expect, type Page } from "playwright/test";
 
 /** ページを読み込んで少し待つ */

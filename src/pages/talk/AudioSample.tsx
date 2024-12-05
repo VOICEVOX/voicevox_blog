@@ -1,7 +1,7 @@
+import PlayButton from "@/components/PlayButton/PlayButton";
 import StyleDropdown, {
   useStyleDropdownController,
 } from "@/components/StyleDropdown";
-import PlayButton from "@components/PlayButton/PlayButton";
 import React, { useMemo } from "react";
 
 export default ({

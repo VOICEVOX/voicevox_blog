@@ -5,15 +5,15 @@
  */
 import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header/index.astro";
-import Modals from "@components/modal/Modals.astro";
-import { GA_TRACKING_ID } from "@constants";
+import Modals from "@/components/modal/Modals.astro";
+import { GA_TRACKING_ID } from "@/constants";
 import {
   escapeHtml,
   isDevelopment,
   isPreview,
   isTest,
   stripHtmlTags,
-} from "@helper";
+} from "@/helper";
 import type { ImageMetadata } from "astro";
 import { SEO } from "astro-seo";
 import { getImage } from "astro:assets";

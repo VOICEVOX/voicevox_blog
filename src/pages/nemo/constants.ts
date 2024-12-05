@@ -1,4 +1,4 @@
-import { makeAssetsRecordRequired, makeAssetsRecordSingle } from "@helper";
+import { makeAssetsRecordRequired, makeAssetsRecordSingle } from "@/helper";
 
 type FemaleOrMale = "female" | "male";
 
