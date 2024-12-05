@@ -1,5 +1,6 @@
 {
   "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/",
   "title": "ボイボ寮 | VOICEVOX",
-  "description": "とある世界の不思議な建物、ボイボ寮。ここでは個性豊かな住民たちが暮らしています。"
+  "description": "とある世界の不思議な建物、ボイボ寮。ここでは個性豊かな住民たちが暮らしています。",
+  "robots": "index, follow"
 }

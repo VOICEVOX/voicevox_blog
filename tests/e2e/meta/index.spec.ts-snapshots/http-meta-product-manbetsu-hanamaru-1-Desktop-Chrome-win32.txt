@@ -1,5 +1,6 @@
 {
   "canonicalUrl": "https://voicevox.hiroshiba.jp/product/manbetsu_hanamaru/",
   "title": "VOICEVOX 満別花丸 | 無料のテキスト読み上げソフトウェア",
-  "description": "VOICEVOXは「満別花丸」の生き生きとした際立つ声で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。"
+  "description": "VOICEVOXは「満別花丸」の生き生きとした際立つ声で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。",
+  "robots": "index, follow"
 }

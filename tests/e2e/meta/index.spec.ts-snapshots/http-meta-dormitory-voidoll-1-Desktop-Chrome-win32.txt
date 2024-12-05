@@ -1,5 +1,6 @@
 {
   "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/voidoll/",
   "title": "Voidoll | ボイボ寮 プロフィール | VOICEVOX",
-  "description": "「#コンパス」を管理するAIロボ<br />人間の戦い方を監視/分析している。"
+  "description": "「#コンパス」を管理するAIロボ<br />人間の戦い方を監視/分析している。",
+  "robots": "index, follow"
 }

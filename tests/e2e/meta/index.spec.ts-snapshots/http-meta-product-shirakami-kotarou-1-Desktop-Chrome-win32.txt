@@ -1,5 +1,6 @@
 {
   "canonicalUrl": "https://voicevox.hiroshiba.jp/product/shirakami_kotarou/",
   "title": "VOICEVOX 白上虎太郎 | 無料のテキスト読み上げソフトウェア",
-  "description": "VOICEVOXは「白上虎太郎」の声変わり直後の少年の声で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。"
+  "description": "VOICEVOXは「白上虎太郎」の声変わり直後の少年の声で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。",
+  "robots": "index, follow"
 }

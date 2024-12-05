@@ -1,5 +1,6 @@
 {
   "canonicalUrl": "https://voicevox.hiroshiba.jp/product/kurono_takehiro/",
   "title": "VOICEVOX 玄野武宏 | 無料のテキスト読み上げソフトウェア",
-  "description": "VOICEVOXは「玄野武宏」の爽やかな青年の声で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。"
+  "description": "VOICEVOXは「玄野武宏」の爽やかな青年の声で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。",
+  "robots": "index, follow"
 }

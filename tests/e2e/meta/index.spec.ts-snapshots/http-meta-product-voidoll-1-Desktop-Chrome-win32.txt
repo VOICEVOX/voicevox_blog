@@ -1,5 +1,6 @@
 {
   "canonicalUrl": "https://voicevox.hiroshiba.jp/product/voidoll/",
   "title": "VOICEVOX Voidoll | 無料のテキスト読み上げソフトウェア",
-  "description": "VOICEVOXは「Voidoll」の慎ましやかで電子的な声で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。"
+  "description": "VOICEVOXは「Voidoll」の慎ましやかで電子的な声で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。",
+  "robots": "index, follow"
 }

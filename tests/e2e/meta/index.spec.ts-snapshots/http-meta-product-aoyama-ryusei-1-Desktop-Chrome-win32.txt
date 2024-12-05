@@ -1,5 +1,6 @@
 {
   "canonicalUrl": "https://voicevox.hiroshiba.jp/product/aoyama_ryusei/",
   "title": "VOICEVOX 青山龍星 | 無料のテキスト読み上げソフトウェア",
-  "description": "VOICEVOXは「青山龍星」の重厚で低音な声で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。"
+  "description": "VOICEVOXは「青山龍星」の重厚で低音な声で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。",
+  "robots": "index, follow"
 }

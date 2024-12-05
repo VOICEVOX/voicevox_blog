@@ -1,5 +1,10 @@
 import type { Page } from "playwright/test";
 
+export const isDevelopment = import.meta.env?.DEV == true;
+export const isProduction = import.meta.env?.PROD == true;
+export const isPreview = import.meta.env?.PREVIEW == true;
+export const isTest = import.meta.env?.TEST == true;
+
 /**
  * キーごとに複数のアセットを分配する。
  * 元のパスも返す。

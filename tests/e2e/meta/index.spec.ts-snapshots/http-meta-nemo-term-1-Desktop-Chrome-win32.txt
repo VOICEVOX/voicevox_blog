@@ -1,5 +1,6 @@
 {
   "canonicalUrl": "https://voicevox.hiroshiba.jp/nemo/term/",
   "title": "Nemo 利用規約 | VOICEVOX",
-  "description": "VOICEVOX Nemoの利用規約です"
+  "description": "VOICEVOX Nemoの利用規約です",
+  "robots": "index, follow"
 }

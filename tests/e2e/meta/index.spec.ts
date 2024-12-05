@@ -31,6 +31,8 @@ test.describe("http meta", () => {
         /<meta name="description" content="(.*?)"/,
       )?.[1];
 
+      metaInfo.robots = http.match(/<meta name="robots" content="(.*?)"/)?.[1];
+
       expect(JSON.stringify(metaInfo, null, 2)).toMatchSnapshot();
 
       // og:imageのテスト

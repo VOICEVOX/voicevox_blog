@@ -116,17 +116,14 @@ pnpm run generateThumb
 
 ### e2e テスト
 
-ビルドしたあと Playwright を使って e2e テストを行っています。
+ビルドしたあと Playwright を使って e2e テストを行っています。Windows 環境でのテストを想定しています。
 
 ```bash
-pnpm run preview-build
+pnpm run test-build
+
 pnpm run test:e2e
-
-# スナップショットを更新する場合
-pnpm run test:e2e --update-snapshots
-
-# 開発時は UI モードが便利
-pnpm run test:e2e --ui
+pnpm run test:e2e --update-snapshots # スナップショットを更新する場合
+pnpm run test:e2e --ui # 開発時は UI モードが便利
 ```
 
 ### タイポチェック
@@ -136,16 +133,15 @@ pnpm run test:e2e --ui
 
 ## TODO
 
-- [ ] noindex になってないことを確認
-- [ ] ニュースの RSS？
+- [ ] import 順序についてのルールを決める
 - [ ] スマホ画面でのソングの売り文句が見切れてる
-- [ ] [iOS の chrome で戻るの挙動がおかしい](https://github.com/withastro/astro/issues/11919)
-- [ ] iOS の Chrome でボイボ寮一覧の背景が追従してきてるかも
 - [ ] canonical URL が以前と一致することを確認
 - [ ] Google Analytics の疎通チェック
 - [ ] たぶん font-smoothing が効いてないけど macOS でちゃんと動くか確認
 
-## なんとなくのコーディングルールメモ
+## 開発者向け案内
+
+### なんとなくのコーディングルール
 
 - pages に置くアセット用のディレクトリはスネークケース
 - インポート済みの画像は定数(constants)として良い
@@ -161,6 +157,14 @@ pnpm run test:e2e --ui
 - 静的ページやコンポーネントは Astro で作るのを意識すると楽
   - 画像の読み込みとか、ディレクティブとかが便利
 - 子へのスタイル適用は Astro 内の is:global を使うと楽
+
+### モードと効果の表
+
+|                        | デフォルト | isDevelopment | isProduction | isPreview | isTest |
+| ---------------------- | ---------- | ------------- | ------------ | --------- | ------ |
+| Google Analytics       | 有効       | 無効          |              | 無効      | 無効   |
+| robots                 | 有効       |               |              | 無効      |        |
+| キャラサムネ画像がない | 無視       |               | エラー       |           |        |
 
 ## LICENSE
 

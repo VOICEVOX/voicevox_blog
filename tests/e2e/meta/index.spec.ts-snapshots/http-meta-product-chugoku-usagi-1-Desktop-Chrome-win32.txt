@@ -1,5 +1,6 @@
 {
   "canonicalUrl": "https://voicevox.hiroshiba.jp/product/chugoku_usagi/",
   "title": "VOICEVOX 中国うさぎ | 無料のテキスト読み上げソフトウェア",
-  "description": "VOICEVOXは「中国うさぎ」の幽玄で初々しい声で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。"
+  "description": "VOICEVOXは「中国うさぎ」の幽玄で初々しい声で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。",
+  "robots": "index, follow"
 }

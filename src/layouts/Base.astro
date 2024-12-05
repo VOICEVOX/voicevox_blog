@@ -26,6 +26,7 @@ import { GA_TRACKING_ID } from "@constants";
 import Header from "@/components/Header/index.astro";
 import Footer from "@/components/Footer.astro";
 import Modals from "@components/modal/Modals.astro";
+import { isDevelopment, isPreview, isTest } from "@helper";
 
 const {
   title,
@@ -38,7 +39,7 @@ const {
   isNemo,
 } = Astro.props;
 
-const noindex = import.meta.env.PREVIEW || noindex_;
+const noindex = isPreview || noindex_;
 
 // imageとimageAltが片方だけ指定されている場合はエラーを出す
 if ((_image == undefined) != (imageAlt == undefined)) {
@@ -54,7 +55,7 @@ const hasImage = imageUrl != undefined && imageAlt != undefined;
 
 // Google Analytics。実際のページ以外では読み込まない。
 const googleAnalyticsSrc =
-  import.meta.env.DEV || import.meta.env.PREVIEW
+  isDevelopment || isPreview || isTest
     ? undefined
     : `https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`;
 ---

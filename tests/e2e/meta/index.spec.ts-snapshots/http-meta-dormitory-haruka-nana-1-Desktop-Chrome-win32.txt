@@ -1,5 +1,6 @@
 {
   "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/haruka_nana/",
   "title": "春歌ナナ | ボイボ寮 プロフィール | VOICEVOX",
-  "description": "いつだって元気いっぱいな女の子です。"
+  "description": "いつだって元気いっぱいな女の子です。",
+  "robots": "index, follow"
 }

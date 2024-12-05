@@ -1,5 +1,6 @@
 {
   "canonicalUrl": "https://voicevox.hiroshiba.jp/how_to_use/",
   "title": "使い方 | VOICEVOX",
-  "description": "VOICEVOXソフトウェアの使い方です"
+  "description": "VOICEVOXソフトウェアの使い方です",
+  "robots": "index, follow"
 }

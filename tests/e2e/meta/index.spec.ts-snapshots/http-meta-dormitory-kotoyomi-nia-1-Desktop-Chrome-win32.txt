@@ -1,5 +1,6 @@
 {
   "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/kotoyomi_nia/",
   "title": "琴詠ニア | ボイボ寮 プロフィール | VOICEVOX",
-  "description": "N Airのシルエットが推し。ニコ生のコメントを<br />読み上げている、宇宙を旅する女の子。"
+  "description": "N Airのシルエットが推し。ニコ生のコメントを<br />読み上げている、宇宙を旅する女の子。",
+  "robots": "index, follow"
 }

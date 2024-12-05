@@ -3,9 +3,10 @@
  */
 
 import type { APIRoute } from "astro";
+import { isPreview } from "@helper";
 
 const getRobotsTxt = (sitemapURL: URL) => `User-agent: *
-${import.meta.env.PREVIEW ? "Disallow" : "Allow"}: /
+${isPreview ? "Disallow" : "Allow"}: /
 
 Sitemap: ${sitemapURL.href}
 `;

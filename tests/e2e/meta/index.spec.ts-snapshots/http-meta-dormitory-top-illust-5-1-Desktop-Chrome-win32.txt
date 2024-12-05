@@ -1,5 +1,6 @@
 {
   "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/top_illust/5/",
   "title": "トップイラスト 5 | ボイボ寮 | VOICEVOX",
-  "description": "以前のトップイラストをご覧いただけます。イラスト：さよなか"
+  "description": "以前のトップイラストをご覧いただけます。イラスト：さよなか",
+  "robots": "index, follow"
 }

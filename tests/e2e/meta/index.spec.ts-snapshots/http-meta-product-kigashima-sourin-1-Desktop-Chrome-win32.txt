@@ -1,5 +1,6 @@
 {
   "canonicalUrl": "https://voicevox.hiroshiba.jp/product/kigashima_sourin/",
   "title": "VOICEVOX 麒ヶ島宗麟 | 無料のテキスト読み上げソフトウェア",
-  "description": "VOICEVOXは「麒ヶ島宗麟」の渋いおじさん声で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。"
+  "description": "VOICEVOXは「麒ヶ島宗麟」の渋いおじさん声で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。",
+  "robots": "index, follow"
 }

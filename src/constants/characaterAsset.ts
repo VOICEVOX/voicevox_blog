@@ -1,5 +1,6 @@
 import { characterEntries, characterKeys } from "./characterEntry";
 import {
+  isDevelopment,
   makeAssetsRecordOptional,
   makeAssetsRecordSingle,
   makeAssetsRecordSingleOptional,
@@ -48,7 +49,7 @@ export const songAudiosAndPaths = makeAssetsRecordWithPath(
 
 /** 製品ページのサムネイル画像。開発時は１つもないときもある。製品時は必ず１つある。 */
 export const productShareImages = (
-  import.meta.env.DEV ? makeAssetsRecordSingleOptional : makeAssetsRecordSingle
+  isDevelopment ? makeAssetsRecordSingleOptional : makeAssetsRecordSingle
 )(
   characterKeys,
   characterEntries,
@@ -80,7 +81,7 @@ export const dormitoryImages = makeAssetsRecordOptional(
 
 /** ボイボ寮個別ページのサムネイル画像。開発時は１つもないときもある。製品時は必ず１つある。 */
 export const dormitoryShareImages = (
-  import.meta.env.DEV ? makeAssetsRecordSingleOptional : makeAssetsRecordSingle
+  isDevelopment ? makeAssetsRecordSingleOptional : makeAssetsRecordSingle
 )(
   characterKeys,
   characterEntries,
