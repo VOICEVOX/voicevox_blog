@@ -6,6 +6,62 @@ export const isPreview = import.meta.env?.PREVIEW == true;
 export const isTest = import.meta.env?.TEST == true;
 
 /**
+ * HTML文字列をエスケープ
+ *
+ * Copyright © 2012 TJ Holowaychuk <tj@vision-media.ca>
+ * Released under the MIT License.
+ * https://github.com/component/escape-html
+ */
+export function escapeHtml(text: string): string {
+  const str = "" + text;
+  const match = /["'&<>]/.exec(str);
+
+  if (!match) {
+    return str;
+  }
+
+  let escape;
+  let html = "";
+  let index = 0;
+  let lastIndex = 0;
+
+  for (index = match.index; index < str.length; index++) {
+    switch (str.charCodeAt(index)) {
+      case 34: // "
+        escape = "&quot;";
+        break;
+      case 38: // &
+        escape = "&amp;";
+        break;
+      case 39: // '
+        escape = "&#39;";
+        break;
+      case 60: // <
+        escape = "&lt;";
+        break;
+      case 62: // >
+        escape = "&gt;";
+        break;
+      default:
+        continue;
+    }
+
+    if (lastIndex !== index) {
+      html += str.substring(lastIndex, index);
+    }
+
+    lastIndex = index + 1;
+    html += escape;
+  }
+
+  return lastIndex !== index ? html + str.substring(lastIndex, index) : html;
+}
+/** 文字列からHTMLタグを除外する */
+export function stripHtmlTags(text: string): string {
+  return text.replace(/<\/?[^>]+(>|$)/g, "");
+}
+
+/**
  * キーごとに複数のアセットを分配する。
  * 元のパスも返す。
  * １つもない場合は空配列を返す。

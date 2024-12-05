@@ -1,6 +1,6 @@
 {
   "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/goki/",
   "title": "後鬼 | ボイボ寮 プロフィール | VOICEVOX",
-  "description": "鬼っ子ハンターついなちゃんの式神。<br />人間態では色っぽい大人の女性の話し方になる。",
+  "description": "鬼っ子ハンターついなちゃんの式神。人間態では色っぽい大人の女性の話し方になる。",
   "robots": "index, follow"
 }

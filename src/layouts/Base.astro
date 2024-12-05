@@ -26,7 +26,13 @@ import { GA_TRACKING_ID } from "@constants";
 import Header from "@/components/Header/index.astro";
 import Footer from "@/components/Footer.astro";
 import Modals from "@components/modal/Modals.astro";
-import { isDevelopment, isPreview, isTest } from "@helper";
+import {
+  escapeHtml,
+  isDevelopment,
+  isPreview,
+  isTest,
+  stripHtmlTags,
+} from "@helper";
 
 const {
   title,
@@ -63,9 +69,9 @@ const googleAnalyticsSrc =
 <html lang="ja" transition:animate="none">
   <head>
     <SEO
-      title={title}
+      title={escapeHtml(title)}
       charset="utf-8"
-      description={description}
+      description={stripHtmlTags(description)}
       canonical={String(new URL(Astro.url.pathname, Astro.site))}
       openGraph={hasImage
         ? {

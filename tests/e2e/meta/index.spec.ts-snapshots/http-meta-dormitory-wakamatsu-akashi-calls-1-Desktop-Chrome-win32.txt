@@ -1,6 +1,6 @@
 {
   "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/wakamatsu_akashi/calls/",
   "title": "雀松朱司 | ボイボ寮 呼び方 | VOICEVOX",
-  "description": "温厚なしっかり者の青年。<br />ちょっぴり天然で抜けている面も･･･。",
+  "description": "温厚なしっかり者の青年。ちょっぴり天然で抜けている面も･･･。",
   "robots": "index, follow"
 }

@@ -1,6 +1,6 @@
 {
   "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/shirakami_kotarou/",
   "title": "白上虎太郎 | ボイボ寮 プロフィール | VOICEVOX",
-  "description": "まっすぐで人懐っこい青年。<br />愛嬌はあるものの少しおばか。",
+  "description": "まっすぐで人懐っこい青年。愛嬌はあるものの少しおばか。",
   "robots": "index, follow"
 }

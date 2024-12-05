@@ -133,7 +133,6 @@ pnpm run test:e2e --ui # 開発時は UI モードが便利
 
 ## TODO
 
-- [ ] meta descript のキャラ説明から`<br >`を抜く
 - [ ] calls_name で、自分自身への呼び方は背景色がつかないようにする
 - [ ] markdown 内の code ブロックが黒背景で強すぎる
 - [ ] import 順序についてのルールを決める

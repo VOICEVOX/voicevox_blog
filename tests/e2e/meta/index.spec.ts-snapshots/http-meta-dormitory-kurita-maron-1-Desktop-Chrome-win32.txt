@@ -1,6 +1,6 @@
 {
   "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/kurita_maron/",
   "title": "栗田まろん | ボイボ寮 プロフィール | VOICEVOX",
-  "description": "友人たちに乗せられて女装したら好評だった<br />男子高生。図書委員所属。",
+  "description": "友人たちに乗せられて女装したら好評だった男子高生。図書委員所属。",
   "robots": "index, follow"
 }

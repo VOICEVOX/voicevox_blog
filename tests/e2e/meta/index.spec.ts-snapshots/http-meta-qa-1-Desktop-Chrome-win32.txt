@@ -1,6 +1,6 @@
 {
   "canonicalUrl": "https://voicevox.hiroshiba.jp/qa/",
-  "title": "Q&A | VOICEVOX",
+  "title": "Q&amp;A | VOICEVOX",
   "description": "VOICEVOXのよくあるご質問です",
   "robots": "index, follow"
 }

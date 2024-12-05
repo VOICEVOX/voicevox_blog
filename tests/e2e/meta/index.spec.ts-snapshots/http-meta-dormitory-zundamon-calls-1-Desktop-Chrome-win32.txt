@@ -1,6 +1,6 @@
 {
   "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/zundamon/calls/",
   "title": "ずんだもん | ボイボ寮 呼び方 | VOICEVOX",
-  "description": "ずんだ餅の精。やや不幸属性が備わっており、<br />ないがしろにされることもしばしば。",
+  "description": "ずんだ餅の精。やや不幸属性が備わっており、ないがしろにされることもしばしば。",
   "robots": "index, follow"
 }
