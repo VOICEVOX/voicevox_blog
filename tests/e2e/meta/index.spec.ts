@@ -25,9 +25,7 @@ test.describe("http meta", () => {
         /<link rel="canonical" href="(.*?)"/,
       )?.[1];
 
-      metaInfo.title = http.match(
-        /<head.*?>.*?<title>(.*?)<\/title>.*?<\/head>/,
-      )?.[1];
+      metaInfo.title = http.match(/<title>(.*?)<\/title>/)?.[1];
 
       metaInfo.description = http.match(
         /<meta name="description" content="(.*?)"/,
