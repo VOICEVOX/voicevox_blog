@@ -2,10 +2,13 @@ import { sortedImportGlob } from "@/helper";
 
 // トップイラスト
 const topIllustImages = sortedImportGlob(
-  import.meta.glob<ImageMetadata>("./dormitory-top-illust-images/*.png", {
-    eager: true,
-    import: "default",
-  }),
+  import.meta.glob<ImageMetadata>(
+    "@/assets/dormitory-top-illust-images/*.png",
+    {
+      eager: true,
+      import: "default",
+    },
+  ),
 );
 
 // イラストレーター

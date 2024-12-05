@@ -11,7 +11,7 @@ import {
 export const bustupImages = makeAssetsRecordSingle(
   characterKeys,
   characterEntries,
-  import.meta.glob<ImageMetadata>("./bustup-images/*.png", {
+  import.meta.glob<ImageMetadata>("@/assets/bustup-images/*.png", {
     eager: true,
     import: "default",
   }),
@@ -21,7 +21,7 @@ export const bustupImages = makeAssetsRecordSingle(
 export const portraitImages = makeAssetsRecordSingle(
   characterKeys,
   characterEntries,
-  import.meta.glob<ImageMetadata>("./portrait-images/*.png", {
+  import.meta.glob<ImageMetadata>("@/assets/portrait-images/*.png", {
     eager: true,
     import: "default",
   }),
@@ -31,7 +31,7 @@ export const portraitImages = makeAssetsRecordSingle(
 export const talkAudiosAndPaths = makeAssetsRecordWithPath(
   characterKeys,
   characterEntries,
-  import.meta.glob<string>("./talk-audios/*.wav", {
+  import.meta.glob<string>("@/assets/talk-audios/*.wav", {
     eager: true,
     import: "default",
   }),
@@ -41,7 +41,7 @@ export const talkAudiosAndPaths = makeAssetsRecordWithPath(
 export const songAudiosAndPaths = makeAssetsRecordWithPath(
   characterKeys,
   characterEntries,
-  import.meta.glob<string>("./song-audios/*.wav", {
+  import.meta.glob<string>("@/assets/song-audios/*.wav", {
     eager: true,
     import: "default",
   }),
@@ -53,7 +53,7 @@ export const productShareImages = (
 )(
   characterKeys,
   characterEntries,
-  import.meta.glob<ImageMetadata>("./product-share-images/*.png", {
+  import.meta.glob<ImageMetadata>("@/assets/product-share-images/*.png", {
     eager: true,
     import: "default",
   }),
@@ -63,7 +63,7 @@ export const productShareImages = (
 export const dormitoryAudios = makeAssetsRecordOptional(
   characterKeys,
   characterEntries,
-  import.meta.glob<string>("./dormitory-audios/*.wav", {
+  import.meta.glob<string>("@/assets/dormitory-audios/*.wav", {
     eager: true,
     import: "default",
   }),
@@ -73,7 +73,7 @@ export const dormitoryAudios = makeAssetsRecordOptional(
 export const dormitoryImages = makeAssetsRecordOptional(
   characterKeys,
   characterEntries,
-  import.meta.glob<ImageMetadata>("./dormitory-images/*.{png,jpg}", {
+  import.meta.glob<ImageMetadata>("@/assets/dormitory-images/*.{png,jpg}", {
     eager: true,
     import: "default",
   }),
@@ -85,7 +85,7 @@ export const dormitoryShareImages = (
 )(
   characterKeys,
   characterEntries,
-  import.meta.glob<ImageMetadata>("./dormitory-share-images/*.png", {
+  import.meta.glob<ImageMetadata>("@/assets/dormitory-share-images/*.png", {
     eager: true,
     import: "default",
   }),

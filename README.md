@@ -84,7 +84,7 @@ curl -s "$editor_url/public/updateInfos.json" \
 pnpm run generateLatestDefaultEngineInfos
 ```
 
-## 音量に関して
+## サンプル音声の音量
 
 ffmpeg で音量を調べて、だいたい LUFS 値が -20~-23 になるように調整しています。
 
@@ -134,26 +134,21 @@ pnpm run test:e2e --ui # 開発時は UI モードが便利
 [typos](https://github.com/crate-ci/typos) を使ってタイポのチェックを行っています。  
 ブランチをプッシュすると自動でテストされます。
 
-## TODO
-
-- [ ] スマホ画面でのソングの売り文句が見切れてる
-- [ ] Google Analytics の疎通チェック
-
 ## 開発者向け案内
 
 ### なんとなくのコーディングルール
 
 - pages に置くアセット用のディレクトリはスネークケース
-- インポートした画像は定数(constants)として良い
+- インポートした画像等は定数(constants)として良い
 - 大文字始まりの Astro ファイルはコンポーネント
 - インタラクティブが必要なものは無理せず React にしたほうが良い
   - 単純なボタンとかだけでも React のほうがコーディングしやすい
-  - けど Astro 考えると`<script>`のが考えること少ないこともあり、判断が難し
+  - けど Astro 考えると`<script>`のが考えること少ないこともあり、判断が難しい
 - React コンポーネントへのスタイル適用は helper.scss か、Astro でラップして`<style>`に書く
   - CSS in JS を使わない理由は単によく知らないから
   - Bulma から Tailwind に移行したいかも
 - コンポーネントをまたぐインタラクティブな挙動は Store を使う
-  - React hook は Astro 内で使えないので、なるべく使わない方針が良さそう？
+  - React hook は Astro 内で使えないので、なるべく使わない方針
 - 静的ページやコンポーネントは Astro で作るのを意識すると楽
   - 画像の読み込みとか、ディレクティブとかが便利
 - 子へのスタイル適用は Astro 内の is:global を使うと楽
@@ -165,6 +160,11 @@ pnpm run test:e2e --ui # 開発時は UI モードが便利
 | Google Analytics       | 有効       | 無効          |              | 無効      | 無効   |
 | robots                 | 有効       |               |              | 無効      |        |
 | キャラサムネ画像がない | 無視       |               | エラー       |           |        |
+
+## TODO
+
+- [ ] スマホ画面でのソングの売り文句が見切れてる
+- [ ] Google Analytics の疎通チェック
 
 ## LICENSE
 

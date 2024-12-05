@@ -8,7 +8,7 @@ type DormitoryEvent = {
 };
 
 const images = sortedImportGlob(
-  import.meta.glob<ImageMetadata>("./dormitory-event-images/*.png", {
+  import.meta.glob<ImageMetadata>("@/assets/dormitory-event-images/*.png", {
     eager: true,
     import: "default",
   }),
