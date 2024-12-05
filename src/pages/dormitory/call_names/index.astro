@@ -316,24 +316,21 @@ function rgba2rgbOnWhite(
         td {
           p {
             user-select: all;
-
-            &.me,
-            &.unknown {
-              color: gray;
-            }
           }
 
-          &:has(.unknown) {
-            cursor: default;
+          &.me {
+            color: gray;
+            background: white;
+          }
 
+          &.unknown {
+            color: gray;
+
+            cursor: default;
             p {
               outline: none;
               user-select: none;
             }
-          }
-
-          &:has(.me) {
-            background: white;
           }
         }
       }
