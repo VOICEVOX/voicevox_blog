@@ -43,7 +43,7 @@ jobs:
         run: pnpm exec playwright install
 
       - name: Build
-        run: pnpm run preview-build
+        run: pnpm run test-build
 
       - name: Test e2e
         run: pnpm run test:e2e
