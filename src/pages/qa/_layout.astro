@@ -3,7 +3,7 @@ import OneSectionMarkdown, {
   type Props,
 } from "@layouts/OneSectionMarkdown.astro";
 
-const props = Astro.props;
+const props = Astro.props satisfies Props;
 ---
 
 <OneSectionMarkdown {...props}><slot /></OneSectionMarkdown>

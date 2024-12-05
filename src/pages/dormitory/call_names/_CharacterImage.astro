@@ -1,11 +1,10 @@
 ---
 import type { CharacterInfo } from "@constants/type";
+import { Image } from "astro:assets";
 
 interface Props {
   characterInfo: CharacterInfo;
 }
-
-import { Image } from "astro:assets";
 
 const { characterInfo } = Astro.props;
 ---

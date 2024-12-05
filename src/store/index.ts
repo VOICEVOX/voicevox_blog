@@ -1,7 +1,6 @@
 /**
  * コンポーネントを超えて状態管理するためのストア。
  */
-
 import type { CharacterKey } from "@constants/characterEntry";
 import { atom } from "nanostores";
 

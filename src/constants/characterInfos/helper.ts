@@ -1,4 +1,3 @@
-import type { CharacterKey } from "@constants/characterEntry";
 import type { Styles } from "../type";
 import {
   bustupImages,
@@ -10,6 +9,7 @@ import {
   productShareImages,
   dormitoryShareImages,
 } from "@constants/characaterAsset";
+import type { CharacterKey } from "@constants/characterEntry";
 
 /** トーク用音声をスタイルごとに分ける */
 function makeTalkVoiceAudios(key: CharacterKey, styles: Styles) {

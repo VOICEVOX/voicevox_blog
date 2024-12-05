@@ -1,11 +1,11 @@
 ---
+import { faGithub, faXTwitter } from "@fortawesome/free-brands-svg-icons";
+import { showPrivacyPolicyModalAttr } from "@store";
+import FontAwesomeIcon from "./FontAwesomeIcon.astro";
+
 interface Props {
   isDark?: boolean; // Nemoやソングのページかどうか
 }
-
-import { faGithub, faXTwitter } from "@fortawesome/free-brands-svg-icons";
-import FontAwesomeIcon from "./FontAwesomeIcon.astro";
-import { showPrivacyPolicyModalAttr } from "@store";
 
 const { isDark } = Astro.props;
 ---

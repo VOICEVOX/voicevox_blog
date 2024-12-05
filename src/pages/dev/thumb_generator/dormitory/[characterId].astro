@@ -2,11 +2,10 @@
 /**
  * ボイボ寮の個別ページのサムネイル生成
  */
-import type { InferGetStaticPropsType } from "astro";
-
 import Base, {
   getStaticPaths as baseGetStaticPaths,
 } from "@/pages/dormitory/[characterId]/[...descriptionType].astro";
+import type { InferGetStaticPropsType } from "astro";
 
 export const getStaticPaths = baseGetStaticPaths;
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;

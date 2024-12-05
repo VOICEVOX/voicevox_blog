@@ -3,10 +3,15 @@
  * 製品ページのサムネイル生成
  */
 
-import type { InferGetStaticPropsType, GetStaticPaths } from "astro";
-
+import FontAwesomeIcon from "@/components/FontAwesomeIcon.astro";
+import "@/styles/bulma.scss";
+import "@/styles/global.scss";
 import { characterEntries, characterKeys } from "@constants/characterEntry";
 import { characterInfos } from "@constants/characterInfo";
+import { faDownload } from "@fortawesome/free-solid-svg-icons";
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import { getImage } from "astro:assets";
+import backgroundImage from "./background.png";
 
 export const getStaticPaths = (async () =>
   characterKeys.map((key) => ({
@@ -14,15 +19,6 @@ export const getStaticPaths = (async () =>
     props: { characterInfo: characterInfos[key] },
   }))) satisfies GetStaticPaths;
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
-
-import { getImage } from "astro:assets";
-
-import "@/styles/global.scss";
-import "@/styles/bulma.scss";
-
-import { faDownload } from "@fortawesome/free-solid-svg-icons";
-import FontAwesomeIcon from "@/components/FontAwesomeIcon.astro";
-import backgroundImage from "./background.png";
 
 const { characterInfo } = Astro.props;
 const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src})`;

@@ -1,17 +1,15 @@
 /**
  * キャラクターごとのカード表示
  */
-
-import { useMemo, useState, type ReactNode } from "react";
-
+import PlayButton from "@components/PlayButton/PlayButton";
+import type { CharacterInfo } from "@constants/type";
+import { getProductPageUrl } from "@constants/url";
 import {
   faBackwardStep,
   faForwardStep,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import type { CharacterInfo } from "@constants/type";
-import { getProductPageUrl } from "@constants/url";
-import PlayButton from "@components/PlayButton/PlayButton";
+import { useMemo, useState, type ReactNode } from "react";
 
 export default (props: {
   characterInfo: CharacterInfo;

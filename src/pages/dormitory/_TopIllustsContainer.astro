@@ -1,16 +1,14 @@
 ---
+import "@/styles/helper.scss";
+import { dormitoryTopIllustInfos } from "@constants/dormitoryTopIllustInfo";
+import { Image } from "astro:assets";
+import "./style.scss";
+
 interface Props {
   id: string;
 }
 
-import { Image } from "astro:assets";
-
-import { dormitoryTopIllustInfos } from "@constants/dormitoryTopIllustInfo";
-
 const { id } = Astro.props;
-
-import "./style.scss";
-import "@/styles/helper.scss";
 ---
 
 <div class="container has-text-centered py-5 is-flex is-flex-direction-column">

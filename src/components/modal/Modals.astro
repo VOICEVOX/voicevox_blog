@@ -1,21 +1,19 @@
 ---
-import type { MarkdownInstance } from "astro";
-
-import DownloadModal from "./download/DownloadModal";
-import DownloadNemoModal from "./download/DownloadNemoModal";
-import LibraryTermIntroModal from "./LibraryTermIntroModal";
-import { PrivacyPolicyModal, NemoTermModel } from "./MarkdownModals";
-import NemoGuidanceModal from "./NemoGuidanceModal";
-
-import { compiledContent as privacyPolicyHtml } from "@/assets/privacy-policy.md";
+import { compiledContent as libraryTermIntroTemplateHtml } from "@/assets/library-term-intro-template.md";
 import { compiledContent as nemoReadmeHtml } from "@/assets/nemo-term.md";
-import { makeAssetsRecordSingleOptional } from "@helper";
+import { compiledContent as privacyPolicyHtml } from "@/assets/privacy-policy.md";
 import {
   characterEntries,
   characterKeys,
   type CharacterKey,
 } from "@constants/characterEntry";
-import { compiledContent as libraryTermIntroTemplateHtml } from "@/assets/library-term-intro-template.md";
+import { makeAssetsRecordSingleOptional } from "@helper";
+import type { MarkdownInstance } from "astro";
+import DownloadModal from "./download/DownloadModal";
+import DownloadNemoModal from "./download/DownloadNemoModal";
+import LibraryTermIntroModal from "./LibraryTermIntroModal";
+import { NemoTermModel, PrivacyPolicyModal } from "./MarkdownModals";
+import NemoGuidanceModal from "./NemoGuidanceModal";
 
 /** 利用規約の導入文 */
 export const libraryTermIntroMarkdowns = makeAssetsRecordSingleOptional(
@@ -60,15 +58,15 @@ const libraryTermIntroHtmls = (() => {
 
   import {
     $downloadModal,
-    showDownloadModalAttr,
     $libraryTermIntroModal,
-    showLibraryTermIntroModalCharacterKeyAttr,
-    $privacyPolicyModal,
-    showPrivacyPolicyModalAttr,
     $nemoGuidanceModal,
-    showNemoGuidanceModalAttr,
     $nemoTermModal,
+    $privacyPolicyModal,
+    showDownloadModalAttr,
+    showLibraryTermIntroModalCharacterKeyAttr,
+    showNemoGuidanceModalAttr,
     showNemoTermModalAttr,
+    showPrivacyPolicyModalAttr,
   } from "@/store";
   import type { CharacterKey } from "@constants/characterEntry";
   import { sendEvent } from "@helper";

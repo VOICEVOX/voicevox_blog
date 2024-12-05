@@ -1,19 +1,17 @@
 ---
-import { Image, getImage } from "astro:assets";
-
 import Base from "@/layouts/Base.astro";
-import SoftwareFeature from "./_SoftwareFeature.astro";
-import OssGuidanceSection from "./_OssGuidanceSection.astro";
-import CharacterCard from "./talk/_CharacterCard.astro";
-
+import { hideHeaderAttr } from "@components/Header/Header";
 import { characterKeys } from "@constants/characterEntry";
 import { characterInfos } from "@constants/characterInfo";
-import shareThumb from "./talk/share.jpg";
-import logo from "./talk/logo.svg";
+import { Image, getImage } from "astro:assets";
+import LinkListSection from "./_LinkListSection.astro";
+import OssGuidanceSection from "./_OssGuidanceSection.astro";
+import SoftwareFeature from "./_SoftwareFeature.astro";
+import CharacterCard from "./talk/_CharacterCard.astro";
 import landingMovieThumb from "./talk/landing-movie-thumb.png";
 import landingMovie from "./talk/landing.mp4";
-import { hideHeaderAttr } from "@components/Header/Header";
-import LinkListSection from "./_LinkListSection.astro";
+import logo from "./talk/logo.svg";
+import shareThumb from "./talk/share.jpg";
 
 const landingMovieThumbUrl = (await getImage({ src: landingMovieThumb })).src;
 ---

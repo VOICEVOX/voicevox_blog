@@ -59,11 +59,10 @@ jsonファイルの形式は以下の通り
 }
 
 */
-
-import z from "zod";
 import fs from "fs";
 import semver from "semver";
 import { parseArgs } from "util";
+import z from "zod";
 
 const args = parseArgs({
   options: {

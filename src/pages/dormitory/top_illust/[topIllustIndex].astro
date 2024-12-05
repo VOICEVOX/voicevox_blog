@@ -2,9 +2,10 @@
 /**
  * トップイラストの画像をモーダルで大きく表示する
  */
-import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
-
 import { dormitoryTopIllustInfos } from "@constants/dormitoryTopIllustInfo";
+import Base from "@layouts/Base.astro";
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import { getImage, Image } from "astro:assets";
 
 export const getStaticPaths = (async () => {
   return dormitoryTopIllustInfos.map((_, index) => ({
@@ -12,10 +13,6 @@ export const getStaticPaths = (async () => {
   }));
 }) satisfies GetStaticPaths;
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
-
-import { getImage, Image } from "astro:assets";
-
-import Base from "@layouts/Base.astro";
 
 const { topIllustIndex } = Astro.params;
 

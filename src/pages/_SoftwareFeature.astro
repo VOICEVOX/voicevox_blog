@@ -4,9 +4,9 @@ interface Props {
   style?: Record<string, string | number>;
 }
 
+import { APP_VERSION } from "@/constants";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { APP_VERSION } from "@/constants";
 import { showDownloadModalAttr } from "@store";
 
 const { class: className, style } = Astro.props;

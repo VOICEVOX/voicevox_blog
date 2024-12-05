@@ -1,14 +1,12 @@
 ---
+import { getDormitoryCharacterPageUrl } from "@/constants/url";
 import type { CharacterInfo } from "@constants/type";
+import { Image } from "astro:assets";
 
 interface Props {
   characterInfo: CharacterInfo;
   class?: string;
 }
-
-import { Image } from "astro:assets";
-
-import { getDormitoryCharacterPageUrl } from "@/constants/url";
 
 const { characterInfo, class: className } = Astro.props;
 

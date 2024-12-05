@@ -2,9 +2,8 @@
  * マークダウンファイルを標準入力のものに更新する。
  * すでにフロントマターが書かれていることを前提とする。
  */
-
-import { parseArgs } from "node:util";
 import fs from "fs";
+import { parseArgs } from "node:util";
 
 const argv = parseArgs({
   options: {

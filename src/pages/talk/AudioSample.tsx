@@ -1,8 +1,8 @@
-import React, { useMemo } from "react";
 import StyleDropdown, {
   useStyleDropdownController,
 } from "@/components/StyleDropdown";
 import PlayButton from "@components/PlayButton/PlayButton";
+import React, { useMemo } from "react";
 
 export default ({
   audioSamples,

@@ -1,17 +1,15 @@
 /**
  * Nemoの案内モーダル
  */
-
-import { faDownload } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useStore } from "@nanostores/react";
-
 import {
   $downloadModal,
   $nemoDownloadModal,
   $nemoGuidanceModal,
 } from "@/store";
+import { faDownload } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { sendEvent } from "@helper";
+import { useStore } from "@nanostores/react";
 
 export default () => {
   const isActive = useStore($nemoGuidanceModal);

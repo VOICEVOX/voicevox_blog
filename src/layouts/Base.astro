@@ -3,7 +3,21 @@
  * 全てのページのベースになるレイアウト。
  * ヘッダーとフッターがある。
  */
+import Footer from "@/components/Footer.astro";
+import Header from "@/components/Header/index.astro";
+import Modals from "@components/modal/Modals.astro";
+import { GA_TRACKING_ID } from "@constants";
+import {
+  escapeHtml,
+  isDevelopment,
+  isPreview,
+  isTest,
+  stripHtmlTags,
+} from "@helper";
 import type { ImageMetadata } from "astro";
+import { SEO } from "astro-seo";
+import { getImage } from "astro:assets";
+import { ViewTransitions } from "astro:transitions";
 
 export interface Props {
   title: string;
@@ -16,24 +30,6 @@ export interface Props {
   isDark?: boolean;
   isNemo?: boolean;
 }
-
-import { getImage } from "astro:assets";
-import { ViewTransitions } from "astro:transitions";
-
-import { SEO } from "astro-seo";
-import { GA_TRACKING_ID } from "@constants";
-
-import Header from "@/components/Header/index.astro";
-import Footer from "@/components/Footer.astro";
-import Modals from "@components/modal/Modals.astro";
-import {
-  escapeHtml,
-  isDevelopment,
-  isPreview,
-  isTest,
-  stripHtmlTags,
-} from "@helper";
-
 const {
   title,
   description,

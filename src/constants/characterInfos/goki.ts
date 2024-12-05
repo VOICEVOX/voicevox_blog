@@ -1,6 +1,6 @@
-import type { CharacterKey } from "@constants/characterEntry";
 import type { CharacterInfo, Styles } from "../type";
 import { getCharacterAssets } from "./helper";
+import type { CharacterKey } from "@constants/characterEntry";
 
 const key = "後鬼" satisfies CharacterKey;
 

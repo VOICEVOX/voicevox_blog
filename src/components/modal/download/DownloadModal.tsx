@@ -1,12 +1,10 @@
-import { useEffect, useState } from "react";
-import { useStore } from "@nanostores/react";
-
 import Selector from "./Selector";
-
-import { APP_VERSION } from "@constants";
 import linuxInstallCpu from "@/assets/script/linuxInstallCpu.sh?url";
 import linuxInstallNvidia from "@/assets/script/linuxInstallNvidia.sh?url";
+import { APP_VERSION } from "@constants";
+import { useStore } from "@nanostores/react";
 import { $downloadModal } from "@store";
+import { useEffect, useState } from "react";
 
 type OsType = "Windows" | "Mac" | "Linux";
 type ModeType = "GPU / CPU" | "CPU" | "CPU (Intel)" | "CPU (Apple)";

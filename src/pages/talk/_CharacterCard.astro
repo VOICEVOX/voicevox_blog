@@ -1,21 +1,17 @@
 ---
+import "@/styles/helper.scss"; // NOTE: PlayButtonのため
 import type { CharacterInfo } from "@constants/type";
+import { getProductPageUrl } from "@constants/url";
+import { showLibraryTermIntroModalCharacterKeyAttr } from "@store";
+import { Image } from "astro:assets";
+import AudioSample from "./AudioSample";
 
 interface Props {
   characterInfo: CharacterInfo;
 }
 
-import { Image } from "astro:assets";
-
-import AudioSample from "./AudioSample";
-
-import { getProductPageUrl } from "@constants/url";
-import { showLibraryTermIntroModalCharacterKeyAttr } from "@store";
-
 const { characterInfo } = Astro.props;
 const characterKey = characterInfo.key;
-
-import "@/styles/helper.scss"; // NOTE: PlayButtonのため
 ---
 
 <div class="column is-6-tablet is-4-desktop">

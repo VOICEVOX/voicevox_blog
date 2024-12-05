@@ -3,10 +3,28 @@
  * キャラクターごとの製品ページ
  */
 
-import type { InferGetStaticPropsType, GetStaticPaths } from "astro";
-
+import FontAwesomeIcon from "@components/FontAwesomeIcon.astro";
 import { characterEntries, characterKeys } from "@constants/characterEntry";
 import { characterInfos } from "@constants/characterInfo";
+import {
+  getDormitoryCharacterPageUrl,
+  getProductPageUrl,
+} from "@constants/url";
+import {
+  faCircleLeft,
+  faCircleRight,
+  faDownload,
+} from "@fortawesome/free-solid-svg-icons";
+import Base from "@layouts/Base.astro";
+import SoftwareFeature from "@pages/_SoftwareFeature.astro";
+import {
+  showDownloadModalAttr,
+  showLibraryTermIntroModalCharacterKeyAttr,
+} from "@store";
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import { Image } from "astro:assets";
+import AudioSample from "./AudioSample";
+import featureImage from "./feature.png";
 
 export const getStaticPaths = (async () =>
   characterKeys.map((key) => ({
@@ -14,30 +32,6 @@ export const getStaticPaths = (async () =>
     props: { characterKey: key, characterInfo: characterInfos[key] },
   }))) satisfies GetStaticPaths;
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
-
-import { Image } from "astro:assets";
-
-import Base from "@layouts/Base.astro";
-import SoftwareFeature from "@pages/_SoftwareFeature.astro";
-import FontAwesomeIcon from "@components/FontAwesomeIcon.astro";
-import AudioSample from "./AudioSample";
-
-import {
-  faCircleLeft,
-  faCircleRight,
-  faDownload,
-} from "@fortawesome/free-solid-svg-icons";
-
-import {
-  getDormitoryCharacterPageUrl,
-  getProductPageUrl,
-} from "@constants/url";
-import {
-  showDownloadModalAttr,
-  showLibraryTermIntroModalCharacterKeyAttr,
-} from "@store";
-
-import featureImage from "./feature.png";
 
 const { characterKey, characterInfo } = Astro.props;
 

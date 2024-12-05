@@ -1,18 +1,16 @@
 ---
-import { getImage } from "astro:assets";
-
-import Base from "@/layouts/Base.astro";
-import TopIllustContainer from "./_TopIllustContainer.astro";
-import CharacterCard from "./_CharacterCard.astro";
-import Nakayoshi from "./_Nakayoshi/index.astro";
-import ExplainSection from "./_ExplainSection.astro";
-import EventsContainer from "./_EventsContainer.astro";
-import TopIllustsContainer from "./_TopIllustsContainer.astro";
-
 import shareThumb from "@/constants/dormitory-top-illust-images/top-illust-009.png";
-import backgroundImage from "./images/nc238325.jpg";
-import { characterInfos } from "@constants/characterInfo";
+import Base from "@/layouts/Base.astro";
 import { hideHeaderAttr } from "@components/Header/Header";
+import { characterInfos } from "@constants/characterInfo";
+import { getImage } from "astro:assets";
+import CharacterCard from "./_CharacterCard.astro";
+import EventsContainer from "./_EventsContainer.astro";
+import ExplainSection from "./_ExplainSection.astro";
+import Nakayoshi from "./_Nakayoshi/index.astro";
+import TopIllustContainer from "./_TopIllustContainer.astro";
+import TopIllustsContainer from "./_TopIllustsContainer.astro";
+import backgroundImage from "./images/nc238325.jpg";
 
 const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src})`;
 ---

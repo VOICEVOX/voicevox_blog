@@ -1,12 +1,11 @@
 ---
+import { characterKeys } from "@constants/characterEntry";
+import { characterInfos } from "@constants/characterInfo";
+import { getDormitoryCharacterPageUrl } from "@constants/url";
 import Base from "@layouts/Base.astro";
 import ExplainSection from "../_ExplainSection.astro";
 import CharacterImage from "./_CharacterImage.astro";
 import Row from "./_Row.astro";
-
-import { characterInfos } from "@constants/characterInfo";
-import { characterKeys } from "@constants/characterEntry";
-import { getDormitoryCharacterPageUrl } from "@constants/url";
 
 function hex2rgba(hex: string, alpha = 1): [number, number, number, number] {
   const match = hex.match(/\w\w/g);

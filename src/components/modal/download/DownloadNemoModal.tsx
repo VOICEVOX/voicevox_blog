@@ -1,11 +1,11 @@
-// Nemoのダウンロードモーダル
-import { useStore } from "@nanostores/react";
-import { useEffect, useState } from "react";
-
+/**
+ * Nemoのダウンロードモーダル
+ */
 import DownloadModalSelecter from "./Selector";
-
 import { NEMO_VERSION } from "@/constants";
 import { $nemoDownloadModal } from "@/store";
+import { useStore } from "@nanostores/react";
+import { useEffect, useState } from "react";
 
 type OsType = "Windows" | "Mac" | "Linux";
 type ModeType = "GPU / CPU" | "CPU" | "CPU (Intel)" | "CPU (Apple)";

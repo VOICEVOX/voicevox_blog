@@ -2,7 +2,6 @@
  * 再生ボタン。
  * FIXME: 再生機構をグローバルにし、再生ボタンが押されたときに他の再生ボタンを停止するようにする。
  */
-
 import { faPlay, faStop } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useMemo, useState } from "react";

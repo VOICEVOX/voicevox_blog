@@ -173,8 +173,8 @@ export default function Header({
                 hideType == undefined
                   ? "is-hidden-desktop"
                   : hideType == "tablet"
-                  ? "is-hidden"
-                  : "is-hidden-desktop is-hidden-mobile"
+                    ? "is-hidden"
+                    : "is-hidden-desktop is-hidden-mobile"
               }
             />
           ))}
@@ -206,8 +206,8 @@ export default function Header({
                   hideType == undefined
                     ? "is-hidden-touch"
                     : hideType == "mobile"
-                    ? "is-hidden-tablet-only"
-                    : ""
+                      ? "is-hidden-tablet-only"
+                      : ""
                 }
               />
             ))}

@@ -1,5 +1,6 @@
 ---
 import { icon, type IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
 
 interface Props {
   icon: IconDefinition;
@@ -11,8 +12,6 @@ const iconHtml = icon(Astro.props.icon, {
   classes: Array.from(new Set(Astro.props.class?.split(" "))),
   styles: Astro.props.style,
 }).html;
-
-import "@fortawesome/fontawesome-svg-core/styles.css";
 ---
 
 <Fragment set:html={iconHtml} />

@@ -1,9 +1,18 @@
 ---
-import type { InferGetStaticPropsType, GetStaticPaths } from "astro";
-
+import FontAwesomeIcon from "@components/FontAwesomeIcon.astro";
+import PlayButton from "@components/PlayButton/index.astro";
 import { characterEntries, characterKeys } from "@constants/characterEntry";
 import { characterInfos } from "@constants/characterInfo";
+import { callNameInfos } from "@constants/characterInfos/callNameInfo";
+import { getProductPageUrl } from "@constants/url";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
+import Base from "@layouts/Base.astro";
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import { getImage, Image } from "astro:assets";
+import backgroundImage from "../images/nc238325.jpg";
+import CallBox from "./_CallBox.astro";
 import { descriptionTypes } from "./_constants";
+import TypeButton from "./_TypeButton.astro";
 
 export const getStaticPaths = (async () => {
   return characterKeys.flatMap((key) =>
@@ -17,20 +26,6 @@ export const getStaticPaths = (async () => {
   );
 }) satisfies GetStaticPaths;
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
-
-import { getImage, Image } from "astro:assets";
-
-import { faHome } from "@fortawesome/free-solid-svg-icons";
-
-import Base from "@layouts/Base.astro";
-import CallBox from "./_CallBox.astro";
-import TypeButton from "./_TypeButton.astro";
-import FontAwesomeIcon from "@components/FontAwesomeIcon.astro";
-import PlayButton from "@components/PlayButton/index.astro";
-
-import { callNameInfos } from "@constants/characterInfos/callNameInfo";
-import { getProductPageUrl } from "@constants/url";
-import backgroundImage from "../images/nc238325.jpg";
 
 const { characterInfo, descriptionType } = Astro.props;
 const characterKey = characterInfo.key;

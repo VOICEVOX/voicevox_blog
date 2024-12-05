@@ -1,4 +1,6 @@
 ---
+import PlayButton from "./PlayButton";
+
 interface Props {
   audio: string;
   name: string;
@@ -6,8 +8,6 @@ interface Props {
   class?: string;
   style?: Record<string, string>;
 }
-
-import PlayButton from "./PlayButton";
 
 const { audio, name, color, class: className, style } = Astro.props;
 ---

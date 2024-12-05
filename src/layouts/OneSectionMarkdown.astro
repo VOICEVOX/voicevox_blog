@@ -1,4 +1,5 @@
 ---
+import Markdown from "@/components/Markdown.astro";
 import Base, { type Props as BaseProps } from "./Base.astro";
 
 export interface Props {
@@ -7,8 +8,6 @@ export interface Props {
   };
   children: unknown;
 }
-
-import Markdown from "@/components/Markdown.astro";
 
 const { frontmatter } = Astro.props;
 ---

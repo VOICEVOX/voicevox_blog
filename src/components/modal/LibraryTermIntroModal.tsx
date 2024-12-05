@@ -1,14 +1,11 @@
 /**
  * 利用規約の導入文モーダル
  */
-
-import { useStore } from "@nanostores/react";
-
 import ModalMarkdown from "./MarkdownModal";
-
+import { $libraryTermIntroModal } from "@/store";
 import type { CharacterKey } from "@constants/characterEntry";
 import { characterInfos } from "@constants/characterInfo";
-import { $libraryTermIntroModal } from "@/store";
+import { useStore } from "@nanostores/react";
 
 export default (props: {
   htmls: Record<CharacterKey, string | undefined>;

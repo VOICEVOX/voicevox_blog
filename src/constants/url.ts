@@ -1,5 +1,5 @@
-import { descriptionTypes } from "@/pages/dormitory/[characterId]/_constants";
 import type { CharacterEntry } from "./characterEntry";
+import { descriptionTypes } from "@/pages/dormitory/[characterId]/_constants";
 
 export const getProductPageUrl = (characterEntry: CharacterEntry) => {
   return `/product/${characterEntry.id}/`;

@@ -2,7 +2,6 @@
  * このブログからダウンロードするVOICEVOXのバージョンを更新するスクリプト。
  * 複数箇所に書かれているバージョンを書き換える必要があり、それを一括で行える。
  */
-
 import fs from "fs";
 import { parseArgs } from "node:util";
 

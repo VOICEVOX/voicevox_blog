@@ -1,18 +1,15 @@
 ---
-import { getImage, Image } from "astro:assets";
-
-import { faDownload } from "@fortawesome/free-solid-svg-icons";
-
+import voicevoxIconImage from "@/assets/icon.png";
 import Base from "@/layouts/Base.astro";
 import FontAwesomeIcon from "@components/FontAwesomeIcon.astro";
-
+import { faDownload } from "@fortawesome/free-solid-svg-icons";
+import { showNemoGuidanceModalAttr, showNemoTermModalAttr } from "@store";
+import { getImage, Image } from "astro:assets";
 import SpeakerComponent from "./_SpeakerComponent.astro";
+import backgroundImage from "./background.png";
 import { getSpeakerInfo, speakerKeys } from "./constants";
 import shareThumb from "./share.png";
 import teaserImage from "./teaser.png";
-import backgroundImage from "./background.png";
-import voicevoxIconImage from "@/assets/icon.png";
-import { showNemoGuidanceModalAttr, showNemoTermModalAttr } from "@store";
 
 const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src})`;
 const voicevoxIconImageUrl = `url(${(await getImage({ src: voicevoxIconImage })).src})`;

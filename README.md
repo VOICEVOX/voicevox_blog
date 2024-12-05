@@ -12,6 +12,9 @@ npm install -g pnpm
 pnpm install
 ```
 
+Astro での開発は VS Code がおすすめです。Astro 公式プラグインを導入することで快適になります。  
+[Astro エディタのセットアップ](https://docs.astro.build/ja/editor-setup/#vs-code)
+
 ## ローカル環境でチェック
 
 ```bash
@@ -133,7 +136,6 @@ pnpm run test:e2e --ui # 開発時は UI モードが便利
 
 ## TODO
 
-- [ ] import 順序についてのルールを決める
 - [ ] スマホ画面でのソングの売り文句が見切れてる
 - [ ] Google Analytics の疎通チェック
 - [ ] たぶん font-smoothing が効いてないけど macOS でちゃんと動くか確認

@@ -1,21 +1,15 @@
 ---
-import { getImage, Image } from "astro:assets";
-
 import Base from "@/layouts/Base.astro";
-
+import { characterKeys } from "@constants/characterEntry";
+import { characterInfos } from "@constants/characterInfo";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { GlobalContext } from "../../contexts/context";
-import shareThumb from "./share.png";
-import backgroundImage from "./background.png";
-import { characterInfos } from "@constants/characterInfo";
-import { characterKeys } from "@constants/characterEntry";
 import { showDownloadModalAttr } from "@store";
-
-import CharacterCard from "./CharacterCard";
+import { getImage, Image } from "astro:assets";
 import OssGuidanceSection from "../_OssGuidanceSection.astro";
-
-// const context = useContext(GlobalContext);
+import backgroundImage from "./background.png";
+import CharacterCard from "./CharacterCard";
+import shareThumb from "./share.png";
 
 // ソングを持つキャラクターを前に表示する
 // ソング・ハミングどちらも無いキャラクターはフィルター
