@@ -133,10 +133,8 @@ pnpm run test:e2e --ui # 開発時は UI モードが便利
 
 ## TODO
 
-- [ ] markdown 内の code ブロックが黒背景で強すぎる
 - [ ] import 順序についてのルールを決める
 - [ ] スマホ画面でのソングの売り文句が見切れてる
-- [ ] canonical URL が以前と一致することを確認
 - [ ] Google Analytics の疎通チェック
 - [ ] たぶん font-smoothing が効いてないけど macOS でちゃんと動くか確認
 

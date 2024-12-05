@@ -11,6 +11,10 @@ const site = process.env.NETLIFY
 export default defineConfig({
   site,
 
+  markdown: {
+    syntaxHighlight: false, // 使い方の途中とかに小さいコードブロックがあるだけなのでハイライトは無い方が良い
+  },
+
   integrations: [
     mdx(),
     sitemap({
