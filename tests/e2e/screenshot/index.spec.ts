@@ -37,7 +37,7 @@ test.describe("screenshots", () => {
   });
 
   test("nemo term", async ({ page }) => {
-    await gotoAndWait(page, "/nemo/term/b");
+    await gotoAndWait(page, "/nemo/term/");
     await takeScreenshots(page);
   });
 

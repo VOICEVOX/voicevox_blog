@@ -133,6 +133,7 @@ pnpm run test:e2e --ui # 開発時は UI モードが便利
 
 ## TODO
 
+- [ ] meta descriptのキャラ説明から`<br >`を抜く
 - [ ] import 順序についてのルールを決める
 - [ ] スマホ画面でのソングの売り文句が見切れてる
 - [ ] canonical URL が以前と一致することを確認
