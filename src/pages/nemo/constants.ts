@@ -98,7 +98,7 @@ export type SpeakerInfo = SpeakerMetaInfo & {
 const iconImages = makeAssetsRecordSingle(
   speakerKeys,
   speakerMetaInfos,
-  import.meta.glob<ImageMetadata>("./icon-images/*.png", {
+  import.meta.glob<ImageMetadata>("@/assets/nemo-icon-images/*.png", {
     eager: true,
     import: "default",
   }),
@@ -107,7 +107,7 @@ const iconImages = makeAssetsRecordSingle(
 const audios = makeAssetsRecordRequired(
   speakerKeys,
   speakerMetaInfos,
-  import.meta.glob<string>("./audios/*.wav", {
+  import.meta.glob<string>("@/assets/nemo-audios/*.wav", {
     eager: true,
     import: "default",
   }),
