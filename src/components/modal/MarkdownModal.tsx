@@ -1,25 +1,29 @@
-export default (props: {
+export default function MarkdownModal({
+  isActive,
+  title,
+  html,
+  hide,
+  className,
+}: {
   isActive: boolean;
   title: string;
   html: string;
   hide: () => void;
   className?: string;
-}) => {
+}) {
   return (
     <div
-      className={
-        `${props.className} modal` + (props.isActive ? " is-active" : "")
-      }
+      className={`${className} modal` + (isActive ? " is-active" : "")}
       role="dialog"
     >
-      <div className="modal-background" onClick={props.hide}></div>
+      <div className="modal-background" onClick={hide}></div>
       <div className="modal-card">
         <header className="modal-card-head has-text-centered">
-          <p className="modal-card-title">{props.title}</p>
+          <p className="modal-card-title">{title}</p>
           <button
             className="delete"
             aria-label="close"
-            onClick={props.hide}
+            onClick={hide}
             type="button"
           />
         </header>
@@ -27,7 +31,7 @@ export default (props: {
           <div
             className="markdown"
             dangerouslySetInnerHTML={{
-              __html: props.html,
+              __html: html,
             }}
           ></div>
         </section>
@@ -35,4 +39,4 @@ export default (props: {
       </div>
     </div>
   );
-};
+}

@@ -7,12 +7,13 @@ import { characterInfos } from "@/constants/characterInfo";
 import { $libraryTermIntroModal } from "@/store";
 import { useStore } from "@nanostores/react";
 
-export default (props: {
+export default function LibraryTermIntroModal({
+  htmls,
+  templateHtml,
+}: {
   htmls: Record<CharacterKey, string | undefined>;
   templateHtml: string;
-}) => {
-  const { htmls, templateHtml } = props;
-
+}) {
   const store = useStore($libraryTermIntroModal);
   if (!store.show) return undefined;
 
@@ -40,4 +41,4 @@ export default (props: {
       hide={() => $libraryTermIntroModal.set({ show: false })}
     />
   );
-};
+}

@@ -2,11 +2,7 @@ import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useId, useState } from "react";
 
-export const useStyleDropdownController = ({
-  styles,
-}: {
-  styles: string[];
-}) => {
+export function useStyleDropdownController({ styles }: { styles: string[] }) {
   const [selectedStyle, setSelectedStyle] = useState(
     styles.length > 0 ? styles[0] : undefined,
   );
@@ -14,9 +10,9 @@ export const useStyleDropdownController = ({
     selectedStyle,
     setSelectedStyle,
   };
-};
+}
 
-export default ({
+export default function StyleDropdown({
   styles,
   selectedStyle,
   setSelectedStyle,
@@ -27,7 +23,7 @@ export default ({
   selectedStyle: string;
   setSelectedStyle: (style: string) => void;
   characterName: string;
-} & React.HTMLAttributes<HTMLDivElement>) => {
+} & React.HTMLAttributes<HTMLDivElement>) {
   const [isOpenDropdown, setIsOpenDropdown] = useState(false);
   const id = useId();
   return (
@@ -73,4 +69,4 @@ export default ({
       </div>
     </div>
   );
-};
+}

@@ -5,9 +5,11 @@ import StyleDropdown, {
 import type { CharacterInfo } from "@/constants/type";
 import { useMemo } from "react";
 
-export default (props: { characterInfo: CharacterInfo }) => {
-  const { characterInfo } = props;
-
+export default function AudioSample({
+  characterInfo,
+}: {
+  characterInfo: CharacterInfo;
+}) {
   const styles = useMemo(
     () => characterInfo.talkVoiceAudios.map((o) => o.style),
     [characterInfo],
@@ -56,4 +58,4 @@ export default (props: { characterInfo: CharacterInfo }) => {
       </div>
     )
   );
-};
+}

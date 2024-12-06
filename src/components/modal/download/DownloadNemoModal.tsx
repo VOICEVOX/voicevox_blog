@@ -16,7 +16,7 @@ const modeAvailables: Record<OsType, ModeType[]> = {
   Linux: ["GPU / CPU", "CPU"],
 };
 
-export default () => {
+export default function DownloadNemoModal() {
   const isActive = useStore($nemoDownloadModal);
   const hide = () => $nemoDownloadModal.set(false);
 
@@ -133,4 +133,4 @@ export default () => {
       </div>
     </div>
   );
-};
+}

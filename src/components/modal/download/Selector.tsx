@@ -1,4 +1,4 @@
-export default <T extends string>({
+export default function Selector<T extends string>({
   label,
   selected,
   setSelected,
@@ -8,7 +8,7 @@ export default <T extends string>({
   selected: T;
   setSelected: (selected: T) => void;
   candidates: T[];
-}) => {
+}) {
   return (
     <div className="columns is-tablet is-centered is-vcentered py-0 my-2">
       <div className="column is-3 py-0 my-1">
@@ -36,4 +36,4 @@ export default <T extends string>({
       </div>
     </div>
   );
-};
+}

@@ -22,7 +22,7 @@ export function useDebounce<T>(value: T, delay: number) {
   return debouncedValue;
 }
 
-export default ({
+export default function PlayButton({
   url,
   name,
   color,
@@ -32,7 +32,7 @@ export default ({
   url: string;
   name: string;
   color?: string; // 無指定の場合はprimary
-} & React.HTMLAttributes<HTMLButtonElement>) => {
+} & React.HTMLAttributes<HTMLButtonElement>) {
   const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isReady, setIsReady] = useState(false);
@@ -117,4 +117,4 @@ export default ({
       ) : undefined}
     </button>
   );
-};
+}

@@ -11,7 +11,7 @@ import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useStore } from "@nanostores/react";
 
-export default () => {
+export default function NemoGuidanceModal() {
   const isActive = useStore($nemoGuidanceModal);
   const hide = () => $nemoGuidanceModal.set(false);
 
@@ -106,4 +106,4 @@ export default () => {
       </div>
     </>
   );
-};
+}

@@ -4,14 +4,14 @@ import StyleDropdown, {
 } from "@/components/StyleDropdown";
 import React, { useMemo } from "react";
 
-export default ({
+export default function AudioSample({
   audioSamples,
   characterName,
   className,
 }: {
   audioSamples: { style: string; urls: readonly string[] }[];
   characterName: string;
-} & React.HTMLAttributes<HTMLDivElement>) => {
+} & React.HTMLAttributes<HTMLDivElement>) {
   const styles = useMemo(
     () => audioSamples.map((value) => value.style),
     [audioSamples],
@@ -62,4 +62,4 @@ export default ({
       <hr className="my-3" />
     </div>
   );
-};
+}

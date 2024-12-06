@@ -11,12 +11,13 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useMemo, useState, type ReactNode } from "react";
 
-export default (props: {
+export default function CharacterCard({
+  characterInfo,
+  children,
+}: {
   characterInfo: CharacterInfo;
   children: ReactNode;
-}) => {
-  const { characterInfo, children } = props;
-
+}) {
   const color = characterInfo.color;
   const coloredStyle = useMemo(() => {
     return {
@@ -158,4 +159,4 @@ export default (props: {
       </div>
     </div>
   );
-};
+}
