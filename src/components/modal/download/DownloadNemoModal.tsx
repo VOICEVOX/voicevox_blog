@@ -59,12 +59,24 @@ export default function DownloadNemoModal() {
   const [selectedOs, setSelectedOs] = useState<OsType>("Windows");
   const [selectedMode, setSelectedMode] = useState<ModeType>("GPU / CPU");
 
-  // 存在しない組み合わせのときに選択中のものを変更する
   useEffect(() => {
-    if (!modeAvailables[selectedOs].find((value) => value == selectedMode)) {
-      setSelectedMode(modeAvailables[selectedOs][0]);
+    const userAgent = window.navigator.userAgent;
+    if (userAgent.includes("Windows")) {
+      selectOs("Windows");
+    } else if (userAgent.includes("Mac")) {
+      selectOs("Mac");
+    } else if (userAgent.includes("Linux")) {
+      selectOs("Linux");
     }
-  }, [selectedOs, selectedMode]);
+  }, []);
+
+  const selectOs = (os: OsType) => {
+    setSelectedOs(os);
+    // 変更先のOSで選択できないモードの場合、最初のモードを選択する
+    if (!modeAvailables[os].includes(selectedMode)) {
+      setSelectedMode(modeAvailables[os][0]);
+    }
+  };
 
   return (
     <div
@@ -87,7 +99,7 @@ export default function DownloadNemoModal() {
           <DownloadModalSelecter
             label="OS"
             selected={selectedOs}
-            setSelected={setSelectedOs}
+            setSelected={selectOs}
             candidates={["Windows", "Mac", "Linux"]}
           />
 
