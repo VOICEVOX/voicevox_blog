@@ -1,7 +1,8 @@
 /**
  * 再生ボタン。
- * FIXME: 再生機構をグローバルにし、再生ボタンが押されたときに他の再生ボタンを停止するようにする。
+ * 別の再生ボタンが押されたら停止する。
  */
+import { $lastAudio } from "@/store/audio";
 import { faPlay, faStop } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useMemo, useState } from "react";
@@ -66,9 +67,11 @@ export default function PlayButton({
 
     const onPlayCallback = () => {
       setIsPlaying(true);
+      $lastAudio.set(audio);
     };
     const onPauseCallback = () => {
       setIsPlaying(false);
+      audio.currentTime = 0;
     };
     const onReady = () => {
       setIsReady(true);
@@ -94,12 +97,13 @@ export default function PlayButton({
   }, [audio]);
 
   const play = () => {
-    audio!.play();
+    if (!audio) throw new Error(`audio is not ready: ${url}`);
+    audio.play();
   };
 
   const stop = () => {
-    audio!.pause();
-    audio!.currentTime = 0;
+    if (!audio) throw new Error(`audio is not ready: ${url}`);
+    audio.pause();
   };
 
   return (
