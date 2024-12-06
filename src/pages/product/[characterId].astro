@@ -259,7 +259,6 @@ const characterBackgroundColor = characterInfo.lightColor;
             )
           }
           <div class="terms mt-5">
-            {/* TODO: スマホビューのときはボタンを縦配置にしたい */}
             <a href="/term/" class="button is-normal is-rounded">
               <span>VOICEVOX 利用規約</span>
             </a>
@@ -479,6 +478,9 @@ const characterBackgroundColor = characterInfo.lightColor;
           display: flex;
           gap: 0.5rem;
           flex-wrap: wrap;
+          @include mobile {
+            flex-direction: column;
+          }
         }
       }
     }
