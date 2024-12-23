@@ -1,0 +1,6 @@
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/meimei_himari/",
+  "title": "冥鳴ひまり | ボイボ寮 プロフィール | VOICEVOX",
+  "description": "冥界から来た死神。可愛いものに目がない。",
+  "robots": "index, follow"
+}

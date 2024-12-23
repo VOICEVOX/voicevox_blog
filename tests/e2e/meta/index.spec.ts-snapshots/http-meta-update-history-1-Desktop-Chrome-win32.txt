@@ -1,0 +1,6 @@
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/update_history/",
+  "title": "変更履歴 | VOICEVOX",
+  "description": "VOICEVOXソフトウェアの変更履歴です。",
+  "robots": "index, follow"
+}

@@ -1,0 +1,37 @@
+---
+/**
+ * スクロール位置を保持するアンカー
+ */
+
+import { type HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"a">;
+---
+
+<a data-voicevox-keep-scroll {...Astro.props}>
+  <slot />
+</a>
+
+<script>
+  type ScrollInfo = { x: number; y: number };
+  let scrollInfo: ScrollInfo | undefined = undefined;
+
+  // スクロール位置を保存
+  document.addEventListener("astro:page-load", () => {
+    document.querySelectorAll("[data-voicevox-keep-scroll]").forEach((elem) => {
+      if (!(elem instanceof HTMLAnchorElement))
+        throw new Error(`Element is not HTMLAnchorElement: ${elem}`);
+
+      elem.addEventListener("click", () => {
+        scrollInfo = { x: window.scrollX, y: window.scrollY };
+      });
+    });
+  });
+
+  // スクロール位置を復元
+  document.addEventListener("astro:after-swap", () => {
+    if (!scrollInfo) return;
+    window.scrollTo(scrollInfo.x, scrollInfo.y);
+    scrollInfo = undefined;
+  });
+</script>

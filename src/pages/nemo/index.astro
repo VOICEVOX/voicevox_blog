@@ -1,0 +1,394 @@
+---
+import voicevoxIconImage from "@/assets/icon.png";
+import FontAwesomeIcon from "@/components/FontAwesomeIcon.astro";
+import Base from "@/layouts/Base.astro";
+import { showNemoGuidanceModalAttr, showNemoTermModalAttr } from "@/store";
+import { faDownload } from "@fortawesome/free-solid-svg-icons";
+import { getImage, Image } from "astro:assets";
+import SpeakerComponent from "./_SpeakerComponent.astro";
+import backgroundImage from "./background.png";
+import { getSpeakerInfo, speakerKeys } from "./constants";
+import shareThumb from "./share.png";
+import teaserImage from "./teaser.png";
+
+const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src})`;
+const voicevoxIconImageUrl = `url(${(await getImage({ src: voicevoxIconImage })).src})`;
+---
+
+<Base
+  title="VOICEVOX Nemo"
+  description="プレゼンから動画作成、ナレーションまで様々なTPOに合わせて利用できる、キャラクター無しの無料中品質読み上げソフトウェア"
+  image={shareThumb}
+  imageAlt=""
+  isDark={true}
+  isNemo={true}
+>
+  <main class="nemo">
+    <section class="section py-0" data-testid="first-view">
+      <div class="top container is-max-widescreen">
+        <div class="teaser">
+          <Image
+            src={teaserImage}
+            alt="VOICEVOX Nemoを利用中のソフトウェアのスクリーンショット"
+            style={{ objectFit: "contain", display: "block" }}
+          />
+        </div>
+
+        <div class="description">
+          <h1 class="title">VOICEVOX Nemo</h1>
+          <h2 class="title">
+            あらゆる場面に対応する
+            <br />
+            無料の中品質読み上げソフトウェア
+          </h2>
+          <div class="powered-by">Powered by VOICEVOX</div>
+
+          <div class="buttons">
+            <a
+              {...{ [showNemoGuidanceModalAttr]: true }}
+              class="button is-primary is-rounded"
+              target="_blank"
+              rel="noreferrer"
+              tab-index={0}
+              role="button"
+            >
+              <span class="icon">
+                <FontAwesomeIcon icon={faDownload} />
+              </span>
+              <span class="has-text-weight-semibold">ダウンロード</span>
+            </a>
+            <button
+              {...{ [showNemoTermModalAttr]: true }}
+              class="button is-normal is-rounded"
+              type="button"
+            >
+              <span>利用規約</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="feature container is-max-widescreen">
+        <div class="feature-cell">
+          商用利用・非商用利用
+          <br />
+          問わず無料
+        </div>
+        <div class="feature-cell">
+          マルチOSに対応
+          <br />
+          (Win / Mac / Linux)
+        </div>
+        <div class="feature-cell">
+          簡単に使える
+          <br />
+          わかりやすい操作画面
+        </div>
+        <div class="feature-cell">
+          イントネーションの
+          <br />
+          詳細な調整も可能
+        </div>
+      </div>
+
+      <div class="explain container is-max-desktop">
+        プレゼンから動画作成ナレーションまで
+        <br />
+        様々なTPOに合わせて利用できる
+        <br />
+        キャラクターなしの読み上げソフトウェア
+      </div>
+    </section>
+
+    <section class="section py-0">
+      <div class="speakers-container container is-max-desktop">
+        {
+          // 内部で表示するドロップメニューが兄弟要素で隠れてしまうのでz-indexを指定している
+          speakerKeys.map((key, i) => (
+            <SpeakerComponent
+              info={getSpeakerInfo(key)}
+              style={{ zIndex: speakerKeys.length - i }}
+            />
+          ))
+        }
+      </div>
+      <div class="speaker-contact-explain container is-max-desktop">
+        より柔軟な演技や高品質な音声をお求めの場合は、
+        <br />
+        上記のリンク先にてご本人へご依頼いただけます。
+      </div>
+    </section>
+
+    {
+      /* コアライブラリ
+VOICEVOXの音声合成をアプリケーションやサービスに組み込める、VOICEVOXのコアライブラリを配布しています。
+
+詳しくは VOICEVOX CORE をご参照ください。 */
+    }
+  </main>
+</Base>
+
+<style
+  lang="scss"
+  define:vars={{ backgroundImageUrl, voicevoxIconImageUrl }}
+  is:global
+>
+  @use "@/styles/helper.scss" as *;
+  @use "bulma/sass/utilities/initial-variables" as *;
+  @use "bulma/sass/utilities/mixins" as *;
+
+  .nemo {
+    color: white;
+    font-family: "LINE Seed", sans-serif;
+    background-image: var(--backgroundImageUrl);
+    background-size: cover;
+    background-position: top;
+
+    .title {
+      color: white !important;
+      font-weight: 600;
+    }
+
+    .top {
+      height: calc(100vh - 3.25rem);
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: center;
+      gap: 3rem;
+
+      @include touch {
+        height: auto;
+        flex-direction: column-reverse;
+        align-items: center;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+      }
+
+      .description {
+        flex: 0 0 auto;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: start;
+
+        @include touch {
+          align-items: center;
+          text-align: center;
+        }
+
+        h1 {
+          @extend .is-size-3-touch;
+          @extend .is-size-2-desktop;
+          @extend .is-size-1-widescreen;
+        }
+        h2 {
+          @extend .is-size-4-touch;
+          @extend .is-size-4-desktop;
+          @extend .is-size-3-widescreen;
+        }
+        .buttons {
+          * {
+            @extend .is-medium;
+            @extend .is-responsive;
+          }
+        }
+
+        .powered-by {
+          @extend .mb-1;
+
+          &::before {
+            content: "";
+            display: inline-block;
+            background: var(--voicevoxIconImageUrl) no-repeat center/contain;
+            margin-right: 0.3em;
+            height: 1.2em;
+            width: 1.2em;
+            vertical-align: middle;
+          }
+        }
+
+        .buttons {
+          display: flex;
+          gap: 1rem;
+          margin-top: 1rem;
+        }
+      }
+
+      .teaser {
+        flex: 1 1 auto;
+        max-width: 650px;
+        filter: drop-shadow(20px 20px 15px rgba(0, 0, 0, 0.5));
+
+        display: flex; // 画像の中央寄せのため
+      }
+    }
+
+    .feature {
+      @extend .mb-6, .pb-6;
+
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+      gap: 1rem;
+
+      @include touch {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .feature-cell {
+        background-color: #21212139;
+        @extend .is-size-5;
+        @extend .is-size-6-mobile;
+        text-align: center;
+        padding: 2rem 0;
+        border-radius: 1rem;
+      }
+    }
+
+    .explain {
+      @extend .my-6, .py-6;
+      @include desktop {
+        font-size: $size-3;
+      }
+      @include tablet-only {
+        font-size: $size-4;
+      }
+      @include mobile {
+        font-size: $size-5;
+      }
+      text-align: center;
+    }
+
+    .speakers-container {
+      @extend .mt-6, .pt-6;
+
+      display: grid;
+      gap: $gap;
+      grid-template-columns: repeat(2, 1fr);
+      place-content: center;
+
+      @include mobile {
+        grid-template-columns: repeat(1, minmax(0, 25rem));
+      }
+
+      .speaker {
+        display: flex;
+        flex-direction: row;
+        padding-right: 1rem;
+
+        position: relative; // 背景用
+        filter: drop-shadow(12px 12px 8px rgba(0, 0, 0, 0.5));
+
+        * {
+          z-index: 2;
+        }
+
+        --height: 8rem;
+        @include touch {
+          --height: 6rem;
+        }
+        @include mobile {
+          --height: 4rem;
+        }
+
+        // 背景
+        &::before {
+          content: "";
+          background: #20242d;
+          position: absolute;
+          top: 0.4rem;
+          left: 0.4rem;
+          bottom: 0.4rem;
+          right: 0;
+          border-top-left-radius: calc(var(--height) - 0.4rem);
+          border-bottom-left-radius: calc(var(--height) - 0.4rem);
+          z-index: 1;
+        }
+
+        .speaker-icon-wrapper {
+          height: var(--height);
+          width: var(--height);
+          flex: 0 0 auto;
+        }
+
+        .speaker-labels {
+          flex: 1 1 auto;
+
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          gap: 0.5rem;
+
+          @include touch {
+            gap: 0.25rem;
+          }
+
+          .cv {
+            @extend .is-size-7;
+            @extend .is-size-6-desktop;
+          }
+          h3 {
+            @extend .is-size-5-desktop;
+          }
+
+          .dropdown {
+            .dropdown-trigger {
+              .button {
+                @extend .is-ghost;
+                color: white;
+                text-decoration: underline;
+                @extend .py-0;
+                height: auto;
+                &:active,
+                &:focus,
+                &:hover {
+                  color: white;
+                }
+              }
+            }
+
+            .dropdown-content {
+              @extend .has-background-dark;
+
+              .dropdown-item {
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+
+                @extend .has-text-white;
+
+                .button {
+                  @extend .circle-icon;
+                  @extend .ml-auto;
+                  @extend .is-dark;
+                  @extend .is-medium;
+                  @extend .has-text-white;
+                  @extend .mb-0;
+                }
+              }
+            }
+          }
+        }
+
+        .sample-voices {
+          flex: 0 0 auto;
+
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          gap: 1rem;
+        }
+      }
+    }
+
+    .speaker-contact-explain {
+      @extend .my-6, .pb-6;
+      @extend .is-size-5;
+      text-align: center;
+    }
+  }
+</style>

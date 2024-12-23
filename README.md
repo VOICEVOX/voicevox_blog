@@ -5,33 +5,26 @@ https://voicevox.hiroshiba.jp/
 
 ## 環境構築
 
-Node v18.13.0、npm v8.19.3 を用いて開発されています。
+Node v20.12.2、pnpm v9.12.3 を用いて開発されています。
 
 ```bash
-npm ci
+npm install -g pnpm
+pnpm install
 ```
+
+Astro での開発は VS Code がおすすめです。Astro 公式プラグインを導入することで快適になります。  
+[Astro エディタのセットアップ](https://docs.astro.build/ja/editor-setup/#vs-code)
 
 ## ローカル環境でチェック
 
 ```bash
-npm run develop
+pnpm start
 ```
-
-もしくは
-
-```bash
-npm run build && npm run serve
-```
-
-### 実験モード
-
-コードは実装したいけど、デザインや調整などの課題があってまだサイトに反映できていない実験的なコードがいくつかあります。
-実験的なコードを反映した見た目を確認する際は、`.env.development`ファイルで`GATSBY_VOICEVOX_EXPERIMENTS=true`を指定してください。
 
 ## deploy
 
 ```bash
-npm run deploy
+pnpm run deploy
 ```
 
 ### プレビュー版
@@ -43,7 +36,7 @@ Netlify を使ってプレビュー環境デプロイを行っています。
 
 ```bash
 # ビルド
-npm run preview-build
+pnpm run preview-build
 ```
 
 ## リソース情報の更新
@@ -55,7 +48,7 @@ EDITOR_VERSION="0.22.1"
 RESOURCE_VERSION="0.22.0"
 NEMO_VERSION="0.21.0"
 
-npm run updateVersion -- \
+pnpm run updateVersion \
   --editor_version="$EDITOR_VERSION" \
   --resource_version="$RESOURCE_VERSION" \
   --nemo_version="$NEMO_VERSION"
@@ -71,23 +64,27 @@ resource_tag="0.22.0"
 resource_url="https://raw.githubusercontent.com/VOICEVOX/voicevox_resource/$resource_tag"
 
 # 規約
-curl -s "$resource_url/editor/README.md" > src/markdowns/softwareReadme.md
+curl -s "$resource_url/editor/README.md" |
+  pnpm run updateMarkdown -t "src/pages/term.md"
 
 # 使い方
-curl -s "$editor_url/public/howtouse.md" > src/markdowns/howToUse.md
-sed -r 's|src="([^"]+?)"|src="'$editor_url'/public/\1"|g' -i src/markdowns/howToUse.md
+curl -s "$editor_url/public/howtouse.md" |
+  sed -r 's|src="([^"]+?)"|src="'$editor_url'/public/\1"|g' |
+  pnpm run updateMarkdown -t "src/pages/how_to_use.md"
 
 # Q&A
-curl -s "$editor_url/public/qAndA.md" > src/markdowns/qAndA.md
+curl -s "$editor_url/public/qAndA.md" |
+  pnpm run updateMarkdown -t "src/pages/qa/index.md"
 
 # 変更履歴
-curl -s "$editor_url/public/updateInfos.json" > src/data/updateInfos.json
+curl -s "$editor_url/public/updateInfos.json" \
+  >src/pages/update_history/updateInfos.json
 
 # デフォルトエンジンの更新情報
-npm run generateLatestDefaultEngineInfos
+pnpm run generateLatestDefaultEngineInfos
 ```
 
-## 音量に関して
+## サンプル音声の音量
 
 ffmpeg で音量を調べて、だいたい LUFS 値が -20~-23 になるように調整しています。
 
@@ -112,20 +109,62 @@ ffmpeg -i $audio_file -af volume=-3dB $output_file
 
 ```bash
 # 起動
-npm run develop
+pnpm start
 
 # しばらくしてから実行
-npm run generateThumb
+pnpm run generateThumb
 ```
 
-## タイポチェック
+## テスト
 
-[typos](https://github.com/crate-ci/typos) を使ってタイポのチェックを行っています。
-[typos をインストール](https://github.com/crate-ci/typos#install) した後
+### e2e テスト
+
+ビルドしたあと Playwright を使って e2e テストを行っています。Windows 環境でのテストを想定しています。
 
 ```bash
-typos
+pnpm run test-build
+
+pnpm run test:e2e
+pnpm run test:e2e --update-snapshots # スナップショットを更新する場合
+pnpm run test:e2e --ui # 開発時は UI モードが便利
 ```
+
+### タイポチェック
+
+[typos](https://github.com/crate-ci/typos) を使ってタイポのチェックを行っています。  
+ブランチをプッシュすると自動でテストされます。
+
+## 開発者向け案内
+
+### なんとなくのコーディングルール
+
+- pages に置くアセット用のディレクトリはスネークケース
+- インポートした画像等は定数(constants)として良い
+- 大文字始まりの Astro ファイルはコンポーネント
+- インタラクティブが必要なものは無理せず React にしたほうが良い
+  - 単純なボタンとかだけでも React のほうがコーディングしやすい
+  - けど Astro 考えると`<script>`のが考えること少ないこともあり、判断が難しい
+- React コンポーネントへのスタイル適用は helper.scss か、Astro でラップして`<style>`に書く
+  - CSS in JS を使わない理由は単によく知らないから
+  - Bulma から Tailwind に移行したいかも
+- コンポーネントをまたぐインタラクティブな挙動は Store を使う
+  - React hook は Astro 内で使えないので、なるべく使わない方針
+- 静的ページやコンポーネントは Astro で作るのを意識すると楽
+  - 画像の読み込みとか、ディレクティブとかが便利
+- 子へのスタイル適用は Astro 内の is:global を使うと楽
+
+### モードと効果の表
+
+|                        | デフォルト | isDevelopment | isProduction | isPreview | isTest |
+| ---------------------- | ---------- | ------------- | ------------ | --------- | ------ |
+| Google Analytics       | 有効       | 無効          |              | 無効      | 無効   |
+| robots                 | 有効       |               |              | 無効      |        |
+| キャラサムネ画像がない | 無視       |               | エラー       |           |        |
+
+## TODO
+
+- [ ] スマホ画面でのソングの売り文句が見切れてる
+- [ ] Google Analytics の疎通チェック
 
 ## LICENSE
 
@@ -134,4 +173,4 @@ VOICEVOX の開発のための利用のみ許可されます。
 
 ## 謝辞
 
-`src/images/nc238325.jpg` ･･･ https://commons.nicovideo.jp/material/nc238325
+- https://commons.nicovideo.jp/material/nc238325

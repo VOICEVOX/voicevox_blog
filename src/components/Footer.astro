@@ -1,0 +1,49 @@
+---
+import { showPrivacyPolicyModalAttr } from "@/store";
+import { faGithub, faXTwitter } from "@fortawesome/free-brands-svg-icons";
+import FontAwesomeIcon from "./FontAwesomeIcon.astro";
+
+interface Props {
+  isDark?: boolean; // Nemoやソングのページかどうか
+}
+
+const { isDark } = Astro.props;
+---
+
+<div class={`container is-flex is-justify-content-center`}>
+  <a
+    class={`button is-small ml-1 mr-1 ${!isDark ? "" : "is-dark"}`}
+    href="https://github.com/VOICEVOX/voicevox"
+    target="_blank"
+    rel="noreferrer"
+    role="button"
+  >
+    <span class="icon">
+      <FontAwesomeIcon icon={faGithub} />
+    </span>
+    <span>GitHub</span>
+  </a>
+  <a
+    class={`button is-small ml-1 mr-1 ${!isDark ? "" : "is-dark"}`}
+    href="https://x.com/voicevox_pj"
+    target="_blank"
+    rel="noreferrer"
+    role="button"
+  >
+    <span class="icon">
+      <FontAwesomeIcon icon={faXTwitter} />
+    </span>
+    <span>Official SNS</span>
+  </a>
+</div>
+<div class="container is-flex is-justify-content-center mt-2">
+  <a
+    {...{ [showPrivacyPolicyModalAttr]: true }}
+    class={`is-size-7 ml-1 mr-1 ${isDark ? "has-text-primary" : ""}`}
+  >
+    プライバシーポリシー
+  </a>
+  <p class={`is-size-7	ml-1 mr-1 ${isDark ? "has-text-white-bis" : ""}`}>
+    © Hiroshiba Kazuyuki
+  </p>
+</div>

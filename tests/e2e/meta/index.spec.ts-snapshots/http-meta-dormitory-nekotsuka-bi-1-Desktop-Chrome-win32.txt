@@ -1,0 +1,6 @@
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/nekotsuka_bi/",
+  "title": "猫使ビィ | ボイボ寮 プロフィール | VOICEVOX",
+  "description": "謎の研究所で作られた猫使シリーズの タイプ:Blue",
+  "robots": "index, follow"
+}

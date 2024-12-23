@@ -1,0 +1,6 @@
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/call_names/",
+  "title": "ボイボ寮キャラクターの呼称表 | ボイボ寮 | VOICEVOX",
+  "description": "ボイボ寮キャラクターの呼び方一覧表です。必ずしも遵守する必要はなく、自由に改変して頂いても問題ありません。",
+  "robots": "index, follow"
+}

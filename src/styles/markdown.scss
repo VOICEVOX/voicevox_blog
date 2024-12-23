@@ -1,0 +1,31 @@
+@use "bulma/sass/elements" as *;
+@use "bulma/sass/helpers" as *;
+
+.markdown {
+  @extend .content;
+
+  h2 {
+    @extend .title;
+    @extend .is-4;
+    @extend .mb-3;
+  }
+
+  h3 {
+    @extend .title;
+    @extend .is-5;
+    @extend .mb-3;
+  }
+
+  h4 {
+    @extend .title;
+    @extend .is-6;
+    @extend .mt-5;
+    @extend .mb-3;
+  }
+
+  img {
+    @extend .mb-3;
+    vertical-align: middle;
+    border: 1px solid #333;
+  }
+}

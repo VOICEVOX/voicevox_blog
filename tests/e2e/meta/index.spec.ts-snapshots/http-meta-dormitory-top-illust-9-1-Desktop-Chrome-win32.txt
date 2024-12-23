@@ -1,0 +1,6 @@
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/top_illust/9/",
+  "title": "トップイラスト 9 | ボイボ寮 | VOICEVOX",
+  "description": "以前のトップイラストをご覧いただけます。イラスト：坂本アヒル",
+  "robots": "index, follow"
+}

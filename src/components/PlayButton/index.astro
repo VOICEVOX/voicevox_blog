@@ -1,0 +1,26 @@
+---
+import PlayButton from "./PlayButton";
+
+interface Props {
+  audio: string;
+  name: string;
+  color?: string;
+  class?: string;
+  style?: Record<string, string>;
+}
+
+const { audio, name, color, class: className, style } = Astro.props;
+---
+
+<PlayButton
+  client:visible
+  url={audio}
+  name={name}
+  color={color}
+  className={className}
+  style={style}
+/>
+
+<style lang="scss" is:global>
+  @use "@/styles/helper.scss" as *;
+</style>

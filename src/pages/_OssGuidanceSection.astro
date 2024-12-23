@@ -1,0 +1,68 @@
+---
+interface Props {
+  class?: string;
+  isDark?: boolean; // Nemoやソングのページかどうか
+}
+
+import FontAwesomeIcon from "@/components/FontAwesomeIcon.astro";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+
+const { class: className, isDark } = Astro.props;
+---
+
+<section class="section">
+  <div
+    class={`${className} container is-max-desktop is-flex is-flex-direction-column`}
+  >
+    <h2 id="oss" class="jump-anchor-header-padding title">
+      <a href={`#oss`} class={!isDark ? "has-text-black" : "has-text-white"}>
+        オープンソース
+      </a>
+    </h2>
+    <p class="is-size-5">
+      VOICEVOX は OSS（オープンソース・ソフトウェア）版 VOICEVOX
+      をもとに構築されています。
+    </p>
+    <p class="is-size-5">
+      製品版と OSS 版の違いやモジュール構成は&nbsp;<a
+        href="https://github.com/VOICEVOX/voicevox/blob/main/docs/%E5%85%A8%E4%BD%93%E6%A7%8B%E6%88%90.md"
+        target="_blank"
+        rel="noreferrer"
+        class="has-text-weight-bold is-underlined">VOICEVOX の全体構成</a
+      >&nbsp;をご参照ください。
+    </p>
+    <p class="is-size-5">
+      ソフトウェア部分は Electron + Vue 、音声合成エンジン部分は Python +
+      FastAPI です。
+    </p>
+    <p class="is-size-5">
+      追加したい・改善したい機能があれば、ぜひ開発にご参加ください。
+    </p>
+    <div class="buttons mt-3">
+      <a
+        class={`button ${!isDark ? "" : "is-dark"}`}
+        href="https://github.com/VOICEVOX/voicevox"
+        target="_blank"
+        rel="noreferrer"
+        role="button"
+      >
+        <span class="icon">
+          <FontAwesomeIcon icon={faGithub} />
+        </span>
+        <span>VOICEVOX エディター</span>
+      </a>
+      <a
+        class={`button ${!isDark ? "" : "is-dark"}`}
+        href="https://github.com/VOICEVOX/voicevox_engine"
+        target="_blank"
+        rel="noreferrer"
+        role="button"
+      >
+        <span class="icon">
+          <FontAwesomeIcon icon={faGithub} />
+        </span>
+        <span>VOICEVOX エンジン</span>
+      </a>
+    </div>
+  </div>
+</section>

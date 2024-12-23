@@ -1,0 +1,43 @@
+---
+import iconImage from "@/assets/icon.png";
+import { getImage } from "astro:assets";
+import Header from "./Header.tsx";
+
+interface Props {
+  defaultHide?: boolean; // アクセスした直後にヘッダーを隠すか
+  isDark?: boolean;
+  isNemo?: boolean;
+}
+
+const iconUrl = (await getImage({ src: iconImage, width: 64 })).src;
+---
+
+<Header client:load {...Astro.props} iconUrl={iconUrl} />
+
+<style lang="scss" is:global>
+  .navbar {
+    // navbarを最上部に固定するためのクラス
+    &.height-holder {
+      visibility: hidden;
+    }
+
+    &.is-black {
+      // FIXME: is-blackで影が変わらないBulmaのバグ
+      box-shadow: 0 2px 0 0 hsl(0deg, 0%, 4%) !important;
+    }
+  }
+
+  // ヘッダーをゆっくり表示する
+  // FIXME: 非表示の際もアニメーション適用したい
+  .navbar.with-animation {
+    animation: fadeIn 0.1s cubic-bezier(0.33, 1, 0.68, 1) 1 forwards;
+  }
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+</style>

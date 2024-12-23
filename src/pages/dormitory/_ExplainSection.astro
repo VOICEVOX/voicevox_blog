@@ -1,0 +1,56 @@
+---
+/**
+ * ボイボ寮とVOICEVOXをちょっとだけ紹介するコンポーネント
+ */
+
+interface Props {
+  showingDormitoryPageButton?: boolean;
+}
+
+const { showingDormitoryPageButton } = Astro.props;
+---
+
+<section class="section py-5">
+  <div
+    class="container has-text-centered py-5 is-flex is-flex-direction-column"
+  >
+    <h2 class="title is-4">ボイボ寮とは</h2>
+    <p class="is-size-6">
+      VOICEVOX
+      のキャラたちの設定があると動画制作の参考になるかと思って用意した世界観です。
+    </p>
+    <p class="is-size-6">
+      必ずしも遵守する必要はなく、自由に改変して頂いても問題ありません。
+    </p>
+    {
+      showingDormitoryPageButton && (
+        <a
+          href="/dormitory/"
+          class="button is-align-self-center mt-5 is-normal is-rounded"
+          role="button"
+        >
+          <span>ボイボ寮ページへ</span>
+        </a>
+      )
+    }
+  </div>
+
+  <div
+    class="container has-text-centered py-5 is-flex is-flex-direction-column"
+  >
+    <h2 class="title is-4">VOICEVOX とは</h2>
+    <p class="is-size-6">
+      無料で使える中品質なテキスト読み上げソフトウェアです。
+    </p>
+    <p class="is-size-6">
+      商用・非商用問わず無料で、イントネーションの詳細な調整ができることが特徴です。
+    </p>
+    <a
+      href={"/"}
+      class="button is-align-self-center mt-5 is-primary is-rounded"
+      role="button"
+    >
+      <span class="has-text-weight-semibold">ダウンロード</span>
+    </a>
+  </div>
+</section>

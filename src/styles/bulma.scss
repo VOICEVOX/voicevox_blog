@@ -1,0 +1,23 @@
+@use "./vars.scss" as *;
+
+@use "bulma/sass" with (
+  $text: $text,
+  $primary: $primary,
+  $link: $primary,
+  $family-sans-serif: '"Unhinted Rounded M+ 1p", sans-serif'
+);
+
+@use "bulma/sass/utilities/css-variables" as cv;
+@use "bulma/sass/utilities/initial-variables" as iv;
+
+:root {
+  @include cv.register-vars(
+    (
+      // アニメーションをなくす
+      "duration": "0s",
+
+      // 文字を読みやすくする
+      "body-rendering": "optimizeLegibility"
+    )
+  );
+}

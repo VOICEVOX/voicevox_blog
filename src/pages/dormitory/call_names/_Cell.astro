@@ -1,0 +1,125 @@
+---
+/**
+ * 呼び方表のテーブルのセル。
+ * クリックすると呼称をコピーする。クリック後しばらくの間コピー済みマークを表示し、しばらく経つと消える。
+ */
+
+import FontAwesomeIcon from "@/components/FontAwesomeIcon.astro";
+import type { CharacterInfo } from "@/constants/type";
+import { faCheck, faCopy } from "@fortawesome/free-solid-svg-icons";
+
+interface Props {
+  callNames: readonly string[];
+  characterInfo: CharacterInfo;
+  additionalClass?: string;
+}
+
+const { callNames, characterInfo, additionalClass } = Astro.props;
+---
+
+<td class={additionalClass}>
+  <div>
+    {
+      callNames.map((callName) => (
+        <p
+          data-voicevox-call-name={callName}
+          data-voicevox-copied={false}
+          style={{ outlineColor: characterInfo.color }}
+          title={`クリックして呼称をコピー：「${callName}」`}
+        >
+          <span class="icon name-copy">
+            <FontAwesomeIcon
+              icon={faCopy}
+              style={{ color: characterInfo.color }}
+            />
+          </span>
+          <span class="icon name-copied">
+            <FontAwesomeIcon
+              icon={faCheck}
+              style={{ color: characterInfo.color }}
+            />
+          </span>
+          {callName}
+        </p>
+      ))
+    }
+  </div>
+</td>
+
+<script>
+  // クリックしたときにクリップボードにコピー
+  document.querySelectorAll("[data-voicevox-call-name]").forEach((elem) => {
+    let timeoutId: ReturnType<typeof setTimeout>;
+    elem.addEventListener("click", () => {
+      const callName = elem.getAttribute("data-voicevox-call-name");
+      if (callName == undefined) throw new Error("callName is undefined");
+
+      // しばらくの間コピー済みマークを表示
+      navigator.clipboard.writeText(callName).then(() => {
+        elem.setAttribute("data-voicevox-copied", "");
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => {
+          elem.removeAttribute("data-voicevox-copied");
+        }, 800);
+      });
+    });
+  });
+</script>
+
+<style lang="scss">
+  @use "bulma/sass/utilities/initial-variables" as *;
+  @use "bulma/sass/helpers" as *;
+
+  p {
+    height: 100%;
+    width: 100%;
+
+    // 当たり判定を大きくしつつ中央寄せ
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    position: relative;
+
+    // コピーボタン
+    .icon {
+      @extend .m-1;
+
+      visibility: hidden;
+      position: absolute;
+      height: 1rem;
+      width: 1rem;
+      top: 0;
+      right: 0;
+    }
+
+    &:hover {
+      // NOTE: ちらつくので border ではなく outline
+      outline: 2px solid;
+      border-radius: $radius;
+
+      .icon {
+        visibility: visible;
+      }
+    }
+
+    &[data-voicevox-copied] {
+      .icon {
+        visibility: visible;
+      }
+    }
+  }
+
+  .name-copy {
+    display: inline;
+  }
+  .name-copied {
+    display: none;
+  }
+  p[data-voicevox-copied] .name-copy {
+    display: none;
+  }
+  p[data-voicevox-copied] .name-copied {
+    display: inline;
+  }
+</style>

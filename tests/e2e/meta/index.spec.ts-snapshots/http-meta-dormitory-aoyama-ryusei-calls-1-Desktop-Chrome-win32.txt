@@ -1,0 +1,6 @@
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/aoyama_ryusei/calls/",
+  "title": "青山龍星 | ボイボ寮 呼び方 | VOICEVOX",
+  "description": "とにかく大柄で無骨な青年。寡黙で冷静なストッパー枠。",
+  "robots": "index, follow"
+}

@@ -1,0 +1,170 @@
+---
+import { compiledContent as libraryTermIntroTemplateHtml } from "@/assets/library-term-intro-template.md";
+import { compiledContent as nemoReadmeHtml } from "@/assets/nemo-term.md";
+import { compiledContent as privacyPolicyHtml } from "@/assets/privacy-policy.md";
+import {
+  characterEntries,
+  characterKeys,
+  type CharacterKey,
+} from "@/constants/characterEntry";
+import { makeAssetsRecordSingleOptional } from "@/helper";
+import type { MarkdownInstance } from "astro";
+import DownloadModal from "./download/DownloadModal";
+import DownloadNemoModal from "./download/DownloadNemoModal";
+import LibraryTermIntroModal from "./LibraryTermIntroModal";
+import { NemoTermModel, PrivacyPolicyModal } from "./MarkdownModals";
+import NemoGuidanceModal from "./NemoGuidanceModal";
+
+/** 利用規約の導入文 */
+export const libraryTermIntroMarkdowns = makeAssetsRecordSingleOptional(
+  characterKeys,
+  characterEntries,
+  import.meta.glob<MarkdownInstance<object>>(
+    "@/assets/library-term-intro-markdowns/*.md",
+    {
+      eager: true,
+    },
+  ),
+);
+
+const libraryTermIntroHtmls = (() => {
+  const htmls = {} as Record<CharacterKey, string | undefined>;
+  for (const key of characterKeys) {
+    htmls[key] = libraryTermIntroMarkdowns[key]?.compiledContent();
+  }
+  return htmls;
+})();
+---
+
+{/* 他のモーダルを開くので手前に表示 */}
+<NemoGuidanceModal client:load />
+
+<DownloadModal client:load />
+
+<DownloadNemoModal client:load />
+
+<LibraryTermIntroModal
+  client:load
+  htmls={libraryTermIntroHtmls}
+  templateHtml={libraryTermIntroTemplateHtml()}
+/>
+
+<PrivacyPolicyModal client:load html={privacyPolicyHtml()} />
+
+<NemoTermModel client:load html={nemoReadmeHtml()} />
+
+<script>
+  // TODO: <script>をやめてReactにする
+
+  import type { CharacterKey } from "@/constants/characterEntry";
+  import { sendEvent } from "@/helper";
+  import {
+    $downloadModal,
+    $libraryTermIntroModal,
+    $nemoGuidanceModal,
+    $nemoTermModal,
+    $privacyPolicyModal,
+    showDownloadModalAttr,
+    showLibraryTermIntroModalCharacterKeyAttr,
+    showNemoGuidanceModalAttr,
+    showNemoTermModalAttr,
+    showPrivacyPolicyModalAttr,
+  } from "@/store";
+
+  document.addEventListener("astro:page-load", () => {
+    $downloadModal.set(false);
+    document.querySelectorAll(`[${showDownloadModalAttr}]`).forEach((elem) => {
+      elem.addEventListener("click", () => {
+        $downloadModal.set(true);
+        sendEvent("download", "software");
+      });
+    });
+
+    $libraryTermIntroModal.set({ show: false });
+    document
+      .querySelectorAll(`[${showLibraryTermIntroModalCharacterKeyAttr}]`)
+      .forEach((elem) => {
+        elem.addEventListener("click", () => {
+          const characterKey = elem.getAttribute(
+            showLibraryTermIntroModalCharacterKeyAttr,
+          ) as CharacterKey;
+          $libraryTermIntroModal.set({ show: true, characterKey });
+        });
+      });
+
+    $privacyPolicyModal.set(false);
+    document
+      .querySelectorAll(`[${showPrivacyPolicyModalAttr}]`)
+      .forEach((elem) => {
+        elem.addEventListener("click", () => {
+          $privacyPolicyModal.set(true);
+        });
+      });
+
+    $nemoGuidanceModal.set(false);
+    document
+      .querySelectorAll(`[${showNemoGuidanceModalAttr}]`)
+      .forEach((elem) => {
+        elem.addEventListener("click", () => {
+          $nemoGuidanceModal.set(true);
+          sendEvent("download", "nemo");
+        });
+      });
+
+    $nemoTermModal.set(false);
+    document.querySelectorAll(`[${showNemoTermModalAttr}]`).forEach((elem) => {
+      elem.addEventListener("click", () => {
+        $nemoTermModal.set(true);
+      });
+    });
+  });
+</script>
+
+<style lang="scss" is:global>
+  @use "@/styles/markdown";
+
+  @use "bulma/sass/layout" as *;
+  @use "bulma/sass/utilities/mixins" as *;
+  @use "bulma/sass/helpers" as *;
+
+  .modal-nemo-guidance {
+    .modal-card-body {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+
+      .step-by-step {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        gap: 0.75rem;
+
+        h3 {
+          @extend .mb-0;
+          @extend .title;
+          @extend .is-size-5;
+        }
+      }
+
+      hr {
+        @extend .my-4;
+        flex-shrink: 0;
+        align-self: stretch;
+      }
+
+      .policy-note {
+        @extend .has-text-grey-dark;
+      }
+    }
+  }
+
+  .modal-download {
+    @include tablet {
+      .modal-card {
+        width: 670px;
+      }
+    }
+  }
+</style>

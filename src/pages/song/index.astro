@@ -1,0 +1,328 @@
+---
+import { characterKeys } from "@/constants/characterEntry";
+import { characterInfos } from "@/constants/characterInfo";
+import Base from "@/layouts/Base.astro";
+import { showDownloadModalAttr } from "@/store";
+import { faDownload } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { getImage, Image } from "astro:assets";
+import OssGuidanceSection from "../_OssGuidanceSection.astro";
+import backgroundImage from "./background.png";
+import CharacterCard from "./CharacterCard";
+import shareThumb from "./share.png";
+
+// ソングを持つキャラクターを前に表示する
+// ソング・ハミングどちらも無いキャラクターはフィルター
+const orderedCharacterKeys = characterKeys
+  .filter((key) => characterInfos[key].songVoiceAudios.length > 0)
+  .toSorted((a, b) => {
+    const hasSong = (songVoiceAudios: { styleType: "song" | "humming" }[]) =>
+      songVoiceAudios.some(({ styleType }) => styleType === "song");
+    return hasSong(characterInfos[a].songVoiceAudios) &&
+      !hasSong(characterInfos[b].songVoiceAudios)
+      ? -1
+      : 1;
+  });
+
+// キャラクター数
+const characterCount = orderedCharacterKeys.length;
+
+// スタイル数
+const styleCount = orderedCharacterKeys.reduce((acc, key) => {
+  return acc + characterInfos[key].songVoiceAudios.length;
+}, 0);
+
+const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src})`;
+---
+
+<Base
+  title="VOICEVOX Song"
+  description="無料で使える中品質なテキスト読み上げ・歌声合成ソフトウェア。商用・非商用問わず無料で、誰でも簡単にお使いいただけます。喋り声に近い声で歌えるハミング機能も搭載。"
+  image={shareThumb}
+  imageAlt=""
+  isDark={true}
+>
+  <main class="song">
+    <section class="section px-0 py-0" data-testid="first-view">
+      <div class="top">
+        <div class="titles">
+          <h1 class="title">VOICEVOX Song</h1>
+          <span class="subtitle"
+            >無料で使える中品質な<wbr
+            />テキスト読み上げ・歌声合成ソフトウェア</span
+          >
+        </div>
+
+        <div class="buttons">
+          <a
+            {...{ [showDownloadModalAttr]: true }}
+            class="button is-primary is-large is-rounded"
+            target="_blank"
+            rel="noreferrer"
+            tab-index={0}
+            role="button"
+          >
+            <span class="icon">
+              <FontAwesomeIcon icon={faDownload} />
+            </span>
+            <span class="has-text-weight-semibold">ダウンロード</span>
+          </a>
+          <a href="/term/" class="button is-normal is-rounded" role="button">
+            利用規約
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="feature container">
+        <h2 class="title">特徴</h2>
+        <div class="feature-cells">
+          <div class="feature-cell">
+            商用利用可能な
+            <br />
+            フリーソフト
+          </div>
+          <div class="feature-cell">
+            マルチOSに対応
+            <br />
+            (Win / Mac / Linux)
+          </div>
+          <div class="feature-cell">
+            {characterCount} 名のキャラクターと
+            <br />
+            {styleCount} 種類のボイス
+          </div>
+          <div class="feature-cell">
+            すぐ使える GUI と<br />歌唱 AI で創作支援
+          </div>
+        </div>
+      </div>
+
+      <div class="container voices">
+        <h2 class="title">音声ライブラリ一覧</h2>
+        <div class="voice-cards">
+          {
+            orderedCharacterKeys.map((characterKey) => (
+              <CharacterCard
+                client:visible
+                characterInfo={characterInfos[characterKey]}
+              >
+                <Image
+                  src={characterInfos[characterKey].bustupImage}
+                  alt={characterInfos[characterKey].name}
+                  width={256}
+                  style={{ display: "block" }}
+                />
+              </CharacterCard>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container is-max-desktop">
+        <h2 class="title">ハミングとは？</h2>
+        <p>
+          喋り声のデータを用いて音声ライブラリを作成し、
+          歌えるキャラクターに歌い方を倣うことで、
+          キャラクターの喋り声に近い声で歌える機能です。
+        </p>
+        <p>キャラクターによっていろんなスタイルで歌うことができます。</p>
+      </div>
+    </section>
+
+    <OssGuidanceSection isDark={true} />
+  </main>
+</Base>
+
+<style lang="scss" define:vars={{ backgroundImageUrl }} is:global>
+  @use "@/styles/vars.scss" as *;
+  @use "@/styles/helper.scss" as *;
+  @use "bulma/sass/elements" as *;
+  @use "bulma/sass/layout" as *;
+  @use "bulma/sass/utilities/initial-variables" as *;
+  @use "bulma/sass/utilities/mixins" as *;
+  @use "bulma/sass/helpers" as *;
+
+  .song {
+    color: white;
+
+    .title,
+    .subtitle {
+      color: white !important;
+    }
+
+    .top {
+      height: calc(100vh - 3.25rem);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3.5rem;
+
+      // 背景画像
+      position: relative;
+      z-index: 0;
+      &:before {
+        background-image: var(--backgroundImageUrl);
+        background-size: cover;
+        background-position: center;
+
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+
+        filter: blur(2.5px) brightness(70%);
+        // filter: blur(1px) brightness(50%);
+      }
+
+      .titles {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        text-align: center;
+
+        h1 {
+          color: rgba($primary, 0.75) !important;
+          font-size: 7.5rem;
+          text-shadow: 0 0 10px
+            rgb(
+              from color-mix(in srgb, var(--bulma-link-text) 95%, black) R G B /
+                0.85
+            );
+        }
+
+        .subtitle {
+          @extend .is-4;
+          @extend .has-text-weight-bold;
+          text-shadow: 0 0 10px rgba(black, 0.75);
+
+          // <wbr>で良い感じに改行するようにする
+          word-break: keep-all;
+          overflow-wrap: break-word;
+        }
+
+        @include touch {
+          h1 {
+            font-size: 6rem;
+          }
+        }
+
+        @include mobile {
+          gap: 0.5rem;
+          margin-bottom: 5rem;
+
+          h1 {
+            font-size: 3rem;
+          }
+        }
+      }
+
+      .buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        .button {
+          box-shadow: 0 0 10px #000;
+        }
+      }
+    }
+
+    .feature {
+      width: 100%;
+      @extend .is-max-widescreen;
+      @extend .mb-6;
+
+      .feature-cells {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+        gap: 1rem;
+
+        @include touch {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .feature-cell {
+          background-color: #43554239;
+          @extend .is-size-5;
+          @extend .is-size-6-mobile;
+          text-align: center;
+          padding: 2rem 0;
+          border-radius: 1rem;
+        }
+      }
+    }
+
+    .voices {
+      display: flex;
+      flex-direction: column;
+      @extend .is-max-widescreen;
+      @extend .mb-6;
+
+      .voice-cards {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        .voice-card {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          align-items: center;
+          justify-content: center;
+
+          background-color: #282828;
+          border-radius: 0.5rem;
+          width: 10rem;
+          @extend .py-3;
+
+          .voice-card-image {
+            width: 70%;
+          }
+
+          .voice-card-content {
+            @extend .has-text-centered;
+
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+
+            .title {
+              @extend .is-6;
+              @extend .has-text-weight-medium;
+              @extend .mb-0;
+            }
+
+            .buttons {
+              align-items: center;
+              justify-content: center;
+              @extend .mb-0;
+              gap: 8px;
+
+              .button {
+                @extend .mb-0;
+              }
+            }
+
+            .style-name {
+              @extend .is-size-7;
+            }
+          }
+        }
+      }
+    }
+  }
+</style>

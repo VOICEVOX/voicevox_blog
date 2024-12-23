@@ -1,0 +1,17 @@
+---
+import type { CharacterInfo } from "@/constants/type";
+import { Image } from "astro:assets";
+
+interface Props {
+  characterInfo: CharacterInfo;
+}
+
+const { characterInfo } = Astro.props;
+---
+
+<Image
+  src={characterInfo.bustupImage}
+  alt={characterInfo.name}
+  width="64"
+  densities={[1, 1.5, 2]}
+/>

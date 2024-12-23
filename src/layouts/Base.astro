@@ -1,0 +1,172 @@
+---
+/**
+ * 全てのページのベースになるレイアウト。
+ * ヘッダーとフッターがある。
+ */
+import Footer from "@/components/Footer.astro";
+import Header from "@/components/Header/index.astro";
+import Modals from "@/components/modal/Modals.astro";
+import { GA_TRACKING_ID } from "@/constants";
+import {
+  escapeHtml,
+  isDevelopment,
+  isPreview,
+  isTest,
+  stripHtmlTags,
+} from "@/helper";
+import type { ImageMetadata } from "astro";
+import { SEO } from "astro-seo";
+import { getImage } from "astro:assets";
+import { ViewTransitions } from "astro:transitions";
+
+export interface Props {
+  title: string;
+  description: string;
+  image?: string | ImageMetadata;
+  imageAlt?: string;
+  noindex?: boolean;
+  children: unknown;
+  defaultHideHeader?: boolean; // アクセスした直後にヘッダーを隠すか
+  isDark?: boolean;
+  isNemo?: boolean;
+}
+const {
+  title,
+  description,
+  image: _image,
+  imageAlt,
+  noindex: noindex_,
+  defaultHideHeader,
+  isDark,
+  isNemo,
+} = Astro.props;
+
+const noindex = isPreview || noindex_;
+
+// imageとimageAltが片方だけ指定されている場合はエラーを出す
+if ((_image == undefined) != (imageAlt == undefined)) {
+  throw new Error("imageとimageAltが片方だけ指定されています");
+}
+
+const imageUrl = _image
+  ? typeof _image === "string"
+    ? String(new URL(_image, Astro.url))
+    : (await getImage({ src: _image })).src // importされた画像を取得する
+  : undefined;
+const hasImage = imageUrl != undefined && imageAlt != undefined;
+
+// Google Analytics。実際のページ以外では読み込まない。
+const googleAnalyticsSrc =
+  isDevelopment || isPreview || isTest
+    ? undefined
+    : `https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`;
+---
+
+<html lang="ja" transition:animate="none">
+  <head>
+    <SEO
+      title={escapeHtml(title)}
+      charset="utf-8"
+      description={stripHtmlTags(description)}
+      canonical={String(new URL(Astro.url.pathname, Astro.site))}
+      openGraph={hasImage
+        ? {
+            basic: {
+              title,
+              type: "website",
+              image: imageUrl,
+            },
+            optional: {
+              description,
+            },
+            image: {
+              alt: imageAlt,
+            },
+          }
+        : undefined}
+      twitter={{
+        card: hasImage ? "summary_large_image" : "summary",
+        title,
+        description,
+        image: hasImage ? imageUrl : undefined,
+        imageAlt: hasImage ? imageAlt : undefined,
+      }}
+      noindex={noindex}
+      nofollow={noindex}
+    />
+
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    {/* アイコン */}
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    {/* Google Analytics */}
+    <script is:inline src={googleAnalyticsSrc}></script>
+    <script is:inline define:vars={{ GA_TRACKING_ID }}>
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function gtag(...args) {
+        dataLayer.push(args);
+      };
+      document.addEventListener("astro:page-load", () => {
+        if ((navigator.doNotTrack || window.doNotTrack) != "1") {
+          gtag("js", new Date());
+          gtag("config", GA_TRACKING_ID);
+        }
+      });
+    </script>
+
+    <ViewTransitions />
+  </head>
+
+  <body class={isDark ? "has-background-black" : "has-background-white"}>
+    <Header defaultHide={defaultHideHeader} isDark={isDark} isNemo={isNemo} />
+
+    <slot />
+
+    <footer class={`footer appearance ${isDark ? "has-background-black" : ""}`}>
+      <Footer isDark={isDark} />
+    </footer>
+    <div class="footer height-holder">
+      {/* 空間を空けるために必要 */}
+      <Footer isDark={isDark} />
+    </div>
+
+    <Modals />
+  </body>
+</html>
+
+<style lang="scss" is:global>
+  @use "@/styles/global.scss";
+  @use "@/styles/bulma.scss";
+
+  // ページの高さを最低でも画面の高さに合わせる
+  html {
+    height: -webkit-fill-available;
+  }
+  body {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+  }
+
+  body {
+    position: relative;
+    overflow: hidden;
+
+    .footer {
+      // footerを最下部に固定するためのクラス
+      &.appearance {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+      }
+      &.height-holder {
+        visibility: hidden;
+      }
+    }
+  }
+</style>

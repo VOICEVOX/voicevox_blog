@@ -1,0 +1,71 @@
+---
+import type { CharacterKey } from "@/constants/characterEntry";
+import { characterInfos } from "@/constants/characterInfo";
+import { callNameInfos } from "@/constants/characterInfos/callNameInfo";
+import type { CharacterInfo } from "@/constants/type";
+import { getDormitoryCharacterPageUrl } from "@/constants/url";
+import { Image } from "astro:assets";
+
+interface Props {
+  characterInfo: CharacterInfo;
+  baseCharacterKey: CharacterKey;
+  targetCharacterKey: CharacterKey;
+}
+
+const { characterInfo, baseCharacterKey, targetCharacterKey } = Astro.props;
+
+const callTo: string | undefined =
+  callNameInfos[baseCharacterKey][targetCharacterKey];
+const callFrom: string | undefined =
+  callNameInfos[targetCharacterKey][baseCharacterKey];
+
+const targetCharacterInfo = characterInfos[targetCharacterKey];
+---
+
+<div class="description-call-box">
+  <div class="description-call-line">
+    <div class="description-call-one">
+      <span
+        class={`description-call-text ${callTo ? "" : "unknown"}`}
+        style={{ borderColor: characterInfo.color }}
+      >
+        {callTo || "？"}
+      </span>
+      <span
+        class="description-call-arrow"
+        style={{ color: characterInfo.color }}
+      >
+        →
+      </span>
+    </div>
+    <div class="description-call-one">
+      <span
+        class="description-call-arrow"
+        style={{ color: targetCharacterInfo.color }}
+      >
+        ←
+      </span>
+      <span
+        class={`description-call-text ${callFrom ? "" : "unknown"}`}
+        style={{ borderColor: targetCharacterInfo.color }}
+      >
+        {callFrom || "？"}
+      </span>
+    </div>
+  </div>
+  <a href={getDormitoryCharacterPageUrl(targetCharacterInfo, "calls")}>
+    <Image
+      src={targetCharacterInfo.bustupImage}
+      alt={targetCharacterInfo.name}
+      width={56}
+      densities={[1, 1.5, 2]}
+      style={{
+        borderColor: targetCharacterInfo.color,
+        borderStyle: "solid",
+        borderRadius: "0.5rem",
+        display: "block",
+        height: "100%",
+      }}
+    />
+  </a>
+</div>

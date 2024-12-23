@@ -1,0 +1,6 @@
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/meimei_himari/calls/",
+  "title": "冥鳴ひまり | ボイボ寮 呼び方 | VOICEVOX",
+  "description": "冥界から来た死神。可愛いものに目がない。",
+  "robots": "index, follow"
+}

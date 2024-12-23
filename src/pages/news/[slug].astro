@@ -1,0 +1,38 @@
+---
+/**
+ * 個別のニュース記事ページ
+ */
+import Markdown from "@/components/Markdown.astro";
+import Base from "@/layouts/Base.astro";
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import { articles } from "./constants";
+
+export const getStaticPaths = (async () => {
+  return articles.map((article) => ({
+    params: { slug: article.frontmatter.slug },
+    props: { article },
+  }));
+}) satisfies GetStaticPaths;
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { article } = Astro.props;
+const { frontmatter } = article;
+
+// TODO: リリース時にnoindexを外す
+---
+
+<Base
+  title={`${frontmatter.title} | ニュース | VOICEVOX`}
+  description="無料で使えるテキスト読み上げ・歌声合成ソフトウェア、VOICEVOXのニュースです。"
+  noindex={true}
+>
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h1 class="title">{frontmatter.title}</h1>
+      <p class="has-text-grey-light">{frontmatter.date}</p>
+      <Markdown>
+        <div class="markdown mt-5" set:html={article.compiledContent()} />
+      </Markdown>
+    </div>
+  </section>
+</Base>

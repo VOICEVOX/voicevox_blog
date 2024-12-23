@@ -1,0 +1,478 @@
+---
+import FontAwesomeIcon from "@/components/FontAwesomeIcon.astro";
+import PlayButton from "@/components/PlayButton/index.astro";
+import { characterEntries, characterKeys } from "@/constants/characterEntry";
+import { characterInfos } from "@/constants/characterInfo";
+import { callNameInfos } from "@/constants/characterInfos/callNameInfo";
+import { getProductPageUrl } from "@/constants/url";
+import Base from "@/layouts/Base.astro";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import { getImage, Image } from "astro:assets";
+import backgroundImage from "../images/nc238325.jpg";
+import CallBox from "./_CallBox.astro";
+import { descriptionTypes } from "./_constants";
+import TypeButton from "./_TypeButton.astro";
+
+export const getStaticPaths = (async () => {
+  return characterKeys.flatMap((key) =>
+    descriptionTypes.map((d) => ({
+      params: {
+        characterId: characterEntries[key].id,
+        descriptionType: d == "profile" ? undefined : d, // NOTE: 以前に合わせるため、プロフィールページはURLをネストしない
+      },
+      props: { characterInfo: characterInfos[key], descriptionType: d },
+    })),
+  );
+}) satisfies GetStaticPaths;
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { characterInfo, descriptionType } = Astro.props;
+const characterKey = characterInfo.key;
+const descriptionNames = {
+  profile: "プロフィール",
+  calls: "呼び方",
+} satisfies Record<(typeof descriptionTypes)[number], string>;
+
+const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src})`;
+---
+
+<Base
+  title={`${characterInfo.name} | ボイボ寮 ${
+    descriptionNames[descriptionType]
+  } | VOICEVOX`}
+  description={characterInfo.description}
+  image={characterInfo.dormitoryShareImage}
+  imageAlt={characterInfo.dormitoryShareImage ? "" : undefined}
+>
+  <div class="dormitory-character">
+    <main class="section py-1">
+      <div class="container is-max-desktop">
+        <div class="box" style={{ borderColor: characterInfo.color }}>
+          <div class="columns m-0" style={{ height: "100%" }}>
+            <div
+              class="column is-4 portrait-column"
+              style={{ borderColor: characterInfo.color, position: "relative" }}
+            >
+              <div class="height-image-wrapper">
+                <div>
+                  <Image
+                    src={characterInfo.portraitImage}
+                    alt={characterInfo.name}
+                    width={640}
+                    densities={[1, 1.5, 2]}
+                    style={{
+                      height: "100%",
+                      display: "block",
+                      objectFit: "contain",
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="column description-column">
+              <div class="section">
+                <div class="description-top">
+                  <h1 class="title" set:html={characterInfo.rubyName} />
+                  <a
+                    class="button description-top-button"
+                    style={{
+                      color: characterInfo.color,
+                      borderColor: characterInfo.color,
+                      visibility: characterInfo.detailUrl
+                        ? "visible"
+                        : "hidden",
+                    }}
+                    href={characterInfo.detailUrl}
+                    aria-label={`${characterInfo.name}の詳細ページ`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <FontAwesomeIcon icon={faHome} />
+                  </a>
+                </div>
+                <div class="buttons has-addons">
+                  <TypeButton
+                    characterInfo={characterInfo}
+                    selectedType={descriptionType}
+                    targetType="profile"
+                    targetName={descriptionNames.profile}
+                  />
+                  <TypeButton
+                    characterInfo={characterInfo}
+                    selectedType={descriptionType}
+                    targetType="calls"
+                    targetName={descriptionNames.calls}
+                  />
+                </div>
+                {
+                  descriptionType === "profile" && (
+                    <>
+                      <div
+                        class="description-profile"
+                        set:html={characterInfo.description}
+                      />
+                      <div class="columns is-variable is-1 is-multiline mb-3">
+                        {characterInfo.labelInfos.map((labelInfo) => (
+                          <div
+                            class={`column ${
+                              labelInfo.size == 1 ? "is-6" : "is-12"
+                            } description-box`}
+                          >
+                            <span
+                              class="description-label"
+                              style={{ backgroundColor: characterInfo.color }}
+                            >
+                              {labelInfo.label}
+                            </span>
+                            <span
+                              class="description-text"
+                              set:html={labelInfo.value}
+                            />
+                          </div>
+                        ))}
+                        <div class="column is-12 description-box">
+                          <span
+                            class="description-label"
+                            style={{ backgroundColor: characterInfo.color }}
+                          >
+                            音声サンプル
+                          </span>
+                          {characterInfo.dormitoryVoiceAudios ? (
+                            <div class="description-samples">
+                              {characterInfo.dormitoryVoiceAudios.map(
+                                (audio, index) => (
+                                  <PlayButton
+                                    audio={audio}
+                                    name={`${
+                                      characterInfo.name
+                                    }のサンプルボイス${index + 1}`}
+                                    color={characterInfo.color}
+                                    class="mr-1"
+                                  />
+                                ),
+                              )}
+                            </div>
+                          ) : (
+                            <span class="description-text">準備中</span>
+                          )}
+                        </div>
+                      </div>
+                      {characterInfo.dormitoryImages && (
+                        <div class="description-info-images">
+                          {characterInfo.dormitoryImages.map((image) => (
+                            <div>
+                              <Image
+                                src={image}
+                                alt={characterInfo.name}
+                                height={256}
+                                densities={[1, 1.5, 2]}
+                                style={{
+                                  display: "block",
+                                  objectFit: "contain",
+                                }}
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </>
+                  )
+                }
+                {
+                  descriptionType === "calls" && (
+                    <div class="columns description-call">
+                      <div class="column is-3 description-call-other-column">
+                        <div class="description-call-other-cell">
+                          <div>
+                            <span>一人称</span>
+                          </div>
+                          <div>
+                            {callNameInfos[characterKey].me.map((callName) => (
+                              <p>{callName}</p>
+                            ))}
+                          </div>
+                        </div>
+                        <div class="description-call-other-cell">
+                          <div>
+                            <span>二人称</span>
+                          </div>
+                          <div>
+                            {callNameInfos[characterKey].you.map((callName) => (
+                              <p>{callName}</p>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                      <div class="column is-9 description-call-character">
+                        {characterKeys
+                          .filter(
+                            (targetCharacterKey) =>
+                              targetCharacterKey !== characterKey,
+                          )
+                          .map((targetCharacterKey) => (
+                            <CallBox
+                              characterInfo={characterInfo}
+                              baseCharacterKey={characterKey}
+                              targetCharacterKey={targetCharacterKey}
+                            />
+                          ))}
+                      </div>
+                    </div>
+                  )
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="link-buttons has-text-weight-bold">
+          <a
+            href={getProductPageUrl(characterInfo)}
+            class="button is-normal is-rounded character-list-button"
+            style={{ borderColor: characterInfo.color }}
+          >
+            ダウンロードページ
+          </a>
+          <a
+            href={`/dormitory/#${characterInfo.id}`}
+            class="button is-normal is-rounded character-list-button"
+            style={{ borderColor: characterInfo.color }}
+          >
+            キャラクター一覧
+          </a>
+        </div>
+      </div>
+    </main>
+  </div>
+</Base>
+
+<style lang="scss" define:vars={{ backgroundImageUrl }} is:global>
+  @use "bulma/sass/utilities/mixins" as *;
+  @use "bulma/sass/helpers" as *;
+
+  @use "@/styles/helper" as *;
+
+  .dormitory-character {
+    background-image: var(--backgroundImageUrl);
+    background-color: rgba(255, 255, 255, 0.7);
+    background-blend-mode: lighten;
+    background-size: cover;
+    background-attachment: fixed;
+
+    .section {
+      .container {
+        min-height: calc(100vh - 3.25rem);
+        display: flex;
+        flex-direction: column;
+
+        justify-content: center;
+        align-items: center;
+        gap: 0.75rem;
+
+        max-width: 820px;
+
+        @include mobile {
+          min-height: auto;
+          max-height: unset;
+        }
+
+        @include tablet {
+          min-width: 768px;
+        }
+
+        .box {
+          width: 100%;
+          height: 550px;
+          @include mobile {
+            height: auto;
+          }
+
+          padding: 0;
+          margin-bottom: 0;
+
+          border-style: solid;
+          border-width: 3px;
+
+          .portrait-column {
+            @extend .py-1;
+            @extend .px-0;
+
+            // 大きい画面では左側にいっぱい画像表示
+            @include tablet {
+              border-right: solid;
+            }
+            // スマホ画面ではファーストビューに画像を表示
+            @include mobile {
+              height: 100vh;
+            }
+          }
+        }
+
+        .link-buttons {
+          display: flex;
+
+          justify-content: center;
+          align-items: center;
+          gap: 0.5rem;
+          flex-wrap: wrap;
+
+          .button {
+            border-width: 1.5px;
+          }
+        }
+      }
+
+      .description-column {
+        .section {
+          height: 100%;
+          @extend .p-3;
+
+          display: flex;
+          flex-direction: column;
+        }
+
+        .description-top {
+          display: flex;
+
+          .description-top-button {
+            @extend .circle-icon;
+            @extend .ml-auto;
+          }
+        }
+
+        .description-type-button {
+          box-shadow: none;
+          border-width: 1.5px;
+
+          &.description-type-button-selected {
+            @extend .has-text-weight-bold;
+          }
+        }
+
+        .description-profile {
+          @extend .is-size-5;
+          @extend .has-text-weight-bold;
+          @extend .mb-2;
+        }
+
+        .description-box {
+          @extend .pb-0;
+          @extend .pt-3;
+
+          display: flex;
+          align-items: center;
+
+          .description-label {
+            @extend .py-2;
+            width: 7rem;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+          }
+          .description-text {
+            flex-grow: 1;
+            @extend .pl-3;
+          }
+          .description-samples {
+            flex-grow: 1;
+            @extend .pl-3;
+          }
+        }
+
+        .description-info-images {
+          max-height: 8rem;
+          display: flex;
+          div {
+            display: flex;
+            justify-content: center;
+            img {
+              flex: 1 1 auto;
+            }
+          }
+        }
+
+        .description-call {
+          flex-grow: 1;
+          overflow: hidden;
+
+          .description-call-other-column {
+            height: 100%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 2rem;
+
+            @include mobile {
+              flex-direction: row;
+              height: 8rem;
+            }
+
+            .description-call-other-cell {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+
+              border-style: solid;
+              border-radius: 14px;
+              aspect-ratio: 1/1;
+              white-space: nowrap;
+
+              div {
+                text-align: center;
+              }
+
+              div:first-child {
+                @extend .has-text-weight-bold;
+                @extend .mb-1;
+              }
+            }
+          }
+
+          .description-call-character {
+            overflow: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+
+            .description-call-box {
+              display: flex;
+              gap: 0.5rem;
+
+              .description-call-line {
+                display: flex;
+                flex: 1;
+                .description-call-one {
+                  @extend .p-0;
+
+                  flex: 1;
+
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  .description-call-arrow {
+                    margin: -1rem 0;
+                    font-size: 1.5rem;
+                  }
+                  .description-call-text {
+                    @extend .py-1;
+                    font-size: 0.8rem;
+                    flex-grow: 1;
+                    border-style: solid;
+                    border-radius: 8px;
+                    text-align: center;
+
+                    &.unknown {
+                      color: gray;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+</style>

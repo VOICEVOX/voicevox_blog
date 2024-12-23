@@ -1,0 +1,60 @@
+@use "bulma/sass/elements/button" as *;
+@use "bulma/sass/utilities/initial-variables" as *;
+@use "bulma/sass/helpers" as *;
+
+.circle-icon {
+  @extend .is-outlined;
+  @extend .is-rounded;
+
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+
+  width: $size-1;
+  height: $size-1;
+  border-width: 1.8px;
+
+  &.is-small {
+    width: $size-2;
+    height: $size-2;
+    border-width: 1px;
+  }
+  &.is-medium {
+    width: $size-1 * 1.2;
+    height: $size-1 * 1.2;
+    border-width: 2px;
+  }
+  &.is-large {
+    width: $size-1 * 1.4;
+    height: $size-1 * 1.4;
+    border-width: 2.4px;
+  }
+}
+
+/** idタグにジャンプるするときにヘッダーサイズ分ずれるのを防ぐ */
+.jump-anchor-header-padding {
+  padding-top: calc(3.25rem + 1rem);
+  margin-top: calc(-3.25rem - 1rem);
+}
+
+/** 親の縦幅に合わせて画像をいっぱいに表示する。この要素の親にposition: relative等が必要 */
+.height-image-wrapper {
+  width: 100%;
+  max-width: 100vw; // iOSで突き抜けたので
+  height: 100%;
+  overflow: hidden;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  justify-content: center;
+  div {
+    flex: 0 0 auto;
+    img {
+      height: 100%;
+    }
+  }
+}

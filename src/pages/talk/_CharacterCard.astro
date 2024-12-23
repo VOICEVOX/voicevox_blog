@@ -1,0 +1,91 @@
+---
+import type { CharacterInfo } from "@/constants/type";
+import { getProductPageUrl } from "@/constants/url";
+import { showLibraryTermIntroModalCharacterKeyAttr } from "@/store";
+import "@/styles/helper.scss"; // NOTE: PlayButtonのため
+import { Image } from "astro:assets";
+import AudioSample from "./AudioSample";
+
+interface Props {
+  characterInfo: CharacterInfo;
+}
+
+const { characterInfo } = Astro.props;
+const characterKey = characterInfo.key;
+---
+
+<div class="column is-6-tablet is-4-desktop">
+  <div class="card">
+    <a href={getProductPageUrl(characterInfo)} class="card-image">
+      <Image
+        src={characterInfo.bustupImage}
+        alt={characterInfo.name}
+        width="320"
+        densities={[1, 1.5, 2]}
+        style={{ display: "block", objectFit: "contain", margin: "0 auto" }}
+      />
+    </a>
+    <div class="card-content has-text-centered">
+      <h3 class="title is-4">
+        <a href={getProductPageUrl(characterInfo)} style={{ color: "inherit" }}>
+          {characterInfo.name}
+        </a>
+      </h3>
+      <p class="subtitle is-5">
+        {characterInfo.voiceFeature ? characterInfo.voiceFeature : "（準備中）"}
+      </p>
+      {
+        characterInfo.releaseDate != undefined && (
+          <p class="py-0" style={{ marginTop: "-1rem", color: "red" }}>
+            Coming Soon
+          </p>
+        )
+      }
+      {
+        characterInfo.talkVoiceAudios.length > 0 && (
+          <AudioSample
+            client:visible
+            audioSamples={characterInfo.talkVoiceAudios}
+            characterName={characterInfo.name}
+          />
+        )
+      }
+      <div class="pt-3">
+        <button
+          {...{ [showLibraryTermIntroModalCharacterKeyAttr]: characterKey }}
+          class="button is-normal is-rounded"
+          type="button"
+        >
+          <span>{characterInfo.name} 利用規約</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style lang="scss" is:global>
+  @use "bulma/sass/helpers" as *;
+
+  .audio-sample {
+    .audio-sample-pair {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 3px 10px;
+
+      @extend .py-1;
+
+      .audio-sample-label {
+        width: 100px;
+        // @include from($tablet) {
+        //   text-align: right !important;
+        // }
+      }
+      .audio-sample-content {
+        display: flex;
+        gap: 3px;
+      }
+    }
+  }
+</style>

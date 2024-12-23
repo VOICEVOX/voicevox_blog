@@ -1,0 +1,6 @@
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/product/zundamon/",
+  "title": "VOICEVOX ずんだもん | 無料のテキスト読み上げソフトウェア",
+  "description": "VOICEVOXは「ずんだもん」の子供っぽい高めの声で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。",
+  "robots": "index, follow"
+}
