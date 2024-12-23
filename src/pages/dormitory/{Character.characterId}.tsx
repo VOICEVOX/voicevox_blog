@@ -2,7 +2,7 @@ import { faHome } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Link, navigate, PageProps } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
-import React, { useMemo, useState } from "react"
+import React, { useMemo, useState, useEffect } from "react"
 import { Page } from "../../components/page"
 import PlayButton from "../../components/playButton"
 import Seo from "../../components/seo"
@@ -132,6 +132,32 @@ export default ({
     }
   }
 
+  function useMediaQuery(query: string) {
+    const [matches, setMatches] = useState(window.matchMedia(query).matches)
+
+    useEffect(() => {
+      const media = window.matchMedia(query)
+      const listener = () => setMatches(media.matches)
+      media.addEventListener("change", listener)
+      return () => media.removeEventListener("change", listener)
+    }, [query])
+
+    return matches
+  }
+
+  // 1180px以下の場合はボタンをキャラクター紹介欄の下に表示する
+  // (ウインドウ幅の変動によって、ボタンが隠れ始めるタイミングが1180pxだった)
+  const isMobile = useMediaQuery("(max-width: 1180px)")
+  const responsiveButtonGroupStyle = isMobile
+    ? {}
+    : {
+        display: "inline-flex",
+        flexDirection: "column" as const,
+        position: "absolute" as const,
+        left: "100%",
+        bottom: "25%",
+      }
+
   return (
     <Page>
       <Seo
@@ -143,7 +169,12 @@ export default ({
       <div className="dormitory-character">
         <main className="section py-1">
           <div className="container is-max-desktop">
-            <div className="box" style={{ borderColor: characterInfo.color }}>
+            <div
+              className="box"
+              style={{
+                borderColor: characterInfo.color,
+              }}
+            >
               <div className="columns m-0" style={{ height: "100%" }}>
                 <div
                   className="column is-4 portrait-column"
@@ -307,11 +338,16 @@ export default ({
                 </div>
               </div>
             </div>
-            <div className="link-buttons has-text-weight-bold">
+            <div
+              className="link-buttons has-text-weight-bold"
+              style={responsiveButtonGroupStyle}
+            >
               <Link
                 to={getProductPageUrl(characterInfo)}
                 className="button is-normal is-rounded character-list-button"
-                style={{ borderColor: characterInfo.color }}
+                style={{
+                  borderColor: characterInfo.color,
+                }}
               >
                 ダウンロードページ
               </Link>
@@ -324,7 +360,9 @@ export default ({
                     : `/dormitory/`
                 }
                 className="button is-normal is-rounded character-list-button"
-                style={{ borderColor: characterInfo.color }}
+                style={{
+                  borderColor: characterInfo.color,
+                }}
               >
                 キャラクター一覧
               </Link>
