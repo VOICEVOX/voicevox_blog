@@ -1,0 +1,36 @@
+---
+/**
+ * 記事ディレクトリにある記事一覧を表示するページ。
+ * ファイル名の逆順に表示する。
+ */
+
+import Base from "@/layouts/Base.astro";
+import shareThumb from "./_share.jpg";
+import { articles } from "./constants";
+
+// TODO: リリース時にnoindexを外す
+---
+
+<Base
+  title="ニュース | VOICEVOX"
+  description="無料で使えるテキスト読み上げ・歌声合成ソフトウェア、VOICEVOXのニュース一覧です。"
+  image={shareThumb}
+  imageAlt=""
+  noindex={true}
+>
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h1 class="title">ニュース</h1>
+      {
+        articles.map((article) => (
+          <div class="mb-3">
+            <a href={`/news/${article.frontmatter.slug}`}>
+              {article.frontmatter.title}
+            </a>
+            <p class="has-text-grey-light">{article.frontmatter.date}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</Base>

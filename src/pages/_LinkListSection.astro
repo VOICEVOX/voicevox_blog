@@ -1,4 +1,6 @@
 ---
+import { isDevelopment } from "@/helper";
+
 /**
  * リンク一覧セクション
  */
@@ -34,16 +36,13 @@
         >
       </li>
       {
-        /*
-        <li>
-          <a
-            href={"/news/"}
-            class="has-text-weight-bold is-underlined"
-          >
-            ニュース
-          </a>
-        </li>
-        */
+        isDevelopment && (
+          <li>
+            <a href={"/news/"} class="has-text-weight-bold is-underlined">
+              ニュース
+            </a>
+          </li>
+        )
       }
       <li>
         <a

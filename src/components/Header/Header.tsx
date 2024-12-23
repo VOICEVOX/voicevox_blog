@@ -1,4 +1,4 @@
-import { sendEvent } from "@/helper";
+import { isDevelopment, sendEvent } from "@/helper";
 import { $downloadModal, $nemoGuidanceModal } from "@/store";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -101,15 +101,17 @@ export default function Header({
       ),
       hideType: "tablet" as HideType,
     },
-    /*
-    {
-      Component: ({ className }: { className?: string }) => (
-        <a href="/news/" className={`navbar-item ${className}`}>
-          ニュース
-        </a>
-      ),
-    },
-    */
+    ...(isDevelopment
+      ? [
+          {
+            Component: ({ className }: { className?: string }) => (
+              <a href="/news/" className={`navbar-item ${className}`}>
+                ニュース
+              </a>
+            ),
+          },
+        ]
+      : []),
     {
       Component: ({ className }: { className?: string }) => (
         <a
