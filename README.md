@@ -23,9 +23,7 @@ pnpm start
 
 ## deploy
 
-```bash
-pnpm run deploy
-```
+Github Workflowの`build-and-deploy.yml`を`workflow_dispatch`してデプロイします。
 
 ### プレビュー版
 
