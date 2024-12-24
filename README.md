@@ -76,7 +76,8 @@ curl -s "$editor_url/public/qAndA.md" |
 
 # 変更履歴
 curl -s "$editor_url/public/updateInfos.json" \
-  >src/pages/update_history/updateInfos.json
+  >public/updateInfos.json
+cp public/updateInfos.json src/data/updateInfos.json  # 0.22までsrc/dataディレクトリだったので、しばらくはコピーする
 
 # デフォルトエンジンの更新情報
 pnpm run generateLatestDefaultEngineInfos
