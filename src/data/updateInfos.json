@@ -1,0 +1,990 @@
+[
+  {
+    "version": "0.22.1",
+    "descriptions": ["バグ修正"],
+    "contributors": ["Hiroshiba", "sevenc-nanashi"]
+  },
+  {
+    "version": "0.22.0",
+    "descriptions": [
+      "トーク：間の長さの一括制御",
+      "ソング：対応モーラを追加",
+      "ソング：ツール選択機能",
+      "ソング：途中でBPMや拍子を変更可能に",
+      "フルスクリーンに対応",
+      "ショートカットキー設定ダイアログのデザインを刷新",
+      "UIの拡大・縮小機能",
+      "開発環境の向上",
+      "バグ修正"
+    ],
+    "contributors": [
+      "aoirint",
+      "Hiroshiba",
+      "kebin628",
+      "rokujyushi",
+      "romot-co",
+      "sabonerune",
+      "Segu-g",
+      "sevenc-nanashi",
+      "sigprogramming",
+      "takana-v",
+      "takusea",
+      "tarepan",
+      "terapotan",
+      "tsunekazuomija",
+      "X-20A"
+    ]
+  },
+  {
+    "version": "0.21.1",
+    "descriptions": ["キャラクター「Voidoll」を追加"],
+    "contributors": []
+  },
+  {
+    "version": "0.21.0",
+    "descriptions": [
+      "ソング：立ち絵表示の有無を切り替え可能に",
+      "ソング：エディタのデザインを刷新",
+      "ソング：マルチトラックを通常機能に",
+      "ソング：書き出し時の詳細設定機能",
+      "設定ダイアログのデザインを刷新",
+      "開発環境の向上",
+      "バグ修正"
+    ],
+    "contributors": [
+      "gigi434",
+      "Hiroshiba",
+      "honey32",
+      "jdkfx",
+      "MT224244",
+      "naga-na",
+      "romot-co",
+      "sabonerune",
+      "Segu-g",
+      "sevenc-nanashi",
+      "sigprogramming",
+      "takusea"
+    ]
+  },
+  {
+    "version": "0.20.0",
+    "descriptions": [
+      "起動を高速化",
+      "Apple Silicon macOSに対応",
+      "ヘルプダイアログのデザインを刷新",
+      "トーク：デフォルトプリセットが再登録できないバグの修正",
+      "トーク：全選択ショートカットキーを追加",
+      "トーク：キャラクター選択ショートカットキーを追加",
+      "ソング：歌声に呼吸音が被る問題を修正",
+      "ソング：様々な形式のプロジェクトファイルのインポートに対応",
+      "ソング：実験的機能としてマルチトラック機能を追加",
+      "ソング：ピッチ編集機能を通常機能に",
+      "開発環境の向上",
+      "バグ修正"
+    ],
+    "contributors": [
+      "cm-ayf",
+      "Hiroshiba",
+      "honey32",
+      "jdkfx",
+      "madosuki",
+      "nix6839",
+      "nmori",
+      "RikitoNoto",
+      "romot-co",
+      "sabonerune",
+      "Segu-g",
+      "sevenc-nanashi",
+      "ShimagayaSatoka",
+      "sigprogramming",
+      "takusea",
+      "tarepan",
+      "tsym77yoshi",
+      "weweweok",
+      "White-Green",
+      "X-20A"
+    ]
+  },
+  {
+    "version": "0.19.2",
+    "descriptions": ["キャラクター「後鬼」のスタイルを追加"],
+    "contributors": []
+  },
+  {
+    "version": "0.19.1",
+    "descriptions": [
+      "ソング：音域調整時に音量が変わるバグを修正",
+      "ソング：１小節目の最初にノートを配置するとエラーになる問題を修正"
+    ],
+    "contributors": ["Hiroshiba", "sigprogramming"]
+  },
+  {
+    "version": "0.19.0",
+    "descriptions": [
+      "ソング：ピッチ編集機能",
+      "ソング：歌詞の一括入力",
+      "バグ修正"
+    ],
+    "contributors": [
+      "Hiroshiba",
+      "KoharuYuzuki",
+      "madosuki",
+      "palm209",
+      "romot-co",
+      "sevenc-nanashi",
+      "sigprogramming",
+      "weweweok",
+      "y-chan"
+    ]
+  },
+  {
+    "version": "0.18.1",
+    "descriptions": [
+      "キャラクター「†聖騎士 紅桜†」「雀松朱司」「麒ヶ島宗麟」「春歌ナナ」「猫使アル」「猫使ビィ」「中国うさぎ」のハミングを追加",
+      "キャラクター「栗田まろん」「あいえるたん」「満別花丸」「琴詠ニア」のハミングを追加",
+      "ソング：一部のUSTファイルが読み込めないバグの修正",
+      "起動に必要なメモリ量を大幅に削減"
+    ],
+    "contributors": ["Hiroshiba", "qryxip", "romot-co"]
+  },
+  {
+    "version": "0.18.0",
+    "descriptions": [
+      "キャラクター「WhiteCUL」「後鬼」「No.7」のハミングを追加",
+      "キャラクター「ちび式じい」「櫻歌ミコ」「小夜/SAYO」「ナースロボ＿タイプＴ」のハミングを追加",
+      "キャラクター「四国めたん」「ずんだもん」「波音リツ」のハミングスタイルを追加",
+      "ソング：ピッチ表示機能",
+      "ソング：矩形選択を追加",
+      "ソング：ノートのエラー時にツールチップ表示",
+      "デフォルトで全てのCPUを使うことがあるバグを修正",
+      "ソング：MIDIインポート時にトラックを選択可能に",
+      "ソング：USTファイルのインポート機能",
+      "ソング：コピー＆ペースト"
+    ],
+    "contributors": [
+      "Hiroshiba",
+      "romot-co",
+      "sabonerune",
+      "sevenc-nanashi",
+      "sigprogramming",
+      "siketyan",
+      "tarepan",
+      "tomoish",
+      "weweweok"
+    ]
+  },
+  {
+    "version": "0.17.2",
+    "descriptions": [
+      "プロジェクト読み込み時に声量調整などが反映されない問題を解決"
+    ],
+    "contributors": ["Hiroshiba"]
+  },
+  {
+    "version": "0.17.1",
+    "descriptions": [
+      "キャラクター「玄野武宏」「白上虎太郎」「青山龍星」「冥鳴ひまり」「九州そら」のハミングを追加",
+      "キャラクター「もち子さん」「剣崎雌雄」のハミングを追加",
+      "音域調整・声量調整機能",
+      "バグ修正"
+    ],
+    "contributors": ["Hiroshiba", "sigprogramming"]
+  },
+  {
+    "version": "0.17.0",
+    "descriptions": [
+      "サードパーティアプリ向けのランタイム情報ファイルを出力",
+      "ソング：プロジェクトファイルに保存",
+      "トーク：連続再生中に裏で音声合成",
+      "ソング：元に戻す・やり直す機能",
+      "ソング：ショートカットキー機能",
+      "開発環境の向上",
+      "バグ修正"
+    ],
+    "contributors": [
+      "cm-ayf",
+      "Hiroshiba",
+      "nmori",
+      "P0ngCh4ng",
+      "romot-co",
+      "sabonerune",
+      "sevenc-nanashi",
+      "sigprogramming",
+      "tsym77yoshi",
+      "weweweok",
+      "y-chan"
+    ]
+  },
+  {
+    "version": "0.16.1",
+    "descriptions": ["マルチエンジン稼働時に起動しないバグを修正"],
+    "contributors": ["sevenc-nanashi"]
+  },
+  {
+    "version": "0.16.0",
+    "descriptions": [
+      "ソング機能",
+      "キャラクター「四国めたん」「ずんだもん」「春日部つむぎ」「雨晴はう」「波音リツ」のハミングを追加",
+      "キャラクター「波音リツ」のソングを追加"
+    ],
+    "contributors": [
+      "cm-ayf",
+      "Hiroshiba",
+      "madosuki",
+      "romot-co",
+      "sevenc-nanashi",
+      "sigprogramming",
+      "y-chan"
+    ]
+  },
+  {
+    "version": "0.15.2",
+    "descriptions": ["選択中のキャラの順番を元に戻す"],
+    "contributors": []
+  },
+  {
+    "version": "0.15.1",
+    "descriptions": ["Mac版が起動しない問題の解決"],
+    "contributors": []
+  },
+  {
+    "version": "0.15.0",
+    "descriptions": [
+      "デフォルトプリセット機能",
+      "最近開いたプロジェクト一覧を追加",
+      "行番号を表示するオプションを追加",
+      "自動でポートを変更するように",
+      "メモ機能・ルビ機能",
+      "テキスト追加ボタンの非表示機能",
+      "複数選択機能",
+      "アップデート通知機能",
+      "開発環境の向上",
+      "バグ修正"
+    ],
+    "contributors": [
+      "aoirint",
+      "finict",
+      "FujisakiEx",
+      "g-Ratie",
+      "henteko",
+      "Hiroshiba",
+      "Jun-1Il",
+      "k-chop",
+      "kebin628",
+      "K-shir0",
+      "liszt01",
+      "madosuki",
+      "My-MC",
+      "nagi-miaow",
+      "nmori",
+      "nohimazin",
+      "okaits",
+      "raa0121",
+      "risu729",
+      "sabonerune",
+      "sevenc-nanashi",
+      "shm11C3",
+      "siketyan",
+      "sousuke0422",
+      "stmtk1",
+      "takana-v",
+      "tarepan",
+      "thiramisu",
+      "Tksn07",
+      "tomoish",
+      "tuna2134",
+      "tunamaguro",
+      "umi1299",
+      "wappon28dev",
+      "weweweok",
+      "whiteball",
+      "yamachu",
+      "y-chan",
+      "yncat",
+      "yuriko0505"
+    ]
+  },
+  {
+    "version": "0.14.11",
+    "descriptions": [
+      "キャラクター「小夜」「ずんだもん」「もち子さん」「青山龍星」のスタイルを追加・更新"
+    ],
+    "contributors": []
+  },
+  {
+    "version": "0.14.10",
+    "descriptions": ["初回起動及び0.13からアップデートできないバグを修正"],
+    "contributors": ["sevenc-nanashi"]
+  },
+  {
+    "version": "0.14.9",
+    "descriptions": ["マルチエンジン機能を通常機能に"],
+    "contributors": []
+  },
+  {
+    "version": "0.14.8",
+    "descriptions": [
+      "キャラクター「栗田まろん」「あいえるたん」「満別花丸」「琴詠ニア」を追加"
+    ],
+    "contributors": []
+  },
+  {
+    "version": "0.14.7",
+    "descriptions": [
+      "キャラクター「中国うさぎ」を追加",
+      "キャラクター「波音リツ」「もち子さん」のスタイルを追加"
+    ],
+    "contributors": []
+  },
+  {
+    "version": "0.14.6",
+    "descriptions": [
+      "キャラクター「春歌ナナ」「猫使アル」「猫使ビィ」を追加",
+      "バグ修正"
+    ],
+    "contributors": ["Hiroshiba"]
+  },
+  {
+    "version": "0.14.5",
+    "descriptions": [
+      "キャラクター「†聖騎士 紅桜†」「雀松朱司」「麒ヶ島宗麟」を追加",
+      "同時書き込みで辞書が破損する問題を修正"
+    ],
+    "contributors": ["Hiroshiba"]
+  },
+  {
+    "version": "0.14.4",
+    "descriptions": ["デフォルトスタイル選択ダイアログが閉じれないバグを修正"],
+    "contributors": ["sevenc-nanashi"]
+  },
+  {
+    "version": "0.14.3",
+    "descriptions": ["GPUモードが動作しない・極端に遅い問題を解決"],
+    "contributors": []
+  },
+  {
+    "version": "0.14.2",
+    "descriptions": ["エンジンのバージョンを0.14.1に"],
+    "contributors": []
+  },
+  {
+    "version": "0.14.1",
+    "descriptions": [
+      "一部環境で起動しない問題を修正",
+      "タイトルバーからデバイス表記を除去"
+    ],
+    "contributors": ["sevenc-nanashi"]
+  },
+  {
+    "version": "0.14.0",
+    "descriptions": [
+      "プロジェクトを名前をつけて保存時にファイルが切り替わるように",
+      "コアをRust言語に移行",
+      "音声書き出し時にプログレスバー表示",
+      "話速や音量の値をテキスト入力可能に",
+      "デフォルトのフォントを変更",
+      "テキスト欄の複製機能",
+      "モーフィング機能",
+      "スタイルごとに異なる立ち絵の提供を可能に",
+      "DirectML利用時に適したGPUを自動選択",
+      "マルチエンジン機能",
+      "開発環境の向上",
+      "バグ修正"
+    ],
+    "contributors": [
+      "aoirint",
+      "Appletigerv",
+      "haru3me",
+      "Hiroshiba",
+      "jdkfx",
+      "kantas-spike",
+      "kat0h",
+      "k-chop",
+      "ksk001100",
+      "madosuki",
+      "masinc",
+      "misogihagi",
+      "MT224244",
+      "My-MC",
+      "nebocco",
+      "PickledChair",
+      "qryxip",
+      "qwerty2501",
+      "raa0121",
+      "sabonerune",
+      "sarisia",
+      "Segu-g",
+      "sevenc-nanashi",
+      "sheltie-fusafusa",
+      "shigobu",
+      "shirayu",
+      "sigprogramming",
+      "smly",
+      "sousuke0422",
+      "takana-v",
+      "TOMOFUMI-KONDO",
+      "ts-klassen",
+      "tunamaguro",
+      "wappon-28-dev",
+      "whiteball",
+      "y-chan"
+    ]
+  },
+  {
+    "version": "0.13.4",
+    "descriptions": [
+      "キャラクター「ちび式じい」「櫻歌ミコ」「小夜/SAYO」「ナースロボ＿タイプＴ」を追加",
+      "キャラクター「玄野武宏」のスタイルを追加",
+      "バグ修正"
+    ],
+    "contributors": ["Appletigerv"]
+  },
+  {
+    "version": "0.13.3",
+    "descriptions": [
+      "キャラクター「四国めたん」「ずんだもん」のスタイルを追加",
+      "キャラクター「ずんだもん」「九州そら」の「ささやき」スタイルを更新"
+    ],
+    "contributors": ["aoirint"]
+  },
+  {
+    "version": "0.13.2",
+    "descriptions": [
+      "キャラクター「WhiteCUL」「後鬼」「No.7」を追加",
+      "キャラクター「白上虎太郎」のスタイルを追加",
+      "バグ修正"
+    ],
+    "contributors": ["kantas-spike", "PickledChair"]
+  },
+  {
+    "version": "0.13.1",
+    "descriptions": ["バグ修正"],
+    "contributors": ["Hiroshiba", "y-chan"]
+  },
+  {
+    "version": "0.13.0",
+    "descriptions": [
+      "コード署名を追加",
+      "イントネーションのTips追加",
+      "辞書登録単語の優先度を変更可能に",
+      "ダークテーマを追加",
+      "開発環境の向上",
+      "バグ修正"
+    ],
+    "contributors": [
+      "aoirint",
+      "Hiroshiba",
+      "HyodaKazuaki",
+      "k-chop",
+      "madosuki",
+      "nebocco",
+      "PickledChair",
+      "qryxip",
+      "qwerty2501",
+      "Segu-g",
+      "sevenc-nanashi",
+      "shigobu",
+      "shirowanisan",
+      "sigprogramming",
+      "SIY1121",
+      "so-c",
+      "sousuke0422",
+      "takana-v",
+      "ToshihiroWatanabe",
+      "yamachu",
+      "y-chan",
+      "Yosshi999"
+    ]
+  },
+  {
+    "version": "0.12.5",
+    "descriptions": ["キャラクター「ずんだもん」の「ささやき」スタイルを追加"],
+    "contributors": []
+  },
+  {
+    "version": "0.12.4",
+    "descriptions": ["キャラクター「剣崎雌雄」を追加"],
+    "contributors": []
+  },
+  {
+    "version": "0.12.3",
+    "descriptions": ["キャラクター「もち子さん」を追加"],
+    "contributors": []
+  },
+  {
+    "version": "0.12.2",
+    "descriptions": ["GPU版でイントネーションが不自然になる問題を修正"],
+    "contributors": []
+  },
+  {
+    "version": "0.12.1",
+    "descriptions": ["GPU版で不具合が起こる問題を修正"],
+    "contributors": []
+  },
+  {
+    "version": "0.12.0",
+    "descriptions": [
+      "テキスト貼り付け時の挙動選択機能",
+      "イントネーションリセット機能",
+      "ウィンドウの位置と仕切りの位置の保存",
+      "テキストを繋げて書き出し",
+      "書き出されるファイルの名前のカスタマイズ",
+      "スタイル名を指定されたテキストを読み込めるように",
+      "アクセント句の結合・分割ボタンを拡大",
+      "起動を高速化",
+      "DirectML版追加"
+    ],
+    "contributors": [
+      "gobosan",
+      "Hiroshiba",
+      "MagicalLiebe",
+      "Oyaki122",
+      "Patchethium",
+      "PickledChair",
+      "qwerty2501",
+      "Segu-g",
+      "shigobu",
+      "takana-v",
+      "y-chan"
+    ]
+  },
+  {
+    "version": "0.11.4",
+    "descriptions": [
+      "キャラクター「九州そら」を追加",
+      "途中に疑問形があるとおかしくなる問題を修正"
+    ],
+    "contributors": ["Hiroshiba", "aoirint", "y-chan"]
+  },
+  {
+    "version": "0.11.3",
+    "descriptions": [
+      "再生位置を指定できない問題を修正",
+      "テキストを範囲選択できない問題を修正",
+      "辞書UIのバグを修正",
+      "辞書登録できない問題を修正"
+    ],
+    "contributors": ["Hiroshiba", "madosuki", "y-chan"]
+  },
+  {
+    "version": "0.11.2",
+    "descriptions": ["エンジンが起動しない問題を修正", "スタイルの順番を修正"],
+    "contributors": ["aoirint"]
+  },
+  {
+    "version": "0.11.0",
+    "descriptions": [
+      "キャラクター「玄野武宏」「白上虎太郎」「青山龍星」「冥鳴ひまり」を追加",
+      "読み方＆アクセント辞書機能の追加",
+      "キャラクター並び替え機能の追加",
+      "ヘルプからアップデートの有無を確認可能に",
+      "利用規約の同意を促すダイアログを追加",
+      "UXの向上",
+      "開発環境の向上",
+      "バグ修正"
+    ],
+    "contributors": [
+      "aoirint",
+      "gobosan",
+      "Hiroshiba",
+      "HyodaKazuaki",
+      "Lapis256",
+      "Oyaki122",
+      "PickledChair",
+      "Segu-g",
+      "takana-v",
+      "xuzijian629",
+      "y-chan",
+      "Yosshi999"
+    ]
+  },
+  {
+    "version": "0.10.4",
+    "descriptions": ["途中に疑問形があるとおかしくなる問題を修正"],
+    "contributors": ["takana-v"]
+  },
+  {
+    "version": "0.10.3",
+    "descriptions": ["プロジェクトファイルが読み込めないバグを修正"],
+    "contributors": ["Segu-g", "y-chan"]
+  },
+  {
+    "version": "0.10.2",
+    "descriptions": [
+      "コアを Onnx 化して高速化・低容量化",
+      "プリセット機能を追加",
+      "Mac版VOICEVOX",
+      "テキスト欄の並び替え",
+      "音声を繋げて書き出す機能を追加",
+      "疑問文のとき語尾の音高を上げて擬似的に疑問文のようにする",
+      "単語内のパラメータの一括調整機能を追加",
+      "ツールバーのカスタマイズ",
+      "再生位置を追従する機能を追加",
+      "音声を途中から再生する機能を追加",
+      "キャラクター名の辞書を追加",
+      "UXの向上",
+      "開発環境の向上",
+      "バグ修正"
+    ],
+    "contributors": [
+      "amamama",
+      "aoirint",
+      "Apple-Yuki",
+      "AsPulse",
+      "eggplants",
+      "gobosan",
+      "Hiroshiba",
+      "madosuki",
+      "mes51",
+      "MT224244",
+      "Oyaki122",
+      "PickledChair",
+      "qwerty2501",
+      "raa0121",
+      "Segu-g",
+      "shigobu",
+      "shirowanisan",
+      "takana-v",
+      "tarepan",
+      "y-chan",
+      "Yosshi999",
+      "YTJVDCM",
+      "yuqquu"
+    ]
+  },
+  {
+    "version": "0.9.4",
+    "descriptions": ["キャラクター「雨晴はう」を追加"],
+    "contributors": []
+  },
+  {
+    "version": "0.9.3",
+    "descriptions": ["特定環境でエンジンが起動しないバグの修正"],
+    "contributors": ["y-chan"]
+  },
+  {
+    "version": "0.9.2",
+    "descriptions": [
+      "特定環境でエンジンが起動しないバグの修正",
+      "デフォルトスタイル選択で完了が押せないバグの修正"
+    ],
+    "contributors": ["aoirint", "Hiroshiba", "raa0121", "shigobu", "y-chan"]
+  },
+  {
+    "version": "0.9.1",
+    "descriptions": [
+      "キャラクター「春日部つむぎ」「波音リツ」を追加",
+      "サンプリングレート変更機能を追加",
+      "再生デバイスの変更機能を追加",
+      "ショートカットキーをデフォルトに戻せるように",
+      "UXの向上",
+      "開発環境の向上",
+      "バグ修正"
+    ],
+    "contributors": [
+      "aoirint",
+      "Hiroshiba",
+      "HyodaKazuaki",
+      "koizuka",
+      "madosuki",
+      "MT224244",
+      "nogino52",
+      "Patchethium",
+      "PickledChair",
+      "shigobu",
+      "takana-v",
+      "yamachu",
+      "y-chan"
+    ]
+  },
+  {
+    "version": "0.8.2",
+    "descriptions": ["音声を１つだけ書き出せるメニューボタンを追加"],
+    "contributors": []
+  },
+  {
+    "version": "0.8.1",
+    "descriptions": [
+      "インストーラーがタイムアウトする問題の修正",
+      "無声化の切り替え機能をデフォルトで有効化"
+    ],
+    "contributors": ["oov", "Yosshi999"]
+  },
+  {
+    "version": "0.8.0",
+    "descriptions": [
+      "ショートカットキーの変更機能を追加",
+      "デフォルトスタイルの選択機能を追加",
+      "音素の長さ変更機能を追加",
+      "無声化の切り替え機能を追加",
+      "パラメータの継承機能を追加",
+      "元に戻す／やり直す機能を追加",
+      "音声合成エンジンの機能追加",
+      "UXの向上",
+      "開発環境の向上",
+      "バグ修正"
+    ],
+    "contributors": [
+      "aoirint",
+      "arigayas",
+      "buckw6eat",
+      "eggplants",
+      "Hiroshiba",
+      "HyodaKazuaki",
+      "madosuki",
+      "mes51",
+      "MT224244",
+      "noronoro56",
+      "oov",
+      "Patchethium",
+      "PickledChair",
+      "Segu-g",
+      "takana-v",
+      "yamachu",
+      "y-chan",
+      "Yosshi999"
+    ]
+  },
+  {
+    "version": "0.7.5",
+    "descriptions": ["Linux版がビルドできない問題の修正"],
+    "contributors": []
+  },
+  {
+    "version": "0.7.4",
+    "descriptions": ["Linuxでエンジンが起動しない問題の修正"],
+    "contributors": []
+  },
+  {
+    "version": "0.7.3",
+    "descriptions": [
+      "古いバージョンのプロジェクトファイルが読み込めない問題の修正"
+    ],
+    "contributors": ["Segu-g"]
+  },
+  {
+    "version": "0.7.2",
+    "descriptions": ["新規インストール時に音声が保存できない問題を修正"],
+    "contributors": ["Segu-g"]
+  },
+  {
+    "version": "0.7.1",
+    "descriptions": ["複数行ペーストでエラーが出る問題を修正"],
+    "contributors": ["Segu-g"]
+  },
+  {
+    "version": "0.7.0",
+    "descriptions": [
+      "より直感的な読み修正",
+      "新しいスタイルの追加",
+      "音声合成時のメモリ使用量の削減",
+      "音声合成の高速化",
+      "途中から連続再生",
+      "リップシンク用のlabファイルの生成",
+      "開発環境の向上",
+      "バグ修正"
+    ],
+    "contributors": [
+      "aoirint",
+      "buckw6eat",
+      "Hiroshiba",
+      "madosuki",
+      "MT224244",
+      "Patchethium",
+      "raa0121",
+      "Segu-g",
+      "takana-v",
+      "y-chan",
+      "Yosshi999",
+      "yuki1229ushioda"
+    ]
+  },
+  {
+    "version": "0.6.1",
+    "descriptions": [
+      "プロジェクトファイルが読み込めない問題の修正",
+      "開発環境の向上"
+    ],
+    "contributors": ["raa0121", "y-chan"]
+  },
+  {
+    "version": "0.6.0",
+    "descriptions": [
+      "音声書き出し先を固定する機能を追加",
+      "前後の無音の長さ調整機能を追加",
+      "アクセント変更時に影響のないイントネーションを固定",
+      "読みを修正できる機能を追加",
+      "インストーラのUX向上",
+      "音声合成時のメモリ使用量の削減",
+      "コアライブラリの機能追加",
+      "音声合成エンジンの機能追加",
+      "開発環境の向上"
+    ],
+    "contributors": [
+      "aoirint",
+      "buckw6eat",
+      "eggplants",
+      "Hiroshiba",
+      "HyodaKazuaki",
+      "isnot",
+      "k-kuroguro",
+      "MT224244",
+      "oov",
+      "Patchethium",
+      "Segu-g",
+      "takana-v",
+      "tantan-tanuki",
+      "y-chan",
+      "Yosshi999"
+    ]
+  },
+  {
+    "version": "0.5.3",
+    "descriptions": [
+      "過去のプロジェクトファイルの調整結果が消える不具合の修正"
+    ],
+    "contributors": []
+  },
+  {
+    "version": "0.5.2",
+    "descriptions": ["日本語が含まれるパスで起動しない問題の修正"],
+    "contributors": []
+  },
+  {
+    "version": "0.5.1",
+    "descriptions": ["過去のプロジェクトファイルが読み込めない問題の修正"],
+    "contributors": ["y-chan"]
+  },
+  {
+    "version": "0.5.0",
+    "descriptions": [
+      "キャラクターの立ち絵を表示",
+      "音声ごとの音量調整",
+      "テキスト欄を増やすときにキャラクターをコピー",
+      "エンジンの再起動",
+      "ctrl+sでプロジェクト保存",
+      "エラーのロギング",
+      "設定画面の追加",
+      "ウィンドウを最前面に固定する機能",
+      "音声の再生・保存失敗時にエラーダイアログを表示",
+      "UXの向上",
+      "音声合成エンジンの機能追加",
+      "開発環境の向上",
+      "バグ修正"
+    ],
+    "contributors": [
+      "buckw6eat",
+      "Hiroshiba",
+      "HyodaKazuaki",
+      "k-kuroguro",
+      "madosuki",
+      "mes51",
+      "MT224244",
+      "oov",
+      "Patchethium",
+      "raa0121",
+      "Segu-g",
+      "tasteless0wash",
+      "y-chan",
+      "Yosshi999",
+      "YouCuber"
+    ]
+  },
+  {
+    "version": "0.4.1",
+    "descriptions": ["ファイル読み込み時のバグを修正"],
+    "contributors": ["Segu-g"]
+  },
+  {
+    "version": "0.4.0",
+    "descriptions": [
+      "文章が長い場合に警告文を表示",
+      "プロジェクトファイルの関連付け",
+      "ファイルのドラッグ＆ドロップ読み込み",
+      "イントネーション設定時に音高の値を表示",
+      "テキストコピペ時に句点が残るように変更",
+      "テキストのShift_JIS書き出し",
+      "UXの向上",
+      "音声合成エンジンの機能追加",
+      "開発環境の向上"
+    ],
+    "contributors": [
+      "bobonba",
+      "buckw6eat",
+      "Hiroshiba",
+      "HyodaKazuaki",
+      "k-kuroguro",
+      "madosuki",
+      "mes51",
+      "MT224244",
+      "Patchethium",
+      "raa0121",
+      "Segu-g",
+      "shirayu",
+      "tasteless0wash",
+      "yamachu",
+      "y-chan",
+      "Yosshi999"
+    ]
+  },
+  {
+    "version": "0.3.1",
+    "descriptions": ["読点でエラーが出る問題を修正"],
+    "contributors": []
+  },
+  {
+    "version": "0.3.0",
+    "descriptions": [
+      "プロジェクト保存機能",
+      "エンジンの起動モードの変更",
+      "UIライブラリの変更",
+      "日本語が含まれるパスに対応",
+      "テキスト欄を１つ残す",
+      "右クリックでテキスト編集メニューを表示",
+      "音声の単一書き出し機能",
+      "対応するGPUの有無でデフォルトの起動モードを変更",
+      "テキスト貼り付け時に改行と句点で自動的に改行",
+      "スライダーをマウスホイールで操作",
+      "再生などのショートカットキーの追加",
+      "開発環境の向上"
+    ],
+    "contributors": [
+      "17number",
+      "aruneko",
+      "Hiroshiba",
+      "isnot",
+      "kaji-hiro",
+      "k-kuroguro",
+      "madosuki",
+      "mkgask",
+      "MT224244",
+      "oov",
+      "Patchethium",
+      "scarletdango1204",
+      "sousuke0422",
+      "yamachu"
+    ]
+  },
+  {
+    "version": "0.2.0",
+    "descriptions": [
+      "ヘルプ画面を微修正",
+      "テキストも一緒に保存",
+      "保存ファイル名にキャラ名とテキスト冒頭を追加",
+      "テキストファイルの読み込み",
+      "マウスオーバーで消去ボタン",
+      "開発環境の向上",
+      "音声合成エンジンのHOST引数追加"
+    ],
+    "contributors": [
+      "Hiroshiba",
+      "k-kuroguro",
+      "masarakki",
+      "MT224244 ",
+      "oov",
+      "raa0121",
+      "sevenc-nanashi",
+      "shirayu"
+    ]
+  }
+]
