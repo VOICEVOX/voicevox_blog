@@ -8,7 +8,7 @@ import path from "path";
 import { chromium } from "playwright";
 import { type Page } from "playwright/test";
 
-const imageDir = path.resolve(process.cwd(), "src", "constants");
+const imageDir = path.resolve(process.cwd(), "src", "assets");
 
 const browser = await chromium.launch();
 let page: Page;
