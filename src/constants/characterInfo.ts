@@ -3,6 +3,7 @@ import aierutan_info from "./characterInfos/aierutan";
 import amehare_hau_info from "./characterInfos/amehare_hau";
 import aoyama_ryusei_info from "./characterInfos/aoyama_ryusei";
 import chibishikiji_info from "./characterInfos/chibishikiji";
+import chubu_tsurugi_info from "./characterInfos/chubu_tsurugi";
 import chugoku_usagi_info from "./characterInfos/chugoku_usagi";
 import goki_info from "./characterInfos/goki";
 import haruka_nana_info from "./characterInfos/haruka_nana";
@@ -66,4 +67,5 @@ export const characterInfos: {
   満別花丸: manbetsu_hanamaru_info,
   琴詠ニア: kotoyomi_nia_info,
   Voidoll: voidoll_info,
+  中部つるぎ: chubu_tsurugi_info,
 };

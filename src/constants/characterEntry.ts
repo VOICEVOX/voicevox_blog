@@ -30,6 +30,7 @@ export const characterKeys = [
   "満別花丸",
   "琴詠ニア",
   "Voidoll",
+  "中部つるぎ",
 ] as const;
 
 export type CharacterKey = (typeof characterKeys)[number];
@@ -163,6 +164,10 @@ export const characterEntries = {
   Voidoll: {
     name: "Voidoll",
     id: "voidoll",
+  },
+  中部つるぎ: {
+    name: "中部つるぎ",
+    id: "chubu_tsurugi",
   },
 } as const satisfies {
   [key in CharacterKey]: CharacterEntry;
