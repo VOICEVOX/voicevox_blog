@@ -1,0 +1,6 @@
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/chubu_tsurugi/",
+  "title": "中部つるぎ | ボイボ寮 プロフィール | VOICEVOX",
+  "description": "義理人情を重んじるサムライ風の性格。頭頂部の漢字プレートは感情によって変化する。",
+  "robots": "index, follow"
+}

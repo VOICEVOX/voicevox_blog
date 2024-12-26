@@ -57,6 +57,16 @@
     </url>
     <url>
         <loc>
+            https://voicevox.hiroshiba.jp/dormitory/chubu_tsurugi/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            https://voicevox.hiroshiba.jp/dormitory/chubu_tsurugi/calls/
+        </loc>
+    </url>
+    <url>
+        <loc>
             https://voicevox.hiroshiba.jp/dormitory/chugoku_usagi/
         </loc>
     </url>
@@ -418,6 +428,11 @@
     <url>
         <loc>
             https://voicevox.hiroshiba.jp/product/chibishikiji/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            https://voicevox.hiroshiba.jp/product/chubu_tsurugi/
         </loc>
     </url>
     <url>

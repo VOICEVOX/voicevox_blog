@@ -1,0 +1,6 @@
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/product/chubu_tsurugi/",
+  "title": "VOICEVOX 中部つるぎ | 無料のテキスト読み上げソフトウェア",
+  "description": "VOICEVOXは「中部つるぎ」の凛然とした存在感のある声で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。",
+  "robots": "index, follow"
+}
