@@ -42,8 +42,8 @@ pnpm run preview-build
 コードの更新
 
 ```bash
-EDITOR_VERSION="0.22.1"
-RESOURCE_VERSION="0.22.0"
+EDITOR_VERSION="0.22.2"
+RESOURCE_VERSION="0.22.1"
 NEMO_VERSION="0.21.0"
 
 pnpm run updateVersion \
@@ -55,10 +55,10 @@ pnpm run updateVersion \
 リソースの更新
 
 ```bash
-editor_tag="0.22.1"
+editor_tag="0.22.2"
 editor_url="https://raw.githubusercontent.com/VOICEVOX/voicevox/$editor_tag"
 
-resource_tag="0.22.0"
+resource_tag="0.22.1"
 resource_url="https://raw.githubusercontent.com/VOICEVOX/voicevox_resource/$resource_tag"
 
 # 規約
@@ -126,6 +126,8 @@ pnpm run generateThumb
    - `src/constants/characterInfos.ts`にキャラクター情報追加
    - `src/constants/characterInfo.ts`にキャラクター情報import
    - 呼び方・製品ページサムネ・ボイボ寮サムネ
+3. バージョンを更新
+4. デプロイ
 
 ## テスト
 
