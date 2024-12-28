@@ -80,7 +80,12 @@ curl -s "$editor_url/public/updateInfos.json" \
 cp public/updateInfos.json src/data/updateInfos.json  # 0.22までsrc/dataディレクトリだったので、しばらくはコピーする
 
 # デフォルトエンジンの更新情報
-pnpm run generateLatestDefaultEngineInfos
+pnpm run generateLatestDefaultEngineInfos \
+  --github_release_url="https://api.github.com/repos/VOICEVOX/voicevox_engine/releases" \
+  --output_path="public/latestDefaultEngineInfos.json"
+pnpm run generateLatestDefaultEngineInfos \
+  --github_release_url="https://api.github.com/repos/VOICEVOX/voicevox_nemo_engine/releases" \
+  --output_path="public/nemoLatestDefaultEngineInfos.json"
 ```
 
 ## サンプル音声の音量
