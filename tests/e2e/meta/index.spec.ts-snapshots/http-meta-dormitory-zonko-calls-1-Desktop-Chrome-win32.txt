@@ -1,0 +1,6 @@
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/zonko/calls/",
+  "title": "ぞん子 | ボイボ寮 呼び方 | VOICEVOX",
+  "description": "ZONeエナジー公式アンバサダーのぞん子だよ！ZONeを通じてeカルチャーを盛り上げるよ！",
+  "robots": "index, follow"
+}
