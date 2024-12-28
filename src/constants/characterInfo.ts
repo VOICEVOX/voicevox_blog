@@ -30,6 +30,7 @@ import shirakami_kotarou_info from "./characterInfos/shirakami_kotarou";
 import voidoll_info from "./characterInfos/voidoll";
 import wakamatsu_akashi_info from "./characterInfos/wakamatsu_akashi";
 import white_cul_info from "./characterInfos/white_cul";
+import zonko_info from "./characterInfos/zonko";
 import zundamon_info from "./characterInfos/zundamon";
 import type { CharacterInfo } from "./type";
 
@@ -67,5 +68,6 @@ export const characterInfos: {
   満別花丸: manbetsu_hanamaru_info,
   琴詠ニア: kotoyomi_nia_info,
   Voidoll: voidoll_info,
+  ぞん子: zonko_info,
   中部つるぎ: chubu_tsurugi_info,
 };

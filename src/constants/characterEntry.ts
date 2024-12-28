@@ -30,6 +30,7 @@ export const characterKeys = [
   "満別花丸",
   "琴詠ニア",
   "Voidoll",
+  "ぞん子",
   "中部つるぎ",
 ] as const;
 
@@ -164,6 +165,10 @@ export const characterEntries = {
   Voidoll: {
     name: "Voidoll",
     id: "voidoll",
+  },
+  ぞん子: {
+    name: "ぞん子",
+    id: "zonko",
   },
   中部つるぎ: {
     name: "中部つるぎ",
