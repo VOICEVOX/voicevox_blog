@@ -24,13 +24,13 @@ export default {
   labelInfos: [
     { label: "誕生日", value: "5月12日", size: 1 },
     { label: "好物", value: "ZONeエナジー", size: 1 },
-    { label: "ﾁｬｰﾑﾎﾟｲﾝﾄ", value: "眼帯、髪留め", size: 2 },
-    { label: "趣味", value: "Xでクリエイターを探すこと", size: 2 },
     {
       label: "好きなもの",
       value: "ゲーム、音楽、インターネット、eカルチャー全般",
       size: 2,
     },
+    { label: "趣味", value: "Xでクリエイターを探すこと", size: 2 },
+    { label: "ﾁｬｰﾑﾎﾟｲﾝﾄ", value: "眼帯、髪留め", size: 2 },
   ],
   policyUrl: "https://zonko.zone-energy.jp/guideline",
   detailUrl: "https://zonko.zone-energy.jp/",
