@@ -372,6 +372,16 @@
     </url>
     <url>
         <loc>
+            https://voicevox.hiroshiba.jp/dormitory/zonko/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            https://voicevox.hiroshiba.jp/dormitory/zonko/calls/
+        </loc>
+    </url>
+    <url>
+        <loc>
             https://voicevox.hiroshiba.jp/dormitory/zundamon/
         </loc>
     </url>
@@ -563,6 +573,11 @@
     <url>
         <loc>
             https://voicevox.hiroshiba.jp/product/white_cul/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            https://voicevox.hiroshiba.jp/product/zonko/
         </loc>
     </url>
     <url>
