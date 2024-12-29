@@ -66,15 +66,17 @@ import z from "zod";
 
 const args = parseArgs({
   options: {
-    output_path: {
-      type: "string",
-      default: "public/latestDefaultEngineInfos.json",
-    },
+    github_release_url: { type: "string" },
+    output_path: { type: "string" },
   },
 }).values;
 
-const GITHUB_RELEASES_URL =
-  "https://api.github.com/repos/VOICEVOX/voicevox_engine/releases";
+if (args.github_release_url == undefined) {
+  throw new Error("github_release_urlが指定されていません");
+}
+if (args.output_path == undefined) {
+  throw new Error("output_pathが指定されていません");
+}
 
 /** 対応するvvpp.txtの名前 */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -122,7 +124,7 @@ let releases = z
     ),
   })
   .array()
-  .parse(await (await fetch(GITHUB_RELEASES_URL)).json());
+  .parse(await (await fetch(args.github_release_url)).json());
 
 // draftとprereleaseを除外
 releases = releases.filter((release) => !release.draft && !release.prerelease);
