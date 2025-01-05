@@ -1,8 +1,9 @@
 name: Test
 
 on:
-  push:
-  pull_request:
+  # push:
+  # pull_request:
+  # TODO: 後で戻す
   workflow_dispatch:
 
 jobs:
