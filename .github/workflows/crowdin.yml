@@ -2,10 +2,11 @@ name: Crowdin
 
 on:
   push:
-    # branches: [main] # TODO: あとで戻す
+    # branches: [master] # TODO: あとで戻す
+  workflow_dispatch:
 
 jobs:
-  synchronize-with-crowdin:
+  crowdin:
     runs-on: ubuntu-latest
 
     steps:
