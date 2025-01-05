@@ -18,7 +18,6 @@ jobs:
         with:
           upload_sources: true
           download_translations: true
-          skip_untranslated_files: true
           export_only_approved: true
           create_pull_request: true
           pull_request_base_branch_name: "try-crowdin" # TODO: あとでmasterにする
