@@ -1,9 +1,10 @@
 project_id_env: CROWDIN_PROJECT_ID
 api_token_env: CROWDIN_PERSONAL_TOKEN
-base_path: "."
+base_path: "src/locales"
 
 preserve_hierarchy: true
 
 files:
-  - source: "src/locales/jp/**/*"
-    translation: "/src/locales/%two_letters_code%/**/%original_file_name%"
+  - source: "jp/**/*"
+    translation: "/%two_letters_code%/**/%original_file_name%"
+    dest: "voicevox_blog/%two_letters_code%/%original_file_name%"
