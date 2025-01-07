@@ -8,3 +8,4 @@ files:
   - source: "jp/**/*"
     dest: "voicevox_blog/**/%original_file_name%"
     translation: "%two_letters_code%/**/%original_file_name%"
+    update_as_unapproved: true
