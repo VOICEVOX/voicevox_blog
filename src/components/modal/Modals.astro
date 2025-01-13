@@ -27,10 +27,10 @@ export const libraryTermIntroMarkdowns = makeAssetsRecordSingleOptional(
   ),
 );
 
-const libraryTermIntroHtmls = (() => {
+const libraryTermIntroHtmls = await (async () => {
   const htmls = {} as Record<CharacterKey, string | undefined>;
   for (const key of characterKeys) {
-    htmls[key] = libraryTermIntroMarkdowns[key]?.compiledContent();
+    htmls[key] = await libraryTermIntroMarkdowns[key]?.compiledContent();
   }
   return htmls;
 })();
@@ -46,12 +46,12 @@ const libraryTermIntroHtmls = (() => {
 <LibraryTermIntroModal
   client:load
   htmls={libraryTermIntroHtmls}
-  templateHtml={libraryTermIntroTemplateHtml()}
+  templateHtml={await libraryTermIntroTemplateHtml()}
 />
 
-<PrivacyPolicyModal client:load html={privacyPolicyHtml()} />
+<PrivacyPolicyModal client:load html={await privacyPolicyHtml()} />
 
-<NemoTermModel client:load html={nemoReadmeHtml()} />
+<NemoTermModel client:load html={await nemoReadmeHtml()} />
 
 <script>
   // TODO: <script>をやめてReactにする
