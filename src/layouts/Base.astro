@@ -104,7 +104,7 @@ const googleAnalyticsSrc = `https://www.googletagmanager.com/gtag/js?id=${GA_TRA
     <link rel="manifest" href="/site.webmanifest" />
 
     {/* Google Analytics */}
-    <script is:inline src={googleAnalyticsSrc}></script>
+    <script is:inline async src={googleAnalyticsSrc}></script>
     <script
       is:inline
       define:vars={{ GA_TRACKING_ID, isGoogleAnalyticsDebugMode }}
