@@ -21,7 +21,7 @@ export default defineConfig({
     }),
     react(),
     /*
-    // ViewTransitions を使う場合gtagがうまく動かない。ページの移動のたびにロードされてしまう。
+    // ClientRouter を使う場合gtagがうまく動かない。ページの移動のたびにロードされてしまう。
     partytown({
       config: {
         forward: ["dataLayer.push"], // for `gtag`
