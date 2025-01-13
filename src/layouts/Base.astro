@@ -55,11 +55,9 @@ const imageUrl = _image
   : undefined;
 const hasImage = imageUrl != undefined && imageAlt != undefined;
 
-// Google Analytics。実際のページ以外では読み込まない。
-const googleAnalyticsSrc =
-  isDevelopment || isPreview || isTest
-    ? undefined
-    : `https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`;
+// Google Analytics。実際のページ以外ではデバッグモードにする。
+const isGoogleAnalyticsDebugMode = isDevelopment || isPreview || isTest;
+const googleAnalyticsSrc = `https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`;
 ---
 
 <html lang="ja" transition:animate="none" data-theme="light">
@@ -107,15 +105,25 @@ const googleAnalyticsSrc =
 
     {/* Google Analytics */}
     <script is:inline src={googleAnalyticsSrc}></script>
-    <script is:inline define:vars={{ GA_TRACKING_ID }}>
+    <script
+      is:inline
+      define:vars={{ GA_TRACKING_ID, isGoogleAnalyticsDebugMode }}
+    >
       window.dataLayer = window.dataLayer || [];
-      window.gtag = function gtag(...args) {
-        dataLayer.push(args);
+      window.gtag = function gtag() {
+        dataLayer.push(arguments);
       };
       document.addEventListener("astro:page-load", () => {
         if ((navigator.doNotTrack || window.doNotTrack) != "1") {
           gtag("js", new Date());
-          gtag("config", GA_TRACKING_ID);
+          gtag("config", GA_TRACKING_ID, {
+            debug_mode: isGoogleAnalyticsDebugMode,
+            send_page_view: false,
+          });
+          gtag("event", "page_view", {
+            page_title: document.title,
+            page_location: location.href,
+          });
         }
       });
     </script>
