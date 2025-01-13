@@ -6,5 +6,11 @@ const { image } = dormitoryTopIllustInfos[dormitoryTopIllustInfos.length - 1];
 ---
 
 <div class="container is-max-desktop">
-  <Image src={image} alt="トップイラスト" style="object-fit: contain" />
+  <Image
+    src={image}
+    alt="トップイラスト"
+    width={1024}
+    densities={[1, 1.5]}
+    style={{ objectFit: "contain", display: "block" }}
+  />
 </div>
