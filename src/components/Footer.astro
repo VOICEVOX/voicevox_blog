@@ -40,6 +40,7 @@ const { isDark } = Astro.props;
   <a
     {...{ [showPrivacyPolicyModalAttr]: true }}
     class={`is-size-7 ml-1 mr-1 ${isDark ? "has-text-primary" : ""}`}
+    role="button"
   >
     プライバシーポリシー
   </a>

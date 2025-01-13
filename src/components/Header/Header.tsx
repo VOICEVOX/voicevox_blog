@@ -164,7 +164,7 @@ export default function Header({
       >
         <div className="navbar-brand">
           <a href="/" className="navbar-item">
-            <img src={iconUrl} alt="" />
+            <img src={iconUrl} alt="" width="32" height="32" />
             <span className="has-text-weight-bold is-size-5"> VOICEVOX </span>
           </a>
 
