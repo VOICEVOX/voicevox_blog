@@ -17,7 +17,7 @@ import {
 import type { ImageMetadata } from "astro";
 import { SEO } from "astro-seo";
 import { getImage } from "astro:assets";
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 
 export interface Props {
   title: string;
@@ -120,7 +120,7 @@ const googleAnalyticsSrc =
       });
     </script>
 
-    <ViewTransitions />
+    <ClientRouter />
   </head>
 
   <body class={isDark ? "has-background-black" : "has-background-white"}>
