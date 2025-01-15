@@ -42,7 +42,7 @@ pnpm run preview-build
 コードの更新
 
 ```bash
-EDITOR_VERSION="0.22.3"
+EDITOR_VERSION="0.22.4"
 RESOURCE_VERSION="0.22.2"
 NEMO_VERSION="0.21.0"
 
@@ -55,7 +55,7 @@ pnpm run updateVersion \
 リソースの更新
 
 ```bash
-editor_tag="0.22.3"
+editor_tag="0.22.4"
 editor_url="https://raw.githubusercontent.com/VOICEVOX/voicevox/$editor_tag"
 
 resource_tag="0.22.2"
