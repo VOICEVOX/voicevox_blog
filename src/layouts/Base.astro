@@ -115,11 +115,13 @@ const googleAnalyticsSrc = `https://www.googletagmanager.com/gtag/js?id=${GA_TRA
       };
       document.addEventListener("astro:page-load", () => {
         if ((navigator.doNotTrack || window.doNotTrack) != "1") {
+          const config = { send_page_view: false };
+          if (isGoogleAnalyticsDebugMode) {
+            config.debug_mode = true;
+          }
+
           gtag("js", new Date());
-          gtag("config", GA_TRACKING_ID, {
-            debug_mode: isGoogleAnalyticsDebugMode,
-            send_page_view: false,
-          });
+          gtag("config", GA_TRACKING_ID, config);
           gtag("event", "page_view", {
             page_title: document.title,
             page_location: location.href,
