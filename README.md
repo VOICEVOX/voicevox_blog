@@ -44,7 +44,7 @@ pnpm run preview-build
 ```bash
 EDITOR_VERSION="0.23.0"
 RESOURCE_VERSION="0.23.0"
-NEMO_VERSION="0.21.0"
+NEMO_VERSION="0.23.0"
 
 pnpm run updateVersion \
   --editor_version="$EDITOR_VERSION" \

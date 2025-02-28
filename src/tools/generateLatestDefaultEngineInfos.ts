@@ -98,7 +98,7 @@ function getVvppTxtName(version: string): any {
     },
     linux: {
       x64: {
-        CPU: `voicevox_engine-linux-cpu-${version}.vvpp.txt`,
+        CPU: `voicevox_engine-linux-cpu-x64-${version}.vvpp.txt`,
         "GPU/CPU": `voicevox_engine-linux-nvidia-${version}.vvpp.txt`,
       },
     },

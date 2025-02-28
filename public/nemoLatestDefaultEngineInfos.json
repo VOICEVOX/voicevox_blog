@@ -3,22 +3,22 @@
   "windows": {
     "x64": {
       "CPU": {
-        "version": "0.21.0",
+        "version": "0.23.0",
         "packages": [
           {
-            "url": "https://github.com/VOICEVOX/voicevox_nemo_engine/releases/download/0.21.0/voicevox_engine-windows-cpu-0.21.0.vvpp",
-            "name": "voicevox_engine-windows-cpu-0.21.0.vvpp",
-            "size": 137877002
+            "url": "https://github.com/VOICEVOX/voicevox_nemo_engine/releases/download/0.23.0/voicevox_engine-windows-cpu-0.23.0.vvpp",
+            "name": "voicevox_engine-windows-cpu-0.23.0.vvpp",
+            "size": 135912274
           }
         ]
       },
       "GPU/CPU": {
-        "version": "0.21.0",
+        "version": "0.23.0",
         "packages": [
           {
-            "url": "https://github.com/VOICEVOX/voicevox_nemo_engine/releases/download/0.21.0/voicevox_engine-windows-directml-0.21.0.vvpp",
-            "name": "voicevox_engine-windows-directml-0.21.0.vvpp",
-            "size": 146047296
+            "url": "https://github.com/VOICEVOX/voicevox_nemo_engine/releases/download/0.23.0/voicevox_engine-windows-directml-0.23.0.vvpp",
+            "name": "voicevox_engine-windows-directml-0.23.0.vvpp",
+            "size": 144082552
           }
         ]
       }
@@ -27,24 +27,24 @@
   "macos": {
     "x64": {
       "CPU": {
-        "version": "0.21.0",
+        "version": "0.23.0",
         "packages": [
           {
-            "url": "https://github.com/VOICEVOX/voicevox_nemo_engine/releases/download/0.21.0/voicevox_engine-macos-x64-0.21.0.vvpp",
-            "name": "voicevox_engine-macos-x64-0.21.0.vvpp",
-            "size": 145585609
+            "url": "https://github.com/VOICEVOX/voicevox_nemo_engine/releases/download/0.23.0/voicevox_engine-macos-x64-0.23.0.vvpp",
+            "name": "voicevox_engine-macos-x64-0.23.0.vvpp",
+            "size": 146734278
           }
         ]
       }
     },
     "arm64": {
       "CPU": {
-        "version": "0.21.0",
+        "version": "0.23.0",
         "packages": [
           {
-            "url": "https://github.com/VOICEVOX/voicevox_nemo_engine/releases/download/0.21.0/voicevox_engine-macos-arm64-0.21.0.vvpp",
-            "name": "voicevox_engine-macos-arm64-0.21.0.vvpp",
-            "size": 137740236
+            "url": "https://github.com/VOICEVOX/voicevox_nemo_engine/releases/download/0.23.0/voicevox_engine-macos-arm64-0.23.0.vvpp",
+            "name": "voicevox_engine-macos-arm64-0.23.0.vvpp",
+            "size": 130026825
           }
         ]
       }
@@ -53,22 +53,22 @@
   "linux": {
     "x64": {
       "CPU": {
-        "version": "0.21.0",
+        "version": "0.23.0",
         "packages": [
           {
-            "url": "https://github.com/VOICEVOX/voicevox_nemo_engine/releases/download/0.21.0/voicevox_engine-linux-cpu-0.21.0.vvpp",
-            "name": "voicevox_engine-linux-cpu-0.21.0.vvpp",
-            "size": 160960098
+            "url": "https://github.com/VOICEVOX/voicevox_nemo_engine/releases/download/0.23.0/voicevox_engine-linux-cpu-x64-0.23.0.vvpp",
+            "name": "voicevox_engine-linux-cpu-x64-0.23.0.vvpp",
+            "size": 159898813
           }
         ]
       },
       "GPU/CPU": {
-        "version": "0.21.0",
+        "version": "0.23.0",
         "packages": [
           {
-            "url": "https://github.com/VOICEVOX/voicevox_nemo_engine/releases/download/0.21.0/voicevox_engine-linux-nvidia-0.21.0.vvpp",
-            "name": "voicevox_engine-linux-nvidia-0.21.0.vvpp",
-            "size": 1398947786
+            "url": "https://github.com/VOICEVOX/voicevox_nemo_engine/releases/download/0.23.0/voicevox_engine-linux-nvidia-0.23.0.vvpp",
+            "name": "voicevox_engine-linux-nvidia-0.23.0.vvpp",
+            "size": 1397886501
           }
         ]
       }

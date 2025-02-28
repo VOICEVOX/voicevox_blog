@@ -8,12 +8,18 @@ import { useStore } from "@nanostores/react";
 import { useEffect, useState } from "react";
 
 type OsType = "Windows" | "Mac" | "Linux";
-type ModeType = "GPU / CPU" | "CPU" | "CPU (Intel)" | "CPU (Apple)";
+type ModeType =
+  | "GPU / CPU"
+  | "CPU"
+  | "CPU (Intel)"
+  | "CPU (Apple)"
+  | "CPU (x64)"
+  | "CPU (arm64)";
 
 const modeAvailables: Record<OsType, ModeType[]> = {
   Windows: ["GPU / CPU", "CPU"],
   Mac: ["CPU (Intel)", "CPU (Apple)"],
-  Linux: ["GPU / CPU", "CPU"],
+  Linux: ["GPU / CPU", "CPU (x64)", "CPU (arm64)"],
 };
 
 export default function DownloadNemoModal() {
@@ -49,9 +55,13 @@ export default function DownloadNemoModal() {
         url: `https://github.com/VOICEVOX/voicevox_nemo_engine/releases/download/${NEMO_VERSION}/voicevox_engine-linux-nvidia-${NEMO_VERSION}.vvpp`,
         name: `VOICEVOX.Nemo.${NEMO_VERSION}.Linux.vvpp`,
       },
-      CPU: {
-        url: `https://github.com/VOICEVOX/voicevox_nemo_engine/releases/download/${NEMO_VERSION}/voicevox_engine-linux-cpu-${NEMO_VERSION}.vvpp`,
+      "CPU (x64)": {
+        url: `https://github.com/VOICEVOX/voicevox_nemo_engine/releases/download/${NEMO_VERSION}/voicevox_engine-linux-cpu-x64-${NEMO_VERSION}.vvpp`,
         name: `VOICEVOX-CPU.Nemo.${NEMO_VERSION}.Linux.vvpp`,
+      },
+      "CPU (arm64)": {
+        url: `https://github.com/VOICEVOX/voicevox_nemo_engine/releases/download/${NEMO_VERSION}/voicevox_engine-linux-cpu-arm64-${NEMO_VERSION}.vvpp`,
+        name: `VOICEVOX-CPU-arm64.Nemo.${NEMO_VERSION}.Linux.vvpp`,
       },
     },
   };
