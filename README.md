@@ -42,8 +42,8 @@ pnpm run preview-build
 コードの更新
 
 ```bash
-EDITOR_VERSION="0.22.4"
-RESOURCE_VERSION="0.22.2"
+EDITOR_VERSION="0.23.0"
+RESOURCE_VERSION="0.23.0"
 NEMO_VERSION="0.21.0"
 
 pnpm run updateVersion \
@@ -55,10 +55,10 @@ pnpm run updateVersion \
 リソースの更新
 
 ```bash
-editor_tag="0.22.4"
+editor_tag="0.23.0"
 editor_url="https://raw.githubusercontent.com/VOICEVOX/voicevox/$editor_tag"
 
-resource_tag="0.22.2"
+resource_tag="0.23.0"
 resource_url="https://raw.githubusercontent.com/VOICEVOX/voicevox_resource/$resource_tag"
 
 # 規約
@@ -183,7 +183,6 @@ pnpm run test:e2e --ui # 開発時は UI モードが便利
 ## TODO
 
 - [ ] スマホ画面でのソングの売り文句が見切れてる
-- [ ] Google Analytics の疎通チェック
 
 ## LICENSE
 
