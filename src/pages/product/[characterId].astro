@@ -338,6 +338,16 @@ const characterBackgroundColor = characterInfo.lightColor;
     </section>
   </main>
   <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const charamenu = document.querySelector(".charamenu > .characters");
+      if (charamenu) {
+        const active = charamenu.querySelector(".active");
+        if (active) active.scrollIntoView({
+          block: "nearest",
+          inline: "center"
+        });
+      }
+    });
     let scroll_pos = 0;
     document.addEventListener("astro:before-swap", (event) => {
       const charamenu = (event.target as Element).querySelector(".charamenu > .characters");
