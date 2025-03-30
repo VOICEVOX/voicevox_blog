@@ -338,14 +338,14 @@ const characterBackgroundColor = characterInfo.lightColor;
     </section>
   </main>
   <script>
-    document.addEventListener("astro:page-load", () => {
-      const activeElement = document.querySelector(".active");
-      if (activeElement) {
-        activeElement.scrollIntoView({
-          block: "nearest",
-          inline: "center",
-        });
-      }
+    let scroll_pos = 0;
+    document.addEventListener("astro:before-swap", (event) => {
+      const charamenu = (event.target as Element).querySelector(".charamenu > .characters");
+      if (charamenu) scroll_pos = charamenu.scrollLeft;
+    });
+    document.addEventListener("astro:after-swap", (event) => {
+      const charamenu = (event.target as Element).querySelector(".charamenu > .characters");
+      if (charamenu) charamenu.scrollLeft = scroll_pos;
     });
   </script>
 </Base>
@@ -524,8 +524,19 @@ const characterBackgroundColor = characterInfo.lightColor;
     }
 
     .charamenu {
+      position: relative;
       display: flex;
       height: 5rem;
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -1rem;
+        width: 1rem;
+        height: 100%;
+        box-shadow: 0 0 1rem rgba(255,255,255,0.5);
+      }
 
       .characters {
         display: flex;
