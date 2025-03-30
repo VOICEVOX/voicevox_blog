@@ -337,6 +337,17 @@ const characterBackgroundColor = characterInfo.lightColor;
       </div>
     </section>
   </main>
+  <script>
+    document.addEventListener("astro:page-load", () => {
+      const activeElement = document.querySelector(".active");
+      if (activeElement) {
+        activeElement.scrollIntoView({
+          block: "nearest",
+          inline: "center",
+        });
+      }
+    });
+  </script>
 </Base>
 
 <style lang="scss" define:vars={{ characterBackgroundColor }} is:global>
