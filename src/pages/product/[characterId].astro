@@ -337,33 +337,42 @@ const characterBackgroundColor = characterInfo.lightColor;
       </div>
     </section>
   </main>
-  <script>
-    const charamenu = document.querySelector(".charamenu > .characters");
-    if (charamenu) {
-      const active = charamenu.querySelector(".active");
-      if (active) active.scrollIntoView({
-        block: "nearest",
-        inline: "center"
-      });
-    }
-    let scrollPos = 0;
-    const beforeSwapListener = (event: Event) => {
-      const charamenu = (event.target as Element).querySelector(".charamenu > .characters");
-      if (charamenu) {
-        scrollPos = charamenu.scrollLeft;
-        document.addEventListener("astro:after-swap", afterSwapListener);
-      }
-      document.removeEventListener("astro:before-swap", beforeSwapListener);
-    };
-    const afterSwapListener = (event: Event) => {
-      const charamenu = (event.target as Element).querySelector(".charamenu > .characters");
-      if (charamenu) {
-        charamenu.scrollLeft = scrollPos;
-        document.addEventListener("astro:before-swap", beforeSwapListener);
-      }
-      document.removeEventListener("astro:after-swap", afterSwapListener);
-    };
-    document.addEventListener("astro:before-swap", beforeSwapListener);
+  <script is:inline>
+    (() => {
+      const afterSwapListener = () => {
+        const charamenu = document.querySelector(".charamenu > .characters");
+        if (charamenu) {
+          const active = charamenu.querySelector(".active");
+          if (active) active.scrollIntoView({
+            block: "nearest",
+            inline: "center"
+          });
+        }
+      };
+      afterSwapListener();
+    })();
+  </script>
+  <script is:inline>
+    (() => {
+      let scrollPos = 0;
+      const beforeSwapListener = (event) => {
+        const charamenu = (event.target).querySelector(".charamenu > .characters");
+        if (charamenu) {
+          scrollPos = charamenu.scrollLeft;
+          document.addEventListener("astro:after-swap", afterSwapListener);
+        }
+        document.removeEventListener("astro:before-swap", beforeSwapListener);
+      };
+      const afterSwapListener = (event) => {
+        const charamenu = (event.target).querySelector(".charamenu > .characters");
+        if (charamenu) {
+          if (scrollPos > 0) charamenu.scrollLeft = scrollPos;
+          document.addEventListener("astro:before-swap", beforeSwapListener);
+        }
+        document.removeEventListener("astro:after-swap", afterSwapListener);
+      };
+      document.addEventListener("astro:before-swap", beforeSwapListener);
+    })();
   </script>
 </Base>
 
