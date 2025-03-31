@@ -166,6 +166,31 @@ const characterBackgroundColor = characterInfo.lightColor;
 >
   <main class="product">
     <div class="section py-0">
+      <div class="charamenu container">
+        <div class="characters">
+          {
+            characterKeys.map((key) => (
+              <a
+                href={getProductPageUrl(characterInfos[key])}
+                class={`character ${
+                  key === characterKey ? "active" : ""
+                }`}
+                aria-label={characterInfos[key].name}
+                role="button"
+                style={{
+                  "--characterLightColor": characterInfos[key].lightColor,
+                  "--characterColor": characterInfos[key].color
+                }}
+              >
+                <Image
+                  src={characterInfos[key].bustupImage}
+                  alt={characterInfos[key].name}
+                />
+              </a>
+            ))
+          }
+        </div>
+      </div>
       <div class="top container">
         <a
           href={getProductPageUrl(characterInfos[prevCharacterKey])}
@@ -276,31 +301,6 @@ const characterBackgroundColor = characterInfo.lightColor;
               )
             }
           </div>
-        </div>
-      </div>
-      <div class="charamenu container">
-        <div class="characters">
-          {
-            characterKeys.map((key) => (
-              <a
-                href={getProductPageUrl(characterInfos[key])}
-                class={`character ${
-                  key === characterKey ? "active" : ""
-                }`}
-                aria-label={characterInfos[key].name}
-                role="button"
-                style={{
-                  "--characterLightColor": characterInfos[key].lightColor,
-                  "--characterColor": characterInfos[key].color
-                }}
-              >
-                <Image
-                  src={characterInfos[key].bustupImage}
-                  alt={characterInfos[key].name}
-                />
-              </a>
-            ))
-          }
         </div>
       </div>
     </div>
@@ -554,16 +554,6 @@ const characterBackgroundColor = characterInfo.lightColor;
       display: flex;
       height: 5rem;
 
-      &:before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -1rem;
-        width: 1rem;
-        height: 100%;
-        box-shadow: 0 0 1rem rgba(255,255,255,0.5);
-      }
-
       .characters {
         display: flex;
         overflow: auto hidden;
@@ -591,7 +581,7 @@ const characterBackgroundColor = characterInfo.lightColor;
             &:before {
               content: "";
               position: absolute;
-              top: 0;
+              bottom: 0;
               left: 0;
               height: 0.25rem;
               width: 100%;
