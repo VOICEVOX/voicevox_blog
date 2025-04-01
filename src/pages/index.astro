@@ -57,37 +57,6 @@ const landingMovieThumbUrl = (await getImage({ src: landingMovieThumb })).src;
       </section>
     </div>
 
-    <main>
-      <section class="section">
-        <div class="container is-max-desktop is-flex is-flex-direction-column">
-          <h2 id="news" class="jump-anchor-header-padding title">
-            <a href={`#news`} class="has-text-black">
-              ニュース
-            </a>
-          </h2>
-          <div class="news-list">
-            <a href="http://localhost:4321/news/hoge" style="display:block">
-              <time class="publish" style="font-size:0.9rem">2024/05/01</time>
-              <p style="font-size:1.1rem">
-                VOICEVOXサンプルニュース_1
-              </p>
-              <p class="description" style="font-size:0.9rem">
-                ニュースのテスト1
-              </p>
-            </a>
-            <a href="http://localhost:4321/news/fuga" style="display:block">
-              <time class="publish" style="font-size:0.9rem">2024/07/01</time>
-              <p style="font-size:1.1rem">
-                VOICEVOXサンプルニュース_2
-              </p>
-              <p class="description" style="font-size:0.9rem">
-                ニュースのテスト2
-              </p>
-            </a>
-          </div>
-        </div>
-      </section>
-
       <section class="section">
         <div class="container is-max-desktop is-flex is-flex-direction-column">
           <h2 id="characters" class="jump-anchor-header-padding title">
@@ -191,74 +160,6 @@ const landingMovieThumbUrl = (await getImage({ src: landingMovieThumb })).src;
 
       @include until($tablet) {
         height: $size-1 * 1.1;
-      }
-    }
-
-    .news-list {
-      padding: 0 1rem;
-
-      a {
-        position: relative;
-        display: block;
-        padding: 1rem 2rem;
-        border-radius: 0.5rem;
-        background-color: #fff;
-        transition: background-color 0.3s;
-
-        &:before {
-          content: "";
-          display: block;
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 0.15rem;
-          height: 100%;
-          transform: translateX(-50%);
-          background-color: hsl(130deg, 35%, calc(74% + 0%));
-        }
-
-        &:hover {
-          background-color: #e0e0e0;
-        }
-
-        .publish {
-          position: relative;
-          font-size: 0.9rem;
-          color: #666;
-
-          &:before {
-            content: "";
-            display: block;
-            position: absolute;
-            top: 50%;
-            right: calc(100% + 0.5rem);
-            width: 1.5rem;
-            height: 0.15rem;
-            background: #ccc;
-            box-sizing: content-box;
-            transform: translateY(-50%);
-          }
-
-          &:after {
-            content: "";
-            display: block;
-            position: absolute;
-            top: 0;
-            right: calc(100% + 2rem);
-            width: 1em;
-            height: 1em;
-            background: #fff;
-            box-sizing: content-box;
-            transform: translateX(50%);
-            border: solid 0.15rem hsl(130deg, 35%, calc(74% + 0%));
-            border-radius: 50%;
-          }
-        }
-
-        .description {
-          font-size: 1rem;
-          color: #333;
-        }
       }
     }
   }
