@@ -166,31 +166,6 @@ const characterBackgroundColor = characterInfo.lightColor;
 >
   <main class="product">
     <div class="section py-0">
-      <div class="charamenu container">
-        <div class="characters">
-          {
-            characterKeys.map((key) => (
-              <a
-                href={getProductPageUrl(characterInfos[key])}
-                class={`character ${
-                  key === characterKey ? "active" : ""
-                }`}
-                aria-label={characterInfos[key].name}
-                role="button"
-                style={{
-                  "--characterLightColor": characterInfos[key].lightColor,
-                  "--characterColor": characterInfos[key].color
-                }}
-              >
-                <Image
-                  src={characterInfos[key].bustupImage}
-                  alt={characterInfos[key].name}
-                />
-              </a>
-            ))
-          }
-        </div>
-      </div>
       <div class="top container">
         <a
           href={getProductPageUrl(characterInfos[prevCharacterKey])}
@@ -301,6 +276,31 @@ const characterBackgroundColor = characterInfo.lightColor;
               )
             }
           </div>
+        </div>
+      </div>
+      <div class="charamenu container">
+        <div class="characters">
+          {
+            characterKeys.map((key) => (
+              <a
+                href={getProductPageUrl(characterInfos[key])}
+                class={`character ${
+                  key === characterKey ? "active" : ""
+                }`}
+                aria-label={characterInfos[key].name}
+                role="button"
+                style={{
+                  "--characterLightColor": characterInfos[key].lightColor,
+                  "--characterColor": characterInfos[key].color
+                }}
+              >
+                <Image
+                  src={characterInfos[key].bustupImage}
+                  alt={characterInfos[key].name}
+                />
+              </a>
+            ))
+          }
         </div>
       </div>
     </div>
@@ -561,11 +561,6 @@ const characterBackgroundColor = characterInfo.lightColor;
 
         .characters {
           padding: 0 1rem;
-          .character {
-            &.active:before {
-              top: 0;
-            }
-          }
         }
       }
 
@@ -575,6 +570,11 @@ const characterBackgroundColor = characterInfo.lightColor;
         overflow: auto hidden;
         margin: 0 auto auto;
         height: 100%;
+        scrollbar-width: none;
+
+        &:hover {
+          scrollbar-width: auto;
+        }
 
         .character {
           --padding-y: 1.25rem;
@@ -597,7 +597,7 @@ const characterBackgroundColor = characterInfo.lightColor;
             &:before {
               content: "";
               position: absolute;
-              bottom: 0;
+              top: 0;
               left: 0;
               height: 0.25rem;
               width: 100%;
