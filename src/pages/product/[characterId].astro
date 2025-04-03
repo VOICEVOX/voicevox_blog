@@ -344,10 +344,11 @@ const characterBackgroundColor = characterInfo.lightColor;
     const charamenu = document.querySelector(".charamenu > .characters");
     if (charamenu) {
       const active = charamenu.querySelector(".active");
-      if (active) active.scrollIntoView({
-        block: "nearest",
-        inline: "center"
-      });
+      if (active) {
+        const activeCenter = active.offsetLeft + active.offsetWidth / 2;
+        const containerCenter = charamenu.offsetWidth / 2;
+        charamenu.scrollLeft = activeCenter - containerCenter;
+      }
     }
   };
   let scrollPos = 0;
