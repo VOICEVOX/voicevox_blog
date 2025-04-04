@@ -56,106 +56,6 @@ const postCharacterKey =
   ];
 
 const characterBackgroundColor = characterInfo.lightColor;
-
-/*
-  const [
-    showingLibraryReadmeModalCharacterKey,
-    setShowingLibraryReadmeModalCharacterKey,
-  ] = useState<CharacterKey | undefined>(undefined)
-
-  // キャラクター変更アニメーション
-  type CharaAnimeObject = {
-    characterKey: CharacterKey
-    ref: React.MutableRefObject<HTMLDivElement | null>
-    state: "entering" | "staying" | "leaving"
-    direction: "left" | "right"
-  }
-  const [nowCharaAnimeObject, setNowCharaAnimeObject] =
-    useState<CharaAnimeObject>({
-      characterKey,
-      ref: React.createRef(),
-      state: "staying",
-      direction: "left",
-    })
-  const [prevCharaAnimeObject, setPrevCharaAnimeObject] = useState<
-    CharaAnimeObject | undefined
-  >(undefined)
-
-  // キャラクター変更（ページ遷移）
-  const { characterKeys } = useContext(CharacterContext)
-  const changeToCharacter = useCallback(
-    (nextCharacterKey: CharacterKey) => {
-      const nextCharacterInfo = characterInfos[nextCharacterKey]!
-      setCharacterId(nextCharacterInfo.id)
-      setSelectedStyle(
-        nextCharacterInfo.talkVoiceUrls.length > 0
-          ? nextCharacterInfo.talkVoiceUrls[0].style
-          : undefined
-      )
-
-      // アニメーション用
-      const diff =
-        characterKeys.indexOf(nextCharacterKey) -
-        characterKeys.indexOf(characterKey)
-      const direction =
-        (diff + characterKeys.length) % characterKeys.length <=
-        characterKeys.length / 2
-          ? "right"
-          : "left"
-      setPrevCharaAnimeObject({
-        ...nowCharaAnimeObject,
-        state: "leaving",
-        direction,
-      })
-      setNowCharaAnimeObject({
-        characterKey: nextCharacterKey,
-        ref: React.createRef(),
-        state: "entering",
-        direction,
-      })
-
-      window.history.pushState(
-        { characterKey: nextCharacterKey },
-        "",
-        `/product/${nextCharacterInfo.id}/`
-      )
-      // // FIXME: たぶん本来は↓のgatsby.navigateを使うのが正しいけど、フラッシュするので使用できない
-      // navigate(`/product/${characterInfos[nextCharacterKey]!.id}/`, {
-      //   state: { characterKey: nextCharacterKey },
-      // })
-    },
-    [characterInfos]
-  )
-
-  // ブラウザバックを無効化し、コード側でキャラクター変更する
-  // TODO: なぜかうまくいかない。勝手にリロードされて404になってしまう？
-  useEffect(() => {
-    const handlePopState = (event: PopStateEvent) => {
-      if (
-        event.state?.characterKey != undefined &&
-        event.state?.characterKey != characterKey
-      ) {
-        setCharacterId(characterInfos[event.state.characterKey]!.id)
-      }
-    }
-    window.addEventListener("popstate", handlePopState)
-    return () => {
-      window.removeEventListener("popstate", handlePopState)
-    }
-  }, [characterKey])
-
-  // 最初に来たときはそのキャラクターをセット
-  useEffect(() => {
-    history.replaceState({ characterKey }, "")
-  }, [])
-
-  // 画像
-  const thumbImage = query.thumbImage.nodes.find(
-    node => node.name === `thumb-${characterId}`
-  )?.childImageSharp?.gatsbyImageData
-  if (thumbImage == undefined)
-    throw new Error(`thumb-${characterId} is not found`)
-*/
 ---
 
 <Base
@@ -186,28 +86,6 @@ const characterBackgroundColor = characterInfo.lightColor;
           <FontAwesomeIcon icon={faCircleRight} />
         </a>
         <div class="top-character">
-          {
-            /*
-            TODO:
-            [prevCharaAnimeObject, nowCharaAnimeObject].map(
-              (obj) =>
-                obj && (
-                  <div
-                    key={obj.characterKey}
-                    ref={obj.ref}
-                    class={`height-image-wrapper ${
-                      obj.state != "staying" && `${obj.state}-${obj.direction}`
-                    }`}
-                  >
-                    <GatsbyImage
-                      image={characterInfos[obj.characterKey]!.portraitImage}
-                      alt={characterInfos[obj.characterKey]!.name}
-                    />
-                  </div>
-                ),
-            )
-            */
-          }
           <div class="height-image-wrapper">
             <div>
               <Image
@@ -446,47 +324,6 @@ const characterBackgroundColor = characterInfo.lightColor;
             width: 100%; // FIXME: 左右に空間が空いてしまう
           }
         }
-
-        /*
-        .image-wrapper.entering-right {
-          animation: entering-right 0.15s ease-out;
-          animation-fill-mode: both;
-        }
-        .image-wrapper.entering-left {
-          animation: entering-left 0.15s ease-out;
-          animation-fill-mode: both;
-        }
-        .image-wrapper.leaving-right {
-          animation: entering-left 0.15s ease-in;
-          animation-fill-mode: both;
-          animation-direction: reverse;
-        }
-        .image-wrapper.leaving-left {
-          animation: entering-right 0.15s ease-in;
-          animation-fill-mode: both;
-          animation-direction: reverse;
-        }
-        @keyframes entering-right {
-          0% {
-            opacity: 0;
-            transform: translateX(-5%);
-          }
-          100% {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-        @keyframes entering-left {
-          0% {
-            opacity: 0;
-            transform: translateX(5%);
-          }
-          100% {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-        */
 
         .info {
           position: absolute;
