@@ -148,6 +148,8 @@ pnpm run test:e2e --update-snapshots # スナップショットを更新する�
 pnpm run test:e2e --ui # 開発時は UI モードが便利
 ```
 
+`pnpm start`してからe2eテストを起動することで、変更を反映しながらテストすることもできます。
+
 ### タイポチェック
 
 [typos](https://github.com/crate-ci/typos) を使ってタイポのチェックを行っています。  
@@ -170,7 +172,10 @@ pnpm run test:e2e --ui # 開発時は UI モードが便利
   - React hook は Astro 内で使えないので、なるべく使わない方針
 - 静的ページやコンポーネントは Astro で作るのを意識すると楽
   - 画像の読み込みとか、ディレクティブとかが便利
+  - コードを書く場合も、ページ遷移後のレンダリング結果が一意な UI を心がけると楽
 - 子へのスタイル適用は Astro 内の is:global を使うと楽
+- データ属性は同じファイル間であれば import しなくて良い、別ファイルなら export した方が良い
+  - `{...{[attr]: true }}`とすれば Astro 内で使える
 
 ### モードと効果の表
 

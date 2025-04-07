@@ -1,0 +1,263 @@
+---
+/**
+ * 一番上に表示するコンポーネント
+ */
+
+import FontAwesomeIcon from "@/components/FontAwesomeIcon.astro";
+import type { CharacterKey } from "@/constants/characterEntry";
+import { characterKeys } from "@/constants/characterEntry";
+import { characterInfos } from "@/constants/characterInfo";
+import {
+  getDormitoryCharacterPageUrl,
+  getProductPageUrl,
+} from "@/constants/url";
+import {
+  showDownloadModalAttr,
+  showLibraryTermIntroModalCharacterKeyAttr,
+} from "@/store";
+import {
+  faCircleLeft,
+  faCircleRight,
+  faDownload,
+} from "@fortawesome/free-solid-svg-icons";
+import { Image } from "astro:assets";
+import AudioSample from "./AudioSample";
+import { buildDescription } from "./constants";
+
+interface Props {
+  characterKey: CharacterKey;
+}
+
+const { characterKey } = Astro.props;
+const characterInfo = characterInfos[characterKey];
+
+const description = buildDescription(characterInfo);
+const additionalDescription = characterInfo.additionalProductDescription;
+const characterBackgroundColor = characterInfo.lightColor;
+
+const prevCharacterKey =
+  characterKeys[
+    (characterKeys.indexOf(characterKey) + characterKeys.length - 1) %
+      characterKeys.length
+  ];
+const postCharacterKey =
+  characterKeys[
+    (characterKeys.indexOf(characterKey) + 1) % characterKeys.length
+  ];
+---
+
+<div class="top container">
+  <a
+    href={getProductPageUrl(characterInfos[prevCharacterKey])}
+    class="button prev circle-icon is-black"
+    aria-label="前のキャラクターを表示"
+    role="button"
+  >
+    <FontAwesomeIcon icon={faCircleLeft} />
+  </a>
+  <a
+    href={getProductPageUrl(characterInfos[postCharacterKey])}
+    class="button post circle-icon is-black"
+    aria-label="次のキャラクターを表示"
+    role="button"
+  >
+    <FontAwesomeIcon icon={faCircleRight} />
+  </a>
+  <div class="top-character">
+    <div class="height-image-wrapper">
+      <div>
+        <Image
+          src={characterInfo.portraitImage}
+          alt={characterInfo.name}
+          height={1280}
+          densities={[1, 1.5, 2]}
+          style={{ display: "block", objectFit: "contain" }}
+        />
+      </div>
+    </div>
+    <div class="info pb-5">
+      <div class="detail p-4">
+        <p>{characterInfo.description.replaceAll("<br />", "")}</p>
+        <a
+          href={getDormitoryCharacterPageUrl(characterInfo)}
+          class="has-text-weight-bold has-text-black">キャラクター詳細 →</a
+        >
+      </div>
+
+      <AudioSample client:visible {characterInfo} />
+    </div>
+  </div>
+  <div class="description">
+    <h1 class="title">VOICEVOX {characterInfo.name}</h1>
+    <p class="is-size-5">
+      {description}
+      {additionalDescription && additionalDescription}
+    </p>
+    {
+      characterInfo.releaseDate == undefined && (
+        <a
+          {...{ [showDownloadModalAttr]: true }}
+          class="button mt-5 is-primary is-rounded is-large"
+          target="_blank"
+          rel="noreferrer"
+          tab-index={0}
+          role="button"
+        >
+          <span class="icon">
+            <FontAwesomeIcon icon={faDownload} />
+          </span>
+          <span class="has-text-weight-semibold">
+            <span class="is-hidden-mobile">VOICEVOX を </span>
+            ダウンロード
+          </span>
+        </a>
+      )
+    }
+    <div class="terms mt-5">
+      <a href="/term/" class="button is-normal is-rounded">
+        <span>VOICEVOX 利用規約</span>
+      </a>
+      {
+        characterInfo.policyUrl && (
+          <button
+            {...{
+              [showLibraryTermIntroModalCharacterKeyAttr]: characterKey,
+            }}
+            class="button is-normal is-rounded"
+            type="button"
+          >
+            <span>{characterInfo.name} 利用規約</span>
+          </button>
+        )
+      }
+    </div>
+  </div>
+</div>
+
+<style lang="scss" define:vars={{ characterBackgroundColor }} is:global>
+  @use "@/styles/vars.scss" as *;
+  @use "@/styles/helper.scss" as *;
+
+  @use "bulma/sass/elements" as *;
+  @use "bulma/sass/utilities/initial-variables" as *;
+  @use "bulma/sass/utilities/mixins" as *;
+  @use "bulma/sass/helpers" as *;
+
+  .top {
+    height: calc(100vh - 3.25rem - 5rem);
+    display: flex;
+    flex-direction: row-reverse;
+    min-height: calc($desktop / 2);
+    max-height: $desktop;
+
+    position: relative;
+
+    @include mobile {
+      height: auto;
+      max-height: unset;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    .prev,
+    .post {
+      position: absolute;
+      z-index: 10;
+      top: 10%;
+      transform: translateY(-50%);
+      font-size: 3rem;
+      opacity: 0.25;
+    }
+    .prev {
+      left: calc(50% - 50vw + 1.2rem);
+    }
+    .post {
+      right: calc(50% - 50vw + 1.2rem);
+    }
+
+    .top-character {
+      position: relative;
+      flex: 0 1 50%;
+
+      @include mobile {
+        flex: 0 1 auto;
+        height: calc(100vh - 3.25rem - 5rem);
+        min-height: calc(100vh - 3.25rem - 5rem);
+        max-height: calc(100vh - 3.25rem - 5rem);
+        margin-bottom: 5rem;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50vw;
+        height: 100%;
+        background-color: var(--characterBackgroundColor);
+
+        @include mobile {
+          width: 100%; // FIXME: 左右に空間が空いてしまう
+        }
+      }
+
+      .info {
+        position: absolute;
+        top: 0;
+        right: 5%;
+
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        gap: 1rem;
+
+        .detail,
+        .sample {
+          background-color: #fffc;
+          width: 200px;
+          border-radius: 16px;
+
+          display: flex;
+          flex-direction: column;
+        }
+
+        .detail {
+          align-items: flex-end;
+          gap: 1rem;
+        }
+
+        .sample {
+          align-items: center;
+        }
+      }
+    }
+
+    .description {
+      flex: 0 1 50%;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: start;
+      @extend .px-6;
+
+      @include mobile {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        align-items: center;
+      }
+
+      .terms {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+
+        @include mobile {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+    }
+  }
+</style>
