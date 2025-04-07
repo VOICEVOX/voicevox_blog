@@ -1,16 +1,23 @@
-import { test } from "@playwright/test";
-import { characterKeys, characterEntries } from "@/constants/characterEntry";
+import { gotoAndWait } from "../helper";
+import { takeScreenshots } from "./helper";
+import {
+  characterKeys,
+  characterEntries,
+  type CharacterKey,
+} from "@/constants/characterEntry";
 import {
   getDormitoryCharacterPageUrl,
   getProductPageUrl,
 } from "@/constants/url";
-import { takeScreenshots } from "./helper";
-import { gotoAndWait } from "../helper";
+import { test } from "@playwright/test";
 
-characterKeys.forEach((characterKey) => {
+async function runCharacterPageTests(
+  characterKey: CharacterKey,
+  testName: string,
+) {
   const characterEntry = characterEntries[characterKey];
-  const characterId = characterEntry.id;
-  test.describe(`${characterId}`, () => {
+
+  test.describe(testName, () => {
     test("product", async ({ page }) => {
       await gotoAndWait(page, getProductPageUrl(characterEntry));
       await takeScreenshots(page);
@@ -32,4 +39,12 @@ characterKeys.forEach((characterKey) => {
       await takeScreenshots(page);
     });
   });
-});
+}
+
+// 最初のキャラクター
+const firstCharacterKey = characterKeys[0];
+runCharacterPageTests(firstCharacterKey, "first");
+
+// 最後のキャラクター
+const lastCharacterKey = characterKeys[characterKeys.length - 1];
+runCharacterPageTests(lastCharacterKey, "last");
