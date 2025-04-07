@@ -162,14 +162,12 @@ const characterBackgroundColor = characterInfo.lightColor;
             characterKeys.map((key) => (
               <a
                 href={getProductPageUrl(characterInfos[key])}
-                class={`character ${
-                  key === characterKey ? "active" : ""
-                }`}
+                class={`character ${key === characterKey ? "active" : ""}`}
                 aria-label={characterInfos[key].name}
                 role="button"
                 style={{
                   "--characterLightColor": characterInfos[key].lightColor,
-                  "--characterColor": characterInfos[key].color
+                  "--characterColor": characterInfos[key].color,
                 }}
               >
                 <Image
@@ -232,7 +230,7 @@ const characterBackgroundColor = characterInfo.lightColor;
   let scrollPos = 0;
 
   const beforeSwapListener = (event) => {
-    const charamenu = (event.target).querySelector(".charamenu > .characters");
+    const charamenu = event.target.querySelector(".charamenu > .characters");
     if (charamenu) {
       scrollPos = charamenu.scrollLeft;
       document.addEventListener("astro:after-swap", afterSwapListener);
@@ -240,7 +238,7 @@ const characterBackgroundColor = characterInfo.lightColor;
     document.removeEventListener("astro:before-swap", beforeSwapListener);
   };
   const afterSwapListener = (event) => {
-    const charamenu = (event.target).querySelector(".charamenu > .characters");
+    const charamenu = event.target.querySelector(".charamenu > .characters");
     if (charamenu) {
       if (scrollPos > 0) charamenu.scrollLeft = scrollPos;
       document.addEventListener("astro:before-swap", beforeSwapListener);
@@ -401,7 +399,6 @@ const characterBackgroundColor = characterInfo.lightColor;
           padding: 0 1rem;
         }
       }
-
 
       .characters {
         display: flex;
