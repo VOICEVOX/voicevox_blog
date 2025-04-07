@@ -144,7 +144,9 @@ const postCharacterKey =
   @use "bulma/sass/helpers" as *;
 
   .top {
-    height: calc(100vh - 3.25rem - 5rem);
+    height: calc(
+      100vh - 3.25rem - 5rem
+    ); // NOTE: 5remはキャラクターメニューの高さ
     display: flex;
     flex-direction: row-reverse;
     min-height: calc($desktop / 2);

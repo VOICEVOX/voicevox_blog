@@ -35,7 +35,7 @@ test("キャラクターの製品ページでは、そのキャラクターが�
   const scrollWidth = await characterList.evaluate((el) => el.scrollWidth);
   const clientWidth = await characterList.evaluate((el) => el.clientWidth);
   const middlePosition = scrollWidth / 2 - clientWidth / 2;
-  const tolerance = clientWidth / 4;
+  const tolerance = clientWidth / 8;
   expect(position).toBeGreaterThan(middlePosition - tolerance);
   expect(position).toBeLessThan(middlePosition + tolerance);
 });
