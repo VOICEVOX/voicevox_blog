@@ -173,6 +173,8 @@ const characterBackgroundColor = characterInfo.lightColor;
                 <Image
                   src={characterInfos[key].bustupImage}
                   alt={characterInfos[key].name}
+                  width="64"
+                  densities={[1, 1.5, 2]}
                 />
               </a>
             ))
@@ -215,7 +217,7 @@ const characterBackgroundColor = characterInfo.lightColor;
   </main>
 </Base>
 
-<script>
+<script is:inline>
   const initScroll = () => {
     const charamenu = document.querySelector(".charamenu > .characters");
     if (charamenu) {
