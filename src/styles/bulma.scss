@@ -4,7 +4,8 @@
   $text: $text,
   $primary: $primary,
   $link: $primary,
-  $family-sans-serif: '"Unhinted Rounded M+ 1p", sans-serif'
+  $family-sans-serif: '"Unhinted Rounded M+ 1p", sans-serif',
+  $family-monospace: 'Consolas, Menlo, "Liberation Mono", monospace'
 );
 
 @use "bulma/sass/utilities/css-variables" as cv;
