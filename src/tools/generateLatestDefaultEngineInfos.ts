@@ -2,7 +2,6 @@
  * VOICEVOX ENGINEのGithub releasesの情報から最新のvvppおよびvvpppのリンク先を取得し、
  * デフォルトエンジンの更新情報をjson形式で出力する。
  */
-
 /*
 
 jsonファイルの形式は以下の通り
