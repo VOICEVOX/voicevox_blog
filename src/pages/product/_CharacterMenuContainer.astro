@@ -1,0 +1,141 @@
+---
+/**
+ * キャラクター一覧アイコンを横並びで表示するコンポーネント
+ */
+
+import KeepScrollAnchor from "@/components/KeepScrollAnchor.astro";
+import { characterKeys, type CharacterKey } from "@/constants/characterEntry";
+import { characterInfos } from "@/constants/characterInfo";
+import { getProductPageUrl } from "@/constants/url";
+import { Image } from "astro:assets";
+
+interface Props {
+  selectedCharacterKey: CharacterKey;
+}
+
+const { selectedCharacterKey } = Astro.props;
+---
+
+<div class="charamenu container">
+  <div class="characters" aria-label="キャラクター一覧">
+    {
+      characterKeys.map((key) => (
+        <KeepScrollAnchor
+          href={getProductPageUrl(characterInfos[key])}
+          class={`character ${key === selectedCharacterKey ? "active" : ""}`}
+          aria-label={characterInfos[key].name}
+          role="button"
+          style={{
+            // FIXME: astro の define:vars で渡す
+            "--characterLightColor": characterInfos[key].lightColor,
+            "--characterColor": characterInfos[key].color,
+          }}
+        >
+          <Image
+            src={characterInfos[key].bustupImage}
+            alt={characterInfos[key].name}
+            width="64"
+            densities={[1, 1.5, 2]}
+          />
+        </KeepScrollAnchor>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  function scrollToCenter() {
+    const characterList = document.querySelector(
+      "[aria-label='キャラクター一覧']",
+    );
+    if (characterList == undefined) return;
+
+    if (!(characterList instanceof HTMLElement))
+      throw new Error(`characterList is not HTMLElement: ${characterList}`);
+
+    const active = characterList.querySelector(".active");
+    if (!(active instanceof HTMLElement))
+      throw new Error(`active is not HTMLElement: ${active}`);
+
+    const activeCenter = active.offsetLeft + active.offsetWidth / 2;
+    const containerCenter = characterList.offsetWidth / 2;
+    characterList.scrollLeft = activeCenter - containerCenter;
+  }
+  document.addEventListener("astro:after-swap", scrollToCenter);
+
+  scrollToCenter();
+</script>
+
+<style lang="scss">
+  @use "../../styles/vars.scss" as *;
+  @use "../../styles/helper.scss" as *;
+  @use "bulma/sass/utilities/mixins" as *;
+
+  .charamenu {
+    position: relative;
+    display: flex;
+    height: 5rem; // FIXME: `top`クラスとの空中配線を解消する
+    @include mobile {
+      position: absolute; // FIXME: absoluteを使わない方法にする
+      top: calc(100vh - 5rem);
+      left: 0;
+      width: 100%;
+      height: 5rem;
+      z-index: 1; // FIXME: z-indexを使わない方法にする
+
+      .characters {
+        padding: 0 1rem;
+      }
+    }
+
+    .characters {
+      display: flex;
+      overflow: auto hidden;
+      margin: 0 auto auto;
+      height: 100%;
+      scrollbar-width: none;
+
+      &:hover {
+        scrollbar-width: thin;
+      }
+
+      .character {
+        --padding-y: 1.25rem;
+        display: flex;
+        opacity: 0.5;
+        height: calc(5rem - var(--padding-y) * 2);
+        box-sizing: content-box;
+        aspect-ratio: 1;
+        padding: var(--padding-y) 0.5rem;
+
+        &:hover {
+          opacity: 0.8;
+        }
+
+        &.active {
+          --padding-y: 1rem;
+          opacity: 1;
+          position: relative;
+
+          &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 0.25rem;
+            width: 100%;
+            background-color: var(--characterColor);
+          }
+        }
+
+        img {
+          background-color: var(--characterLightColor);
+          height: 100%;
+          width: auto;
+          border-radius: 0.45rem;
+          margin: auto;
+        }
+      }
+    }
+  }
+</style>

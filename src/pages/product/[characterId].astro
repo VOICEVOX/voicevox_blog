@@ -3,27 +3,15 @@
  * キャラクターごとの製品ページ
  */
 
-import FontAwesomeIcon from "@/components/FontAwesomeIcon.astro";
 import { characterEntries, characterKeys } from "@/constants/characterEntry";
 import { characterInfos } from "@/constants/characterInfo";
-import {
-  getDormitoryCharacterPageUrl,
-  getProductPageUrl,
-} from "@/constants/url";
 import Base from "@/layouts/Base.astro";
 import SoftwareFeature from "@/pages/_SoftwareFeature.astro";
-import {
-  showDownloadModalAttr,
-  showLibraryTermIntroModalCharacterKeyAttr,
-} from "@/store";
-import {
-  faCircleLeft,
-  faCircleRight,
-  faDownload,
-} from "@fortawesome/free-solid-svg-icons";
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 import { Image } from "astro:assets";
-import AudioSample from "./AudioSample";
+import CharacterMenuContainer from "./_CharacterMenuContainer.astro";
+import TopContainer from "./_TopContainer.astro";
+import { buildDescription } from "./constants";
 import featureImage from "./feature.png";
 
 export const getStaticPaths = (async () =>
@@ -35,27 +23,7 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 const { characterKey, characterInfo } = Astro.props;
 
-const voiceFeature = characterInfo.voiceFeature
-  ? characterInfo.voiceFeature
-  : "声";
-const description =
-  `VOICEVOXは「${characterInfo.name}」の${voiceFeature}で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。` +
-  (characterInfo.releaseDate
-    ? `${characterInfo.releaseDate}にリリース予定。`
-    : "");
-const additionalDescription = characterInfo.additionalProductDescription;
-
-const prevCharacterKey =
-  characterKeys[
-    (characterKeys.indexOf(characterKey) + characterKeys.length - 1) %
-      characterKeys.length
-  ];
-const postCharacterKey =
-  characterKeys[
-    (characterKeys.indexOf(characterKey) + 1) % characterKeys.length
-  ];
-
-const characterBackgroundColor = characterInfo.lightColor;
+const description = buildDescription(characterInfo);
 ---
 
 <Base
@@ -66,122 +34,8 @@ const characterBackgroundColor = characterInfo.lightColor;
 >
   <main class="product">
     <div class="section py-0">
-      <div class="top container">
-        <a
-          href={getProductPageUrl(characterInfos[prevCharacterKey])}
-          class="button prev circle-icon is-black"
-          aria-label="前のキャラクターを表示"
-          role="button"
-        >
-          {/* TODO: onClick={() => changeToCharacter(prevCharacterKey)}*/}
-          <FontAwesomeIcon icon={faCircleLeft} />
-        </a>
-        <a
-          href={getProductPageUrl(characterInfos[postCharacterKey])}
-          class="button post circle-icon is-black"
-          aria-label="次のキャラクターを表示"
-          role="button"
-        >
-          {/* TODO: onClick={() => changeToCharacter(postCharacterKey)}*/}
-          <FontAwesomeIcon icon={faCircleRight} />
-        </a>
-        <div class="top-character">
-          <div class="height-image-wrapper">
-            <div>
-              <Image
-                src={characterInfo.portraitImage}
-                alt={characterInfo.name}
-                height={1280}
-                densities={[1, 1.5, 2]}
-                style={{ display: "block", objectFit: "contain" }}
-              />
-            </div>
-          </div>
-          <div class="info pb-5">
-            <div class="detail p-4">
-              <p>{characterInfo.description.replaceAll("<br />", "")}</p>
-              <a
-                href={getDormitoryCharacterPageUrl(characterInfo)}
-                class="has-text-weight-bold has-text-black"
-                >キャラクター詳細 →</a
-              >
-            </div>
-
-            <AudioSample client:visible characterInfo={characterInfo} />
-          </div>
-        </div>
-        <div class="description">
-          <h1 class="title">VOICEVOX {characterInfo.name}</h1>
-          <p class="is-size-5">
-            {description}
-            {additionalDescription && additionalDescription}
-          </p>
-          {
-            characterInfo.releaseDate == undefined && (
-              <a
-                {...{ [showDownloadModalAttr]: true }}
-                class="button mt-5 is-primary is-rounded is-large"
-                target="_blank"
-                rel="noreferrer"
-                tab-index={0}
-                role="button"
-              >
-                <span class="icon">
-                  <FontAwesomeIcon icon={faDownload} />
-                </span>
-                <span class="has-text-weight-semibold">
-                  <span class="is-hidden-mobile">VOICEVOX を </span>
-                  ダウンロード
-                </span>
-              </a>
-            )
-          }
-          <div class="terms mt-5">
-            <a href="/term/" class="button is-normal is-rounded">
-              <span>VOICEVOX 利用規約</span>
-            </a>
-            {
-              characterInfo.policyUrl && (
-                <button
-                  {...{
-                    [showLibraryTermIntroModalCharacterKeyAttr]: characterKey,
-                  }}
-                  class="button is-normal is-rounded"
-                  type="button"
-                >
-                  <span>{characterInfo.name} 利用規約</span>
-                </button>
-              )
-            }
-          </div>
-        </div>
-      </div>
-      <div class="charamenu container">
-        <div class="characters" aria-label="キャラクター一覧">
-          {
-            characterKeys.map((key) => (
-              <a
-                href={getProductPageUrl(characterInfos[key])}
-                class={`character ${key === characterKey ? "active" : ""}`}
-                aria-label={characterInfos[key].name}
-                role="button"
-                style={{
-                  // FIXME: astro の define:vars で渡す
-                  "--characterLightColor": characterInfos[key].lightColor,
-                  "--characterColor": characterInfos[key].color,
-                }}
-              >
-                <Image
-                  src={characterInfos[key].bustupImage}
-                  alt={characterInfos[key].name}
-                  width="64"
-                  densities={[1, 1.5, 2]}
-                />
-              </a>
-            ))
-          }
-        </div>
-      </div>
+      <TopContainer {characterKey} />
+      <CharacterMenuContainer selectedCharacterKey={characterKey} />
     </div>
 
     <section class="section">
@@ -218,30 +72,7 @@ const characterBackgroundColor = characterInfo.lightColor;
   </main>
 </Base>
 
-<script is:inline>
-  function scrollToCenter() {
-    const characterList = document.querySelector(
-      "[aria-label='キャラクター一覧']",
-    );
-    if (characterList == undefined) return;
-
-    if (!(characterList instanceof HTMLElement))
-      throw new Error(`characterList is not HTMLElement: ${characterList}`);
-
-    const active = characterList.querySelector(".active");
-    if (!(active instanceof HTMLElement))
-      throw new Error(`active is not HTMLElement: ${active}`);
-
-    const activeCenter = active.offsetLeft + active.offsetWidth / 2;
-    const containerCenter = characterList.offsetWidth / 2;
-    characterList.scrollLeft = activeCenter - containerCenter;
-  }
-  document.addEventListener("astro:after-swap", scrollToCenter);
-
-  scrollToCenter();
-</script>
-
-<style lang="scss" define:vars={{ characterBackgroundColor }} is:global>
+<style lang="scss" is:global>
   @use "@/styles/vars.scss" as *;
   @use "@/styles/helper.scss" as *;
 
@@ -251,197 +82,6 @@ const characterBackgroundColor = characterInfo.lightColor;
   @use "bulma/sass/helpers" as *;
 
   .product {
-    h1 {
-      @extend .title;
-      @extend .is-3;
-    }
-
-    .top {
-      height: calc(100vh - 3.25rem - 5rem);
-      display: flex;
-      flex-direction: row-reverse;
-      min-height: calc($desktop / 2);
-      max-height: $desktop;
-
-      position: relative;
-
-      @include mobile {
-        height: auto;
-        max-height: unset;
-        flex-direction: column;
-        gap: 3rem;
-      }
-
-      .prev,
-      .post {
-        position: absolute;
-        z-index: 10;
-        top: 10%;
-        transform: translateY(-50%);
-        font-size: 3rem;
-        opacity: 0.25;
-      }
-      .prev {
-        left: calc(50% - 50vw + 1.2rem);
-      }
-      .post {
-        right: calc(50% - 50vw + 1.2rem);
-      }
-
-      .top-character {
-        position: relative;
-        flex: 0 1 50%;
-
-        @include mobile {
-          flex: 0 1 auto;
-          height: calc(100vh - 3.25rem - 5rem);
-          min-height: calc(100vh - 3.25rem - 5rem);
-          max-height: calc(100vh - 3.25rem - 5rem);
-          margin-bottom: 5rem;
-        }
-
-        &::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 50vw;
-          height: 100%;
-          background-color: var(--characterBackgroundColor);
-
-          @include mobile {
-            width: 100%; // FIXME: 左右に空間が空いてしまう
-          }
-        }
-
-        .info {
-          position: absolute;
-          top: 0;
-          right: 5%;
-
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-end;
-          gap: 1rem;
-
-          .detail,
-          .sample {
-            background-color: #fffc;
-            width: 200px;
-            border-radius: 16px;
-
-            display: flex;
-            flex-direction: column;
-          }
-
-          .detail {
-            align-items: flex-end;
-            gap: 1rem;
-          }
-
-          .sample {
-            align-items: center;
-          }
-        }
-      }
-
-      .description {
-        flex: 0 1 50%;
-        flex-shrink: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: start;
-        @extend .px-6;
-
-        @include mobile {
-          padding-left: 0 !important;
-          padding-right: 0 !important;
-          align-items: center;
-        }
-
-        .terms {
-          display: flex;
-          gap: 0.5rem;
-          flex-wrap: wrap;
-
-          @include mobile {
-            flex-direction: column;
-            align-items: center;
-          }
-        }
-      }
-    }
-
-    .charamenu {
-      position: relative;
-      display: flex;
-      height: 5rem; // FIXME: `top`クラスとの空中配線を解消する
-      @include mobile {
-        position: absolute; // FIXME: absoluteを使わない方法にする
-        top: calc(100vh - 5rem);
-        left: 0;
-        width: 100%;
-        height: 5rem;
-        z-index: 1; // FIXME: z-indexを使わない方法にする
-
-        .characters {
-          padding: 0 1rem;
-        }
-      }
-
-      .characters {
-        display: flex;
-        overflow: auto hidden;
-        margin: 0 auto auto;
-        height: 100%;
-        scrollbar-width: none;
-
-        &:hover {
-          scrollbar-width: auto;
-        }
-
-        .character {
-          --padding-y: 1.25rem;
-          display: flex;
-          opacity: 0.5;
-          height: calc(5rem - var(--padding-y) * 2);
-          box-sizing: content-box;
-          aspect-ratio: 1;
-          padding: var(--padding-y) 0.5rem;
-
-          &:hover {
-            opacity: 0.8;
-          }
-
-          &.active {
-            --padding-y: 1rem;
-            opacity: 1;
-            position: relative;
-
-            &:before {
-              content: "";
-              position: absolute;
-              top: 0;
-              left: 0;
-              height: 0.25rem;
-              width: 100%;
-              background-color: var(--characterColor);
-            }
-          }
-
-          img {
-            background-color: var(--characterLightColor);
-            height: 100%;
-            width: auto;
-            border-radius: 0.45rem;
-            margin: auto;
-          }
-        }
-      }
-    }
-
     .feature {
       @extend .my-5, .py-5;
       @include mobile {
