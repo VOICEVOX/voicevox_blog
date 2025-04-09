@@ -209,6 +209,16 @@ const postCharacterKey =
 
     position: relative;
 
+    @include mobile {
+      grid-template-areas:
+        "character"
+        "charamenu"
+        "description";
+      grid-template-columns: 100%;
+      grid-template-rows: calc(100vh - 3.25rem - 5rem) 5rem auto;
+      max-height: unset;
+    }
+
     .prev,
     .post {
       position: absolute;
@@ -238,12 +248,17 @@ const postCharacterKey =
         width: 50vw;
         height: 100%;
         background-color: var(--characterBackgroundColor);
+
+        @include mobile {
+          width: 100%; // FIXME: 左右に空間が空いてしまう
+        }
       }
 
       .info {
         position: absolute;
         top: 0;
         right: 5%;
+
         height: 100%;
         display: flex;
         flex-direction: column;
@@ -279,10 +294,22 @@ const postCharacterKey =
       align-items: start;
       @extend .px-6;
 
+      @include mobile {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        align-items: center;
+        padding-top: 3rem;
+      }
+
       .terms {
         display: flex;
         gap: 0.5rem;
         flex-wrap: wrap;
+
+        @include mobile {
+          flex-direction: column;
+          align-items: center;
+        }
       }
     }
 
@@ -337,37 +364,6 @@ const postCharacterKey =
             border-radius: 0.45rem;
             margin: auto;
           }
-        }
-      }
-    }
-
-    /* モバイル向けのグリッド定義 */
-    @include mobile {
-      grid-template-areas:
-        "character"
-        "charamenu"
-        "description";
-      grid-template-columns: 100%;
-      grid-template-rows: calc(100vh - 3.25rem - 5rem) 5rem auto;
-      max-height: unset;
-
-      /* キャラクターエリア */
-      .character-area {
-        &::before {
-          width: 100%;
-        }
-      }
-
-      /* 説明エリア */
-      .description-area {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        align-items: center;
-        padding-top: 3rem;
-
-        .terms {
-          flex-direction: column;
-          align-items: center;
         }
       }
     }
