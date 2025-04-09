@@ -9,7 +9,6 @@ import Base from "@/layouts/Base.astro";
 import SoftwareFeature from "@/pages/_SoftwareFeature.astro";
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 import { Image } from "astro:assets";
-import CharacterMenuContainer from "./_CharacterMenuContainer.astro";
 import TopContainer from "./_TopContainer.astro";
 import { buildDescription } from "./constants";
 import featureImage from "./feature.png";
@@ -35,7 +34,6 @@ const description = buildDescription(characterInfo);
   <main class="product">
     <div class="section py-0">
       <TopContainer {characterKey} />
-      <CharacterMenuContainer selectedCharacterKey={characterKey} />
     </div>
 
     <section class="section">
