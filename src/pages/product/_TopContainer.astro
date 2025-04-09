@@ -1,9 +1,12 @@
 ---
 /**
- * 一番上に表示するコンポーネント
+ * 一番上に表示するコンポーネント。
+ * PC版ではキャラ名・キャライラスト・キャラメニューがファーストビューに表示される。
+ * モバイル版ではキャライラスト・キャラメニューがファーストビューに表示される。
  */
 
 import FontAwesomeIcon from "@/components/FontAwesomeIcon.astro";
+import KeepScrollAnchor from "@/components/KeepScrollAnchor.astro";
 import type { CharacterKey } from "@/constants/characterEntry";
 import { characterKeys } from "@/constants/characterEntry";
 import { characterInfos } from "@/constants/characterInfo";
@@ -63,7 +66,8 @@ const postCharacterKey =
   >
     <FontAwesomeIcon icon={faCircleRight} />
   </a>
-  <div class="top-character">
+
+  <div class="character-area">
     <div class="height-image-wrapper">
       <div>
         <Image
@@ -87,7 +91,8 @@ const postCharacterKey =
       <AudioSample client:visible characterInfo={characterInfo} />
     </div>
   </div>
-  <div class="description">
+
+  <div class="description-area">
     <h1 class="title">VOICEVOX {characterInfo.name}</h1>
     <p class="is-size-5">
       {description}
@@ -132,7 +137,56 @@ const postCharacterKey =
       }
     </div>
   </div>
+
+  <div class="charamenu-area">
+    <div class="characters" aria-label="キャラクター一覧">
+      {
+        characterKeys.map((key) => (
+          <KeepScrollAnchor
+            href={getProductPageUrl(characterInfos[key])}
+            class={`character ${key === characterKey ? "active" : ""}`}
+            aria-label={characterInfos[key].name}
+            role="button"
+            style={{
+              "--characterLightColor": characterInfos[key].lightColor,
+              "--characterColor": characterInfos[key].color,
+            }}
+          >
+            <Image
+              src={characterInfos[key].bustupImage}
+              alt={characterInfos[key].name}
+              width="64"
+              densities={[1, 1.5, 2]}
+            />
+          </KeepScrollAnchor>
+        ))
+      }
+    </div>
+  </div>
 </div>
+
+<script>
+  function scrollToCenter() {
+    const characterList = document.querySelector(
+      "[aria-label='キャラクター一覧']",
+    );
+    if (characterList == undefined) return;
+
+    if (!(characterList instanceof HTMLElement))
+      throw new Error(`characterList is not HTMLElement: ${characterList}`);
+
+    const active = characterList.querySelector(".active");
+    if (!(active instanceof HTMLElement))
+      throw new Error(`active is not HTMLElement: ${active}`);
+
+    const activeCenter = active.offsetLeft + active.offsetWidth / 2;
+    const containerCenter = characterList.offsetWidth / 2;
+    characterList.scrollLeft = activeCenter - containerCenter;
+  }
+  document.addEventListener("astro:after-swap", scrollToCenter);
+
+  scrollToCenter();
+</script>
 
 <style lang="scss" define:vars={{ characterBackgroundColor }} is:global>
   @use "@/styles/vars.scss" as *;
@@ -144,27 +198,31 @@ const postCharacterKey =
   @use "bulma/sass/helpers" as *;
 
   .top {
-    height: calc(
-      100vh - 3.25rem - 5rem
-    ); // NOTE: 5remはキャラクターメニューの高さ
-    display: flex;
-    flex-direction: row-reverse;
+    display: grid;
+    grid-template-areas:
+      "description character"
+      "charamenu charamenu";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: calc(100vh - 3.25rem - 5rem) 5rem;
     min-height: calc($desktop / 2);
     max-height: $desktop;
 
     position: relative;
 
     @include mobile {
-      height: auto;
+      grid-template-areas:
+        "character"
+        "charamenu"
+        "description";
+      grid-template-columns: 100%;
+      grid-template-rows: calc(100vh - 3.25rem - 5rem) 5rem auto;
       max-height: unset;
-      flex-direction: column;
-      gap: 3rem;
     }
 
     .prev,
     .post {
       position: absolute;
-      z-index: 10;
+      z-index: 10; // FIXME: なくしたい
       top: 10%;
       transform: translateY(-50%);
       font-size: 3rem;
@@ -177,17 +235,10 @@ const postCharacterKey =
       right: calc(50% - 50vw + 1.2rem);
     }
 
-    .top-character {
+    /* キャラクターエリア */
+    .character-area {
+      grid-area: character;
       position: relative;
-      flex: 0 1 50%;
-
-      @include mobile {
-        flex: 0 1 auto;
-        height: calc(100vh - 3.25rem - 5rem);
-        min-height: calc(100vh - 3.25rem - 5rem);
-        max-height: calc(100vh - 3.25rem - 5rem);
-        margin-bottom: 5rem;
-      }
 
       &::before {
         content: "";
@@ -219,7 +270,6 @@ const postCharacterKey =
           background-color: #fffc;
           width: 200px;
           border-radius: 16px;
-
           display: flex;
           flex-direction: column;
         }
@@ -235,9 +285,9 @@ const postCharacterKey =
       }
     }
 
-    .description {
-      flex: 0 1 50%;
-      flex-shrink: 0;
+    /* 説明エリア */
+    .description-area {
+      grid-area: description;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -248,6 +298,7 @@ const postCharacterKey =
         padding-left: 0 !important;
         padding-right: 0 !important;
         align-items: center;
+        padding-top: 3rem;
       }
 
       .terms {
@@ -258,6 +309,61 @@ const postCharacterKey =
         @include mobile {
           flex-direction: column;
           align-items: center;
+        }
+      }
+    }
+
+    /* キャラクターメニューエリア */
+    .charamenu-area {
+      grid-area: charamenu;
+
+      .characters {
+        display: flex;
+        overflow: auto hidden;
+        margin: 0 auto auto;
+        height: 100%;
+        scrollbar-width: none;
+
+        &:hover {
+          scrollbar-width: thin;
+        }
+
+        .character {
+          --padding-y: 1.25rem;
+          display: flex;
+          opacity: 0.5;
+          height: calc(5rem - var(--padding-y) * 2);
+          box-sizing: content-box;
+          aspect-ratio: 1;
+          padding: var(--padding-y) 0.5rem;
+
+          &:hover {
+            opacity: 0.8;
+          }
+
+          &.active {
+            --padding-y: 1rem;
+            opacity: 1;
+            position: relative;
+
+            &:before {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 0;
+              height: 0.25rem;
+              width: 100%;
+              background-color: var(--characterColor);
+            }
+          }
+
+          img {
+            background-color: var(--characterLightColor);
+            height: 100%;
+            width: auto;
+            border-radius: 0.45rem;
+            margin: auto;
+          }
         }
       }
     }
