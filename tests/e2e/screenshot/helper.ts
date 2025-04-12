@@ -1,12 +1,13 @@
-import { expect, type Page } from "playwright/test";
 import { preparePage, progressiveScroll } from "../helper";
+import test, { expect, type Page } from "playwright/test";
 
-/** スクリーンショットを撮ってスクロールしてを繰り返す */
 export async function takeScreenshots(page: Page) {
-  await preparePage(page);
+  await test.step("スクリーンショットを撮ってスクロールしてを繰り返す", async () => {
+    await preparePage(page);
 
-  // 最初からスクリーンショットを撮っていく
-  await progressiveScroll(page, async () => {
-    await expect(page).toHaveScreenshot();
+    // 最初からスクリーンショットを撮っていく
+    await progressiveScroll(page, async () => {
+      await expect(page).toHaveScreenshot();
+    });
   });
 }

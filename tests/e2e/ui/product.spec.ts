@@ -21,21 +21,21 @@ test("後ろの方のキャラクターの製品ページに遷移したとき�
 test("キャラクターの製品ページでは、そのキャラクターが中央に表示される", async ({
   page,
 }) => {
-  // 真ん中の方のキャラクターを選択
-  const middleIndex = Math.floor(characterKeys.length / 2);
-  const middleCharacterKey = characterKeys[middleIndex];
-  const middleCharacterEntry = characterEntries[middleCharacterKey];
+  await test.step("真ん中のキャラクターのページへ遷移", async () => {
+    const middleIndex = Math.floor(characterKeys.length / 2);
+    const middleCharacterKey = characterKeys[middleIndex];
+    const middleCharacterEntry = characterEntries[middleCharacterKey];
+    await gotoAndWait(page, getProductPageUrl(middleCharacterEntry));
+  });
 
-  // 真ん中のキャラクターのページへ遷移
-  await gotoAndWait(page, getProductPageUrl(middleCharacterEntry));
-
-  // キャラメニューリストのスクロール位置が大体真ん中になっていることを確認
-  const characterList = page.getByLabel("キャラクター一覧");
-  const position = await characterList.evaluate((el) => el.scrollLeft);
-  const scrollWidth = await characterList.evaluate((el) => el.scrollWidth);
-  const clientWidth = await characterList.evaluate((el) => el.clientWidth);
-  const middlePosition = scrollWidth / 2 - clientWidth / 2;
-  const tolerance = clientWidth / 8;
-  expect(position).toBeGreaterThan(middlePosition - tolerance);
-  expect(position).toBeLessThan(middlePosition + tolerance);
+  await test.step("キャラメニューリストのスクロール位置が大体真ん中になっている", async () => {
+    const characterList = page.getByLabel("キャラクター一覧");
+    const position = await characterList.evaluate((el) => el.scrollLeft);
+    const scrollWidth = await characterList.evaluate((el) => el.scrollWidth);
+    const clientWidth = await characterList.evaluate((el) => el.clientWidth);
+    const middlePosition = scrollWidth / 2 - clientWidth / 2;
+    const tolerance = clientWidth / 8;
+    expect(position).toBeGreaterThan(middlePosition - tolerance);
+    expect(position).toBeLessThan(middlePosition + tolerance);
+  });
 });

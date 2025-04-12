@@ -1,5 +1,3 @@
-import type { Page } from "playwright/test";
-
 export const isDevelopment = import.meta.env?.DEV == true;
 export const isProduction = import.meta.env?.PROD == true;
 export const isPreview = import.meta.env?.PREVIEW == true;
@@ -204,21 +202,4 @@ export function sendEvent(event: string, eventCategory: string) {
   if (typeof window !== "undefined" && window.gtag) {
     window.gtag("event", event, { event_category: eventCategory });
   }
-}
-
-/** Playwright内で画像の読み込みが完了するまで待つ */
-export async function waitForImages(page: Page) {
-  await page.waitForFunction(() =>
-    Array.from(document.images).every((img) => img.complete),
-  );
-}
-
-/** Playwright内で音声の読み込みが完了するまで待つ */
-export async function waitForAudios(page: Page) {
-  // 読み込み中クラスがあるボタンが存在しないことを確認する
-  await page.waitForFunction(() =>
-    Array.from(document.querySelectorAll(".is-loading")).every(
-      (element) => !(element instanceof HTMLButtonElement),
-    ),
-  );
 }
