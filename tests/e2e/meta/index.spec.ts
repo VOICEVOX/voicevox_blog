@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import fs from "node:fs";
-import { buffer } from "node:stream/consumers";
 import path from "node:path";
+import { buffer } from "node:stream/consumers";
 
 const sitemapPath = path.join(
   import.meta.dirname,
@@ -18,39 +18,43 @@ test.describe("http meta", () => {
     test(pathname, async ({ baseURL }) => {
       const http = await fetch(baseURL + pathname).then((res) => res.text());
 
-      // メタ情報のテスト
-      const metaInfo = {} as Record<string, string | undefined>;
+      await test.step("メタ情報のテスト", async () => {
+        const metaInfo = {} as Record<string, string | undefined>;
 
-      metaInfo.canonicalUrl = http.match(
-        /<link rel="canonical" href="(.*?)"/,
-      )?.[1];
+        metaInfo.canonicalUrl = http.match(
+          /<link rel="canonical" href="(.*?)"/,
+        )?.[1];
 
-      metaInfo.title = http.match(/<title>(.*?)<\/title>/)?.[1];
+        metaInfo.title = http.match(/<title>(.*?)<\/title>/)?.[1];
 
-      metaInfo.description = http.match(
-        /<meta name="description" content="(.*?)"/,
-      )?.[1];
+        metaInfo.description = http.match(
+          /<meta name="description" content="(.*?)"/,
+        )?.[1];
 
-      metaInfo.robots = http.match(/<meta name="robots" content="(.*?)"/)?.[1];
+        metaInfo.robots = http.match(
+          /<meta name="robots" content="(.*?)"/,
+        )?.[1];
 
-      expect(JSON.stringify(metaInfo, null, 2)).toMatchSnapshot();
+        expect(JSON.stringify(metaInfo, null, 2)).toMatchSnapshot();
+      });
 
-      // og:imageのテスト
-      const ogImageUrl = http.match(
-        /<meta property="og:image" content="(.*?)"/,
-      )?.[1];
-      if (ogImageUrl != undefined) {
-        // 相対パスになっているものとURLになっているものがあるので両方に対応
-        const ogImagePathname = ogImageUrl.startsWith("/")
-          ? ogImageUrl
-          : new URL(ogImageUrl).pathname;
-        const ogImage = await fetch(baseURL + ogImagePathname)
-          .then((res) => res.body)
-          .then((body) => buffer(body!));
-        expect(ogImage).toMatchSnapshot(
-          `share${pathname.replaceAll("/", "-")}.webp`,
-        );
-      }
+      await test.step("og:imageのテスト", async () => {
+        const ogImageUrl = http.match(
+          /<meta property="og:image" content="(.*?)"/,
+        )?.[1];
+        if (ogImageUrl != undefined) {
+          // 相対パスになっているものとURLになっているものがあるので両方に対応
+          const ogImagePathname = ogImageUrl.startsWith("/")
+            ? ogImageUrl
+            : new URL(ogImageUrl).pathname;
+          const ogImage = await fetch(baseURL + ogImagePathname)
+            .then((res) => res.body)
+            .then((body) => buffer(body!));
+          expect(ogImage).toMatchSnapshot(
+            `share${pathname.replaceAll("/", "-")}.webp`,
+          );
+        }
+      });
     });
   }
 });
