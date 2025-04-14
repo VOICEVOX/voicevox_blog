@@ -35,4 +35,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: preview-pages
-          path: "./src/.vitepress/dist"
+          path: "./dist"
