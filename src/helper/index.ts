@@ -206,6 +206,6 @@ export function sendEvent(event: string, eventCategory: string) {
 
 /** パスにViteのBASE_URLを追加する関数 */
 export function withBaseUrl(path: string) {
-  const baseUrl = import.meta.env.BASE_URL;
-  return baseUrl ? `${baseUrl}${path}` : path;
+  const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, "");
+  return baseUrl ? `${baseUrl}/${path}` : path;
 }
