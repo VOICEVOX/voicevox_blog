@@ -1,6 +1,7 @@
 ---
 import { characterKeys } from "@/constants/characterEntry";
 import { characterInfos } from "@/constants/characterInfo";
+import { withBaseUrl } from "@/helper";
 import Base from "@/layouts/Base.astro";
 import { showDownloadModalAttr } from "@/store";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
@@ -67,7 +68,11 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
             </span>
             <span class="has-text-weight-semibold">ダウンロード</span>
           </a>
-          <a href="/term/" class="button is-normal is-rounded" role="button">
+          <a
+            href={withBaseUrl("/term/")}
+            class="button is-normal is-rounded"
+            role="button"
+          >
             利用規約
           </a>
         </div>

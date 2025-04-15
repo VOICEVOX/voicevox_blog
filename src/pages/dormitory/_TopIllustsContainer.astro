@@ -1,5 +1,6 @@
 ---
 import { dormitoryTopIllustInfos } from "@/constants/dormitoryTopIllustInfo";
+import { withBaseUrl } from "@/helper";
 import "@/styles/helper.scss";
 import { Image } from "astro:assets";
 import "./style.scss";
@@ -20,7 +21,7 @@ const { id } = Astro.props;
       // トップイラスト一覧
       dormitoryTopIllustInfos.map(({ image, illustrator }, index) => (
         <div class="column is-4">
-          <a href={`/dormitory/top_illust/${index + 1}`}>
+          <a href={withBaseUrl(`/dormitory/top_illust/${index + 1}`)}>
             <div class="thumbnail-wrapper">
               <Image
                 src={image}

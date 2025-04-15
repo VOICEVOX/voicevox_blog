@@ -2,6 +2,7 @@
 import KeepScrollAnchor from "@/components/KeepScrollAnchor.astro";
 import type { CharacterInfo } from "@/constants/type";
 import { getDormitoryCharacterPageUrl } from "@/constants/url";
+import { withBaseUrl } from "@/helper";
 import type { descriptionTypes } from "./_constants";
 
 interface Props {
@@ -24,7 +25,7 @@ const selected = selectedType == targetType;
     borderColor: characterInfo.color,
     backgroundColor: selected ? characterInfo.lightColor : undefined,
   }}
-  href={`${getDormitoryCharacterPageUrl(characterInfo, targetType)}`}
+  href={withBaseUrl(getDormitoryCharacterPageUrl(characterInfo, targetType))}
   role="button"
 >
   <span>{targetName}</span>

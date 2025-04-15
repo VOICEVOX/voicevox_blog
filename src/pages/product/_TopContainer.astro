@@ -14,6 +14,7 @@ import {
   getDormitoryCharacterPageUrl,
   getProductPageUrl,
 } from "@/constants/url";
+import { withBaseUrl } from "@/helper";
 import {
   showDownloadModalAttr,
   showLibraryTermIntroModalCharacterKeyAttr,
@@ -51,7 +52,7 @@ const postCharacterKey =
 
 <div class="top container">
   <a
-    href={getProductPageUrl(characterInfos[prevCharacterKey])}
+    href={withBaseUrl(getProductPageUrl(characterInfos[prevCharacterKey]))}
     class="button prev circle-icon is-black"
     aria-label="前のキャラクターを表示"
     role="button"
@@ -59,7 +60,7 @@ const postCharacterKey =
     <FontAwesomeIcon icon={faCircleLeft} />
   </a>
   <a
-    href={getProductPageUrl(characterInfos[postCharacterKey])}
+    href={withBaseUrl(getProductPageUrl(characterInfos[postCharacterKey]))}
     class="button post circle-icon is-black"
     aria-label="次のキャラクターを表示"
     role="button"
@@ -83,7 +84,7 @@ const postCharacterKey =
       <div class="detail p-4">
         <p>{characterInfo.description.replaceAll("<br />", "")}</p>
         <a
-          href={getDormitoryCharacterPageUrl(characterInfo)}
+          href={withBaseUrl(getDormitoryCharacterPageUrl(characterInfo))}
           class="has-text-weight-bold has-text-black">キャラクター詳細 →</a
         >
       </div>
@@ -119,7 +120,7 @@ const postCharacterKey =
       )
     }
     <div class="terms mt-5">
-      <a href="/term/" class="button is-normal is-rounded">
+      <a href={withBaseUrl("/term/")} class="button is-normal is-rounded">
         <span>VOICEVOX 利用規約</span>
       </a>
       {

@@ -2,6 +2,7 @@ import Selector from "./Selector";
 import linuxInstallCpu from "@/assets/script/linuxInstallCpu.sh?url";
 import linuxInstallNvidia from "@/assets/script/linuxInstallNvidia.sh?url";
 import { APP_VERSION } from "@/constants";
+import {withBaseUrl} from "@/helper";
 import { $downloadModal } from "@/store";
 import { useStore } from "@nanostores/react";
 import { useEffect, useState } from "react";
@@ -188,7 +189,7 @@ export default function DownloadModal() {
           />
           <p className="has-text-centered is-size-7">
             ※ GPUモードの方が快適ですが、利用するためには
-            <a href="/qa/">対応するGPU</a>
+            <a href={withBaseUrl("/qa/")}>対応するGPU</a>
             が必要です
           </p>
 
@@ -207,7 +208,7 @@ export default function DownloadModal() {
 
         <footer className="modal-card-foot is-justify-content-flex-end">
           <div className="buttons">
-            <a href="/term/" className="button" role="button">
+            <a href={withBaseUrl("/term/")} className="button" role="button">
               <span>利用規約</span>
             </a>
             <a

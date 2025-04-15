@@ -2,6 +2,7 @@
 import shareThumb from "@/assets/dormitory-top-illust-images/top-illust-009.png";
 import { hideHeaderAttr } from "@/components/Header/Header";
 import { characterInfos } from "@/constants/characterInfo";
+import { withBaseUrl } from "@/helper";
 import Base from "@/layouts/Base.astro";
 import { getImage } from "astro:assets";
 import CharacterCard from "./_CharacterCard.astro";
@@ -225,7 +226,7 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
         <div class="has-text-centered pt-2 pb-0">
           <h2 class="title is-4">関連コンテンツ</h2>
           <a
-            href="/dormitory/call_names/"
+            href={withBaseUrl("/dormitory/call_names/")}
             class="button is-normal is-rounded"
             role="button"
           >

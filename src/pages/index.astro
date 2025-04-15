@@ -2,6 +2,7 @@
 import { hideHeaderAttr } from "@/components/Header/Header";
 import { characterKeys } from "@/constants/characterEntry";
 import { characterInfos } from "@/constants/characterInfo";
+import { withBaseUrl } from "@/helper";
 import Base from "@/layouts/Base.astro";
 import { Image, getImage } from "astro:assets";
 import LinkListSection from "./_LinkListSection.astro";
@@ -61,9 +62,7 @@ const landingMovieThumbUrl = (await getImage({ src: landingMovieThumb })).src;
       <section class="section">
         <div class="container is-max-desktop is-flex is-flex-direction-column">
           <h2 id="characters" class="jump-anchor-header-padding title">
-            <a href={`#characters`} class="has-text-black">
-              キャラクター一覧
-            </a>
+            <a href="#characters" class="has-text-black"> キャラクター一覧 </a>
           </h2>
           <div class="columns is-multiline is-centered">
             {
@@ -78,14 +77,14 @@ const landingMovieThumbUrl = (await getImage({ src: landingMovieThumb })).src;
       <section class="section">
         <div class="container is-max-desktop is-flex is-flex-direction-column">
           <h2 id="nemo" class="jump-anchor-header-padding title">
-            <a href={`#nemo`} class="has-text-black"> VOICEVOX Nemo </a>
+            <a href="#nemo" class="has-text-black"> VOICEVOX Nemo </a>
           </h2>
           <p class="is-size-5">
             VOICEVOX Nemo はキャラクターのいない音声ライブラリです。
           </p>
           <p class="is-size-5">
             詳しくは&nbsp;<a
-              href={"/nemo/"}
+              href={withBaseUrl("/nemo/")}
               class="has-text-weight-bold is-underlined">VOICEVOX Nemo</a
             >&nbsp;をご参照ください。
           </p>
@@ -97,9 +96,7 @@ const landingMovieThumbUrl = (await getImage({ src: landingMovieThumb })).src;
       <section class="section">
         <div class="container is-max-desktop is-flex is-flex-direction-column">
           <h2 id="core_library" class="jump-anchor-header-padding title">
-            <a href={`#core_library`} class="has-text-black">
-              コアライブラリ
-            </a>
+            <a href="#core_library" class="has-text-black"> コアライブラリ </a>
           </h2>
           <p class="is-size-5">
             VOICEVOXの音声合成をアプリケーションやサービスに組み込める、VOICEVOXのコアライブラリを配布しています。

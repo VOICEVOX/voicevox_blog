@@ -2,6 +2,7 @@
 import { characterKeys } from "@/constants/characterEntry";
 import { characterInfos } from "@/constants/characterInfo";
 import { getDormitoryCharacterPageUrl } from "@/constants/url";
+import { withBaseUrl } from "@/helper";
 import Base from "@/layouts/Base.astro";
 import ExplainSection from "../_ExplainSection.astro";
 import CharacterImage from "./_CharacterImage.astro";
@@ -36,8 +37,9 @@ function rgba2rgbOnWhite(
       <div class="container has-text-centered">
         <h1 class="title">ボイボ寮キャラクターの呼称表</h1>
         <p>
-          <a href="/dormitory/" class="has-text-weight-bold is-underlined"
-            >ボイボ寮</a
+          <a
+            href={withBaseUrl("/dormitory/")}
+            class="has-text-weight-bold is-underlined">ボイボ寮</a
           >キャラクターの呼び方一覧表です。必ずしも遵守する必要はなく、自由に改変して頂いても問題ありません。
         </p>
       </div>
@@ -57,7 +59,11 @@ function rgba2rgbOnWhite(
                 const characterInfo = characterInfos[characterKey];
                 return (
                   <th>
-                    <a href={getDormitoryCharacterPageUrl(characterInfo)}>
+                    <a
+                      href={withBaseUrl(
+                        getDormitoryCharacterPageUrl(characterInfo),
+                      )}
+                    >
                       <CharacterImage characterInfo={characterInfo} />
                       <p
                         style={{
@@ -96,7 +102,11 @@ function rgba2rgbOnWhite(
                       backgroundColor,
                     }}
                   >
-                    <a href={getDormitoryCharacterPageUrl(characterInfo)}>
+                    <a
+                      href={withBaseUrl(
+                        getDormitoryCharacterPageUrl(characterInfo),
+                      )}
+                    >
                       <CharacterImage characterInfo={characterInfo} />
                       <p
                         style={{

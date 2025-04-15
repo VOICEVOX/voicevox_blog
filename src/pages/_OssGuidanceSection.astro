@@ -5,6 +5,7 @@ interface Props {
 }
 
 import FontAwesomeIcon from "@/components/FontAwesomeIcon.astro";
+import { withBaseUrl } from "@/helper";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 const { class: className, isDark } = Astro.props;
@@ -15,7 +16,10 @@ const { class: className, isDark } = Astro.props;
     class={`${className} container is-max-desktop is-flex is-flex-direction-column`}
   >
     <h2 id="oss" class="jump-anchor-header-padding title">
-      <a href={`#oss`} class={!isDark ? "has-text-black" : "has-text-white"}>
+      <a
+        href={withBaseUrl("#oss")}
+        class={!isDark ? "has-text-black" : "has-text-white"}
+      >
         オープンソース
       </a>
     </h2>

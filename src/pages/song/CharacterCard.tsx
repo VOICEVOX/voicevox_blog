@@ -4,6 +4,7 @@
 import PlayButton from "@/components/PlayButton/PlayButton";
 import type { CharacterInfo } from "@/constants/type";
 import { getProductPageUrl } from "@/constants/url";
+import { withBaseUrl } from "@/helper";
 import {
   faBackwardStep,
   faForwardStep,
@@ -95,7 +96,7 @@ export default function CharacterCard({
   }: React.HTMLAttributes<HTMLLinkElement>) => {
     return (
       <a
-        href={getProductPageUrl(characterInfo)}
+        href={withBaseUrl(getProductPageUrl(characterInfo))}
         className={className}
         style={style}
       >

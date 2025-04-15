@@ -4,6 +4,7 @@ import { characterInfos } from "@/constants/characterInfo";
 import { callNameInfos } from "@/constants/characterInfos/callNameInfo";
 import type { CharacterInfo } from "@/constants/type";
 import { getDormitoryCharacterPageUrl } from "@/constants/url";
+import { withBaseUrl } from "@/helper";
 import { Image } from "astro:assets";
 
 interface Props {
@@ -53,7 +54,11 @@ const targetCharacterInfo = characterInfos[targetCharacterKey];
       </span>
     </div>
   </div>
-  <a href={getDormitoryCharacterPageUrl(targetCharacterInfo, "calls")}>
+  <a
+    href={withBaseUrl(
+      getDormitoryCharacterPageUrl(targetCharacterInfo, "calls"),
+    )}
+  >
     <Image
       src={targetCharacterInfo.bustupImage}
       alt={targetCharacterInfo.name}
