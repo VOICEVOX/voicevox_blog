@@ -1,6 +1,7 @@
 ---
 import type { CharacterInfo } from "@/constants/type";
 import { getDormitoryCharacterPageUrl } from "@/constants/url";
+import { withBaseUrl } from "@/helper";
 import { Image } from "astro:assets";
 
 interface Props {
@@ -22,7 +23,7 @@ const href = getDormitoryCharacterPageUrl(characterInfo);
     class="card character-card"
     style={{ borderColor: color, height: "100%" }}
   >
-    <a href={href}>
+    <a href={withBaseUrl(href)}>
       <Image
         class="card-image"
         src={characterInfo.bustupImage}
