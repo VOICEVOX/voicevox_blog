@@ -144,7 +144,7 @@ const postCharacterKey =
       {
         characterKeys.map((key) => (
           <KeepScrollAnchor
-            href={getProductPageUrl(characterInfos[key])}
+            href={withBaseUrl(getProductPageUrl(characterInfos[key]))}
             class={`character ${key === characterKey ? "active" : ""}`}
             aria-label={characterInfos[key].name}
             role="button"
