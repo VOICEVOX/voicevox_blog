@@ -1,4 +1,4 @@
-import { isDevelopment, sendEvent } from "@/helper";
+import { isDevelopment, sendEvent, withBaseUrl } from "@/helper";
 import { $downloadModal, $nemoGuidanceModal } from "@/store";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -41,21 +41,24 @@ export default function Header({
   const menus = [
     {
       Component: ({ className }: { className?: string }) => (
-        <a href="/" className={`navbar-item ${className}`}>
+        <a href={withBaseUrl("/")} className={`navbar-item ${className}`}>
           トーク
         </a>
       ),
     },
     {
       Component: ({ className }: { className?: string }) => (
-        <a href="/song/" className={`navbar-item ${className}`}>
+        <a href={withBaseUrl("/song/")} className={`navbar-item ${className}`}>
           ソング
         </a>
       ),
     },
     {
       Component: ({ className }: { className?: string }) => (
-        <a href="/dormitory/" className={`navbar-item ${className}`}>
+        <a
+          href={withBaseUrl("/dormitory/")}
+          className={`navbar-item ${className}`}
+        >
           ボイボ寮
         </a>
       ),
@@ -63,7 +66,7 @@ export default function Header({
     },
     {
       Component: ({ className }: { className?: string }) => (
-        <a href="/nemo/" className={`navbar-item ${className}`}>
+        <a href={withBaseUrl("/nemo/")} className={`navbar-item ${className}`}>
           Nemo
         </a>
       ),
@@ -71,7 +74,10 @@ export default function Header({
     },
     {
       Component: ({ className }: { className?: string }) => (
-        <a href="/how_to_use/" className={`navbar-item ${className}`}>
+        <a
+          href={withBaseUrl("/how_to_use/")}
+          className={`navbar-item ${className}`}
+        >
           使い方
         </a>
       ),
@@ -79,7 +85,7 @@ export default function Header({
     },
     {
       Component: ({ className }: { className?: string }) => (
-        <a href="/term/" className={`navbar-item ${className}`}>
+        <a href={withBaseUrl("/term/")} className={`navbar-item ${className}`}>
           利用規約
         </a>
       ),
@@ -87,7 +93,7 @@ export default function Header({
     },
     {
       Component: ({ className }: { className?: string }) => (
-        <a href="/qa/" className={`navbar-item ${className}`}>
+        <a href={withBaseUrl("/qa/")} className={`navbar-item ${className}`}>
           Q&amp;A
         </a>
       ),
@@ -95,7 +101,10 @@ export default function Header({
     },
     {
       Component: ({ className }: { className?: string }) => (
-        <a href="/update_history/" className={`navbar-item ${className}`}>
+        <a
+          href={withBaseUrl("/update_history/")}
+          className={`navbar-item ${className}`}
+        >
           変更履歴
         </a>
       ),
@@ -105,7 +114,10 @@ export default function Header({
       ? [
           {
             Component: ({ className }: { className?: string }) => (
-              <a href="/news/" className={`navbar-item ${className}`}>
+              <a
+                href={withBaseUrl("/news/")}
+                className={`navbar-item ${className}`}
+              >
                 ニュース
               </a>
             ),
@@ -163,7 +175,7 @@ export default function Header({
         aria-label="main navigation"
       >
         <div className="navbar-brand">
-          <a href="/" className="navbar-item">
+          <a href={withBaseUrl("/")} className="navbar-item">
             <img src={iconUrl} alt="" width="28" height="28" />
             <span className="has-text-weight-bold is-size-5"> VOICEVOX </span>
           </a>

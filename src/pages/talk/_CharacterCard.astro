@@ -1,6 +1,7 @@
 ---
 import type { CharacterInfo } from "@/constants/type";
 import { getProductPageUrl } from "@/constants/url";
+import { withBaseUrl } from "@/helper";
 import { showLibraryTermIntroModalCharacterKeyAttr } from "@/store";
 import "@/styles/helper.scss"; // NOTE: PlayButtonのため
 import { Image } from "astro:assets";
@@ -16,7 +17,7 @@ const characterKey = characterInfo.key;
 
 <div class="column is-6-tablet is-4-desktop">
   <div class="card">
-    <a href={getProductPageUrl(characterInfo)} class="card-image">
+    <a href={withBaseUrl(getProductPageUrl(characterInfo))} class="card-image">
       <Image
         src={characterInfo.bustupImage}
         alt={characterInfo.name}
@@ -27,7 +28,10 @@ const characterKey = characterInfo.key;
     </a>
     <div class="card-content has-text-centered">
       <h3 class="title is-4">
-        <a href={getProductPageUrl(characterInfo)} style={{ color: "inherit" }}>
+        <a
+          href={withBaseUrl(getProductPageUrl(characterInfo))}
+          style={{ color: "inherit" }}
+        >
           {characterInfo.name}
         </a>
       </h3>

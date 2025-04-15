@@ -1,4 +1,6 @@
 ---
+import { withBaseUrl } from "@/helper";
+
 /**
  * ボイボ寮とVOICEVOXをちょっとだけ紹介するコンポーネント
  */
@@ -25,7 +27,7 @@ const { showingDormitoryPageButton } = Astro.props;
     {
       showingDormitoryPageButton && (
         <a
-          href="/dormitory/"
+          href={withBaseUrl("/dormitory/")}
           class="button is-align-self-center mt-5 is-normal is-rounded"
           role="button"
         >
@@ -46,7 +48,7 @@ const { showingDormitoryPageButton } = Astro.props;
       商用・非商用問わず無料で、イントネーションの詳細な調整ができることが特徴です。
     </p>
     <a
-      href={"/"}
+      href={withBaseUrl("/")}
       class="button is-align-self-center mt-5 is-primary is-rounded"
       role="button"
     >

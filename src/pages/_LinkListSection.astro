@@ -1,5 +1,5 @@
 ---
-import { isDevelopment } from "@/helper";
+import { isDevelopment, withBaseUrl } from "@/helper";
 
 /**
  * リンク一覧セクション
@@ -9,36 +9,45 @@ import { isDevelopment } from "@/helper";
 <section class="section">
   <div class="container is-max-desktop is-flex is-flex-direction-column">
     <h2 id="link" class="jump-anchor-header-padding title">
-      <a href={`#link`} class="has-text-black">リンク</a>
+      <a href={withBaseUrl("#link")} class="has-text-black">リンク</a>
     </h2>
     <ul class="is-size-5">
       <li>
-        <a href={"/dormitory/"} class="has-text-weight-bold is-underlined"
-          >ボイボ寮</a
+        <a
+          href={withBaseUrl("/dormitory/")}
+          class="has-text-weight-bold is-underlined">ボイボ寮</a
         >
       </li>
       <li>
-        <a href={"/how_to_use/"} class="has-text-weight-bold is-underlined"
-          >使い方</a
+        <a
+          href={withBaseUrl("/how_to_use/")}
+          class="has-text-weight-bold is-underlined">使い方</a
         >
       </li>
       <li>
-        <a href={"/term/"} class="has-text-weight-bold is-underlined"
-          >利用規約</a
+        <a
+          href={withBaseUrl("/term/")}
+          class="has-text-weight-bold is-underlined">利用規約</a
         >
       </li>
       <li>
-        <a href={"/qa/"} class="has-text-weight-bold is-underlined">Q&amp;A</a>
+        <a href={withBaseUrl("/qa/")} class="has-text-weight-bold is-underlined"
+          >Q&amp;A</a
+        >
       </li>
       <li>
-        <a href={"/update_history/"} class="has-text-weight-bold is-underlined"
-          >変更履歴</a
+        <a
+          href={withBaseUrl("/update_history/")}
+          class="has-text-weight-bold is-underlined">変更履歴</a
         >
       </li>
       {
         isDevelopment && (
           <li>
-            <a href={"/news/"} class="has-text-weight-bold is-underlined">
+            <a
+              href={withBaseUrl("/news/")}
+              class="has-text-weight-bold is-underlined"
+            >
               ニュース
             </a>
           </li>

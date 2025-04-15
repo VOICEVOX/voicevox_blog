@@ -3,6 +3,7 @@
  */
 import DownloadModalSelecter from "./Selector";
 import { NEMO_VERSION } from "@/constants";
+import { withBaseUrl } from "@/helper";
 import { $nemoDownloadModal } from "@/store";
 import { useStore } from "@nanostores/react";
 import { useEffect, useState } from "react";
@@ -123,7 +124,7 @@ export default function DownloadNemoModal() {
           />
           <p className="has-text-centered is-size-7">
             ※ GPUモードの方が快適ですが、利用するためには
-            <a href="/qa/">対応するGPU</a>
+            <a href={withBaseUrl("/qa/")}>対応するGPU</a>
             が必要です
           </p>
 

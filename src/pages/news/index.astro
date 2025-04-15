@@ -4,6 +4,7 @@
  * ファイル名の逆順に表示する。
  */
 
+import { withBaseUrl } from "@/helper";
 import Base from "@/layouts/Base.astro";
 import shareThumb from "./_share.jpg";
 import { articles } from "./constants";
@@ -24,7 +25,7 @@ import { articles } from "./constants";
       {
         articles.map((article) => (
           <div class="mb-3">
-            <a href={`/news/${article.frontmatter.slug}`}>
+            <a href={withBaseUrl(`/news/${article.frontmatter.slug}`)}>
               {article.frontmatter.title}
             </a>
             <p class="has-text-grey-light">{article.frontmatter.date}</p>

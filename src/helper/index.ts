@@ -203,3 +203,9 @@ export function sendEvent(event: string, eventCategory: string) {
     window.gtag("event", event, { event_category: eventCategory });
   }
 }
+
+/** パスにViteのBASE_URLを追加する関数 */
+export function withBaseUrl(path: string) {
+  const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, "");
+  return baseUrl ? `${baseUrl}/${path}` : path;
+}

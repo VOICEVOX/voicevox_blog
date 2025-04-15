@@ -12,7 +12,7 @@ on:
       - reopened
   push:
     branches:
-      - main
+      - master
       - project-*
 
 jobs:

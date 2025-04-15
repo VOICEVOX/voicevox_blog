@@ -5,6 +5,7 @@ import { characterEntries, characterKeys } from "@/constants/characterEntry";
 import { characterInfos } from "@/constants/characterInfo";
 import { callNameInfos } from "@/constants/characterInfos/callNameInfo";
 import { getProductPageUrl } from "@/constants/url";
+import { withBaseUrl } from "@/helper";
 import Base from "@/layouts/Base.astro";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
@@ -83,7 +84,8 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
                         ? "visible"
                         : "hidden",
                     }}
-                    href={characterInfo.detailUrl}
+                    href={characterInfo.detailUrl &&
+                      withBaseUrl(characterInfo.detailUrl)}
                     aria-label={`${characterInfo.name}の詳細ページ`}
                     target="_blank"
                     rel="noreferrer"
@@ -227,14 +229,14 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
         </div>
         <div class="link-buttons has-text-weight-bold">
           <a
-            href={getProductPageUrl(characterInfo)}
+            href={withBaseUrl(getProductPageUrl(characterInfo))}
             class="button is-normal is-rounded character-list-button"
             style={{ borderColor: characterInfo.color }}
           >
             ダウンロードページ
           </a>
           <a
-            href={`/dormitory/#${characterInfo.id}`}
+            href={withBaseUrl(`/dormitory/#${characterInfo.id}`)}
             class="button is-normal is-rounded character-list-button"
             style={{ borderColor: characterInfo.color }}
           >
