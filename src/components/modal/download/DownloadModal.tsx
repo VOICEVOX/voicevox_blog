@@ -2,7 +2,7 @@ import Selector from "./Selector";
 import linuxInstallCpu from "@/assets/script/linuxInstallCpu.sh?url";
 import linuxInstallNvidia from "@/assets/script/linuxInstallNvidia.sh?url";
 import { APP_VERSION } from "@/constants";
-import {withBaseUrl} from "@/helper";
+import { withBaseUrl } from "@/helper";
 import { $downloadModal } from "@/store";
 import { useStore } from "@nanostores/react";
 import { useEffect, useState } from "react";

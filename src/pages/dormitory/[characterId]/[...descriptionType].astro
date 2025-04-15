@@ -5,6 +5,7 @@ import { characterEntries, characterKeys } from "@/constants/characterEntry";
 import { characterInfos } from "@/constants/characterInfo";
 import { callNameInfos } from "@/constants/characterInfos/callNameInfo";
 import { getProductPageUrl } from "@/constants/url";
+import { withBaseUrl } from "@/helper";
 import Base from "@/layouts/Base.astro";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
@@ -13,7 +14,6 @@ import backgroundImage from "../images/nc238325.jpg";
 import CallBox from "./_CallBox.astro";
 import { descriptionTypes } from "./_constants";
 import TypeButton from "./_TypeButton.astro";
-import {withBaseUrl} from "@/helper";
 
 export const getStaticPaths = (async () => {
   return characterKeys.flatMap((key) =>
@@ -84,7 +84,8 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
                         ? "visible"
                         : "hidden",
                     }}
-                    href={characterInfo.detailUrl && withBaseUrl(characterInfo.detailUrl)}
+                    href={characterInfo.detailUrl &&
+                      withBaseUrl(characterInfo.detailUrl)}
                     aria-label={`${characterInfo.name}の詳細ページ`}
                     target="_blank"
                     rel="noreferrer"
