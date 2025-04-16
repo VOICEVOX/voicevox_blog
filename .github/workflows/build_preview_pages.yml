@@ -6,7 +6,7 @@ name: "Build Preview Pages"
 on:
   push:
     branches:
-      - main
+      - master
       - project-*
   pull_request:
 
