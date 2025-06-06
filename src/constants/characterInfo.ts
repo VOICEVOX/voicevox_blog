@@ -14,6 +14,7 @@ import kigashima_sourin_info from "./characterInfos/kigashima_sourin";
 import kotoyomi_nia_info from "./characterInfos/kotoyomi_nia";
 import kurita_maron_info from "./characterInfos/kurita_maron";
 import kurono_takehiro_info from "./characterInfos/kurono_takehiro";
+import kurosawa_kohaku_info from "./characterInfos/kurosawa_kohaku";
 import kyushu_sora_info from "./characterInfos/kyushu_sora";
 import manbetsu_hanamaru_info from "./characterInfos/manbetsu_hanamaru";
 import meimei_himari_info from "./characterInfos/meimei_himari";
@@ -24,6 +25,7 @@ import nekotsuka_bi_info from "./characterInfos/nekotsuka_bi";
 import number_seven_info from "./characterInfos/number_seven";
 import nurserobo_typet_info from "./characterInfos/nurserobo_typet";
 import ouka_miko_info from "./characterInfos/ouka_miko";
+import rito_info from "./characterInfos/rito";
 import sayo_info from "./characterInfos/sayo";
 import shikoku_metan_info from "./characterInfos/shikoku_metan";
 import shirakami_kotarou_info from "./characterInfos/shirakami_kotarou";
@@ -70,4 +72,6 @@ export const characterInfos: {
   Voidoll: voidoll_info,
   ぞん子: zonko_info,
   中部つるぎ: chubu_tsurugi_info,
+  離途: rito_info,
+  黒沢冴白: kurosawa_kohaku_info,
 };

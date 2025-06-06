@@ -167,6 +167,16 @@
     </url>
     <url>
         <loc>
+            https://voicevox.hiroshiba.jp/dormitory/kurosawa_kohaku/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            https://voicevox.hiroshiba.jp/dormitory/kurosawa_kohaku/calls/
+        </loc>
+    </url>
+    <url>
+        <loc>
             https://voicevox.hiroshiba.jp/dormitory/kyushu_sora/
         </loc>
     </url>
@@ -263,6 +273,16 @@
     <url>
         <loc>
             https://voicevox.hiroshiba.jp/dormitory/ouka_miko/calls/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            https://voicevox.hiroshiba.jp/dormitory/rito/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            https://voicevox.hiroshiba.jp/dormitory/rito/calls/
         </loc>
     </url>
     <url>
@@ -497,6 +517,11 @@
     </url>
     <url>
         <loc>
+            https://voicevox.hiroshiba.jp/product/kurosawa_kohaku/
+        </loc>
+    </url>
+    <url>
+        <loc>
             https://voicevox.hiroshiba.jp/product/kyushu_sora/
         </loc>
     </url>
@@ -543,6 +568,11 @@
     <url>
         <loc>
             https://voicevox.hiroshiba.jp/product/ouka_miko/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            https://voicevox.hiroshiba.jp/product/rito/
         </loc>
     </url>
     <url>

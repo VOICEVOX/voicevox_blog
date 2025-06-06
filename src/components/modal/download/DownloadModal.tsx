@@ -192,6 +192,14 @@ export default function DownloadModal() {
             <a href={withBaseUrl("/qa/")}>対応するGPU</a>
             が必要です
           </p>
+          {
+            /* TODO: 利用可能になったら戻す */
+            selectedOs === "Linux" && (
+              <p className="has-text-centered is-size-7 has-text-danger has-text-weight-semibold">
+                ※ Linux版のGPUモードは一時的に利用できません
+              </p>
+            )
+          }
 
           <hr className="my-3" />
 

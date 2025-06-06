@@ -31,7 +31,7 @@ export default {
     { label: "年齢", value: "20代前後", size: 2 },
     { label: "誕生日", value: "12月24日", size: 2 },
   ],
-  policyUrl: "https://virvoxproject.wixsite.com/official/voicevoxの利用規約",
-  detailUrl: "https://virvoxproject.wixsite.com/official/玄野武宏",
+  policyUrl: "https://www.virvoxproject.com/voicevoxの利用規約",
+  detailUrl: "https://www.virvoxproject.com/玄野武宏",
   ...getCharacterAssets(key, styles),
 } satisfies CharacterInfo;

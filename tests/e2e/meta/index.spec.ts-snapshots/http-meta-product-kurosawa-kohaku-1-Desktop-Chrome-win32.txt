@@ -1,0 +1,6 @@
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/product/kurosawa_kohaku/",
+  "title": "VOICEVOX 黒沢冴白 | 無料のテキスト読み上げソフトウェア",
+  "description": "VOICEVOXは「黒沢冴白」の強気で張りのある声で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。",
+  "robots": "index, follow"
+}

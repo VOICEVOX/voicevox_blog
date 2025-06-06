@@ -33,7 +33,7 @@ export default {
     { label: "年齢", value: "18 歳", size: 2 },
     { label: "誕生日", value: "秋生まれ", size: 2 },
   ],
-  policyUrl: "https://virvoxproject.wixsite.com/official/voicevoxの利用規約",
-  detailUrl: "https://virvoxproject.wixsite.com/official/白上虎太郎",
+  policyUrl: "https://www.virvoxproject.com/voicevoxの利用規約",
+  detailUrl: "https://www.virvoxproject.com/白上虎太郎",
   ...getCharacterAssets(key, styles),
 } satisfies CharacterInfo;
