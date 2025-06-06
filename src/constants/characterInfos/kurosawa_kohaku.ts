@@ -8,7 +8,6 @@ const styles = [
   { name: "ノーマル", id: "normal", type: "talk" },
 ] satisfies Styles;
 
-// TODO: いろいろ変更する
 export default {
   key,
   name: "黒沢冴白",
