@@ -16,7 +16,7 @@ export default {
   name: "ぞん子",
   id: "zonko",
   rubyName: "<ruby>ぞん</ruby><ruby>子<rp>(</rp><rt>こ</rt><rp>)</rp></ruby>",
-  voiceFeature: "血気盛んでありありとした声",
+  voiceFeature: "熱血的でありありとした声",
   color: "#A45AAA",
   lightColor: "#CAB2D6",
   description:

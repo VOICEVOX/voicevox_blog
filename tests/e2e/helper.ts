@@ -1,4 +1,4 @@
-import { waitForAudios, waitForImages } from "@/helper/playwrightHelper";
+import { waitForImages } from "@/helper/playwrightHelper";
 import { expect, type Page, test } from "playwright/test";
 
 export async function gotoAndWait(
@@ -9,6 +9,18 @@ export async function gotoAndWait(
   await test.step("ページを読み込んで少し待つ", async () => {
     await page.goto(url);
     await page.waitForTimeout(timeout);
+  });
+}
+
+/** Playwright内で音声の読み込みが完了するまで待つ */
+export async function waitForAudios(page: Page) {
+  await test.step("音声の読み込みが完了するまで待つ", async () => {
+    // 読み込み中クラスがあるボタンが存在しないことを確認する
+    await page.waitForFunction(() =>
+      Array.from(document.querySelectorAll(".is-loading")).every(
+        (element) => !(element instanceof HTMLButtonElement),
+      ),
+    );
   });
 }
 

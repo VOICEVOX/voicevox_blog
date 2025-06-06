@@ -32,6 +32,8 @@ export const characterKeys = [
   "Voidoll",
   "ぞん子",
   "中部つるぎ",
+  "離途",
+  "黒沢冴白",
 ] as const;
 
 export type CharacterKey = (typeof characterKeys)[number];
@@ -173,6 +175,14 @@ export const characterEntries = {
   中部つるぎ: {
     name: "中部つるぎ",
     id: "chubu_tsurugi",
+  },
+  離途: {
+    name: "離途",
+    id: "rito",
+  },
+  黒沢冴白: {
+    name: "黒沢冴白",
+    id: "kurosawa_kohaku",
   },
 } as const satisfies {
   [key in CharacterKey]: CharacterEntry;

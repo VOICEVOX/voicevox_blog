@@ -27,7 +27,7 @@ export default {
     { label: "趣味１", value: "パワースポット（霊脈？）巡り", size: 2 },
     { label: "趣味２", value: "入浴、SNS投稿", size: 2 },
   ],
-  policyUrl: "https://virvoxproject.wixsite.com/official/voicevoxの利用規約",
-  detailUrl: "https://virvoxproject.wixsite.com/official/麒ヶ島宗麟",
+  policyUrl: "https://www.virvoxproject.com/voicevoxの利用規約",
+  detailUrl: "https://www.virvoxproject.com/麒ヶ島宗麟",
   ...getCharacterAssets(key, styles),
 } satisfies CharacterInfo;
