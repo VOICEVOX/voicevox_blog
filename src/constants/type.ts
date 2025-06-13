@@ -16,6 +16,7 @@ export type CharacterInfo = {
   lightColor: string;
   description: string; // ボイボ寮ページでの紹介文
   additionalProductDescription?: string; // 製品ページでの追加の紹介文
+  additionalProductLinks?: { label: string; url: string }[]; // 製品ページでの追加のリンク
   labelInfos: { label: string; value: string; size: 1 | 2 }[];
   detailUrl: string | undefined;
   policyUrl: string | undefined;

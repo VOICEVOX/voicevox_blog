@@ -106,7 +106,6 @@ const postCharacterKey =
           class="button mt-5 is-primary is-rounded is-large"
           target="_blank"
           rel="noreferrer"
-          tab-index={0}
           role="button"
         >
           <span class="icon">
@@ -135,6 +134,20 @@ const postCharacterKey =
             <span>{characterInfo.name} 利用規約</span>
           </button>
         )
+      }
+      {
+        characterInfo.additionalProductLinks &&
+          characterInfo.additionalProductLinks.map((obj) => (
+            <a
+              href={obj.url}
+              class="button is-normal is-rounded"
+              target="_blank"
+              rel="noreferrer"
+              role="button"
+            >
+              <span>{obj.label}</span>
+            </a>
+          ))
       }
     </div>
   </div>
