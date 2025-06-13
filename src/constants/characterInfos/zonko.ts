@@ -21,6 +21,12 @@ export default {
   lightColor: "#CAB2D6",
   description:
     "ZONeエナジー公式アンバサダーのぞん子だよ！<br />ZONeを通じてeカルチャーを盛り上げるよ！",
+  additionalProductLinks: [
+    {
+      label: "イラスト ダウンロード",
+      url: "https://drive.google.com/drive/folders/1rhar43ksjvxxmEGzCkZWC4Pzv_TC3tH-",
+    },
+  ],
   labelInfos: [
     { label: "誕生日", value: "5月12日", size: 1 },
     { label: "好物", value: "ZONeエナジー", size: 1 },

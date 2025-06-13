@@ -1,6 +1,7 @@
 import type { Styles } from "../type";
 import {
   bustupImages,
+  toppageBustupImages,
   portraitImages,
   dormitoryAudios,
   dormitoryImages,
@@ -40,6 +41,7 @@ function makeSongVoiceAudios(key: CharacterKey, styles: Styles) {
 export function getCharacterAssets(key: CharacterKey, styles: Styles) {
   return {
     bustupImage: bustupImages[key],
+    toppageBustupImage: toppageBustupImages[key],
     portraitImage: portraitImages[key],
     talkVoiceAudios: makeTalkVoiceAudios(key, styles),
     songVoiceAudios: makeSongVoiceAudios(key, styles),
