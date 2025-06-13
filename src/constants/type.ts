@@ -20,6 +20,7 @@ export type CharacterInfo = {
   detailUrl: string | undefined;
   policyUrl: string | undefined;
   bustupImage: ImageMetadata;
+  toppageBustupImage: ImageMetadata | undefined; // トップページのバストアップ画像だけ変える場合に使用
   portraitImage: ImageMetadata;
   talkVoiceAudios: { style: string; urls: string[] }[];
   songVoiceAudios: {

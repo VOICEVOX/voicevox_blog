@@ -17,6 +17,16 @@ export const bustupImages = makeAssetsRecordSingle(
   }),
 );
 
+/** トップページのバストアップ画像。１つもないか、１つある。 */
+export const toppageBustupImages = makeAssetsRecordSingleOptional(
+  characterKeys,
+  characterEntries,
+  import.meta.glob<ImageMetadata>("@/assets/bustup-images/toppage/*.png", {
+    eager: true,
+    import: "default",
+  }),
+);
+
 /** 立ち絵画像。必ず１つある。 */
 export const portraitImages = makeAssetsRecordSingle(
   characterKeys,
