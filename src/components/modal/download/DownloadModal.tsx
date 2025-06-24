@@ -1,5 +1,6 @@
 import Selector from "./Selector";
-import linuxInstallCpu from "@/assets/script/linuxInstallCpu.sh?url";
+import linuxInstallCpuArm64 from "@/assets/script/linuxInstallCpuArm64.sh?url";
+import linuxInstallCpuX64 from "@/assets/script/linuxInstallCpuX64.sh?url";
 import linuxInstallNvidia from "@/assets/script/linuxInstallNvidia.sh?url";
 import { APP_VERSION } from "@/constants";
 import { withBaseUrl } from "@/helper";
@@ -8,13 +9,20 @@ import { useStore } from "@nanostores/react";
 import { useEffect, useState } from "react";
 
 type OsType = "Windows" | "Mac" | "Linux";
-type ModeType = "GPU / CPU" | "CPU" | "CPU (Intel)" | "CPU (Apple)";
+type ModeType =
+  | "GPU / CPU"
+  | "GPU / CPU (x64)"
+  | "CPU"
+  | "CPU (Intel)"
+  | "CPU (Apple)"
+  | "CPU (x64)"
+  | "CPU (arm64)";
 type PackageType = "インストーラー" | "Zip" | "tar.gz";
 
 const modeAvailables: Record<OsType, ModeType[]> = {
   Windows: ["GPU / CPU", "CPU"],
   Mac: ["CPU (Intel)", "CPU (Apple)"],
-  Linux: ["GPU / CPU", "CPU"],
+  Linux: ["GPU / CPU (x64)", "CPU (x64)", "CPU (arm64)"],
 };
 
 const packageAvailables: Record<
@@ -29,7 +37,11 @@ const packageAvailables: Record<
     "CPU (Intel)": ["インストーラー", "Zip"],
     "CPU (Apple)": ["インストーラー", "Zip"],
   },
-  Linux: { "GPU / CPU": ["インストーラー"], CPU: ["インストーラー", "tar.gz"] },
+  Linux: {
+    "GPU / CPU (x64)": ["インストーラー"],
+    "CPU (x64)": ["インストーラー", "tar.gz"],
+    "CPU (arm64)": ["インストーラー", "tar.gz"],
+  },
 };
 
 export default function DownloadModal() {
@@ -74,7 +86,7 @@ export default function DownloadModal() {
           name: `VOICEVOX-CPU-x64.${APP_VERSION}.Mac.dmg`,
         },
         Zip: {
-          url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/voicevox-macos-x64-cpu-${APP_VERSION}.zip`,
+          url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/voicevox-macos-cpu-x64-${APP_VERSION}.zip`,
           name: `VOICEVOX-CPU-x64.${APP_VERSION}.Mac.zip`,
         },
       },
@@ -84,26 +96,36 @@ export default function DownloadModal() {
           name: `VOICEVOX-CPU-arm64.${APP_VERSION}.Mac.dmg`,
         },
         Zip: {
-          url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/voicevox-macos-arm64-cpu-${APP_VERSION}.zip`,
+          url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/voicevox-macos-cpu-arm64-${APP_VERSION}.zip`,
           name: `VOICEVOX-CPU-arm64.${APP_VERSION}.Mac.zip`,
         },
       },
     },
     Linux: {
-      "GPU / CPU": {
+      "GPU / CPU (x64)": {
         インストーラー: {
           url: linuxInstallNvidia,
           name: `VOICEVOX.Installer.${APP_VERSION}.Linux.sh`,
         },
       },
-      CPU: {
+      "CPU (x64)": {
         インストーラー: {
-          url: linuxInstallCpu,
-          name: `VOICEVOX-CPU.Installer.${APP_VERSION}.Linux.sh`,
+          url: linuxInstallCpuX64,
+          name: `VOICEVOX-CPU-X64.Installer.${APP_VERSION}.Linux.sh`,
         },
         "tar.gz": {
-          url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/voicevox-linux-cpu-${APP_VERSION}.tar.gz`,
-          name: `VOICEVOX-CPU.${APP_VERSION}.Linux.tar.gz`,
+          url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/voicevox-linux-cpu-x64-${APP_VERSION}.tar.gz`,
+          name: `VOICEVOX-CPU-X64.${APP_VERSION}.Linux.tar.gz`,
+        },
+      },
+      "CPU (arm64)": {
+        インストーラー: {
+          url: linuxInstallCpuArm64,
+          name: `VOICEVOX-CPU-ARM64.Installer.${APP_VERSION}.Linux.sh`,
+        },
+        "tar.gz": {
+          url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/voicevox-linux-cpu-arm64-${APP_VERSION}.tar.gz`,
+          name: `VOICEVOX-CPU-ARM64.${APP_VERSION}.Linux.tar.gz`,
         },
       },
     },

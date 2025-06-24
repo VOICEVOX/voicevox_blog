@@ -70,15 +70,29 @@ if (nemoVersion != undefined) {
   );
 }
 
-// src/assets/script/linuxInstallCpu.sh
+// src/assets/script/linuxInstallCpuX64.sh
 if (editorVersion != undefined) {
   updateFile(
-    "./src/assets/script/linuxInstallCpu.sh",
+    "./src/assets/script/linuxInstallCpuX64.sh",
     /VOICEVOX\/voicevox\/.*?\//,
     `VOICEVOX/voicevox/${editorVersion}/`,
   );
   updateFile(
-    "./src/assets/script/linuxInstallCpu.sh",
+    "./src/assets/script/linuxInstallCpuX64.sh",
+    /VERSION=.*?\s/,
+    `VERSION=${editorVersion} `,
+  );
+}
+
+// src/assets/script/linuxInstallCpuArm64.sh
+if (editorVersion != undefined) {
+  updateFile(
+    "./src/assets/script/linuxInstallCpuArm64.sh",
+    /VOICEVOX\/voicevox\/.*?\//,
+    `VOICEVOX/voicevox/${editorVersion}/`,
+  );
+  updateFile(
+    "./src/assets/script/linuxInstallCpuArm64.sh",
     /VERSION=.*?\s/,
     `VERSION=${editorVersion} `,
   );
@@ -93,6 +107,20 @@ if (editorVersion != undefined) {
   );
   updateFile(
     "./src/assets/script/linuxInstallNvidia.sh",
+    /VERSION=.*?\s/,
+    `VERSION=${editorVersion} `,
+  );
+}
+
+// src/assets/script/linuxInstallCpuArm64.sh
+if (editorVersion != undefined) {
+  updateFile(
+    "./src/assets/script/linuxInstallCpuArm64.sh",
+    /VOICEVOX\/voicevox\/.*?\//,
+    `VOICEVOX/voicevox/${editorVersion}/`,
+  );
+  updateFile(
+    "./src/assets/script/linuxInstallCpuArm64.sh",
     /VERSION=.*?\s/,
     `VERSION=${editorVersion} `,
   );

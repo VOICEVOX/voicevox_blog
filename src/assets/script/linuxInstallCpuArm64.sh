@@ -19,7 +19,7 @@
 set -euo pipefail
 
 if ! command -v curl &>/dev/null; then
-    cat <<'EOS'
+  cat <<'EOS'
 * curl コマンドが見つかりません。
 
 以下のコマンドを実行してください。
@@ -32,10 +32,10 @@ CentOS/Fedora:
 もしくは
     sudo yum install curl
 EOS
-    sleep 365d
-    exit 1
+  sleep 365d
+  exit 1
 fi
 
 curl -fsSL https://raw.githubusercontent.com/VOICEVOX/voicevox/0.24.0/build/installer_linux.sh >tmp_voicevox_installer.sh
-VERSION=0.24.0 NAME=linux-nvidia-appimage bash tmp_voicevox_installer.sh
+VERSION=0.24.0 NAME=linux-cpu-arm64-appimage bash tmp_voicevox_installer.sh
 rm tmp_voicevox_installer.sh
