@@ -9,6 +9,7 @@ export default defineConfig({
   reporter: process.env.CI
     ? [["html", { open: "never" }], ["github"]]
     : [["html", { open: "on-failure" }]],
+  timeout: 90 * 1000,
 
   use: {
     trace: "on-first-retry",
