@@ -6,6 +6,7 @@ const key = "離途" satisfies CharacterKey;
 
 const styles = [
   { name: "ノーマル", id: "normal", type: "talk" },
+  { name: "シリアス", id: "serious", type: "talk" },
 ] satisfies Styles;
 
 export default {
