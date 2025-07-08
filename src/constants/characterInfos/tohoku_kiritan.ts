@@ -13,7 +13,7 @@ export default {
   name: "東北きりたん",
   id: "tohoku_kiritan",
   rubyName: "<ruby>東北<rp>(</rp><rt>とうほく</rt><rp>)</rp>きりたん</ruby>",
-  voiceFeature: undefined, // TODO: 埋める
+  voiceFeature: "淡麗でつづまやかな声",
   color: "#FB8028",
   lightColor: "#FFD6B8",
   description:
@@ -24,7 +24,7 @@ export default {
     { label: "特技", value: "ゲーム", size: 1 },
     { label: "必殺技", value: "きりたん砲", size: 1 },
   ],
-  policyUrl: undefined, // TODO: 埋める
-  detailUrl: undefined, // TODO: 埋める
+  policyUrl: "https://zunko.jp/con_ongen_kiyaku.html",
+  detailUrl: "https://zunko.jp/#charaTK",
   ...getCharacterAssets(key, styles),
 } satisfies CharacterInfo;

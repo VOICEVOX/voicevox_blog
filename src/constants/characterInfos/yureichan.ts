@@ -17,7 +17,7 @@ export default {
   name: "ユーレイちゃん",
   id: "yureichan",
   rubyName: "ユーレイちゃん",
-  voiceFeature: undefined, // TODO: 埋める
+  voiceFeature: "柔和な揺蕩う声",
   color: "#1D86AE",
   lightColor: "#B3D7DD",
   description: "ユーステラのメインヒロイン<br />『ユーレイちゃん』こと雛菊ルミ",

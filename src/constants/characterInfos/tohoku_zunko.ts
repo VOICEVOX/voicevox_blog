@@ -13,7 +13,7 @@ export default {
   name: "東北ずん子",
   id: "tohoku_zunko",
   rubyName: "<ruby>東北<rp>(</rp><rt>とうほく</rt><rp>)</rp>ずん子</ruby>",
-  voiceFeature: undefined, // TODO: 埋める
+  voiceFeature: "しとやかで愛嬌のある声",
   color: "#33A65E",
   lightColor: "#CCEBC5",
   description:
@@ -24,7 +24,7 @@ export default {
     { label: "趣味", value: "ずんだ餅作り", size: 1 },
     { label: "必殺技", value: "ずんだアロー", size: 1 },
   ],
-  policyUrl: undefined, // TODO: 埋める
-  detailUrl: undefined, // TODO: 埋める
+  policyUrl: "https://zunko.jp/con_ongen_kiyaku.html",
+  detailUrl: "https://zunko.jp/#charaTZ",
   ...getCharacterAssets(key, styles),
 } satisfies CharacterInfo;
