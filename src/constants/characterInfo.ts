@@ -29,9 +29,13 @@ import rito_info from "./characterInfos/rito";
 import sayo_info from "./characterInfos/sayo";
 import shikoku_metan_info from "./characterInfos/shikoku_metan";
 import shirakami_kotarou_info from "./characterInfos/shirakami_kotarou";
+import tohoku_itako_info from "./characterInfos/tohoku_itako";
+import tohoku_kiritan_info from "./characterInfos/tohoku_kiritan";
+import tohoku_zunko_info from "./characterInfos/tohoku_zunko";
 import voidoll_info from "./characterInfos/voidoll";
 import wakamatsu_akashi_info from "./characterInfos/wakamatsu_akashi";
 import white_cul_info from "./characterInfos/white_cul";
+import yureichan_info from "./characterInfos/yureichan";
 import zonko_info from "./characterInfos/zonko";
 import zundamon_info from "./characterInfos/zundamon";
 import type { CharacterInfo } from "./type";
@@ -74,4 +78,8 @@ export const characterInfos: {
   中部つるぎ: chubu_tsurugi_info,
   離途: rito_info,
   黒沢冴白: kurosawa_kohaku_info,
+  ユーレイちゃん: yureichan_info,
+  東北ずん子: tohoku_zunko_info,
+  東北きりたん: tohoku_kiritan_info,
+  東北イタコ: tohoku_itako_info,
 };

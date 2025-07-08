@@ -8,6 +8,7 @@ const styles = [
   { name: "ノーマル", id: "normal", type: "talk" },
   { name: "おちつき", id: "ochitsuki", type: "talk" },
   { name: "人見知り", id: "shy", type: "talk" },
+  { name: "つよつよ", id: "tsuyotsuyo", type: "talk" },
   { name: "ノーマル", id: "normal", type: "humming" },
   { name: "おちつき", id: "ochitsuki", type: "humming" },
 ] satisfies Styles;

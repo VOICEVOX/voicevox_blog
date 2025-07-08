@@ -34,6 +34,10 @@ export const characterKeys = [
   "中部つるぎ",
   "離途",
   "黒沢冴白",
+  "ユーレイちゃん",
+  "東北ずん子",
+  "東北きりたん",
+  "東北イタコ",
 ] as const;
 
 export type CharacterKey = (typeof characterKeys)[number];
@@ -183,6 +187,22 @@ export const characterEntries = {
   黒沢冴白: {
     name: "黒沢冴白",
     id: "kurosawa_kohaku",
+  },
+  ユーレイちゃん: {
+    name: "ユーレイちゃん",
+    id: "yureichan",
+  },
+  東北ずん子: {
+    name: "東北ずん子",
+    id: "tohoku_zunko",
+  },
+  東北きりたん: {
+    name: "東北きりたん",
+    id: "tohoku_kiritan",
+  },
+  東北イタコ: {
+    name: "東北イタコ",
+    id: "tohoku_itako",
   },
 } as const satisfies {
   [key in CharacterKey]: CharacterEntry;

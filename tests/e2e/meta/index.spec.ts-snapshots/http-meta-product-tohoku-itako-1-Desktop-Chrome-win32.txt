@@ -1,0 +1,6 @@
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/product/tohoku_itako/",
+  "title": "VOICEVOX 東北イタコ | 無料のテキスト読み上げソフトウェア",
+  "description": "VOICEVOXは「東北イタコ」の声で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。",
+  "robots": "index, follow"
+}
