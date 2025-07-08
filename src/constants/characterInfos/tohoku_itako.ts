@@ -13,7 +13,7 @@ export default {
   name: "東北イタコ",
   id: "tohoku_itako",
   rubyName: "<ruby>東北<rp>(</rp><rt>とうほく</rt><rp>)</rp>イタコ</ruby>",
-  voiceFeature: undefined, // TODO: 埋める
+  voiceFeature: "雅やかで余韻のある声",
   color: "#A45AAA",
   lightColor: "#CAB2D6",
   description:
@@ -24,7 +24,7 @@ export default {
     { label: "口調", value: "ですわ口調", size: 1 },
     { label: "必殺技", value: "口寄せ(イタコ)", size: 1 },
   ],
-  policyUrl: undefined,
-  detailUrl: undefined,
+  policyUrl: "https://zunko.jp/con_ongen_kiyaku.html",
+  detailUrl: "https://zunko.jp/#charaTI",
   ...getCharacterAssets(key, styles),
 } satisfies CharacterInfo;
