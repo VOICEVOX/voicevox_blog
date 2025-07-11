@@ -47,7 +47,7 @@ const voicevoxIconImageUrl = `url(${(await getImage({ src: voicevoxIconImage }))
 
           <div class="buttons">
             <a
-              {...{ [showNemoGuidanceModalAttr]: true }}
+              {...{ [showNemoGuidanceModalAttr]: "" }}
               class="button is-primary is-rounded"
               target="_blank"
               rel="noreferrer"
@@ -60,7 +60,7 @@ const voicevoxIconImageUrl = `url(${(await getImage({ src: voicevoxIconImage }))
               <span class="has-text-weight-semibold">ダウンロード</span>
             </a>
             <button
-              {...{ [showNemoTermModalAttr]: true }}
+              {...{ [showNemoTermModalAttr]: "" }}
               class="button is-normal is-rounded"
               type="button"
             >
