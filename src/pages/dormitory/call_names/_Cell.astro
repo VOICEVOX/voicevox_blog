@@ -23,7 +23,6 @@ const { callNames, characterInfo, additionalClass } = Astro.props;
       callNames.map((callName) => (
         <p
           data-voicevox-call-name={callName}
-          data-voicevox-copied={false}
           style={{ outlineColor: characterInfo.color }}
           title={`クリックして呼称をコピー：「${callName}」`}
         >
