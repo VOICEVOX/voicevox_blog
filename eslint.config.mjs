@@ -12,6 +12,6 @@ export default typescript.config(
   astro.configs["flat/jsx-a11y-recommended"],
   gitignore(),
   {
-    ignores: ["src/layouts/Base.astro"], // なぜか<html>周りでエラーが出る
+    ignores: ["src/layouts/Base.astro"], // NOTE: なぜか<html>周りでエラーが出るため
   },
 );
