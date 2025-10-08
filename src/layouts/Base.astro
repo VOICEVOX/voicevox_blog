@@ -60,7 +60,7 @@ const isGoogleAnalyticsDebugMode = isDevelopment || isPreview || isTest;
 const googleAnalyticsSrc = `https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`;
 ---
 
-<html lang="ja" transition:animate="none" data-theme="light">
+<html lang="ja" transition:animate="none" data-theme={isDark ? "dark" : "light"}>
   <head>
     <SEO
       title={escapeHtml(title)}
