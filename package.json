@@ -67,5 +67,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/VOICEVOX/voicevox_blog"
-  }
+  },
+  "packageManager": "pnpm@9.12.3"
 }
