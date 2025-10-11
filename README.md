@@ -155,6 +155,18 @@ pnpm run test:e2e --ui # 開発時は UI モードが便利
 [typos](https://github.com/crate-ci/typos) を使ってタイポのチェックを行っています。  
 ブランチをプッシュすると自動でテストされます。
 
+## リンター
+
+コードのフォーマットと lint チェックを行っています。
+
+```bash
+# フォーマットを適用する
+pnpm run fmt
+
+# lint チェックを行う
+pnpm run lint
+```
+
 ## 開発者向け案内
 
 ### なんとなくのコーディングルール
