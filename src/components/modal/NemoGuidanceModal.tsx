@@ -20,6 +20,7 @@ export default function NemoGuidanceModal() {
       <div
         className={"modal-nemo-guidance modal" + (isActive ? " is-active" : "")}
         role="dialog"
+        data-theme="light"
       >
         <div className="modal-background" onClick={hide} role="presentation" />
         <div className="modal-card">

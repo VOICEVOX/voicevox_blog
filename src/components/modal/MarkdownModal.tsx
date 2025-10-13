@@ -15,6 +15,7 @@ export default function MarkdownModal({
     <div
       className={`${className} modal` + (isActive ? " is-active" : "")}
       role="dialog"
+      data-theme="light"
     >
       <div className="modal-background" onClick={hide}></div>
       <div className="modal-card">
