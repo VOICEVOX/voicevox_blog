@@ -127,6 +127,17 @@ const libraryTermIntroHtmls = await (async () => {
   @use "bulma/sass/utilities/mixins" as *;
   @use "bulma/sass/helpers" as *;
 
+  /**
+   * ダイアログにライトモード表示を強制する
+   * NOTE: .modal要素にはdata-theme="light"を付与する必要がある
+   */
+  .modal {
+    --bulma-body-color: var(--bulma-text); // テキストカラー変数
+    --bulma-hr-background-color: var(--bulma-background); // 罫線背景色変数
+
+    color: var(--bulma-body-color);
+  }
+
   .modal-nemo-guidance {
     .modal-card-body {
       display: flex;

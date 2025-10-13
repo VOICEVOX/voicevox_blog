@@ -180,6 +180,7 @@ export default function DownloadModal() {
     <div
       className={"modal-download modal" + (isActive ? " is-active" : "")}
       role="dialog"
+      data-theme="light"
     >
       <div className="modal-background" onClick={hide} role="presentation" />
       <div className="modal-card">
