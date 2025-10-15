@@ -91,6 +91,29 @@ const landingMovieThumbUrl = (await getImage({ src: landingMovieThumb })).src;
         </div>
       </section>
 
+      <section class="section">
+        <div class="container is-max-desktop is-flex is-flex-direction-column">
+          <h2 id="engine" class="jump-anchor-header-padding title">
+            <a href="#engine" class="has-text-black"> 音声合成エンジン </a>
+          </h2>
+          <p class="is-size-5">
+            VOICEVOXの音声合成エンジンは、音声ライブラリを使って高品質な音声を生成するWebサーバーです。
+          </p>
+          <p class="is-size-5">
+            Docker
+            イメージとして配布しており、簡単にサーバーとして起動できます。また、動的ライブラリとしても利用可能です。
+          </p>
+          <p class="is-size-5">
+            詳しくは&nbsp;<a
+              href="https://github.com/VOICEVOX/voicevox_engine"
+              class="has-text-weight-bold is-underlined"
+              target="_blank"
+              rel="noreferrer">VOICEVOX ENGINE</a
+            >&nbsp;をご参照ください。
+          </p>
+        </div>
+      </section>
+
       <OssGuidanceSection isDark={false} />
 
       <section class="section">
