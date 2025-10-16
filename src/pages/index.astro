@@ -5,6 +5,7 @@ import { characterInfos } from "@/constants/characterInfo";
 import { withBaseUrl } from "@/helper";
 import Base from "@/layouts/Base.astro";
 import { Image, getImage } from "astro:assets";
+import EngineGuidanceSection from "./_EngineGuidanceSection.astro";
 import LinkListSection from "./_LinkListSection.astro";
 import OssGuidanceSection from "./_OssGuidanceSection.astro";
 import SoftwareFeature from "./_SoftwareFeature.astro";
@@ -91,50 +92,7 @@ const landingMovieThumbUrl = (await getImage({ src: landingMovieThumb })).src;
         </div>
       </section>
 
-      <section class="section">
-        <div class="container is-max-desktop is-flex is-flex-direction-column">
-          <h2 id="engine" class="jump-anchor-header-padding title">
-            <a href="#engine" class="has-text-black"> 音声合成エンジン </a>
-          </h2>
-          <p class="is-size-5">
-            音声合成エンジンを使えば、他のソフトウェアやアプリケーションから
-            VOICEVOX 音声を生成できます。
-          </p>
-          <p class="is-size-5">
-            Windows / macOS / Linux で動作する実行ファイルのほか、Docker
-            イメージとしても配布しています。
-          </p>
-          <p class="is-size-5">
-            詳しくは&nbsp;<a
-              href="https://github.com/VOICEVOX/voicevox_engine"
-              class="has-text-weight-bold is-underlined"
-              target="_blank"
-              rel="noreferrer">VOICEVOX ENGINE</a
-            >&nbsp;をご参照ください。
-          </p>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="container is-max-desktop is-flex is-flex-direction-column">
-          <h2 id="core_library" class="jump-anchor-header-padding title">
-            <a href="#core_library" class="has-text-black"> コアライブラリ </a>
-          </h2>
-          <p class="is-size-5">
-            VOICEVOX
-            の音声合成をアプリケーションやサービスに組み込める、VOICEVOX
-            のコアライブラリを配布しています。
-          </p>
-          <p class="is-size-5">
-            詳しくは&nbsp;<a
-              href="https://github.com/VOICEVOX/voicevox_core"
-              class="has-text-weight-bold is-underlined"
-              target="_blank"
-              rel="noreferrer">VOICEVOX CORE</a
-            >&nbsp;をご参照ください。
-          </p>
-        </div>
-      </section>
+      <EngineGuidanceSection isDark={false} />
 
       <OssGuidanceSection isDark={false} />
 
