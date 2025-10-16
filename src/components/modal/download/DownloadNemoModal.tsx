@@ -148,7 +148,6 @@ export default function DownloadNemoModal() {
               target="_blank"
               rel="noreferrer"
               className="button is-primary"
-              role="button"
             >
               <span className="has-text-weight-semibold">ダウンロード</span>
             </a>

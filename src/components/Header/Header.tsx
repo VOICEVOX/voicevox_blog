@@ -191,8 +191,7 @@ export default function Header({
             />
           ))}
 
-          <a
-            role="button"
+          <button
             className={`navbar-burger ${isBurgerActive ? "is-active" : ""}`}
             aria-label="menu"
             aria-expanded={`${isBurgerActive}`}
@@ -203,7 +202,7 @@ export default function Header({
             <span aria-hidden="true" />
             <span aria-hidden="true" />
             <span aria-hidden="true" />
-          </a>
+          </button>
         </div>
 
         <div

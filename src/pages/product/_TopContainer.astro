@@ -55,7 +55,6 @@ const postCharacterKey =
     href={withBaseUrl(getProductPageUrl(characterInfos[prevCharacterKey]))}
     class="button prev circle-icon is-black"
     aria-label="前のキャラクターを表示"
-    role="button"
   >
     <FontAwesomeIcon icon={faCircleLeft} />
   </a>
@@ -63,7 +62,6 @@ const postCharacterKey =
     href={withBaseUrl(getProductPageUrl(characterInfos[postCharacterKey]))}
     class="button post circle-icon is-black"
     aria-label="次のキャラクターを表示"
-    role="button"
   >
     <FontAwesomeIcon icon={faCircleRight} />
   </a>
@@ -101,12 +99,9 @@ const postCharacterKey =
     </p>
     {
       characterInfo.releaseDate == undefined && (
-        <a
+        <button
           {...{ [showDownloadModalAttr]: "" }}
           class="button mt-5 is-primary is-rounded is-large"
-          target="_blank"
-          rel="noreferrer"
-          role="button"
         >
           <span class="icon">
             <FontAwesomeIcon icon={faDownload} />
@@ -115,7 +110,7 @@ const postCharacterKey =
             <span class="is-hidden-mobile">VOICEVOX を </span>
             ダウンロード
           </span>
-        </a>
+        </button>
       )
     }
     <div class="terms mt-5">
@@ -143,7 +138,6 @@ const postCharacterKey =
               class="button is-normal is-rounded"
               target="_blank"
               rel="noreferrer"
-              role="button"
             >
               <span>{obj.label}</span>
             </a>
@@ -160,7 +154,6 @@ const postCharacterKey =
             href={withBaseUrl(getProductPageUrl(characterInfos[key]))}
             class={`character ${key === characterKey ? "active" : ""}`}
             aria-label={characterInfos[key].name}
-            role="button"
             style={{
               "--characterLightColor": characterInfos[key].lightColor,
               "--characterColor": characterInfos[key].color,
