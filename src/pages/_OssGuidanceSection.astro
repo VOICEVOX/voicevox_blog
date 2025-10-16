@@ -35,8 +35,8 @@ const { class: className, isDark } = Astro.props;
       >&nbsp;をご参照ください。
     </p>
     <p class="is-size-5">
-      ソフトウェア部分は Electron + Vue 、音声合成エンジン部分は Python +
-      FastAPI 、コアライブラリ部分は Rust です。
+      エディター部分は Electron + Vue 、エンジン部分は Python 、コア部分は Rust
+      です。
     </p>
     <div class="buttons mt-3">
       <a
@@ -62,6 +62,18 @@ const { class: className, isDark } = Astro.props;
           <FontAwesomeIcon icon={faGithub} />
         </span>
         <span>VOICEVOX エンジン</span>
+      </a>
+      <a
+        class={`button ${!isDark ? "" : "is-dark"}`}
+        href="https://github.com/VOICEVOX/voicevox_core"
+        target="_blank"
+        rel="noreferrer"
+        role="button"
+      >
+        <span class="icon">
+          <FontAwesomeIcon icon={faGithub} />
+        </span>
+        <span>VOICEVOX コア</span>
       </a>
     </div>
   </div>
