@@ -148,7 +148,7 @@ pnpm run lint
 
 ### タイポチェック
 
-[typos](https://github.com/crate-ci/typos) を使ってタイポのチェックを行っています。
+[typos](https://github.com/crate-ci/typos) を使ってタイポのチェックを行っています。  
 ブランチをプッシュすると自動でテストされます。
 
 ### e2e テスト
