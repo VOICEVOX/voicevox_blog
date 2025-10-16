@@ -16,12 +16,15 @@ const { class: className, isDark } = Astro.props;
   >
     <h2 id="oss" class="jump-anchor-header-padding title">
       <a href="#oss" class={!isDark ? "has-text-black" : "has-text-white"}>
-        オープンソース
+        開発に参加するには
       </a>
     </h2>
     <p class="is-size-5">
       VOICEVOX は OSS（オープンソース・ソフトウェア）版 VOICEVOX
       をもとに構築されています。
+    </p>
+    <p class="is-size-5">
+      追加したい・改善したい機能があれば、ぜひ開発にご参加ください。
     </p>
     <p class="is-size-5">
       製品版と OSS 版の違いやモジュール構成は&nbsp;<a
@@ -32,11 +35,8 @@ const { class: className, isDark } = Astro.props;
       >&nbsp;をご参照ください。
     </p>
     <p class="is-size-5">
-      ソフトウェア部分は Electron + Vue 、音声合成エンジン部分は Python +
-      FastAPI です。
-    </p>
-    <p class="is-size-5">
-      追加したい・改善したい機能があれば、ぜひ開発にご参加ください。
+      エディター部分は Electron + Vue 、エンジン部分は Python 、コア部分は Rust
+      です。
     </p>
     <div class="buttons mt-3">
       <a
@@ -62,6 +62,18 @@ const { class: className, isDark } = Astro.props;
           <FontAwesomeIcon icon={faGithub} />
         </span>
         <span>VOICEVOX エンジン</span>
+      </a>
+      <a
+        class={`button ${!isDark ? "" : "is-dark"}`}
+        href="https://github.com/VOICEVOX/voicevox_core"
+        target="_blank"
+        rel="noreferrer"
+        role="button"
+      >
+        <span class="icon">
+          <FontAwesomeIcon icon={faGithub} />
+        </span>
+        <span>VOICEVOX コア</span>
       </a>
     </div>
   </div>
