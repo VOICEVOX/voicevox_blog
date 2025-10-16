@@ -136,6 +136,21 @@ pnpm run generateThumb
 
 ## テスト
 
+### リンター・フォーマッター
+
+```bash
+# フォーマットを適用する
+pnpm run fmt
+
+# lint チェックを行う
+pnpm run lint
+```
+
+### タイポチェック
+
+[typos](https://github.com/crate-ci/typos) を使ってタイポのチェックを行っています。
+ブランチをプッシュすると自動でテストされます。
+
 ### e2e テスト
 
 ビルドしたあと Playwright を使って e2e テストを行っています。Windows 環境でのテストを想定しています。
@@ -149,21 +164,6 @@ pnpm run test:e2e --ui # 開発時は UI モードが便利
 ```
 
 `pnpm start`してからe2eテストを起動することで、変更を反映しながらテストすることもできます。
-
-### タイポチェック
-
-[typos](https://github.com/crate-ci/typos) を使ってタイポのチェックを行っています。  
-ブランチをプッシュすると自動でテストされます。
-
-### リンター・フォーマッター
-
-```bash
-# フォーマットを適用する
-pnpm run fmt
-
-# lint チェックを行う
-pnpm run lint
-```
 
 ## 開発者向け案内
 
