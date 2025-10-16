@@ -5,6 +5,7 @@ import { characterInfos } from "@/constants/characterInfo";
 import { withBaseUrl } from "@/helper";
 import Base from "@/layouts/Base.astro";
 import { Image, getImage } from "astro:assets";
+import EngineGuidanceSection from "./_EngineGuidanceSection.astro";
 import LinkListSection from "./_LinkListSection.astro";
 import OssGuidanceSection from "./_OssGuidanceSection.astro";
 import SoftwareFeature from "./_SoftwareFeature.astro";
@@ -91,13 +92,17 @@ const landingMovieThumbUrl = (await getImage({ src: landingMovieThumb })).src;
         </div>
       </section>
 
+      <EngineGuidanceSection isDark={false} />
+
       <section class="section">
         <div class="container is-max-desktop is-flex is-flex-direction-column">
           <h2 id="core_library" class="jump-anchor-header-padding title">
             <a href="#core_library" class="has-text-black"> コアライブラリ </a>
           </h2>
           <p class="is-size-5">
-            VOICEVOXの音声合成をアプリケーションやサービスに組み込める、VOICEVOXのコアライブラリを配布しています。
+            VOICEVOX
+            の音声合成をアプリケーションやサービスに組み込める、VOICEVOX
+            のコアライブラリを配布しています。
           </p>
           <p class="is-size-5">
             詳しくは&nbsp;<a
