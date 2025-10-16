@@ -51,7 +51,7 @@ export default function StyleDropdown({
       <div className="dropdown-menu" role="menu" id={id}>
         <div className="dropdown-content">
           {styles.map((style, index) => (
-            <a
+            <button
               key={index}
               className={`dropdown-item is-primary ${
                 style == selectedStyle ? "is-active" : ""
@@ -60,10 +60,9 @@ export default function StyleDropdown({
                 setSelectedStyle(style);
                 setIsOpenDropdown(false);
               }}
-              tabIndex={0}
             >
               {style}
-            </a>
+            </button>
           ))}
         </div>
       </div>

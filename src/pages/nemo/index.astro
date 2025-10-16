@@ -46,23 +46,18 @@ const voicevoxIconImageUrl = `url(${(await getImage({ src: voicevoxIconImage }))
           <div class="powered-by">Powered by VOICEVOX</div>
 
           <div class="buttons">
-            <a
+            <button
               {...{ [showNemoGuidanceModalAttr]: "" }}
               class="button is-primary is-rounded"
-              target="_blank"
-              rel="noreferrer"
-              tab-index={0}
-              role="button"
             >
               <span class="icon">
                 <FontAwesomeIcon icon={faDownload} />
               </span>
               <span class="has-text-weight-semibold">ダウンロード</span>
-            </a>
+            </button>
             <button
               {...{ [showNemoTermModalAttr]: "" }}
               class="button is-normal is-rounded is-white"
-              type="button"
             >
               <span>利用規約</span>
             </button>

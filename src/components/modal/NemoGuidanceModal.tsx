@@ -38,16 +38,12 @@ export default function NemoGuidanceModal() {
             <div className="step-by-step">
               <h3>- Step 1 -</h3>
               <p>VOICEVOX ソフトウェアをインストール</p>
-              <a
+              <button
                 className="button is-align-self-center is-primary is-rounded is-medium"
                 onClick={() => {
                   $downloadModal.set(true);
                   sendEvent("download", "software");
                 }}
-                target="_blank"
-                rel="noreferrer"
-                tabIndex={0}
-                role="button"
               >
                 <span className="icon">
                   <FontAwesomeIcon icon={faDownload} />
@@ -55,7 +51,7 @@ export default function NemoGuidanceModal() {
                 <span className="has-text-weight-semibold">
                   VOICEVOX ダウンロード
                 </span>
-              </a>
+              </button>
             </div>
 
             <hr />
@@ -74,13 +70,9 @@ export default function NemoGuidanceModal() {
             <div className="step-by-step">
               <h3>- Step 3 -</h3>
               <p>Nemo エンジンを追加</p>
-              <a
+              <button
                 className="button is-align-self-center is-primary is-rounded is-medium"
                 onClick={() => $nemoDownloadModal.set(true)}
-                target="_blank"
-                rel="noreferrer"
-                tabIndex={0}
-                role="button"
               >
                 <span className="icon">
                   <FontAwesomeIcon icon={faDownload} />
@@ -88,7 +80,7 @@ export default function NemoGuidanceModal() {
                 <span className="has-text-weight-semibold">
                   Nemo エンジン ダウンロード
                 </span>
-              </a>
+              </button>
             </div>
 
             <hr />
