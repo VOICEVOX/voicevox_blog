@@ -16,7 +16,6 @@ const { isDark } = Astro.props;
     href="https://github.com/VOICEVOX/voicevox"
     target="_blank"
     rel="noreferrer"
-    role="button"
   >
     <span class="icon">
       <FontAwesomeIcon icon={faGithub} />
@@ -28,7 +27,6 @@ const { isDark } = Astro.props;
     href="https://x.com/voicevox_pj"
     target="_blank"
     rel="noreferrer"
-    role="button"
   >
     <span class="icon">
       <FontAwesomeIcon icon={faXTwitter} />
@@ -37,13 +35,12 @@ const { isDark } = Astro.props;
   </a>
 </div>
 <div class="container is-flex is-justify-content-center mt-2">
-  <a
+  <button
     {...{ [showPrivacyPolicyModalAttr]: "" }}
     class={`is-size-7 ml-1 mr-1 ${isDark ? "has-text-primary" : ""}`}
-    role="button"
   >
     プライバシーポリシー
-  </a>
+  </button>
   <p class={`is-size-7	ml-1 mr-1 ${isDark ? "has-text-white-bis" : ""}`}>
     © Hiroshiba Kazuyuki
   </p>

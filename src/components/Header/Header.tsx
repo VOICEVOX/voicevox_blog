@@ -140,7 +140,7 @@ export default function Header({
     {
       Component: ({ className }: { className?: string }) => (
         <div className={`navbar-item py-0 ${className}`}>
-          <a
+          <button
             className="button is-primary is-rounded"
             onClick={() => {
               if (!isNemo) {
@@ -151,14 +151,12 @@ export default function Header({
                 sendEvent("download", "nemo");
               }
             }}
-            tab-index={0}
-            role="button"
           >
             <span className="icon">
               <FontAwesomeIcon icon={faDownload} />
             </span>
             <span className="has-text-weight-semibold">ダウンロード</span>
-          </a>
+          </button>
         </div>
       ),
       hideType: "mobile" as HideType,
@@ -193,8 +191,7 @@ export default function Header({
             />
           ))}
 
-          <a
-            role="button"
+          <button
             className={`navbar-burger ${isBurgerActive ? "is-active" : ""}`}
             aria-label="menu"
             aria-expanded={`${isBurgerActive}`}
@@ -205,7 +202,7 @@ export default function Header({
             <span aria-hidden="true" />
             <span aria-hidden="true" />
             <span aria-hidden="true" />
-          </a>
+          </button>
         </div>
 
         <div

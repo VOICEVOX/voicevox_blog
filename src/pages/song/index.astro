@@ -56,23 +56,18 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
         </div>
 
         <div class="buttons">
-          <a
+          <button
             {...{ [showDownloadModalAttr]: "" }}
             class="button is-primary is-large is-rounded"
-            target="_blank"
-            rel="noreferrer"
-            tab-index={0}
-            role="button"
           >
             <span class="icon">
               <FontAwesomeIcon icon={faDownload} />
             </span>
             <span class="has-text-weight-semibold">ダウンロード</span>
-          </a>
+          </button>
           <a
             href={withBaseUrl("/term/")}
             class="button is-normal is-rounded is-white"
-            role="button"
           >
             利用規約
           </a>
