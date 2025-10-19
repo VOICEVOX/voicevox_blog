@@ -5,7 +5,33 @@ on:
   pull_request:
   workflow_dispatch:
 
+defaults:
+  run:
+    shell: bash
+
 jobs:
+  config: # 全 jobs で利用する定数の定義. `env` が利用できないコンテキストでも利用できる.
+    runs-on: ubuntu-latest
+    outputs:
+      shouldUpdateSnapshots: ${{ steps.check-whether-to-update-snapshots.outputs.shouldUpdateSnapshots }}
+    steps:
+      - name: Check if commit message includes [update snapshots]
+        id: check-whether-to-update-snapshots
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const commits = ${{ toJson(github.event.commits) }};
+            if (!commits) {
+              // pull_request などでコミットがない場合はスキップ
+              core.setOutput("shouldUpdateSnapshots", false);
+              process.exit(0);
+            }
+            const shouldUpdateSnapshots = commits.some((commit) =>
+              commit.message.toLowerCase().includes("[update snapshots]")
+            );
+            core.setOutput("shouldUpdateSnapshots", shouldUpdateSnapshots);
+            console.log(`shouldUpdateSnapshots: ${shouldUpdateSnapshots}`);
+
   lint:
     runs-on: ubuntu-latest
     steps:
@@ -32,6 +58,7 @@ jobs:
 
   e2e:
     runs-on: windows-latest
+    needs: [config]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -45,15 +72,40 @@ jobs:
       - name: Build
         run: pnpm run test-build
 
-      - name: Test e2e
-        run: pnpm run test:e2e
+      - name: Run pnpm run test:e2e
+        run: |
+          if [ -n "${{ runner.debug }}" ]; then
+            export DEBUG="pw:browser*"
+          fi
+          ARGS=""
+          if [[ ${{ needs.config.outputs.shouldUpdateSnapshots }} == 'true' ]]; then
+            ARGS="--update-snapshots"
+          fi
+          pnpm run test:e2e $ARGS
 
-      - name: Upload playwright report
+      - name: Upload playwright report to artifact
+        if: failure()
         uses: actions/upload-artifact@v4
-        if: ${{ !cancelled() }}
         with:
           name: playwright-report
-          path: playwright-report/
+          path: playwright-report
+
+      - name: Collect patch for snapshots
+        if: needs.config.outputs.shouldUpdateSnapshots == 'true'
+        run: |
+          # ログ用
+          git status
+
+          # git diff に表示されるようにする
+          git add --intent-to-add --all tests/
+          git diff --binary HEAD tests/ > patch-windows-latest.diff
+
+      - name: Upload patch to artifact
+        if: needs.config.outputs.shouldUpdateSnapshots == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: updated-snapshots-windows-latest
+          path: patch-windows-latest.diff
 
   typos:
     runs-on: ubuntu-latest
@@ -62,3 +114,69 @@ jobs:
 
       - name: typos-action
         uses: crate-ci/typos@v1.12.12
+
+  commit_snapshots:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    needs: [config, e2e]
+    if: needs.config.outputs.shouldUpdateSnapshots == 'true'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # NOTE: デフォルトの設定だとgithub-push-actionが動いてくれないので設定を変えている。
+          # ref: https://github.com/ad-m/github-push-action/issues/44#issuecomment-581706892
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: updated-snapshots-*
+          path: ${{ runner.temp }}/patches
+          merge-multiple: true
+
+      - name: Commit updated snapshots
+        id: commit-updated-snapshots
+        run: |
+          # パッチを適用
+          for patch in ${{ runner.temp }}/patches/*.diff; do
+            git apply --allow-empty $patch
+            rm $patch
+          done
+
+          # 変更があるかチェック
+          if [ -n "$(git status --porcelain)" ]; then
+            git config --global user.name "github-actions[bot]"
+            git config --global user.email "github-actions[bot]@users.noreply.github.com"
+            git add tests/
+            git commit -m "（スナップショットを更新）"
+
+            echo "changes_exist=true" >> $GITHUB_OUTPUT
+          else
+            echo "No changes to commit"
+
+            echo "changes_exist=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Push changes
+        if: steps.commit-updated-snapshots.outputs.changes_exist == 'true'
+        uses: ad-m/github-push-action@77c5b412c50b723d2a4fbc6d71fb5723bcd439aa
+        with:
+          github_token: ${{ secrets.PUSH_TOKEN || secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
+
+      - name: Show warning if token is not set
+        if: steps.commit-updated-snapshots.outputs.changes_exist == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const pushTokenProvided = `${{ secrets.PUSH_TOKEN }}` !== "";
+            if (!pushTokenProvided) {
+              core.warning(
+                "スクリーンショットを更新したので、空コミットをプッシュしてテストを再実行してください。\n" +
+                "PUSH_TOKENをSecretsに追加すると次からこの操作を省けます。\n" +
+                "Secretsの設定方法はREADME.mdを参照してください。"
+              );
+            }
+            console.log(`pushTokenProvided: ${pushTokenProvided}`);
