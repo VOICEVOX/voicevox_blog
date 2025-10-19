@@ -159,11 +159,47 @@ pnpm run lint
 pnpm run test-build
 
 pnpm run test:e2e
-pnpm run test:e2e --update-snapshots # スナップショットを更新する場合
 pnpm run test:e2e --ui # 開発時は UI モードが便利
 ```
 
 `pnpm start`してからe2eテストを起動することで、変更を反映しながらテストすることもできます。
+
+#### スクリーンショットの更新
+
+ブラウザ End to End テストと Storybook では Visual Regression Testing を行っています。
+現在 VRT テストは Windows のみで行っています。
+以下の手順でスクリーンショットを更新できます：
+
+##### Github Actions で更新する場合
+
+1. フォークしたリポジトリの設定で GitHub Actions を有効にします。
+2. リポジトリの設定の Actions > General > Workflow permissions で Read and write permissions を選択します。
+3. `[update snapshots]` という文字列をコミットメッセージに含めてコミットします。
+
+   ```bash
+   git commit -m "UIを変更 [update snapshots]"
+   ```
+
+4. Github Workflow が完了すると、更新されたスクリーンショットがコミットされます。
+5. プルした後、空コミットをプッシュしてテストを再実行します。
+
+   ```bash
+   git commit --allow-empty -m "（テストを再実行）"
+   git push
+   ```
+
+> [!NOTE]
+> トークンを作成して Secrets に追加することで、自動的にテストを再実行できます。
+>
+> 1. [Fine-granted Tokens](https://github.com/settings/personal-access-tokens/new) にアクセスします。
+> 2. 適当な名前を入力し、 `ユーザー名/voicevox` へのアクセス権を与え、 Repository permissions の Contents で Read and write を選択します。
+>    <details>
+>    <summary>設定例</summary>
+>    <img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/refs/heads/main/docs/res/Fine-granted_Tokensの作成.png" width="320" alt="">
+>    </details>
+> 3. トークンを作成して文字列をコピーします。
+> 4. `ユーザー名/voicevox` のリポジトリの Settings > Secrets and variables > Actions > New repository secret を開きます。
+> 5. 名前に `PUSH_TOKEN` と入力し、先ほどの文字列を貼り付けて Secrets を追加します。
 
 ## 開発者向け案内
 
