@@ -231,7 +231,7 @@ export default function DownloadModal() {
 
         <footer className="modal-card-foot is-justify-content-flex-end">
           <div className="buttons">
-            <a href={withBaseUrl("/term/")} className="button" role="button">
+            <a href={withBaseUrl("/term/")} className="button">
               <span>利用規約</span>
             </a>
             <a
@@ -244,7 +244,6 @@ export default function DownloadModal() {
               target="_blank"
               rel="noreferrer"
               className="button is-primary"
-              role="button"
             >
               <span className="has-text-weight-semibold">ダウンロード</span>
             </a>

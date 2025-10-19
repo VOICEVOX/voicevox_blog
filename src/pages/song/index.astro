@@ -7,6 +7,7 @@ import { showDownloadModalAttr } from "@/store";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getImage, Image } from "astro:assets";
+import EngineGuidanceSection from "../_EngineGuidanceSection.astro";
 import OssGuidanceSection from "../_OssGuidanceSection.astro";
 import backgroundImage from "./background.png";
 import CharacterCard from "./CharacterCard";
@@ -55,23 +56,18 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
         </div>
 
         <div class="buttons">
-          <a
+          <button
             {...{ [showDownloadModalAttr]: "" }}
             class="button is-primary is-large is-rounded"
-            target="_blank"
-            rel="noreferrer"
-            tab-index={0}
-            role="button"
           >
             <span class="icon">
               <FontAwesomeIcon icon={faDownload} />
             </span>
             <span class="has-text-weight-semibold">ダウンロード</span>
-          </a>
+          </button>
           <a
             href={withBaseUrl("/term/")}
             class="button is-normal is-rounded is-white"
-            role="button"
           >
             利用規約
           </a>
@@ -139,6 +135,8 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
         </p>
       </div>
     </section>
+
+    <EngineGuidanceSection isDark={true} />
 
     <OssGuidanceSection isDark={true} />
   </main>

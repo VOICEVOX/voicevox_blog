@@ -61,7 +61,7 @@ test("ダウンロードボタン", async ({ page }) => {
   });
 
   await test.step("利用規約に飛べる", async () => {
-    await modal.getByRole("button", { name: "利用規約", exact: true }).click();
+    await modal.getByRole("link", { name: "利用規約", exact: true }).click();
     await expect(page).toHaveURL("/term/");
   });
 });
