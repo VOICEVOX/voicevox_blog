@@ -2,6 +2,7 @@ import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import { defineConfig } from "astro/config";
+import remarkPrefixBaseUrl from "./plugins/remark/prefixBaseUrl";
 
 const site = process.env.NETLIFY
   ? process.env.DEPLOY_URL
@@ -12,6 +13,9 @@ export default defineConfig({
 
   markdown: {
     syntaxHighlight: false, // 使い方の途中とかに小さいコードブロックがあるだけなのでハイライトは無い方が良い
+    remarkPlugins: [
+      [remarkPrefixBaseUrl, { baseUrl: site }],
+    ],
   },
 
   integrations: [
