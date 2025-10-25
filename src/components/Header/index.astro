@@ -40,4 +40,9 @@ const iconUrl = (await getImage({ src: iconImage, width: 64 })).src;
       opacity: 1;
     }
   }
+
+  // ハンバーガーメニューの色をテキストリンクに合わせる
+  .navbar-burger {
+    --bulma-navbar-burger-color: var(--bulma-navbar-item-color);
+  }
 </style>
