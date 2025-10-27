@@ -5,7 +5,7 @@ https://voicevox.hiroshiba.jp/
 
 ## 環境構築
 
-Node v20.12.2、pnpm v10.18.3 を用いて開発されています。
+Node v22.21.0、pnpm v10.18.3 を用いて開発されています。
 
 ```bash
 npm install -g pnpm
