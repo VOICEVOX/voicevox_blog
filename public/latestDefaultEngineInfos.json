@@ -3,22 +3,22 @@
   "windows": {
     "x64": {
       "CPU": {
-        "version": "0.24.0",
+        "version": "0.24.1",
         "packages": [
           {
-            "url": "https://github.com/VOICEVOX/voicevox_engine/releases/download/0.24.0/voicevox_engine-windows-cpu-0.24.0.vvpp",
-            "name": "voicevox_engine-windows-cpu-0.24.0.vvpp",
-            "size": 1569772217
+            "url": "https://github.com/VOICEVOX/voicevox_engine/releases/download/0.24.1/voicevox_engine-windows-cpu-0.24.1.vvpp",
+            "name": "voicevox_engine-windows-cpu-0.24.1.vvpp",
+            "size": 1692551370
           }
         ]
       },
       "GPU/CPU": {
-        "version": "0.24.0",
+        "version": "0.24.1",
         "packages": [
           {
-            "url": "https://github.com/VOICEVOX/voicevox_engine/releases/download/0.24.0/voicevox_engine-windows-directml-0.24.0.vvpp",
-            "name": "voicevox_engine-windows-directml-0.24.0.vvpp",
-            "size": 1577942094
+            "url": "https://github.com/VOICEVOX/voicevox_engine/releases/download/0.24.1/voicevox_engine-windows-directml-0.24.1.vvpp",
+            "name": "voicevox_engine-windows-directml-0.24.1.vvpp",
+            "size": 1700721501
           }
         ]
       }
@@ -27,24 +27,24 @@
   "macos": {
     "x64": {
       "CPU": {
-        "version": "0.24.0",
+        "version": "0.24.1",
         "packages": [
           {
-            "url": "https://github.com/VOICEVOX/voicevox_engine/releases/download/0.24.0/voicevox_engine-macos-x64-0.24.0.vvpp",
-            "name": "voicevox_engine-macos-x64-0.24.0.vvpp",
-            "size": 1580728587
+            "url": "https://github.com/VOICEVOX/voicevox_engine/releases/download/0.24.1/voicevox_engine-macos-x64-0.24.1.vvpp",
+            "name": "voicevox_engine-macos-x64-0.24.1.vvpp",
+            "size": 1703504710
           }
         ]
       }
     },
     "arm64": {
       "CPU": {
-        "version": "0.24.0",
+        "version": "0.24.1",
         "packages": [
           {
-            "url": "https://github.com/VOICEVOX/voicevox_engine/releases/download/0.24.0/voicevox_engine-macos-arm64-0.24.0.vvpp",
-            "name": "voicevox_engine-macos-arm64-0.24.0.vvpp",
-            "size": 1563860921
+            "url": "https://github.com/VOICEVOX/voicevox_engine/releases/download/0.24.1/voicevox_engine-macos-arm64-0.24.1.vvpp",
+            "name": "voicevox_engine-macos-arm64-0.24.1.vvpp",
+            "size": 1686636780
           }
         ]
       }
@@ -53,27 +53,27 @@
   "linux": {
     "x64": {
       "CPU": {
-        "version": "0.24.0",
+        "version": "0.24.1",
         "packages": [
           {
-            "url": "https://github.com/VOICEVOX/voicevox_engine/releases/download/0.24.0/voicevox_engine-linux-cpu-x64-0.24.0.vvpp",
-            "name": "voicevox_engine-linux-cpu-x64-0.24.0.vvpp",
-            "size": 1586931235
+            "url": "https://github.com/VOICEVOX/voicevox_engine/releases/download/0.24.1/voicevox_engine-linux-cpu-x64-0.24.1.vvpp",
+            "name": "voicevox_engine-linux-cpu-x64-0.24.1.vvpp",
+            "size": 1709706864
           }
         ]
       },
       "GPU/CPU": {
-        "version": "0.24.0",
+        "version": "0.24.1",
         "packages": [
           {
-            "url": "https://github.com/VOICEVOX/voicevox_engine/releases/download/0.24.0/voicevox_engine-linux-nvidia-0.24.0.001.vvppp",
-            "name": "voicevox_engine-linux-nvidia-0.24.0.001.vvppp",
+            "url": "https://github.com/VOICEVOX/voicevox_engine/releases/download/0.24.1/voicevox_engine-linux-nvidia-0.24.1.001.vvppp",
+            "name": "voicevox_engine-linux-nvidia-0.24.1.001.vvppp",
             "size": 1992294400
           },
           {
-            "url": "https://github.com/VOICEVOX/voicevox_engine/releases/download/0.24.0/voicevox_engine-linux-nvidia-0.24.0.002.vvppp",
-            "name": "voicevox_engine-linux-nvidia-0.24.0.002.vvppp",
-            "size": 832624648
+            "url": "https://github.com/VOICEVOX/voicevox_engine/releases/download/0.24.1/voicevox_engine-linux-nvidia-0.24.1.002.vvppp",
+            "name": "voicevox_engine-linux-nvidia-0.24.1.002.vvppp",
+            "size": 955400508
           }
         ]
       }
