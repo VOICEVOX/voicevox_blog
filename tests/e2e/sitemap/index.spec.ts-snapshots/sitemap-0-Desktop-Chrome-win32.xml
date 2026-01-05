@@ -32,6 +32,16 @@
     </url>
     <url>
         <loc>
+            https://voicevox.hiroshiba.jp/dormitory/ankomon/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            https://voicevox.hiroshiba.jp/dormitory/ankomon/calls/
+        </loc>
+    </url>
+    <url>
+        <loc>
             https://voicevox.hiroshiba.jp/dormitory/aoyama_ryusei/
         </loc>
     </url>
@@ -493,6 +503,11 @@
     <url>
         <loc>
             https://voicevox.hiroshiba.jp/product/amehare_hau/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            https://voicevox.hiroshiba.jp/product/ankomon/
         </loc>
     </url>
     <url>
