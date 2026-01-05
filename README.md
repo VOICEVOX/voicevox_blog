@@ -192,13 +192,13 @@ pnpm run test:e2e --ui # 開発時は UI モードが便利
 > トークンを作成して Secrets に追加することで、自動的にテストを再実行できます。
 >
 > 1. [Fine-granted Tokens](https://github.com/settings/personal-access-tokens/new) にアクセスします。
-> 2. 適当な名前を入力し、 `ユーザー名/voicevox` へのアクセス権を与え、 Repository permissions の Contents で Read and write を選択します。
+> 2. 適当な名前を入力し、 `ユーザー名/voicevox_blog` へのアクセス権を与え、 Repository permissions の Contents で Read and write を選択します。
 >    <details>
 >    <summary>設定例</summary>
 >    <img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/refs/heads/main/docs/res/Fine-granted_Tokensの作成.png" width="320" alt="">
 >    </details>
 > 3. トークンを作成して文字列をコピーします。
-> 4. `ユーザー名/voicevox` のリポジトリの Settings > Secrets and variables > Actions > New repository secret を開きます。
+> 4. `ユーザー名/voicevox_blog` のリポジトリの Settings > Secrets and variables > Actions > New repository secret を開きます。
 > 5. 名前に `PUSH_TOKEN` と入力し、先ほどの文字列を貼り付けて Secrets を追加します。
 
 ## 開発者向け案内
