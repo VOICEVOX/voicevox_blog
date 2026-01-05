@@ -17,7 +17,7 @@ export default {
   name: "あんこもん",
   id: "ankomon",
   rubyName: "<ruby>あんこもん</ruby>",
-  voiceFeature: undefined, // TODO: 埋める
+  voiceFeature: "抑えめで負けず嫌いな声",
   color: "#A45AAA",
   lightColor: "#CAB2D6",
   description:
