@@ -1,0 +1,6 @@
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/product/ankomon/",
+  "title": "VOICEVOX あんこもん | 無料のテキスト読み上げソフトウェア",
+  "description": "VOICEVOXは「あんこもん」の抑えめで負けず嫌いな声で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。",
+  "robots": "index, follow"
+}

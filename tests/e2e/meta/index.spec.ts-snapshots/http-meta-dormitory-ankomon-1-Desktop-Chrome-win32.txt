@@ -1,0 +1,6 @@
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/ankomon/",
+  "title": "あんこもん | ボイボ寮 プロフィール | VOICEVOX",
+  "description": "ずんだもんをライバル視しており、「ずんだもん？そんなやつ、知らないもん」とツンツンしている。",
+  "robots": "index, follow"
+}
