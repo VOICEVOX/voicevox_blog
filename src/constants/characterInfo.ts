@@ -1,6 +1,7 @@
 import type { CharacterKey } from "./characterEntry";
 import aierutan_info from "./characterInfos/aierutan";
 import amehare_hau_info from "./characterInfos/amehare_hau";
+import ankomon_info from "./characterInfos/ankomon";
 import aoyama_ryusei_info from "./characterInfos/aoyama_ryusei";
 import chibishikiji_info from "./characterInfos/chibishikiji";
 import chubu_tsurugi_info from "./characterInfos/chubu_tsurugi";
@@ -82,4 +83,5 @@ export const characterInfos: {
   東北ずん子: tohoku_zunko_info,
   東北きりたん: tohoku_kiritan_info,
   東北イタコ: tohoku_itako_info,
+  あんこもん: ankomon_info,
 };
