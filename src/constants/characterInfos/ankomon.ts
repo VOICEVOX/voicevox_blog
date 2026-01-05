@@ -32,6 +32,5 @@ export default {
   ],
   policyUrl: "https://zunko.jp/con_ongen_kiyaku.html",
   detailUrl: "https://zunko.jp/#charaUN",
-  releaseDate: "2026/01/06", // TODO: 変える
   ...getCharacterAssets(key, styles),
 } satisfies CharacterInfo;
