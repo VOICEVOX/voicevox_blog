@@ -27,10 +27,12 @@ export async function progressiveScroll(
       await callback?.();
 
       const currentPosition = await page.evaluate(() => window.scrollY);
-      const scrollDelta = fromBottom
-        ? -(window.innerHeight - 100)
-        : window.innerHeight - 100; // 100pxだけオーバーラップさせる
-      await page.evaluate((delta) => window.scrollBy(0, delta), scrollDelta);
+      // 100pxだけオーバーラップさせる
+      await page.evaluate(
+        (fromBottom) =>
+          window.scrollBy(0, (fromBottom ? -1 : 1) * (window.innerHeight - 100)),
+        fromBottom,
+      );
       const newPosition = await page.evaluate(() => window.scrollY);
       if (currentPosition === newPosition) {
         isAtEnd = true;
@@ -56,8 +58,11 @@ export async function preparePage(
       });
       await waitForImages(page);
       await waitForAudios(page);
-      const scrollY = fromBottom ? document.body.scrollHeight : 0;
-      await page.evaluate((y) => window.scrollTo(0, y), scrollY);
+      await page.evaluate(
+        (fromBottom) =>
+          window.scrollTo(0, fromBottom ? document.body.scrollHeight : 0),
+        fromBottom,
+      );
     },
   );
 }
