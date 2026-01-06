@@ -23,7 +23,7 @@ test.describe("screenshots", () => {
 
   test("dormitory", async ({ page }) => {
     await gotoAndWait(page, "/dormitory/");
-    await takeScreenshots(page);
+    await takeScreenshots(page, { fromBottom: true });
   });
 
   test("dormitory call_names", async ({ page }) => {
@@ -58,6 +58,6 @@ test.describe("screenshots", () => {
 
   test("update_history", async ({ page }) => {
     await gotoAndWait(page, "/update_history/");
-    await takeScreenshots(page);
+    await takeScreenshots(page, { fromBottom: true });
   });
 });

@@ -12,35 +12,57 @@ export async function gotoAndWait(
   });
 }
 
-/** 一番下まで少しずつスクロールする */
+/** 少しずつスクロールする */
 export async function progressiveScroll(
   page: Page,
   callback?: () => Promise<void>,
+  options?: { fromBottom?: boolean },
 ) {
-  await test.step("一番下まで少しずつスクロールする", async () => {
-    let isAtBottom = false;
+  const fromBottom = options?.fromBottom ?? false;
+  const direction = fromBottom ? "上" : "下";
+
+  await test.step(`一番${direction}まで少しずつスクロールする`, async () => {
+    let isAtEnd = false;
     for (let i = 0; i < 50; i++) {
       await callback?.();
 
       const currentPosition = await page.evaluate(() => window.scrollY);
-      await page.evaluate(() => window.scrollBy(0, window.innerHeight - 100)); // 100pxだけオーバーラップさせる
+      // 100pxだけオーバーラップさせる
+      await page.evaluate(
+        (fromBottom) =>
+          window.scrollBy(0, (fromBottom ? -1 : 1) * (window.innerHeight - 100)),
+        fromBottom,
+      );
       const newPosition = await page.evaluate(() => window.scrollY);
       if (currentPosition === newPosition) {
-        isAtBottom = true;
+        isAtEnd = true;
         break;
       }
     }
-    expect(isAtBottom).toBeTruthy();
+    expect(isAtEnd).toBeTruthy();
   });
 }
 
-export async function preparePage(page: Page) {
-  await test.step("最初に全部表示してリソースを読み込んでトップに戻る", async () => {
-    await progressiveScroll(page, async () => {
-      await page.waitForTimeout(10); // 画像の読み込みリクエストが走るのを待つ
-    });
-    await waitForImages(page);
-    await waitForAudios(page);
-    await page.evaluate(() => window.scrollTo(0, 0));
-  });
+export async function preparePage(
+  page: Page,
+  options?: { fromBottom?: boolean },
+) {
+  const fromBottom = options?.fromBottom ?? false;
+  const destination = fromBottom ? "最下部" : "トップ";
+
+  await test.step(
+    `最初に全部表示してリソースを読み込んで${destination}に移動する`,
+    async () => {
+      await progressiveScroll(page, async () => {
+        await page.waitForTimeout(10); // 画像の読み込みリクエストが走るのを待つ
+      });
+      await waitForImages(page);
+      await waitForAudios(page);
+      await page.evaluate(
+        (fromBottom) =>
+          window.scrollTo(0, fromBottom ? document.body.scrollHeight : 0),
+        fromBottom,
+      );
+    },
+  );
 }
