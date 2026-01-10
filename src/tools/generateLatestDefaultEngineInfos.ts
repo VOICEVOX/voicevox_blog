@@ -40,6 +40,7 @@ jsonファイルの形式は以下の通り
   "linux-x64-cpu": {},
   "linux-x64-cuda": {}
 }
+```
 
 */
 import fs from "fs";
