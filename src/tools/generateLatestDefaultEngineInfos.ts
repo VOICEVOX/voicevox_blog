@@ -82,23 +82,21 @@ function getVvppTxtName(
   device: string,
   version: string,
 ): string {
-  if (os === "windows" && arch === "x64" && device === "cpu") {
-    return `voicevox_engine-windows-cpu-${version}.vvpp.txt`;
-  } else if (os === "windows" && arch === "x64" && device === "directml") {
-    return `voicevox_engine-windows-directml-${version}.vvpp.txt`;
-  } else if (os === "macos" && arch === "x64" && device === "cpu") {
-    return `voicevox_engine-macos-x64-${version}.vvpp.txt`;
-  } else if (os === "macos" && arch === "arm64" && device === "cpu") {
-    return `voicevox_engine-macos-arm64-${version}.vvpp.txt`;
-  } else if (os === "linux" && arch === "x64" && device === "cpu") {
-    return `voicevox_engine-linux-cpu-x64-${version}.vvpp.txt`;
-  } else if (os === "linux" && arch === "x64" && device === "cuda") {
-    return `voicevox_engine-linux-nvidia-${version}.vvpp.txt`;
-  } else {
-    throw new Error(
-      `対応していないRuntime Targetです: ${os}-${arch}-${device}`,
-    );
+  const target = `${os}-${arch}-${device}`;
+  const mapping: Record<string, string> = {
+    "windows-x64-cpu": `voicevox_engine-windows-cpu-${version}.vvpp.txt`,
+    "windows-x64-directml": `voicevox_engine-windows-directml-${version}.vvpp.txt`,
+    "macos-x64-cpu": `voicevox_engine-macos-x64-${version}.vvpp.txt`,
+    "macos-arm64-cpu": `voicevox_engine-macos-arm64-${version}.vvpp.txt`,
+    "linux-x64-cpu": `voicevox_engine-linux-cpu-x64-${version}.vvpp.txt`,
+    "linux-x64-cuda": `voicevox_engine-linux-nvidia-${version}.vvpp.txt`,
+  };
+
+  const result = mapping[target];
+  if (result === undefined) {
+    throw new Error(`対応していないRuntime Targetです: ${target}`);
   }
+  return result;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
