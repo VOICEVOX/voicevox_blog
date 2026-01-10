@@ -96,6 +96,7 @@ function getVvppTxtName(target: string, version: string): string {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const output: any = {
   formatVersion: 1,
+  packages: {},
 };
 
 let releases = z
@@ -144,7 +145,7 @@ for (const { os, arch, device } of runtimeTargets) {
     .trim()
     .split("\n");
 
-  const packages = packageNames.map((packageName) => {
+  const files = packageNames.map((packageName) => {
     const asset = release.assets.find((asset) =>
       asset.name.includes(packageName),
     );
@@ -158,9 +159,9 @@ for (const { os, arch, device } of runtimeTargets) {
     };
   });
 
-  output[target] = {
+  output.packages[target] = {
     version,
-    packages,
+    files,
   };
 
   console.log(`${target}: ${version}`);
