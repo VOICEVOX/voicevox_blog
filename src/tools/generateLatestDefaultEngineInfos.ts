@@ -17,7 +17,7 @@ jsonファイルの形式は以下の通り
     "version": "x.x.x",
 
     // vvppやvvpppの情報
-    "packages": [
+    "files": [
       {
         //[string] ダウンロードURL
         "url": "https://example.com/",
@@ -96,7 +96,7 @@ function getVvppTxtName(target: string, version: string): string {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const output: any = {
   formatVersion: 1,
-  packages: {},
+  files: {},
 };
 
 let releases = z
@@ -159,7 +159,7 @@ for (const { os, arch, device } of runtimeTargets) {
     };
   });
 
-  output.packages[target] = {
+  output.files[target] = {
     version,
     files,
   };
