@@ -11,50 +11,34 @@ jsonファイルの形式は以下の通り
   //[number] ファイル構造バージョン（仕様変更毎にインクリメントされる）
   "formatVersion": 1,
 
-  // Windowsの情報
-  "windows": {
-    "x64": {
-      "CPU": {
-        //[string] バージョン
-        "version": "x.x.x",
+  // Runtime Target (os-arch-device)をキーとする
+  "windows-x64-cpu": {
+    //[string] バージョン
+    "version": "x.x.x",
 
-        // vvppやvvpppの情報
-        "packages": [
-          {
-            //[string] ダウンロードURL
-            "url": "https://example.com/",
+    // vvppやvvpppの情報
+    "packages": [
+      {
+        //[string] ダウンロードURL
+        "url": "https://example.com/",
 
-            //[string] ファイル名
-            "name": "example.vvpp",
+        //[string] ファイル名
+        "name": "example.vvpp",
 
-            //[number] バイト数
-            "size": 123456,
+        //[number] バイト数
+        "size": 123456,
 
-            //[string(Optional)] ハッシュ値
-            "hash": "xxxxxxx",
-          },
-          //...
-        ]
+        //[string(Optional)] ハッシュ値
+        "hash": "xxxxxxx",
       },
-      "GPU/CPU": {}
-    }
+      //...
+    ]
   },
-
-  "macos": {
-    "x64": {
-      "CPU": {}
-    },
-    "arm64": {
-      "CPU": {}
-    }
-  },
-
-  "linux": {
-    "x64": {
-      "CPU": {},
-      "GPU/CPU": {}
-    }
-  }
+  "windows-x64-directml": {},
+  "macos-x64-cpu": {},
+  "macos-arm64-cpu": {},
+  "linux-x64-cpu": {},
+  "linux-x64-cuda": {}
 }
 
 */
@@ -77,31 +61,37 @@ if (args.output_path == undefined) {
   throw new Error("output_pathが指定されていません");
 }
 
-/** 対応するvvpp.txtの名前 */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function getVvppTxtName(version: string): any {
-  return {
-    windows: {
-      x64: {
-        CPU: `voicevox_engine-windows-cpu-${version}.vvpp.txt`,
-        "GPU/CPU": `voicevox_engine-windows-directml-${version}.vvpp.txt`,
-      },
-    },
-    macos: {
-      x64: {
-        CPU: `voicevox_engine-macos-x64-${version}.vvpp.txt`,
-      },
-      arm64: {
-        CPU: `voicevox_engine-macos-arm64-${version}.vvpp.txt`,
-      },
-    },
-    linux: {
-      x64: {
-        CPU: `voicevox_engine-linux-cpu-x64-${version}.vvpp.txt`,
-        "GPU/CPU": `voicevox_engine-linux-nvidia-${version}.vvpp.txt`,
-      },
-    },
+type RuntimeTarget = {
+  target: string;
+  os: string;
+  arch: string;
+  device: string;
+};
+
+const runtimeTargets: RuntimeTarget[] = [
+  { target: "windows-x64-cpu", os: "windows", arch: "x64", device: "cpu" },
+  {
+    target: "windows-x64-directml",
+    os: "windows",
+    arch: "x64",
+    device: "directml",
+  },
+  { target: "macos-x64-cpu", os: "macos", arch: "x64", device: "cpu" },
+  { target: "macos-arm64-cpu", os: "macos", arch: "arm64", device: "cpu" },
+  { target: "linux-x64-cpu", os: "linux", arch: "x64", device: "cpu" },
+  { target: "linux-x64-cuda", os: "linux", arch: "x64", device: "cuda" },
+];
+
+function getVvppTxtName(target: string, version: string): string {
+  const mapping: Record<string, string> = {
+    "windows-x64-cpu": `voicevox_engine-windows-cpu-${version}.vvpp.txt`,
+    "windows-x64-directml": `voicevox_engine-windows-directml-${version}.vvpp.txt`,
+    "macos-x64-cpu": `voicevox_engine-macos-x64-${version}.vvpp.txt`,
+    "macos-arm64-cpu": `voicevox_engine-macos-arm64-${version}.vvpp.txt`,
+    "linux-x64-cpu": `voicevox_engine-linux-cpu-x64-${version}.vvpp.txt`,
+    "linux-x64-cuda": `voicevox_engine-linux-nvidia-${version}.vvpp.txt`,
   };
+  return mapping[target];
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -125,49 +115,34 @@ let releases = z
   .array()
   .parse(await (await fetch(args.github_release_url)).json());
 
-// draftとprereleaseを除外
 releases = releases.filter((release) => !release.draft && !release.prerelease);
 
-// semverにマッチするバージョンのみを抽出
 releases = releases.filter((release) => semver.valid(release.tag_name));
 
-// バージョンでソート
 releases.sort((a, b) => semver.rcompare(a.tag_name, b.tag_name));
 
-// OS・アーキテクチャ・デバイスごとに処理
-for (const [os, arch, device] of [
-  ["windows", "x64", "CPU"],
-  ["windows", "x64", "GPU/CPU"],
-  ["macos", "x64", "CPU"],
-  ["macos", "arm64", "CPU"],
-  ["linux", "x64", "CPU"],
-  ["linux", "x64", "GPU/CPU"],
-]) {
-  // vvpp.txtがある最新のリリースを取得
+for (const { target } of runtimeTargets) {
   const release = releases.find((release) =>
     release.assets.some((asset) =>
-      asset.name.match(getVvppTxtName(release.tag_name)[os][arch][device]),
+      asset.name.match(getVvppTxtName(target, release.tag_name)),
     ),
   );
   if (release == undefined) {
-    throw new Error(`releaseが見つかりませんでした: ${os} ${arch} ${device}`);
+    throw new Error(`releaseが見つかりませんでした: ${target}`);
   }
 
-  // バージョンとvvpp.txtのURLを取得
   const version = release.tag_name;
   const vvppTxtUrl = release.assets.find((asset) =>
-    asset.name.match(getVvppTxtName(version)[os][arch][device]),
+    asset.name.match(getVvppTxtName(target, version)),
   )?.browser_download_url;
   if (vvppTxtUrl == undefined) {
-    throw new Error(`vvpp.txtが見つかりませんでした: ${os} ${arch} ${device}`);
+    throw new Error(`vvpp.txtが見つかりませんでした: ${target}`);
   }
 
-  // vvpp.txtからvvpp/vvpppのファイル名を取得
   const packageNames = (await (await fetch(vvppTxtUrl)).text())
     .trim()
     .split("\n");
 
-  // 必要な情報を取得
   const packages = packageNames.map((packageName) => {
     const asset = release.assets.find((asset) =>
       asset.name.includes(packageName),
@@ -182,17 +157,12 @@ for (const [os, arch, device] of [
     };
   });
 
-  // 記録
-  output[os] = output[os] || {};
-  output[os][arch] = output[os][arch] || {};
-  output[os][arch][device] = {
+  output[target] = {
     version,
     packages,
   };
 
-  // ログ
-  console.log(`${os} ${arch} ${device}: ${version}`);
+  console.log(`${target}: ${version}`);
 }
 
-// 出力
 fs.writeFileSync(args.output_path, JSON.stringify(output, null, 2));
