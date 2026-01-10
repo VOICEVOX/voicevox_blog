@@ -76,13 +76,7 @@ const runtimeTargets: RuntimeTarget[] = [
   { os: "linux", arch: "x64", device: "cuda" },
 ];
 
-function getVvppTxtName(
-  os: string,
-  arch: string,
-  device: string,
-  version: string,
-): string {
-  const target = `${os}-${arch}-${device}`;
+function getVvppTxtName(target: string, version: string): string {
   const mapping: Record<string, string> = {
     "windows-x64-cpu": `voicevox_engine-windows-cpu-${version}.vvpp.txt`,
     "windows-x64-directml": `voicevox_engine-windows-directml-${version}.vvpp.txt`,
@@ -131,7 +125,7 @@ for (const { os, arch, device } of runtimeTargets) {
 
   const release = releases.find((release) =>
     release.assets.some((asset) =>
-      asset.name.match(getVvppTxtName(os, arch, device, release.tag_name)),
+      asset.name.match(getVvppTxtName(target, release.tag_name)),
     ),
   );
   if (release == undefined) {
@@ -140,7 +134,7 @@ for (const { os, arch, device } of runtimeTargets) {
 
   const version = release.tag_name;
   const vvppTxtUrl = release.assets.find((asset) =>
-    asset.name.match(getVvppTxtName(os, arch, device, version)),
+    asset.name.match(getVvppTxtName(target, version)),
   )?.browser_download_url;
   if (vvppTxtUrl == undefined) {
     throw new Error(`vvpp.txtが見つかりませんでした: ${target}`);
