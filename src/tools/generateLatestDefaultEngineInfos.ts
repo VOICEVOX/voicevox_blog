@@ -12,7 +12,7 @@ jsonファイルの形式は以下の通り
   "formatVersion": 1,
 
   // Runtime Target (os-arch-device)をキーとする
-  "files": {
+  "packages": {
     "windows-x64-cpu": {
       //[string] バージョン
       "version": "x.x.x",
@@ -99,7 +99,7 @@ function getVvppTxtName(target: string, version: string): string {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const output: any = {
   formatVersion: 1,
-  files: {},
+  packages: {},
 };
 
 let releases = z
@@ -162,7 +162,7 @@ for (const { os, arch, device } of runtimeTargets) {
     };
   });
 
-  output.files[target] = {
+  output.packages[target] = {
     version,
     files,
   };
