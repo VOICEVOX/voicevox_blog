@@ -8,11 +8,8 @@ const commitMessage = message
   ? `${message} [update snapshots]`
   : "[update snapshots]";
 
-console.log("変更をステージング中...");
-execSync("git add .", { stdio: "inherit" });
-
-console.log(`\nコミット中: ${commitMessage}`);
-execSync(`git commit -m "${commitMessage}"`, { stdio: "inherit" });
+console.log(`コミット中: ${commitMessage}`);
+execSync(`git commit --allow-empty -m "${commitMessage}"`, { stdio: "inherit" });
 
 console.log("\nプッシュ中...");
 execSync("git push", { stdio: "inherit" });
