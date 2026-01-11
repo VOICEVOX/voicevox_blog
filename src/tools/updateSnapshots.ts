@@ -1,13 +1,21 @@
 /**
- * スナップショット更新後にテストを再実行するための空コミットをプッシュする
+ * スナップショット更新をトリガーするコミットをプッシュする
  */
 import { execSync } from "child_process";
 
-console.log("空コミットを作成中...");
-execSync('git commit --allow-empty -m "（テストを再実行）"', { stdio: "inherit" });
+const message = process.argv[2] || "";
+const commitMessage = message
+  ? `${message} [update snapshots]`
+  : "[update snapshots]";
+
+console.log("変更をステージング中...");
+execSync("git add .", { stdio: "inherit" });
+
+console.log(`\nコミット中: ${commitMessage}`);
+execSync(`git commit -m "${commitMessage}"`, { stdio: "inherit" });
 
 console.log("\nプッシュ中...");
 execSync("git push", { stdio: "inherit" });
 
 console.log("\n完了しました");
-console.log("Github Actionsでテストが再実行されます");
+console.log("Github Actionsでスナップショットが更新されます");
