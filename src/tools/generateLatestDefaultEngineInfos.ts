@@ -12,33 +12,35 @@ jsonファイルの形式は以下の通り
   "formatVersion": 1,
 
   // Runtime Target (os-arch-device)をキーとする
-  "windows-x64-cpu": {
-    //[string] バージョン
-    "version": "x.x.x",
+  "files": {
+    "windows-x64-cpu": {
+      //[string] バージョン
+      "version": "x.x.x",
 
-    // vvppやvvpppの情報
-    "files": [
-      {
-        //[string] ダウンロードURL
-        "url": "https://example.com/",
+      // vvppやvvpppの情報
+      "files": [
+        {
+          //[string] ダウンロードURL
+          "url": "https://example.com/",
 
-        //[string] ファイル名
-        "name": "example.vvpp",
+          //[string] ファイル名
+          "name": "example.vvpp",
 
-        //[number] バイト数
-        "size": 123456,
+          //[number] バイト数
+          "size": 123456,
 
-        //[string(Optional)] ハッシュ値
-        "hash": "xxxxxxx",
-      },
-      //...
-    ]
-  },
-  "windows-x64-directml": {},
-  "macos-x64-cpu": {},
-  "macos-arm64-cpu": {},
-  "linux-x64-cpu": {},
-  "linux-x64-cuda": {}
+          //[string(Optional)] ハッシュ値
+          "hash": "xxxxxxx",
+        },
+        //...
+      ]
+    },
+    "windows-x64-directml": {},
+    "macos-x64-cpu": {},
+    "macos-arm64-cpu": {},
+    "linux-x64-cpu": {},
+    "linux-x64-cuda": {}
+  }
 }
 ```
 
