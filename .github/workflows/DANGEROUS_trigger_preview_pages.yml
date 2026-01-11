@@ -4,7 +4,6 @@ name: "Trigger preview-pages' workflow"
 # 詳細： https://github.com/voicevox/preview-pages?tab=readme-ov-file#%E4%BB%95%E7%B5%84%E3%81%BF
 
 on:
-  workflow_dispatch:
   pull_request_target:
     types:
       - opened
