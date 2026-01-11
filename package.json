@@ -16,6 +16,7 @@
     "generateLatestDefaultEngineInfos": "tsx ./src/tools/generateLatestDefaultEngineInfos.ts",
     "updateVersion": "tsx ./src/tools/updateVersion.mts",
     "updateMarkdown": "tsx ./src/tools/updateMarkdown.mts",
+    "updateSnapshots": "tsx ./src/tools/updateSnapshots.ts",
     "preinstall": "npx -y only-allow pnpm"
   },
   "dependencies": {
