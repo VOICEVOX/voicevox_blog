@@ -9,7 +9,9 @@ const commitMessage = message
   : "[update snapshots]";
 
 console.log(`コミット中: ${commitMessage}`);
-execSync(`git commit --allow-empty -m "${commitMessage}"`, { stdio: "inherit" });
+execSync(`git commit --allow-empty -m "${commitMessage}"`, {
+  stdio: "inherit",
+});
 
 console.log("\nプッシュ中...");
 execSync("git push", { stdio: "inherit" });
