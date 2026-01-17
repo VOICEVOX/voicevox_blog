@@ -3,6 +3,11 @@
   "packages": {
     "windows-x64-cpu": {
       "version": "0.25.1",
+      "displayInfo": {
+        "label": "CPU版",
+        "hint": "CPUで動作します",
+        "order": 0
+      },
       "files": [
         {
           "url": "https://github.com/VOICEVOX/voicevox_engine/releases/download/0.25.1/voicevox_engine-windows-cpu-0.25.1.vvpp",
@@ -13,6 +18,12 @@
     },
     "windows-x64-directml": {
       "version": "0.25.1",
+      "displayInfo": {
+        "label": "GPU / CPU両対応版",
+        "hint": "DirectML対応のGPUが必要です",
+        "order": 1,
+        "default": true
+      },
       "files": [
         {
           "url": "https://github.com/VOICEVOX/voicevox_engine/releases/download/0.25.1/voicevox_engine-windows-directml-0.25.1.vvpp",
@@ -23,6 +34,12 @@
     },
     "macos-x64-cpu": {
       "version": "0.25.1",
+      "displayInfo": {
+        "label": "CPU版",
+        "hint": "CPUで動作します",
+        "order": 0,
+        "default": true
+      },
       "files": [
         {
           "url": "https://github.com/VOICEVOX/voicevox_engine/releases/download/0.25.1/voicevox_engine-macos-x64-0.25.1.vvpp",
@@ -33,6 +50,12 @@
     },
     "macos-arm64-cpu": {
       "version": "0.25.1",
+      "displayInfo": {
+        "label": "CPU版",
+        "hint": "CPUで動作します",
+        "order": 0,
+        "default": true
+      },
       "files": [
         {
           "url": "https://github.com/VOICEVOX/voicevox_engine/releases/download/0.25.1/voicevox_engine-macos-arm64-0.25.1.vvpp",
@@ -43,6 +66,12 @@
     },
     "linux-x64-cpu": {
       "version": "0.25.1",
+      "displayInfo": {
+        "label": "CPU版",
+        "hint": "CPUで動作します",
+        "order": 0,
+        "default": true
+      },
       "files": [
         {
           "url": "https://github.com/VOICEVOX/voicevox_engine/releases/download/0.25.1/voicevox_engine-linux-cpu-x64-0.25.1.vvpp",
@@ -53,6 +82,11 @@
     },
     "linux-x64-cuda": {
       "version": "0.25.1",
+      "displayInfo": {
+        "label": "CUDA版",
+        "hint": "CUDA対応のNVIDIA製GPUが必要です",
+        "order": 1
+      },
       "files": [
         {
           "url": "https://github.com/VOICEVOX/voicevox_engine/releases/download/0.25.1/voicevox_engine-linux-nvidia-0.25.1.001.vvppp",

@@ -4,7 +4,7 @@
  */
 /*
 
-jsonファイルの形式は以下の通り
+jsonファイルの形式は以下の通り。
 
 ```JSONC
 {
@@ -16,6 +16,21 @@ jsonファイルの形式は以下の通り
     "windows-x64-cpu": {
       //[string] バージョン
       "version": "x.x.x",
+
+      // パッケージの表示情報
+      "displayInfo": {
+        //[string] ラベル
+        "label": "CPU版",
+
+        //[string] ヒント
+        "hint": "CPUで動作します",
+
+        //[number] 表示順序
+        "order": 0,
+
+        //[boolean(Optional)] デフォルトとして選択するか
+        "default": true,
+      },
 
       // vvppやvvpppの情報
       "files": [
@@ -42,6 +57,12 @@ jsonファイルの形式は以下の通り
     "linux-x64-cuda": {}
   }
 }
+
+displayInfoの仕様
+- label: 「対応モード」として案内される表示名
+- hint: ラベルの説明文として案内される表示名
+- order: 各OS/アーキテクチャごとに0から始まる連続した数値
+- default: 各OS/アーキテクチャごとにtrueのものが1つだけ存在
 ```
 
 */
@@ -64,20 +85,111 @@ if (args.output_path == undefined) {
   throw new Error("output_pathが指定されていません");
 }
 
+type DisplayInfo = {
+  label: string;
+  hint: string;
+  order: number;
+  default?: boolean;
+};
+
 type RuntimeTarget = {
   os: string;
   arch: string;
   device: string;
+  displayInfo: DisplayInfo;
 };
 
 const runtimeTargets: RuntimeTarget[] = [
-  { os: "windows", arch: "x64", device: "cpu" },
-  { os: "windows", arch: "x64", device: "directml" },
-  { os: "macos", arch: "x64", device: "cpu" },
-  { os: "macos", arch: "arm64", device: "cpu" },
-  { os: "linux", arch: "x64", device: "cpu" },
-  { os: "linux", arch: "x64", device: "cuda" },
+  {
+    os: "windows",
+    arch: "x64",
+    device: "cpu",
+    displayInfo: { label: "CPU版", hint: "CPUで動作します", order: 0 },
+  },
+  {
+    os: "windows",
+    arch: "x64",
+    device: "directml",
+    displayInfo: {
+      label: "GPU / CPU両対応版",
+      hint: "DirectML対応のGPUが必要です",
+      order: 1,
+      default: true,
+    },
+  },
+  {
+    os: "macos",
+    arch: "x64",
+    device: "cpu",
+    displayInfo: {
+      label: "CPU版",
+      hint: "CPUで動作します",
+      order: 0,
+      default: true,
+    },
+  },
+  {
+    os: "macos",
+    arch: "arm64",
+    device: "cpu",
+    displayInfo: {
+      label: "CPU版",
+      hint: "CPUで動作します",
+      order: 0,
+      default: true,
+    },
+  },
+  {
+    os: "linux",
+    arch: "x64",
+    device: "cpu",
+    displayInfo: {
+      label: "CPU版",
+      hint: "CPUで動作します",
+      order: 0,
+      default: true,
+    },
+  },
+  {
+    os: "linux",
+    arch: "x64",
+    device: "cuda",
+    displayInfo: {
+      label: "CUDA版",
+      hint: "CUDA対応のNVIDIA製GPUが必要です",
+      order: 1,
+    },
+  },
 ];
+
+function validateDisplayInfo(targets: RuntimeTarget[]): void {
+  const groupedByOsArch = new Map<string, RuntimeTarget[]>();
+  for (const target of targets) {
+    const key = `${target.os}-${target.arch}`;
+    const group = groupedByOsArch.get(key) ?? [];
+    group.push(target);
+    groupedByOsArch.set(key, group);
+  }
+
+  for (const [osArch, group] of groupedByOsArch) {
+    const defaultCount = group.filter((t) => t.displayInfo.default).length;
+    if (defaultCount !== 1) {
+      throw new Error(
+        `${osArch} のデフォルトは1つである必要があります（現在: ${defaultCount}個）`,
+      );
+    }
+
+    const orders = group.map((t) => t.displayInfo.order).sort((a, b) => a - b);
+    const expectedOrders = Array.from({ length: group.length }, (_, i) => i);
+    if (orders.join(",") !== expectedOrders.join(",")) {
+      throw new Error(
+        `${osArch} のorderは0から始まる連続した数値である必要があります（現在: ${orders.join(", ")}）`,
+      );
+    }
+  }
+}
+
+validateDisplayInfo(runtimeTargets);
 
 function getVvppTxtName(target: string, version: string): string {
   const mapping: Record<string, string> = {
@@ -124,7 +236,7 @@ releases = releases.filter((release) => semver.valid(release.tag_name));
 
 releases.sort((a, b) => semver.rcompare(a.tag_name, b.tag_name));
 
-for (const { os, arch, device } of runtimeTargets) {
+for (const { os, arch, device, displayInfo } of runtimeTargets) {
   const target = `${os}-${arch}-${device}`;
 
   const release = releases.find((release) =>
@@ -164,6 +276,7 @@ for (const { os, arch, device } of runtimeTargets) {
 
   output.packages[target] = {
     version,
+    displayInfo,
     files,
   };
 
