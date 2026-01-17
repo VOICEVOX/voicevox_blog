@@ -23,7 +23,7 @@ jsonファイルの形式は以下の通り。
         "label": "CPU版",
 
         //[string] ヒント
-        "hint": "CPUで動作します",
+        "hint": "CPUで音声を生成します",
 
         //[number] 表示順序
         "order": 0,
@@ -104,15 +104,15 @@ const runtimeTargets: RuntimeTarget[] = [
     os: "windows",
     arch: "x64",
     device: "cpu",
-    displayInfo: { label: "CPU版", hint: "CPUで動作します", order: 0 },
+    displayInfo: { label: "CPU", hint: "CPUで音声を生成します", order: 0 },
   },
   {
     os: "windows",
     arch: "x64",
     device: "directml",
     displayInfo: {
-      label: "GPU / CPU両対応版",
-      hint: "DirectML対応のGPUが必要です",
+      label: "GPU / CPU",
+      hint: "DirectML対応のGPUでも音声を生成できます",
       order: 1,
       default: true,
     },
@@ -122,8 +122,8 @@ const runtimeTargets: RuntimeTarget[] = [
     arch: "x64",
     device: "cpu",
     displayInfo: {
-      label: "CPU版",
-      hint: "CPUで動作します",
+      label: "CPU",
+      hint: "CPUで音声を生成します",
       order: 0,
       default: true,
     },
@@ -133,8 +133,8 @@ const runtimeTargets: RuntimeTarget[] = [
     arch: "arm64",
     device: "cpu",
     displayInfo: {
-      label: "CPU版",
-      hint: "CPUで動作します",
+      label: "CPU",
+      hint: "CPUで音声を生成します",
       order: 0,
       default: true,
     },
@@ -144,8 +144,8 @@ const runtimeTargets: RuntimeTarget[] = [
     arch: "x64",
     device: "cpu",
     displayInfo: {
-      label: "CPU版",
-      hint: "CPUで動作します",
+      label: "CPU",
+      hint: "CPUで音声を生成します",
       order: 0,
       default: true,
     },
@@ -155,8 +155,8 @@ const runtimeTargets: RuntimeTarget[] = [
     arch: "x64",
     device: "cuda",
     displayInfo: {
-      label: "CUDA版",
-      hint: "CUDA対応のNVIDIA製GPUが必要です",
+      label: "GPU(CUDA)",
+      hint: "CUDA対応のNVIDIA製GPUでも音声を生成できます",
       order: 1,
     },
   },

@@ -4,8 +4,8 @@
     "windows-x64-cpu": {
       "version": "0.25.1",
       "displayInfo": {
-        "label": "CPU版",
-        "hint": "CPUで動作します",
+        "label": "CPU",
+        "hint": "CPUで音声を生成します",
         "order": 0
       },
       "files": [
@@ -19,8 +19,8 @@
     "windows-x64-directml": {
       "version": "0.25.1",
       "displayInfo": {
-        "label": "GPU / CPU両対応版",
-        "hint": "DirectML対応のGPUが必要です",
+        "label": "GPU / CPU",
+        "hint": "DirectML対応のGPUでも音声を生成できます",
         "order": 1,
         "default": true
       },
@@ -35,8 +35,8 @@
     "macos-x64-cpu": {
       "version": "0.25.1",
       "displayInfo": {
-        "label": "CPU版",
-        "hint": "CPUで動作します",
+        "label": "CPU",
+        "hint": "CPUで音声を生成します",
         "order": 0,
         "default": true
       },
@@ -51,8 +51,8 @@
     "macos-arm64-cpu": {
       "version": "0.25.1",
       "displayInfo": {
-        "label": "CPU版",
-        "hint": "CPUで動作します",
+        "label": "CPU",
+        "hint": "CPUで音声を生成します",
         "order": 0,
         "default": true
       },
@@ -67,8 +67,8 @@
     "linux-x64-cpu": {
       "version": "0.25.1",
       "displayInfo": {
-        "label": "CPU版",
-        "hint": "CPUで動作します",
+        "label": "CPU",
+        "hint": "CPUで音声を生成します",
         "order": 0,
         "default": true
       },
@@ -83,8 +83,8 @@
     "linux-x64-cuda": {
       "version": "0.25.1",
       "displayInfo": {
-        "label": "CUDA版",
-        "hint": "CUDA対応のNVIDIA製GPUが必要です",
+        "label": "GPU(CUDA)",
+        "hint": "CUDA対応のNVIDIA製GPUでも音声を生成できます",
         "order": 1
       },
       "files": [
