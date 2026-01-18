@@ -57,14 +57,13 @@ jsonファイルの形式は以下の通り。
     "linux-x64-cuda": {}
   }
 }
+```
 
 displayInfoの仕様
 - label: 「対応モード」として案内される表示名
 - hint: ラベルの説明文として案内される表示名
 - order: 各OS/アーキテクチャごとに0から始まる連続した数値
 - default: 各OS/アーキテクチャごとにtrueのものが1つだけ存在
-```
-
 */
 import fs from "fs";
 import semver from "semver";
