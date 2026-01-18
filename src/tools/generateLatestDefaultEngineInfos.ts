@@ -29,7 +29,7 @@ jsonファイルの形式は以下の通り。
         "order": 0,
 
         //[boolean(Optional)] デフォルトとして選択するか
-        "default": true,
+        "default": true
       },
 
       // vvppやvvpppの情報
