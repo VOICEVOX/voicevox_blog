@@ -11,7 +11,7 @@ on:
         description: "スナップショットを更新する"
         required: false
         type: boolean
-        default: true
+        default: false
 
 defaults:
   run:
