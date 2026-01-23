@@ -176,6 +176,13 @@ pnpm run test:e2e --ui # 開発時は UI モードが便利
 2. リポジトリの設定の Actions > General > Workflow permissions で Read and write permissions を選択します。
 3. GitHub の Actions タブから「Test」ワークフローを選択し、「Run workflow」をクリックします。
 4. 更新したいブランチを選択し、「スナップショットを更新する」にチェックを入れて実行します。
+
+   gh コマンドでも実行できます。
+
+   ```bash
+   gh workflow run test.yml -R (ユーザー名)/voicevox_blog --ref (ブランチ名) -f update_snapshots=true
+   ```
+
 5. Github Workflow が完了すると、更新されたスクリーンショットがコミットされます。
 6. プルした後、空コミットをプッシュしてテストを再実行します。
 
