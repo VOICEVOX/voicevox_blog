@@ -8,18 +8,15 @@ export async function takeScreenshots(
   const fromBottom = options?.fromBottom ?? false;
   const direction = fromBottom ? "下から" : "上から";
 
-  await test.step(
-    `スクリーンショットを${direction}撮ってスクロールしてを繰り返す`,
-    async () => {
-      await preparePage(page, { fromBottom });
+  await test.step(`スクリーンショットを${direction}撮ってスクロールしてを繰り返す`, async () => {
+    await preparePage(page, { fromBottom });
 
-      await progressiveScroll(
-        page,
-        async () => {
-          await expect(page).toHaveScreenshot();
-        },
-        { fromBottom },
-      );
-    },
-  );
+    await progressiveScroll(
+      page,
+      async () => {
+        await expect(page).toHaveScreenshot();
+      },
+      { fromBottom },
+    );
+  });
 }

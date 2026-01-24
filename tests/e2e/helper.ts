@@ -30,7 +30,10 @@ export async function progressiveScroll(
       // 100pxだけオーバーラップさせる
       await page.evaluate(
         (fromBottom) =>
-          window.scrollBy(0, (fromBottom ? -1 : 1) * (window.innerHeight - 100)),
+          window.scrollBy(
+            0,
+            (fromBottom ? -1 : 1) * (window.innerHeight - 100),
+          ),
         fromBottom,
       );
       const newPosition = await page.evaluate(() => window.scrollY);
@@ -50,19 +53,16 @@ export async function preparePage(
   const fromBottom = options?.fromBottom ?? false;
   const destination = fromBottom ? "最下部" : "トップ";
 
-  await test.step(
-    `最初に全部表示してリソースを読み込んで${destination}に移動する`,
-    async () => {
-      await progressiveScroll(page, async () => {
-        await page.waitForTimeout(10); // 画像の読み込みリクエストが走るのを待つ
-      });
-      await waitForImages(page);
-      await waitForAudios(page);
-      await page.evaluate(
-        (fromBottom) =>
-          window.scrollTo(0, fromBottom ? document.body.scrollHeight : 0),
-        fromBottom,
-      );
-    },
-  );
+  await test.step(`最初に全部表示してリソースを読み込んで${destination}に移動する`, async () => {
+    await progressiveScroll(page, async () => {
+      await page.waitForTimeout(10); // 画像の読み込みリクエストが走るのを待つ
+    });
+    await waitForImages(page);
+    await waitForAudios(page);
+    await page.evaluate(
+      (fromBottom) =>
+        window.scrollTo(0, fromBottom ? document.body.scrollHeight : 0),
+      fromBottom,
+    );
+  });
 }
