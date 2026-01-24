@@ -1,6 +1,6 @@
-import { test } from "@playwright/test";
-import { takeScreenshots } from "./helper";
 import { gotoAndWait } from "../helper";
+import { takeScreenshots } from "./helper";
+import { test } from "@playwright/test";
 
 test.describe("screenshots", () => {
   test("talk", async ({ page }) => {
