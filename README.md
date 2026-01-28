@@ -164,6 +164,8 @@ pnpm run test:e2e --ui # 開発時は UI モードが便利
 
 `pnpm start`してからe2eテストを起動することで、変更を反映しながらテストすることもできます。
 
+`STRICT_USE_PREVIEW=1` を指定することで、必ず preview サーバーを起動して使います。
+
 #### スクリーンショットの更新
 
 ブラウザ End to End テストと Storybook では Visual Regression Testing を行っています。

@@ -1,5 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 
+const strictUsePreview = process.env.STRICT_USE_PREVIEW === "1"; // NOTE: 必ず preview サーバーを使うモード
+
 export default defineConfig({
   testDir: "./tests",
   fullyParallel: true,
@@ -11,15 +13,23 @@ export default defineConfig({
     : [["html", { open: "on-failure" }]],
   timeout: 90 * 1000,
 
+  webServer: strictUsePreview
+    ? {
+        command: "pnpm preview",
+        reuseExistingServer: false,
+        wait: {
+          stdout: /(?<playwright_test_base_url>https?:\/\/\S+:\d+)/,
+        },
+      }
+    : {
+        command: "pnpm preview",
+        url: "http://localhost:4321",
+        reuseExistingServer: !process.env.CI,
+      },
+
   use: {
     trace: "on-first-retry",
-    baseURL: "http://localhost:4321",
-  },
-
-  webServer: {
-    command: "pnpm preview",
-    url: "http://localhost:4321",
-    reuseExistingServer: !process.env.CI,
+    ...(strictUsePreview ? {} : { baseURL: "http://localhost:4321" }),
   },
 
   projects: [
