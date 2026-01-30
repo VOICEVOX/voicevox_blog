@@ -44,7 +44,7 @@
 - [x] **LinkListSection** `src/pages/_LinkListSection.astro`
   - リストレイアウト → Tailwindで再現
 
-- [ ] **ExplainSection** `src/pages/dormitory/_ExplainSection.astro`
+- [x] **ExplainSection** `src/pages/dormitory/_ExplainSection.astro`
   - 基本的なセクションレイアウト → Tailwindで再現
 
 - [ ] **CharacterCard (dormitory)** `src/pages/dormitory/_CharacterCard.astro`
@@ -114,6 +114,7 @@
 
 4. **実装の流れ**
    - 元のコンポーネントを直接Tailwindで置き換え
+   - Bulma版のcomputed styleを確認(特にmargin-bottom)
    - 開発サーバーでPlaywrightを使って動作確認
    - ユーザーに確認を依頼（AskSkill）
    - スクリーンショット更新: `pnpm run test:e2e --update-snapshots=all tests/e2e/ui/dev-ui/`
@@ -123,8 +124,10 @@
 | Bulmaクラス                  | Tailwind対応例                                                                                                     |
 | ---------------------------- | ------------------------------------------------------------------------------------------------------------------ |
 | `section`                    | `py-12`                                                                                                            |
-| `title`                      | `text-3xl font-bold mb-4`                                                                                          |
+| `title`(h2, 32px)            | `text-3xl font-bold mb-6` (Bulmaのmargin-bottomは24px)                                                             |
+| `title is-4`(h2, 24px)       | `text-2xl font-bold mb-6` (Bulmaのmargin-bottomは24px)                                                             |
 | `is-size-5`                  | `text-xl`                                                                                                          |
+| `is-size-6`(p)               | `text-base` (Bulmaのmargin-bottomは0px)                                                                            |
 | `has-text-weight-bold`       | `font-bold`                                                                                                        |
 | `is-underlined`              | `underline`                                                                                                        |
 | `button`                     | `px-4 py-2 rounded font-medium`                                                                                    |

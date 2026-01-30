@@ -1,5 +1,6 @@
 ---
 import { withBaseUrl } from "@/helper";
+import "@/styles/global.css";
 
 /**
  * ボイボ寮とVOICEVOXをちょっとだけ紹介するコンポーネント
@@ -12,45 +13,43 @@ interface Props {
 const { showingDormitoryPageButton } = Astro.props;
 ---
 
-<section class="section py-5">
-  <div
-    class="container has-text-centered py-5 is-flex is-flex-direction-column"
-  >
-    <h2 class="title is-4">ボイボ寮とは</h2>
-    <p class="is-size-6">
-      VOICEVOX
-      のキャラたちの設定があると動画制作の参考になるかと思って用意した世界観です。
-    </p>
-    <p class="is-size-6">
-      必ずしも遵守する必要はなく、自由に改変して頂いても問題ありません。
-    </p>
-    {
-      showingDormitoryPageButton && (
-        <a
-          href={withBaseUrl("/dormitory/")}
-          class="button is-align-self-center mt-5 is-normal is-rounded"
-        >
-          <span>ボイボ寮ページへ</span>
-        </a>
-      )
-    }
-  </div>
+<section class="py-5">
+  <div class="flex flex-col md:flex-row gap-8 max-w-6xl mx-auto px-4">
+    <div class="flex-1 text-center py-5 flex flex-col items-center">
+      <h2 class="text-2xl font-bold mb-6">ボイボ寮とは</h2>
+      <p class="text-base">
+        VOICEVOX
+        のキャラたちの設定があると動画制作の参考になるかと思って用意した世界観です。
+      </p>
+      <p class="text-base">
+        必ずしも遵守する必要はなく、自由に改変して頂いても問題ありません。
+      </p>
+      {
+        showingDormitoryPageButton && (
+          <a
+            href={withBaseUrl("/dormitory/")}
+            class="self-center mt-5 border-2 border-gray-400 bg-white text-black hover:bg-gray-50 rounded-full px-6 py-2 inline-flex items-center"
+          >
+            <span>ボイボ寮ページへ</span>
+          </a>
+        )
+      }
+    </div>
 
-  <div
-    class="container has-text-centered py-5 is-flex is-flex-direction-column"
-  >
-    <h2 class="title is-4">VOICEVOX とは</h2>
-    <p class="is-size-6">
-      無料で使える中品質なテキスト読み上げソフトウェアです。
-    </p>
-    <p class="is-size-6">
-      商用・非商用問わず無料で、イントネーションの詳細な調整ができることが特徴です。
-    </p>
-    <a
-      href={withBaseUrl("/")}
-      class="button is-align-self-center mt-5 is-primary is-rounded"
-    >
-      <span class="has-text-weight-semibold">ダウンロード</span>
-    </a>
+    <div class="flex-1 text-center py-5 flex flex-col items-center">
+      <h2 class="text-2xl font-bold mb-6">VOICEVOX とは</h2>
+      <p class="text-base">
+        無料で使える中品質なテキスト読み上げソフトウェアです。
+      </p>
+      <p class="text-base">
+        商用・非商用問わず無料で、イントネーションの詳細な調整ができることが特徴です。
+      </p>
+      <a
+        href={withBaseUrl("/")}
+        class="self-center mt-5 bg-primary text-black hover:brightness-90 rounded-full px-6 py-2 font-semibold inline-flex items-center"
+      >
+        <span>ダウンロード</span>
+      </a>
+    </div>
   </div>
 </section>
