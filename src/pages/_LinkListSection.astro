@@ -6,39 +6,50 @@ import { isDevelopment, withBaseUrl } from "@/helper";
  */
 ---
 
-<section class="section">
-  <div class="container is-max-desktop is-flex is-flex-direction-column">
-    <h2 id="link" class="jump-anchor-header-padding title">
-      <a href={withBaseUrl("#link")} class="has-text-black">リンク</a>
+<section class="py-12">
+  <div class="max-w-4xl mx-auto px-4 flex flex-col">
+    <h2
+      id="link"
+      class="pt-[calc(3.25rem+1rem)] -mt-[calc(3.25rem+1rem)] text-3xl font-bold mb-4"
+    >
+      <a href={withBaseUrl("#link")} class="text-black dark:text-black"
+        >リンク</a
+      >
     </h2>
-    <ul class="is-size-5">
+    <ul class="text-xl">
       <li>
         <a
           href={withBaseUrl("/dormitory/")}
-          class="has-text-weight-bold is-underlined">ボイボ寮</a
+          class="font-bold underline text-[rgb(48,100,57)] hover:text-[rgb(38,80,47)] dark:text-[rgb(165,212,173)] dark:hover:text-[rgb(185,232,193)]"
+          >ボイボ寮</a
         >
       </li>
       <li>
         <a
           href={withBaseUrl("/how_to_use/")}
-          class="has-text-weight-bold is-underlined">使い方</a
+          class="font-bold underline text-[rgb(48,100,57)] hover:text-[rgb(38,80,47)] dark:text-[rgb(165,212,173)] dark:hover:text-[rgb(185,232,193)]"
+          >使い方</a
         >
       </li>
       <li>
         <a
           href={withBaseUrl("/term/")}
-          class="has-text-weight-bold is-underlined">利用規約</a
+          class="font-bold underline text-[rgb(48,100,57)] hover:text-[rgb(38,80,47)] dark:text-[rgb(165,212,173)] dark:hover:text-[rgb(185,232,193)]"
+          >利用規約</a
         >
       </li>
       <li>
-        <a href={withBaseUrl("/qa/")} class="has-text-weight-bold is-underlined"
+        <a
+          href={withBaseUrl("/qa/")}
+          class="font-bold underline text-[rgb(48,100,57)] hover:text-[rgb(38,80,47)] dark:text-[rgb(165,212,173)] dark:hover:text-[rgb(185,232,193)]"
           >Q&amp;A</a
         >
       </li>
       <li>
         <a
           href={withBaseUrl("/update_history/")}
-          class="has-text-weight-bold is-underlined">変更履歴</a
+          class="font-bold underline text-[rgb(48,100,57)] hover:text-[rgb(38,80,47)] dark:text-[rgb(165,212,173)] dark:hover:text-[rgb(185,232,193)]"
+          >変更履歴</a
         >
       </li>
       {
@@ -46,7 +57,7 @@ import { isDevelopment, withBaseUrl } from "@/helper";
           <li>
             <a
               href={withBaseUrl("/news/")}
-              class="has-text-weight-bold is-underlined"
+              class="font-bold underline text-[rgb(48,100,57)] hover:text-[rgb(38,80,47)] dark:text-[rgb(165,212,173)] dark:hover:text-[rgb(185,232,193)]"
             >
               ニュース
             </a>
@@ -58,7 +69,8 @@ import { isDevelopment, withBaseUrl } from "@/helper";
           href="https://hiho.fanbox.cc/"
           target={"_blank"}
           rel={"noreferrer"}
-          class="has-text-weight-bold is-underlined">pixivFANBOX</a
+          class="font-bold underline text-[rgb(48,100,57)] hover:text-[rgb(38,80,47)] dark:text-[rgb(165,212,173)] dark:hover:text-[rgb(185,232,193)]"
+          >pixivFANBOX</a
         >
       </li>
     </ul>

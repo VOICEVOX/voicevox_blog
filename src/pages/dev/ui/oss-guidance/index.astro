@@ -1,8 +1,6 @@
 ---
 import OssGuidanceSection from "@/pages/_OssGuidanceSection.astro";
-import "@/styles/bulma.scss";
-import "@/styles/global.scss";
-import "@/styles/helper.scss";
+import "@/styles/global.css";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 ---
 
@@ -25,7 +23,7 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
       <section class="mb-8">
         <h2 class="text-xl font-semibold mb-4">isDark</h2>
         {/* NOTE: `/song` に合わせて isDark の本文色は親側で白にしています。 */}
-        <div data-theme="dark" class="has-text-white has-background-black">
+        <div data-theme="dark" class="text-white bg-black">
           <OssGuidanceSection isDark />
         </div>
       </section>

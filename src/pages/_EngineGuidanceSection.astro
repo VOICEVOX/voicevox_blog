@@ -7,27 +7,33 @@ interface Props {
 const { class: className, isDark } = Astro.props;
 ---
 
-<section class="section">
-  <div
-    class={`${className} container is-max-desktop is-flex is-flex-direction-column`}
-  >
-    <h2 id="engine" class="jump-anchor-header-padding title">
-      <a href="#engine" class={!isDark ? "has-text-black" : "has-text-white"}>
+<section class="py-12">
+  <div class={`${className} max-w-4xl mx-auto px-4 flex flex-col`}>
+    <h2
+      id="engine"
+      class="pt-[calc(3.25rem+1rem)] -mt-[calc(3.25rem+1rem)] text-3xl font-bold mb-4"
+    >
+      <a
+        href="#engine"
+        class={isDark
+          ? "text-white dark:text-white"
+          : "text-black dark:text-black"}
+      >
         音声合成エンジン
       </a>
     </h2>
-    <p class="is-size-5">
+    <p class="text-xl">
       音声合成エンジンを使えば、他のソフトウェアやアプリケーションから VOICEVOX
       音声を生成できます。
     </p>
-    <p class="is-size-5">
+    <p class="text-xl">
       Windows / macOS / Linux で動作する実行ファイルのほか、Docker
       イメージとしても配布しています。
     </p>
-    <p class="is-size-5">
+    <p class="text-xl">
       詳しくは&nbsp;<a
         href="https://github.com/VOICEVOX/voicevox_engine"
-        class="has-text-weight-bold is-underlined"
+        class="font-bold underline text-[rgb(48,100,57)] hover:text-[rgb(38,80,47)] dark:text-[rgb(165,212,173)] dark:hover:text-[rgb(185,232,193)]"
         target="_blank"
         rel="noreferrer">VOICEVOX ENGINE</a
       >&nbsp;をご参照ください。

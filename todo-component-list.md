@@ -35,13 +35,13 @@
 - [x] **SoftwareFeature** `src/pages/_SoftwareFeature.astro`
   - Bulmaのグリッド・タイポグラフィ → Tailwindのグリッド・テキストスタイル
 
-- [ ] **EngineGuidanceSection** `src/pages/_EngineGuidanceSection.astro`
+- [x] **EngineGuidanceSection** `src/pages/_EngineGuidanceSection.astro`
   - セクションレイアウト → Tailwindで再現
 
-- [ ] **OssGuidanceSection** `src/pages/_OssGuidanceSection.astro`
+- [x] **OssGuidanceSection** `src/pages/_OssGuidanceSection.astro`
   - セクションレイアウト → Tailwindで再現
 
-- [ ] **LinkListSection** `src/pages/_LinkListSection.astro`
+- [x] **LinkListSection** `src/pages/_LinkListSection.astro`
   - リストレイアウト → Tailwindで再現
 
 - [ ] **ExplainSection** `src/pages/dormitory/_ExplainSection.astro`
@@ -120,20 +120,30 @@
 
 ### 主要なBulmaクラスとTailwind対応（適宜更新）
 
-| Bulmaクラス                 | Tailwind対応例                                         |
-| --------------------------- | ------------------------------------------------------ |
-| `button`                    | `px-4 py-2 rounded font-medium`                        |
-| `is-primary`                | `bg-primary text-white hover:bg-primary-dark`          |
-| `is-small`                  | `text-sm px-3 py-1`                                    |
-| `is-dark`                   | `bg-gray-800 text-white`                               |
-| `is-loading`                | カスタムローディングスピナー＋`opacity-50 cursor-wait` |
-| `is-rounded`                | `rounded-full`                                         |
-| `container`                 | `container mx-auto px-4`                               |
-| `is-max-desktop`            | `max-w-[960px]`                                        |
-| `is-flex`                   | `flex`                                                 |
-| `is-justify-content-center` | `justify-center`                                       |
-| `navbar`                    | `fixed top-0 w-full bg-white shadow`                   |
-| `dropdown`                  | zag.jsのドロップダウン + Tailwindスタイル              |
+| Bulmaクラス                  | Tailwind対応例                                                                                                     |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `section`                    | `py-12`                                                                                                            |
+| `title`                      | `text-3xl font-bold mb-4`                                                                                          |
+| `is-size-5`                  | `text-xl`                                                                                                          |
+| `has-text-weight-bold`       | `font-bold`                                                                                                        |
+| `is-underlined`              | `underline`                                                                                                        |
+| `button`                     | `px-4 py-2 rounded font-medium`                                                                                    |
+| `buttons`                    | `flex flex-wrap gap-2`                                                                                             |
+| `is-primary`                 | `bg-primary text-white hover:bg-primary-dark`                                                                      |
+| `is-small`                   | `text-sm px-3 py-1`                                                                                                |
+| `is-dark`                    | `bg-gray-800 text-white`                                                                                           |
+| `is-loading`                 | カスタムローディングスピナー＋`opacity-50 cursor-wait`                                                             |
+| `is-rounded`                 | `rounded-full`                                                                                                     |
+| `container`                  | `container mx-auto px-4`                                                                                           |
+| `is-max-desktop`             | `max-w-[960px]`                                                                                                    |
+| `is-flex`                    | `flex`                                                                                                             |
+| `is-flex-direction-column`   | `flex-col`                                                                                                         |
+| `is-justify-content-center`  | `justify-center`                                                                                                   |
+| `mt-3`                       | `mt-3` (Bulmaと同じ)                                                                                               |
+| リンク色 (`$link: $primary`) | `text-[rgb(48,100,57)] hover:text-[rgb(38,80,47)] dark:text-[rgb(165,212,173)] dark:hover:text-[rgb(185,232,193)]` |
+| `jump-anchor-header-padding` | `pt-[calc(3.25rem+1rem)] -mt-[calc(3.25rem+1rem)]`                                                                 |
+| `navbar`                     | `fixed top-0 w-full bg-white shadow`                                                                               |
+| `dropdown`                   | zag.jsのドロップダウン + Tailwindスタイル                                                                          |
 
 ### 複雑さの目安
 
