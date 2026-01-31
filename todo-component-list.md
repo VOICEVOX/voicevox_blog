@@ -57,9 +57,10 @@
   - `circle-icon` → カスタムスタイル（そのまま残すかTailwindで再現）
   - 複雑な状態管理、カスタムフック、CSSカスタムプロパティ
 
-- [ ] **StyleDropdown** `src/components/StyleDropdown.tsx`
+- [x] **StyleDropdown** `src/components/StyleDropdown.tsx`
   - `dropdown`, `dropdown-trigger`, `dropdown-menu`, `dropdown-content` → zag.jsを使わなくて済むなら使わない + Tailwindスタイル
   - `dropdown-item`, `button`, `is-rounded` → Tailwindで再現
+  - 開閉挙動は現状（hover/focus）を維持し、`is-up` と `is-active` は互換対応
 
 - [ ] **TypeButton** `src/pages/dormitory/[characterId]/_TypeButton.astro`
   - タブボタンのスタイル → Tailwindで再現
