@@ -14,6 +14,7 @@ import backgroundImage from "../images/nc238325.jpg";
 import CallBox from "./_CallBox.astro";
 import { descriptionTypes } from "./_constants";
 import TypeButton from "./_TypeButton.astro";
+import "@/styles/global.css";
 
 export const getStaticPaths = (async () => {
   return characterKeys.flatMap((key) =>
@@ -93,7 +94,7 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
                     <FontAwesomeIcon icon={faHome} />
                   </a>
                 </div>
-                <div class="buttons has-addons">
+                <div class="inline-flex">
                   <TypeButton
                     characterInfo={characterInfo}
                     selectedType={descriptionType}

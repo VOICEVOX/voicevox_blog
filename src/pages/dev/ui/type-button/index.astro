@@ -2,9 +2,7 @@
 import { characterInfos } from "@/constants/characterInfo";
 import { descriptionTypes } from "@/pages/dormitory/[characterId]/_constants";
 import TypeButton from "@/pages/dormitory/[characterId]/_TypeButton.astro";
-import "@/styles/bulma.scss";
-import "@/styles/global.scss";
-import "@/styles/helper.scss";
+import "@/styles/global.css";
 
 const descriptionNames = {
   profile: "プロフィール",
@@ -30,7 +28,7 @@ const zundamon = characterInfos.ずんだもん;
         <h2 class="text-xl font-semibold mb-4">
           四国めたん（プロフィール選択状態）
         </h2>
-        <div class="buttons has-addons">
+        <div class="inline-flex">
           <TypeButton
             characterInfo={shikokuMetan}
             selectedType="profile"
@@ -48,7 +46,7 @@ const zundamon = characterInfos.ずんだもん;
 
       <section class="mb-8">
         <h2 class="text-xl font-semibold mb-4">ずんだもん（呼び方選択状態）</h2>
-        <div class="buttons has-addons">
+        <div class="inline-flex">
           <TypeButton
             characterInfo={zundamon}
             selectedType="calls"
