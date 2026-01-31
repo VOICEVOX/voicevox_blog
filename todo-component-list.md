@@ -77,7 +77,7 @@
 - [x] **SpeakerComponent (nemo)** `src/pages/nemo/_SpeakerComponent.astro`
   - CVドロップダウン＋ボタン＋サンプルボイス → Tailwindで再現
 
-- [ ] **CallBox** `src/pages/dormitory/[characterId]/_CallBox.astro`
+- [x] **CallBox** `src/pages/dormitory/[characterId]/_CallBox.astro`
   - ボックスレイアウト → Tailwindで再現
 
 ### 高難易度（複雑な状態管理・インタラクション）
