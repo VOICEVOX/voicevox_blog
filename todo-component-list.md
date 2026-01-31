@@ -86,9 +86,9 @@
   - 複雑なレイアウト（キャラ表示＋キャラ一覧） → Tailwindで再現
   - nanostores、スクロール制御、110行以上のSCSS
 
-- [ ] **Header** `src/components/Header/Header.tsx`
+- [x] **Header** `src/components/Header/Header.tsx`
   - `navbar`, `navbar-brand`, `navbar-item`, `navbar-menu` → Tailwindのナビゲーション
-  - `navbar-burger`, `navbar-end` → レスポンシブメニュー（zag.js検討）
+  - `navbar-burger`, `navbar-end` → レスポンシブメニュー
   - `is-fixed-top`, `has-shadow` → Tailwindのfixed + shadow
   - Intersection Observer、状態管理はそのまま維持
 

@@ -20,6 +20,9 @@ export default function Header({
 }) {
   const [isBurgerActive, setIsBurgerActive] = useState(false);
   const [showingHeader, setShowingHeader] = useState(!defaultHide);
+  const menuItemHoverClassName = isDark ? "hover:bg-white/10" : "hover:bg-gray-100";
+  const menuItemBaseClassName = `flex items-center self-stretch px-3 text-base whitespace-nowrap ${menuItemHoverClassName}`;
+  const menuItemBaseMobilePanelClassName = `flex items-center px-3 py-2 text-base whitespace-nowrap ${menuItemHoverClassName}`;
 
   // ヘッダーを隠すための属性を持つ要素が表示されている間はヘッダーを隠す
   useEffect(() => {
@@ -41,14 +44,20 @@ export default function Header({
   const menus = [
     {
       Component: ({ className }: { className?: string }) => (
-        <a href={withBaseUrl("/")} className={`navbar-item ${className}`}>
+        <a
+          href={withBaseUrl("/")}
+          className={`${menuItemBaseClassName} ${className ?? ""}`}
+        >
           トーク
         </a>
       ),
     },
     {
       Component: ({ className }: { className?: string }) => (
-        <a href={withBaseUrl("/song/")} className={`navbar-item ${className}`}>
+        <a
+          href={withBaseUrl("/song/")}
+          className={`${menuItemBaseClassName} ${className ?? ""}`}
+        >
           ソング
         </a>
       ),
@@ -57,7 +66,7 @@ export default function Header({
       Component: ({ className }: { className?: string }) => (
         <a
           href={withBaseUrl("/dormitory/")}
-          className={`navbar-item ${className}`}
+          className={`${menuItemBaseClassName} ${className ?? ""}`}
         >
           ボイボ寮
         </a>
@@ -66,7 +75,10 @@ export default function Header({
     },
     {
       Component: ({ className }: { className?: string }) => (
-        <a href={withBaseUrl("/nemo/")} className={`navbar-item ${className}`}>
+        <a
+          href={withBaseUrl("/nemo/")}
+          className={`${menuItemBaseClassName} ${className ?? ""}`}
+        >
           Nemo
         </a>
       ),
@@ -76,7 +88,7 @@ export default function Header({
       Component: ({ className }: { className?: string }) => (
         <a
           href={withBaseUrl("/how_to_use/")}
-          className={`navbar-item ${className}`}
+          className={`${menuItemBaseClassName} ${className ?? ""}`}
         >
           使い方
         </a>
@@ -85,7 +97,10 @@ export default function Header({
     },
     {
       Component: ({ className }: { className?: string }) => (
-        <a href={withBaseUrl("/term/")} className={`navbar-item ${className}`}>
+        <a
+          href={withBaseUrl("/term/")}
+          className={`${menuItemBaseClassName} ${className ?? ""}`}
+        >
           利用規約
         </a>
       ),
@@ -93,7 +108,10 @@ export default function Header({
     },
     {
       Component: ({ className }: { className?: string }) => (
-        <a href={withBaseUrl("/qa/")} className={`navbar-item ${className}`}>
+        <a
+          href={withBaseUrl("/qa/")}
+          className={`${menuItemBaseClassName} ${className ?? ""}`}
+        >
           Q&amp;A
         </a>
       ),
@@ -103,7 +121,7 @@ export default function Header({
       Component: ({ className }: { className?: string }) => (
         <a
           href={withBaseUrl("/update_history/")}
-          className={`navbar-item ${className}`}
+          className={`${menuItemBaseClassName} ${className ?? ""}`}
         >
           変更履歴
         </a>
@@ -116,7 +134,7 @@ export default function Header({
             Component: ({ className }: { className?: string }) => (
               <a
                 href={withBaseUrl("/news/")}
-                className={`navbar-item ${className}`}
+                className={`${menuItemBaseClassName} ${className ?? ""}`}
               >
                 ニュース
               </a>
@@ -130,7 +148,7 @@ export default function Header({
           href="https://hiho.fanbox.cc/"
           target="_blank"
           rel="noreferrer"
-          className={`navbar-item ${className}`}
+          className={`${menuItemBaseClassName} ${className ?? ""}`}
         >
           pixivFANBOX
         </a>
@@ -139,9 +157,9 @@ export default function Header({
     },
     {
       Component: ({ className }: { className?: string }) => (
-        <div className={`navbar-item py-0 ${className}`}>
+        <div className={`flex items-center self-stretch px-3 ${className ?? ""}`}>
           <button
-            className="button is-primary is-rounded"
+            className="inline-flex items-center gap-1.5 rounded-full bg-primary px-5 py-2 text-base font-semibold leading-6 text-black hover:bg-primary/90"
             onClick={() => {
               if (!isNemo) {
                 $downloadModal.set(true);
@@ -152,10 +170,10 @@ export default function Header({
               }
             }}
           >
-            <span className="icon">
+            <span className="text-sm">
               <FontAwesomeIcon icon={faDownload} />
             </span>
-            <span className="has-text-weight-semibold">ダウンロード</span>
+            <span>ダウンロード</span>
           </button>
         </div>
       ),
@@ -163,72 +181,101 @@ export default function Header({
     },
   ];
 
+  const brandMenuClassName = (hideType?: HideType) =>
+    hideType == undefined
+      ? "lg:hidden"
+      : hideType == "tablet"
+        ? "hidden"
+        : "hidden md:flex lg:hidden";
+
+  const desktopMenuClassName = (hideType?: HideType) =>
+    hideType == "mobile" ? "flex items-center self-stretch py-0" : "flex items-center self-stretch";
+
+  const mobilePanelMenuItemClassName = (hideType?: HideType) => {
+    if (hideType == undefined) return "hidden";
+    if (hideType == "mobile") return `${menuItemBaseMobilePanelClassName} w-full md:hidden`;
+    return `${menuItemBaseMobilePanelClassName} w-full`;
+  };
+
   return (
     <>
       <nav
-        className={`navbar is-fixed-top has-shadow ${
-          showingHeader ? "" : "is-hidden"
-        } ${defaultHide ? "with-animation" : ""} ${isDark ? "is-black" : ""}`}
+        className={`navbar fixed left-0 top-0 z-50 w-full ${
+          showingHeader ? "" : "hidden"
+        } ${defaultHide ? "with-animation" : ""} ${
+          isDark ? "bg-black text-white shadow-[0_2px_0_0_hsl(0_0%_4%)]" : "bg-white text-gray-900 shadow-[0_2px_0_0_rgb(243,244,246)]"
+        }`}
         role="navigation"
         aria-label="main navigation"
       >
-        <div className="navbar-brand">
-          <a href={withBaseUrl("/")} className="navbar-item">
-            <img src={iconUrl} alt="" width="28" height="28" />
-            <span className="has-text-weight-bold is-size-5"> VOICEVOX </span>
-          </a>
+        <div className="mx-auto flex h-[52px] max-w-screen-xl items-center justify-between">
+          <div className="flex min-w-0 items-center">
+            <a
+              href={withBaseUrl("/")}
+              className={`flex items-center self-stretch gap-2 px-3 whitespace-nowrap ${menuItemHoverClassName}`}
+            >
+              <img src={iconUrl} alt="" width="28" height="28" />
+              <span className="text-base font-bold">VOICEVOX</span>
+            </a>
 
-          {menus.map(({ Component, hideType }, i) => (
-            <Component
-              key={i}
-              className={
-                hideType == undefined
-                  ? "is-hidden-desktop"
-                  : hideType == "tablet"
-                    ? "is-hidden"
-                    : "is-hidden-desktop is-hidden-mobile"
-              }
-            />
-          ))}
+            {menus.map(({ Component, hideType }, i) => (
+              <Component key={i} className={brandMenuClassName(hideType)} />
+            ))}
+          </div>
 
-          <button
-            className={`navbar-burger ${isBurgerActive ? "is-active" : ""}`}
-            aria-label="menu"
-            aria-expanded={`${isBurgerActive}`}
-            data-target="navbar"
-            onClick={() => setIsBurgerActive(!isBurgerActive)}
-          >
-            <span aria-hidden="true" />
-            <span aria-hidden="true" />
-            <span aria-hidden="true" />
-            <span aria-hidden="true" />
-          </button>
+          <div className="flex items-center">
+            <div className="hidden items-center lg:flex">
+              {menus.map(({ Component, hideType }, i) => (
+                <Component key={i} className={desktopMenuClassName(hideType)} />
+              ))}
+            </div>
+
+            <button
+              className={`navbar-burger relative ml-1 inline-flex h-10 w-10 items-center justify-center lg:hidden ${
+                isBurgerActive ? "opacity-80" : ""
+              }`}
+              aria-label="menu"
+              aria-expanded={`${isBurgerActive}`}
+              onClick={() => setIsBurgerActive(!isBurgerActive)}
+            >
+              <span className="sr-only">menu</span>
+              <span
+                aria-hidden="true"
+                className="absolute block h-0.5 w-5 bg-current transition-transform"
+                style={{ transform: isBurgerActive ? "translateY(0) rotate(45deg)" : "translateY(-6px)" }}
+              />
+              <span
+                aria-hidden="true"
+                className="absolute block h-0.5 w-5 bg-current transition-opacity"
+                style={{ opacity: isBurgerActive ? 0 : 1 }}
+              />
+              <span
+                aria-hidden="true"
+                className="absolute block h-0.5 w-5 bg-current transition-transform"
+                style={{ transform: isBurgerActive ? "translateY(0) rotate(-45deg)" : "translateY(6px)" }}
+              />
+            </button>
+          </div>
         </div>
 
-        <div
-          id="navbar"
-          className={`navbar-menu ${isBurgerActive ? "is-active" : ""}`}
-        >
-          <div className="navbar-end">
-            {menus.map(({ Component, hideType }, i) => (
-              <Component
-                key={i}
-                className={
-                  hideType == undefined
-                    ? "is-hidden-touch"
-                    : hideType == "mobile"
-                      ? "is-hidden-tablet-only"
-                      : ""
-                }
-              />
-            ))}
+        <div className={`lg:hidden ${isBurgerActive ? "block" : "hidden"}`}>
+          <div
+            className={`border-t ${
+              isDark ? "border-gray-800 bg-black text-white" : "border-gray-200 bg-white text-gray-900"
+            }`}
+          >
+            <div className="mx-auto flex max-w-screen-xl flex-col py-2">
+              {menus.map(({ Component, hideType }, i) => (
+                <Component key={i} className={mobilePanelMenuItemClassName(hideType)} />
+              ))}
+            </div>
           </div>
         </div>
       </nav>
 
       {/* 空間を空けるために必要 */}
       <div
-        className={`navbar height-holder ${showingHeader ? "" : "is-hidden"}`}
+        className={`navbar height-holder h-[52px] ${showingHeader ? "" : "hidden"}`}
       />
     </>
   );

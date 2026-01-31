@@ -1,8 +1,6 @@
 ---
 import Header from "@/components/Header/index.astro";
-import "@/styles/bulma.scss";
-import "@/styles/global.scss";
-import "@/styles/helper.scss";
+import "@/styles/global.css";
 ---
 
 <html lang="ja">
@@ -17,12 +15,12 @@ import "@/styles/helper.scss";
     <main style="padding: 2rem;">
       <h1 class="text-2xl font-bold mb-6">Header 確認用ページ</h1>
       <p class="mb-6">
-        ヘッダーは <code>.is-fixed-top</code> のため、画面上部に固定されます。
+        ヘッダーは画面上部に固定されます。
       </p>
 
       <section class="mb-8">
         <h2 class="text-xl font-semibold mb-4">ダミーコンテンツ</h2>
-        <div class="content">
+        <div class="space-y-4 text-gray-700">
           <p>
             スクロール時の表示や、ハンバーガーメニューの挙動を確認するためのページです。
           </p>
