@@ -17,27 +17,28 @@ const href = getDormitoryCharacterPageUrl(characterInfo);
 
 <div
   id={characterInfo.id}
-  class={"jump-anchor-header-padding column is-3 " + className}
+  class={"pt-[calc(3.25rem+1rem+0.75rem)] -mt-[calc(3.25rem+1rem)] w-full md:w-1/4 p-[0.75rem] " +
+    className}
 >
   <div
-    class="card character-card"
-    style={{ borderColor: color, height: "100%" }}
+    class="border-[3px] rounded-2xl shadow-none pt-3 cursor-pointer h-full"
+    style={{ borderColor: color }}
   >
     <a href={withBaseUrl(href)}>
       <Image
-        class="card-image"
+        class="mx-auto block"
         src={characterInfo.bustupImage}
         alt={characterInfo.name}
         width={320}
         height={320}
         densities={[1, 1.5, 2]}
-        style={{ display: "block", objectFit: "contain" }}
+        style={{ objectFit: "contain" }}
       />
       <div
-        class="card-content has-text-centered"
+        class="px-0 py-5 text-center border-t-[2.5px]"
         style={{ borderColor: color }}
       >
-        <h3 class="title is-5">{characterInfo.name}</h3>
+        <h3 class="text-xl font-semibold">{characterInfo.name}</h3>
       </div>
     </a>
   </div>

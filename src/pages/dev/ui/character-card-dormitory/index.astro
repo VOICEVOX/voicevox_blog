@@ -1,8 +1,7 @@
 ---
 import { characterInfos } from "@/constants/characterInfo";
 import CharacterCard from "@/pages/dormitory/_CharacterCard.astro";
-import "@/styles/bulma.scss";
-import "@/styles/global.scss";
+import "@/styles/global.css";
 import "@/styles/helper.scss";
 
 const characterInfo1 = characterInfos["ずんだもん"];
@@ -26,8 +25,8 @@ const characterInfo4 = characterInfos["雨晴はう"];
 
       <section class="mb-8">
         <h2 class="text-xl font-semibold mb-4">キャラクター一覧（抜粋）</h2>
-        <div class="container character-container is-max-desktop">
-          <div class="columns is-multiline is-centered">
+        <div class="mx-auto max-w-[960px] px-4">
+          <div class="flex flex-wrap justify-center -m-[0.75rem]">
             <CharacterCard characterInfo={characterInfo1} />
             <CharacterCard characterInfo={characterInfo2} />
             <CharacterCard characterInfo={characterInfo3} />
@@ -38,29 +37,3 @@ const characterInfo4 = characterInfos["雨晴はう"];
     </div>
   </body>
 </html>
-
-<style is:global>
-  /* NOTE: dormitory/index.astro の is:global スタイルを dev/ui でも再現するため、必要最小限を複製しています */
-  .character-container .card {
-    box-shadow: none;
-    border-style: solid;
-    border-radius: 1rem;
-    border-width: 3px;
-  }
-
-  .character-container .character-card {
-    padding-top: 12px;
-    cursor: pointer;
-  }
-
-  .character-container .character-card .card-image {
-    margin: 0 auto;
-  }
-
-  .character-container .character-card .card-content {
-    padding-left: 0;
-    padding-right: 0;
-    text-align: center;
-    border-top: solid 2.5px;
-  }
-</style>

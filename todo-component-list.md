@@ -47,10 +47,7 @@
 - [x] **ExplainSection** `src/pages/dormitory/_ExplainSection.astro`
   - 基本的なセクションレイアウト → Tailwindで再現
 
-- [ ] **CharacterCard (dormitory)** `src/pages/dormitory/_CharacterCard.astro`
-  - カードスタイル → Tailwindで再現
-
-- [ ] **CharacterCard (talk)** `src/pages/talk/_CharacterCard.astro`
+- [x] **CharacterCard (dormitory)** `src/pages/dormitory/_CharacterCard.astro`
   - カードスタイル → Tailwindで再現
 
 ### 中難易度（カスタムスタイルまたは軽い状態管理）
@@ -93,6 +90,9 @@
   - `navbar-burger`, `navbar-end` → レスポンシブメニュー（zag.js検討）
   - `is-fixed-top`, `has-shadow` → Tailwindのfixed + shadow
   - Intersection Observer、状態管理はそのまま維持
+
+- [ ] **CharacterCard (talk)** `src/pages/talk/_CharacterCard.astro`
+  - カードスタイル → Tailwindで再現
 
 ---
 
