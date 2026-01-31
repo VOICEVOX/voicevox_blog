@@ -26,12 +26,12 @@ export default function AudioSample({
 
   return (
     <div className={"audio-sample " + className}>
-      <hr className="my-3" />
-      <div className="audio-sample-pair">
-        <div className="audio-sample-label">
-          <span>音声サンプル</span>
+      <hr className="my-3 border-gray-200" />
+      <div className="audio-sample-pair flex flex-wrap items-center justify-center gap-x-2.5 gap-y-[3px] py-1">
+        <div className="audio-sample-label w-[100px]">
+          <span className="whitespace-nowrap">音声サンプル</span>
         </div>
-        <div className="audio-sample-content">
+        <div className="audio-sample-content flex gap-[3px]">
           {selectedAudioUrls.map((url, index) => (
             <PlayButton
               key={index}
@@ -45,11 +45,11 @@ export default function AudioSample({
         </div>
       </div>
       {styles.length > 1 && (
-        <div className="audio-sample-pair">
-          <div className="audio-sample-label">
-            <span>スタイル</span>
+        <div className="audio-sample-pair flex flex-wrap items-center justify-center gap-x-2.5 gap-y-[3px] py-1">
+          <div className="audio-sample-label w-[100px]">
+            <span className="whitespace-nowrap">スタイル</span>
           </div>
-          <div className="audio-sample-content">
+          <div className="audio-sample-content flex gap-[3px]">
             <StyleDropdown
               styles={styles}
               selectedStyle={selectedStyle!}
@@ -59,7 +59,7 @@ export default function AudioSample({
           </div>
         </div>
       )}
-      <hr className="my-3" />
+      <hr className="my-3 border-gray-200" />
     </div>
   );
 }

@@ -68,7 +68,7 @@
 - [x] **AudioSample (product)** `src/pages/product/_AudioSample.tsx`
   - サンプルボイスUI（React版） → Tailwindで再現
 
-- [ ] **AudioSample (talk)** `src/pages/talk/AudioSample.tsx`
+- [x] **AudioSample (talk)** `src/pages/talk/_AudioSample.tsx`
   - サンプルボイスUI（React版） → Tailwindで再現
 
 - [ ] **CharacterCard (song)** `src/pages/song/CharacterCard.tsx`
