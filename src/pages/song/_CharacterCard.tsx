@@ -122,7 +122,7 @@ export default function CharacterCard({
             <div className="buttons">
               {styleState.styles.length > 1 && (
                 <button
-                  className={`button circle-icon is-small`}
+                  className="relative flex items-center justify-center w-8 h-8 rounded-full border bg-transparent hover:opacity-90"
                   style={coloredStyle}
                   type="button"
                   aria-label="前のサンプル音声へ"
@@ -144,7 +144,7 @@ export default function CharacterCard({
 
               {styleState.styles.length > 1 && (
                 <button
-                  className={`button circle-icon is-small`}
+                  className="relative flex items-center justify-center w-8 h-8 rounded-full border bg-transparent hover:opacity-90"
                   style={coloredStyle}
                   type="button"
                   aria-label="次のサンプル音声へ"

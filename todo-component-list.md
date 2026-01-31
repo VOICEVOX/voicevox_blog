@@ -52,6 +52,15 @@
 
 ### 中難易度（カスタムスタイルまたは軽い状態管理）
 
+- [x] **PlayButton** `src/components/PlayButton/PlayButton.tsx`
+  - `button`, `is-primary`, `is-loading` → Tailwindのボタン＋ローディング状態
+  - `circle-icon` → カスタムスタイル（そのまま残すかTailwindで再現）
+  - 複雑な状態管理、カスタムフック、CSSカスタムプロパティ
+
+- [ ] **StyleDropdown** `src/components/StyleDropdown.tsx`
+  - `dropdown`, `dropdown-trigger`, `dropdown-menu`, `dropdown-content` → zag.jsを使わなくて済むなら使わない + Tailwindスタイル
+  - `dropdown-item`, `button`, `is-rounded` → Tailwindで再現
+
 - [ ] **TypeButton** `src/pages/dormitory/[characterId]/_TypeButton.astro`
   - タブボタンのスタイル → Tailwindで再現
 
@@ -72,18 +81,9 @@
 
 ### 高難易度（複雑な状態管理・インタラクション）
 
-- [ ] **PlayButton** `src/components/PlayButton/PlayButton.tsx`
-  - `button`, `is-primary`, `is-loading` → Tailwindのボタン＋ローディング状態
-  - `circle-icon` → カスタムスタイル（そのまま残すかTailwindで再現）
-  - 複雑な状態管理、カスタムフック、CSSカスタムプロパティ
-
 - [ ] **Product TopContainer** `src/pages/product/_TopContainer.astro`
   - 複雑なレイアウト（キャラ表示＋キャラ一覧） → Tailwindで再現
   - nanostores、スクロール制御、110行以上のSCSS
-
-- [ ] **StyleDropdown** `src/components/StyleDropdown.tsx`
-  - `dropdown`, `dropdown-trigger`, `dropdown-menu`, `dropdown-content` → zag.jsのドロップダウン + Tailwindスタイル
-  - `dropdown-item`, `button`, `is-rounded` → Tailwindで再現
 
 - [ ] **Header** `src/components/Header/Header.tsx`
   - `navbar`, `navbar-brand`, `navbar-item`, `navbar-menu` → Tailwindのナビゲーション
