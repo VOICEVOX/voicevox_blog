@@ -62,10 +62,10 @@
   - `dropdown-item`, `button`, `is-rounded` → Tailwindで再現
   - 開閉挙動は現状（hover/focus）を維持し、`is-up` と `is-active` は互換対応
 
-- [ ] **TypeButton** `src/pages/dormitory/[characterId]/_TypeButton.astro`
+- [x] **TypeButton** `src/pages/dormitory/[characterId]/_TypeButton.astro`
   - タブボタンのスタイル → Tailwindで再現
 
-- [ ] **AudioSample (product)** `src/pages/product/AudioSample.tsx`
+- [x] **AudioSample (product)** `src/pages/product/_AudioSample.tsx`
   - サンプルボイスUI（React版） → Tailwindで再現
 
 - [ ] **AudioSample (talk)** `src/pages/talk/AudioSample.tsx`
