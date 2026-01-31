@@ -74,7 +74,7 @@
 - [x] **CharacterCard (song)** `src/pages/song/CharacterCard.tsx`
   - カードスタイル（React版） → Tailwindで再現
 
-- [ ] **SpeakerComponent (nemo)** `src/pages/nemo/_SpeakerComponent.astro`
+- [x] **SpeakerComponent (nemo)** `src/pages/nemo/_SpeakerComponent.astro`
   - CVドロップダウン＋ボタン＋サンプルボイス → Tailwindで再現
 
 - [ ] **CallBox** `src/pages/dormitory/[characterId]/_CallBox.astro`
