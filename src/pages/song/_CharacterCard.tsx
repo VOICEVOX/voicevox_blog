@@ -106,12 +106,10 @@ export default function CharacterCard({
   };
 
   return (
-    <div className="voice-card">
-      <LinkToProductPage className="voice-card-image">
-        {children}
-      </LinkToProductPage>
-      <div className="voice-card-content">
-        <h3 className="title">
+    <div className="flex flex-col gap-2 items-center justify-center bg-[#282828] rounded-lg w-40 py-3">
+      <LinkToProductPage className="w-[70%]">{children}</LinkToProductPage>
+      <div className="text-center flex flex-col gap-2">
+        <h3 className="text-base font-medium mb-0 text-white">
           <LinkToProductPage style={{ color: "inherit" }}>
             {characterInfo.name}
           </LinkToProductPage>
@@ -119,10 +117,10 @@ export default function CharacterCard({
 
         {styleState && (
           <>
-            <div className="buttons">
+            <div className="flex items-center justify-center mb-0 gap-2">
               {styleState.styles.length > 1 && (
                 <button
-                  className="relative flex items-center justify-center w-8 h-8 rounded-full border bg-transparent hover:opacity-90"
+                  className="relative flex items-center justify-center w-10 h-10 rounded-full border bg-transparent hover:opacity-90 text-xs"
                   style={coloredStyle}
                   type="button"
                   aria-label="前のサンプル音声へ"
@@ -144,7 +142,7 @@ export default function CharacterCard({
 
               {styleState.styles.length > 1 && (
                 <button
-                  className="relative flex items-center justify-center w-8 h-8 rounded-full border bg-transparent hover:opacity-90"
+                  className="relative flex items-center justify-center w-10 h-10 rounded-full border bg-transparent hover:opacity-90 text-xs"
                   style={coloredStyle}
                   type="button"
                   aria-label="次のサンプル音声へ"
@@ -154,7 +152,7 @@ export default function CharacterCard({
                 </button>
               )}
             </div>
-            <h4 className="style-name">{fullStyleName}</h4>
+            <h4 className="text-xs text-white">{fullStyleName}</h4>
           </>
         )}
       </div>

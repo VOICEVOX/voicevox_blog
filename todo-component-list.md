@@ -71,7 +71,7 @@
 - [x] **AudioSample (talk)** `src/pages/talk/_AudioSample.tsx`
   - サンプルボイスUI（React版） → Tailwindで再現
 
-- [ ] **CharacterCard (song)** `src/pages/song/CharacterCard.tsx`
+- [x] **CharacterCard (song)** `src/pages/song/CharacterCard.tsx`
   - カードスタイル（React版） → Tailwindで再現
 
 - [ ] **SpeakerComponent (nemo)** `src/pages/nemo/_SpeakerComponent.astro`

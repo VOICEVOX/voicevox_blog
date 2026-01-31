@@ -2,9 +2,7 @@
 import { characterKeys } from "@/constants/characterEntry";
 import { characterInfos } from "@/constants/characterInfo";
 import CharacterCard from "@/pages/song/_CharacterCard";
-import "@/styles/bulma.scss";
-import "@/styles/global.scss";
-import "@/styles/helper.scss";
+import "@/styles/global.css";
 import { Image } from "astro:assets";
 
 const songCharacterKeys = characterKeys.filter(
@@ -13,21 +11,23 @@ const songCharacterKeys = characterKeys.filter(
 const previewCharacterKeys = songCharacterKeys.slice(0, 3);
 ---
 
-<html lang="ja" class="has-background-black-bis">
+<html lang="ja" class="min-h-screen bg-black">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="robots" content="noindex, nofollow" />
     <title>CharacterCard (song) 確認用ページ</title>
   </head>
-  <body class="has-background-black has-text-white">
-    <div style="padding: 2rem;">
+  <body class="bg-black text-white">
+    <div class="p-8">
       <h1 class="text-2xl font-bold mb-6">CharacterCard (song) 確認用ページ</h1>
 
       <section class="mb-8">
         <h2 class="text-xl font-semibold mb-4">キャラクターカード（抜粋）</h2>
-        <div class="song-character-card-preview">
-          <div class="voice-cards">
+        <div class="p-4">
+          <div
+            class="flex flex-row gap-4 items-center justify-center flex-wrap"
+          >
             {
               previewCharacterKeys.map((characterKey) => (
                 <CharacterCard
@@ -49,80 +49,3 @@ const previewCharacterKeys = songCharacterKeys.slice(0, 3);
     </div>
   </body>
 </html>
-
-<style lang="scss" is:global>
-  /* NOTE: src/pages/song/index.astro と src/layouts/Base.astro の is:global スタイルを dev/ui でも再現するため、必要最小限を複製しています */
-  @use "@/styles/helper.scss" as *;
-  @use "bulma/sass/elements" as *;
-  @use "bulma/sass/layout" as *;
-  @use "bulma/sass/helpers" as *;
-
-  html {
-    height: -webkit-fill-available;
-  }
-  body {
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
-  }
-
-  .song-character-card-preview {
-    padding: 1rem;
-
-    .voice-cards {
-      display: flex;
-      flex-direction: row;
-      gap: 1rem;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-
-      .voice-card {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        align-items: center;
-        justify-content: center;
-
-        background-color: #282828;
-        border-radius: 0.5rem;
-        width: 10rem;
-        @extend .py-3;
-
-        .voice-card-image {
-          width: 70%;
-        }
-
-        .voice-card-content {
-          @extend .has-text-centered;
-
-          display: flex;
-          flex-direction: column;
-          gap: 0.5rem;
-
-          .title {
-            @extend .is-6;
-            @extend .has-text-weight-medium;
-            @extend .mb-0;
-            color: white;
-          }
-
-          .buttons {
-            align-items: center;
-            justify-content: center;
-            @extend .mb-0;
-            gap: 8px;
-
-            .button {
-              @extend .mb-0;
-            }
-          }
-
-          .style-name {
-            @extend .is-size-7;
-            color: white;
-          }
-        }
-      }
-    }
-  }
-</style>
