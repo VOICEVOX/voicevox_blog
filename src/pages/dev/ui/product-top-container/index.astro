@@ -1,9 +1,7 @@
 ---
 import Header from "@/components/Header/index.astro";
 import TopContainer from "@/pages/product/_TopContainer.astro";
-import "@/styles/bulma.scss";
-import "@/styles/global.scss";
-import "@/styles/helper.scss";
+import "@/styles/global.css";
 
 const characterKey = "ずんだもん" as const;
 ---
@@ -17,8 +15,8 @@ const characterKey = "ずんだもん" as const;
   </head>
   <body>
     <Header />
-    <main class="product">
-      <div class="section py-0">
+    <main>
+      <div class="py-0">
         <TopContainer {characterKey} />
       </div>
     </main>

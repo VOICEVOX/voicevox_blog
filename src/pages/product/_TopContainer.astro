@@ -50,40 +50,43 @@ const postCharacterKey =
   ];
 ---
 
-<div class="top container">
+<div
+  class="top relative mx-auto w-[calc(100%-48px)] max-w-[960px] grid grid-cols-1 md:grid-cols-[491.438px_1fr] md:h-[calc(100vh-3.25rem)] md:min-h-[512px] md:max-h-[1024px] md:grid-rows-[1fr_5rem] grid-rows-[calc(100vh-3.25rem-5rem)_5rem_auto]"
+>
   <a
     href={withBaseUrl(getProductPageUrl(characterInfos[prevCharacterKey]))}
-    class="button prev circle-icon is-black"
+    class="prev absolute z-10 top-[10%] -translate-y-1/2 left-[calc(50%-50vw+1.2rem)] inline-flex h-12 w-12 items-center justify-center rounded-full border-[1.8px] border-black bg-transparent text-5xl text-black opacity-25 hover:opacity-40"
     aria-label="前のキャラクターを表示"
   >
     <FontAwesomeIcon icon={faCircleLeft} />
   </a>
   <a
     href={withBaseUrl(getProductPageUrl(characterInfos[postCharacterKey]))}
-    class="button post circle-icon is-black"
+    class="post absolute z-10 top-[10%] -translate-y-1/2 right-[calc(50%-50vw+1.2rem)] inline-flex h-12 w-12 items-center justify-center rounded-full border-[1.8px] border-black bg-transparent text-5xl text-black opacity-25 hover:opacity-40"
     aria-label="次のキャラクターを表示"
   >
     <FontAwesomeIcon icon={faCircleRight} />
   </a>
 
-  <div class="character-area">
-    <div class="height-image-wrapper">
-      <div>
+  <div class="character-area top-character-area relative col-start-1 row-start-1 md:col-start-2 md:row-start-1">
+    <div class="absolute inset-0 flex justify-center overflow-hidden">
+      <div class="flex-none">
         <Image
+          class="block h-full w-auto"
           src={characterInfo.portraitImage}
           alt={characterInfo.name}
           height={1280}
           densities={[1, 1.5, 2]}
-          style={{ display: "block", objectFit: "contain" }}
+          style={{ objectFit: "contain" }}
         />
       </div>
     </div>
-    <div class="info pb-5">
-      <div class="detail p-4">
+    <div class="absolute inset-y-0 right-[5%] flex flex-col justify-end gap-4 pb-5">
+      <div class="flex w-[200px] flex-col items-end gap-4 rounded-2xl bg-white/80 p-4">
         <p>{characterInfo.description.replaceAll("<br />", "")}</p>
         <a
           href={withBaseUrl(getDormitoryCharacterPageUrl(characterInfo))}
-          class="has-text-weight-bold has-text-black">キャラクター詳細 →</a
+          class="font-bold text-black underline-offset-2 hover:underline">キャラクター詳細 →</a
         >
       </div>
 
@@ -91,9 +94,11 @@ const postCharacterKey =
     </div>
   </div>
 
-  <div class="description-area">
-    <h1 class="title">VOICEVOX {characterInfo.name}</h1>
-    <p class="is-size-5">
+  <div class="description-area col-start-1 row-start-3 flex flex-col items-center justify-center px-0 pt-12 md:col-start-1 md:row-start-1 md:items-start md:justify-self-start md:px-6 md:pt-0">
+    <h1 class="mb-6 text-[32px] font-extrabold leading-[36px]">
+      VOICEVOX {characterInfo.name}
+    </h1>
+    <p class="text-xl leading-[30px]">
       {description}
       {additionalDescription && additionalDescription}
     </p>
@@ -101,20 +106,23 @@ const postCharacterKey =
       characterInfo.releaseDate == undefined && (
         <button
           {...{ [showDownloadModalAttr]: "" }}
-          class="button mt-5 is-primary is-rounded is-large"
+          class="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-[30px] py-[14px] text-2xl font-semibold text-black hover:bg-primary/90"
         >
           <span class="icon">
             <FontAwesomeIcon icon={faDownload} />
           </span>
           <span class="has-text-weight-semibold">
-            <span class="is-hidden-mobile">VOICEVOX を </span>
+            <span class="hidden md:inline">VOICEVOX を </span>
             ダウンロード
           </span>
         </button>
       )
     }
-    <div class="terms mt-5">
-      <a href={withBaseUrl("/term/")} class="button is-normal is-rounded">
+    <div class="terms mt-6 flex flex-col items-center gap-2 md:flex-row md:flex-wrap md:items-start">
+      <a
+        href={withBaseUrl("/term/")}
+        class="inline-flex h-10 items-center justify-center rounded-full border border-gray-300 bg-white px-5 text-base font-medium shadow-sm hover:bg-gray-50"
+      >
         <span>VOICEVOX 利用規約</span>
       </a>
       {
@@ -123,7 +131,7 @@ const postCharacterKey =
             {...{
               [showLibraryTermIntroModalCharacterKeyAttr]: characterKey,
             }}
-            class="button is-normal is-rounded"
+            class="inline-flex h-10 items-center justify-center rounded-full border border-gray-300 bg-white px-5 text-base font-medium shadow-sm hover:bg-gray-50"
             type="button"
           >
             <span>{characterInfo.name} 利用規約</span>
@@ -135,7 +143,7 @@ const postCharacterKey =
           characterInfo.additionalProductLinks.map((obj) => (
             <a
               href={obj.url}
-              class="button is-normal is-rounded"
+              class="inline-flex h-10 items-center justify-center rounded-full border border-gray-300 bg-white px-5 text-base font-medium shadow-sm hover:bg-gray-50"
               target="_blank"
               rel="noreferrer"
             >
@@ -146,13 +154,17 @@ const postCharacterKey =
     </div>
   </div>
 
-  <div class="charamenu-area">
-    <div class="characters" aria-label="キャラクター一覧">
+  <div class="charamenu-area col-start-1 row-start-2 h-20 md:col-span-2 md:row-start-2">
+    <div class="characters flex h-full overflow-x-auto overflow-y-hidden" aria-label="キャラクター一覧">
       {
         characterKeys.map((key) => (
           <KeepScrollAnchor
             href={withBaseUrl(getProductPageUrl(characterInfos[key]))}
-            class={`character ${key === characterKey ? "active" : ""}`}
+            class={`character box-content flex flex-none aspect-square ${
+              key === characterKey
+                ? "active relative h-12 py-4 px-2 opacity-100 before:content-[''] before:absolute before:top-0 before:left-0 before:h-1 before:w-full before:bg-[var(--characterColor)]"
+                : "h-10 py-5 px-2 opacity-50 hover:opacity-80"
+            }`}
             aria-label={characterInfos[key].name}
             style={{
               "--characterLightColor": characterInfos[key].lightColor,
@@ -160,6 +172,7 @@ const postCharacterKey =
             }}
           >
             <Image
+              class="m-auto h-full w-auto rounded-lg bg-[var(--characterLightColor)]"
               src={characterInfos[key].bustupImage}
               alt={characterInfos[key].name}
               width="64"
@@ -196,183 +209,35 @@ const postCharacterKey =
 </script>
 
 <style lang="scss" define:vars={{ characterBackgroundColor }} is:global>
-  @use "@/styles/vars.scss" as *;
-  @use "@/styles/helper.scss" as *;
+  .top-character-area::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50vw;
+    height: 100%;
+    background-color: var(--characterBackgroundColor);
+  }
 
-  @use "bulma/sass/elements" as *;
-  @use "bulma/sass/utilities/initial-variables" as *;
-  @use "bulma/sass/utilities/mixins" as *;
-  @use "bulma/sass/helpers" as *;
-
-  .top {
-    display: grid;
-    grid-template-areas:
-      "description character"
-      "charamenu charamenu";
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: calc(100vh - 3.25rem - 5rem) 5rem;
-    min-height: calc($desktop / 2);
-    max-height: $desktop;
-
-    position: relative;
-
-    @include mobile {
-      grid-template-areas:
-        "character"
-        "charamenu"
-        "description";
-      grid-template-columns: 100%;
-      grid-template-rows: calc(100vh - 3.25rem - 5rem) 5rem auto;
-      max-height: unset;
+  @media (max-width: 768px) {
+    .top-character-area::before {
+      width: 100%;
     }
+  }
 
-    .prev,
-    .post {
-      position: absolute;
-      z-index: 10; // FIXME: なくしたい
-      top: 10%;
-      transform: translateY(-50%);
-      font-size: 3rem;
-      opacity: 0.25;
-    }
-    .prev {
-      left: calc(50% - 50vw + 1.2rem);
-    }
-    .post {
-      right: calc(50% - 50vw + 1.2rem);
-    }
+  .characters {
+    scrollbar-width: none;
+  }
 
-    /* キャラクターエリア */
-    .character-area {
-      grid-area: character;
-      position: relative;
+  .characters:hover {
+    scrollbar-width: thin;
+  }
 
-      &::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 50vw;
-        height: 100%;
-        background-color: var(--characterBackgroundColor);
+  .characters::-webkit-scrollbar {
+    height: 0;
+  }
 
-        @include mobile {
-          width: 100%; // FIXME: 左右に空間が空いてしまう
-        }
-      }
-
-      .info {
-        position: absolute;
-        top: 0;
-        right: 5%;
-
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        gap: 1rem;
-
-        .detail,
-        .sample {
-          background-color: #fffc;
-          width: 200px;
-          border-radius: 16px;
-          display: flex;
-          flex-direction: column;
-        }
-
-        .detail {
-          align-items: flex-end;
-          gap: 1rem;
-        }
-
-        .sample {
-          align-items: center;
-        }
-      }
-    }
-
-    /* 説明エリア */
-    .description-area {
-      grid-area: description;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: start;
-      @extend .px-6;
-
-      @include mobile {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        align-items: center;
-        padding-top: 3rem;
-      }
-
-      .terms {
-        display: flex;
-        gap: 0.5rem;
-        flex-wrap: wrap;
-
-        @include mobile {
-          flex-direction: column;
-          align-items: center;
-        }
-      }
-    }
-
-    /* キャラクターメニューエリア */
-    .charamenu-area {
-      grid-area: charamenu;
-
-      .characters {
-        display: flex;
-        overflow: auto hidden;
-        margin: 0 auto auto;
-        height: 100%;
-        scrollbar-width: none;
-
-        &:hover {
-          scrollbar-width: thin;
-        }
-
-        .character {
-          --padding-y: 1.25rem;
-          display: flex;
-          opacity: 0.5;
-          height: calc(5rem - var(--padding-y) * 2);
-          box-sizing: content-box;
-          aspect-ratio: 1;
-          padding: var(--padding-y) 0.5rem;
-
-          &:hover {
-            opacity: 0.8;
-          }
-
-          &.active {
-            --padding-y: 1rem;
-            opacity: 1;
-            position: relative;
-
-            &:before {
-              content: "";
-              position: absolute;
-              top: 0;
-              left: 0;
-              height: 0.25rem;
-              width: 100%;
-              background-color: var(--characterColor);
-            }
-          }
-
-          img {
-            background-color: var(--characterLightColor);
-            height: 100%;
-            width: auto;
-            border-radius: 0.45rem;
-            margin: auto;
-          }
-        }
-      }
-    }
+  .characters:hover::-webkit-scrollbar {
+    height: 8px;
   }
 </style>

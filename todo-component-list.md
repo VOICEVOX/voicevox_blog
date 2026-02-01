@@ -82,7 +82,7 @@
 
 ### 高難易度（複雑な状態管理・インタラクション）
 
-- [ ] **Product TopContainer** `src/pages/product/_TopContainer.astro`
+- [x] **Product TopContainer** `src/pages/product/_TopContainer.astro`
   - 複雑なレイアウト（キャラ表示＋キャラ一覧） → Tailwindで再現
   - nanostores、スクロール制御、110行以上のSCSS
 
