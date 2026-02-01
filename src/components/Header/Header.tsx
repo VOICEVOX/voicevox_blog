@@ -20,7 +20,9 @@ export default function Header({
 }) {
   const [isBurgerActive, setIsBurgerActive] = useState(false);
   const [showingHeader, setShowingHeader] = useState(!defaultHide);
-  const menuItemHoverClassName = isDark ? "hover:bg-white/10" : "hover:bg-gray-100";
+  const menuItemHoverClassName = isDark
+    ? "hover:bg-white/10"
+    : "hover:bg-gray-100";
   const menuItemBaseClassName = `flex items-center self-stretch px-3 text-base whitespace-nowrap ${menuItemHoverClassName}`;
   const menuItemBaseMobilePanelClassName = `flex items-center px-3 py-2 text-base whitespace-nowrap ${menuItemHoverClassName}`;
 
@@ -157,7 +159,9 @@ export default function Header({
     },
     {
       Component: ({ className }: { className?: string }) => (
-        <div className={`flex items-center self-stretch px-3 ${className ?? ""}`}>
+        <div
+          className={`flex items-center self-stretch px-3 ${className ?? ""}`}
+        >
           <button
             className="inline-flex items-center gap-1.5 rounded-full bg-primary px-5 py-2 text-base font-semibold leading-6 text-black hover:bg-primary/90"
             onClick={() => {
@@ -189,11 +193,14 @@ export default function Header({
         : "hidden md:flex lg:hidden";
 
   const desktopMenuClassName = (hideType?: HideType) =>
-    hideType == "mobile" ? "flex items-center self-stretch py-0" : "flex items-center self-stretch";
+    hideType == "mobile"
+      ? "flex items-center self-stretch py-0"
+      : "flex items-center self-stretch";
 
   const mobilePanelMenuItemClassName = (hideType?: HideType) => {
     if (hideType == undefined) return "hidden";
-    if (hideType == "mobile") return `${menuItemBaseMobilePanelClassName} w-full md:hidden`;
+    if (hideType == "mobile")
+      return `${menuItemBaseMobilePanelClassName} w-full md:hidden`;
     return `${menuItemBaseMobilePanelClassName} w-full`;
   };
 
@@ -203,7 +210,9 @@ export default function Header({
         className={`navbar fixed left-0 top-0 z-50 w-full ${
           showingHeader ? "" : "hidden"
         } ${defaultHide ? "with-animation" : ""} ${
-          isDark ? "bg-black text-white shadow-[0_2px_0_0_hsl(0_0%_4%)]" : "bg-white text-gray-900 shadow-[0_2px_0_0_rgb(243,244,246)]"
+          isDark
+            ? "bg-black text-white shadow-[0_2px_0_0_hsl(0_0%_4%)]"
+            : "bg-white text-gray-900 shadow-[0_2px_0_0_rgb(243,244,246)]"
         }`}
         role="navigation"
         aria-label="main navigation"
@@ -242,7 +251,11 @@ export default function Header({
               <span
                 aria-hidden="true"
                 className="absolute block h-0.5 w-5 bg-current transition-transform"
-                style={{ transform: isBurgerActive ? "translateY(0) rotate(45deg)" : "translateY(-6px)" }}
+                style={{
+                  transform: isBurgerActive
+                    ? "translateY(0) rotate(45deg)"
+                    : "translateY(-6px)",
+                }}
               />
               <span
                 aria-hidden="true"
@@ -252,7 +265,11 @@ export default function Header({
               <span
                 aria-hidden="true"
                 className="absolute block h-0.5 w-5 bg-current transition-transform"
-                style={{ transform: isBurgerActive ? "translateY(0) rotate(-45deg)" : "translateY(6px)" }}
+                style={{
+                  transform: isBurgerActive
+                    ? "translateY(0) rotate(-45deg)"
+                    : "translateY(6px)",
+                }}
               />
             </button>
           </div>
@@ -261,12 +278,17 @@ export default function Header({
         <div className={`lg:hidden ${isBurgerActive ? "block" : "hidden"}`}>
           <div
             className={`border-t ${
-              isDark ? "border-gray-800 bg-black text-white" : "border-gray-200 bg-white text-gray-900"
+              isDark
+                ? "border-gray-800 bg-black text-white"
+                : "border-gray-200 bg-white text-gray-900"
             }`}
           >
             <div className="mx-auto flex max-w-screen-xl flex-col py-2">
               {menus.map(({ Component, hideType }, i) => (
-                <Component key={i} className={mobilePanelMenuItemClassName(hideType)} />
+                <Component
+                  key={i}
+                  className={mobilePanelMenuItemClassName(hideType)}
+                />
               ))}
             </div>
           </div>

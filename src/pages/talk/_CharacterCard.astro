@@ -32,7 +32,10 @@ const characterKey = characterInfo.key;
     </a>
     <div class="p-6 text-center">
       <h3 class="text-2xl font-extrabold leading-[27px]">
-        <a href={withBaseUrl(getProductPageUrl(characterInfo))} class="text-current">
+        <a
+          href={withBaseUrl(getProductPageUrl(characterInfo))}
+          class="text-current"
+        >
           {characterInfo.name}
         </a>
       </h3>
@@ -41,9 +44,7 @@ const characterKey = characterInfo.key;
       </p>
       {
         characterInfo.releaseDate != undefined && (
-          <p class="py-0 -mt-4 text-red-600 font-semibold">
-            Coming Soon
-          </p>
+          <p class="py-0 -mt-4 text-red-600 font-semibold">Coming Soon</p>
         )
       }
       {

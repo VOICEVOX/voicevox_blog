@@ -9,36 +9,60 @@ import Base from "@/layouts/Base.astro";
   description="Base.astroレイアウトの表示確認"
   noindex={true}
 >
-  <main class="section">
-    <div class="container">
-      <h1 class="title is-1">Base.astro レイアウト確認</h1>
-      <p class="subtitle">このページはBase.astroレイアウトを使用しています。</p>
+  <main class="py-12">
+    <div class="max-w-7xl mx-auto px-4">
+      <h1 class="text-5xl font-bold mb-6">Base.astro レイアウト確認</h1>
+      <p class="text-xl mb-6">
+        このページはBase.astroレイアウトを使用しています。
+      </p>
 
-      <div class="content">
-        <h2>他のモード</h2>
-        <ul>
-          <li><a href="/dev/ui/base/dark/">ダークモード</a></li>
-          <li><a href="/dev/ui/base/nemo/">Nemoモード</a></li>
-        </ul>
+      <h2 class="text-3xl font-extrabold text-gray-700 dark:text-gray-300 mb-4">
+        他のモード
+      </h2>
+      <ul class="ml-8 mb-4 list-disc list-outside">
+        <li>
+          <a
+            href="/dev/ui/base/dark/"
+            class="font-bold underline text-[rgb(48,100,57)] hover:text-[rgb(38,80,47)] dark:text-[rgb(165,212,173)] dark:hover:text-[rgb(185,232,193)]"
+          >
+            ダークモード
+          </a>
+        </li>
+        <li>
+          <a
+            href="/dev/ui/base/nemo/"
+            class="font-bold underline text-[rgb(48,100,57)] hover:text-[rgb(38,80,47)] dark:text-[rgb(165,212,173)] dark:hover:text-[rgb(185,232,193)]"
+          >
+            Nemoモード
+          </a>
+        </li>
+      </ul>
 
-        <h2>レイアウト構成要素</h2>
-        <ul>
-          <li>Header（画面上部）</li>
-          <li>メインコンテンツ（この部分）</li>
-          <li>Footer（画面下部に固定）</li>
-          <li>Modals（非表示）</li>
-        </ul>
+      <h2
+        class="text-3xl font-extrabold text-gray-700 dark:text-gray-300 mb-4 mt-5"
+      >
+        レイアウト構成要素
+      </h2>
+      <ul class="ml-8 mb-4 list-disc list-outside">
+        <li>Header（画面上部）</li>
+        <li>メインコンテンツ（この部分）</li>
+        <li>Footer（画面下部に固定）</li>
+        <li>Modals（非表示）</li>
+      </ul>
 
-        <h2>ダミーコンテンツ</h2>
-        {
-          Array.from({ length: 5 }).map(() => (
-            <p>
-              これはダミーの文章です。Base.astroレイアウトの動作確認のために配置されています。
-              フッターが最下部に固定されることを確認してください。
-            </p>
-          ))
-        }
-      </div>
+      <h2
+        class="text-3xl font-extrabold text-gray-700 dark:text-gray-300 mb-4 mt-5"
+      >
+        ダミーコンテンツ
+      </h2>
+      {
+        Array.from({ length: 5 }).map(() => (
+          <p class="mb-4 last:mb-0">
+            これはダミーの文章です。Base.astroレイアウトの動作確認のために配置されています。
+            フッターが最下部に固定されることを確認してください。
+          </p>
+        ))
+      }
     </div>
   </main>
 </Base>

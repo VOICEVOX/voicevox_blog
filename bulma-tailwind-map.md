@@ -4,7 +4,9 @@
 | ---------------------------- | ------------------------------------------------------------------------------------------------------------------ |
 | `section`                    | `py-12`                                                                                                            |
 | `title`(h2, 32px)            | `text-3xl font-bold mb-6` (Bulmaのmargin-bottomは24px)                                                             |
+| `title is-1`(h1, 48px)       | `text-5xl font-bold mb-6` (Bulmaのmargin-bottomは24px)                                                             |
 | `title is-4`(h2, 24px)       | `text-2xl font-bold mb-6` (Bulmaのmargin-bottomは24px)                                                             |
+| `subtitle`(p, 20px)          | `text-xl mb-6` (Bulmaのmargin-bottomは24px)                                                                        |
 | `is-size-5`                  | `text-xl`                                                                                                          |
 | `is-size-6`(p)               | `text-base` (Bulmaのmargin-bottomは0px)                                                                            |
 | `has-text-weight-bold`       | `font-bold`                                                                                                        |
@@ -16,7 +18,7 @@
 | `is-dark`                    | `bg-gray-800 text-white`                                                                                           |
 | `is-loading`                 | カスタムローディングスピナー＋`opacity-50 cursor-wait`                                                             |
 | `is-rounded`                 | `rounded-full`                                                                                                     |
-| `container`                  | `container mx-auto px-4`                                                                                           |
+| `container`                  | `max-w-7xl mx-auto px-4`                                                                                           |
 | `is-max-desktop`             | `max-w-[960px]`                                                                                                    |
 | `is-flex`                    | `flex`                                                                                                             |
 | `is-flex-direction-column`   | `flex-col`                                                                                                         |
@@ -26,3 +28,9 @@
 | `jump-anchor-header-padding` | `pt-[calc(3.25rem+1rem)] -mt-[calc(3.25rem+1rem)]`                                                                 |
 | `navbar`                     | `fixed top-0 w-full bg-white shadow`                                                                               |
 | `dropdown`                   | zag.jsのドロップダウン + Tailwindスタイル                                                                          |
+| `has-background-black`       | `bg-black text-white`                                                                                              |
+| `has-background-white`       | `bg-white text-black`                                                                                              |
+| `.content h2`                | `text-3xl font-extrabold text-gray-700 dark:text-gray-300 mb-4 [mt-5 for not first]`                               |
+| `.content ul`                | `ml-8 mb-4 list-disc list-outside`                                                                                 |
+| `.content p`                 | `mb-4 last:mb-0`                                                                                                   |
+| `.content a`                 | リンク色と同じ（上記参照）                                                                                         |

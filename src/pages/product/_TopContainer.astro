@@ -68,7 +68,9 @@ const postCharacterKey =
     <FontAwesomeIcon icon={faCircleRight} />
   </a>
 
-  <div class="character-area top-character-area relative col-start-1 row-start-1 md:col-start-2 md:row-start-1">
+  <div
+    class="character-area top-character-area relative col-start-1 row-start-1 md:col-start-2 md:row-start-1"
+  >
     <div class="absolute inset-0 flex justify-center overflow-hidden">
       <div class="flex-none">
         <Image
@@ -81,12 +83,17 @@ const postCharacterKey =
         />
       </div>
     </div>
-    <div class="absolute inset-y-0 right-[5%] flex flex-col justify-end gap-4 pb-5">
-      <div class="flex w-[200px] flex-col items-end gap-4 rounded-2xl bg-white/80 p-4">
+    <div
+      class="absolute inset-y-0 right-[5%] flex flex-col justify-end gap-4 pb-5"
+    >
+      <div
+        class="flex w-[200px] flex-col items-end gap-4 rounded-2xl bg-white/80 p-4"
+      >
         <p>{characterInfo.description.replaceAll("<br />", "")}</p>
         <a
           href={withBaseUrl(getDormitoryCharacterPageUrl(characterInfo))}
-          class="font-bold text-black underline-offset-2 hover:underline">キャラクター詳細 →</a
+          class="font-bold text-black underline-offset-2 hover:underline"
+          >キャラクター詳細 →</a
         >
       </div>
 
@@ -94,7 +101,9 @@ const postCharacterKey =
     </div>
   </div>
 
-  <div class="description-area col-start-1 row-start-3 flex flex-col items-center justify-center px-0 pt-12 md:col-start-1 md:row-start-1 md:items-start md:justify-self-start md:px-6 md:pt-0">
+  <div
+    class="description-area col-start-1 row-start-3 flex flex-col items-center justify-center px-0 pt-12 md:col-start-1 md:row-start-1 md:items-start md:justify-self-start md:px-6 md:pt-0"
+  >
     <h1 class="mb-6 text-[32px] font-extrabold leading-[36px]">
       VOICEVOX {characterInfo.name}
     </h1>
@@ -118,7 +127,9 @@ const postCharacterKey =
         </button>
       )
     }
-    <div class="terms mt-6 flex flex-col items-center gap-2 md:flex-row md:flex-wrap md:items-start">
+    <div
+      class="terms mt-6 flex flex-col items-center gap-2 md:flex-row md:flex-wrap md:items-start"
+    >
       <a
         href={withBaseUrl("/term/")}
         class="inline-flex h-10 items-center justify-center rounded-full border border-gray-300 bg-white px-5 text-base font-medium shadow-sm hover:bg-gray-50"
@@ -154,8 +165,13 @@ const postCharacterKey =
     </div>
   </div>
 
-  <div class="charamenu-area col-start-1 row-start-2 h-20 md:col-span-2 md:row-start-2">
-    <div class="characters flex h-full overflow-x-auto overflow-y-hidden" aria-label="キャラクター一覧">
+  <div
+    class="charamenu-area col-start-1 row-start-2 h-20 md:col-span-2 md:row-start-2"
+  >
+    <div
+      class="characters flex h-full overflow-x-auto overflow-y-hidden"
+      aria-label="キャラクター一覧"
+    >
       {
         characterKeys.map((key) => (
           <KeepScrollAnchor

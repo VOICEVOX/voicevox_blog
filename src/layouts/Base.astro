@@ -137,12 +137,12 @@ const googleAnalyticsSrc = `https://www.googletagmanager.com/gtag/js?id=${GA_TRA
     <ClientRouter />
   </head>
 
-  <body class={isDark ? "has-background-black" : "has-background-white"}>
+  <body class={isDark ? "bg-black text-white" : "bg-white text-black"}>
     <Header defaultHide={defaultHideHeader} isDark={isDark} isNemo={isNemo} />
 
     <slot />
 
-    <footer class={`footer appearance ${isDark ? "has-background-black" : ""}`}>
+    <footer class={`footer appearance ${isDark ? "bg-black" : ""}`}>
       <Footer isDark={isDark} />
     </footer>
     <div class="footer height-holder">
@@ -170,7 +170,6 @@ const googleAnalyticsSrc = `https://www.googletagmanager.com/gtag/js?id=${GA_TRA
 
   body {
     position: relative;
-    overflow: hidden;
 
     .footer {
       // footerを最下部に固定するためのクラス
