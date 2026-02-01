@@ -109,6 +109,10 @@ Playwrightのcomputedで確かめたりして近いtailwindのクラスを探し
 `import "@/styles/global.css";`を忘れずに行ってください。
 `bulma.scss`等のimportを消すのも忘れがちなので注意してください。
 
+まずはBase.astroだけが書いた`dev/ui/base/`ページをBulmaベースで作ってください。
+tailwind化は今回のタスク範囲外です。
+完成したら待機してください。
+
 ---
 
 以上が今までのタスクです。
@@ -117,9 +121,37 @@ Playwrightのcomputedで確かめたりして近いtailwindのクラスを探し
 `todo-page-list.md`のTailwind化タスクを上から順に１つずつ進めてください。
 手順：既存ページをTailwindで置き換え→開発サーバーでplaywright mcpやsubagentで新旧を確認→ユーザー確認→スクリーンショット更新
 
-まずはBase.astroだけが書いた`dev/ui/base/`ページをBulmaベースで作ってください。
-tailwind化は今回のタスク範囲外です。
-完成したら待機してください。
+確認は `http://localhost:4321/` から行ってください。
+そこそこ近い見た目であれば大丈夫ですが、大きくハズレていたら修正してください。
+既存のスクリーンショットと見比べたり、Playwrightでcomputedな値を取得して比較したり、bulma時代(commit hash:3b5a86938c5ad5c0dbe6720ed6f6040aad840e19)のページと見比べたりしてください。
+Bulma時代の例は`http://localhost:54321/dev/ui/`で見ることができます。
+Playwrightのcomputedで確かめたりして近いtailwindのクラスを探してください。
+サーバーが起動していなければユーザーに報告してください。
+
+実装する際、すでにTailwind化が完了しているコンポーネントやページを積極的に再利用・参考にしてください。
+`bulma-tailwind-map.md`ファイルも読んで参考にしてください。
+bulmaのスタイルとtailwindのクラスは完全一致させる必要はないことに留意してください。
+`src/layouts/Base.astro`でimportしているものはimport不要なので気をつけてください。
+
+.astroファイルをTailwind化する際、cssのimportを変える指示を忘れることがよくあるので注意してください。
+`bulma.scss`等のimportを消すのも忘れがちなので注意してください。
+
+おそらくzagjsはまだ不要だと思います。
+今回のタスクは曖昧なので、曖昧な点がなくなるまでユーザーにaskskillで質問してください。
+
+完了後はチェックボックスを埋めてください。
+１つやったらタスク完了です。
+
+astroやbulmaやtailwindについてわからないことがあればcontext7で調べてください。
+
+---
+
+最後に以下をすべて実行して通過させてください。
+注意：PlayButtonのみTailwind化済みのため、PlayButtonを使用する他コンポーネント（character-card-talk、nemo-speaker等）のテストはスクリーンショット差異で失敗する可能性があります。
+```bash
+pnpm run fmt && pnpm run lint
+pnpm run test-build && STRICT_USE_PREVIEW=1 pnpm run test:e2e tests/e2e/ui/dev-ui/
+```
 
 タスク遂行の際、余計なことをしないように注意してください。
 既存のコメントは消さないでください。

@@ -3,7 +3,10 @@
 ### 0. `/dev/ui/base/` (Baseレイアウト確認ページ)
 
 - [ ] 実装完了
-- ファイル: `src/pages/dev/ui/base/index.astro`
+- ファイル:
+  - `src/pages/dev/ui/base/index.astro` (ライトモード)
+  - `src/pages/dev/ui/base/dark.astro` (ダークモード)
+  - (Nemoモードは構造的な違いがないため確認不要)
 
 ### 1. `/update_history/` (変更履歴ページ)
 
