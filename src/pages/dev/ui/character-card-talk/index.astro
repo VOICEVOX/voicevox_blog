@@ -1,9 +1,7 @@
 ---
 import { characterInfos } from "@/constants/characterInfo";
 import CharacterCard from "@/pages/talk/_CharacterCard.astro";
-import "@/styles/bulma.scss";
-import "@/styles/global.scss";
-import "@/styles/helper.scss";
+import "@/styles/global.css";
 
 const characterInfo1 = characterInfos["ずんだもん"];
 const characterInfo2 = characterInfos["四国めたん"];
@@ -23,8 +21,8 @@ const characterInfo3 = characterInfos["春日部つむぎ"];
 
       <section class="mb-8">
         <h2 class="text-xl font-semibold mb-4">キャラクター一覧（抜粋）</h2>
-        <div class="container is-max-desktop is-flex is-flex-direction-column">
-          <div class="columns is-multiline is-centered">
+        <div class="max-w-[960px] mx-auto flex flex-col">
+          <div class="-m-3 flex flex-wrap justify-center">
             <CharacterCard characterInfo={characterInfo1} />
             <CharacterCard characterInfo={characterInfo2} />
             <CharacterCard characterInfo={characterInfo3} />

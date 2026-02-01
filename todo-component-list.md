@@ -92,7 +92,7 @@
   - `is-fixed-top`, `has-shadow` → Tailwindのfixed + shadow
   - Intersection Observer、状態管理はそのまま維持
 
-- [ ] **CharacterCard (talk)** `src/pages/talk/_CharacterCard.astro`
+- [x] **CharacterCard (talk)** `src/pages/talk/_CharacterCard.astro`
   - カードスタイル → Tailwindで再現
 
 ---
