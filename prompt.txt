@@ -125,9 +125,11 @@ Playwrightのcomputedで確かめたりして近いtailwindのクラスを探し
 サーバーが起動していなければユーザーに報告してください。
 
 実装する際、すでにTailwind化が完了しているコンポーネントやページを積極的に再利用・参考にしてください。
+`bulma-tailwind-map.md`ファイルも読んで参考にしてください。
+bulmaのスタイルとtailwindのクラスは完全一致させる必要はないことに留意してください。
+`src/layouts/Base.astro`でimportしているものはimport不要なので気をつけてください。
 
 .astroファイルをTailwind化する際、cssのimportを変える指示を忘れることがよくあるので注意してください。
-`import "@/styles/global.css";`を忘れずに行ってください。
 `bulma.scss`等のimportを消すのも忘れがちなので注意してください。
 
 おそらくzagjsはまだ不要だと思います。

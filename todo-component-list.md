@@ -120,35 +120,6 @@
    - ユーザーに確認を依頼（AskSkill）
    - スクリーンショット更新: `pnpm run test:e2e --update-snapshots=all tests/e2e/ui/dev-ui/`
 
-### 主要なBulmaクラスとTailwind対応（適宜更新）
-
-| Bulmaクラス                  | Tailwind対応例                                                                                                     |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| `section`                    | `py-12`                                                                                                            |
-| `title`(h2, 32px)            | `text-3xl font-bold mb-6` (Bulmaのmargin-bottomは24px)                                                             |
-| `title is-4`(h2, 24px)       | `text-2xl font-bold mb-6` (Bulmaのmargin-bottomは24px)                                                             |
-| `is-size-5`                  | `text-xl`                                                                                                          |
-| `is-size-6`(p)               | `text-base` (Bulmaのmargin-bottomは0px)                                                                            |
-| `has-text-weight-bold`       | `font-bold`                                                                                                        |
-| `is-underlined`              | `underline`                                                                                                        |
-| `button`                     | `px-4 py-2 rounded font-medium`                                                                                    |
-| `buttons`                    | `flex flex-wrap gap-2`                                                                                             |
-| `is-primary`                 | `bg-primary text-white hover:bg-primary-dark`                                                                      |
-| `is-small`                   | `text-sm px-3 py-1`                                                                                                |
-| `is-dark`                    | `bg-gray-800 text-white`                                                                                           |
-| `is-loading`                 | カスタムローディングスピナー＋`opacity-50 cursor-wait`                                                             |
-| `is-rounded`                 | `rounded-full`                                                                                                     |
-| `container`                  | `container mx-auto px-4`                                                                                           |
-| `is-max-desktop`             | `max-w-[960px]`                                                                                                    |
-| `is-flex`                    | `flex`                                                                                                             |
-| `is-flex-direction-column`   | `flex-col`                                                                                                         |
-| `is-justify-content-center`  | `justify-center`                                                                                                   |
-| `mt-3`                       | `mt-3` (Bulmaと同じ)                                                                                               |
-| リンク色 (`$link: $primary`) | `text-[rgb(48,100,57)] hover:text-[rgb(38,80,47)] dark:text-[rgb(165,212,173)] dark:hover:text-[rgb(185,232,193)]` |
-| `jump-anchor-header-padding` | `pt-[calc(3.25rem+1rem)] -mt-[calc(3.25rem+1rem)]`                                                                 |
-| `navbar`                     | `fixed top-0 w-full bg-white shadow`                                                                               |
-| `dropdown`                   | zag.jsのドロップダウン + Tailwindスタイル                                                                          |
-
 ### 複雑さの目安
 
 | レベル  | コンポーネント                                                                                                                                                   | 備考                               |
