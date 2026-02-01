@@ -1,5 +1,10 @@
 ## 低難易度（カスタムスタイル0行）
 
+### 0. `/dev/ui/base/` (Baseレイアウト確認ページ)
+
+- [ ] 実装完了
+- ファイル: `src/pages/dev/ui/base/index.astro`
+
 ### 1. `/update_history/` (変更履歴ページ)
 
 - [ ] 実装完了
