@@ -1,0 +1,43 @@
+---
+import Base from "@/layouts/Base.astro";
+---
+
+<Base
+  title="Base.astro 確認用ページ（Nemoモード）"
+  description="Base.astroレイアウトの表示確認（Nemoモード）"
+  noindex={true}
+  isNemo={true}
+>
+  <main class="section">
+    <div class="container">
+      <h1 class="title is-1">Base.astro レイアウト確認（Nemoモード）</h1>
+      <p class="subtitle">このページはBase.astroレイアウトを使用しています。</p>
+
+      <div class="content">
+        <h2>他のモード</h2>
+        <ul>
+          <li><a href="/dev/ui/base/">ライトモード</a></li>
+          <li><a href="/dev/ui/base/dark/">ダークモード</a></li>
+        </ul>
+
+        <h2>レイアウト構成要素</h2>
+        <ul>
+          <li>Header（画面上部）</li>
+          <li>メインコンテンツ（この部分）</li>
+          <li>Footer（画面下部に固定）</li>
+          <li>Modals（非表示）</li>
+        </ul>
+
+        <h2>ダミーコンテンツ</h2>
+        {
+          Array.from({ length: 5 }).map(() => (
+            <p>
+              これはダミーの文章です。Base.astroレイアウトの動作確認のために配置されています。
+              フッターが最下部に固定されることを確認してください。
+            </p>
+          ))
+        }
+      </div>
+    </div>
+  </main>
+</Base>

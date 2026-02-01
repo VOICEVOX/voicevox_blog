@@ -1,6 +1,12 @@
 ---
 import "@/styles/global.css";
 
+const layoutPages = [
+  { path: "/dev/ui/base/", label: "Base Layout (ライトモード)" },
+  { path: "/dev/ui/base/dark/", label: "Base Layout (ダークモード)" },
+  { path: "/dev/ui/base/nemo/", label: "Base Layout (Nemoモード)" },
+];
+
 const modalPages = [
   { path: "/dev/ui/modal/privacy-policy/", label: "プライバシーポリシー" },
   { path: "/dev/ui/modal/nemo-term/", label: "VOICEVOX Nemo 利用規約" },
@@ -48,6 +54,24 @@ const componentPages = [
   </head>
   <body class="p-8">
     <h1 class="text-2xl font-bold mb-6">UI 確認用ページ</h1>
+
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold mb-4">レイアウト</h2>
+      <ul class="space-y-2">
+        {
+          layoutPages.map((page) => (
+            <li>
+              <a
+                href={page.path}
+                class="text-emerald-600 hover:text-emerald-700 underline"
+              >
+                {page.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
 
     <section class="mb-8">
       <h2 class="text-xl font-semibold mb-4">モーダル</h2>
