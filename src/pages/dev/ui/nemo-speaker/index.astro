@@ -24,7 +24,7 @@ const speakerInfos = [
 
       <section class="mb-8">
         <h2 class="text-white text-xl font-semibold mb-4">デフォルト</h2>
-        <div class="speakers-container mx-auto w-full max-w-[960px] px-4">
+        <div class="speakers-container mx-auto w-full max-w-5xl px-4">
           {
             speakerInfos.map((info, i) => (
               <SpeakerComponent
@@ -41,7 +41,7 @@ const speakerInfos = [
           CVドロップダウン（開いた状態）
         </h2>
         <div class="dropdown-force-open">
-          <div class="speakers-container mx-auto w-full max-w-[960px] px-4">
+          <div class="speakers-container mx-auto w-full max-w-5xl px-4">
             <SpeakerComponent info={speakerInfos[0]} style={{ zIndex: 1 }} />
           </div>
         </div>

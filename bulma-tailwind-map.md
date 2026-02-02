@@ -19,10 +19,12 @@
 | `is-loading`                 | カスタムローディングスピナー＋`opacity-50 cursor-wait`                                                             |
 | `is-rounded`                 | `rounded-full`                                                                                                     |
 | `container`                  | `max-w-7xl mx-auto px-4`                                                                                           |
-| `is-max-desktop`             | `max-w-[960px]`                                                                                                    |
+| `is-max-desktop`             | `max-w-5xl`                                                                                                        |
 | `is-flex`                    | `flex`                                                                                                             |
 | `is-flex-direction-column`   | `flex-col`                                                                                                         |
 | `is-justify-content-center`  | `justify-center`                                                                                                   |
+| `columns`                    | `flex flex-wrap -mx-3`（子要素側に`p-3`/`px-3`を付けて左右のガターを相殺）                                         |
+| `column`                     | `p-3` + レスポンシブ幅（例: `w-full md:w-1/2 lg:w-1/3`）                                                           |
 | `mt-3`                       | `mt-3`                                                                                                             |
 | リンク色 (`$link: $primary`) | `text-[rgb(48,100,57)] hover:text-[rgb(38,80,47)] dark:text-[rgb(165,212,173)] dark:hover:text-[rgb(185,232,193)]` |
 | `jump-anchor-header-padding` | `pt-[calc(3.25rem+1rem)] -mt-[calc(3.25rem+1rem)]`                                                                 |

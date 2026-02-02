@@ -26,46 +26,54 @@ const landingMovieThumbUrl = (await getImage({ src: landingMovieThumb })).src;
   defaultHideHeader={true}
 >
   <div class="landing">
-    <div class="first-view" data-testid="first-view">
-      <header {...{ [hideHeaderAttr]: "" }} class="hero is-primary is-small">
-        <div class="hero-body">
-          <div class="container has-text-centered">
-            <div class="title top-title">
-              <Image
-                src={logo}
-                alt="VOICEVOX"
-                style={{
-                  height: "100%",
-                }}
-              />
+    <div
+      class="first-view flex flex-col lg:min-h-screen"
+      data-testid="first-view"
+    >
+      <header {...{ [hideHeaderAttr]: "" }} class="bg-primary text-black">
+        <div class="py-6">
+          <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="h-14 md:h-20 lg:h-28 mb-3">
+              <Image src={logo} alt="VOICEVOX" class="h-full w-auto mx-auto" />
             </div>
-            <h2 class="subtitle has-text-weight-semibold">
+            <h2 class="mt-0 text-xl font-semibold leading-6">
               無料で使える中品質なテキスト読み上げ・歌声合成ソフトウェア
             </h2>
           </div>
         </div>
       </header>
-      <section class="section not-header is-flex is-justify-content-center">
-        <div class="container is-max-desktop columns is-desktop is-vcentered">
-          <div class="column has-text-centered">
+      <section class="py-12 flex-1 flex items-center">
+        <div
+          class="max-w-5xl mx-auto px-4 flex flex-col lg:flex-row lg:items-center justify-center gap-10"
+        >
+          <div class="w-full lg:flex-1 text-center">
             {/* FIXME: キャプションTrackを追加する */}
             {/* eslint-disable-next-line astro/jsx-a11y/media-has-caption */}
-            <video controls poster={landingMovieThumbUrl}>
+            <video
+              class="w-full border border-black"
+              controls
+              poster={landingMovieThumbUrl}
+            >
               <source src={landingMovie} type="video/mp4" />
             </video>
           </div>
-          <SoftwareFeature class="column is-narrow" />
+          <SoftwareFeature class="w-full lg:w-80" />
         </div>
       </section>
     </div>
 
     <main>
-      <section class="section">
-        <div class="container is-max-desktop is-flex is-flex-direction-column">
-          <h2 id="characters" class="jump-anchor-header-padding title">
-            <a href="#characters" class="has-text-black"> キャラクター一覧 </a>
+      <section class="py-12">
+        <div class="max-w-5xl mx-auto px-4 flex flex-col">
+          <h2
+            id="characters"
+            class="pt-[calc(3.25rem+1rem)] -mt-[calc(3.25rem+1rem)] text-3xl font-bold text-neutral-950 mb-6"
+          >
+            <a href="#characters" class="text-neutral-950">
+              キャラクター一覧
+            </a>
           </h2>
-          <div class="columns is-multiline is-centered">
+          <div class="flex flex-wrap justify-center -mx-3">
             {
               characterKeys.map((characterKey) => (
                 <CharacterCard characterInfo={characterInfos[characterKey]} />
@@ -75,18 +83,22 @@ const landingMovieThumbUrl = (await getImage({ src: landingMovieThumb })).src;
         </div>
       </section>
 
-      <section class="section">
-        <div class="container is-max-desktop is-flex is-flex-direction-column">
-          <h2 id="nemo" class="jump-anchor-header-padding title">
-            <a href="#nemo" class="has-text-black"> VOICEVOX Nemo </a>
+      <section class="py-12">
+        <div class="max-w-5xl mx-auto px-4 flex flex-col">
+          <h2
+            id="nemo"
+            class="pt-[calc(3.25rem+1rem)] -mt-[calc(3.25rem+1rem)] text-3xl font-bold text-neutral-950 mb-6"
+          >
+            <a href="#nemo" class="text-neutral-950"> VOICEVOX Nemo </a>
           </h2>
-          <p class="is-size-5">
+          <p class="text-xl">
             VOICEVOX Nemo はキャラクターのいない音声ライブラリです。
           </p>
-          <p class="is-size-5">
+          <p class="text-xl">
             詳しくは&nbsp;<a
               href={withBaseUrl("/nemo/")}
-              class="has-text-weight-bold is-underlined">VOICEVOX Nemo</a
+              class="font-bold underline text-[rgb(48,100,57)] hover:text-[rgb(38,80,47)]"
+              >VOICEVOX Nemo</a
             >&nbsp;をご参照ください。
           </p>
         </div>
@@ -94,20 +106,25 @@ const landingMovieThumbUrl = (await getImage({ src: landingMovieThumb })).src;
 
       <EngineGuidanceSection isDark={false} />
 
-      <section class="section">
-        <div class="container is-max-desktop is-flex is-flex-direction-column">
-          <h2 id="core_library" class="jump-anchor-header-padding title">
-            <a href="#core_library" class="has-text-black"> コアライブラリ </a>
+      <section class="py-12">
+        <div class="max-w-5xl mx-auto px-4 flex flex-col">
+          <h2
+            id="core_library"
+            class="pt-[calc(3.25rem+1rem)] -mt-[calc(3.25rem+1rem)] text-3xl font-bold text-neutral-950 mb-6"
+          >
+            <a href="#core_library" class="text-neutral-950">
+              コアライブラリ
+            </a>
           </h2>
-          <p class="is-size-5">
+          <p class="text-xl">
             VOICEVOX
             の音声合成をアプリケーションやサービスに組み込める、VOICEVOX
             のコアライブラリを配布しています。
           </p>
-          <p class="is-size-5">
+          <p class="text-xl">
             詳しくは&nbsp;<a
               href="https://github.com/VOICEVOX/voicevox_core"
-              class="has-text-weight-bold is-underlined"
+              class="font-bold underline text-[rgb(48,100,57)] hover:text-[rgb(38,80,47)]"
               target="_blank"
               rel="noreferrer">VOICEVOX CORE</a
             >&nbsp;をご参照ください。
@@ -121,49 +138,3 @@ const landingMovieThumbUrl = (await getImage({ src: landingMovieThumb })).src;
     </main>
   </div>
 </Base>
-
-<style lang="scss" is:global>
-  @use "bulma/sass/utilities/initial-variables" as *;
-  @use "bulma/sass/utilities/mixins" as *;
-
-  .landing {
-    .first-view {
-      @include desktop {
-        height: 100vh;
-      }
-
-      display: flex;
-      flex-direction: column;
-      .not-header {
-        flex-grow: 1;
-      }
-    }
-
-    video {
-      border: 1.5px solid;
-    }
-
-    .top-title {
-      height: $size-1 * 2.2;
-      fill: #000000b3;
-      position: relative;
-      width: 100%;
-
-      & > svg {
-        position: absolute;
-        top: 0;
-        height: 100%;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-
-      @include until($desktop) {
-        height: $size-1 * 1.7;
-      }
-
-      @include until($tablet) {
-        height: $size-1 * 1.1;
-      }
-    }
-  }
-</style>

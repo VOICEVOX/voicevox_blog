@@ -8,7 +8,7 @@ const { class: className, isDark } = Astro.props;
 ---
 
 <section class="py-12">
-  <div class={`${className} max-w-4xl mx-auto px-4 flex flex-col`}>
+  <div class={`${className} max-w-5xl mx-auto px-4 flex flex-col`}>
     <h2
       id="engine"
       class="pt-[calc(3.25rem+1rem)] -mt-[calc(3.25rem+1rem)] text-3xl font-bold mb-6"
@@ -17,7 +17,7 @@ const { class: className, isDark } = Astro.props;
         href="#engine"
         class={isDark
           ? "text-white dark:text-white"
-          : "text-black dark:text-black"}
+          : "text-neutral-950 dark:text-neutral-950"}
       >
         音声合成エンジン
       </a>
