@@ -27,7 +27,7 @@ const targetCharacterInfo = characterInfos[targetCharacterKey];
   <div class="flex flex-1">
     <div class="flex flex-1 items-center justify-center p-0">
       <span
-        class={`flex-1 border-[3px] rounded-lg py-1 text-[0.8rem] text-center ${callTo ? "" : "text-gray-500"}`}
+        class={`flex-1 border-[3px] rounded-lg py-1 text-[0.8rem] text-center ${callTo ? "" : "text-neutral-500"}`}
         style={{ borderColor: characterInfo.color }}
       >
         {callTo || "？"}
@@ -41,7 +41,7 @@ const targetCharacterInfo = characterInfos[targetCharacterKey];
         ←
       </span>
       <span
-        class={`flex-1 border-[3px] rounded-lg py-1 text-[0.8rem] text-center ${callFrom ? "" : "text-gray-500"}`}
+        class={`flex-1 border-[3px] rounded-lg py-1 text-[0.8rem] text-center ${callFrom ? "" : "text-neutral-500"}`}
         style={{ borderColor: targetCharacterInfo.color }}
       >
         {callFrom || "？"}

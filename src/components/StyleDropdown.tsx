@@ -44,7 +44,7 @@ export default function StyleDropdown({
     >
       <div>
         <button
-          className="inline-flex items-center gap-1.5 rounded-full border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+          className="inline-flex items-center gap-1.5 rounded-full border border-gray-300 bg-white px-4 py-2 text-base font-medium text-neutral-900 shadow-sm hover:bg-neutral-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
           aria-haspopup="true"
           aria-controls={id}
           aria-expanded={isOpen}
@@ -54,7 +54,7 @@ export default function StyleDropdown({
           aria-label={`${characterName}のサンプルボイスのスタイルを選択`}
         >
           <span className="whitespace-nowrap">{selectedStyle}</span>
-          <span className="shrink-0 text-gray-500">
+          <span className="shrink-0 text-neutral-500">
             <FontAwesomeIcon icon={faAngleDown} />
           </span>
         </button>
@@ -77,8 +77,8 @@ export default function StyleDropdown({
                   role="menuitem"
                   className={`block w-full rounded px-3 py-2 text-left text-sm whitespace-nowrap ${
                     isSelected
-                      ? "bg-primary text-gray-900 hover:bg-primary/90 font-semibold"
-                      : "text-gray-900 hover:bg-gray-100"
+                      ? "bg-primary text-neutral-900 hover:bg-primary/90 font-semibold"
+                      : "text-neutral-900 hover:bg-neutral-100"
                   }`}
                   onMouseDown={() => {
                     setSelectedStyle(style);

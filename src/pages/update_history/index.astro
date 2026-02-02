@@ -9,12 +9,12 @@ import updateInfos from "public/updateInfos.json";
 >
   <main class="py-12">
     <div class="max-w-[960px] mx-auto px-4">
-      <h1 class="text-3xl font-bold text-gray-950 mb-6">変更履歴</h1>
+      <h1 class="text-3xl font-bold text-neutral-950 mb-6">変更履歴</h1>
       {
         updateInfos.map((info, index) => (
           <>
             <div>
-              <h2 class="text-2xl font-bold text-gray-700 mb-4">
+              <h2 class="text-2xl font-bold text-neutral-700 mb-4">
                 ver {info.version}
               </h2>
               <ul class="ml-8 mb-4 list-disc list-outside text-black">
@@ -24,7 +24,7 @@ import updateInfos from "public/updateInfos.json";
               </ul>
               {info.contributors.length > 0 && (
                 <>
-                  <h3 class="text-xl font-bold text-gray-700 mt-4 mb-3">
+                  <h3 class="text-xl font-bold text-neutral-700 mt-4 mb-3">
                     貢献者リスト
                   </h3>
                   <div class="mb-4 text-black">
@@ -34,7 +34,7 @@ import updateInfos from "public/updateInfos.json";
               )}
             </div>
             {updateInfos.length !== index + 1 && (
-              <hr class="my-6 border-0 h-[2px] bg-gray-100" />
+              <hr class="my-6 border-0 h-[2px] bg-neutral-100" />
             )}
           </>
         ))

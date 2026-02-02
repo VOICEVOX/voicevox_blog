@@ -28,10 +28,10 @@ const { frontmatter } = article;
 >
   <main class="py-12">
     <div class="max-w-[960px] mx-auto px-4">
-      <h1 class="text-3xl font-bold text-gray-950 mb-2">
+      <h1 class="text-3xl font-bold text-neutral-950 mb-2">
         {frontmatter.title}
       </h1>
-      <p class="text-gray-400">{frontmatter.date}</p>
+      <p class="text-neutral-400">{frontmatter.date}</p>
       <Markdown>
         <div class="markdown mt-5" set:html={article.compiledContent()} />
       </Markdown>

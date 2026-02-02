@@ -101,11 +101,11 @@ export default function DownloadNemoModal() {
       <div className="fixed inset-0 flex items-center justify-center p-4">
         <div className="w-full max-w-[670px] rounded-md bg-white shadow-2xl">
           <header className="relative flex items-center justify-center border-b border-gray-300 px-6 py-4">
-            <p className="text-xl font-bold text-gray-900">
+            <p className="text-xl font-bold text-neutral-900">
               Nemo エンジン ダウンロード
             </p>
             <button
-              className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-2xl leading-none text-gray-600 hover:bg-gray-200"
+              className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-neutral-100 text-2xl leading-none text-neutral-600 hover:bg-neutral-200"
               aria-label="close"
               onClick={hide}
               type="button"
@@ -133,7 +133,7 @@ export default function DownloadNemoModal() {
                 setSelected={setSelectedMode}
                 candidates={modeAvailables[selectedOs]}
               />
-              <p className="text-center text-sm text-gray-600">
+              <p className="text-center text-sm text-neutral-600">
                 ※ GPUモードの方が快適ですが、利用するためには
                 <a
                   href={withBaseUrl("/qa/")}
@@ -147,7 +147,7 @@ export default function DownloadNemoModal() {
 
             <hr className="border-t border-gray-300" />
 
-            <p className="text-center text-gray-700">
+            <p className="text-center text-neutral-700">
               VOICEVOX 内の「マルチエンジン機能」を ON にしたあと、
               <br />
               ダウンロードした .vvpp ファイルをダブルクリックするか

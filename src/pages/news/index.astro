@@ -21,7 +21,7 @@ import { articles } from "./constants";
 >
   <main class="py-12">
     <div class="max-w-[960px] mx-auto px-4">
-      <h1 class="text-3xl font-bold text-gray-950 mb-6">ニュース</h1>
+      <h1 class="text-3xl font-bold text-neutral-950 mb-6">ニュース</h1>
       {
         articles.map((article) => (
           <div class="mb-3">
@@ -31,7 +31,7 @@ import { articles } from "./constants";
             >
               {article.frontmatter.title}
             </a>
-            <p class="text-gray-400">{article.frontmatter.date}</p>
+            <p class="text-neutral-400">{article.frontmatter.date}</p>
           </div>
         ))
       }

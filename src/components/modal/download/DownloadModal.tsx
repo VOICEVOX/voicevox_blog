@@ -188,11 +188,11 @@ export default function DownloadModal() {
       <div className="fixed inset-0 flex items-center justify-center p-4">
         <div className="w-full max-w-[670px] rounded-md bg-white shadow-2xl">
           <header className="relative flex items-center justify-center border-b border-gray-300 px-6 py-4">
-            <p className="text-xl font-bold text-gray-900">
+            <p className="text-xl font-bold text-neutral-900">
               VOICEVOX ダウンロード
             </p>
             <button
-              className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-2xl leading-none text-gray-600 hover:bg-gray-200"
+              className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-neutral-100 text-2xl leading-none text-neutral-600 hover:bg-neutral-200"
               aria-label="close"
               onClick={hide}
               type="button"
@@ -220,7 +220,7 @@ export default function DownloadModal() {
                 setSelected={(mode) => selectMode(selectedOs, mode)}
                 candidates={modeAvailables[selectedOs]}
               />
-              <p className="text-center text-sm text-gray-600">
+              <p className="text-center text-sm text-neutral-600">
                 ※ GPUモードの方が快適ですが、利用するためには
                 <a
                   href={withBaseUrl("/qa/")}
@@ -243,7 +243,7 @@ export default function DownloadModal() {
                   packageAvailables[selectedOs][selectedOrDefaultMode]!
                 }
               />
-              <p className="text-center text-sm text-gray-600">
+              <p className="text-center text-sm text-neutral-600">
                 ※ 推奨パッケージはインストーラー版です
               </p>
             </div>
@@ -252,7 +252,7 @@ export default function DownloadModal() {
           <footer className="flex items-center justify-end gap-3 border-t border-gray-300 px-6 py-4">
             <a
               href={withBaseUrl("/term/")}
-              className="inline-flex items-center justify-center rounded border border-gray-300 bg-white px-4 py-2 text-base font-normal text-black hover:bg-gray-50"
+              className="inline-flex items-center justify-center rounded border border-gray-300 bg-white px-4 py-2 text-base font-normal text-black hover:bg-neutral-50"
             >
               利用規約
             </a>

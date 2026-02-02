@@ -27,11 +27,11 @@ export default function NemoGuidanceModal() {
       <div className="fixed inset-0 flex items-center justify-center p-4">
         <div className="w-full max-w-[670px] rounded-md bg-white shadow-2xl">
           <header className="relative flex items-center justify-center border-b border-gray-300 px-6 py-4">
-            <p className="text-xl font-bold text-gray-900">
+            <p className="text-xl font-bold text-neutral-900">
               VOICEVOX Nemo ご利用案内
             </p>
             <button
-              className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-2xl leading-none text-gray-600 hover:bg-gray-200"
+              className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-neutral-100 text-2xl leading-none text-neutral-600 hover:bg-neutral-200"
               aria-label="close"
               onClick={hide}
               type="button"
@@ -44,10 +44,10 @@ export default function NemoGuidanceModal() {
 
           <section className="px-6 py-6">
             <div className="flex flex-col items-center gap-3 text-center">
-              <h3 className="mb-0 text-xl font-semibold text-gray-900">
+              <h3 className="mb-0 text-xl font-semibold text-neutral-900">
                 - Step 1 -
               </h3>
-              <p className="text-base text-gray-700">
+              <p className="text-base text-neutral-700">
                 VOICEVOX ソフトウェアをインストール
               </p>
               <button
@@ -66,10 +66,10 @@ export default function NemoGuidanceModal() {
             <hr className="my-4 w-full flex-shrink-0 border-t border-gray-300" />
 
             <div className="flex flex-col items-center gap-3 text-center">
-              <h3 className="mb-0 text-xl font-semibold text-gray-900">
+              <h3 className="mb-0 text-xl font-semibold text-neutral-900">
                 - Step 2 -
               </h3>
-              <p className="text-base text-gray-700">
+              <p className="text-base text-neutral-700">
                 VOICEVOX ソフトウェアを起動して
                 <br />
                 設定→オプション→高度な設定→<b>マルチエンジン機能</b>をON
@@ -79,10 +79,10 @@ export default function NemoGuidanceModal() {
             <hr className="my-4 w-full flex-shrink-0 border-t border-gray-300" />
 
             <div className="flex flex-col items-center gap-3 text-center">
-              <h3 className="mb-0 text-xl font-semibold text-gray-900">
+              <h3 className="mb-0 text-xl font-semibold text-neutral-900">
                 - Step 3 -
               </h3>
-              <p className="text-base text-gray-700">Nemo エンジンを追加</p>
+              <p className="text-base text-neutral-700">Nemo エンジンを追加</p>
               <button
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-2.5 text-base font-semibold text-black hover:brightness-90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                 onClick={() => $nemoDownloadModal.set(true)}
@@ -95,7 +95,7 @@ export default function NemoGuidanceModal() {
 
             <hr className="my-4 w-full flex-shrink-0 border-t border-gray-300" />
 
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-neutral-600">
               ※ VOICEVOX ソフトウェアにはキャラクターの音声も含まれます。
               <br />
               キャラクターの音声と Nemo の音声は利用規約が異なるので

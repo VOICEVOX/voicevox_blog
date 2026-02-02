@@ -22,7 +22,7 @@ export default function Header({
   const [showingHeader, setShowingHeader] = useState(!defaultHide);
   const menuItemHoverClassName = isDark
     ? "hover:bg-white/10"
-    : "hover:bg-gray-100";
+    : "hover:bg-neutral-100";
   const menuItemBaseClassName = `flex items-center self-stretch px-3 text-base whitespace-nowrap ${menuItemHoverClassName}`;
   const menuItemBaseMobilePanelClassName = `flex items-center px-3 py-2 text-base whitespace-nowrap ${menuItemHoverClassName}`;
 
@@ -212,7 +212,7 @@ export default function Header({
         } ${defaultHide ? "with-animation" : ""} ${
           isDark
             ? "bg-black text-white shadow-[0_2px_0_0_hsl(0_0%_4%)]"
-            : "bg-white text-gray-900 shadow-[0_2px_0_0_rgb(243,244,246)]"
+            : "bg-white text-neutral-900 shadow-[0_2px_0_0_rgb(243,244,246)]"
         }`}
         role="navigation"
         aria-label="main navigation"
@@ -280,7 +280,7 @@ export default function Header({
             className={`border-t ${
               isDark
                 ? "border-gray-800 bg-black text-white"
-                : "border-gray-200 bg-white text-gray-900"
+                : "border-gray-200 bg-white text-neutral-900"
             }`}
           >
             <div className="mx-auto flex max-w-screen-xl flex-col py-2">

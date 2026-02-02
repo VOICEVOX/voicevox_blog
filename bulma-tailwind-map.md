@@ -3,10 +3,10 @@
 | Bulmaクラス                  | Tailwind対応例                                                                                                     |
 | ---------------------------- | ------------------------------------------------------------------------------------------------------------------ |
 | `section`                    | `py-12`                                                                                                            |
-| `title`                      | `text-3xl font-bold text-gray-950 mb-6`                                                                            |
-| `title is-1`                 | `text-5xl font-bold text-gray-950 mb-6`                                                                            |
-| `title is-4`                 | `text-2xl font-bold text-gray-950 mb-6`                                                                            |
-| `subtitle`                   | `text-xl font-bold text-gray-700 mb-6`                                                                             |
+| `title`                      | `text-3xl font-bold text-neutral-950 mb-6`                                                                         |
+| `title is-1`                 | `text-5xl font-bold text-neutral-950 mb-6`                                                                         |
+| `title is-4`                 | `text-2xl font-bold text-neutral-950 mb-6`                                                                         |
+| `subtitle`                   | `text-xl font-bold text-neutral-700 mb-6`                                                                          |
 | `is-size-5`                  | `text-xl`                                                                                                          |
 | `is-size-6`                  | `text-base`                                                                                                        |
 | `has-text-weight-bold`       | `font-bold`                                                                                                        |
@@ -15,7 +15,7 @@
 | `buttons`                    | `flex flex-wrap gap-2`                                                                                             |
 | `is-primary`                 | `bg-primary text-white hover:bg-primary-dark`                                                                      |
 | `is-small`                   | `text-sm px-3 py-1`                                                                                                |
-| `is-dark`                    | `bg-gray-800 text-white`                                                                                           |
+| `is-dark`                    | `bg-neutral-800 text-white`                                                                                        |
 | `is-loading`                 | カスタムローディングスピナー＋`opacity-50 cursor-wait`                                                             |
 | `is-rounded`                 | `rounded-full`                                                                                                     |
 | `container`                  | `max-w-7xl mx-auto px-4`                                                                                           |
@@ -30,8 +30,8 @@
 | `dropdown`                   | zag.jsのドロップダウン + Tailwindスタイル                                                                          |
 | `has-background-black`       | `bg-zinc-900 text-white`                                                                                           |
 | `has-background-white`       | `bg-white text-black`                                                                                              |
-| `.content h2`                | `text-3xl font-extrabold text-gray-700 dark:text-gray-300 mb-4 [mt-5 for not first]`                               |
+| `.content h2`                | `text-3xl font-extrabold text-neutral-700 dark:text-neutral-300 mb-4 [mt-5 for not first]`                         |
 | `.content ul`                | `ml-8 mb-4 list-disc list-outside`                                                                                 |
 | `.content p`                 | `mb-4 last:mb-0`                                                                                                   |
 | `.content a`                 | リンク色と同じ（上記参照）                                                                                         |
-| `hr`                         | `my-6 border-0 h-[2px] bg-gray-100`                                                                                |
+| `hr`                         | `my-6 border-0 h-[2px] bg-neutral-100`                                                                             |
