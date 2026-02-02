@@ -47,7 +47,7 @@
 
 ### 5. `/qa/` (Q&Aページ群)
 
-- [ ] 実装完了
+- [x] 実装完了
 - ファイル: `src/pages/qa/_layout.astro` (26行)
 - E2Eテスト: なし
 - Bulmaクラス: Bulmaのhelpersを`@extend`で使用

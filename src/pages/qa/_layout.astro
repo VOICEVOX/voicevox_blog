@@ -1,25 +1,38 @@
 ---
-import OneSectionMarkdown, {
-  type Props,
-} from "@/layouts/OneSectionMarkdown.astro";
+import Markdown from "@/components/Markdown.astro";
+import Base from "@/layouts/Base.astro";
+import type { Props } from "@/layouts/OneSectionMarkdown.astro";
 
 const props = Astro.props satisfies Props;
+const { frontmatter } = props;
 ---
 
-<OneSectionMarkdown {...props}><slot /></OneSectionMarkdown>
+<Base {...frontmatter}>
+  <main class="py-12">
+    <div class="max-w-[960px] mx-auto px-4 qa-content">
+      {
+        frontmatter.headerTitle && (
+          <h1 class="text-3xl leading-9 font-extrabold text-gray-700 mb-6">
+            {frontmatter.headerTitle}
+          </h1>
+        )
+      }
+      <Markdown><slot /></Markdown>
+    </div>
+  </main>
+</Base>
 
-<style lang="scss" is:global>
-  @use "@/styles/vars.scss" as *;
-  @use "bulma/sass/helpers" as *;
-
-  h2 {
-    @extend .p-4;
-    background-color: $primary;
+<style is:global>
+  /* NOTE: 本当は Tailwind の theme() を使ってトークン参照したい */
+  .qa-content .markdown h2 {
+    padding: 16px;
+    background-color: var(--color-primary);
     color: #3f213a;
   }
 
-  h3 {
-    @extend .p-2;
-    background-color: rgb(208, 253, 216);
+  .qa-content .markdown h3 {
+    color: oklch(13% 0.028 261.692);
+    padding: 8px;
+    background-color: oklch(96.2% 0.044 156.743);
   }
 </style>
