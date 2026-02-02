@@ -35,7 +35,7 @@
 
 ### 4. `/dormitory/top_illust/[topIllustIndex]` (トップイラストページ)
 
-- [ ] 実装完了
+- [x] 実装完了
 - ファイル: `src/pages/dormitory/top_illust/[topIllustIndex].astro` (52行)
 - E2Eテスト: なし
 - Bulmaクラス: 4種類
