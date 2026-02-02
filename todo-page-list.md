@@ -56,7 +56,7 @@
 
 ### 6. `/` (トップページ - Talk)
 
-- [ ] 実装完了
+- [x] 実装完了
 - ファイル: `src/pages/index.astro` (170行)
 - E2Eテスト: `tests/e2e/ui/talk.spec.ts` ⭐
 - Bulmaクラス: 24種類
@@ -65,7 +65,7 @@
 
 ### 7. `/product/[characterId]` (製品ページ)
 
-- [ ] 実装完了
+- [x] 実装完了
 - ファイル: `src/pages/product/[characterId].astro` (150行)
 - E2Eテスト: `tests/e2e/ui/product.spec.ts` ⭐
 - Bulmaクラス: 13種類
