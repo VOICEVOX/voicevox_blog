@@ -7,32 +7,38 @@ import updateInfos from "public/updateInfos.json";
   title="変更履歴 | VOICEVOX"
   description="VOICEVOXソフトウェアの変更履歴です。"
 >
-  <section class="section">
-    <div class="container is-max-desktop">
-      <div class="content">
-        <h1 class="title">変更履歴</h1>
-        {
-          updateInfos.map((info, index) => (
-            <>
-              <div>
-                <h2 class="subtitle is-4">ver {info.version}</h2>
-                <ul>
-                  {info.descriptions.map((d) => (
-                    <li>{d}</li>
-                  ))}
-                </ul>
-                {info.contributors.length > 0 && (
-                  <>
-                    <h3 class="title is-5">貢献者リスト</h3>
-                    <div>{info.contributors.join(" / ")}</div>
-                  </>
-                )}
-              </div>
-              {updateInfos.length !== index + 1 && <hr />}
-            </>
-          ))
-        }
-      </div>
+  <main class="py-12">
+    <div class="max-w-[960px] mx-auto px-4">
+      <h1 class="text-3xl font-bold text-gray-950 mb-6">変更履歴</h1>
+      {
+        updateInfos.map((info, index) => (
+          <>
+            <div>
+              <h2 class="text-2xl font-bold text-gray-700 mb-4">
+                ver {info.version}
+              </h2>
+              <ul class="ml-8 mb-4 list-disc list-outside text-black">
+                {info.descriptions.map((d) => (
+                  <li>{d}</li>
+                ))}
+              </ul>
+              {info.contributors.length > 0 && (
+                <>
+                  <h3 class="text-xl font-bold text-gray-700 mt-4 mb-3">
+                    貢献者リスト
+                  </h3>
+                  <div class="mb-4 text-black">
+                    {info.contributors.join(" / ")}
+                  </div>
+                </>
+              )}
+            </div>
+            {updateInfos.length !== index + 1 && (
+              <hr class="my-6 border-0 h-[2px] bg-gray-100" />
+            )}
+          </>
+        ))
+      }
     </div>
-  </section>
+  </main>
 </Base>

@@ -11,7 +11,7 @@
 
 ### 1. `/update_history/` (変更履歴ページ)
 
-- [ ] 実装完了
+- [x] 実装完了
 - ファイル: `src/pages/update_history/index.astro` (39行)
 - E2Eテスト: なし
 - Bulmaクラス: 6種類

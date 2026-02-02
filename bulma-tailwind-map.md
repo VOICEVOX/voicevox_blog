@@ -3,12 +3,12 @@
 | Bulmaクラス                  | Tailwind対応例                                                                                                     |
 | ---------------------------- | ------------------------------------------------------------------------------------------------------------------ |
 | `section`                    | `py-12`                                                                                                            |
-| `title`(h2, 32px)            | `text-3xl font-bold mb-6` (Bulmaのmargin-bottomは24px)                                                             |
-| `title is-1`(h1, 48px)       | `text-5xl font-bold mb-6` (Bulmaのmargin-bottomは24px)                                                             |
-| `title is-4`(h2, 24px)       | `text-2xl font-bold mb-6` (Bulmaのmargin-bottomは24px)                                                             |
-| `subtitle`(p, 20px)          | `text-xl mb-6` (Bulmaのmargin-bottomは24px)                                                                        |
+| `title`                      | `text-3xl font-bold text-gray-950 mb-6`                                                                            |
+| `title is-1`                 | `text-5xl font-bold text-gray-950 mb-6`                                                                            |
+| `title is-4`                 | `text-2xl font-bold text-gray-950 mb-6`                                                                            |
+| `subtitle`                   | `text-xl font-bold text-gray-700 mb-6`                                                                             |
 | `is-size-5`                  | `text-xl`                                                                                                          |
-| `is-size-6`(p)               | `text-base` (Bulmaのmargin-bottomは0px)                                                                            |
+| `is-size-6`                  | `text-base`                                                                                                        |
 | `has-text-weight-bold`       | `font-bold`                                                                                                        |
 | `is-underlined`              | `underline`                                                                                                        |
 | `button`                     | `px-4 py-2 rounded font-medium`                                                                                    |
@@ -23,7 +23,7 @@
 | `is-flex`                    | `flex`                                                                                                             |
 | `is-flex-direction-column`   | `flex-col`                                                                                                         |
 | `is-justify-content-center`  | `justify-center`                                                                                                   |
-| `mt-3`                       | `mt-3` (Bulmaと同じ)                                                                                               |
+| `mt-3`                       | `mt-3`                                                                                                             |
 | リンク色 (`$link: $primary`) | `text-[rgb(48,100,57)] hover:text-[rgb(38,80,47)] dark:text-[rgb(165,212,173)] dark:hover:text-[rgb(185,232,193)]` |
 | `jump-anchor-header-padding` | `pt-[calc(3.25rem+1rem)] -mt-[calc(3.25rem+1rem)]`                                                                 |
 | `navbar`                     | `fixed top-0 w-full bg-white shadow`                                                                               |
@@ -34,3 +34,4 @@
 | `.content ul`                | `ml-8 mb-4 list-disc list-outside`                                                                                 |
 | `.content p`                 | `mb-4 last:mb-0`                                                                                                   |
 | `.content a`                 | リンク色と同じ（上記参照）                                                                                         |
+| `hr`                         | `my-6 border-0 h-[2px] bg-gray-100`                                                                                |
