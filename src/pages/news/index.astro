@@ -19,19 +19,22 @@ import { articles } from "./constants";
   imageAlt=""
   noindex={true}
 >
-  <section class="section">
-    <div class="container is-max-desktop">
-      <h1 class="title">ニュース</h1>
+  <main class="py-12">
+    <div class="max-w-[960px] mx-auto px-4">
+      <h1 class="text-3xl font-bold text-gray-950 mb-6">ニュース</h1>
       {
         articles.map((article) => (
           <div class="mb-3">
-            <a href={withBaseUrl(`/news/${article.frontmatter.slug}`)}>
+            <a
+              class="text-[rgb(48,100,57)] hover:text-[rgb(38,80,47)] underline"
+              href={withBaseUrl(`/news/${article.frontmatter.slug}`)}
+            >
               {article.frontmatter.title}
             </a>
-            <p class="has-text-grey-light">{article.frontmatter.date}</p>
+            <p class="text-gray-400">{article.frontmatter.date}</p>
           </div>
         ))
       }
     </div>
-  </section>
+  </main>
 </Base>

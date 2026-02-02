@@ -41,28 +41,32 @@
 
 @layer components {
   .markdown {
-    color: theme("colors.gray.700");
-    line-height: 1.75;
+    color: theme("colors.black");
+    line-height: 1.5;
   }
 
   .markdown h2 {
     font-size: theme("fontSize.2xl");
-    font-weight: theme("fontWeight.semibold");
-    color: theme("colors.gray.900");
+    font-weight: theme("fontWeight.extrabold");
+    color: rgb(54, 54, 54);
+    line-height: 1.125;
+    margin-top: theme("spacing.7");
     margin-bottom: theme("spacing.3");
   }
 
   .markdown h3 {
     font-size: theme("fontSize.xl");
-    font-weight: theme("fontWeight.semibold");
-    color: theme("colors.gray.900");
+    font-weight: theme("fontWeight.extrabold");
+    color: rgb(54, 54, 54);
+    line-height: 1.125;
+    margin-top: theme("spacing.7");
     margin-bottom: theme("spacing.3");
   }
 
   .markdown h4 {
     font-size: theme("fontSize.lg");
-    font-weight: theme("fontWeight.semibold");
-    color: theme("colors.gray.900");
+    font-weight: theme("fontWeight.extrabold");
+    color: rgb(54, 54, 54);
     margin-top: theme("spacing.5");
     margin-bottom: theme("spacing.3");
   }
@@ -88,19 +92,20 @@
   }
 
   .markdown a {
-    color: theme("colors.emerald.600");
+    color: rgb(48, 100, 57);
     text-decoration: underline;
   }
 
   .markdown a:hover {
-    color: theme("colors.emerald.700");
+    color: rgb(38, 80, 47);
   }
 
   .markdown code {
     background-color: theme("colors.gray.100");
-    padding: theme("spacing.1") theme("spacing.2");
-    border-radius: theme("borderRadius.DEFAULT");
+    padding: 0.25em 0.5em;
+    border-radius: 7px;
     font-size: theme("fontSize.sm");
+    color: theme("colors.rose.700");
     font-family: ui-monospace, monospace;
   }
 
@@ -115,5 +120,37 @@
   .markdown pre code {
     background-color: transparent;
     padding: 0;
+    color: inherit;
+  }
+
+  [data-theme="dark"] .markdown {
+    color: theme("colors.gray.300");
+  }
+
+  [data-theme="dark"] .markdown h2,
+  [data-theme="dark"] .markdown h3,
+  [data-theme="dark"] .markdown h4 {
+    color: theme("colors.gray.300");
+  }
+
+  [data-theme="dark"] .markdown a {
+    color: rgb(165, 212, 173);
+  }
+
+  [data-theme="dark"] .markdown a:hover {
+    color: rgb(185, 232, 193);
+  }
+
+  [data-theme="dark"] .markdown code,
+  [data-theme="dark"] .markdown pre {
+    background-color: theme("colors.zinc.800");
+  }
+
+  [data-theme="dark"] .markdown code {
+    color: theme("colors.rose.300");
+  }
+
+  [data-theme="dark"] .markdown img {
+    border-color: theme("colors.gray.200");
   }
 }
