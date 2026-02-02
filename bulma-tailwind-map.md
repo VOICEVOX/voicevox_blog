@@ -36,4 +36,4 @@
 | `.content ul`                | `ml-8 mb-4 list-disc list-outside`                                                                                 |
 | `.content p`                 | `mb-4 last:mb-0`                                                                                                   |
 | `.content a`                 | リンク色と同じ（上記参照）                                                                                         |
-| `hr`                         | `my-6 border-0 h-[2px] bg-neutral-100`                                                                             |
+| `hr`                         | `my-6 border-0 h-0.5 bg-neutral-100`                                                                               |

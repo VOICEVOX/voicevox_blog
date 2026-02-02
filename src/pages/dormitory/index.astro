@@ -23,370 +23,273 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
   imageAlt=""
   defaultHideHeader={true}
 >
-  <div class="dormitory">
-    <header {...{ [hideHeaderAttr]: "" }} class="hero is-small">
-      <div class="hero-body">
-        <div class="container has-text-centered">
-          <h1 class="title is-2">ボイボ寮の住民たち</h1>
+  <div
+    class="bg-cover bg-fixed bg-blend-lighten bg-white/70"
+    style={{ backgroundImage: backgroundImageUrl }}
+  >
+    <header {...{ [hideHeaderAttr]: "" }} class="bg-primary">
+      <div class="px-6 py-6">
+        <div class="mx-auto max-w-5xl text-center">
+          <h1 class="text-4xl font-extrabold text-neutral-700">
+            ボイボ寮の住民たち
+          </h1>
         </div>
       </div>
     </header>
 
-    <section class="section py-0">
-      <TopIllustContainer />
-      <div class="container is-max-desktop has-text-centered is-size-5 py-6">
-        <p>とある世界の不思議な建物、ボイボ寮。</p>
-        <p>ここでは個性豊かな住民たちが暮らしています。</p>
-      </div>
-    </section>
-
-    <main class="section pt-0 pb-5">
-      <div class="container character-container is-max-desktop pt-1 pb-6">
-        <div class="columns is-multiline">
-          <div
-            id="11th"
-            class="jump-anchor-header-padding column is-2 generation-label"
-          >
-            <h2 class="title is-3">
-              <a href="#11th" class="has-text-black"> 11 期 生 </a>
-            </h2>
-          </div>
-
-          <CharacterCard characterInfo={characterInfos.あんこもん} />
+      <section class="py-0 px-6">
+        <TopIllustContainer />
+        <div class="mx-auto max-w-5xl bg-white py-12 text-center text-xl leading-7 text-black">
+          <p>とある世界の不思議な建物、ボイボ寮。</p>
+          <p>ここでは個性豊かな住民たちが暮らしています。</p>
         </div>
+      </section>
 
-        <hr />
+      <main class="pt-0 pb-5 px-6">
+        <div class="mx-auto max-w-5xl bg-white pt-1 pb-12">
+          <div class="-mx-3 grid grid-cols-12">
+            <div
+              id="11th"
+              class="pt-[calc(3.25rem+1rem+0.75rem)] -mt-[calc(3.25rem+1rem)] col-span-12 flex items-center justify-center p-3 text-center md:col-span-2 md:justify-end"
+            >
+              <h2 class="text-3xl font-extrabold text-neutral-700">
+                <a href="#11th" class="text-black"> 11 期 生 </a>
+              </h2>
+            </div>
 
-        <div class="columns is-multiline">
-          <div
-            id="10th"
-            class="jump-anchor-header-padding column is-2 generation-label"
-          >
-            <h2 class="title is-3">
-              <a href="#10th" class="has-text-black"> 10 期 生 </a>
-            </h2>
+            <CharacterCard characterInfo={characterInfos.あんこもん} />
           </div>
 
-          <CharacterCard characterInfo={characterInfos.離途} />
-          <CharacterCard characterInfo={characterInfos.黒沢冴白} />
-          <CharacterCard characterInfo={characterInfos.ユーレイちゃん} />
-          <CharacterCard
-            characterInfo={characterInfos.東北ずん子}
-            class="is-offset-2"
-          />
-          <CharacterCard characterInfo={characterInfos.東北きりたん} />
-          <CharacterCard characterInfo={characterInfos.東北イタコ} />
-        </div>
+          <hr class="my-6 h-0.5 border-0 bg-neutral-100" />
 
-        <hr />
+          <div class="-mx-3 grid grid-cols-12">
+            <div
+              id="10th"
+              class="pt-[calc(3.25rem+1rem+0.75rem)] -mt-[calc(3.25rem+1rem)] col-span-12 flex items-center justify-center p-3 text-center md:col-span-2 md:justify-end"
+            >
+              <h2 class="text-3xl font-extrabold text-neutral-700">
+                <a href="#10th" class="text-black"> 10 期 生 </a>
+              </h2>
+            </div>
 
-        <div class="columns is-multiline">
-          <div
-            id="9th"
-            class="jump-anchor-header-padding column is-2 generation-label"
-          >
-            <h2 class="title is-3">
-              <a href="#9th" class="has-text-black"> 9 期 生 </a>
-            </h2>
+            <CharacterCard characterInfo={characterInfos.離途} />
+            <CharacterCard characterInfo={characterInfos.黒沢冴白} />
+            <CharacterCard characterInfo={characterInfos.ユーレイちゃん} />
+            <CharacterCard
+              characterInfo={characterInfos.東北ずん子}
+              class="md:col-start-3"
+            />
+            <CharacterCard characterInfo={characterInfos.東北きりたん} />
+            <CharacterCard characterInfo={characterInfos.東北イタコ} />
           </div>
 
-          <CharacterCard characterInfo={characterInfos.Voidoll} />
-          <CharacterCard characterInfo={characterInfos.ぞん子} />
-          <CharacterCard characterInfo={characterInfos.中部つるぎ} />
-        </div>
+          <hr class="my-6 h-0.5 border-0 bg-neutral-100" />
 
-        <hr />
+          <div class="-mx-3 grid grid-cols-12">
+            <div
+              id="9th"
+              class="pt-[calc(3.25rem+1rem+0.75rem)] -mt-[calc(3.25rem+1rem)] col-span-12 flex items-center justify-center p-3 text-center md:col-span-2 md:justify-end"
+            >
+              <h2 class="text-3xl font-extrabold text-neutral-700">
+                <a href="#9th" class="text-black"> 9 期 生 </a>
+              </h2>
+            </div>
 
-        <div class="columns is-multiline">
-          <div
-            id="8th"
-            class="jump-anchor-header-padding column is-2 generation-label"
-          >
-            <h2 class="title is-3">
-              <a href="#8th" class="has-text-black"> 8 期 生 </a>
-            </h2>
+            <CharacterCard characterInfo={characterInfos.Voidoll} />
+            <CharacterCard characterInfo={characterInfos.ぞん子} />
+            <CharacterCard characterInfo={characterInfos.中部つるぎ} />
           </div>
 
-          <CharacterCard characterInfo={characterInfos.栗田まろん} />
-          <CharacterCard characterInfo={characterInfos.藍田ノエル} />
-          <CharacterCard characterInfo={characterInfos.満別花丸} />
-          <CharacterCard
-            characterInfo={characterInfos.琴詠ニア}
-            class="is-offset-2"
-          />
-        </div>
+          <hr class="my-6 h-0.5 border-0 bg-neutral-100" />
 
-        <hr />
+          <div class="-mx-3 grid grid-cols-12">
+            <div
+              id="8th"
+              class="pt-[calc(3.25rem+1rem+0.75rem)] -mt-[calc(3.25rem+1rem)] col-span-12 flex items-center justify-center p-3 text-center md:col-span-2 md:justify-end"
+            >
+              <h2 class="text-3xl font-extrabold text-neutral-700">
+                <a href="#8th" class="text-black"> 8 期 生 </a>
+              </h2>
+            </div>
 
-        <div class="columns is-multiline">
-          <div
-            id="7th"
-            class="jump-anchor-header-padding column is-2 generation-label"
-          >
-            <h2 class="title is-3">
-              <a href="#7th" class="has-text-black"> 7 期 生 </a>
-            </h2>
+            <CharacterCard characterInfo={characterInfos.栗田まろん} />
+            <CharacterCard characterInfo={characterInfos.藍田ノエル} />
+            <CharacterCard characterInfo={characterInfos.満別花丸} />
+            <CharacterCard
+              characterInfo={characterInfos.琴詠ニア}
+              class="md:col-start-3"
+            />
           </div>
 
-          <CharacterCard characterInfo={characterInfos.聖騎士紅桜} />
-          <CharacterCard characterInfo={characterInfos.雀松朱司} />
-          <CharacterCard characterInfo={characterInfos.麒ヶ島宗麟} />
-          <CharacterCard
-            characterInfo={characterInfos.春歌ナナ}
-            class="is-offset-2"
-          />
-          <CharacterCard characterInfo={characterInfos.猫使アル} />
-          <CharacterCard characterInfo={characterInfos.猫使ビィ} />
-          <CharacterCard
-            characterInfo={characterInfos.中国うさぎ}
-            class="is-offset-2"
-          />
-        </div>
+          <hr class="my-6 h-0.5 border-0 bg-neutral-100" />
 
-        <hr />
+          <div class="-mx-3 grid grid-cols-12">
+            <div
+              id="7th"
+              class="pt-[calc(3.25rem+1rem+0.75rem)] -mt-[calc(3.25rem+1rem)] col-span-12 flex items-center justify-center p-3 text-center md:col-span-2 md:justify-end"
+            >
+              <h2 class="text-3xl font-extrabold text-neutral-700">
+                <a href="#7th" class="text-black"> 7 期 生 </a>
+              </h2>
+            </div>
 
-        <div class="columns is-multiline">
-          <div
-            id="6th"
-            class="jump-anchor-header-padding column is-2 generation-label"
-          >
-            <h2 class="title is-3">
-              <a href="#6th" class="has-text-black"> 6 期 生 </a>
-            </h2>
+            <CharacterCard characterInfo={characterInfos.聖騎士紅桜} />
+            <CharacterCard characterInfo={characterInfos.雀松朱司} />
+            <CharacterCard characterInfo={characterInfos.麒ヶ島宗麟} />
+            <CharacterCard
+              characterInfo={characterInfos.春歌ナナ}
+              class="md:col-start-3"
+            />
+            <CharacterCard characterInfo={characterInfos.猫使アル} />
+            <CharacterCard characterInfo={characterInfos.猫使ビィ} />
+            <CharacterCard
+              characterInfo={characterInfos.中国うさぎ}
+              class="md:col-start-3"
+            />
           </div>
 
-          <CharacterCard characterInfo={characterInfos.ちび式じい} />
-          <CharacterCard characterInfo={characterInfos.櫻歌ミコ} />
-          <CharacterCard characterInfo={characterInfos.小夜_SAYO} />
-          <CharacterCard
-            characterInfo={characterInfos.ナースロボ＿タイプＴ}
-            class="is-offset-2"
-          />
-        </div>
+          <hr class="my-6 h-0.5 border-0 bg-neutral-100" />
 
-        <hr />
+          <div class="-mx-3 grid grid-cols-12">
+            <div
+              id="6th"
+              class="pt-[calc(3.25rem+1rem+0.75rem)] -mt-[calc(3.25rem+1rem)] col-span-12 flex items-center justify-center p-3 text-center md:col-span-2 md:justify-end"
+            >
+              <h2 class="text-3xl font-extrabold text-neutral-700">
+                <a href="#6th" class="text-black"> 6 期 生 </a>
+              </h2>
+            </div>
 
-        <div class="columns is-multiline">
-          <div
-            id="5th"
-            class="jump-anchor-header-padding column is-2 generation-label"
-          >
-            <h2 class="title is-3">
-              <a href="#5th" class="has-text-black"> 5 期 生 </a>
-            </h2>
+            <CharacterCard characterInfo={characterInfos.ちび式じい} />
+            <CharacterCard characterInfo={characterInfos.櫻歌ミコ} />
+            <CharacterCard characterInfo={characterInfos.小夜_SAYO} />
+            <CharacterCard
+              characterInfo={characterInfos.ナースロボ＿タイプＴ}
+              class="md:col-start-3"
+            />
           </div>
 
-          <CharacterCard characterInfo={characterInfos.WhiteCUL} />
-          <CharacterCard characterInfo={characterInfos.後鬼} />
-          <CharacterCard characterInfo={characterInfos.No7} />
-        </div>
+          <hr class="my-6 h-0.5 border-0 bg-neutral-100" />
 
-        <hr />
+          <div class="-mx-3 grid grid-cols-12">
+            <div
+              id="5th"
+              class="pt-[calc(3.25rem+1rem+0.75rem)] -mt-[calc(3.25rem+1rem)] col-span-12 flex items-center justify-center p-3 text-center md:col-span-2 md:justify-end"
+            >
+              <h2 class="text-3xl font-extrabold text-neutral-700">
+                <a href="#5th" class="text-black"> 5 期 生 </a>
+              </h2>
+            </div>
 
-        <div class="columns is-multiline">
-          <div
-            id="4th"
-            class="jump-anchor-header-padding column is-2 generation-label"
-          >
-            <h2 class="title is-3">
-              <a href="#4th" class="has-text-black"> 4 期 生 </a>
-            </h2>
+            <CharacterCard characterInfo={characterInfos.WhiteCUL} />
+            <CharacterCard characterInfo={characterInfos.後鬼} />
+            <CharacterCard characterInfo={characterInfos.No7} />
           </div>
 
-          <CharacterCard characterInfo={characterInfos.モチノキョウコ} />
-          <CharacterCard characterInfo={characterInfos.剣崎雌雄} />
-        </div>
+          <hr class="my-6 h-0.5 border-0 bg-neutral-100" />
 
-        <hr />
+          <div class="-mx-3 grid grid-cols-12">
+            <div
+              id="4th"
+              class="pt-[calc(3.25rem+1rem+0.75rem)] -mt-[calc(3.25rem+1rem)] col-span-12 flex items-center justify-center p-3 text-center md:col-span-2 md:justify-end"
+            >
+              <h2 class="text-3xl font-extrabold text-neutral-700">
+                <a href="#4th" class="text-black"> 4 期 生 </a>
+              </h2>
+            </div>
 
-        <div class="columns is-multiline">
-          <div
-            id="3rd"
-            class="jump-anchor-header-padding column is-2 generation-label"
-          >
-            <h2 class="title is-3">
-              <a href="#3rd" class="has-text-black"> 3 期 生 </a>
-            </h2>
+            <CharacterCard characterInfo={characterInfos.モチノキョウコ} />
+            <CharacterCard characterInfo={characterInfos.剣崎雌雄} />
           </div>
 
-          <CharacterCard characterInfo={characterInfos.玄野武宏} />
-          <CharacterCard characterInfo={characterInfos.白上虎太郎} />
-          <CharacterCard characterInfo={characterInfos.青山龍星} />
-          <CharacterCard
-            characterInfo={characterInfos.冥鳴ひまり}
-            class="is-offset-2"
-          />
-          <CharacterCard characterInfo={characterInfos.九州そら} />
-        </div>
+          <hr class="my-6 h-0.5 border-0 bg-neutral-100" />
 
-        <hr />
+          <div class="-mx-3 grid grid-cols-12">
+            <div
+              id="3rd"
+              class="pt-[calc(3.25rem+1rem+0.75rem)] -mt-[calc(3.25rem+1rem)] col-span-12 flex items-center justify-center p-3 text-center md:col-span-2 md:justify-end"
+            >
+              <h2 class="text-3xl font-extrabold text-neutral-700">
+                <a href="#3rd" class="text-black"> 3 期 生 </a>
+              </h2>
+            </div>
 
-        <div class="columns is-multiline">
-          <div
-            id="2nd"
-            class="jump-anchor-header-padding column is-2 generation-label"
-          >
-            <h2 class="title is-3">
-              <a href="#2nd" class="has-text-black"> 2 期 生 </a>
-            </h2>
+            <CharacterCard characterInfo={characterInfos.玄野武宏} />
+            <CharacterCard characterInfo={characterInfos.白上虎太郎} />
+            <CharacterCard characterInfo={characterInfos.青山龍星} />
+            <CharacterCard
+              characterInfo={characterInfos.冥鳴ひまり}
+              class="md:col-start-3"
+            />
+            <CharacterCard characterInfo={characterInfos.九州そら} />
           </div>
 
-          <CharacterCard characterInfo={characterInfos.春日部つむぎ} />
-          <CharacterCard characterInfo={characterInfos.雨晴はう} />
-          <CharacterCard characterInfo={characterInfos.波音リツ} />
-        </div>
+          <hr class="my-6 h-0.5 border-0 bg-neutral-100" />
 
-        <hr />
+          <div class="-mx-3 grid grid-cols-12">
+            <div
+              id="2nd"
+              class="pt-[calc(3.25rem+1rem+0.75rem)] -mt-[calc(3.25rem+1rem)] col-span-12 flex items-center justify-center p-3 text-center md:col-span-2 md:justify-end"
+            >
+              <h2 class="text-3xl font-extrabold text-neutral-700">
+                <a href="#2nd" class="text-black"> 2 期 生 </a>
+              </h2>
+            </div>
 
-        <div class="columns is-multiline">
-          <div
-            id="1st"
-            class="jump-anchor-header-padding column is-2 generation-label"
-          >
-            <h2 class="title is-3">
-              <a href="#1st" class="has-text-black"> 1 期 生 </a>
-            </h2>
+            <CharacterCard characterInfo={characterInfos.春日部つむぎ} />
+            <CharacterCard characterInfo={characterInfos.雨晴はう} />
+            <CharacterCard characterInfo={characterInfos.波音リツ} />
           </div>
 
-          <CharacterCard characterInfo={characterInfos.四国めたん} />
-          <CharacterCard characterInfo={characterInfos.ずんだもん} />
+          <hr class="my-6 h-0.5 border-0 bg-neutral-100" />
 
-          <div class="column is-3 tohoku">
-            <h3 class="title is-4">仲良し</h3>
-            <a href="https://zunko.jp/" target="_blank" rel="noreferrer">
-              <Nakayoshi />
+          <div class="-mx-3 grid grid-cols-12">
+            <div
+              id="1st"
+              class="pt-[calc(3.25rem+1rem+0.75rem)] -mt-[calc(3.25rem+1rem)] col-span-12 flex items-center justify-center p-3 text-center md:col-span-2 md:justify-end"
+            >
+              <h2 class="text-3xl font-extrabold text-neutral-700">
+                <a href="#1st" class="text-black"> 1 期 生 </a>
+              </h2>
+            </div>
+
+            <CharacterCard characterInfo={characterInfos.四国めたん} />
+            <CharacterCard characterInfo={characterInfos.ずんだもん} />
+
+            <div class="col-span-12 flex flex-col items-center justify-center p-3 text-center sm:col-span-6 md:col-span-3">
+              <h3 class="mb-6 text-2xl font-extrabold text-neutral-700">
+                仲良し
+              </h3>
+              <a href="https://zunko.jp/" target="_blank" rel="noreferrer">
+                <Nakayoshi />
+              </a>
+            </div>
+          </div>
+
+          <hr class="my-6 h-0.5 border-0 bg-neutral-100" />
+
+          <div class="pb-0 pt-2 text-center">
+            <h2 class="mb-6 text-2xl font-extrabold leading-7 text-neutral-700">
+              関連コンテンツ
+            </h2>
+            <a
+              href={withBaseUrl("/dormitory/call_names/")}
+              class="inline-flex h-10 items-center justify-center rounded-full border border-neutral-300 bg-white px-5 text-base text-neutral-800 hover:bg-neutral-50"
+            >
+              <span>キャラクターの呼称表</span>
             </a>
           </div>
         </div>
+      </main>
 
-        <hr />
+      <ExplainSection />
 
-        <div class="has-text-centered pt-2 pb-0">
-          <h2 class="title is-4">関連コンテンツ</h2>
-          <a
-            href={withBaseUrl("/dormitory/call_names/")}
-            class="button is-normal is-rounded"
-          >
-            <span>キャラクターの呼称表</span>
-          </a>
-        </div>
-      </div>
-    </main>
+      <section class="py-5 px-6">
+        <EventsContainer id="events" />
+      </section>
 
-    <ExplainSection />
-
-    <section class="section py-5">
-      <EventsContainer id="events" />
-    </section>
-
-    <section class="section py-5">
-      <TopIllustsContainer id="top_illusts" />
-    </section>
+      <section class="py-5 px-6">
+        <TopIllustsContainer id="top_illusts" />
+      </section>
   </div>
 </Base>
-
-<style lang="scss" define:vars={{ backgroundImageUrl }} is:global>
-  // NOTE: is:global指定は入れ子になってる要素にも適用するため
-  // FIXME: is:global指定を不要にする
-
-  @use "@/styles/vars.scss" as *;
-  @use "bulma/sass/utilities/initial-variables" as *;
-  @use "bulma/sass/utilities/mixins" as *;
-  @use "bulma/sass/helpers" as *;
-
-  .dormitory {
-    background-image: var(--backgroundImageUrl);
-    background-color: rgba(255, 255, 255, 0.7);
-    background-blend-mode: lighten;
-    background-size: cover;
-    background-attachment: fixed;
-
-    .hero {
-      background-color: $primary;
-    }
-
-    .section {
-      .container {
-        max-width: $desktop;
-        background-color: white;
-
-        &.character-container {
-          .columns:not(:last-child) {
-            margin-bottom: -0.75rem; // columnsは下方向のmargin調整がないので、hrの辻褄を合わせに必要
-          }
-
-          .generation-label {
-            @extend .has-text-centered;
-            display: flex;
-            align-items: center;
-            justify-content: end;
-
-            @include mobile {
-              justify-content: center;
-            }
-          }
-
-          .jump-anchor-header-padding {
-            // カード間の余白を均等にする
-            padding-top: calc(
-              3.25rem + 1rem + 0.75rem
-            ); // 元が3.25rem + 1rem、column分が0.75rem
-          }
-
-          .card {
-            box-shadow: none;
-            border-style: solid;
-            border-radius: 1rem;
-            border-width: 3px;
-          }
-
-          .character-card {
-            @extend .pt-3;
-            cursor: pointer;
-
-            .card-image {
-              margin: 0 auto;
-            }
-
-            .card-content {
-              @extend .px-0;
-              @extend .has-text-centered;
-              border-top: solid 2.5px;
-            }
-          }
-
-          .coming-card {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            .card-content {
-              @extend .px-0;
-              @extend .has-text-centered;
-            }
-          }
-
-          .tohoku {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-          }
-        }
-
-        &.event-container {
-          .card {
-            box-shadow: none;
-
-            & > div {
-              border-style: solid;
-              border-radius: 1rem;
-              border-width: 1px;
-              border-color: #000;
-            }
-          }
-        }
-      }
-    }
-  }
-</style>

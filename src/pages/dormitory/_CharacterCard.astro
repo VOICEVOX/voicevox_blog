@@ -17,8 +17,8 @@ const href = getDormitoryCharacterPageUrl(characterInfo);
 
 <div
   id={characterInfo.id}
-  class={"pt-[calc(3.25rem+1rem+0.75rem)] -mt-[calc(3.25rem+1rem)] w-full md:w-1/4 p-[0.75rem] " +
-    className}
+  class={"pt-[calc(3.25rem+1rem+0.75rem)] -mt-[calc(3.25rem+1rem)] col-span-12 p-3 sm:col-span-6 md:col-span-3 " +
+    (className ?? "")}
 >
   <div
     class="border-[3px] rounded-2xl shadow-none pt-3 cursor-pointer h-full"

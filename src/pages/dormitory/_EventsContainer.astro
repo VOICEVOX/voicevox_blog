@@ -1,8 +1,6 @@
 ---
 import { dormitoryEvents } from "@/constants/dormitoryEvent";
-import "@/styles/helper.scss";
 import { Image } from "astro:assets";
-import "./style.scss";
 
 interface Props {
   id: string;
@@ -11,31 +9,36 @@ interface Props {
 const { id } = Astro.props;
 ---
 
-<div class="container has-text-centered py-5 is-flex is-flex-direction-column">
-  <h2 id={id} class="jump-anchor-header-padding title is-4">
-    <a href={`#${id}`} class="has-text-black"> 過去のイベント </a>
+<div class="mx-auto flex max-w-5xl flex-col items-center bg-white py-12 text-center">
+  <h2
+    id={id}
+    class="pt-[calc(3.25rem+1rem)] -mt-[calc(3.25rem+1rem)] mb-6 text-2xl font-extrabold leading-7 text-neutral-700"
+  >
+    <a href={`#${id}`} class="text-black"> 過去のイベント </a>
   </h2>
-  <div class="columns is-multiline is-variable is-2 px-4">
+  <div class="grid w-full grid-cols-1 gap-4 px-4 md:grid-cols-3">
     {
       // 過去のイベント
       dormitoryEvents.map((event) => (
-        <div class="column is-4">
+        <div>
           <a
             href={`${event.link}`}
-            class="has-text-black"
+            class="text-black"
             target="_blank"
             rel="noreferrer"
           >
-            <div class="thumbnail-wrapper">
-              <Image
-                src={event.image}
-                alt=""
-                width={480}
-                densities={[1, 1.5, 2]}
-                style={{ objectFit: "contain", display: "block" }}
-              />
-            </div>
-            <p class="is-size-6 mt-2" set:html={event.titles.join("<br />")} />
+            <Image
+              src={event.image}
+              alt=""
+              width={480}
+              densities={[1, 1.5, 2]}
+              class="block w-full cursor-pointer rounded-2xl border border-black shadow-none"
+              style={{ objectFit: "contain" }}
+            />
+            <p
+              class="mt-2 text-base leading-6 text-neutral-950"
+              set:html={event.titles.join("<br />")}
+            />
           </a>
         </div>
       ))

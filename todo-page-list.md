@@ -78,12 +78,18 @@
 
 ### 8. `/dormitory/` (ボイボ寮トップページ)
 
-- [ ] 実装完了
+- [x] 実装完了
 - ファイル: `src/pages/dormitory/index.astro` (393行)
 - E2Eテスト: なし（重要ページ）
 - Bulmaクラス: 多数
 - カスタムスタイル: 105行（背景画像、メディアクエリ1個）
 - 依存: 一部未Tailwind化（EventsContainer, TopIllustsContainer, Nakayoshi）
+
+### 8-1. `/dormitory/[characterId]` (ボイボ寮個別ページ)
+
+- [ ] 実装完了
+- ファイル: `src/pages/dormitory/[characterId]/[...descriptionType].astro`
+- E2Eテスト: なし（重要ページ）
 
 ### 9. `/nemo/` (Nemoページ)
 
