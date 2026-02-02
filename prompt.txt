@@ -125,7 +125,7 @@ tailwind化は今回のタスク範囲外です。
 確認は `http://localhost:4321/` から行ってください。
 そこそこ近い見た目であれば大丈夫ですが、大きくハズレていたら修正してください。
 既存のスクリーンショットと見比べたり、Playwrightでcomputedな値を取得して比較したり、bulma時代(commit hash:3b5a86938c5ad5c0dbe6720ed6f6040aad840e19)のページと見比べたりしてください。
-Bulma時代の例は`http://localhost:54321/dev/ui/`で見ることができます。
+Bulma時代の例は`http://localhost:54321/dev/ui/`で見ることができるので、間違えそうなものはcomputedで測って比較してください。
 Playwrightのcomputedで確かめたりして近いtailwindのクラスを探してください。
 サーバーが起動していなければユーザーに報告してください。
 

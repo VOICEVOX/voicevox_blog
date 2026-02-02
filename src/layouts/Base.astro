@@ -137,18 +137,18 @@ const googleAnalyticsSrc = `https://www.googletagmanager.com/gtag/js?id=${GA_TRA
     <ClientRouter />
   </head>
 
-  <body class={isDark ? "bg-black text-white" : "bg-white text-black"}>
+  <body
+    class={`flex flex-col min-h-screen ${isDark ? "bg-zinc-900 text-white" : "bg-white text-black"}`}
+  >
     <Header defaultHide={defaultHideHeader} isDark={isDark} isNemo={isNemo} />
 
-    <slot />
+    <div class="flex-grow">
+      <slot />
+    </div>
 
-    <footer class={`footer appearance ${isDark ? "bg-black" : ""}`}>
+    <footer class={`pt-12 pb-24 px-6 ${isDark ? "bg-zinc-950" : "bg-gray-50"}`}>
       <Footer isDark={isDark} />
     </footer>
-    <div class="footer height-holder">
-      {/* 空間を空けるために必要 */}
-      <Footer isDark={isDark} />
-    </div>
 
     <Modals />
   </body>
@@ -157,7 +157,7 @@ const googleAnalyticsSrc = `https://www.googletagmanager.com/gtag/js?id=${GA_TRA
 <style lang="scss" is:global>
   // @use "@/styles/global.scss";
   // @use "@/styles/bulma.scss";
-  @import "@/styles/global.css"; // TODO: あとで導入する
+  @import "@/styles/global.css";
 
   // ページの高さを最低でも画面の高さに合わせる
   html {
@@ -168,19 +168,20 @@ const googleAnalyticsSrc = `https://www.googletagmanager.com/gtag/js?id=${GA_TRA
     min-height: -webkit-fill-available;
   }
 
-  body {
-    position: relative;
-
-    .footer {
-      // footerを最下部に固定するためのクラス
-      &.appearance {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-      }
-      &.height-holder {
-        visibility: hidden;
-      }
-    }
-  }
+  // Flexbox方式でfooterを最下部に配置するため、以下のスタイルは不要
+  // body {
+  //   position: relative;
+  //
+  //   .footer {
+  //     // footerを最下部に固定するためのクラス
+  //     &.appearance {
+  //       position: absolute;
+  //       bottom: 0;
+  //       width: 100%;
+  //     }
+  //     &.height-holder {
+  //       visibility: hidden;
+  //     }
+  //   }
+  // }
 </style>

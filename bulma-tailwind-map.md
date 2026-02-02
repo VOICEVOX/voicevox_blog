@@ -28,7 +28,7 @@
 | `jump-anchor-header-padding` | `pt-[calc(3.25rem+1rem)] -mt-[calc(3.25rem+1rem)]`                                                                 |
 | `navbar`                     | `fixed top-0 w-full bg-white shadow`                                                                               |
 | `dropdown`                   | zag.jsのドロップダウン + Tailwindスタイル                                                                          |
-| `has-background-black`       | `bg-black text-white`                                                                                              |
+| `has-background-black`       | `bg-zinc-900 text-white`                                                                                           |
 | `has-background-white`       | `bg-white text-black`                                                                                              |
 | `.content h2`                | `text-3xl font-extrabold text-gray-700 dark:text-gray-300 mb-4 [mt-5 for not first]`                               |
 | `.content ul`                | `ml-8 mb-4 list-disc list-outside`                                                                                 |
