@@ -207,7 +207,7 @@ export default function Header({
   return (
     <>
       <nav
-        className={`navbar fixed left-0 top-0 z-50 w-full ${
+        className={`navbar fixed left-0 top-0 z-40 w-full ${
           showingHeader ? "" : "hidden"
         } ${defaultHide ? "with-animation" : ""} ${
           isDark

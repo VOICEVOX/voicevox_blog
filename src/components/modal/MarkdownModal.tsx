@@ -15,7 +15,7 @@ export default function MarkdownModal({
 
   return (
     <div
-      className={`fixed inset-0 ${className || ""}`}
+      className={`fixed inset-0 z-50 ${className || ""}`}
       role="dialog"
       data-theme="light"
     >

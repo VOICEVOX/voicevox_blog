@@ -18,7 +18,7 @@ export default function NemoGuidanceModal() {
   if (!isActive) return null;
 
   return (
-    <div className="fixed inset-0" role="dialog" data-theme="light">
+    <div className="fixed inset-0 z-50" role="dialog" data-theme="light">
       <div
         className="fixed inset-0 bg-black/50"
         onClick={hide}
