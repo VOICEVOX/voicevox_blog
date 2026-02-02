@@ -10,7 +10,7 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   reporter: process.env.CI
     ? [["html", { open: "never" }], ["github"]]
-    : [["html", { open: "on-failure" }]],
+    : [["html", { open: "never" }]],
   timeout: 90 * 1000,
 
   webServer: strictUsePreview
