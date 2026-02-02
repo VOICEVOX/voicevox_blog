@@ -1,0 +1,6 @@
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/tohoku_zunko/",
+  "title": "東北ずん子 | ボイボ寮 プロフィール | VOICEVOX",
+  "description": "前向きで明るい母性の塊のような性格。ずんだの話をし始めると饒舌になる。",
+  "robots": "index, follow"
+}

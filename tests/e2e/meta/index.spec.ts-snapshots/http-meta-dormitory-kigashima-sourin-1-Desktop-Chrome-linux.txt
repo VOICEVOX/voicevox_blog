@@ -1,0 +1,6 @@
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/kigashima_sourin/",
+  "title": "麒ヶ島宗麟 | ボイボ寮 プロフィール | VOICEVOX",
+  "description": "流行に敏感ないぶし銀おじいちゃん。非常にミーハーでノリが良い。",
+  "robots": "index, follow"
+}

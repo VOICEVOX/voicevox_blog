@@ -1,0 +1,6 @@
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/yureichan/",
+  "title": "ユーレイちゃん | ボイボ寮 プロフィール | VOICEVOX",
+  "description": "ユーステラのメインヒロイン『ユーレイちゃん』こと雛菊ルミ",
+  "robots": "index, follow"
+}

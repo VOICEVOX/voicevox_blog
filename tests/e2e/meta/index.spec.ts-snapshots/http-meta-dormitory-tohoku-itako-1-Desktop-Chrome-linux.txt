@@ -1,0 +1,6 @@
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/tohoku_itako/",
+  "title": "東北イタコ | ボイボ寮 プロフィール | VOICEVOX",
+  "description": "イタコ専門学校を主席で卒業した才能の持ち主。本来のイタコ能力はイマイチ。東北三姉妹の長女。",
+  "robots": "index, follow"
+}

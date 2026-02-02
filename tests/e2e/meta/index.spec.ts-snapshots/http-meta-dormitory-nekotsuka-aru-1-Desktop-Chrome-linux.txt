@@ -1,0 +1,6 @@
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/nekotsuka_aru/",
+  "title": "猫使アル | ボイボ寮 プロフィール | VOICEVOX",
+  "description": "謎の研究所で作られた猫使シリーズの タイプ:Red",
+  "robots": "index, follow"
+}

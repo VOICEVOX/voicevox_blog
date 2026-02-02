@@ -1,0 +1,6 @@
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/wakamatsu_akashi/",
+  "title": "雀松朱司 | ボイボ寮 プロフィール | VOICEVOX",
+  "description": "温厚なしっかり者の青年。ちょっぴり天然で抜けている面も･･･。",
+  "robots": "index, follow"
+}

@@ -1,0 +1,6 @@
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/news/fuga/",
+  "title": "VOICEVOXサンプルニュース_2 | ニュース | VOICEVOX",
+  "description": "無料で使えるテキスト読み上げ・歌声合成ソフトウェア、VOICEVOXのニュースです。",
+  "robots": "noindex, nofollow"
+}

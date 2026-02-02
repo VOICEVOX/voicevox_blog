@@ -1,0 +1,6 @@
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/product/rito/",
+  "title": "VOICEVOX 離途 | 無料のテキスト読み上げソフトウェア",
+  "description": "VOICEVOXは「離途」の包み込む息遣いな声で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。",
+  "robots": "index, follow"
+}

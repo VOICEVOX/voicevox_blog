@@ -1,0 +1,6 @@
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/top_illust/2/",
+  "title": "トップイラスト 2 | ボイボ寮 | VOICEVOX",
+  "description": "以前のトップイラストをご覧いただけます。イラスト：490",
+  "robots": "index, follow"
+}

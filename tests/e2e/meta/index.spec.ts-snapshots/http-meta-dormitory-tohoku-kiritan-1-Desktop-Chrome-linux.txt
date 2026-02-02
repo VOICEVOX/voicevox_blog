@@ -1,0 +1,6 @@
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/tohoku_kiritan/",
+  "title": "東北きりたん | ボイボ寮 プロフィール | VOICEVOX",
+  "description": "ひきこもり気質で夜型の生活をしている。他人に対してはクールで毒舌。包丁は髪飾り。",
+  "robots": "index, follow"
+}

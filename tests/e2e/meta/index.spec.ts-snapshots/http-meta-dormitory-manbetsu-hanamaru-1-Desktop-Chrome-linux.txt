@@ -1,0 +1,6 @@
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/manbetsu_hanamaru/",
+  "title": "満別花丸 | ボイボ寮 プロフィール | VOICEVOX",
+  "description": "全人類みんなにはなまるをあげる音声キャラクター",
+  "robots": "index, follow"
+}

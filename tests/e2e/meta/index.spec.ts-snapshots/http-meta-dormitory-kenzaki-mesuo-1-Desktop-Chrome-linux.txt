@@ -1,0 +1,6 @@
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/kenzaki_mesuo/",
+  "title": "剣崎雌雄 | ボイボ寮 プロフィール | VOICEVOX",
+  "description": "メスお兄さんじゃねえ！メスのお兄さんだ！（人類滅亡を目論む医療用メスの付喪神）",
+  "robots": "index, follow"
+}

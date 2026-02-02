@@ -1,0 +1,6 @@
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/product/ouka_miko/",
+  "title": "VOICEVOX 櫻歌ミコ | 無料のテキスト読み上げソフトウェア",
+  "description": "VOICEVOXは「櫻歌ミコ」のかわいらしい少女の声で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。",
+  "robots": "index, follow"
+}

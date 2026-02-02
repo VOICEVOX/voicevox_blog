@@ -1,0 +1,6 @@
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/product/nekotsuka_bi/",
+  "title": "VOICEVOX 猫使ビィ | 無料のテキスト読み上げソフトウェア",
+  "description": "VOICEVOXは「猫使ビィ」のピュアであどけない声で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。",
+  "robots": "index, follow"
+}
