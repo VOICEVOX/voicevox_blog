@@ -42,6 +42,7 @@ export default function MarkdownModal({
           <section className="px-6 py-6">
             <div
               className="markdown"
+              data-theme="light"
               dangerouslySetInnerHTML={{
                 __html: html,
               }}

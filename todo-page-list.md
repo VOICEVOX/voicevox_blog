@@ -93,7 +93,7 @@
 
 ### 9. `/nemo/` (Nemoページ)
 
-- [ ] 実装完了
+- [x] 実装完了
 - ファイル: `src/pages/nemo/index.astro` (279行)
 - E2Eテスト: `tests/e2e/ui/nemo.spec.ts` ⭐
 - Bulmaクラス: 18種類

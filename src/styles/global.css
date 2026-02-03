@@ -141,35 +141,36 @@
     color: inherit;
   }
 
-  [data-theme="dark"] .markdown {
+  [data-theme="dark"] .markdown:not([data-theme="light"]) {
     color: theme("colors.neutral.300");
   }
 
-  [data-theme="dark"] .markdown h2,
-  [data-theme="dark"] .markdown h3,
-  [data-theme="dark"] .markdown h4,
-  [data-theme="dark"] .markdown h1 {
+  [data-theme="dark"] .markdown:not([data-theme="light"]) h2,
+  [data-theme="dark"] .markdown:not([data-theme="light"]) h3,
+  [data-theme="dark"] .markdown:not([data-theme="light"]) h4,
+  [data-theme="dark"] .markdown:not([data-theme="light"]) h1 {
     color: theme("colors.neutral.300");
   }
 
-  [data-theme="dark"] .markdown a {
+  [data-theme="dark"] .markdown:not([data-theme="light"]) a {
     color: rgb(165, 212, 173);
   }
 
-  [data-theme="dark"] .markdown a:hover {
+  [data-theme="dark"] .markdown:not([data-theme="light"]) a:hover {
     color: rgb(185, 232, 193);
   }
 
-  [data-theme="dark"] .markdown code,
-  [data-theme="dark"] .markdown pre {
+  [data-theme="dark"] .markdown:not([data-theme="light"]) code,
+  [data-theme="dark"] .markdown:not([data-theme="light"]) pre {
     background-color: theme("colors.zinc.800");
   }
 
-  [data-theme="dark"] .markdown code {
+  [data-theme="dark"] .markdown:not([data-theme="light"]) code {
     color: theme("colors.rose.300");
   }
 
-  [data-theme="dark"] .markdown img {
+  [data-theme="dark"] .markdown:not([data-theme="light"]) img {
     border-color: theme("colors.neutral.200");
   }
+
 }

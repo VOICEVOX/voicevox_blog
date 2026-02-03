@@ -11,8 +11,8 @@ import { getSpeakerInfo, speakerKeys } from "./constants";
 import shareThumb from "./share.png";
 import teaserImage from "./teaser.png";
 
-const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src})`;
-const voicevoxIconImageUrl = `url(${(await getImage({ src: voicevoxIconImage })).src})`;
+const backgroundImageSrc = (await getImage({ src: backgroundImage })).src;
+const voicevoxIconImageSrc = (await getImage({ src: voicevoxIconImage })).src;
 ---
 
 <Base
@@ -23,10 +23,17 @@ const voicevoxIconImageUrl = `url(${(await getImage({ src: voicevoxIconImage }))
   isDark={true}
   isNemo={true}
 >
-  <main class="nemo">
-    <section class="section py-0" data-testid="first-view">
-      <div class="top container is-max-widescreen">
-        <div class="teaser">
+  <main
+    class='bg-cover bg-top bg-no-repeat text-white [font-family:"LINE Seed",sans-serif] [text-rendering:optimizeLegibility]'
+    style={{ backgroundImage: `url(${backgroundImageSrc})` }}
+  >
+    <section class="py-0" data-testid="first-view">
+      <div
+        class="mx-auto flex w-full max-w-6xl flex-col-reverse items-center justify-center gap-12 px-6 py-12 lg:h-[calc(100vh-3.25rem)] lg:flex-row-reverse lg:items-stretch lg:py-0"
+      >
+        <div
+          class="flex w-full max-w-2xl flex-1 items-center justify-center drop-shadow-2xl"
+        >
           <Image
             src={teaserImage}
             alt="VOICEVOX Nemoを利用中のソフトウェアのスクリーンショット"
@@ -36,58 +43,90 @@ const voicevoxIconImageUrl = `url(${(await getImage({ src: voicevoxIconImage }))
           />
         </div>
 
-        <div class="description">
-          <h1 class="title">VOICEVOX Nemo</h1>
-          <h2 class="title">
+        <div
+          class="flex w-full max-w-sm flex-col items-center justify-center text-center lg:max-w-lg lg:items-start lg:text-left"
+        >
+          <h1 class="mb-6 text-4xl font-semibold leading-[1.125] lg:text-5xl">
+            VOICEVOX Nemo
+          </h1>
+          <h2
+            class="mb-6 w-full text-2xl font-semibold leading-[1.125] lg:text-3xl"
+          >
             あらゆる場面に対応する
             <br />
-            無料の中品質読み上げソフトウェア
+            <span class="md:hidden">
+              無料の中品質読み上げ
+              <br />
+              ソフトウェア
+            </span>
+            <span class="hidden md:inline"
+              >無料の中品質読み上げソフトウェア</span
+            >
           </h2>
-          <div class="powered-by">Powered by VOICEVOX</div>
+          <div
+            class="mb-1 flex items-center justify-center gap-1 lg:justify-start"
+          >
+            <span
+              class="inline-block size-5 bg-center bg-no-repeat bg-contain"
+              style={{ backgroundImage: `url(${voicevoxIconImageSrc})` }}
+            ></span>
+            <span>Powered by VOICEVOX</span>
+          </div>
 
-          <div class="buttons">
+          <div class="mt-4 flex gap-4">
             <button
               {...{ [showNemoGuidanceModalAttr]: "" }}
-              class="button is-primary is-rounded"
+              class="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-4 py-1.5 text-xs font-medium text-emerald-950 md:h-10 md:px-5 md:py-2 md:text-base xl:h-12 xl:px-6 xl:py-2.5 xl:text-xl"
             >
-              <span class="icon">
-                <FontAwesomeIcon icon={faDownload} />
-              </span>
-              <span class="has-text-weight-semibold">ダウンロード</span>
+              <FontAwesomeIcon icon={faDownload} />
+              <span class="font-semibold">ダウンロード</span>
             </button>
             <button
               {...{ [showNemoTermModalAttr]: "" }}
-              class="button is-normal is-rounded is-white"
+              class="inline-flex items-center justify-center rounded-full bg-white px-4 py-1.5 text-xs font-medium text-neutral-950 md:h-10 md:px-5 md:py-2 md:text-base xl:h-12 xl:px-6 xl:py-2.5 xl:text-xl"
             >
               <span>利用規約</span>
             </button>
           </div>
         </div>
       </div>
-      <div class="feature container is-max-widescreen">
-        <div class="feature-cell">
+
+      <div
+        class="mx-auto mb-12 grid w-full max-w-6xl grid-cols-2 gap-4 px-6 pb-12 lg:grid-cols-4"
+      >
+        <div
+          class="rounded-2xl bg-neutral-800/20 py-8 text-center text-base leading-normal md:text-xl"
+        >
           商用利用・非商用利用
           <br />
           問わず無料
         </div>
-        <div class="feature-cell">
+        <div
+          class="rounded-2xl bg-neutral-800/20 py-8 text-center text-base leading-normal md:text-xl"
+        >
           マルチOSに対応
           <br />
           (Win / Mac / Linux)
         </div>
-        <div class="feature-cell">
+        <div
+          class="rounded-2xl bg-neutral-800/20 py-8 text-center text-base leading-normal md:text-xl"
+        >
           簡単に使える
           <br />
           わかりやすい操作画面
         </div>
-        <div class="feature-cell">
+        <div
+          class="rounded-2xl bg-neutral-800/20 py-8 text-center text-base leading-normal md:text-xl"
+        >
           イントネーションの
           <br />
           詳細な調整も可能
         </div>
       </div>
 
-      <div class="explain container is-max-desktop">
+      <div
+        class="mx-auto my-12 w-full max-w-4xl px-6 py-12 text-center text-xl leading-normal md:text-2xl lg:text-[32px]"
+      >
         プレゼンから動画作成ナレーションまで
         <br />
         様々なTPOに合わせて利用できる
@@ -96,19 +135,25 @@ const voicevoxIconImageUrl = `url(${(await getImage({ src: voicevoxIconImage }))
       </div>
     </section>
 
-    <section class="section py-0">
-      <div class="speakers-container container is-max-desktop">
+    <section class="py-0">
+      <div
+        class="mx-auto mt-12 grid w-full max-w-5xl grid-cols-1 gap-8 px-6 pt-12 md:grid-cols-2 md:px-4"
+      >
         {
           // 内部で表示するドロップメニューが兄弟要素で隠れてしまうのでz-indexを指定している
           speakerKeys.map((key, i) => (
-            <SpeakerComponent
-              info={getSpeakerInfo(key)}
-              style={{ zIndex: speakerKeys.length - i }}
-            />
+            <div class="w-full max-w-sm mx-auto md:max-w-none md:mx-0">
+              <SpeakerComponent
+                info={getSpeakerInfo(key)}
+                style={{ zIndex: speakerKeys.length - i }}
+              />
+            </div>
           ))
         }
       </div>
-      <div class="speaker-contact-explain container is-max-desktop">
+      <div
+        class="mx-auto my-12 w-full max-w-5xl px-6 pb-12 text-center text-xl leading-normal md:px-4"
+      >
         より柔軟な演技や高品質な音声をお求めの場合は、
         <br />
         上記のリンク先にてご本人へご依頼いただけます。
@@ -123,156 +168,3 @@ VOICEVOXの音声合成をアプリケーションやサービスに組み込め
     }
   </main>
 </Base>
-
-<style
-  lang="scss"
-  define:vars={{ backgroundImageUrl, voicevoxIconImageUrl }}
-  is:global
->
-  @use "@/styles/helper.scss" as *;
-  @use "bulma/sass/utilities/initial-variables" as *;
-  @use "bulma/sass/utilities/mixins" as *;
-
-  .nemo {
-    color: white;
-    font-family: "LINE Seed", sans-serif;
-    background-image: var(--backgroundImageUrl);
-    background-size: cover;
-    background-position: top;
-
-    .title {
-      color: white !important;
-      font-weight: 600;
-    }
-
-    .top {
-      height: calc(100vh - 3.25rem);
-      display: flex;
-      flex-direction: row-reverse;
-      justify-content: center;
-      gap: 3rem;
-
-      @include touch {
-        height: auto;
-        flex-direction: column-reverse;
-        align-items: center;
-        padding-top: 3rem;
-        padding-bottom: 3rem;
-      }
-
-      .description {
-        flex: 0 0 auto;
-
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-content: start;
-
-        @include touch {
-          align-items: center;
-          text-align: center;
-        }
-
-        h1 {
-          @extend .is-size-3-touch;
-          @extend .is-size-2-desktop;
-          @extend .is-size-1-widescreen;
-        }
-        h2 {
-          @extend .is-size-4-touch;
-          @extend .is-size-4-desktop;
-          @extend .is-size-3-widescreen;
-        }
-        .buttons {
-          * {
-            @extend .is-medium;
-            @extend .is-responsive;
-          }
-        }
-
-        .powered-by {
-          @extend .mb-1;
-
-          &::before {
-            content: "";
-            display: inline-block;
-            background: var(--voicevoxIconImageUrl) no-repeat center/contain;
-            margin-right: 0.3em;
-            height: 1.2em;
-            width: 1.2em;
-            vertical-align: middle;
-          }
-        }
-
-        .buttons {
-          display: flex;
-          gap: 1rem;
-          margin-top: 1rem;
-        }
-      }
-
-      .teaser {
-        flex: 1 1 auto;
-        max-width: 650px;
-        filter: drop-shadow(20px 20px 15px rgba(0, 0, 0, 0.5));
-
-        display: flex; // 画像の中央寄せのため
-      }
-    }
-
-    .feature {
-      @extend .mb-6, .pb-6;
-
-      width: 100%;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
-      gap: 1rem;
-
-      @include touch {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .feature-cell {
-        background-color: #21212139;
-        @extend .is-size-5;
-        @extend .is-size-6-mobile;
-        text-align: center;
-        padding: 2rem 0;
-        border-radius: 1rem;
-      }
-    }
-
-    .explain {
-      @extend .my-6, .py-6;
-      @include desktop {
-        font-size: $size-3;
-      }
-      @include tablet-only {
-        font-size: $size-4;
-      }
-      @include mobile {
-        font-size: $size-5;
-      }
-      text-align: center;
-    }
-
-    .speakers-container {
-      @extend .mt-6, .pt-6;
-
-      display: grid;
-      gap: $gap;
-      grid-template-columns: repeat(2, 1fr);
-      place-content: center;
-
-      @include mobile {
-        grid-template-columns: repeat(1, minmax(0, 25rem));
-      }
-    }
-
-    .speaker-contact-explain {
-      @extend .my-6, .pb-6;
-      @extend .is-size-5;
-      text-align: center;
-    }
-  }
-</style>
