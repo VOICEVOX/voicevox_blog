@@ -34,7 +34,7 @@ const styleCount = orderedCharacterKeys.reduce((acc, key) => {
   return acc + characterInfos[key].songVoiceAudios.length;
 }, 0);
 
-const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src})`;
+const backgroundImageSrc = (await getImage({ src: backgroundImage })).src;
 ---
 
 <Base
@@ -44,30 +44,46 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
   imageAlt=""
   isDark={true}
 >
-  <main class="song">
-    <section class="section px-0 py-0" data-testid="first-view">
-      <div class="top">
-        <div class="titles">
-          <h1 class="title">VOICEVOX Song</h1>
-          <span class="subtitle"
-            >無料で使える中品質な<wbr
-            />テキスト読み上げ・歌声合成ソフトウェア</span
+  <main class="bg-neutral-950 text-white">
+    <section class="py-0" data-testid="first-view">
+      <div
+        class="relative isolate flex min-h-[calc(100vh-3.25rem)] flex-col items-center justify-center gap-14 px-6 py-12 text-center"
+      >
+        <!-- 背景画像 -->
+        <div
+          class="absolute inset-0 -z-10 bg-cover bg-center blur-xs brightness-75"
+          style={{ backgroundImage: `url(${backgroundImageSrc})` }}
+        >
+        </div>
+        <div class="absolute inset-0 -z-10 bg-black/20"></div>
+
+        <div
+          class="flex flex-col items-center justify-center gap-2 md:gap-4 mb-20 md:mb-0"
+        >
+          <h1
+            class="song-hero-title text-5xl font-extrabold leading-[1.125] text-primary/75 md:text-8xl lg:text-9xl"
           >
+            VOICEVOX Song
+          </h1>
+          <span
+            class="text-2xl font-bold leading-snug drop-shadow-2xl break-keep break-words"
+          >
+            無料で使える中品質な<wbr />テキスト読み上げ・歌声合成ソフトウェア
+          </span>
+          <!-- <wbr>で良い感じに改行するようにする -->
         </div>
 
-        <div class="buttons">
+        <div class="flex flex-col items-center gap-4">
           <button
             {...{ [showDownloadModalAttr]: "" }}
-            class="button is-primary is-large is-rounded"
+            class="inline-flex h-14 items-center justify-center gap-2 rounded-full bg-primary px-8 py-3 text-2xl font-medium text-black shadow-lg hover:opacity-90"
           >
-            <span class="icon">
-              <FontAwesomeIcon icon={faDownload} />
-            </span>
-            <span class="has-text-weight-semibold">ダウンロード</span>
+            <FontAwesomeIcon icon={faDownload} />
+            <span class="font-semibold">ダウンロード</span>
           </button>
           <a
             href={withBaseUrl("/term/")}
-            class="button is-normal is-rounded is-white"
+            class="inline-flex h-10 items-center justify-center rounded-full bg-white px-5 py-2 text-base font-medium text-neutral-950 shadow-lg hover:opacity-90"
           >
             利用規約
           </a>
@@ -75,34 +91,42 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
       </div>
     </section>
 
-    <section class="section">
-      <div class="feature container">
-        <h2 class="title">特徴</h2>
-        <div class="feature-cells">
-          <div class="feature-cell">
+    <section class="py-12">
+      <div class="mx-auto mb-12 w-full max-w-6xl px-6">
+        <h2 class="mb-6 text-3xl font-bold">特徴</h2>
+        <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
+          <div
+            class="rounded-2xl bg-emerald-950/20 py-8 text-center text-base leading-normal md:text-xl"
+          >
             商用利用可能な
             <br />
             フリーソフト
           </div>
-          <div class="feature-cell">
+          <div
+            class="rounded-2xl bg-emerald-950/20 py-8 text-center text-base leading-normal md:text-xl"
+          >
             マルチOSに対応
             <br />
             (Win / Mac / Linux)
           </div>
-          <div class="feature-cell">
+          <div
+            class="rounded-2xl bg-emerald-950/20 py-8 text-center text-base leading-normal md:text-xl"
+          >
             {characterCount} 名のキャラクターと
             <br />
             {styleCount} 種類のボイス
           </div>
-          <div class="feature-cell">
+          <div
+            class="rounded-2xl bg-emerald-950/20 py-8 text-center text-base leading-normal md:text-xl"
+          >
             すぐ使える GUI と<br />歌唱 AI で創作支援
           </div>
         </div>
       </div>
 
-      <div class="container voices">
-        <h2 class="title">音声ライブラリ一覧</h2>
-        <div class="voice-cards">
+      <div class="mx-auto w-full max-w-6xl px-6">
+        <h2 class="mb-6 text-3xl font-bold">音声ライブラリ一覧</h2>
+        <div class="flex flex-wrap items-center justify-center gap-4">
           {
             orderedCharacterKeys.map((characterKey) => (
               <CharacterCard
@@ -122,15 +146,15 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
       </div>
     </section>
 
-    <section class="section">
-      <div class="container is-max-desktop">
-        <h2 class="title">ハミングとは？</h2>
-        <p class="is-size-5">
+    <section class="py-12">
+      <div class="mx-auto w-full max-w-5xl px-6">
+        <h2 class="mb-6 text-3xl font-bold">ハミングとは？</h2>
+        <p class="text-xl leading-relaxed">
           喋り声のデータを用いて音声ライブラリを作成し、
           歌えるキャラクターに歌い方を倣うことで、
           キャラクターの喋り声に近い声で歌える機能です。
         </p>
-        <p class="is-size-5">
+        <p class="mt-0 text-xl leading-relaxed">
           キャラクターによっていろんなスタイルで歌うことができます。
         </p>
       </div>
@@ -142,192 +166,8 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
   </main>
 </Base>
 
-<style lang="scss" define:vars={{ backgroundImageUrl }} is:global>
-  @use "@/styles/vars.scss" as *;
-  @use "@/styles/helper.scss" as *;
-  @use "bulma/sass/elements" as *;
-  @use "bulma/sass/layout" as *;
-  @use "bulma/sass/utilities/initial-variables" as *;
-  @use "bulma/sass/utilities/mixins" as *;
-  @use "bulma/sass/helpers" as *;
-
-  .song {
-    color: white;
-
-    .title,
-    .subtitle {
-      color: white !important;
-    }
-
-    .top {
-      height: calc(100vh - 3.25rem);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 3.5rem;
-
-      // 背景画像
-      position: relative;
-      z-index: 0;
-      &:before {
-        background-image: var(--backgroundImageUrl);
-        background-size: cover;
-        background-position: center;
-
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-
-        filter: blur(2.5px) brightness(70%);
-        // filter: blur(1px) brightness(50%);
-      }
-
-      .titles {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-
-        text-align: center;
-
-        h1 {
-          color: rgba($primary, 0.75) !important;
-          font-size: 7.5rem;
-          text-shadow: 0 0 10px
-            rgb(
-              from color-mix(in srgb, var(--bulma-link-text) 95%, black) R G B /
-                0.55
-            );
-        }
-
-        .subtitle {
-          @extend .is-4;
-          @extend .has-text-weight-bold;
-          text-shadow: 0 0 10px rgba(black, 0.75);
-
-          // <wbr>で良い感じに改行するようにする
-          word-break: keep-all;
-          overflow-wrap: break-word;
-        }
-
-        @include touch {
-          h1 {
-            font-size: 6rem;
-          }
-        }
-
-        @include mobile {
-          gap: 0.5rem;
-          margin-bottom: 5rem;
-
-          h1 {
-            font-size: 3rem;
-          }
-        }
-      }
-
-      .buttons {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-
-        .button {
-          box-shadow: 0 0 10px #000;
-        }
-      }
-    }
-
-    .feature {
-      width: 100%;
-      @extend .is-max-widescreen;
-      @extend .mb-6;
-
-      .feature-cells {
-        width: 100%;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
-        gap: 1rem;
-
-        @include touch {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .feature-cell {
-          background-color: #43554239;
-          @extend .is-size-5;
-          @extend .is-size-6-mobile;
-          text-align: center;
-          padding: 2rem 0;
-          border-radius: 1rem;
-        }
-      }
-    }
-
-    .voices {
-      display: flex;
-      flex-direction: column;
-      @extend .is-max-widescreen;
-      @extend .mb-6;
-
-      .voice-cards {
-        display: flex;
-        flex-direction: row;
-        gap: 1rem;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-
-        .voice-card {
-          display: flex;
-          flex-direction: column;
-          gap: 0.5rem;
-          align-items: center;
-          justify-content: center;
-
-          background-color: #282828;
-          border-radius: 0.5rem;
-          width: 10rem;
-          @extend .py-3;
-
-          .voice-card-image {
-            width: 70%;
-          }
-
-          .voice-card-content {
-            @extend .has-text-centered;
-
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-
-            .title {
-              @extend .is-6;
-              @extend .has-text-weight-medium;
-              @extend .mb-0;
-            }
-
-            .buttons {
-              align-items: center;
-              justify-content: center;
-              @extend .mb-0;
-              gap: 8px;
-
-              .button {
-                @extend .mb-0;
-              }
-            }
-
-            .style-name {
-              @extend .is-size-7;
-            }
-          }
-        }
-      }
-    }
+<style>
+  .song-hero-title {
+    text-shadow: 0px 0px 10px rgba(165, 212, 173, 0.55);
   }
 </style>

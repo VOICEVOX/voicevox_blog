@@ -106,8 +106,8 @@ export default function CharacterCard({
   };
 
   return (
-    <div className="flex flex-col gap-2 items-center justify-center bg-[#282828] rounded-lg w-40 py-3">
-      <LinkToProductPage className="w-[70%]">{children}</LinkToProductPage>
+    <div className="flex flex-col gap-2 items-center justify-center bg-neutral-800 rounded-lg w-40 py-3">
+      <LinkToProductPage className="w-2/3">{children}</LinkToProductPage>
       <div className="text-center flex flex-col gap-2">
         <h3 className="text-base font-medium mb-0 text-white">
           <LinkToProductPage style={{ color: "inherit" }}>

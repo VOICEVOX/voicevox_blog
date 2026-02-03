@@ -102,7 +102,7 @@
 
 ### 10. `/song/` (Songページ)
 
-- [ ] 実装完了
+- [x] 実装完了
 - ファイル: `src/pages/song/index.astro` (334行)
 - E2Eテスト: `tests/e2e/ui/song.spec.ts` ⭐
 - Bulmaクラス: 21種類
