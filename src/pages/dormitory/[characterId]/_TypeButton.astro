@@ -18,9 +18,9 @@ const isFirst = targetType === "profile";
 ---
 
 <KeepScrollAnchor
-  class={`description-type-button inline-flex items-center justify-center border-[1.5px] px-5 py-2 text-base whitespace-nowrap select-none shadow-none ${
-    isFirst ? "rounded-l-full" : "rounded-r-full -ml-px"
-  } ${selected ? "description-type-button-selected font-bold relative z-10" : "bg-white hover:bg-neutral-50"}`}
+  class={`description-type-button inline-flex h-10 items-center justify-center border-[1.8px] px-[19px] py-[7px] text-base whitespace-nowrap select-none shadow-none ${
+    isFirst ? "rounded-l-full" : "rounded-r-full -ml-[1.8px]"
+  } ${selected ? "font-bold relative z-10" : "bg-white hover:bg-neutral-50 font-medium"}`}
   style={{
     color: characterInfo.color,
     borderColor: characterInfo.color,

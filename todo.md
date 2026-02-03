@@ -8,3 +8,8 @@
 - `[px]`はできるだけ使わないようにする
 - モーダルやメニュードロップダウンなどのz-indexを管理する
 - classNameなどの引数を無駄に渡している
+- （以前からそうだけど）ボイボ寮キャラページの呼び方が長すぎるとアイコンが縦長になる
+- tailwindのベストプラクティスがわからないけど、全体クラス作ってmdで打ち消すより、max-mdで付与したほうが良さそう
+- レスポンシブに配置がガラッと変わるとき、tailwindのmedia queryが各要素に分散してしまって見通しが悪くなるのどうすれば良いんだ
+- `theme()`記法は非推奨らしい
+- その条件でしか動かないtailwindクラスにはすべてディレクティブを付ける、というルール良さそう https://gist.github.com/sandren/0f22e116f01611beab2b1195ab731b63#:~:text=Prefix%20all%20utility%20classes%20that%20will%20only%20apply

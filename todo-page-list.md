@@ -87,7 +87,7 @@
 
 ### 8-1. `/dormitory/[characterId]` (ボイボ寮個別ページ)
 
-- [ ] 実装完了
+- [x] 実装完了
 - ファイル: `src/pages/dormitory/[characterId]/[...descriptionType].astro`
 - E2Eテスト: なし（重要ページ）
 
