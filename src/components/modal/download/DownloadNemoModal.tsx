@@ -137,7 +137,7 @@ export default function DownloadNemoModal() {
                 ※ GPUモードの方が快適ですが、利用するためには
                 <a
                   href={withBaseUrl("/qa/")}
-                  className="text-emerald-600 underline hover:text-emerald-700"
+                  className="text-[rgb(48,100,57)] underline hover:text-[rgb(38,80,47)]"
                 >
                   対応するGPU
                 </a>

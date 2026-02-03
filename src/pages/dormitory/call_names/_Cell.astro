@@ -17,7 +17,7 @@ interface Props {
 const { callNames, characterInfo, additionalClass } = Astro.props;
 ---
 
-<td class={additionalClass}>
+<td class:list={["call-names-cell", additionalClass]}>
   <div>
     {
       callNames.map((callName) => (
@@ -25,16 +25,19 @@ const { callNames, characterInfo, additionalClass } = Astro.props;
           data-voicevox-call-name={callName}
           style={{ outlineColor: characterInfo.color }}
           title={`クリックして呼称をコピー：「${callName}」`}
+          class="group relative flex h-full w-full select-all flex-col justify-center"
         >
-          <span class="icon name-copy">
+          <span class="icon name-copy m-1 h-4 w-4 invisible absolute top-0 right-0 group-hover:visible group-data-[voicevox-copied]:visible inline group-data-[voicevox-copied]:hidden">
             <FontAwesomeIcon
               icon={faCopy}
+              class="h-4 w-4"
               style={{ color: characterInfo.color }}
             />
           </span>
-          <span class="icon name-copied">
+          <span class="icon name-copied m-1 h-4 w-4 invisible absolute top-0 right-0 group-hover:visible group-data-[voicevox-copied]:visible hidden group-data-[voicevox-copied]:inline">
             <FontAwesomeIcon
               icon={faCheck}
+              class="h-4 w-4"
               style={{ color: characterInfo.color }}
             />
           </span>
@@ -65,60 +68,10 @@ const { callNames, characterInfo, additionalClass } = Astro.props;
   });
 </script>
 
-<style lang="scss">
-  @use "bulma/sass/utilities/initial-variables" as *;
-  @use "bulma/sass/helpers" as *;
-
-  p {
-    height: 100%;
-    width: 100%;
-
-    // 当たり判定を大きくしつつ中央寄せ
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    position: relative;
-
-    // コピーボタン
-    .icon {
-      @extend .m-1;
-
-      visibility: hidden;
-      position: absolute;
-      height: 1rem;
-      width: 1rem;
-      top: 0;
-      right: 0;
-    }
-
-    &:hover {
-      // NOTE: ちらつくので border ではなく outline
-      outline: 2px solid;
-      border-radius: $radius;
-
-      .icon {
-        visibility: visible;
-      }
-    }
-
-    &[data-voicevox-copied] {
-      .icon {
-        visibility: visible;
-      }
-    }
-  }
-
-  .name-copy {
-    display: inline;
-  }
-  .name-copied {
-    display: none;
-  }
-  p[data-voicevox-copied] .name-copy {
-    display: none;
-  }
-  p[data-voicevox-copied] .name-copied {
-    display: inline;
+<style>
+  p:hover {
+    /* NOTE: ちらつくので border ではなく outline */
+    outline: 2px solid;
+    border-radius: 6px;
   }
 </style>

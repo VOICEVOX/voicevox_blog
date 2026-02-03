@@ -33,25 +33,30 @@ function rgba2rgbOnWhite(
   description={"ボイボ寮キャラクターの呼び方一覧表です。必ずしも遵守する必要はなく、自由に改変して頂いても問題ありません。"}
 >
   <div class="call-names-wrapper">
-    <section class="section top-explain">
-      <div class="container has-text-centered">
-        <h1 class="title">ボイボ寮キャラクターの呼称表</h1>
-        <p>
+    <section class="top-explain px-6 py-12">
+      <div class="mx-auto w-full max-w-5xl text-center">
+        <h1 class="mb-6 text-3xl font-extrabold leading-9 text-neutral-700">
+          ボイボ寮キャラクターの呼称表
+        </h1>
+        <p class="leading-relaxed text-neutral-700">
           <a
             href={withBaseUrl("/dormitory/")}
-            class="has-text-weight-bold is-underlined">ボイボ寮</a
-          >キャラクターの呼び方一覧表です。必ずしも遵守する必要はなく、自由に改変して頂いても問題ありません。
+            class="font-bold underline text-[rgb(48,100,57)] hover:text-[rgb(38,80,47)]"
+          >
+            ボイボ寮
+          </a>
+          キャラクターの呼び方一覧表です。必ずしも遵守する必要はなく、自由に改変して頂いても問題ありません。
         </p>
       </div>
     </section>
     <main class="call-names">
-      <table border={1}>
+      <table>
         <thead>
           <tr>
             <th class="origin">
-              <p>誰が</p>
-              <p>誰を</p>
-              <div></div>
+              <p class="origin-who">誰が</p>
+              <p class="origin-whom">誰を</p>
+              <div class="origin-diagonal"></div>
             </th>
 
             {
@@ -63,6 +68,7 @@ function rgba2rgbOnWhite(
                       href={withBaseUrl(
                         getDormitoryCharacterPageUrl(characterInfo),
                       )}
+                      class="header-link"
                     >
                       <CharacterImage characterInfo={characterInfo} />
                       <p
@@ -106,9 +112,11 @@ function rgba2rgbOnWhite(
                       href={withBaseUrl(
                         getDormitoryCharacterPageUrl(characterInfo),
                       )}
+                      class="row-header-link"
                     >
                       <CharacterImage characterInfo={characterInfo} />
                       <p
+                        class="row-header-name"
                         style={{
                           color: characterInfo.color,
                         }}
@@ -131,11 +139,8 @@ function rgba2rgbOnWhite(
 </Base>
 
 <style lang="scss" is:global>
-  @use "bulma/sass/components/navbar" as *;
-  @use "bulma/sass/utilities/mixins" as *;
-  @use "bulma/sass/helpers" as *;
-
-  $call-names-border: 1px solid gray;
+  $navbar-height: 3.25rem;
+  $call-names-border: 1px solid rgb(128, 128, 128);
   $call-names-cell-height: 80px;
   $call-names-cell-width: 150px;
   $call-names-cell-width-column: 190px;
@@ -148,6 +153,12 @@ function rgba2rgbOnWhite(
     // FIXME: 二重スクロールをなくす
     height: calc(100vh - $navbar-height);
     overflow: auto;
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
 
     .top-explain {
       position: sticky;
@@ -163,7 +174,7 @@ function rgba2rgbOnWhite(
 
       table {
         width: 100%;
-        @extend .p-0;
+        padding: 0;
         margin: 0 auto;
         border-collapse: separate;
         table-layout: fixed;
@@ -181,7 +192,7 @@ function rgba2rgbOnWhite(
       td {
         height: $call-names-cell-height;
         width: $call-names-cell-width;
-        @extend .p-1;
+        padding: 4px;
 
         // FIXME:
         // `table td:not([align]), table th:not([align])`セレクター によって
@@ -220,27 +231,6 @@ function rgba2rgbOnWhite(
             z-index: 2;
             border-right: $call-names-border;
           }
-
-          a {
-            display: flex;
-            flex-direction: column;
-            gap: 0.25rem; // = padding size
-            text-align: center;
-            justify-content: center;
-            align-items: center;
-
-            &:hover {
-              p {
-                text-decoration: underline;
-              }
-            }
-          }
-
-          @include mobile {
-            &.origin {
-              width: 6rem;
-            }
-          }
         }
       }
 
@@ -249,38 +239,7 @@ function rgba2rgbOnWhite(
         th {
           border-right: $call-names-border;
           width: $call-names-cell-width-column;
-          @extend .px-2;
-
-          a {
-            display: flex;
-            gap: 0.75rem;
-            text-align: center;
-            justify-content: flex-start;
-            align-items: center;
-
-            // キャラクター名
-            p {
-              white-space: normal;
-              text-align: left;
-              justify-content: flex-end;
-            }
-          }
-
-          &:hover {
-            a p {
-              text-decoration: underline;
-            }
-          }
-
-          @include mobile {
-            width: 6rem;
-            a {
-              justify-content: center;
-              p {
-                display: none;
-              }
-            }
-          }
+          padding: 4px 8px;
         }
 
         td {
@@ -306,36 +265,87 @@ function rgba2rgbOnWhite(
       }
 
       .origin {
-        @extend .p-0;
+        padding: 0;
 
-        p {
+        .origin-who,
+        .origin-whom {
           font-weight: normal;
-
-          &:nth-child(1) {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            @extend .p-2;
-          }
-          &:nth-child(2) {
-            position: absolute;
-            top: 0;
-            right: 0;
-            @extend .p-2;
-          }
+          position: absolute;
+          padding: 8px;
         }
 
-        div {
+        .origin-who {
+          bottom: 0;
+          left: 0;
+        }
+        .origin-whom {
+          top: 0;
+          right: 0;
+        }
+
+        .origin-diagonal {
           height: 100%;
           width: 100%;
           // workaround: 斜線の描画
           background: linear-gradient(
             to right top,
             transparent calc(50% - 0.5px),
-            gray 50%,
-            gray calc(50% + 0.5px),
+            rgb(128, 128, 128) 50%,
+            rgb(128, 128, 128) calc(50% + 0.5px),
             transparent calc(50% + 1px)
           );
+        }
+      }
+
+      .header-link {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      .row-header-link {
+        display: flex;
+        gap: 12px;
+        text-align: center;
+        justify-content: flex-start;
+        align-items: center;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      .row-header-name {
+        white-space: normal;
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .call-names {
+        thead > tr th.origin {
+          width: 6rem;
+        }
+
+        tbody > tr th {
+          width: 6rem;
+        }
+
+        .row-header-link {
+          justify-content: center;
+        }
+
+        .row-header-name {
+          display: none;
         }
       }
     }

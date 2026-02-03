@@ -111,9 +111,9 @@
 
 ### 11. `/dormitory/call_names/` (呼称表ページ)
 
-- [ ] 実装完了
+- [x] 実装完了
 - ファイル: `src/pages/dormitory/call_names/index.astro` (343行) + 関連ファイル
 - E2Eテスト: なし
 - Bulmaクラス: 4種類
-- カスタムスタイル: 279行（メディアクエリ3個、z-index問題、position: sticky）
-- 注意: z-index使用（ユーザーガイドライン違反）、二重スクロール問題
+- カスタムスタイル: 279行（メディアクエリ3個、position: sticky）
+- 注意: 二重スクロール問題
