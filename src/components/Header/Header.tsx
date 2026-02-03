@@ -163,7 +163,7 @@ export default function Header({
           className={`flex items-center self-stretch px-3 ${className ?? ""}`}
         >
           <button
-            className="inline-flex items-center gap-1.5 rounded-full bg-primary px-5 py-2 text-base font-semibold leading-6 text-black hover:bg-primary/90"
+            className="bg-primary hover:bg-primary/90 inline-flex items-center gap-1.5 rounded-full px-5 py-2 text-base leading-6 font-semibold text-black"
             onClick={() => {
               if (!isNemo) {
                 $downloadModal.set(true);
@@ -207,7 +207,7 @@ export default function Header({
   return (
     <>
       <nav
-        className={`navbar fixed left-0 top-0 z-40 w-full ${
+        className={`navbar fixed top-0 left-0 z-40 w-full ${
           showingHeader ? "" : "hidden"
         } ${defaultHide ? "with-animation" : ""} ${
           isDark
@@ -221,7 +221,7 @@ export default function Header({
           <div className="flex min-w-0 items-center">
             <a
               href={withBaseUrl("/")}
-              className={`flex items-center self-stretch gap-2 px-3 whitespace-nowrap ${menuItemHoverClassName}`}
+              className={`flex items-center gap-2 self-stretch px-3 whitespace-nowrap ${menuItemHoverClassName}`}
             >
               <img src={iconUrl} alt="" width="28" height="28" />
               <span className="text-base font-bold">VOICEVOX</span>

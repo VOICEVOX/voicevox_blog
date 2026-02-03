@@ -51,18 +51,18 @@ const postCharacterKey =
 ---
 
 <div
-  class="top relative mx-auto w-[calc(100%-48px)] max-w-5xl grid grid-cols-1 md:grid-cols-[491.438px_1fr] md:h-[calc(100vh-3.25rem)] md:min-h-[512px] md:max-h-[1024px] md:grid-rows-[1fr_5rem] grid-rows-[calc(100vh-3.25rem-5rem)_5rem_auto]"
+  class="top relative mx-auto grid w-[calc(100%-48px)] max-w-5xl grid-cols-1 grid-rows-[calc(100vh-3.25rem-5rem)_5rem_auto] md:h-[calc(100vh-3.25rem)] md:max-h-[1024px] md:min-h-[512px] md:grid-cols-[491.438px_1fr] md:grid-rows-[1fr_5rem]"
 >
   <a
     href={withBaseUrl(getProductPageUrl(characterInfos[prevCharacterKey]))}
-    class="prev absolute z-10 top-[10%] -translate-y-1/2 left-[calc(50%-50vw+1.2rem)] inline-flex h-12 w-12 items-center justify-center rounded-full border-[1.8px] border-black bg-transparent text-5xl text-black opacity-25 hover:opacity-40"
+    class="prev absolute top-[10%] left-[calc(50%-50vw+1.2rem)] z-10 inline-flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border-[1.8px] border-black bg-transparent text-5xl text-black opacity-25 hover:opacity-40"
     aria-label="前のキャラクターを表示"
   >
     <FontAwesomeIcon icon={faCircleLeft} />
   </a>
   <a
     href={withBaseUrl(getProductPageUrl(characterInfos[postCharacterKey]))}
-    class="post absolute z-10 top-[10%] -translate-y-1/2 right-[calc(50%-50vw+1.2rem)] inline-flex h-12 w-12 items-center justify-center rounded-full border-[1.8px] border-black bg-transparent text-5xl text-black opacity-25 hover:opacity-40"
+    class="post absolute top-[10%] right-[calc(50%-50vw+1.2rem)] z-10 inline-flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border-[1.8px] border-black bg-transparent text-5xl text-black opacity-25 hover:opacity-40"
     aria-label="次のキャラクターを表示"
   >
     <FontAwesomeIcon icon={faCircleRight} />
@@ -104,7 +104,7 @@ const postCharacterKey =
   <div
     class="description-area col-start-1 row-start-3 flex flex-col items-center justify-center px-0 pt-12 md:col-start-1 md:row-start-1 md:items-start md:justify-self-start md:px-6 md:pt-0"
   >
-    <h1 class="mb-6 text-[32px] font-extrabold leading-[36px]">
+    <h1 class="mb-6 text-[32px] leading-[36px] font-extrabold">
       VOICEVOX {characterInfo.name}
     </h1>
     <p class="text-xl leading-[30px]">
@@ -115,7 +115,7 @@ const postCharacterKey =
       characterInfo.releaseDate == undefined && (
         <button
           {...{ [showDownloadModalAttr]: "" }}
-          class="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-[30px] py-[14px] text-2xl font-semibold text-black hover:bg-primary/90"
+          class="bg-primary hover:bg-primary/90 mt-6 inline-flex items-center gap-2 rounded-full px-[30px] py-[14px] text-2xl font-semibold text-black"
         >
           <span class="icon">
             <FontAwesomeIcon icon={faDownload} />
@@ -176,10 +176,10 @@ const postCharacterKey =
         characterKeys.map((key) => (
           <KeepScrollAnchor
             href={withBaseUrl(getProductPageUrl(characterInfos[key]))}
-            class={`character box-content flex flex-none aspect-square ${
+            class={`character box-content flex aspect-square flex-none ${
               key === characterKey
-                ? "active relative h-12 py-4 px-2 opacity-100 before:content-[''] before:absolute before:top-0 before:left-0 before:h-1 before:w-full before:bg-[var(--characterColor)]"
-                : "h-10 py-5 px-2 opacity-50 hover:opacity-80"
+                ? "active relative h-12 px-2 py-4 opacity-100 before:absolute before:top-0 before:left-0 before:h-1 before:w-full before:bg-[var(--characterColor)] before:content-['']"
+                : "h-10 px-2 py-5 opacity-50 hover:opacity-80"
             }`}
             aria-label={characterInfos[key].name}
             style={{

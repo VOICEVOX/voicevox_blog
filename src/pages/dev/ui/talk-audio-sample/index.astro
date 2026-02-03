@@ -15,18 +15,18 @@ const characterInfo = characterInfos["ずんだもん"];
   </head>
   <body>
     <div style="padding: 2rem;">
-      <h1 class="text-2xl font-bold mb-6">AudioSample (talk) 確認用ページ</h1>
+      <h1 class="mb-6 text-2xl font-bold">AudioSample (talk) 確認用ページ</h1>
 
       <section class="mb-8">
-        <h2 class="text-xl font-semibold mb-4">音声サンプルUI</h2>
-        <div class="max-w-5xl mx-auto px-4 flex flex-col">
+        <h2 class="mb-4 text-xl font-semibold">音声サンプルUI</h2>
+        <div class="mx-auto flex max-w-5xl flex-col px-4">
           <div class="flex justify-center">
             <div
-              class="w-full min-[769px]:w-1/2 min-[960px]:w-1/3 max-w-none box-border px-2"
+              class="box-border w-full max-w-none px-2 min-[769px]:w-1/2 min-[960px]:w-1/3"
             >
-              <div class="rounded-2xl bg-white shadow-lg p-6">
+              <div class="rounded-2xl bg-white p-6 shadow-lg">
                 <div class="text-center">
-                  <h3 class="text-2xl font-bold mb-0">{characterInfo.name}</h3>
+                  <h3 class="mb-0 text-2xl font-bold">{characterInfo.name}</h3>
                   <AudioSample
                     client:load
                     audioSamples={characterInfo.talkVoiceAudios}

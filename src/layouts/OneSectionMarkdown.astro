@@ -18,7 +18,7 @@ const { frontmatter } = Astro.props;
 
 <Base {...frontmatter}>
   <section class="section">
-    <div class="container is-max-desktop">
+    <div class="is-max-desktop container">
       {
         frontmatter.headerTitle && (
           <h1 class="title">{frontmatter.headerTitle}</h1>

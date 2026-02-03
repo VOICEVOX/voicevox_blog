@@ -44,7 +44,7 @@ export default function StyleDropdown({
     >
       <div>
         <button
-          className="inline-flex items-center gap-1.5 rounded-full border border-gray-300 bg-white px-4 py-2 text-base font-medium text-neutral-900 shadow-sm hover:bg-neutral-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+          className="focus-visible:ring-primary/40 inline-flex items-center gap-1.5 rounded-full border border-gray-300 bg-white px-4 py-2 text-base font-medium text-neutral-900 shadow-sm hover:bg-neutral-50 focus:outline-none focus-visible:ring-2"
           aria-haspopup="true"
           aria-controls={id}
           aria-expanded={isOpen}
@@ -61,7 +61,7 @@ export default function StyleDropdown({
       </div>
       {isOpen && (
         <div
-          className={`absolute left-0 z-50 min-w-full w-max ${
+          className={`absolute left-0 z-50 w-max min-w-full ${
             isUp ? "bottom-full mb-2" : "top-full mt-2"
           }`}
           role="menu"
@@ -77,7 +77,7 @@ export default function StyleDropdown({
                   role="menuitem"
                   className={`block w-full rounded px-3 py-2 text-left text-sm whitespace-nowrap ${
                     isSelected
-                      ? "bg-primary text-neutral-900 hover:bg-primary/90 font-semibold"
+                      ? "bg-primary hover:bg-primary/90 font-semibold text-neutral-900"
                       : "text-neutral-900 hover:bg-neutral-100"
                   }`}
                   onMouseDown={() => {

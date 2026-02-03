@@ -58,15 +58,15 @@ const backgroundImageSrc = (await getImage({ src: backgroundImage })).src;
         <div class="absolute inset-0 -z-10 bg-black/20"></div>
 
         <div
-          class="flex flex-col items-center justify-center gap-2 md:gap-4 mb-20 md:mb-0"
+          class="mb-20 flex flex-col items-center justify-center gap-2 md:mb-0 md:gap-4"
         >
           <h1
-            class="song-hero-title text-5xl font-extrabold leading-[1.125] text-primary/75 md:text-8xl lg:text-9xl"
+            class="song-hero-title text-primary/75 text-5xl leading-[1.125] font-extrabold md:text-8xl lg:text-9xl"
           >
             VOICEVOX Song
           </h1>
           <span
-            class="text-2xl font-bold leading-snug drop-shadow-2xl break-keep break-words"
+            class="text-2xl leading-snug font-bold break-words break-keep drop-shadow-2xl"
           >
             無料で使える中品質な<wbr />テキスト読み上げ・歌声合成ソフトウェア
           </span>
@@ -76,7 +76,7 @@ const backgroundImageSrc = (await getImage({ src: backgroundImage })).src;
         <div class="flex flex-col items-center gap-4">
           <button
             {...{ [showDownloadModalAttr]: "" }}
-            class="inline-flex h-14 items-center justify-center gap-2 rounded-full bg-primary px-8 py-3 text-2xl font-medium text-black shadow-lg hover:opacity-90"
+            class="bg-primary inline-flex h-14 items-center justify-center gap-2 rounded-full px-8 py-3 text-2xl font-medium text-black shadow-lg hover:opacity-90"
           >
             <FontAwesomeIcon icon={faDownload} />
             <span class="font-semibold">ダウンロード</span>

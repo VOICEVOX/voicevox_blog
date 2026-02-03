@@ -21,7 +21,7 @@ const href = getDormitoryCharacterPageUrl(characterInfo);
     (className ?? "")}
 >
   <div
-    class="border-[3px] rounded-2xl shadow-none pt-3 cursor-pointer h-full"
+    class="h-full cursor-pointer rounded-2xl border-[3px] pt-3 shadow-none"
     style={{ borderColor: color }}
   >
     <a href={withBaseUrl(href)}>
@@ -35,7 +35,7 @@ const href = getDormitoryCharacterPageUrl(characterInfo);
         style={{ objectFit: "contain" }}
       />
       <div
-        class="px-0 py-5 text-center border-t-[2.5px]"
+        class="border-t-[2.5px] px-0 py-5 text-center"
         style={{ borderColor: color }}
       >
         <h3 class="text-xl font-semibold">{characterInfo.name}</h3>

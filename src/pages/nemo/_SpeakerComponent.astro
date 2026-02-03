@@ -15,42 +15,42 @@ const { info, style } = Astro.props;
 ---
 
 <div
-  class="relative flex flex-row pr-4 before:content-[''] before:absolute before:bg-[#20242d] before:top-[0.4rem] before:left-[0.4rem] before:bottom-[0.4rem] before:right-0 before:z-[1] h-32 before:rounded-l-[calc(8rem-0.4rem)] max-lg:h-24 max-lg:before:rounded-l-[calc(6rem-0.4rem)] max-md:h-16 max-md:before:rounded-l-[calc(4rem-0.4rem)] [filter:drop-shadow(12px_12px_8px_rgba(0,0,0,0.5))] [&>*]:z-[2]"
+  class="relative flex h-32 flex-row pr-4 [filter:drop-shadow(12px_12px_8px_rgba(0,0,0,0.5))] before:absolute before:top-[0.4rem] before:right-0 before:bottom-[0.4rem] before:left-[0.4rem] before:z-[1] before:rounded-l-[calc(8rem-0.4rem)] before:bg-[#20242d] before:content-[''] max-lg:h-24 max-lg:before:rounded-l-[calc(6rem-0.4rem)] max-md:h-16 max-md:before:rounded-l-[calc(4rem-0.4rem)] [&>*]:z-[2]"
   style={style}
 >
   <div
-    class="h-32 w-32 max-lg:h-24 max-lg:w-24 max-md:h-16 max-md:w-16 flex-shrink-0"
+    class="h-32 w-32 flex-shrink-0 max-lg:h-24 max-lg:w-24 max-md:h-16 max-md:w-16"
   >
     <Image src={info.icon} alt={`${info.name}のアイコン`} />
   </div>
   <div
-    class="flex-1 flex flex-col justify-center items-center text-center gap-2 max-lg:gap-1"
+    class="flex flex-1 flex-col items-center justify-center gap-2 text-center max-lg:gap-1"
   >
     <span class="text-base text-white max-lg:text-xs">CV</span>
     <div class="group/dropdown relative inline-block">
       <div>
         <button
-          class="inline-flex items-center gap-0 bg-transparent border-none text-white underline py-0 px-0 h-auto hover:text-white focus:text-white active:text-white"
+          class="inline-flex h-auto items-center gap-0 border-none bg-transparent px-0 py-0 text-white underline hover:text-white focus:text-white active:text-white"
           aria-haspopup="true"
           aria-controls={`dropdown-${info.id}`}
           type="button"
         >
           <h3
-            class="inline-block max-w-full overflow-hidden text-ellipsis px-2 text-xl max-lg:text-base whitespace-nowrap"
+            class="inline-block max-w-full overflow-hidden px-2 text-xl text-ellipsis whitespace-nowrap max-lg:text-base"
           >
             {info.cv}
           </h3>
         </button>
       </div>
       <div
-        class="absolute top-full left-0 mt-2 hidden group-hover/dropdown:block group-focus-within/dropdown:block z-50 min-w-full w-max"
+        class="absolute top-full left-0 z-50 mt-2 hidden w-max min-w-full group-focus-within/dropdown:block group-hover/dropdown:block"
         id={`dropdown-${info.id}`}
         role="menu"
       >
         <div
-          class="rounded-md bg-[#2e333d] p-3 shadow-lg ring-1 ring-black/20 min-w-[14rem]"
+          class="min-w-[14rem] rounded-md bg-[#2e333d] p-3 shadow-lg ring-1 ring-black/20"
         >
-          <div class="flex flex-col text-center items-center text-white gap-2">
+          <div class="flex flex-col items-center gap-2 text-center text-white">
             <span class="text-sm">音声収録のご依頼先</span>
             <div class="flex gap-2">
               {
@@ -74,7 +74,7 @@ const { info, style } = Astro.props;
                   ({ link, label, icon }) =>
                     link && (
                       <a
-                        class="inline-flex items-center justify-center rounded-full border-[2px] w-[57.6px] h-[57.6px] bg-transparent text-white border-[#2e333d] hover:bg-neutral-700 mb-0 ml-auto text-xl"
+                        class="mb-0 ml-auto inline-flex h-[57.6px] w-[57.6px] items-center justify-center rounded-full border-[2px] border-[#2e333d] bg-transparent text-xl text-white hover:bg-neutral-700"
                         href={link}
                         aria-label={`${info.cv}の${label}`}
                         target="_blank"
@@ -91,7 +91,7 @@ const { info, style } = Astro.props;
       </div>
     </div>
   </div>
-  <div class="flex-shrink-0 flex flex-row justify-center items-center gap-4">
+  <div class="flex flex-shrink-0 flex-row items-center justify-center gap-4">
     {
       info.audios.map((audio, index) => (
         <PlayButton

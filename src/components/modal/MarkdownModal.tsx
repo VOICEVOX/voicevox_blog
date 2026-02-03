@@ -29,7 +29,7 @@ export default function MarkdownModal({
           <header className="relative flex items-center justify-center border-b border-gray-300 px-6 py-4">
             <p className="text-xl font-bold text-neutral-900">{title}</p>
             <button
-              className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-neutral-100 text-2xl leading-none text-neutral-600 hover:bg-neutral-200"
+              className="absolute top-4 right-4 flex h-8 w-8 items-center justify-center rounded-full bg-neutral-100 text-2xl leading-none text-neutral-600 hover:bg-neutral-200"
               aria-label="close"
               onClick={hide}
               type="button"

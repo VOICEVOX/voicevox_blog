@@ -53,17 +53,17 @@ const componentPages = [
     <title>UI 確認用ページ</title>
   </head>
   <body class="p-8">
-    <h1 class="text-2xl font-bold mb-6">UI 確認用ページ</h1>
+    <h1 class="mb-6 text-2xl font-bold">UI 確認用ページ</h1>
 
     <section class="mb-8">
-      <h2 class="text-xl font-semibold mb-4">レイアウト</h2>
+      <h2 class="mb-4 text-xl font-semibold">レイアウト</h2>
       <ul class="space-y-2">
         {
           layoutPages.map((page) => (
             <li>
               <a
                 href={page.path}
-                class="text-[rgb(48,100,57)] hover:text-[rgb(38,80,47)] underline"
+                class="text-[rgb(48,100,57)] underline hover:text-[rgb(38,80,47)]"
               >
                 {page.label}
               </a>
@@ -74,14 +74,14 @@ const componentPages = [
     </section>
 
     <section class="mb-8">
-      <h2 class="text-xl font-semibold mb-4">モーダル</h2>
+      <h2 class="mb-4 text-xl font-semibold">モーダル</h2>
       <ul class="space-y-2">
         {
           modalPages.map((page) => (
             <li>
               <a
                 href={page.path}
-                class="text-[rgb(48,100,57)] hover:text-[rgb(38,80,47)] underline"
+                class="text-[rgb(48,100,57)] underline hover:text-[rgb(38,80,47)]"
               >
                 {page.label}
               </a>
@@ -92,14 +92,14 @@ const componentPages = [
     </section>
 
     <section class="mb-8">
-      <h2 class="text-xl font-semibold mb-4">コンポーネント</h2>
+      <h2 class="mb-4 text-xl font-semibold">コンポーネント</h2>
       <ul class="space-y-2">
         {
           componentPages.map((page) => (
             <li>
               <a
                 href={page.path}
-                class="text-[rgb(48,100,57)] hover:text-[rgb(38,80,47)] underline"
+                class="text-[rgb(48,100,57)] underline hover:text-[rgb(38,80,47)]"
               >
                 {page.label}
               </a>

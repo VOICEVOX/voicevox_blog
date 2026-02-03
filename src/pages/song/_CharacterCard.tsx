@@ -106,10 +106,10 @@ export default function CharacterCard({
   };
 
   return (
-    <div className="flex flex-col gap-2 items-center justify-center bg-neutral-800 rounded-lg w-40 py-3">
+    <div className="flex w-40 flex-col items-center justify-center gap-2 rounded-lg bg-neutral-800 py-3">
       <LinkToProductPage className="w-2/3">{children}</LinkToProductPage>
-      <div className="text-center flex flex-col gap-2">
-        <h3 className="text-base font-medium mb-0 text-white">
+      <div className="flex flex-col gap-2 text-center">
+        <h3 className="mb-0 text-base font-medium text-white">
           <LinkToProductPage style={{ color: "inherit" }}>
             {characterInfo.name}
           </LinkToProductPage>
@@ -117,10 +117,10 @@ export default function CharacterCard({
 
         {styleState && (
           <>
-            <div className="flex items-center justify-center mb-0 gap-2">
+            <div className="mb-0 flex items-center justify-center gap-2">
               {styleState.styles.length > 1 && (
                 <button
-                  className="relative flex items-center justify-center w-10 h-10 rounded-full border bg-transparent hover:opacity-90 text-xs"
+                  className="relative flex h-10 w-10 items-center justify-center rounded-full border bg-transparent text-xs hover:opacity-90"
                   style={coloredStyle}
                   type="button"
                   aria-label="前のサンプル音声へ"
@@ -142,7 +142,7 @@ export default function CharacterCard({
 
               {styleState.styles.length > 1 && (
                 <button
-                  className="relative flex items-center justify-center w-10 h-10 rounded-full border bg-transparent hover:opacity-90 text-xs"
+                  className="relative flex h-10 w-10 items-center justify-center rounded-full border bg-transparent text-xs hover:opacity-90"
                   style={coloredStyle}
                   type="button"
                   aria-label="次のサンプル音声へ"

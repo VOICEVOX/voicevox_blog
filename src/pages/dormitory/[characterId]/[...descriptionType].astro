@@ -47,7 +47,7 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
   imageAlt={characterInfo.dormitoryShareImage ? "" : undefined}
 >
   <div
-    class="bg-cover bg-fixed bg-blend-lighten bg-white/70"
+    class="bg-white/70 bg-cover bg-fixed bg-blend-lighten"
     style={{ backgroundImage: backgroundImageUrl }}
   >
     <main class="px-6 py-1 lg:px-12">
@@ -82,7 +82,7 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
               <div class="flex h-full flex-col">
                 <div class="flex items-start">
                   <h1
-                    class="mb-6 text-3xl font-extrabold leading-9 text-neutral-700"
+                    class="mb-6 text-3xl leading-9 font-extrabold text-neutral-700"
                     set:html={characterInfo.rubyName}
                   />
                   <a
@@ -104,7 +104,7 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
                   </a>
                 </div>
 
-                <div class="inline-flex mb-3 md:mb-0">
+                <div class="mb-3 inline-flex md:mb-0">
                   <TypeButton
                     characterInfo={characterInfo}
                     selectedType={descriptionType}
@@ -149,7 +149,7 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
                         ))}
                       </div>
 
-                      <div class="flex items-center -mx-1 px-1 pt-3">
+                      <div class="-mx-1 flex items-center px-1 pt-3">
                         <span
                           class="inline-flex w-28 items-center justify-center rounded-lg py-2 text-center text-white"
                           style={{ backgroundColor: characterInfo.color }}

@@ -9,10 +9,10 @@ const { frontmatter } = props;
 
 <Base {...frontmatter}>
   <main class="py-12">
-    <div class="max-w-5xl mx-auto px-4 qa-content">
+    <div class="qa-content mx-auto max-w-5xl px-4">
       {
         frontmatter.headerTitle && (
-          <h1 class="text-3xl leading-9 font-extrabold text-neutral-700 mb-6">
+          <h1 class="mb-6 text-3xl leading-9 font-extrabold text-neutral-700">
             {frontmatter.headerTitle}
           </h1>
         )

@@ -14,7 +14,7 @@ const { isDark: _isDark } = Astro.props;
 
 <div class="flex justify-center">
   <a
-    class="inline-flex items-center gap-1 border rounded px-2.5 py-1 text-xs mx-1 border-gray-400 dark:border-gray-600 bg-white dark:bg-neutral-800 text-black dark:text-white hover:bg-neutral-50 dark:hover:bg-neutral-700"
+    class="mx-1 inline-flex items-center gap-1 rounded border border-gray-400 bg-white px-2.5 py-1 text-xs text-black hover:bg-neutral-50 dark:border-gray-600 dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-700"
     href="https://github.com/VOICEVOX/voicevox"
     target="_blank"
     rel="noreferrer"
@@ -23,7 +23,7 @@ const { isDark: _isDark } = Astro.props;
     <span>GitHub</span>
   </a>
   <a
-    class="inline-flex items-center gap-1 border rounded px-2.5 py-1 text-xs mx-1 border-gray-400 dark:border-gray-600 bg-white dark:bg-neutral-800 text-black dark:text-white hover:bg-neutral-50 dark:hover:bg-neutral-700"
+    class="mx-1 inline-flex items-center gap-1 rounded border border-gray-400 bg-white px-2.5 py-1 text-xs text-black hover:bg-neutral-50 dark:border-gray-600 dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-700"
     href="https://x.com/voicevox_pj"
     target="_blank"
     rel="noreferrer"
@@ -32,12 +32,12 @@ const { isDark: _isDark } = Astro.props;
     <span>Official SNS</span>
   </a>
 </div>
-<div class="flex justify-center mt-2">
+<div class="mt-2 flex justify-center">
   <button
     {...{ [showPrivacyPolicyModalAttr]: "" }}
-    class="text-xs mx-1 dark:text-primary"
+    class="dark:text-primary mx-1 text-xs"
   >
     プライバシーポリシー
   </button>
-  <p class="text-xs mx-1 dark:text-neutral-100">© Hiroshiba Kazuyuki</p>
+  <p class="mx-1 text-xs dark:text-neutral-100">© Hiroshiba Kazuyuki</p>
 </div>

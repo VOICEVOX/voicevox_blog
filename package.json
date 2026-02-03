@@ -81,5 +81,8 @@
       "esbuild",
       "sharp"
     ]
+  },
+  "devDependencies": {
+    "prettier-plugin-tailwindcss": "^0.7.2"
   }
 }

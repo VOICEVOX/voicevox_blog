@@ -31,7 +31,7 @@ export default function NemoGuidanceModal() {
               VOICEVOX Nemo ご利用案内
             </p>
             <button
-              className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-neutral-100 text-2xl leading-none text-neutral-600 hover:bg-neutral-200"
+              className="absolute top-4 right-4 flex h-8 w-8 items-center justify-center rounded-full bg-neutral-100 text-2xl leading-none text-neutral-600 hover:bg-neutral-200"
               aria-label="close"
               onClick={hide}
               type="button"
@@ -51,7 +51,7 @@ export default function NemoGuidanceModal() {
                 VOICEVOX ソフトウェアをインストール
               </p>
               <button
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-2.5 text-base font-semibold text-black hover:brightness-90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                className="bg-primary focus:ring-primary inline-flex items-center justify-center gap-2 rounded-full px-6 py-2.5 text-base font-semibold text-black hover:brightness-90 focus:ring-2 focus:ring-offset-2 focus:outline-none"
                 onClick={() => {
                   $downloadModal.set(true);
                   sendEvent("download", "software");
@@ -84,7 +84,7 @@ export default function NemoGuidanceModal() {
               </h3>
               <p className="text-base text-neutral-700">Nemo エンジンを追加</p>
               <button
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-2.5 text-base font-semibold text-black hover:brightness-90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                className="bg-primary focus:ring-primary inline-flex items-center justify-center gap-2 rounded-full px-6 py-2.5 text-base font-semibold text-black hover:brightness-90 focus:ring-2 focus:ring-offset-2 focus:outline-none"
                 onClick={() => $nemoDownloadModal.set(true)}
                 type="button"
               >

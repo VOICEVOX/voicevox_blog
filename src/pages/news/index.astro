@@ -20,13 +20,13 @@ import { articles } from "./constants";
   noindex={true}
 >
   <main class="py-12">
-    <div class="max-w-5xl mx-auto px-4">
-      <h1 class="text-3xl font-bold text-neutral-950 mb-6">ニュース</h1>
+    <div class="mx-auto max-w-5xl px-4">
+      <h1 class="mb-6 text-3xl font-bold text-neutral-950">ニュース</h1>
       {
         articles.map((article) => (
           <div class="mb-3">
             <a
-              class="text-[rgb(48,100,57)] hover:text-[rgb(38,80,47)] underline"
+              class="text-[rgb(48,100,57)] underline hover:text-[rgb(38,80,47)]"
               href={withBaseUrl(`/news/${article.frontmatter.slug}`)}
             >
               {article.frontmatter.title}

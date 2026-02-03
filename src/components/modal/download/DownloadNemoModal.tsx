@@ -105,7 +105,7 @@ export default function DownloadNemoModal() {
               Nemo エンジン ダウンロード
             </p>
             <button
-              className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-neutral-100 text-2xl leading-none text-neutral-600 hover:bg-neutral-200"
+              className="absolute top-4 right-4 flex h-8 w-8 items-center justify-center rounded-full bg-neutral-100 text-2xl leading-none text-neutral-600 hover:bg-neutral-200"
               aria-label="close"
               onClick={hide}
               type="button"
@@ -162,7 +162,7 @@ export default function DownloadNemoModal() {
               download={downloadUrls[selectedOs][selectedMode]?.name}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-center rounded border border-transparent bg-primary px-4 py-2 text-base font-semibold text-black hover:brightness-90"
+              className="bg-primary inline-flex items-center justify-center rounded border border-transparent px-4 py-2 text-base font-semibold text-black hover:brightness-90"
             >
               ダウンロード
             </a>

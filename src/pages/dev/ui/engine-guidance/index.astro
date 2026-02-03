@@ -12,19 +12,19 @@ import "@/styles/global.css";
   </head>
   <body>
     <div style="padding: 2rem;">
-      <h1 class="text-2xl font-bold mb-6">
+      <h1 class="mb-6 text-2xl font-bold">
         EngineGuidanceSection 確認用ページ
       </h1>
 
       <section class="mb-8">
-        <h2 class="text-xl font-semibold mb-4">デフォルト</h2>
+        <h2 class="mb-4 text-xl font-semibold">デフォルト</h2>
         <EngineGuidanceSection />
       </section>
 
       <section class="mb-8">
-        <h2 class="text-xl font-semibold mb-4">isDark</h2>
+        <h2 class="mb-4 text-xl font-semibold">isDark</h2>
         {/* NOTE: `/song` に合わせて isDark の本文色は親側で白にしています。 */}
-        <div data-theme="dark" class="text-white bg-black">
+        <div data-theme="dark" class="bg-black text-white">
           <EngineGuidanceSection isDark />
         </div>
       </section>

@@ -172,5 +172,4 @@
   [data-theme="dark"] .markdown:not([data-theme="light"]) img {
     border-color: theme("colors.neutral.200");
   }
-
 }

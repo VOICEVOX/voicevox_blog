@@ -24,7 +24,7 @@ const voicevoxIconImageSrc = (await getImage({ src: voicevoxIconImage })).src;
   isNemo={true}
 >
   <main
-    class='bg-cover bg-top bg-no-repeat text-white [font-family:"LINE Seed",sans-serif] [text-rendering:optimizeLegibility]'
+    class='[font-family:"LINE Seed",sans-serif] bg-cover bg-top bg-no-repeat text-white [text-rendering:optimizeLegibility]'
     style={{ backgroundImage: `url(${backgroundImageSrc})` }}
   >
     <section class="py-0" data-testid="first-view">
@@ -46,11 +46,11 @@ const voicevoxIconImageSrc = (await getImage({ src: voicevoxIconImage })).src;
         <div
           class="flex w-full max-w-sm flex-col items-center justify-center text-center lg:max-w-lg lg:items-start lg:text-left"
         >
-          <h1 class="mb-6 text-4xl font-semibold leading-[1.125] lg:text-5xl">
+          <h1 class="mb-6 text-4xl leading-[1.125] font-semibold lg:text-5xl">
             VOICEVOX Nemo
           </h1>
           <h2
-            class="mb-6 w-full text-2xl font-semibold leading-[1.125] lg:text-3xl"
+            class="mb-6 w-full text-2xl leading-[1.125] font-semibold lg:text-3xl"
           >
             あらゆる場面に対応する
             <br />
@@ -67,7 +67,7 @@ const voicevoxIconImageSrc = (await getImage({ src: voicevoxIconImage })).src;
             class="mb-1 flex items-center justify-center gap-1 lg:justify-start"
           >
             <span
-              class="inline-block size-5 bg-center bg-no-repeat bg-contain"
+              class="inline-block size-5 bg-contain bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${voicevoxIconImageSrc})` }}
             ></span>
             <span>Powered by VOICEVOX</span>
@@ -76,7 +76,7 @@ const voicevoxIconImageSrc = (await getImage({ src: voicevoxIconImage })).src;
           <div class="mt-4 flex gap-4">
             <button
               {...{ [showNemoGuidanceModalAttr]: "" }}
-              class="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-4 py-1.5 text-xs font-medium text-emerald-950 md:h-10 md:px-5 md:py-2 md:text-base xl:h-12 xl:px-6 xl:py-2.5 xl:text-xl"
+              class="bg-primary inline-flex items-center justify-center gap-2 rounded-full px-4 py-1.5 text-xs font-medium text-emerald-950 md:h-10 md:px-5 md:py-2 md:text-base xl:h-12 xl:px-6 xl:py-2.5 xl:text-xl"
             >
               <FontAwesomeIcon icon={faDownload} />
               <span class="font-semibold">ダウンロード</span>
@@ -142,7 +142,7 @@ const voicevoxIconImageSrc = (await getImage({ src: voicevoxIconImage })).src;
         {
           // 内部で表示するドロップメニューが兄弟要素で隠れてしまうのでz-indexを指定している
           speakerKeys.map((key, i) => (
-            <div class="w-full max-w-sm mx-auto md:max-w-none md:mx-0">
+            <div class="mx-auto w-full max-w-sm md:mx-0 md:max-w-none">
               <SpeakerComponent
                 info={getSpeakerInfo(key)}
                 style={{ zIndex: speakerKeys.length - i }}

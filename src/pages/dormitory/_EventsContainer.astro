@@ -9,10 +9,12 @@ interface Props {
 const { id } = Astro.props;
 ---
 
-<div class="mx-auto flex max-w-5xl flex-col items-center bg-white py-12 text-center">
+<div
+  class="mx-auto flex max-w-5xl flex-col items-center bg-white py-12 text-center"
+>
   <h2
     id={id}
-    class="pt-[calc(3.25rem+1rem)] -mt-[calc(3.25rem+1rem)] mb-6 text-2xl font-extrabold leading-7 text-neutral-700"
+    class="-mt-[calc(3.25rem+1rem)] mb-6 pt-[calc(3.25rem+1rem)] text-2xl leading-7 font-extrabold text-neutral-700"
   >
     <a href={`#${id}`} class="text-black"> 過去のイベント </a>
   </h2>
