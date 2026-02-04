@@ -186,24 +186,24 @@ export default function DownloadModal() {
         role="presentation"
       />
       <div className="pointer-events-none fixed inset-0 box-border flex items-center justify-center p-4">
-        <div className="pointer-events-auto flex max-h-full w-full max-w-[670px] flex-col overflow-hidden rounded-md bg-white shadow-2xl">
-          <header className="relative flex items-center justify-center border-b border-gray-300 px-6 py-4">
-            <p className="text-xl font-bold text-neutral-900">
+        <div className="pointer-events-auto flex max-h-full w-full max-w-xl flex-col overflow-hidden rounded-lg bg-white shadow-xl">
+          <header className="relative flex items-center justify-center border-b border-gray-200 bg-neutral-50 px-6 py-5">
+            <p className="text-2xl font-bold text-black">
               VOICEVOX ダウンロード
             </p>
             <button
-              className="absolute top-4 right-4 flex h-8 w-8 items-center justify-center rounded-full bg-neutral-100 text-2xl leading-none text-neutral-600 hover:bg-neutral-200"
+              className="absolute top-1/2 right-5 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full text-neutral-700 transition-colors hover:text-neutral-900"
               aria-label="close"
               onClick={hide}
               type="button"
             >
-              <span aria-hidden="true" className="text-xl leading-none">
+              <span aria-hidden="true" className="text-2xl leading-none">
                 ×
               </span>
             </button>
           </header>
 
-          <section className="min-h-0 flex-1 space-y-6 overflow-y-auto px-6 py-6">
+          <section className="min-h-0 flex-1 space-y-4 overflow-y-auto px-6 py-8">
             <Selector
               label="OS"
               selected={selectedOs}
@@ -220,11 +220,11 @@ export default function DownloadModal() {
                 setSelected={(mode) => selectMode(selectedOs, mode)}
                 candidates={modeAvailables[selectedOs]}
               />
-              <p className="text-center text-sm text-neutral-600">
+              <p className="text-center text-xs text-neutral-800">
                 ※ GPUモードの方が快適ですが、利用するためには
                 <a
                   href={withBaseUrl("/qa/")}
-                  className="text-[rgb(48,100,57)] underline hover:text-[rgb(38,80,47)]"
+                  className="text-emerald-700 underline hover:text-emerald-800"
                 >
                   対応するGPU
                 </a>
@@ -243,16 +243,16 @@ export default function DownloadModal() {
                   packageAvailables[selectedOs][selectedOrDefaultMode]!
                 }
               />
-              <p className="text-center text-sm text-neutral-600">
+              <p className="text-center text-xs text-neutral-800">
                 ※ 推奨パッケージはインストーラー版です
               </p>
             </div>
           </section>
 
-          <footer className="flex items-center justify-end gap-3 border-t border-gray-300 px-6 py-4">
+          <footer className="flex items-center justify-end gap-3 border-t border-gray-200 bg-neutral-50 px-6 py-5">
             <a
               href={withBaseUrl("/term/")}
-              className="inline-flex items-center justify-center rounded border border-gray-300 bg-white px-4 py-2 text-base font-normal text-black hover:bg-neutral-50"
+              className="inline-flex items-center justify-center rounded border border-gray-300 bg-white px-4 py-2 text-base font-normal text-black shadow-sm hover:border-gray-400 hover:bg-neutral-50"
             >
               利用規約
             </a>
@@ -265,7 +265,7 @@ export default function DownloadModal() {
               }
               target="_blank"
               rel="noreferrer"
-              className="bg-primary inline-flex items-center justify-center rounded border border-transparent px-4 py-2 text-base font-semibold text-black hover:brightness-90"
+              className="bg-primary focus:ring-primary/50 inline-flex items-center justify-center rounded border border-transparent px-4 py-2 text-base font-semibold text-black hover:brightness-95 focus:ring-2 focus:ring-offset-2"
             >
               ダウンロード
             </a>
