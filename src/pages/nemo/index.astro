@@ -24,15 +24,15 @@ const voicevoxIconImageSrc = (await getImage({ src: voicevoxIconImage })).src;
   isNemo={true}
 >
   <main
-    class='[font-family:"LINE Seed",sans-serif] bg-cover bg-top bg-no-repeat text-white [text-rendering:optimizeLegibility]'
+    class="bg-cover bg-top bg-no-repeat font-[LINE_Seed] text-white [text-rendering:optimizeLegibility]"
     style={{ backgroundImage: `url(${backgroundImageSrc})` }}
   >
     <section class="py-0" data-testid="first-view">
       <div
-        class="mx-auto flex w-full max-w-6xl flex-col-reverse items-center justify-center gap-12 px-6 py-12 lg:h-[calc(100vh-3.25rem)] lg:flex-row-reverse lg:items-stretch lg:py-0"
+        class="mx-auto flex max-w-5xl flex-col-reverse items-center justify-center gap-16 px-6 py-12 lg:h-[calc(100vh-3.25rem)] lg:flex-row-reverse lg:items-stretch lg:py-0 xl:max-w-6xl"
       >
         <div
-          class="flex w-full max-w-2xl flex-1 items-center justify-center drop-shadow-2xl"
+          class="flex max-w-2xl flex-1 items-center justify-center [filter:drop-shadow(20px_20px_15px_rgba(0,0,0,0.5))] xl:max-w-3xl"
         >
           <Image
             src={teaserImage}
@@ -44,13 +44,15 @@ const voicevoxIconImageSrc = (await getImage({ src: voicevoxIconImage })).src;
         </div>
 
         <div
-          class="flex w-full max-w-sm flex-col items-center justify-center text-center lg:max-w-lg lg:items-start lg:text-left"
+          class="flex max-w-sm flex-col items-center justify-center text-center lg:max-w-md lg:items-start lg:text-left xl:max-w-xl"
         >
-          <h1 class="mb-6 text-4xl leading-[1.125] font-semibold lg:text-5xl">
+          <h1
+            class="mb-6 text-4xl leading-[1.125] font-semibold lg:text-4xl xl:text-5xl"
+          >
             VOICEVOX Nemo
           </h1>
           <h2
-            class="mb-6 w-full text-2xl leading-[1.125] font-semibold lg:text-3xl"
+            class="mb-6 w-full text-2xl leading-[1.125] font-semibold lg:text-2xl xl:text-3xl"
           >
             あらゆる場面に対応する
             <br />
@@ -76,14 +78,14 @@ const voicevoxIconImageSrc = (await getImage({ src: voicevoxIconImage })).src;
           <div class="mt-4 flex gap-4">
             <button
               {...{ [showNemoGuidanceModalAttr]: "" }}
-              class="bg-primary inline-flex items-center justify-center gap-2 rounded-full px-4 py-1.5 text-xs font-medium text-emerald-950 md:h-10 md:px-5 md:py-2 md:text-base xl:h-12 xl:px-6 xl:py-2.5 xl:text-xl"
+              class="bg-primary inline-flex items-center justify-center gap-2 rounded-full px-4 py-1.5 text-xs font-medium text-emerald-950 md:h-10 md:px-5 md:py-2 md:text-base lg:h-12 lg:px-6 lg:py-2.5 lg:text-lg"
             >
               <FontAwesomeIcon icon={faDownload} />
               <span class="font-semibold">ダウンロード</span>
             </button>
             <button
               {...{ [showNemoTermModalAttr]: "" }}
-              class="inline-flex items-center justify-center rounded-full bg-white px-4 py-1.5 text-xs text-neutral-950 md:h-10 md:px-5 md:py-2 md:text-base xl:h-12 xl:px-6 xl:py-2.5 xl:text-xl"
+              class="inline-flex items-center justify-center rounded-full bg-white px-4 py-1.5 text-xs text-neutral-950 md:h-10 md:px-5 md:py-2 md:text-base lg:h-12 lg:px-6 lg:py-2.5 lg:text-lg"
             >
               <span>利用規約</span>
             </button>

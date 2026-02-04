@@ -217,7 +217,7 @@ export default function Header({
         role="navigation"
         aria-label="main navigation"
       >
-        <div className="mx-auto flex h-[52px] max-w-screen-xl items-stretch justify-between">
+        <div className="mx-auto flex h-[52px] items-stretch justify-between">
           <div className="flex min-w-0 items-stretch">
             <a
               href={withBaseUrl("/")}
@@ -283,7 +283,7 @@ export default function Header({
                 : "border-gray-200 bg-white text-neutral-900"
             }`}
           >
-            <div className="mx-auto flex max-w-screen-xl flex-col py-2">
+            <div className="mx-auto flex flex-col py-2">
               {menus.map(({ Component, hideType }, i) => (
                 <Component
                   key={i}
