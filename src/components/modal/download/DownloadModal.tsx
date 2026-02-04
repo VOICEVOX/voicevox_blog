@@ -181,7 +181,7 @@ export default function DownloadModal() {
   return (
     <div className="fixed inset-0 z-50" role="dialog" data-theme="light">
       <div
-        className="fixed inset-0 bg-black/50"
+        className="fixed inset-0 bg-black/75"
         onClick={hide}
         role="presentation"
       />

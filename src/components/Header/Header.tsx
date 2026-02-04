@@ -163,7 +163,7 @@ export default function Header({
           className={`flex items-center self-stretch px-3 ${className ?? ""}`}
         >
           <button
-            className="bg-primary hover:bg-primary/90 inline-flex items-center gap-1.5 rounded-full px-5 py-2 text-base leading-6 font-semibold text-black"
+            className="bg-primary hover:bg-primary/90 inline-flex flex-shrink-0 items-center gap-1.5 rounded-full px-5 py-2 text-base leading-6 font-semibold whitespace-nowrap text-black"
             onClick={() => {
               if (!isNemo) {
                 $downloadModal.set(true);
@@ -217,14 +217,14 @@ export default function Header({
         role="navigation"
         aria-label="main navigation"
       >
-        <div className="mx-auto flex h-[52px] max-w-screen-xl items-center justify-between">
-          <div className="flex min-w-0 items-center">
+        <div className="mx-auto flex h-[52px] max-w-screen-xl items-stretch justify-between">
+          <div className="flex min-w-0 items-stretch">
             <a
               href={withBaseUrl("/")}
               className={`flex items-center gap-2 self-stretch px-3 whitespace-nowrap ${menuItemHoverClassName}`}
             >
               <img src={iconUrl} alt="" width="28" height="28" />
-              <span className="text-base font-bold">VOICEVOX</span>
+              <span className="text-base text-xl font-bold">VOICEVOX</span>
             </a>
 
             {menus.map(({ Component, hideType }, i) => (
@@ -232,15 +232,15 @@ export default function Header({
             ))}
           </div>
 
-          <div className="flex items-center">
-            <div className="hidden items-center lg:flex">
+          <div className="flex items-stretch">
+            <div className="hidden items-stretch lg:flex">
               {menus.map(({ Component, hideType }, i) => (
                 <Component key={i} className={desktopMenuClassName(hideType)} />
               ))}
             </div>
 
             <button
-              className={`navbar-burger relative ml-1 inline-flex h-10 w-10 items-center justify-center lg:hidden ${
+              className={`navbar-burger relative ml-1 inline-flex h-10 w-10 items-center justify-center self-center lg:hidden ${
                 isBurgerActive ? "opacity-80" : ""
               }`}
               aria-label="menu"

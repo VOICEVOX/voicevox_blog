@@ -24,12 +24,10 @@ export default function StyleDropdown({
   setSelectedStyle: (style: string) => void;
   characterName: string;
 } & React.HTMLAttributes<HTMLDivElement>) {
-  const [isOpenDropdown, setIsOpenDropdown] = useState(false);
   const id = useId();
 
   const isUp = className?.split(/\s+/).includes("is-up") ?? false;
   const forceOpen = className?.split(/\s+/).includes("is-active") ?? false;
-  const isOpen = forceOpen || isOpenDropdown;
   const additionalClasses =
     className
       ?.replace(/\bis-(up|active)\b/g, "")
@@ -37,20 +35,14 @@ export default function StyleDropdown({
       .replace(/\s+/g, " ") || "";
 
   return (
-    <div
-      className={`relative inline-block ${additionalClasses}`}
-      onMouseEnter={() => setIsOpenDropdown(true)}
-      onMouseLeave={() => setIsOpenDropdown(false)}
-    >
+    <div className={`group relative inline-block ${additionalClasses}`}>
       <div>
         <button
           className="focus-visible:ring-primary/40 inline-flex items-center gap-1.5 rounded-full border border-gray-300 bg-white px-4 py-2 text-base font-medium text-neutral-900 shadow-sm hover:bg-neutral-50 focus:outline-none focus-visible:ring-2"
           aria-haspopup="true"
           aria-controls={id}
-          aria-expanded={isOpen}
+          aria-expanded={forceOpen}
           type="button"
-          onFocus={() => setIsOpenDropdown(true)}
-          onBlur={() => setIsOpenDropdown(false)}
           aria-label={`${characterName}のサンプルボイスのスタイルを選択`}
         >
           <span className="whitespace-nowrap">{selectedStyle}</span>
@@ -59,39 +51,36 @@ export default function StyleDropdown({
           </span>
         </button>
       </div>
-      {isOpen && (
-        <div
-          className={`absolute left-0 z-50 w-max min-w-full ${
-            isUp ? "bottom-full mb-2" : "top-full mt-2"
-          }`}
-          role="menu"
-          id={id}
-        >
-          <div className="rounded-md bg-white p-1 shadow-lg ring-1 ring-black/5">
-            {styles.map((style, index) => {
-              const isSelected = style == selectedStyle;
-              return (
-                <button
-                  key={index}
-                  type="button"
-                  role="menuitem"
-                  className={`block w-full rounded px-3 py-2 text-left text-sm whitespace-nowrap ${
-                    isSelected
-                      ? "bg-primary hover:bg-primary/90 font-semibold text-neutral-900"
-                      : "text-neutral-900 hover:bg-neutral-100"
-                  }`}
-                  onMouseDown={() => {
-                    setSelectedStyle(style);
-                    setIsOpenDropdown(false);
-                  }}
-                >
-                  {style}
-                </button>
-              );
-            })}
-          </div>
+      <div
+        className={`absolute left-0 z-50 w-max min-w-full ${
+          isUp ? "bottom-full pb-2" : "top-full pt-2"
+        } ${forceOpen ? "block" : "hidden group-hover:block"}`}
+        role="menu"
+        id={id}
+      >
+        <div className="rounded-md bg-white p-1 shadow-lg ring-1 ring-black/5">
+          {styles.map((style, index) => {
+            const isSelected = style == selectedStyle;
+            return (
+              <button
+                key={index}
+                type="button"
+                role="menuitem"
+                className={`block w-full rounded px-3 py-1.5 text-left text-sm whitespace-nowrap ${
+                  isSelected
+                    ? "bg-primary hover:bg-primary/90 font-semibold text-neutral-900"
+                    : "text-neutral-900 hover:bg-neutral-100"
+                }`}
+                onMouseDown={() => {
+                  setSelectedStyle(style);
+                }}
+              >
+                {style}
+              </button>
+            );
+          })}
         </div>
-      )}
+      </div>
     </div>
   );
 }
