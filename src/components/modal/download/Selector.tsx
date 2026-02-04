@@ -22,7 +22,7 @@ export default function Selector<T extends string>({
               key={index}
               className={
                 isSelected
-                  ? "bg-emerald-400 focus:ring-primary/50 inline-flex items-center justify-center rounded-full border-none px-6 py-2.5 text-base font-semibold text-black hover:brightness-95 focus:ring-2 focus:ring-offset-2 focus:outline-none"
+                  ? "focus:ring-primary/50 inline-flex items-center justify-center rounded-full border-none bg-emerald-400 px-6 py-2.5 text-base font-semibold text-black hover:brightness-95 focus:ring-2 focus:ring-offset-2 focus:outline-none"
                   : "focus:ring-primary/50 inline-flex items-center justify-center rounded-full border border-gray-300 bg-white px-6 py-2.5 text-base font-normal text-black shadow-sm hover:border-gray-400 hover:bg-neutral-50 focus:ring-2 focus:ring-offset-2 focus:outline-none"
               }
               onClick={() => setSelected(candidate)}
