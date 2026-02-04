@@ -20,12 +20,12 @@ export default function NemoGuidanceModal() {
   return (
     <div className="fixed inset-0 z-50" role="dialog" data-theme="light">
       <div
-        className="fixed inset-0 bg-black/75"
+        className="fixed inset-0 bg-black/80"
         onClick={hide}
         role="presentation"
       />
-      <div className="fixed inset-0 flex items-center justify-center p-4">
-        <div className="w-full max-w-[670px] rounded-md bg-white shadow-2xl">
+      <div className="pointer-events-none fixed inset-0 flex items-center justify-center p-4">
+        <div className="pointer-events-auto w-full max-w-[670px] rounded-md bg-white shadow-2xl">
           <header className="relative flex items-center justify-center border-b border-gray-300 px-6 py-4">
             <p className="text-xl font-bold text-neutral-900">
               VOICEVOX Nemo ご利用案内
