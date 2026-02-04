@@ -221,7 +221,7 @@ export default function Header({
           <div className="flex min-w-0 items-stretch">
             <a
               href={withBaseUrl("/")}
-              className={`flex items-center gap-2 self-stretch px-3 whitespace-nowrap ${menuItemHoverClassName}`}
+              className={`flex items-center gap-3 self-stretch px-3 whitespace-nowrap ${menuItemHoverClassName}`}
             >
               <img src={iconUrl} alt="" width="28" height="28" />
               <span className="text-base text-xl font-bold">VOICEVOX</span>

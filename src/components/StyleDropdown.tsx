@@ -24,6 +24,7 @@ export default function StyleDropdown({
   setSelectedStyle: (style: string) => void;
   characterName: string;
 } & React.HTMLAttributes<HTMLDivElement>) {
+  const [isOpen, setIsOpen] = useState(false);
   const id = useId();
 
   const isUp = className?.split(/\s+/).includes("is-up") ?? false;
@@ -35,7 +36,11 @@ export default function StyleDropdown({
       .replace(/\s+/g, " ") || "";
 
   return (
-    <div className={`group relative inline-block ${additionalClasses}`}>
+    <div
+      className={`group relative inline-block ${additionalClasses}`}
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+    >
       <div>
         <button
           className="focus-visible:ring-primary/40 inline-flex items-center gap-1.5 rounded-full border border-gray-300 bg-white px-4 py-2 text-base font-medium text-neutral-900 shadow-sm hover:bg-neutral-50 focus:outline-none focus-visible:ring-2"
@@ -54,7 +59,7 @@ export default function StyleDropdown({
       <div
         className={`absolute left-0 z-50 w-max min-w-full ${
           isUp ? "bottom-full pb-2" : "top-full pt-2"
-        } ${forceOpen ? "block" : "hidden group-hover:block"}`}
+        } ${forceOpen || isOpen ? "block" : "hidden"}`}
         role="menu"
         id={id}
       >
@@ -73,6 +78,7 @@ export default function StyleDropdown({
                 }`}
                 onMouseDown={() => {
                   setSelectedStyle(style);
+                  setIsOpen(false);
                 }}
               >
                 {style}
