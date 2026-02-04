@@ -24,8 +24,8 @@ export default function MarkdownModal({
         onClick={hide}
         role="presentation"
       />
-      <div className="pointer-events-none fixed inset-0 flex items-center justify-center p-4">
-        <div className="pointer-events-auto w-full max-w-[670px] rounded-md bg-white shadow-2xl">
+      <div className="pointer-events-none fixed inset-0 box-border flex items-center justify-center p-4">
+        <div className="pointer-events-auto flex max-h-full w-full max-w-[670px] flex-col overflow-hidden rounded-md bg-white shadow-2xl">
           <header className="relative flex items-center justify-center border-b border-gray-300 px-6 py-4">
             <p className="text-xl font-bold text-neutral-900">{title}</p>
             <button
@@ -39,7 +39,7 @@ export default function MarkdownModal({
               </span>
             </button>
           </header>
-          <section className="px-6 py-6">
+          <section className="min-h-0 flex-1 overflow-y-auto px-6 py-6">
             <div
               className="markdown"
               data-theme="light"
