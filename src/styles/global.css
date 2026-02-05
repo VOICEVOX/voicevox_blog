@@ -60,6 +60,10 @@
 
 @theme {
   --color-primary: #a5d4ad;
+  --color-link: rgb(48, 100, 57);
+  --color-link-hover: rgb(38, 80, 47);
+  --color-link-dark: rgb(165, 212, 173);
+  --color-link-dark-hover: rgb(185, 232, 193);
   --font-sans: "Unhinted Rounded M+ 1p", ui-sans-serif, system-ui, sans-serif;
 }
 
@@ -141,12 +145,12 @@
   }
 
   .markdown a {
-    color: rgb(48, 100, 57);
+    color: theme("colors.link");
     text-decoration: underline;
   }
 
   .markdown a:hover {
-    color: rgb(38, 80, 47);
+    color: theme("colors.link-hover");
   }
 
   .markdown code {
@@ -184,11 +188,11 @@
   }
 
   [data-theme="dark"] .markdown:not([data-theme="light"]) a {
-    color: rgb(165, 212, 173);
+    color: theme("colors.link-dark");
   }
 
   [data-theme="dark"] .markdown:not([data-theme="light"]) a:hover {
-    color: rgb(185, 232, 193);
+    color: theme("colors.link-dark-hover");
   }
 
   [data-theme="dark"] .markdown:not([data-theme="light"]) code,
