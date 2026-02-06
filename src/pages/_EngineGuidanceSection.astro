@@ -1,10 +1,9 @@
 ---
 interface Props {
   class?: string;
-  isDark?: boolean; // Nemoやソングのページかどうか
 }
 
-const { class: className, isDark } = Astro.props;
+const { class: className } = Astro.props;
 ---
 
 <section class="py-12">
@@ -13,12 +12,7 @@ const { class: className, isDark } = Astro.props;
       id="engine"
       class="-mt-[calc(3.25rem+1rem)] mb-6 pt-[calc(3.25rem+1rem)] text-3xl font-bold"
     >
-      <a
-        href="#engine"
-        class={isDark
-          ? "text-white dark:text-white"
-          : "text-neutral-950 dark:text-neutral-950"}
-      >
+      <a href="#engine" class="text-neutral-950 dark:text-white">
         音声合成エンジン
       </a>
     </h2>

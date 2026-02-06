@@ -138,18 +138,16 @@ const googleAnalyticsSrc = `https://www.googletagmanager.com/gtag/js?id=${GA_TRA
   </head>
 
   <body
-    class={`flex flex-col min-h-screen ${isDark ? "bg-zinc-900 text-white" : "bg-white text-black"}`}
+    class="flex min-h-screen flex-col bg-white text-black dark:bg-zinc-900 dark:text-white"
   >
-    <Header defaultHide={defaultHideHeader} isDark={isDark} isNemo={isNemo} />
+    <Header defaultHide={defaultHideHeader} isNemo={isNemo} />
 
     <div class="flex-grow">
       <slot />
     </div>
 
-    <footer
-      class={`pt-12 pb-24 px-6 ${isDark ? "bg-zinc-950" : "bg-neutral-50"}`}
-    >
-      <Footer isDark={isDark} />
+    <footer class="bg-neutral-50 px-6 pt-12 pb-24 dark:bg-zinc-950">
+      <Footer />
     </footer>
 
     <Modals />

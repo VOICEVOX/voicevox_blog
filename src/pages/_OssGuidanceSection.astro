@@ -1,13 +1,12 @@
 ---
 interface Props {
   class?: string;
-  isDark?: boolean; // Nemoやソングのページかどうか
 }
 
 import FontAwesomeIcon from "@/components/FontAwesomeIcon.astro";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
-const { class: className, isDark } = Astro.props;
+const { class: className } = Astro.props;
 ---
 
 <section class="py-12">
@@ -16,12 +15,7 @@ const { class: className, isDark } = Astro.props;
       id="oss"
       class="-mt-[calc(3.25rem+1rem)] mb-6 pt-[calc(3.25rem+1rem)] text-3xl font-bold"
     >
-      <a
-        href="#oss"
-        class={isDark
-          ? "text-white dark:text-white"
-          : "text-neutral-950 dark:text-neutral-950"}
-      >
+      <a href="#oss" class="text-neutral-950 dark:text-white">
         開発に参加するには
       </a>
     </h2>

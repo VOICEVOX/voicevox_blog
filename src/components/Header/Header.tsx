@@ -9,20 +9,16 @@ export const hideHeaderAttr = "data-voicevox-hide-header";
 
 export default function Header({
   defaultHide,
-  isDark,
   isNemo,
   iconUrl,
 }: {
   defaultHide?: boolean; // アクセスした直後にヘッダーを隠すか
-  isDark?: boolean;
   isNemo?: boolean;
   iconUrl: string;
 }) {
   const [isBurgerActive, setIsBurgerActive] = useState(false);
   const [showingHeader, setShowingHeader] = useState(!defaultHide);
-  const menuItemHoverClassName = isDark
-    ? "hover:bg-white/10"
-    : "hover:bg-neutral-100";
+  const menuItemHoverClassName = "hover:bg-neutral-100 dark:hover:bg-white/10";
   const menuItemBaseClassName = `flex items-center self-stretch px-3 text-base whitespace-nowrap ${menuItemHoverClassName}`;
   const menuItemBaseMobilePanelClassName = `flex items-center px-3 py-2 text-base whitespace-nowrap ${menuItemHoverClassName}`;
 
@@ -209,11 +205,7 @@ export default function Header({
       <nav
         className={`navbar fixed top-0 left-0 z-40 w-full ${
           showingHeader ? "" : "hidden"
-        } ${defaultHide ? "with-animation" : ""} ${
-          isDark
-            ? "bg-black text-white shadow-[0_2px_0_0_hsl(0_0%_4%)]"
-            : "bg-white text-neutral-900 shadow-[0_2px_0_0_rgb(243,244,246)]"
-        }`}
+        } ${defaultHide ? "with-animation" : ""} bg-white text-neutral-900 shadow-[0_2px_0_0_rgb(243,244,246)] dark:bg-black dark:text-white dark:shadow-[0_2px_0_0_hsl(0_0%_4%)]`}
         role="navigation"
         aria-label="main navigation"
       >
