@@ -31,32 +31,20 @@ import zundamonAudio3 from "@/assets/talk-audios/zundamon-normal-003.wav";
         <h2 class="mb-4 text-xl font-semibold">サイズバリエーション</h2>
         <div class="flex items-center gap-4">
           <div>
-            <p class="mb-2">is-small</p>
-            <PlayButton
-              audio={zundamonAudio1}
-              name="ずんだもん小"
-              class="is-small"
-            />
+            <p class="mb-2">sm</p>
+            <PlayButton audio={zundamonAudio1} name="ずんだもん小" size="sm" />
           </div>
           <div>
             <p class="mb-2">デフォルト</p>
             <PlayButton audio={zundamonAudio1} name="ずんだもん通常" />
           </div>
           <div>
-            <p class="mb-2">is-medium</p>
-            <PlayButton
-              audio={zundamonAudio1}
-              name="ずんだもん中"
-              class="is-medium"
-            />
+            <p class="mb-2">md</p>
+            <PlayButton audio={zundamonAudio1} name="ずんだもん中" size="md" />
           </div>
           <div>
-            <p class="mb-2">is-large</p>
-            <PlayButton
-              audio={zundamonAudio1}
-              name="ずんだもん大"
-              class="is-large"
-            />
+            <p class="mb-2">lg</p>
+            <PlayButton audio={zundamonAudio1} name="ずんだもん大" size="lg" />
           </div>
         </div>
       </section>

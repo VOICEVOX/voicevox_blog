@@ -32,7 +32,7 @@ export function StyleDropdownOpened({ styles }: { styles: string[] }) {
       selectedStyle={selectedStyle}
       setSelectedStyle={setSelectedStyle}
       characterName="デモ"
-      className="is-active"
+      forceOpen={true}
     />
   );
 }

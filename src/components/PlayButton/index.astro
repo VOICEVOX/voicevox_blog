@@ -5,11 +5,12 @@ interface Props {
   audio: string;
   name: string;
   color?: string;
+  size?: "sm" | "md" | "lg";
   class?: string;
   style?: Record<string, string>;
 }
 
-const { audio, name, color, class: className, style } = Astro.props;
+const { audio, name, color, size, class: className, style } = Astro.props;
 ---
 
 <PlayButton
@@ -17,6 +18,7 @@ const { audio, name, color, class: className, style } = Astro.props;
   url={audio}
   name={name}
   color={color}
+  size={size}
   className={className}
   style={style}
 />

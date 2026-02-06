@@ -17,27 +17,25 @@ export default function StyleDropdown({
   selectedStyle,
   setSelectedStyle,
   characterName,
+  direction = "down",
+  forceOpen = false,
   className,
 }: {
   styles: string[];
   selectedStyle: string;
   setSelectedStyle: (style: string) => void;
   characterName: string;
+  direction?: "up" | "down";
+  forceOpen?: boolean;
 } & React.HTMLAttributes<HTMLDivElement>) {
   const [isOpen, setIsOpen] = useState(false);
   const id = useId();
 
-  const isUp = className?.split(/\s+/).includes("is-up") ?? false;
-  const forceOpen = className?.split(/\s+/).includes("is-active") ?? false;
-  const additionalClasses =
-    className
-      ?.replace(/\bis-(up|active)\b/g, "")
-      .trim()
-      .replace(/\s+/g, " ") || "";
+  const isUp = direction === "up";
 
   return (
     <div
-      className={`group relative inline-block ${additionalClasses}`}
+      className={`group relative inline-block ${className || ""}`}
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)}
     >

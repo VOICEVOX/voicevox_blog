@@ -52,7 +52,8 @@ export default function AudioSample({
             selectedStyle={selectedStyle}
             setSelectedStyle={setSelectedStyle}
             characterName={characterInfo.name}
-            className="is-up mt-2"
+            direction="up"
+            className="mt-2"
           />
         )}
       </div>

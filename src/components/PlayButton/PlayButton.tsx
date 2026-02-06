@@ -23,12 +23,10 @@ export function useDebounce<T>(value: T, delay: number) {
   return debouncedValue;
 }
 
-const getSizeClasses = (className?: string) => {
-  if (className?.includes("is-small")) return "w-10 h-10 border text-xs";
-  if (className?.includes("is-medium"))
-    return "w-[57.6px] h-[57.6px] border-[2px] text-xl";
-  if (className?.includes("is-large"))
-    return "w-[67.2px] h-[67.2px] border-[2.4px] text-2xl";
+const getSizeClasses = (size?: "sm" | "md" | "lg") => {
+  if (size === "sm") return "w-10 h-10 border text-xs";
+  if (size === "md") return "w-[57.6px] h-[57.6px] border-[2px] text-xl";
+  if (size === "lg") return "w-[67.2px] h-[67.2px] border-[2.4px] text-2xl";
   return "w-12 h-12 border-[1.8px] text-base";
 };
 
@@ -36,12 +34,14 @@ export default function PlayButton({
   url,
   name,
   color,
+  size,
   className,
   style,
 }: {
   url: string;
   name: string;
   color?: string; // 無指定の場合はprimary
+  size?: "sm" | "md" | "lg";
 } & React.HTMLAttributes<HTMLButtonElement>) {
   const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -117,16 +117,14 @@ export default function PlayButton({
   const colorClasses = !color
     ? "border-primary text-primary bg-transparent hover:bg-primary/10"
     : "";
-  const sizeClasses = getSizeClasses(className);
-  const additionalClasses =
-    className?.replace(/is-(small|medium|large)/g, "").trim() || "";
+  const sizeClasses = getSizeClasses(size);
   const finalClassName =
-    `${baseClasses} ${sizeClasses} ${colorClasses} ${additionalClasses}`.trim();
+    `${baseClasses} ${sizeClasses} ${colorClasses} ${className || ""}`.trim();
 
-  const getSpinnerSize = (className?: string) => {
-    if (className?.includes("is-small")) return "w-4 h-4";
-    if (className?.includes("is-medium")) return "w-5 h-5";
-    if (className?.includes("is-large")) return "w-6 h-6";
+  const getSpinnerSize = (size?: "sm" | "md" | "lg") => {
+    if (size === "sm") return "w-4 h-4";
+    if (size === "md") return "w-5 h-5";
+    if (size === "lg") return "w-6 h-6";
     return "w-4 h-4";
   };
 
@@ -143,7 +141,7 @@ export default function PlayButton({
         <FontAwesomeIcon icon={isPlaying ? faStop : faPlay} />
       ) : (
         <div
-          className={`${getSpinnerSize(className)} animate-spin rounded-full border-2 border-t-transparent border-r-transparent`}
+          className={`${getSpinnerSize(size)} animate-spin rounded-full border-2 border-t-transparent border-r-transparent`}
           style={{ borderColor: color || "currentColor" }}
         />
       )}
