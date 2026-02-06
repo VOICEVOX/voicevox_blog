@@ -163,7 +163,7 @@ export default function Header({
           className={`flex items-center self-stretch px-3 ${className ?? ""}`}
         >
           <button
-            className="bg-primary hover:bg-primary/90 inline-flex flex-shrink-0 items-center gap-1.5 rounded-full px-5 py-2 text-base leading-6 font-semibold whitespace-nowrap text-black"
+            className="bg-primary hover:bg-primary/90 inline-flex shrink-0 items-center gap-1.5 rounded-full px-5 py-2 text-base leading-6 font-semibold whitespace-nowrap text-black"
             onClick={() => {
               if (!isNemo) {
                 $downloadModal.set(true);
@@ -217,14 +217,14 @@ export default function Header({
         role="navigation"
         aria-label="main navigation"
       >
-        <div className="mx-auto flex h-[52px] items-stretch justify-between">
+        <div className="mx-auto flex h-13 items-stretch justify-between">
           <div className="flex min-w-0 items-stretch">
             <a
               href={withBaseUrl("/")}
               className={`flex items-center gap-3 self-stretch px-3 whitespace-nowrap ${menuItemHoverClassName}`}
             >
               <img src={iconUrl} alt="" width="28" height="28" />
-              <span className="text-base text-xl font-bold">VOICEVOX</span>
+              <span className="text-xl font-bold">VOICEVOX</span>
             </a>
 
             {menus.map(({ Component, hideType }, i) => (
@@ -277,11 +277,7 @@ export default function Header({
 
         <div className={`lg:hidden ${isBurgerActive ? "block" : "hidden"}`}>
           <div
-            className={`border-t ${
-              isDark
-                ? "border-gray-800 bg-black text-white"
-                : "border-gray-200 bg-white text-neutral-900"
-            }`}
+            className={`border-t border-gray-200 bg-white text-neutral-900 dark:border-gray-800 dark:bg-black dark:text-white`}
           >
             <div className="mx-auto flex flex-col py-2">
               {menus.map(({ Component, hideType }, i) => (
@@ -297,7 +293,7 @@ export default function Header({
 
       {/* 空間を空けるために必要 */}
       <div
-        className={`navbar height-holder h-[52px] ${showingHeader ? "" : "hidden"}`}
+        className={`navbar height-holder h-13 ${showingHeader ? "" : "hidden"}`}
       />
     </>
   );

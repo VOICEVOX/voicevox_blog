@@ -76,53 +76,53 @@
 
 @layer components {
   .markdown {
-    color: theme("colors.black");
+    color: var(--color-black);
     line-height: 1.5;
   }
 
   .markdown h2 {
-    font-size: theme("fontSize.2xl");
-    font-weight: theme("fontWeight.extrabold");
-    color: theme("colors.neutral.800");
-    line-height: theme("lineHeight.tight");
-    margin-top: theme("spacing.7");
-    margin-bottom: theme("spacing.3");
+    font-size: var(--text-2xl);
+    font-weight: var(--font-weight-extrabold);
+    color: var(--color-neutral-800);
+    line-height: 1.25;
+    margin-top: --spacing(7);
+    margin-bottom: --spacing(3);
   }
 
   .markdown h3 {
-    font-size: theme("fontSize.xl");
-    font-weight: theme("fontWeight.extrabold");
-    color: theme("colors.neutral.800");
-    line-height: theme("lineHeight.tight");
-    margin-top: theme("spacing.7");
-    margin-bottom: theme("spacing.3");
+    font-size: var(--text-xl);
+    font-weight: var(--font-weight-extrabold);
+    color: var(--color-neutral-800);
+    line-height: 1.25;
+    margin-top: --spacing(7);
+    margin-bottom: --spacing(3);
   }
 
   .markdown h4 {
-    font-size: theme("fontSize.base");
-    font-weight: theme("fontWeight.extrabold");
-    color: theme("colors.neutral.800");
-    line-height: theme("lineHeight.tight");
-    margin-top: theme("spacing.6");
-    margin-bottom: theme("spacing.3");
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-extrabold);
+    color: var(--color-neutral-800);
+    line-height: 1.25;
+    margin-top: --spacing(6);
+    margin-bottom: --spacing(3);
   }
 
   .markdown h1 {
-    font-size: theme("fontSize.3xl");
-    font-weight: theme("fontWeight.extrabold");
-    color: theme("colors.neutral.800");
-    line-height: theme("lineHeight.9");
-    margin-bottom: theme("spacing.4");
+    font-size: var(--text-3xl);
+    font-weight: var(--font-weight-extrabold);
+    color: var(--color-neutral-800);
+    line-height: --spacing(9);
+    margin-bottom: --spacing(4);
   }
 
   .markdown p {
-    margin-bottom: theme("spacing.4");
+    margin-bottom: --spacing(4);
   }
 
   .markdown ul,
   .markdown ol {
-    margin-left: theme("spacing.7");
-    margin-bottom: theme("spacing.4");
+    margin-left: --spacing(7);
+    margin-bottom: --spacing(4);
     list-style-position: outside;
   }
 
@@ -135,39 +135,39 @@
   }
 
   .markdown li {
-    margin-bottom: theme("spacing.2");
+    margin-bottom: --spacing(2);
   }
 
   .markdown img {
-    margin-bottom: theme("spacing.3");
+    margin-bottom: --spacing(3);
     vertical-align: middle;
-    border: 1px solid theme("colors.neutral.800");
+    border: 1px solid var(--color-neutral-800);
   }
 
   .markdown a {
-    color: theme("colors.link");
+    color: var(--color-link);
     text-decoration: underline;
   }
 
   .markdown a:hover {
-    color: theme("colors.link-hover");
+    color: var(--color-link-hover);
   }
 
   .markdown code {
-    background-color: theme("colors.neutral.100");
+    background-color: var(--color-neutral-100);
     padding: 0.25em 0.5em;
     border-radius: 7px;
-    font-size: theme("fontSize.sm");
-    color: theme("colors.rose.700");
+    font-size: var(--text-sm);
+    color: var(--color-rose-700);
     font-family: Consolas, Menlo, "Liberation Mono", monospace;
   }
 
   .markdown pre {
-    background-color: theme("colors.neutral.100");
-    padding: theme("spacing.4");
-    border-radius: theme("borderRadius.md");
+    background-color: var(--color-neutral-100);
+    padding: --spacing(4);
+    border-radius: var(--radius-md);
     overflow-x: auto;
-    margin-bottom: theme("spacing.4");
+    margin-bottom: --spacing(4);
   }
 
   .markdown pre code {
@@ -177,34 +177,34 @@
   }
 
   [data-theme="dark"] .markdown:not([data-theme="light"]) {
-    color: theme("colors.neutral.300");
+    color: var(--color-neutral-300);
   }
 
   [data-theme="dark"] .markdown:not([data-theme="light"]) h2,
   [data-theme="dark"] .markdown:not([data-theme="light"]) h3,
   [data-theme="dark"] .markdown:not([data-theme="light"]) h4,
   [data-theme="dark"] .markdown:not([data-theme="light"]) h1 {
-    color: theme("colors.neutral.300");
+    color: var(--color-neutral-300);
   }
 
   [data-theme="dark"] .markdown:not([data-theme="light"]) a {
-    color: theme("colors.link-dark");
+    color: var(--color-link-dark);
   }
 
   [data-theme="dark"] .markdown:not([data-theme="light"]) a:hover {
-    color: theme("colors.link-dark-hover");
+    color: var(--color-link-dark-hover);
   }
 
   [data-theme="dark"] .markdown:not([data-theme="light"]) code,
   [data-theme="dark"] .markdown:not([data-theme="light"]) pre {
-    background-color: theme("colors.zinc.800");
+    background-color: var(--color-zinc-800);
   }
 
   [data-theme="dark"] .markdown:not([data-theme="light"]) code {
-    color: theme("colors.rose.300");
+    color: var(--color-rose-300);
   }
 
   [data-theme="dark"] .markdown:not([data-theme="light"]) img {
-    border-color: theme("colors.neutral.200");
+    border-color: var(--color-neutral-200);
   }
 }
