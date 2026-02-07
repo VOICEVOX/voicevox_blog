@@ -228,7 +228,7 @@ pnpm run test:e2e --ui # 開発時は UI モードが便利
 - データ属性は同じファイル間であれば import しなくて良い、別ファイルなら export した方が良い
   - `{...{[attr]: "" }}`とすれば Astro 内で使える
 - tailwind の grayは使わない、neutral を使う
-- classはなるべく定義せずtailwindで済ませる、必要ならglobal.cssなどに書く、astro内に書く場合は相談する
+- style=やclassはなるべく定義せずtailwindで済ませる、必要ならglobal.cssなどに書く、astro内に書く場合は相談する
   - Markdownなど、子要素のスタイルを結構変えたい場合などはclassを定義しても良い
 
 ### モードと効果の表

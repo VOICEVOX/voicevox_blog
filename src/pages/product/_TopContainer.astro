@@ -74,12 +74,11 @@ const postCharacterKey =
     <div class="absolute inset-0 flex justify-center overflow-hidden">
       <div class="flex-none">
         <Image
-          class="block h-full w-auto"
+          class="block h-full w-auto object-contain"
           src={characterInfo.portraitImage}
           alt={characterInfo.name}
           height={1280}
           densities={[1, 1.5, 2]}
-          style={{ objectFit: "contain" }}
         />
       </div>
     </div>

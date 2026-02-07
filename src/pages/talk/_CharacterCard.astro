@@ -22,12 +22,11 @@ const characterKey = characterInfo.key;
       class="block overflow-hidden rounded-t-xl"
     >
       <Image
-        class="mx-auto block"
+        class="mx-auto block object-contain"
         src={characterInfo.toppageBustupImage ?? characterInfo.bustupImage}
         alt={characterInfo.name}
         width="320"
         densities={[1, 1.5, 2]}
-        style={{ objectFit: "contain" }}
       />
     </a>
     <div class="p-6 text-center">

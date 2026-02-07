@@ -26,13 +26,12 @@ const href = getDormitoryCharacterPageUrl(characterInfo);
   >
     <a href={withBaseUrl(href)}>
       <Image
-        class="mx-auto block"
+        class="mx-auto block object-contain"
         src={characterInfo.bustupImage}
         alt={characterInfo.name}
         width={320}
         height={320}
         densities={[1, 1.5, 2]}
-        style={{ objectFit: "contain" }}
       />
       <div
         class="border-t-[2.5px] px-0 py-5 text-center"
