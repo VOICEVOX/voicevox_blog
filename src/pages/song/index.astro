@@ -60,16 +60,15 @@ const backgroundImageSrc = (await getImage({ src: backgroundImage })).src;
           class="flex flex-col items-center justify-center gap-2 max-md:mb-20 md:gap-4"
         >
           <h1
-            class="song-hero-title text-primary/75 text-5xl leading-[1.125] font-extrabold md:text-8xl lg:text-9xl"
+            class="text-primary/75 text-5xl leading-[1.125] font-extrabold [text-shadow:0px_0px_10px_color-mix(in_srgb,var(--color-primary)_55%,transparent)] md:text-8xl lg:text-9xl"
           >
             VOICEVOX Song
           </h1>
           <span
-            class="text-2xl leading-snug font-bold break-words break-keep drop-shadow-2xl"
+            class="text-2xl leading-snug font-bold wrap-break-word break-keep drop-shadow-2xl"
           >
             無料で使える中品質な<wbr />テキスト読み上げ・歌声合成ソフトウェア
           </span>
-          <!-- <wbr>で良い感じに改行するようにする -->
         </div>
 
         <div class="flex flex-col items-center gap-4">
@@ -166,9 +165,3 @@ const backgroundImageSrc = (await getImage({ src: backgroundImage })).src;
     <OssGuidanceSection />
   </main>
 </Base>
-
-<style>
-  .song-hero-title {
-    text-shadow: 0px 0px 10px rgba(165, 212, 173, 0.55);
-  }
-</style>

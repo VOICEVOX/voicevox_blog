@@ -4,6 +4,8 @@ import AudioSample from "@/pages/product/_AudioSample";
 import "@/styles/global.css";
 
 const characterInfo = characterInfos["ずんだもん"];
+
+// NOTE: src/pages/product/_TopContainer.astro の is:global スタイルを dev/ui でも再現するため、必要最小限を複製しています
 ---
 
 <html lang="ja">
@@ -33,7 +35,3 @@ const characterInfo = characterInfos["ずんだもん"];
     </div>
   </body>
 </html>
-
-<style lang="scss" is:global>
-  /* NOTE: src/pages/product/_TopContainer.astro の is:global スタイルを dev/ui でも再現するため、必要最小限を複製しています */
-</style>

@@ -33,30 +33,33 @@ const { callNames, characterInfo, additionalClass } = Astro.props;
 >
   <div class="flex h-full w-full flex-col">
     {
-      callNames.map((callName) => (
-        <p
-          data-voicevox-call-name={callName}
-          style={{ outlineColor: characterInfo.color }}
-          title={`クリックして呼称をコピー：「${callName}」`}
-          class="group relative flex h-full w-full flex-col justify-center select-all"
-        >
-          <span class="name-copy invisible absolute top-0 right-0 m-1 inline h-4 w-4 group-hover:visible group-data-[voicevox-copied]:visible group-data-[voicevox-copied]:hidden">
-            <FontAwesomeIcon
-              icon={faCopy}
-              class="h-4 w-4"
-              style={{ color: characterInfo.color }}
-            />
-          </span>
-          <span class="name-copied invisible absolute top-0 right-0 m-1 hidden h-4 w-4 group-hover:visible group-data-[voicevox-copied]:visible group-data-[voicevox-copied]:inline">
-            <FontAwesomeIcon
-              icon={faCheck}
-              class="h-4 w-4"
-              style={{ color: characterInfo.color }}
-            />
-          </span>
-          {callName}
-        </p>
-      ))
+      callNames.map((callName) => {
+        // NOTE: hover 時にチラつくので border ではなく outline を使う
+        return (
+          <p
+            data-voicevox-call-name={callName}
+            style={{ outlineColor: characterInfo.color }}
+            title={`クリックして呼称をコピー：「${callName}」`}
+            class="group relative flex h-full w-full flex-col justify-center select-all hover:rounded-md hover:outline hover:outline-2"
+          >
+            <span class="name-copy invisible absolute top-0 right-0 m-1 inline h-4 w-4 group-hover:visible group-data-[voicevox-copied]:visible group-data-[voicevox-copied]:hidden">
+              <FontAwesomeIcon
+                icon={faCopy}
+                class="h-4 w-4"
+                style={{ color: characterInfo.color }}
+              />
+            </span>
+            <span class="name-copied invisible absolute top-0 right-0 m-1 hidden h-4 w-4 group-hover:visible group-data-[voicevox-copied]:visible group-data-[voicevox-copied]:inline">
+              <FontAwesomeIcon
+                icon={faCheck}
+                class="h-4 w-4"
+                style={{ color: characterInfo.color }}
+              />
+            </span>
+            {callName}
+          </p>
+        );
+      })
     }
   </div>
 </td>
@@ -80,11 +83,3 @@ const { callNames, characterInfo, additionalClass } = Astro.props;
     });
   });
 </script>
-
-<style>
-  p:hover {
-    /* NOTE: ちらつくので border ではなく outline */
-    outline: 2px solid;
-    border-radius: 6px;
-  }
-</style>

@@ -2,16 +2,15 @@ import PlayButton from "@/components/PlayButton/PlayButton";
 import StyleDropdown, {
   useStyleDropdownController,
 } from "@/components/StyleDropdown";
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 
 export default function AudioSample({
   audioSamples,
   characterName,
-  className,
 }: {
   audioSamples: { style: string; urls: readonly string[] }[];
   characterName: string;
-} & React.HTMLAttributes<HTMLDivElement>) {
+}) {
   const styles = useMemo(
     () => audioSamples.map((value) => value.style),
     [audioSamples],
@@ -25,13 +24,13 @@ export default function AudioSample({
   );
 
   return (
-    <div className={"audio-sample " + className}>
+    <div>
       <hr className="my-3 border-gray-200" />
-      <div className="audio-sample-pair flex flex-wrap items-center justify-center gap-x-2.5 gap-y-[3px] py-1">
-        <div className="audio-sample-label w-[100px]">
+      <div className="flex flex-wrap items-center justify-center gap-x-2.5 gap-y-[3px] py-1">
+        <div className="w-[100px]">
           <span className="whitespace-nowrap">音声サンプル</span>
         </div>
-        <div className="audio-sample-content flex gap-[3px]">
+        <div className="flex gap-[3px]">
           {selectedAudioUrls.map((url, index) => (
             <PlayButton
               key={index}
@@ -45,11 +44,11 @@ export default function AudioSample({
         </div>
       </div>
       {styles.length > 1 && (
-        <div className="audio-sample-pair flex flex-wrap items-center justify-center gap-x-2.5 gap-y-[3px] py-1">
-          <div className="audio-sample-label w-[100px]">
+        <div className="flex flex-wrap items-center justify-center gap-x-2.5 gap-y-[3px] py-1">
+          <div className="w-[100px]">
             <span className="whitespace-nowrap">スタイル</span>
           </div>
-          <div className="audio-sample-content flex gap-[3px]">
+          <div className="flex gap-[3px]">
             <StyleDropdown
               styles={styles}
               selectedStyle={selectedStyle!}

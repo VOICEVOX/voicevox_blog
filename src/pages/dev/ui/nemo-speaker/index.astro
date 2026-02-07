@@ -17,14 +17,16 @@ const speakerInfos = [
     <title>SpeakerComponent (nemo) 確認用ページ</title>
   </head>
   <body class="bg-[rgb(9,10,12)] text-white">
-    <div class="nemo-speaker-preview" style="padding: 2rem;">
+    <div class="min-h-screen p-8">
       <h1 class="mb-12 text-base text-white">
         SpeakerComponent (nemo) 確認用ページ
       </h1>
 
       <section class="mb-8">
         <h2 class="mb-4 text-xl font-semibold text-white">デフォルト</h2>
-        <div class="speakers-container mx-auto w-full max-w-5xl px-4">
+        <div
+          class="mx-auto grid w-full max-w-5xl place-content-center gap-8 px-4 max-md:grid-cols-[repeat(1,minmax(0,25rem))] md:grid-cols-2"
+        >
           {
             speakerInfos.map((info, i) => (
               <SpeakerComponent
@@ -40,8 +42,10 @@ const speakerInfos = [
         <h2 class="mb-4 text-xl font-semibold text-white">
           CVドロップダウン（開いた状態）
         </h2>
-        <div class="dropdown-force-open">
-          <div class="speakers-container mx-auto w-full max-w-5xl px-4">
+        <div class="**:[[role=menu]]:block!">
+          <div
+            class="mx-auto grid w-full max-w-5xl place-content-center gap-8 px-4 max-md:[grid-template-columns:repeat(1,minmax(0,25rem))] md:grid-cols-2"
+          >
             <SpeakerComponent info={speakerInfos[0]} style={{ zIndex: 1 }} />
           </div>
         </div>
@@ -49,26 +53,3 @@ const speakerInfos = [
     </div>
   </body>
 </html>
-
-<style is:global>
-  .nemo-speaker-preview {
-    min-height: 100vh;
-  }
-
-  .speakers-container {
-    display: grid;
-    gap: 2rem;
-    grid-template-columns: repeat(2, 1fr);
-    place-content: center;
-  }
-
-  @media (max-width: 768px) {
-    .speakers-container {
-      grid-template-columns: repeat(1, minmax(0, 25rem));
-    }
-  }
-
-  .dropdown-force-open .group\/dropdown > div:last-child {
-    display: block !important;
-  }
-</style>

@@ -202,10 +202,15 @@ export default function Header({
 
   return (
     <>
+      {/* FIXME: 非表示の際もアニメーション適用したい */}
       <nav
-        className={`navbar fixed top-0 left-0 z-40 w-full ${
+        className={`fixed top-0 left-0 z-40 w-full ${
           showingHeader ? "" : "hidden"
-        } ${defaultHide ? "with-animation" : ""} bg-white text-neutral-900 shadow-[0_2px_0_0_rgb(243,244,246)] dark:bg-black dark:text-white dark:shadow-[0_2px_0_0_hsl(0_0%_4%)]`}
+        } ${
+          defaultHide
+            ? "animate-[fadeIn_0.1s_cubic-bezier(0.33,1,0.68,1)_1_forwards]"
+            : ""
+        } bg-white text-neutral-900 shadow-[0_2px_0_0_rgb(243,244,246)] dark:bg-black dark:text-white dark:shadow-[0_2px_0_0_hsl(0_0%_4%)]`}
         role="navigation"
         aria-label="main navigation"
       >
@@ -284,9 +289,7 @@ export default function Header({
       </nav>
 
       {/* 空間を空けるために必要 */}
-      <div
-        className={`navbar height-holder h-13 ${showingHeader ? "" : "hidden"}`}
-      />
+      <div className={`h-13 ${showingHeader ? "" : "hidden"} invisible`} />
     </>
   );
 }
