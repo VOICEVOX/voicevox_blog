@@ -18,10 +18,10 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 <script>
   // 比率を1200:630に
-  const target = document
-    .querySelector(".dormitory-character")
-    ?.querySelector<HTMLDivElement>(".box");
-  if (!target) throw new Error("dormitory-character not found");
+  const target = document.querySelector<HTMLDivElement>(
+    '[data-testid="dormitory-character-card"]',
+  );
+  if (!target) throw new Error("dormitory-character-card not found");
   target.style.setProperty("width", "800px");
   target.style.setProperty("height", (800 * 630) / 1200 + "px");
 

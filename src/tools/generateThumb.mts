@@ -75,7 +75,7 @@ for (const key of characterKeys) {
     );
     await waitForImages(page);
 
-    const target = page.locator(".dormitory-character").locator(".box");
+    const target = page.getByTestId("dormitory-character-card");
     await target.screenshot({ path: savePath, omitBackground: true });
   });
 }
