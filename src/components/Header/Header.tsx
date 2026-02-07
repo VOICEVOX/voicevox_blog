@@ -170,7 +170,7 @@ export default function Header({
               }
             }}
           >
-            <span className="text-sm">
+            <span className="-ml-1 inline-flex items-center">
               <FontAwesomeIcon icon={faDownload} />
             </span>
             <span>ダウンロード</span>
@@ -232,7 +232,7 @@ export default function Header({
             </div>
 
             <button
-              className={`navbar-burger relative ml-1 inline-flex h-10 w-10 items-center justify-center self-center lg:hidden ${
+              className={`navbar-burger relative mx-1 inline-flex h-10 w-10 items-center justify-center self-center lg:hidden ${
                 isBurgerActive ? "opacity-80" : ""
               }`}
               aria-label="menu"

@@ -6,3 +6,4 @@
 - その条件でしか動かないtailwindクラスにはすべてディレクティブを付ける、というルール良さそう https://gist.github.com/sandren/0f22e116f01611beab2b1195ab731b63#:~:text=Prefix%20all%20utility%20classes%20that%20will%20only%20apply
 - コンポーネント化かクラス化しておきたい
   - ボタン、改行されないように
+- サムネ生成のとこも変えないと

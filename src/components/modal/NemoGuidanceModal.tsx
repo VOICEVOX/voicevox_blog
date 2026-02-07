@@ -58,7 +58,9 @@ export default function NemoGuidanceModal() {
                 }}
                 type="button"
               >
-                <FontAwesomeIcon icon={faDownload} />
+                <span className="-ml-1 inline-flex items-center">
+                  <FontAwesomeIcon icon={faDownload} />
+                </span>
                 <span>VOICEVOX ダウンロード</span>
               </button>
             </div>
@@ -88,7 +90,9 @@ export default function NemoGuidanceModal() {
                 onClick={() => $nemoDownloadModal.set(true)}
                 type="button"
               >
-                <FontAwesomeIcon icon={faDownload} />
+                <span className="-ml-1 inline-flex items-center">
+                  <FontAwesomeIcon icon={faDownload} />
+                </span>
                 <span>Nemo エンジン ダウンロード</span>
               </button>
             </div>

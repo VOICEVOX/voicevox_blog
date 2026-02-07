@@ -80,7 +80,9 @@ const voicevoxIconImageSrc = (await getImage({ src: voicevoxIconImage })).src;
               {...{ [showNemoGuidanceModalAttr]: "" }}
               class="bg-primary inline-flex items-center justify-center gap-2 rounded-full px-4 py-1.5 text-xs font-medium text-emerald-950 md:h-10 md:px-5 md:py-2 md:text-base lg:h-12 lg:px-6 lg:py-2.5 lg:text-lg"
             >
-              <FontAwesomeIcon icon={faDownload} />
+              <span class="-ml-1 inline-flex items-center">
+                <FontAwesomeIcon icon={faDownload} />
+              </span>
               <span class="font-semibold">ダウンロード</span>
             </button>
             <button

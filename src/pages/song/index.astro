@@ -77,7 +77,9 @@ const backgroundImageSrc = (await getImage({ src: backgroundImage })).src;
             {...{ [showDownloadModalAttr]: "" }}
             class="bg-primary inline-flex h-14 items-center justify-center gap-2 rounded-full px-8 py-3 text-2xl font-medium text-black shadow-lg hover:opacity-90"
           >
-            <FontAwesomeIcon icon={faDownload} />
+            <span class="-ml-2 inline-flex items-center">
+              <FontAwesomeIcon icon={faDownload} />
+            </span>
             <span class="font-semibold">ダウンロード</span>
           </button>
           <a
