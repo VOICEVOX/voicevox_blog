@@ -193,38 +193,6 @@
     padding: 0;
     color: inherit;
   }
-
-  [data-theme="dark"] .markdown:not([data-theme="light"]) {
-    color: var(--color-neutral-300);
-  }
-
-  [data-theme="dark"] .markdown:not([data-theme="light"]) h2,
-  [data-theme="dark"] .markdown:not([data-theme="light"]) h3,
-  [data-theme="dark"] .markdown:not([data-theme="light"]) h4,
-  [data-theme="dark"] .markdown:not([data-theme="light"]) h1 {
-    color: var(--color-neutral-300);
-  }
-
-  [data-theme="dark"] .markdown:not([data-theme="light"]) a {
-    color: var(--color-link-dark);
-  }
-
-  [data-theme="dark"] .markdown:not([data-theme="light"]) a:hover {
-    color: var(--color-link-dark-hover);
-  }
-
-  [data-theme="dark"] .markdown:not([data-theme="light"]) code,
-  [data-theme="dark"] .markdown:not([data-theme="light"]) pre {
-    background-color: var(--color-zinc-800);
-  }
-
-  [data-theme="dark"] .markdown:not([data-theme="light"]) code {
-    color: var(--color-rose-300);
-  }
-
-  [data-theme="dark"] .markdown:not([data-theme="light"]) img {
-    border-color: var(--color-neutral-200);
-  }
 }
 
 @utility vv-scrollbar-thin {
