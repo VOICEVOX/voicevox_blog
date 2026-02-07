@@ -29,7 +29,7 @@ const voicevoxIconImageSrc = (await getImage({ src: voicevoxIconImage })).src;
   >
     <section class="py-0" data-testid="first-view">
       <div
-        class="mx-auto flex max-w-5xl flex-col-reverse items-center justify-center gap-16 px-6 py-12 lg:h-[calc(100vh-3.25rem)] lg:flex-row-reverse lg:items-stretch lg:py-0 xl:max-w-6xl"
+        class="mx-auto flex max-w-5xl flex-col-reverse justify-center gap-16 px-6 max-lg:items-center max-lg:py-12 lg:h-[calc(100vh-3.25rem)] lg:flex-row-reverse xl:max-w-6xl"
       >
         <div
           class="flex max-w-2xl flex-1 items-center justify-center [filter:drop-shadow(20px_20px_15px_rgba(0,0,0,0.5))] xl:max-w-3xl"
@@ -44,7 +44,7 @@ const voicevoxIconImageSrc = (await getImage({ src: voicevoxIconImage })).src;
         </div>
 
         <div
-          class="flex max-w-sm flex-col items-center justify-center text-center lg:max-w-md lg:items-start lg:text-left xl:max-w-xl"
+          class="flex max-w-sm flex-col items-center justify-center max-lg:text-center lg:max-w-md lg:items-start xl:max-w-xl"
         >
           <h1
             class="mb-6 text-4xl leading-[1.125] font-semibold lg:text-4xl xl:text-5xl"
@@ -65,9 +65,7 @@ const voicevoxIconImageSrc = (await getImage({ src: voicevoxIconImage })).src;
               >無料の中品質読み上げソフトウェア</span
             >
           </h2>
-          <div
-            class="mb-1 flex items-center justify-center gap-1 lg:justify-start"
-          >
+          <div class="mb-1 flex items-center gap-1 max-lg:justify-center">
             <span
               class="inline-block size-5 bg-contain bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${voicevoxIconImageSrc})` }}
@@ -146,7 +144,7 @@ const voicevoxIconImageSrc = (await getImage({ src: voicevoxIconImage })).src;
         {
           // 内部で表示するドロップメニューが兄弟要素で隠れてしまうのでz-indexを指定している
           speakerKeys.map((key, i) => (
-            <div class="mx-auto w-full max-w-sm md:mx-0 md:max-w-none">
+            <div class="w-full max-md:mx-auto max-md:max-w-sm">
               <SpeakerComponent
                 info={getSpeakerInfo(key)}
                 style={{ zIndex: speakerKeys.length - i }}

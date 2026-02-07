@@ -227,6 +227,7 @@ pnpm run test:e2e --ui # 開発時は UI モードが便利
 - 子へのスタイル適用は Astro 内の is:global を使うと楽
 - データ属性は同じファイル間であれば import しなくて良い、別ファイルなら export した方が良い
   - `{...{[attr]: "" }}`とすれば Astro 内で使える
+- tailwind の grayは使わない、neutral を使う
 
 ### モードと効果の表
 
