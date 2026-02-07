@@ -15,11 +15,11 @@ const { info, style } = Astro.props;
 ---
 
 <div
-  class="relative flex h-32 flex-row pr-4 [filter:drop-shadow(12px_12px_8px_rgba(0,0,0,0.5))] before:absolute before:top-[0.4rem] before:right-0 before:bottom-[0.4rem] before:left-[0.4rem] before:z-[1] before:rounded-l-[calc(8rem-0.4rem)] before:bg-[#20242d] before:content-[''] max-lg:h-24 max-lg:before:rounded-l-[calc(6rem-0.4rem)] max-md:h-16 max-md:before:rounded-l-[calc(4rem-0.4rem)] [&>*]:z-[2]"
+  class="relative flex h-32 flex-row pr-4 filter-[drop-shadow(12px_12px_8px_rgba(0,0,0,0.5))] *:z-2 before:absolute before:top-[0.4rem] before:right-0 before:bottom-[0.4rem] before:left-[0.4rem] before:z-1 before:rounded-l-[calc(8rem-0.4rem)] before:bg-[#20242d] before:content-[''] max-lg:h-24 max-lg:before:rounded-l-[calc(6rem-0.4rem)] max-md:h-16 max-md:before:rounded-l-[calc(4rem-0.4rem)]"
   style={style}
 >
   <div
-    class="h-32 w-32 flex-shrink-0 max-lg:h-24 max-lg:w-24 max-md:h-16 max-md:w-16"
+    class="h-32 w-32 shrink-0 max-lg:h-24 max-lg:w-24 max-md:h-16 max-md:w-16"
   >
     <Image src={info.icon} alt={`${info.name}のアイコン`} />
   </div>
@@ -48,7 +48,7 @@ const { info, style } = Astro.props;
         role="menu"
       >
         <div
-          class="min-w-[14rem] rounded-md bg-[#2e333d] p-3 shadow-lg ring-1 ring-black/20"
+          class="min-w-56 rounded-md bg-[#2e333d] p-3 shadow-lg ring-1 ring-black/20"
         >
           <div class="flex flex-col items-center gap-2 text-center text-white">
             <span class="text-sm">音声収録のご依頼先</span>
@@ -74,7 +74,7 @@ const { info, style } = Astro.props;
                   ({ link, label, icon }) =>
                     link && (
                       <a
-                        class="mb-0 ml-auto inline-flex h-[57.6px] w-[57.6px] items-center justify-center rounded-full border-[2px] border-[#2e333d] bg-transparent text-xl text-white hover:bg-neutral-700"
+                        class="mb-0 ml-auto inline-flex h-[57.6px] w-[57.6px] items-center justify-center rounded-full border-2 border-[#2e333d] bg-transparent text-xl text-white hover:bg-neutral-700"
                         href={link}
                         aria-label={`${info.cv}の${label}`}
                         target="_blank"
@@ -91,7 +91,7 @@ const { info, style } = Astro.props;
       </div>
     </div>
   </div>
-  <div class="flex flex-shrink-0 flex-row items-center justify-center gap-4">
+  <div class="flex shrink-0 flex-row items-center justify-center gap-4">
     {
       info.audios.map((audio, index) => (
         <PlayButton
