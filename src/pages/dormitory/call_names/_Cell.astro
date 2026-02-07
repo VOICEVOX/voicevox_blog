@@ -17,8 +17,21 @@ interface Props {
 const { callNames, characterInfo, additionalClass } = Astro.props;
 ---
 
-<td class:list={["call-names-cell", additionalClass]}>
-  <div>
+{
+  /*
+  FIXME:
+  `table td:not([align]), table th:not([align])`セレクター によって
+  text-align: inherit になっている
+*/
+}
+<td
+  class:list={[
+    "h-20 w-[150px] cursor-pointer border-0 p-1 !text-center align-middle",
+    additionalClass === "me" && "bg-white text-gray-500",
+    additionalClass === "you" && "border-l border-neutral-500",
+  ]}
+>
+  <div class="flex h-full w-full flex-col">
     {
       callNames.map((callName) => (
         <p
@@ -27,14 +40,14 @@ const { callNames, characterInfo, additionalClass } = Astro.props;
           title={`クリックして呼称をコピー：「${callName}」`}
           class="group relative flex h-full w-full flex-col justify-center select-all"
         >
-          <span class="icon name-copy invisible absolute top-0 right-0 m-1 inline h-4 w-4 group-hover:visible group-data-[voicevox-copied]:visible group-data-[voicevox-copied]:hidden">
+          <span class="name-copy invisible absolute top-0 right-0 m-1 inline h-4 w-4 group-hover:visible group-data-[voicevox-copied]:visible group-data-[voicevox-copied]:hidden">
             <FontAwesomeIcon
               icon={faCopy}
               class="h-4 w-4"
               style={{ color: characterInfo.color }}
             />
           </span>
-          <span class="icon name-copied invisible absolute top-0 right-0 m-1 hidden h-4 w-4 group-hover:visible group-data-[voicevox-copied]:visible group-data-[voicevox-copied]:inline">
+          <span class="name-copied invisible absolute top-0 right-0 m-1 hidden h-4 w-4 group-hover:visible group-data-[voicevox-copied]:visible group-data-[voicevox-copied]:inline">
             <FontAwesomeIcon
               icon={faCheck}
               class="h-4 w-4"

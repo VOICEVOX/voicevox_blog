@@ -32,13 +32,25 @@ function rgba2rgbOnWhite(
   title={`ボイボ寮キャラクターの呼称表 | ボイボ寮 | VOICEVOX`}
   description={"ボイボ寮キャラクターの呼び方一覧表です。必ずしも遵守する必要はなく、自由に改変して頂いても問題ありません。"}
 >
-  <div class="call-names-wrapper">
-    <section class="top-explain px-6 py-12">
+  {
+    /*
+    sticky にするために明示的に高さを指定
+     → ほかに overflow の指定などでも sticky にできるが、親レイアウトの
+       Page コンポーネントのフッターやスタイルを変更すると他ページに影響が
+       出る可能性があるので、画面が埋まるように高さを指定した。
+    FIXME: 二重スクロールをなくす
+  */
+  }
+  <div
+    class="h-[calc(100vh-3.25rem)] overflow-auto [scrollbar-width:thin]"
+    data-voicevox-call-names-wrapper
+  >
+    <section class="sticky left-0 px-6 py-12">
       <div class="mx-auto w-full max-w-5xl text-center">
         <h1 class="mb-6 text-3xl leading-9 font-extrabold text-neutral-700">
           ボイボ寮キャラクターの呼称表
         </h1>
-        <p class="leading-relaxed text-neutral-700">
+        <p class="leading-relaxed">
           <a
             href={withBaseUrl("/dormitory/")}
             class="text-link hover:text-link-hover font-bold underline"
@@ -47,26 +59,37 @@ function rgba2rgbOnWhite(
         </p>
       </div>
     </section>
-    <main class="call-names">
-      <table>
+    <main>
+      <table
+        class="mx-auto my-0 w-full table-fixed border-separate border-spacing-0 border-0 p-0"
+      >
         <thead>
           <tr>
-            <th class="origin">
-              <p class="origin-who">誰が</p>
-              <p class="origin-whom">誰を</p>
-              <div class="origin-diagonal"></div>
+            <th
+              class="sticky top-0 left-0 z-30 w-24 border-r border-b border-neutral-500 bg-white p-0 !text-center align-middle md:w-[190px]"
+            >
+              <p class="absolute bottom-0 left-0 z-10 p-2 font-normal">誰が</p>
+              <p class="absolute top-0 right-0 z-10 p-2 font-normal">誰を</p>
+              <div
+                class="absolute inset-0"
+                style={{
+                  background:
+                    "linear-gradient(to right top, transparent calc(50% - 0.5px), rgb(128, 128, 128) 50%, rgb(128, 128, 128) calc(50% + 0.5px), transparent calc(50% + 1px))",
+                }}
+              >
+              </div>
             </th>
 
             {
               characterKeys.map((characterKey) => {
                 const characterInfo = characterInfos[characterKey];
                 return (
-                  <th>
+                  <th class="sticky top-0 z-20 w-[150px] border-b border-neutral-500 bg-white p-1 !text-center align-middle">
                     <a
                       href={withBaseUrl(
                         getDormitoryCharacterPageUrl(characterInfo),
                       )}
-                      class="header-link"
+                      class="flex flex-col items-center justify-center gap-1 text-center no-underline hover:underline"
                       style={{
                         color: characterInfo.color,
                       }}
@@ -78,7 +101,9 @@ function rgba2rgbOnWhite(
                 );
               })
             }
-            <th class="you">
+            <th
+              class="sticky top-0 z-20 w-[150px] border-b border-l border-neutral-500 bg-white p-1 !text-center align-middle"
+            >
               <p>全員</p>
               <p>（二人称）</p>
             </th>
@@ -99,6 +124,7 @@ function rgba2rgbOnWhite(
               return (
                 <tr style={{ backgroundColor }}>
                   <th
+                    class="sticky left-0 z-10 w-24 border-r border-neutral-500 px-2 py-1 text-center! align-middle md:w-[190px]"
                     style={{
                       backgroundColor,
                     }}
@@ -107,13 +133,15 @@ function rgba2rgbOnWhite(
                       href={withBaseUrl(
                         getDormitoryCharacterPageUrl(characterInfo),
                       )}
-                      class="row-header-link"
+                      class="flex items-center justify-center gap-3 text-center no-underline hover:underline md:justify-start"
                       style={{
                         color: characterInfo.color,
                       }}
                     >
                       <CharacterImage characterInfo={characterInfo} />
-                      <p class="row-header-name">{characterInfo.name}</p>
+                      <p class="hidden text-left whitespace-normal md:block">
+                        {characterInfo.name}
+                      </p>
                     </a>
                   </th>
                   <Row characterKey={characterKey} />
@@ -128,217 +156,3 @@ function rgba2rgbOnWhite(
 
   <ExplainSection showingDormitoryPageButton={true} />
 </Base>
-
-<style lang="scss" is:global>
-  $navbar-height: 3.25rem;
-  $call-names-border: 1px solid rgb(128, 128, 128);
-  $call-names-cell-height: 80px;
-  $call-names-cell-width: 150px;
-  $call-names-cell-width-column: 190px;
-
-  .call-names-wrapper {
-    // sticky にするために明示的に高さを指定
-    //  → ほかに overflow の指定などでも sticky にできるが、親レイアウトの
-    //    Page コンポーネントのフッターやスタイルを変更すると他ページに影響が
-    //    出る可能性があるので、画面が埋まるように高さを指定した。
-    // FIXME: 二重スクロールをなくす
-    height: calc(100vh - $navbar-height);
-    overflow: auto;
-    scrollbar-width: thin;
-
-    &::-webkit-scrollbar {
-      width: 8px;
-      height: 8px;
-    }
-
-    .top-explain {
-      position: sticky;
-      left: 0; // 横スクロール時についてこないように
-    }
-
-    // キャラの呼称表
-    .call-names {
-      img {
-        width: 3rem;
-        aspect-ratio: 1 / 1;
-      }
-
-      table {
-        width: 100%;
-        padding: 0;
-        margin: 0 auto;
-        border-collapse: separate;
-        table-layout: fixed;
-        border: none;
-      }
-
-      th {
-        position: sticky;
-        top: 0;
-        left: 0;
-        z-index: 1;
-      }
-
-      th,
-      td {
-        height: $call-names-cell-height;
-        width: $call-names-cell-width;
-        padding: 4px;
-
-        // FIXME:
-        // `table td:not([align]), table th:not([align])`セレクター によって
-        // text-align: inherit になっている
-        text-align: center !important;
-
-        vertical-align: middle;
-        border: none;
-
-        &.you {
-          border-left: $call-names-border;
-        }
-      }
-
-      td {
-        cursor: pointer;
-
-        div {
-          height: 100%;
-          width: 100%;
-
-          display: flex;
-          flex-direction: column;
-        }
-      }
-
-      thead > tr {
-        // 一番上の行
-        th {
-          background: white;
-          border-bottom: $call-names-border;
-
-          // 左上のセル
-          &.origin {
-            width: $call-names-cell-width-column;
-            z-index: 2;
-            border-right: $call-names-border;
-          }
-        }
-      }
-
-      tbody > tr {
-        // 左端のキャラクター
-        th {
-          border-right: $call-names-border;
-          width: $call-names-cell-width-column;
-          padding: 4px 8px;
-        }
-
-        td {
-          p {
-            user-select: all;
-          }
-
-          &.me {
-            color: gray;
-            background: white;
-          }
-
-          &.unknown {
-            color: gray;
-
-            cursor: default;
-            p {
-              outline: none;
-              user-select: none;
-            }
-          }
-        }
-      }
-
-      .origin {
-        padding: 0;
-
-        .origin-who,
-        .origin-whom {
-          font-weight: normal;
-          position: absolute;
-          padding: 8px;
-        }
-
-        .origin-who {
-          bottom: 0;
-          left: 0;
-        }
-        .origin-whom {
-          top: 0;
-          right: 0;
-        }
-
-        .origin-diagonal {
-          height: 100%;
-          width: 100%;
-          // workaround: 斜線の描画
-          background: linear-gradient(
-            to right top,
-            transparent calc(50% - 0.5px),
-            rgb(128, 128, 128) 50%,
-            rgb(128, 128, 128) calc(50% + 0.5px),
-            transparent calc(50% + 1px)
-          );
-        }
-      }
-
-      .header-link {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-        text-align: center;
-        justify-content: center;
-        align-items: center;
-        text-decoration: none;
-
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-
-      .row-header-link {
-        display: flex;
-        gap: 12px;
-        text-align: center;
-        justify-content: flex-start;
-        align-items: center;
-        text-decoration: none;
-
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-
-      .row-header-name {
-        white-space: normal;
-        text-align: left;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .call-names {
-        thead > tr th.origin {
-          width: 6rem;
-        }
-
-        tbody > tr th {
-          width: 6rem;
-        }
-
-        .row-header-link {
-          justify-content: center;
-        }
-
-        .row-header-name {
-          display: none;
-        }
-      }
-    }
-  }
-</style>
