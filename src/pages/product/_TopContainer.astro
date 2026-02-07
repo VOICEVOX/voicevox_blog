@@ -168,7 +168,7 @@ const postCharacterKey =
     class="charamenu-area col-start-1 row-start-2 h-20 md:col-span-2 md:row-start-2"
   >
     <div
-      class="characters flex h-full overflow-x-auto overflow-y-hidden"
+      class="vv-scrollbar-hidden-until-hover flex h-full overflow-x-auto overflow-y-hidden"
       aria-label="キャラクター一覧"
     >
       {
@@ -238,21 +238,5 @@ const postCharacterKey =
     .top-character-area::before {
       width: 100%;
     }
-  }
-
-  .characters {
-    scrollbar-width: none;
-  }
-
-  .characters:hover {
-    scrollbar-width: thin;
-  }
-
-  .characters::-webkit-scrollbar {
-    height: 0;
-  }
-
-  .characters:hover::-webkit-scrollbar {
-    height: 8px;
   }
 </style>

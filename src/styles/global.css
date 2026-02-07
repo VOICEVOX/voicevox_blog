@@ -81,7 +81,7 @@
   [role="button"]:not(:disabled) {
     cursor: pointer;
   }
-  
+
   @keyframes fadeIn {
     0% {
       opacity: 0;
@@ -224,5 +224,32 @@
 
   [data-theme="dark"] .markdown:not([data-theme="light"]) img {
     border-color: var(--color-neutral-200);
+  }
+}
+
+@utility vv-scrollbar-thin {
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+@utility vv-scrollbar-hidden-until-hover {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
+  &:hover {
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
   }
 }

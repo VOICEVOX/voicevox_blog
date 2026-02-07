@@ -220,7 +220,7 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
                           </div>
                         </div>
                       </div>
-                      <div class="dormitory-call-list flex flex-1 flex-col gap-2 overflow-auto md:pr-1">
+                      <div class="vv-scrollbar-thin flex flex-1 flex-col gap-2 overflow-auto md:pr-1">
                         {characterKeys
                           .filter(
                             (targetCharacterKey) =>
@@ -262,13 +262,3 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
     </main>
   </div>
 </Base>
-
-<style>
-  .dormitory-call-list {
-    scrollbar-width: thin;
-  }
-
-  .dormitory-call-list::-webkit-scrollbar {
-    width: 8px;
-  }
-</style>
