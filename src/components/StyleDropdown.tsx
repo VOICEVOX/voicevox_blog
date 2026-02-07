@@ -49,7 +49,7 @@ export default function StyleDropdown({
           aria-label={`${characterName}のサンプルボイスのスタイルを選択`}
         >
           <span className="whitespace-nowrap">{selectedStyle}</span>
-          <span className="shrink-0 text-neutral-500">
+          <span className="-mr-1 shrink-0 text-neutral-500">
             <FontAwesomeIcon icon={faAngleDown} />
           </span>
         </button>

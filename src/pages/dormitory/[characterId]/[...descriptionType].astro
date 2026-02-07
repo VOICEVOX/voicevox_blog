@@ -141,7 +141,7 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
                               >
                                 {labelInfo.label}
                               </span>
-                              <span class="flex-grow pl-3 text-base">
+                              <span class="grow pl-3 text-base">
                                 {labelInfo.value}
                               </span>
                             </div>
@@ -157,7 +157,7 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
                           音声サンプル
                         </span>
                         {characterInfo.dormitoryVoiceAudios ? (
-                          <div class="flex flex-grow flex-wrap gap-1 pl-3">
+                          <div class="flex grow flex-wrap gap-1 pl-3">
                             {characterInfo.dormitoryVoiceAudios.map(
                               (audio, index) => (
                                 <PlayButton
@@ -172,7 +172,7 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
                             )}
                           </div>
                         ) : (
-                          <span class="flex-grow pl-3 text-base">準備中</span>
+                          <span class="grow pl-3 text-base">準備中</span>
                         )}
                       </div>
 
@@ -199,21 +199,21 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
                   descriptionType === "calls" && (
                     <div class="flex flex-1 flex-col gap-0 overflow-hidden pt-3 md:flex-row md:gap-6">
                       <div class="flex flex-row justify-center gap-8 max-md:h-32 md:flex-col">
-                        <div class="flex h-[6.5rem] w-[6.5rem] flex-none flex-col items-center justify-center rounded-2xl border-2 border-black px-3 text-center">
+                        <div class="flex h-26 w-26 flex-none flex-col items-center justify-center rounded-2xl border-2 border-black px-3 text-center">
                           <div class="mb-1 font-bold">
                             <span>一人称</span>
                           </div>
-                          <div>
+                          <div class="text-sm">
                             {callNameInfos[characterKey].me.map((callName) => (
                               <p>{callName}</p>
                             ))}
                           </div>
                         </div>
-                        <div class="flex h-[6.5rem] w-[6.5rem] flex-none flex-col items-center justify-center rounded-2xl border-2 border-black px-3 text-center">
+                        <div class="flex h-26 w-26 flex-none flex-col items-center justify-center rounded-2xl border-2 border-black px-3 text-center">
                           <div class="mb-1 font-bold">
                             <span>二人称</span>
                           </div>
-                          <div>
+                          <div class="text-sm">
                             {callNameInfos[characterKey].you.map((callName) => (
                               <p>{callName}</p>
                             ))}

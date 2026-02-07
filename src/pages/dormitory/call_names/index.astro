@@ -42,10 +42,8 @@ function rgba2rgbOnWhite(
           <a
             href={withBaseUrl("/dormitory/")}
             class="text-link hover:text-link-hover font-bold underline"
-          >
-            ボイボ寮
-          </a>
-          キャラクターの呼び方一覧表です。必ずしも遵守する必要はなく、自由に改変して頂いても問題ありません。
+            >ボイボ寮</a
+          >&nbsp;キャラクターの呼び方一覧表です。必ずしも遵守する必要はなく、自由に改変して頂いても問題ありません。
         </p>
       </div>
     </section>
@@ -69,15 +67,12 @@ function rgba2rgbOnWhite(
                         getDormitoryCharacterPageUrl(characterInfo),
                       )}
                       class="header-link"
+                      style={{
+                        color: characterInfo.color,
+                      }}
                     >
                       <CharacterImage characterInfo={characterInfo} />
-                      <p
-                        style={{
-                          color: characterInfo.color,
-                        }}
-                      >
-                        {characterInfo.name}
-                      </p>
+                      <p>{characterInfo.name}</p>
                     </a>
                   </th>
                 );
@@ -113,16 +108,12 @@ function rgba2rgbOnWhite(
                         getDormitoryCharacterPageUrl(characterInfo),
                       )}
                       class="row-header-link"
+                      style={{
+                        color: characterInfo.color,
+                      }}
                     >
                       <CharacterImage characterInfo={characterInfo} />
-                      <p
-                        class="row-header-name"
-                        style={{
-                          color: characterInfo.color,
-                        }}
-                      >
-                        {characterInfo.name}
-                      </p>
+                      <p class="row-header-name">{characterInfo.name}</p>
                     </a>
                   </th>
                   <Row characterKey={characterKey} />
