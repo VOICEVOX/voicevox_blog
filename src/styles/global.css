@@ -71,6 +71,7 @@
   /* ページの高さを最低でも画面の高さに合わせる */
   html {
     height: -webkit-fill-available;
+    scroll-padding-top: 3.25rem;
   }
   body {
     min-height: 100vh;
@@ -220,4 +221,9 @@
       height: 8px;
     }
   }
+}
+
+@utility vv-anchor-offset-* {
+  /* idタグにジャンプるするときのオフセット */
+  scroll-margin-top: --spacing(--value(integer));
 }
