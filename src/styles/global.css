@@ -65,6 +65,16 @@
   --color-link-dark: rgb(165, 212, 173);
   --color-link-dark-hover: rgb(185, 232, 193);
   --font-sans: "Unhinted Rounded M+ 1p", ui-sans-serif, system-ui, sans-serif;
+
+  --spacing-2xs: calc(var(--spacing) * 1);
+  --spacing-xs: calc(var(--spacing) * 2);
+  --spacing-sm: calc(var(--spacing) * 3);
+  --spacing-md: calc(var(--spacing) * 4);
+  --spacing-lg: calc(var(--spacing) * 5);
+  --spacing-xl: calc(var(--spacing) * 6);
+  --spacing-2xl: calc(var(--spacing) * 8);
+  --spacing-3xl: calc(var(--spacing) * 12);
+  --spacing-4xl: calc(var(--spacing) * 20);
 }
 
 @layer base {
