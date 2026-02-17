@@ -77,6 +77,54 @@
   --spacing-4xl: calc(var(--spacing) * 20);
 }
 
+/*
+ * --spacing-*を定義すると--container-*が効かなくなる問題のワークアラウンド
+ * 参照: https://github.com/tailwindlabs/tailwindcss/discussions/17777#discussioncomment-12937263
+ */
+@theme inline {
+  --width-3xs: var(--container-3xs);
+  --width-2xs: var(--container-2xs);
+  --width-xs: var(--container-xs);
+  --width-sm: var(--container-sm);
+  --width-md: var(--container-md);
+  --width-lg: var(--container-lg);
+  --width-xl: var(--container-xl);
+  --width-2xl: var(--container-2xl);
+  --width-3xl: var(--container-3xl);
+  --width-4xl: var(--container-4xl);
+  --width-5xl: var(--container-5xl);
+  --width-6xl: var(--container-6xl);
+  --width-7xl: var(--container-7xl);
+
+  --min-width-3xs: var(--container-3xs);
+  --min-width-2xs: var(--container-2xs);
+  --min-width-xs: var(--container-xs);
+  --min-width-sm: var(--container-sm);
+  --min-width-md: var(--container-md);
+  --min-width-lg: var(--container-lg);
+  --min-width-xl: var(--container-xl);
+  --min-width-2xl: var(--container-2xl);
+  --min-width-3xl: var(--container-3xl);
+  --min-width-4xl: var(--container-4xl);
+  --min-width-5xl: var(--container-5xl);
+  --min-width-6xl: var(--container-6xl);
+  --min-width-7xl: var(--container-7xl);
+
+  --max-width-3xs: var(--container-3xs);
+  --max-width-2xs: var(--container-2xs);
+  --max-width-xs: var(--container-xs);
+  --max-width-sm: var(--container-sm);
+  --max-width-md: var(--container-md);
+  --max-width-lg: var(--container-lg);
+  --max-width-xl: var(--container-xl);
+  --max-width-2xl: var(--container-2xl);
+  --max-width-3xl: var(--container-3xl);
+  --max-width-4xl: var(--container-4xl);
+  --max-width-5xl: var(--container-5xl);
+  --max-width-6xl: var(--container-6xl);
+  --max-width-7xl: var(--container-7xl);
+}
+
 @layer base {
   /* ページの高さを最低でも画面の高さに合わせる */
   html {

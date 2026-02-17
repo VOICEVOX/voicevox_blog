@@ -47,7 +47,7 @@ const backgroundImageSrc = (await getImage({ src: backgroundImage })).src;
   <main class="bg-neutral-950 text-white">
     <section class="py-0" data-testid="first-view">
       <div
-        class="relative isolate flex min-h-[calc(100vh-3.25rem)] flex-col items-center justify-center gap-14 px-6 py-12 text-center"
+        class="relative isolate flex min-h-[calc(100vh-3.25rem)] flex-col items-center justify-center gap-14 px-xl py-3xl text-center"
       >
         <!-- 背景画像 -->
         <div
@@ -57,7 +57,7 @@ const backgroundImageSrc = (await getImage({ src: backgroundImage })).src;
         </div>
 
         <div
-          class="flex flex-col items-center justify-center gap-2 max-md:mb-20 md:gap-4"
+          class="flex flex-col items-center justify-center gap-xs max-md:mb-4xl md:gap-md"
         >
           <h1
             class="text-primary/75 text-5xl leading-[1.125] font-extrabold [text-shadow:0px_0px_10px_color-mix(in_srgb,var(--color-primary)_55%,transparent)] md:text-8xl lg:text-9xl"
@@ -71,19 +71,19 @@ const backgroundImageSrc = (await getImage({ src: backgroundImage })).src;
           </span>
         </div>
 
-        <div class="flex flex-col items-center gap-4">
+        <div class="flex flex-col items-center gap-md">
           <button
             {...{ [showDownloadModalAttr]: "" }}
-            class="bg-primary inline-flex h-14 items-center justify-center gap-2 rounded-full px-8 py-3 text-2xl font-medium text-black shadow-lg hover:opacity-90"
+            class="bg-primary inline-flex h-14 items-center justify-center gap-xs rounded-full px-2xl py-sm text-2xl font-medium text-black shadow-lg hover:opacity-90"
           >
-            <span class="-ml-2 inline-flex items-center">
+            <span class="-ml-xs inline-flex items-center">
               <FontAwesomeIcon icon={faDownload} />
             </span>
             <span class="font-semibold">ダウンロード</span>
           </button>
           <a
             href={withBaseUrl("/term/")}
-            class="inline-flex h-10 items-center justify-center rounded-full bg-white px-5 py-2 text-base font-medium text-neutral-950 shadow-lg hover:opacity-90"
+            class="inline-flex h-10 items-center justify-center rounded-full bg-white px-lg py-xs text-base font-medium text-neutral-950 shadow-lg hover:opacity-90"
           >
             利用規約
           </a>
@@ -91,42 +91,42 @@ const backgroundImageSrc = (await getImage({ src: backgroundImage })).src;
       </div>
     </section>
 
-    <section class="py-12">
-      <div class="mx-auto mb-12 w-full max-w-6xl px-6">
-        <h2 class="mb-6 text-3xl font-bold">特徴</h2>
-        <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
+    <section class="py-3xl">
+      <div class="mx-auto mb-3xl w-full max-w-6xl px-xl">
+        <h2 class="mb-xl text-3xl font-bold">特徴</h2>
+        <div class="grid grid-cols-2 gap-md md:grid-cols-4">
           <div
-            class="rounded-2xl bg-emerald-950/20 py-8 text-center text-base leading-normal md:text-xl"
+            class="rounded-2xl bg-emerald-950/20 py-2xl text-center text-base leading-normal md:text-xl"
           >
             商用利用可能な
             <br />
             フリーソフト
           </div>
           <div
-            class="rounded-2xl bg-emerald-950/20 py-8 text-center text-base leading-normal md:text-xl"
+            class="rounded-2xl bg-emerald-950/20 py-2xl text-center text-base leading-normal md:text-xl"
           >
             マルチOSに対応
             <br />
             (Win / Mac / Linux)
           </div>
           <div
-            class="rounded-2xl bg-emerald-950/20 py-8 text-center text-base leading-normal md:text-xl"
+            class="rounded-2xl bg-emerald-950/20 py-2xl text-center text-base leading-normal md:text-xl"
           >
             {characterCount} 名のキャラクターと
             <br />
             {styleCount} 種類のボイス
           </div>
           <div
-            class="rounded-2xl bg-emerald-950/20 py-8 text-center text-base leading-normal md:text-xl"
+            class="rounded-2xl bg-emerald-950/20 py-2xl text-center text-base leading-normal md:text-xl"
           >
             すぐ使える GUI と<br />歌唱 AI で創作支援
           </div>
         </div>
       </div>
 
-      <div class="mx-auto w-full max-w-6xl px-6">
-        <h2 class="mb-6 text-3xl font-bold">音声ライブラリ一覧</h2>
-        <div class="flex flex-wrap items-center justify-center gap-4">
+      <div class="mx-auto w-full max-w-6xl px-xl">
+        <h2 class="mb-xl text-3xl font-bold">音声ライブラリ一覧</h2>
+        <div class="flex flex-wrap items-center justify-center gap-md">
           {
             orderedCharacterKeys.map((characterKey) => (
               <CharacterCard
@@ -146,9 +146,9 @@ const backgroundImageSrc = (await getImage({ src: backgroundImage })).src;
       </div>
     </section>
 
-    <section class="py-12">
-      <div class="mx-auto w-full max-w-5xl px-6">
-        <h2 class="mb-6 text-3xl font-bold">ハミングとは？</h2>
+    <section class="py-3xl">
+      <div class="mx-auto w-full max-w-5xl px-xl">
+        <h2 class="mb-xl text-3xl font-bold">ハミングとは？</h2>
         <p class="text-xl leading-relaxed">
           喋り声のデータを用いて音声ライブラリを作成し、
           歌えるキャラクターに歌い方を倣うことで、

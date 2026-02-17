@@ -19,8 +19,8 @@ export default function Header({
   const [isBurgerActive, setIsBurgerActive] = useState(false);
   const [showingHeader, setShowingHeader] = useState(!defaultHide);
   const menuItemHoverClassName = "hover:bg-neutral-100 dark:hover:bg-white/10";
-  const menuItemBaseClassName = `flex items-center self-stretch px-3 text-base whitespace-nowrap ${menuItemHoverClassName}`;
-  const menuItemBaseMobilePanelClassName = `flex items-center px-3 py-2 text-base whitespace-nowrap ${menuItemHoverClassName}`;
+  const menuItemBaseClassName = `flex items-center self-stretch px-sm text-base whitespace-nowrap ${menuItemHoverClassName}`;
+  const menuItemBaseMobilePanelClassName = `flex items-center px-sm py-xs text-base whitespace-nowrap ${menuItemHoverClassName}`;
 
   // ヘッダーを隠すための属性を持つ要素が表示されている間はヘッダーを隠す
   useEffect(() => {
@@ -156,10 +156,10 @@ export default function Header({
     {
       Component: ({ className }: { className?: string }) => (
         <div
-          className={`flex items-center self-stretch px-3 ${className ?? ""}`}
+          className={`flex items-center self-stretch px-sm ${className ?? ""}`}
         >
           <button
-            className="bg-primary hover:bg-primary/90 inline-flex shrink-0 items-center gap-1.5 rounded-full px-5 py-2 text-base leading-6 font-semibold whitespace-nowrap text-black"
+            className="bg-primary hover:bg-primary/90 inline-flex shrink-0 items-center gap-1.5 rounded-full px-lg py-xs text-base leading-xl font-semibold whitespace-nowrap text-black"
             onClick={() => {
               if (!isNemo) {
                 $downloadModal.set(true);
@@ -170,7 +170,7 @@ export default function Header({
               }
             }}
           >
-            <span className="-ml-1 inline-flex items-center">
+            <span className="-ml-2xs inline-flex items-center">
               <FontAwesomeIcon icon={faDownload} />
             </span>
             <span>ダウンロード</span>
@@ -218,7 +218,7 @@ export default function Header({
           <div className="flex min-w-0 items-stretch">
             <a
               href={withBaseUrl("/")}
-              className={`flex items-center gap-3 self-stretch px-3 whitespace-nowrap ${menuItemHoverClassName}`}
+              className={`flex items-center gap-sm self-stretch px-sm whitespace-nowrap ${menuItemHoverClassName}`}
             >
               <img src={iconUrl} alt="" width="28" height="28" />
               <span className="text-xl font-bold">VOICEVOX</span>
@@ -237,7 +237,7 @@ export default function Header({
             </div>
 
             <button
-              className={`navbar-burger relative mx-1 inline-flex h-10 w-10 items-center justify-center self-center lg:hidden ${
+              className={`navbar-burger relative mx-2xs inline-flex h-10 w-10 items-center justify-center self-center lg:hidden ${
                 isBurgerActive ? "opacity-80" : ""
               }`}
               aria-label="menu"
@@ -276,7 +276,7 @@ export default function Header({
           <div
             className={`border-t border-gray-200 bg-white text-neutral-900 dark:border-gray-800 dark:bg-black dark:text-white`}
           >
-            <div className="mx-auto flex flex-col py-2">
+            <div className="mx-auto flex flex-col py-xs">
               {menus.map(({ Component, hideType }, i) => (
                 <Component
                   key={i}

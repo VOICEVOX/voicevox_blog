@@ -13,11 +13,11 @@ interface Props {
 const { showingDormitoryPageButton } = Astro.props;
 ---
 
-<section class="py-5">
-  <div class="px-6">
+<section class="py-lg">
+  <div class="px-xl">
     <div class="mx-auto flex max-w-5xl flex-col bg-white">
-      <div class="flex flex-col items-center py-5 text-center">
-        <h2 class="mb-6 text-2xl font-bold">ボイボ寮とは</h2>
+      <div class="flex flex-col items-center py-lg text-center">
+        <h2 class="mb-xl text-2xl font-bold">ボイボ寮とは</h2>
         <p class="text-base">
           VOICEVOX
           のキャラたちの設定があると動画制作の参考になるかと思って用意した世界観です。
@@ -29,7 +29,7 @@ const { showingDormitoryPageButton } = Astro.props;
           showingDormitoryPageButton && (
             <a
               href={withBaseUrl("/dormitory/")}
-              class="mt-5 inline-flex h-10 items-center justify-center self-center rounded-full border border-neutral-300 bg-white px-5 text-base font-medium text-neutral-800 hover:bg-neutral-50"
+              class="mt-lg inline-flex h-10 items-center justify-center self-center rounded-full border border-neutral-300 bg-white px-lg text-base font-medium text-neutral-800 hover:bg-neutral-50"
             >
               <span>ボイボ寮ページへ</span>
             </a>
@@ -37,8 +37,8 @@ const { showingDormitoryPageButton } = Astro.props;
         }
       </div>
 
-      <div class="flex flex-col items-center py-5 text-center">
-        <h2 class="mb-6 text-2xl font-bold">VOICEVOX とは</h2>
+      <div class="flex flex-col items-center py-lg text-center">
+        <h2 class="mb-xl text-2xl font-bold">VOICEVOX とは</h2>
         <p class="text-base">
           無料で使える中品質なテキスト読み上げソフトウェアです。
         </p>
@@ -47,7 +47,7 @@ const { showingDormitoryPageButton } = Astro.props;
         </p>
         <a
           href={withBaseUrl("/")}
-          class="bg-primary mt-5 inline-flex items-center self-center rounded-full px-6 py-2 font-semibold text-black hover:brightness-90"
+          class="bg-primary mt-lg inline-flex items-center self-center rounded-full px-xl py-xs font-semibold text-black hover:brightness-90"
         >
           <span>ダウンロード</span>
         </a>

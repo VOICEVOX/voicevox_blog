@@ -33,16 +33,16 @@ export default function AudioSample({
     styles.length > 0 &&
     selectedAudioUrls != undefined &&
     selectedStyle != undefined && (
-      <div className="flex w-50 flex-col items-center rounded-2xl bg-white/80 p-4">
+      <div className="flex w-50 flex-col items-center rounded-2xl bg-white/80 p-md">
         <h3 className="text-base font-semibold">サンプルボイス</h3>
-        <div className="mt-2 flex flex-row">
+        <div className="mt-xs flex flex-row">
           {selectedAudioUrls.map((url, index) => (
             <PlayButton
               key={index}
               url={url}
               name={`${characterInfo.name}のサンプルボイス${index + 1}}`}
               color={characterInfo.color}
-              className="mx-1"
+              className="mx-2xs"
             />
           ))}
         </div>
@@ -53,7 +53,7 @@ export default function AudioSample({
             setSelectedStyle={setSelectedStyle}
             characterName={characterInfo.name}
             direction="up"
-            className="mt-2"
+            className="mt-xs"
           />
         )}
       </div>

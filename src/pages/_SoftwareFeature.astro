@@ -14,7 +14,7 @@ const { class: className, style } = Astro.props;
 ---
 
 <div class={`${className} flex flex-col`} style={style}>
-  <h2 id="feature" class="mb-4 text-4xl font-bold">特徴</h2>
+  <h2 id="feature" class="mb-md text-4xl font-bold">特徴</h2>
   <div>
     <ul class="list-inside list-disc space-y-2">
       <li>
@@ -29,18 +29,18 @@ const { class: className, style } = Astro.props;
       <li>喋り声で歌えるハミング機能搭載</li>
     </ul>
   </div>
-  <p class="mt-4 text-xs">
+  <p class="mt-md text-xs">
     ※1 詳しくは各キャラクターの利用規約をご参照ください
   </p>
   <p class="text-xs">※2 Windows / Mac / Linux に対応</p>
   <button
     {...{ [showDownloadModalAttr]: "" }}
-    class="bg-primary mt-5 flex items-center gap-2 self-center rounded-full px-8 py-4 text-2xl font-semibold text-black hover:brightness-90"
+    class="bg-primary mt-lg flex items-center gap-xs self-center rounded-full px-2xl py-md text-2xl font-semibold text-black hover:brightness-90"
   >
-    <span class="-ml-2 inline-flex items-center">
+    <span class="-ml-xs inline-flex items-center">
       <FontAwesomeIcon icon={faDownload} />
     </span>
     <span>ダウンロード</span>
   </button>
-  <p class="mt-2 self-center text-base">Version {APP_VERSION}</p>
+  <p class="mt-xs self-center text-base">Version {APP_VERSION}</p>
 </div>

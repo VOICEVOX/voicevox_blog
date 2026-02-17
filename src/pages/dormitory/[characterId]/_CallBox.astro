@@ -23,25 +23,25 @@ const callFrom: string | undefined =
 const targetCharacterInfo = characterInfos[targetCharacterKey];
 ---
 
-<div class="flex gap-2">
+<div class="flex gap-xs">
   <div class="flex flex-1">
     <div class="flex flex-1 items-center justify-center p-0">
       <span
-        class={`flex-1 border-[3px] rounded-lg py-1 text-[0.8rem] text-center ${callTo ? "" : "text-neutral-500"}`}
+        class={`flex-1 border-[3px] rounded-lg py-2xs text-[0.8rem] text-center ${callTo ? "" : "text-neutral-500"}`}
         style={{ borderColor: characterInfo.color }}
       >
         {callTo || "？"}
       </span>
-      <span class="-my-4 text-2xl" style={{ color: characterInfo.color }}>
+      <span class="-my-md text-2xl" style={{ color: characterInfo.color }}>
         →
       </span>
     </div>
     <div class="flex flex-1 items-center justify-center p-0">
-      <span class="-my-4 text-2xl" style={{ color: targetCharacterInfo.color }}>
+      <span class="-my-md text-2xl" style={{ color: targetCharacterInfo.color }}>
         ←
       </span>
       <span
-        class={`flex-1 border-[3px] rounded-lg py-1 text-[0.8rem] text-center ${callFrom ? "" : "text-neutral-500"}`}
+        class={`flex-1 border-[3px] rounded-lg py-2xs text-[0.8rem] text-center ${callFrom ? "" : "text-neutral-500"}`}
         style={{ borderColor: targetCharacterInfo.color }}
       >
         {callFrom || "？"}

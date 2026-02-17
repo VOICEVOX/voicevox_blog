@@ -25,8 +25,8 @@ export default function AudioSample({
 
   return (
     <div>
-      <hr className="my-3 border-gray-200" />
-      <div className="flex flex-wrap items-center justify-center gap-x-2.5 gap-y-[3px] py-1">
+      <hr className="my-sm border-gray-200" />
+      <div className="flex flex-wrap items-center justify-center gap-x-2.5 gap-y-[3px] py-2xs">
         <div className="w-[100px]">
           <span className="whitespace-nowrap">音声サンプル</span>
         </div>
@@ -44,7 +44,7 @@ export default function AudioSample({
         </div>
       </div>
       {styles.length > 1 && (
-        <div className="flex flex-wrap items-center justify-center gap-x-2.5 gap-y-[3px] py-1">
+        <div className="flex flex-wrap items-center justify-center gap-x-2.5 gap-y-[3px] py-2xs">
           <div className="w-[100px]">
             <span className="whitespace-nowrap">スタイル</span>
           </div>
@@ -58,7 +58,7 @@ export default function AudioSample({
           </div>
         </div>
       )}
-      <hr className="my-3 border-gray-200" />
+      <hr className="my-sm border-gray-200" />
     </div>
   );
 }

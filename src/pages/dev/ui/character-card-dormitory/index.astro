@@ -2,7 +2,6 @@
 import { characterInfos } from "@/constants/characterInfo";
 import CharacterCard from "@/pages/dormitory/_CharacterCard.astro";
 import "@/styles/global.css";
-import "@/styles/helper.scss";
 
 const characterInfo1 = characterInfos["ずんだもん"];
 const characterInfo2 = characterInfos["四国めたん"];
@@ -18,14 +17,14 @@ const characterInfo4 = characterInfos["雨晴はう"];
     <title>CharacterCard (dormitory) 確認用ページ</title>
   </head>
   <body>
-    <div class="p-8">
-      <h1 class="mb-6 text-2xl font-bold">
+    <div class="p-2xl">
+      <h1 class="mb-xl text-2xl font-bold">
         CharacterCard (dormitory) 確認用ページ
       </h1>
 
-      <section class="mb-8">
-        <h2 class="mb-4 text-xl font-semibold">キャラクター一覧（抜粋）</h2>
-        <div class="mx-auto max-w-5xl px-4">
+      <section class="mb-2xl">
+        <h2 class="mb-md text-xl font-semibold">キャラクター一覧（抜粋）</h2>
+        <div class="px-md mx-auto max-w-5xl">
           <div class="-m-[0.75rem] flex flex-wrap justify-center">
             <CharacterCard characterInfo={characterInfo1} />
             <CharacterCard characterInfo={characterInfo2} />

@@ -8,21 +8,21 @@ import Base from "@/layouts/Base.astro";
   noindex={true}
   isDark={true}
 >
-  <main class="py-12">
-    <div class="mx-auto max-w-7xl px-4">
-      <h1 class="mb-6 text-5xl font-bold">
+  <main class="py-3xl">
+    <div class="mx-auto max-w-7xl px-md">
+      <h1 class="mb-xl text-5xl font-bold">
         Base.astro レイアウト確認（ダークモード）
       </h1>
-      <p class="mb-6 text-xl">
+      <p class="mb-xl text-xl">
         このページはBase.astroレイアウトを使用しています。
       </p>
 
       <h2
-        class="mb-4 text-3xl font-extrabold text-neutral-700 dark:text-neutral-300"
+        class="mb-md text-3xl font-extrabold text-neutral-700 dark:text-neutral-300"
       >
         他のモード
       </h2>
-      <ul class="mb-4 ml-8 list-outside list-disc">
+      <ul class="mb-md ml-2xl list-outside list-disc">
         <li>
           <a
             href="/dev/ui/base/"
@@ -42,11 +42,11 @@ import Base from "@/layouts/Base.astro";
       </ul>
 
       <h2
-        class="mt-5 mb-4 text-3xl font-extrabold text-neutral-700 dark:text-neutral-300"
+        class="mt-lg mb-md text-3xl font-extrabold text-neutral-700 dark:text-neutral-300"
       >
         レイアウト構成要素
       </h2>
-      <ul class="mb-4 ml-8 list-outside list-disc">
+      <ul class="mb-md ml-2xl list-outside list-disc">
         <li>Header（画面上部）</li>
         <li>メインコンテンツ（この部分）</li>
         <li>Footer（画面下部に固定）</li>
@@ -54,13 +54,13 @@ import Base from "@/layouts/Base.astro";
       </ul>
 
       <h2
-        class="mt-5 mb-4 text-3xl font-extrabold text-neutral-700 dark:text-neutral-300"
+        class="mt-lg mb-md text-3xl font-extrabold text-neutral-700 dark:text-neutral-300"
       >
         ダミーコンテンツ
       </h2>
       {
         Array.from({ length: 5 }).map(() => (
-          <p class="mb-4 last:mb-0">
+          <p class="mb-md last:mb-0">
             これはダミーの文章です。Base.astroレイアウトの動作確認のために配置されています。
             フッターが最下部に固定されることを確認してください。
           </p>

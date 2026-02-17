@@ -15,7 +15,7 @@ const { info, style } = Astro.props;
 ---
 
 <div
-  class="relative flex h-32 flex-row pr-4 filter-[drop-shadow(12px_12px_8px_rgba(0,0,0,0.5))] *:z-2 before:absolute before:top-[0.4rem] before:right-0 before:bottom-[0.4rem] before:left-[0.4rem] before:z-1 before:rounded-l-[calc(8rem-0.4rem)] before:bg-[#20242d] before:content-[''] max-lg:h-24 max-lg:before:rounded-l-[calc(6rem-0.4rem)] max-md:h-16 max-md:before:rounded-l-[calc(4rem-0.4rem)]"
+  class="relative flex h-32 flex-row pr-md filter-[drop-shadow(12px_12px_8px_rgba(0,0,0,0.5))] *:z-2 before:absolute before:top-[0.4rem] before:right-0 before:bottom-[0.4rem] before:left-[0.4rem] before:z-1 before:rounded-l-[calc(8rem-0.4rem)] before:bg-[#20242d] before:content-[''] max-lg:h-24 max-lg:before:rounded-l-[calc(6rem-0.4rem)] max-md:h-16 max-md:before:rounded-l-[calc(4rem-0.4rem)]"
   style={style}
 >
   <div
@@ -24,7 +24,7 @@ const { info, style } = Astro.props;
     <Image src={info.icon} alt={`${info.name}のアイコン`} />
   </div>
   <div
-    class="flex flex-1 flex-col items-center justify-center gap-2 text-center max-lg:gap-1"
+    class="flex flex-1 flex-col items-center justify-center gap-xs text-center max-lg:gap-2xs"
   >
     <span class="text-base text-white max-lg:text-xs">CV</span>
     <div class="group/dropdown relative inline-block">
@@ -36,23 +36,23 @@ const { info, style } = Astro.props;
           type="button"
         >
           <h3
-            class="inline-block max-w-full overflow-hidden px-2 text-xl text-ellipsis whitespace-nowrap max-lg:text-base"
+            class="inline-block max-w-full overflow-hidden px-xs text-xl text-ellipsis whitespace-nowrap max-lg:text-base"
           >
             {info.cv}
           </h3>
         </button>
       </div>
       <div
-        class="absolute top-full left-0 z-50 hidden w-max min-w-full pt-2 group-hover/dropdown:block"
+        class="absolute top-full left-0 z-50 hidden w-max min-w-full pt-xs group-hover/dropdown:block"
         id={`dropdown-${info.id}`}
         role="menu"
       >
         <div
-          class="min-w-56 rounded-md bg-[#2e333d] p-3 shadow-lg ring-1 ring-black/20"
+          class="min-w-56 rounded-md bg-[#2e333d] p-sm shadow-lg ring-1 ring-black/20"
         >
-          <div class="flex flex-col items-center gap-2 text-center text-white">
+          <div class="flex flex-col items-center gap-xs text-center text-white">
             <span class="text-sm">音声収録のご依頼先</span>
-            <div class="flex gap-2">
+            <div class="flex gap-xs">
               {
                 [
                   {
@@ -91,7 +91,7 @@ const { info, style } = Astro.props;
       </div>
     </div>
   </div>
-  <div class="flex shrink-0 flex-row items-center justify-center gap-4">
+  <div class="flex shrink-0 flex-row items-center justify-center gap-md">
     {
       info.audios.map((audio, index) => (
         <PlayButton

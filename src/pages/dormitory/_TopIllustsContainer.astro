@@ -11,15 +11,15 @@ const { id } = Astro.props;
 ---
 
 <div
-  class="mx-auto flex max-w-5xl flex-col items-center bg-white py-12 text-center"
+  class="mx-auto flex max-w-5xl flex-col items-center bg-white py-3xl text-center"
 >
   <h2
     id={id}
-    class="vv-anchor-offset-4 mb-6 text-2xl leading-7 font-extrabold text-neutral-700"
+    class="vv-anchor-offset-4 mb-xl text-2xl leading-7 font-extrabold text-neutral-700"
   >
     <a href={`#${id}`} class="text-black"> トップイラスト一覧 </a>
   </h2>
-  <div class="grid w-full grid-cols-1 gap-4 px-4 md:grid-cols-3">
+  <div class="grid w-full grid-cols-1 gap-md px-md md:grid-cols-3">
     {
       // トップイラスト一覧
       dormitoryTopIllustInfos.map(({ image, illustrator }, index) => (

@@ -28,9 +28,9 @@ const shareThumb = (await getImage({ src: image, width: 1200 })).src;
   image={shareThumb}
   imageAlt=""
 >
-  <main class="py-12">
-    <div class="mx-auto max-w-7xl px-4">
-      <h1 class="mb-6 text-3xl leading-9 font-extrabold text-[rgb(54,54,54)]">
+  <main class="py-3xl">
+    <div class="mx-auto max-w-7xl px-md">
+      <h1 class="mb-xl text-3xl leading-9 font-extrabold text-[rgb(54,54,54)]">
         トップイラスト {index + 1}
       </h1>
       <div>
@@ -47,7 +47,7 @@ const shareThumb = (await getImage({ src: image, width: 1200 })).src;
           />
         </div>
       </div>
-      <p class="mt-4 text-right text-black">イラスト：{illustrator}</p>
+      <p class="mt-md text-right text-black">イラスト：{illustrator}</p>
     </div>
   </main>
 </Base>

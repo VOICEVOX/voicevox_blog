@@ -28,7 +28,7 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
     style={{ backgroundImage: backgroundImageUrl }}
   >
     <header {...{ [hideHeaderAttr]: "" }} class="bg-primary">
-      <div class="px-6 py-6">
+      <div class="px-xl py-xl">
         <div class="mx-auto max-w-5xl text-center">
           <h1 class="text-4xl font-extrabold text-neutral-700">
             ボイボ寮の住民たち
@@ -37,22 +37,22 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
       </div>
     </header>
 
-    <section class="px-6 py-0">
+    <section class="px-xl py-0">
       <TopIllustContainer />
       <div
-        class="mx-auto max-w-5xl bg-white py-12 text-center text-xl leading-7 text-black"
+        class="mx-auto max-w-5xl bg-white py-3xl text-center text-xl leading-7 text-black"
       >
         <p>とある世界の不思議な建物、ボイボ寮。</p>
         <p>ここでは個性豊かな住民たちが暮らしています。</p>
       </div>
     </section>
 
-    <main class="px-6 pt-0 pb-5">
-      <div class="mx-auto max-w-5xl bg-white pt-1 pb-12">
-        <div class="-mx-3 grid grid-cols-12">
+    <main class="px-xl pt-0 pb-lg">
+      <div class="mx-auto max-w-5xl bg-white pt-2xs pb-3xl">
+        <div class="-mx-sm grid grid-cols-12">
           <div
             id="11th"
-            class="vv-anchor-offset-7 col-span-12 flex items-center justify-center p-3 text-center md:col-span-2 md:justify-end"
+            class="vv-anchor-offset-7 col-span-12 flex items-center justify-center p-sm text-center md:col-span-2 md:justify-end"
           >
             <h2 class="text-3xl font-extrabold text-neutral-700">
               <a href="#11th" class="text-black"> 11 期 生 </a>
@@ -62,12 +62,12 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
           <CharacterCard characterInfo={characterInfos.あんこもん} />
         </div>
 
-        <hr class="my-3 h-0.5 border-0 bg-neutral-100" />
+        <hr class="my-sm h-0.5 border-0 bg-neutral-100" />
 
-        <div class="-mx-3 grid grid-cols-12">
+        <div class="-mx-sm grid grid-cols-12">
           <div
             id="10th"
-            class="vv-anchor-offset-7 col-span-12 flex items-center justify-center p-3 text-center md:col-span-2 md:justify-end"
+            class="vv-anchor-offset-7 col-span-12 flex items-center justify-center p-sm text-center md:col-span-2 md:justify-end"
           >
             <h2 class="text-3xl font-extrabold text-neutral-700">
               <a href="#10th" class="text-black"> 10 期 生 </a>
@@ -85,12 +85,12 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
           <CharacterCard characterInfo={characterInfos.東北イタコ} />
         </div>
 
-        <hr class="my-3 h-0.5 border-0 bg-neutral-100" />
+        <hr class="my-sm h-0.5 border-0 bg-neutral-100" />
 
-        <div class="-mx-3 grid grid-cols-12">
+        <div class="-mx-sm grid grid-cols-12">
           <div
             id="9th"
-            class="vv-anchor-offset-7 col-span-12 flex items-center justify-center p-3 text-center md:col-span-2 md:justify-end"
+            class="vv-anchor-offset-7 col-span-12 flex items-center justify-center p-sm text-center md:col-span-2 md:justify-end"
           >
             <h2 class="text-3xl font-extrabold text-neutral-700">
               <a href="#9th" class="text-black"> 9 期 生 </a>
@@ -102,12 +102,12 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
           <CharacterCard characterInfo={characterInfos.中部つるぎ} />
         </div>
 
-        <hr class="my-3 h-0.5 border-0 bg-neutral-100" />
+        <hr class="my-sm h-0.5 border-0 bg-neutral-100" />
 
-        <div class="-mx-3 grid grid-cols-12">
+        <div class="-mx-sm grid grid-cols-12">
           <div
             id="8th"
-            class="vv-anchor-offset-7 col-span-12 flex items-center justify-center p-3 text-center md:col-span-2 md:justify-end"
+            class="vv-anchor-offset-7 col-span-12 flex items-center justify-center p-sm text-center md:col-span-2 md:justify-end"
           >
             <h2 class="text-3xl font-extrabold text-neutral-700">
               <a href="#8th" class="text-black"> 8 期 生 </a>
@@ -123,12 +123,12 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
           />
         </div>
 
-        <hr class="my-3 h-0.5 border-0 bg-neutral-100" />
+        <hr class="my-sm h-0.5 border-0 bg-neutral-100" />
 
-        <div class="-mx-3 grid grid-cols-12">
+        <div class="-mx-sm grid grid-cols-12">
           <div
             id="7th"
-            class="vv-anchor-offset-7 col-span-12 flex items-center justify-center p-3 text-center md:col-span-2 md:justify-end"
+            class="vv-anchor-offset-7 col-span-12 flex items-center justify-center p-sm text-center md:col-span-2 md:justify-end"
           >
             <h2 class="text-3xl font-extrabold text-neutral-700">
               <a href="#7th" class="text-black"> 7 期 生 </a>
@@ -150,12 +150,12 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
           />
         </div>
 
-        <hr class="my-3 h-0.5 border-0 bg-neutral-100" />
+        <hr class="my-sm h-0.5 border-0 bg-neutral-100" />
 
-        <div class="-mx-3 grid grid-cols-12">
+        <div class="-mx-sm grid grid-cols-12">
           <div
             id="6th"
-            class="vv-anchor-offset-7 col-span-12 flex items-center justify-center p-3 text-center md:col-span-2 md:justify-end"
+            class="vv-anchor-offset-7 col-span-12 flex items-center justify-center p-sm text-center md:col-span-2 md:justify-end"
           >
             <h2 class="text-3xl font-extrabold text-neutral-700">
               <a href="#6th" class="text-black"> 6 期 生 </a>
@@ -171,12 +171,12 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
           />
         </div>
 
-        <hr class="my-3 h-0.5 border-0 bg-neutral-100" />
+        <hr class="my-sm h-0.5 border-0 bg-neutral-100" />
 
-        <div class="-mx-3 grid grid-cols-12">
+        <div class="-mx-sm grid grid-cols-12">
           <div
             id="5th"
-            class="vv-anchor-offset-7 col-span-12 flex items-center justify-center p-3 text-center md:col-span-2 md:justify-end"
+            class="vv-anchor-offset-7 col-span-12 flex items-center justify-center p-sm text-center md:col-span-2 md:justify-end"
           >
             <h2 class="text-3xl font-extrabold text-neutral-700">
               <a href="#5th" class="text-black"> 5 期 生 </a>
@@ -188,12 +188,12 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
           <CharacterCard characterInfo={characterInfos.No7} />
         </div>
 
-        <hr class="my-3 h-0.5 border-0 bg-neutral-100" />
+        <hr class="my-sm h-0.5 border-0 bg-neutral-100" />
 
-        <div class="-mx-3 grid grid-cols-12">
+        <div class="-mx-sm grid grid-cols-12">
           <div
             id="4th"
-            class="vv-anchor-offset-7 col-span-12 flex items-center justify-center p-3 text-center md:col-span-2 md:justify-end"
+            class="vv-anchor-offset-7 col-span-12 flex items-center justify-center p-sm text-center md:col-span-2 md:justify-end"
           >
             <h2 class="text-3xl font-extrabold text-neutral-700">
               <a href="#4th" class="text-black"> 4 期 生 </a>
@@ -204,12 +204,12 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
           <CharacterCard characterInfo={characterInfos.剣崎雌雄} />
         </div>
 
-        <hr class="my-3 h-0.5 border-0 bg-neutral-100" />
+        <hr class="my-sm h-0.5 border-0 bg-neutral-100" />
 
-        <div class="-mx-3 grid grid-cols-12">
+        <div class="-mx-sm grid grid-cols-12">
           <div
             id="3rd"
-            class="vv-anchor-offset-7 col-span-12 flex items-center justify-center p-3 text-center md:col-span-2 md:justify-end"
+            class="vv-anchor-offset-7 col-span-12 flex items-center justify-center p-sm text-center md:col-span-2 md:justify-end"
           >
             <h2 class="text-3xl font-extrabold text-neutral-700">
               <a href="#3rd" class="text-black"> 3 期 生 </a>
@@ -226,12 +226,12 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
           <CharacterCard characterInfo={characterInfos.九州そら} />
         </div>
 
-        <hr class="my-3 h-0.5 border-0 bg-neutral-100" />
+        <hr class="my-sm h-0.5 border-0 bg-neutral-100" />
 
-        <div class="-mx-3 grid grid-cols-12">
+        <div class="-mx-sm grid grid-cols-12">
           <div
             id="2nd"
-            class="vv-anchor-offset-7 col-span-12 flex items-center justify-center p-3 text-center md:col-span-2 md:justify-end"
+            class="vv-anchor-offset-7 col-span-12 flex items-center justify-center p-sm text-center md:col-span-2 md:justify-end"
           >
             <h2 class="text-3xl font-extrabold text-neutral-700">
               <a href="#2nd" class="text-black"> 2 期 生 </a>
@@ -243,12 +243,12 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
           <CharacterCard characterInfo={characterInfos.波音リツ} />
         </div>
 
-        <hr class="my-3 h-0.5 border-0 bg-neutral-100" />
+        <hr class="my-sm h-0.5 border-0 bg-neutral-100" />
 
-        <div class="-mx-3 grid grid-cols-12">
+        <div class="-mx-sm grid grid-cols-12">
           <div
             id="1st"
-            class="vv-anchor-offset-7 col-span-12 flex items-center justify-center p-3 text-center md:col-span-2 md:justify-end"
+            class="vv-anchor-offset-7 col-span-12 flex items-center justify-center p-sm text-center md:col-span-2 md:justify-end"
           >
             <h2 class="text-3xl font-extrabold text-neutral-700">
               <a href="#1st" class="text-black"> 1 期 生 </a>
@@ -259,9 +259,9 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
           <CharacterCard characterInfo={characterInfos.ずんだもん} />
 
           <div
-            class="col-span-12 flex flex-col items-center justify-center p-3 text-center sm:col-span-6 md:col-span-3"
+            class="col-span-12 flex flex-col items-center justify-center p-sm text-center sm:col-span-6 md:col-span-3"
           >
-            <h3 class="mb-6 text-2xl font-extrabold text-neutral-700">
+            <h3 class="mb-xl text-2xl font-extrabold text-neutral-700">
               仲良し
             </h3>
             <a href="https://zunko.jp/" target="_blank" rel="noreferrer">
@@ -270,15 +270,15 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
           </div>
         </div>
 
-        <hr class="my-3 h-0.5 border-0 bg-neutral-100" />
+        <hr class="my-sm h-0.5 border-0 bg-neutral-100" />
 
-        <div class="pt-2 pb-0 text-center">
-          <h2 class="mb-6 text-2xl leading-7 font-extrabold text-neutral-700">
+        <div class="pt-xs pb-0 text-center">
+          <h2 class="mb-xl text-2xl leading-7 font-extrabold text-neutral-700">
             関連コンテンツ
           </h2>
           <a
             href={withBaseUrl("/dormitory/call_names/")}
-            class="inline-flex h-10 items-center justify-center rounded-full border border-neutral-300 bg-white px-5 text-base font-medium text-neutral-800 hover:bg-neutral-50"
+            class="inline-flex h-10 items-center justify-center rounded-full border border-neutral-300 bg-white px-lg text-base font-medium text-neutral-800 hover:bg-neutral-50"
           >
             <span>キャラクターの呼称表</span>
           </a>
@@ -288,11 +288,11 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
 
     <ExplainSection />
 
-    <section class="px-6 py-5">
+    <section class="px-xl py-lg">
       <EventsContainer id="events" />
     </section>
 
-    <section class="px-6 py-5">
+    <section class="px-xl py-lg">
       <TopIllustsContainer id="top_illusts" />
     </section>
   </div>

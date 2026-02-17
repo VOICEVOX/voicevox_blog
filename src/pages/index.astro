@@ -31,20 +31,20 @@ const landingMovieThumbUrl = (await getImage({ src: landingMovieThumb })).src;
       data-testid="first-view"
     >
       <header {...{ [hideHeaderAttr]: "" }} class="bg-primary text-black">
-        <div class="py-6">
-          <div class="mx-auto max-w-7xl px-4 text-center">
-            <div class="mb-3 h-14 md:h-20 lg:h-28">
+        <div class="py-xl">
+          <div class="mx-auto max-w-7xl px-md text-center">
+            <div class="mb-sm h-14 md:h-20 lg:h-28">
               <Image src={logo} alt="VOICEVOX" class="mx-auto h-full w-auto" />
             </div>
-            <h2 class="mt-0 text-xl leading-6 font-semibold">
+            <h2 class="mt-0 text-xl leading-xl font-semibold">
               無料で使える中品質なテキスト読み上げ・歌声合成ソフトウェア
             </h2>
           </div>
         </div>
       </header>
-      <section class="flex flex-1 items-center py-12">
+      <section class="flex flex-1 items-center py-3xl">
         <div
-          class="mx-auto flex max-w-5xl flex-col justify-center gap-10 px-4 lg:flex-row lg:items-center"
+          class="mx-auto flex max-w-5xl flex-col justify-center gap-10 px-md lg:flex-row lg:items-center"
         >
           <div class="w-full text-center lg:flex-1">
             {/* FIXME: キャプションTrackを追加する */}
@@ -63,17 +63,17 @@ const landingMovieThumbUrl = (await getImage({ src: landingMovieThumb })).src;
     </div>
 
     <main>
-      <section class="py-12">
-        <div class="mx-auto flex max-w-5xl flex-col px-4">
+      <section class="py-3xl">
+        <div class="mx-auto flex max-w-5xl flex-col px-md">
           <h2
             id="characters"
-            class="vv-anchor-offset-4 mb-6 text-3xl font-bold text-neutral-950"
+            class="vv-anchor-offset-4 mb-xl text-3xl font-bold text-neutral-950"
           >
             <a href="#characters" class="text-neutral-950">
               キャラクター一覧
             </a>
           </h2>
-          <div class="-mx-3 flex flex-wrap justify-center">
+          <div class="-mx-sm flex flex-wrap justify-center">
             {
               characterKeys.map((characterKey) => (
                 <CharacterCard characterInfo={characterInfos[characterKey]} />
@@ -83,11 +83,11 @@ const landingMovieThumbUrl = (await getImage({ src: landingMovieThumb })).src;
         </div>
       </section>
 
-      <section class="py-12">
-        <div class="mx-auto flex max-w-5xl flex-col px-4">
+      <section class="py-3xl">
+        <div class="mx-auto flex max-w-5xl flex-col px-md">
           <h2
             id="nemo"
-            class="vv-anchor-offset-4 mb-6 text-3xl font-bold text-neutral-950"
+            class="vv-anchor-offset-4 mb-xl text-3xl font-bold text-neutral-950"
           >
             <a href="#nemo" class="text-neutral-950"> VOICEVOX Nemo </a>
           </h2>
@@ -106,11 +106,11 @@ const landingMovieThumbUrl = (await getImage({ src: landingMovieThumb })).src;
 
       <EngineGuidanceSection />
 
-      <section class="py-12">
-        <div class="mx-auto flex max-w-5xl flex-col px-4">
+      <section class="py-3xl">
+        <div class="mx-auto flex max-w-5xl flex-col px-md">
           <h2
             id="core_library"
-            class="vv-anchor-offset-4 mb-6 text-3xl font-bold text-neutral-950"
+            class="vv-anchor-offset-4 mb-xl text-3xl font-bold text-neutral-950"
           >
             <a href="#core_library" class="text-neutral-950">
               コアライブラリ

@@ -15,45 +15,45 @@ import zundamonAudio3 from "@/assets/talk-audios/zundamon-normal-003.wav";
     <title>PlayButton 確認用ページ</title>
   </head>
   <body>
-    <div class="p-8">
-      <h1 class="mb-6 text-2xl font-bold">PlayButton 確認用ページ</h1>
+    <div class="p-2xl">
+      <h1 class="mb-xl text-2xl font-bold">PlayButton 確認用ページ</h1>
 
-      <section class="mb-8">
-        <h2 class="mb-4 text-xl font-semibold">デフォルト（primary）</h2>
-        <div class="flex items-center gap-2">
+      <section class="mb-2xl">
+        <h2 class="mb-md text-xl font-semibold">デフォルト（primary）</h2>
+        <div class="flex items-center gap-xs">
           <PlayButton audio={zundamonAudio1} name="ずんだもんサンプル1" />
           <PlayButton audio={zundamonAudio2} name="ずんだもんサンプル2" />
           <PlayButton audio={zundamonAudio3} name="ずんだもんサンプル3" />
         </div>
       </section>
 
-      <section class="mb-8">
-        <h2 class="mb-4 text-xl font-semibold">サイズバリエーション</h2>
-        <div class="flex items-center gap-4">
+      <section class="mb-2xl">
+        <h2 class="mb-md text-xl font-semibold">サイズバリエーション</h2>
+        <div class="flex items-center gap-md">
           <div>
-            <p class="mb-2">sm</p>
+            <p class="mb-xs">sm</p>
             <PlayButton audio={zundamonAudio1} name="ずんだもん小" size="sm" />
           </div>
           <div>
-            <p class="mb-2">デフォルト</p>
+            <p class="mb-xs">デフォルト</p>
             <PlayButton audio={zundamonAudio1} name="ずんだもん通常" />
           </div>
           <div>
-            <p class="mb-2">md</p>
+            <p class="mb-xs">md</p>
             <PlayButton audio={zundamonAudio1} name="ずんだもん中" size="md" />
           </div>
           <div>
-            <p class="mb-2">lg</p>
+            <p class="mb-xs">lg</p>
             <PlayButton audio={zundamonAudio1} name="ずんだもん大" size="lg" />
           </div>
         </div>
       </section>
 
-      <section class="mb-8">
-        <h2 class="mb-4 text-xl font-semibold">カスタムカラー（Nemo用）</h2>
-        <div class="flex items-center gap-4">
+      <section class="mb-2xl">
+        <h2 class="mb-md text-xl font-semibold">カスタムカラー（Nemo用）</h2>
+        <div class="flex items-center gap-md">
           <div>
-            <p class="mb-2">女性（ピンク）</p>
+            <p class="mb-xs">女性（ピンク）</p>
             <PlayButton
               audio={zundamonAudio1}
               name="女性ボイス"
@@ -61,7 +61,7 @@ import zundamonAudio3 from "@/assets/talk-audios/zundamon-normal-003.wav";
             />
           </div>
           <div>
-            <p class="mb-2">男性（水色）</p>
+            <p class="mb-xs">男性（水色）</p>
             <PlayButton
               audio={zundamonAudio1}
               name="男性ボイス"
