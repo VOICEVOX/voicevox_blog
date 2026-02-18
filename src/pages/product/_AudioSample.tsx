@@ -33,7 +33,7 @@ export default function AudioSample({
     styles.length > 0 &&
     selectedAudioUrls != undefined &&
     selectedStyle != undefined && (
-      <div className="flex w-50 flex-col items-center rounded-2xl bg-white/80 p-md">
+      <div className="p-md flex w-50 flex-col items-center rounded-2xl bg-white/80">
         <h3 className="text-base font-semibold">サンプルボイス</h3>
         <div className="mt-xs flex flex-row">
           {selectedAudioUrls.map((url, index) => (

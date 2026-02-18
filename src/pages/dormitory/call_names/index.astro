@@ -45,7 +45,7 @@ function rgba2rgbOnWhite(
     class="vv-scrollbar-thin h-[calc(100vh-3.25rem)] overflow-auto"
     data-voicevox-call-names-wrapper
   >
-    <section class="sticky left-0 px-xl py-3xl">
+    <section class="px-xl py-3xl sticky left-0">
       <div class="mx-auto w-full max-w-5xl text-center">
         <h1 class="mb-xl text-3xl leading-9 font-extrabold text-neutral-700">
           ボイボ寮キャラクターの呼称表
@@ -68,8 +68,8 @@ function rgba2rgbOnWhite(
             <th
               class="sticky top-0 left-0 z-30 w-24 border-r border-b border-neutral-500 bg-white p-0 !text-center align-middle md:w-[190px]"
             >
-              <p class="absolute bottom-0 left-0 z-10 p-xs font-normal">誰が</p>
-              <p class="absolute top-0 right-0 z-10 p-xs font-normal">誰を</p>
+              <p class="p-xs absolute bottom-0 left-0 z-10 font-normal">誰が</p>
+              <p class="p-xs absolute top-0 right-0 z-10 font-normal">誰を</p>
               <div
                 class="absolute inset-0"
                 style={{
@@ -84,12 +84,12 @@ function rgba2rgbOnWhite(
               characterKeys.map((characterKey) => {
                 const characterInfo = characterInfos[characterKey];
                 return (
-                  <th class="sticky top-0 z-20 w-[150px] border-b border-neutral-500 bg-white p-2xs !text-center align-middle">
+                  <th class="p-2xs sticky top-0 z-20 w-[150px] border-b border-neutral-500 bg-white !text-center align-middle">
                     <a
                       href={withBaseUrl(
                         getDormitoryCharacterPageUrl(characterInfo),
                       )}
-                      class="flex flex-col items-center justify-center gap-2xs text-center no-underline hover:underline"
+                      class="gap-2xs flex flex-col items-center justify-center text-center no-underline hover:underline"
                       style={{
                         color: characterInfo.color,
                       }}
@@ -102,7 +102,7 @@ function rgba2rgbOnWhite(
               })
             }
             <th
-              class="sticky top-0 z-20 w-[150px] border-b border-l border-neutral-500 bg-white p-2xs !text-center align-middle"
+              class="p-2xs sticky top-0 z-20 w-[150px] border-b border-l border-neutral-500 bg-white !text-center align-middle"
             >
               <p>全員</p>
               <p>（二人称）</p>
@@ -124,7 +124,7 @@ function rgba2rgbOnWhite(
               return (
                 <tr style={{ backgroundColor }}>
                   <th
-                    class="sticky left-0 z-10 w-24 border-r border-neutral-500 px-xs py-2xs text-center! align-middle md:w-[190px]"
+                    class="px-xs py-2xs sticky left-0 z-10 w-24 border-r border-neutral-500 text-center! align-middle md:w-[190px]"
                     style={{
                       backgroundColor,
                     }}
@@ -133,7 +133,7 @@ function rgba2rgbOnWhite(
                       href={withBaseUrl(
                         getDormitoryCharacterPageUrl(characterInfo),
                       )}
-                      class="flex items-center justify-center gap-sm text-center no-underline hover:underline md:justify-start"
+                      class="gap-sm flex items-center justify-center text-center no-underline hover:underline md:justify-start"
                       style={{
                         color: characterInfo.color,
                       }}

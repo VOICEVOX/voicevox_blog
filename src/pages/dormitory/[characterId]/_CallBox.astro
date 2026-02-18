@@ -23,7 +23,7 @@ const callFrom: string | undefined =
 const targetCharacterInfo = characterInfos[targetCharacterKey];
 ---
 
-<div class="flex gap-xs">
+<div class="gap-xs flex">
   <div class="flex flex-1">
     <div class="flex flex-1 items-center justify-center p-0">
       <span
@@ -37,7 +37,10 @@ const targetCharacterInfo = characterInfos[targetCharacterKey];
       </span>
     </div>
     <div class="flex flex-1 items-center justify-center p-0">
-      <span class="-my-md text-2xl" style={{ color: targetCharacterInfo.color }}>
+      <span
+        class="-my-md text-2xl"
+        style={{ color: targetCharacterInfo.color }}
+      >
         ←
       </span>
       <span

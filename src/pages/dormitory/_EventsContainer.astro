@@ -10,7 +10,7 @@ const { id } = Astro.props;
 ---
 
 <div
-  class="mx-auto flex max-w-5xl flex-col items-center bg-white py-3xl text-center"
+  class="py-3xl mx-auto flex max-w-5xl flex-col items-center bg-white text-center"
 >
   <h2
     id={id}
@@ -18,7 +18,7 @@ const { id } = Astro.props;
   >
     <a href={`#${id}`} class="text-black"> 過去のイベント </a>
   </h2>
-  <div class="grid w-full grid-cols-1 gap-md px-md md:grid-cols-3">
+  <div class="gap-md px-md grid w-full grid-cols-1 md:grid-cols-3">
     {
       // 過去のイベント
       dormitoryEvents.map((event) => (
@@ -37,7 +37,7 @@ const { id } = Astro.props;
               class="block w-full cursor-pointer rounded-2xl border border-black object-contain shadow-none"
             />
             <p
-              class="mt-xs text-base leading-xl text-neutral-950"
+              class="mt-xs leading-xl text-base text-neutral-950"
               set:html={event.titles.join("<br />")}
             />
           </a>

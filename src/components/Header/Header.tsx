@@ -156,10 +156,10 @@ export default function Header({
     {
       Component: ({ className }: { className?: string }) => (
         <div
-          className={`flex items-center self-stretch px-sm ${className ?? ""}`}
+          className={`px-sm flex items-center self-stretch ${className ?? ""}`}
         >
           <button
-            className="bg-primary hover:bg-primary/90 inline-flex shrink-0 items-center gap-1.5 rounded-full px-lg py-xs text-base leading-xl font-semibold whitespace-nowrap text-black"
+            className="bg-primary hover:bg-primary/90 px-lg py-xs leading-xl inline-flex shrink-0 items-center gap-1.5 rounded-full text-base font-semibold whitespace-nowrap text-black"
             onClick={() => {
               if (!isNemo) {
                 $downloadModal.set(true);
@@ -218,7 +218,7 @@ export default function Header({
           <div className="flex min-w-0 items-stretch">
             <a
               href={withBaseUrl("/")}
-              className={`flex items-center gap-sm self-stretch px-sm whitespace-nowrap ${menuItemHoverClassName}`}
+              className={`gap-sm px-sm flex items-center self-stretch whitespace-nowrap ${menuItemHoverClassName}`}
             >
               <img src={iconUrl} alt="" width="28" height="28" />
               <span className="text-xl font-bold">VOICEVOX</span>
@@ -237,7 +237,7 @@ export default function Header({
             </div>
 
             <button
-              className={`navbar-burger relative mx-2xs inline-flex h-10 w-10 items-center justify-center self-center lg:hidden ${
+              className={`navbar-burger mx-2xs relative inline-flex h-10 w-10 items-center justify-center self-center lg:hidden ${
                 isBurgerActive ? "opacity-80" : ""
               }`}
               aria-label="menu"
@@ -276,7 +276,7 @@ export default function Header({
           <div
             className={`border-t border-gray-200 bg-white text-neutral-900 dark:border-gray-800 dark:bg-black dark:text-white`}
           >
-            <div className="mx-auto flex flex-col py-xs">
+            <div className="py-xs mx-auto flex flex-col">
               {menus.map(({ Component, hideType }, i) => (
                 <Component
                   key={i}

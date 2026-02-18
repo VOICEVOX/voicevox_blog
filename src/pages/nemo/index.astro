@@ -29,7 +29,7 @@ const voicevoxIconImageSrc = (await getImage({ src: voicevoxIconImage })).src;
   >
     <section class="py-0" data-testid="first-view">
       <div
-        class="mx-auto flex max-w-5xl flex-col-reverse justify-center gap-16 px-xl max-lg:items-center max-lg:py-3xl lg:h-[calc(100vh-3.25rem)] lg:flex-row-reverse xl:max-w-6xl"
+        class="px-xl max-lg:py-3xl mx-auto flex max-w-5xl flex-col-reverse justify-center gap-16 max-lg:items-center lg:h-[calc(100vh-3.25rem)] lg:flex-row-reverse xl:max-w-6xl"
       >
         <div
           class="flex max-w-2xl flex-1 items-center justify-center [filter:drop-shadow(20px_20px_15px_rgba(0,0,0,0.5))] xl:max-w-3xl"
@@ -65,7 +65,7 @@ const voicevoxIconImageSrc = (await getImage({ src: voicevoxIconImage })).src;
               >無料の中品質読み上げソフトウェア</span
             >
           </h2>
-          <div class="mb-2xs flex items-center gap-2xs max-lg:justify-center">
+          <div class="mb-2xs gap-2xs flex items-center max-lg:justify-center">
             <span
               class="inline-block size-5 bg-contain bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${voicevoxIconImageSrc})` }}
@@ -73,10 +73,10 @@ const voicevoxIconImageSrc = (await getImage({ src: voicevoxIconImage })).src;
             <span>Powered by VOICEVOX</span>
           </div>
 
-          <div class="mt-md flex gap-md">
+          <div class="mt-md gap-md flex">
             <button
               {...{ [showNemoGuidanceModalAttr]: "" }}
-              class="bg-primary inline-flex items-center justify-center gap-xs rounded-full px-md py-1.5 text-xs font-medium text-emerald-950 md:h-10 md:px-lg md:py-xs md:text-base lg:h-12 lg:px-xl lg:py-2.5 lg:text-lg"
+              class="bg-primary gap-xs px-md md:px-lg md:py-xs lg:px-xl inline-flex items-center justify-center rounded-full py-1.5 text-xs font-medium text-emerald-950 md:h-10 md:text-base lg:h-12 lg:py-2.5 lg:text-lg"
             >
               <span class="-ml-2xs inline-flex items-center">
                 <FontAwesomeIcon icon={faDownload} />
@@ -85,7 +85,7 @@ const voicevoxIconImageSrc = (await getImage({ src: voicevoxIconImage })).src;
             </button>
             <button
               {...{ [showNemoTermModalAttr]: "" }}
-              class="inline-flex items-center justify-center rounded-full bg-white px-md py-1.5 text-xs text-neutral-950 md:h-10 md:px-lg md:py-xs md:text-base lg:h-12 lg:px-xl lg:py-2.5 lg:text-lg"
+              class="px-md md:px-lg md:py-xs lg:px-xl inline-flex items-center justify-center rounded-full bg-white py-1.5 text-xs text-neutral-950 md:h-10 md:text-base lg:h-12 lg:py-2.5 lg:text-lg"
             >
               <span>利用規約</span>
             </button>
@@ -94,31 +94,31 @@ const voicevoxIconImageSrc = (await getImage({ src: voicevoxIconImage })).src;
       </div>
 
       <div
-        class="mx-auto mb-3xl grid w-full max-w-6xl grid-cols-2 gap-md px-xl pb-3xl lg:grid-cols-4"
+        class="mb-3xl gap-md px-xl pb-3xl mx-auto grid w-full max-w-6xl grid-cols-2 lg:grid-cols-4"
       >
         <div
-          class="rounded-2xl bg-neutral-800/20 py-2xl text-center text-base leading-normal md:text-xl"
+          class="py-2xl rounded-2xl bg-neutral-800/20 text-center text-base leading-normal md:text-xl"
         >
           商用利用・非商用利用
           <br />
           問わず無料
         </div>
         <div
-          class="rounded-2xl bg-neutral-800/20 py-2xl text-center text-base leading-normal md:text-xl"
+          class="py-2xl rounded-2xl bg-neutral-800/20 text-center text-base leading-normal md:text-xl"
         >
           マルチOSに対応
           <br />
           (Win / Mac / Linux)
         </div>
         <div
-          class="rounded-2xl bg-neutral-800/20 py-2xl text-center text-base leading-normal md:text-xl"
+          class="py-2xl rounded-2xl bg-neutral-800/20 text-center text-base leading-normal md:text-xl"
         >
           簡単に使える
           <br />
           わかりやすい操作画面
         </div>
         <div
-          class="rounded-2xl bg-neutral-800/20 py-2xl text-center text-base leading-normal md:text-xl"
+          class="py-2xl rounded-2xl bg-neutral-800/20 text-center text-base leading-normal md:text-xl"
         >
           イントネーションの
           <br />
@@ -127,7 +127,7 @@ const voicevoxIconImageSrc = (await getImage({ src: voicevoxIconImage })).src;
       </div>
 
       <div
-        class="mx-auto my-3xl w-full max-w-4xl px-xl py-3xl text-center text-xl leading-normal md:text-2xl lg:text-3xl"
+        class="my-3xl px-xl py-3xl mx-auto w-full max-w-4xl text-center text-xl leading-normal md:text-2xl lg:text-3xl"
       >
         プレゼンから動画作成ナレーションまで
         <br />
@@ -139,7 +139,7 @@ const voicevoxIconImageSrc = (await getImage({ src: voicevoxIconImage })).src;
 
     <section class="py-0">
       <div
-        class="mx-auto mt-3xl grid w-full max-w-5xl grid-cols-1 gap-2xl px-xl pt-3xl md:grid-cols-2 md:px-md"
+        class="mt-3xl gap-2xl px-xl pt-3xl md:px-md mx-auto grid w-full max-w-5xl grid-cols-1 md:grid-cols-2"
       >
         {
           // 内部で表示するドロップメニューが兄弟要素で隠れてしまうのでz-indexを指定している
@@ -154,7 +154,7 @@ const voicevoxIconImageSrc = (await getImage({ src: voicevoxIconImage })).src;
         }
       </div>
       <div
-        class="mx-auto w-full max-w-5xl px-xl py-3xl text-center text-xl leading-normal md:px-md"
+        class="px-xl py-3xl md:px-md mx-auto w-full max-w-5xl text-center text-xl leading-normal"
       >
         より柔軟な演技や高品質な音声をお求めの場合は、
         <br />

@@ -106,9 +106,9 @@ export default function CharacterCard({
   };
 
   return (
-    <div className="flex w-40 flex-col items-center justify-center gap-xs rounded-lg bg-neutral-800 py-sm">
+    <div className="gap-xs py-sm flex w-40 flex-col items-center justify-center rounded-lg bg-neutral-800">
       <LinkToProductPage className="w-2/3">{children}</LinkToProductPage>
-      <div className="flex flex-col gap-xs text-center">
+      <div className="gap-xs flex flex-col text-center">
         <h3 className="mb-0 text-base font-medium text-white">
           <LinkToProductPage style={{ color: "inherit" }}>
             {characterInfo.name}
@@ -117,7 +117,7 @@ export default function CharacterCard({
 
         {styleState && (
           <>
-            <div className="mb-0 flex items-center justify-center gap-xs">
+            <div className="gap-xs mb-0 flex items-center justify-center">
               {styleState.styles.length > 1 && (
                 <button
                   className="relative flex h-10 w-10 items-center justify-center rounded-full border bg-transparent text-xs hover:opacity-90"

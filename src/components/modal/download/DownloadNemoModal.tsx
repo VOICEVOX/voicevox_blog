@@ -98,9 +98,9 @@ export default function DownloadNemoModal() {
         onClick={hide}
         role="presentation"
       />
-      <div className="pointer-events-none fixed inset-0 box-border flex items-center justify-center p-md">
+      <div className="p-md pointer-events-none fixed inset-0 box-border flex items-center justify-center">
         <div className="pointer-events-auto flex max-h-full w-full max-w-xl flex-col overflow-hidden rounded-lg bg-white shadow-xl">
-          <header className="relative flex items-center justify-center border-b border-gray-200 bg-neutral-50 px-xl py-lg">
+          <header className="px-xl py-lg relative flex items-center justify-center border-b border-gray-200 bg-neutral-50">
             <p className="text-2xl font-bold text-black">
               Nemo エンジン ダウンロード
             </p>
@@ -116,7 +116,7 @@ export default function DownloadNemoModal() {
             </button>
           </header>
 
-          <section className="min-h-0 flex-1 space-y-4 overflow-y-auto px-xl py-2xl">
+          <section className="px-xl py-2xl min-h-0 flex-1 space-y-4 overflow-y-auto">
             <Selector
               label="OS"
               selected={selectedOs}
@@ -156,13 +156,13 @@ export default function DownloadNemoModal() {
             </p>
           </section>
 
-          <footer className="flex items-center justify-end gap-sm border-t border-gray-200 bg-neutral-50 px-xl py-lg">
+          <footer className="gap-sm px-xl py-lg flex items-center justify-end border-t border-gray-200 bg-neutral-50">
             <a
               href={downloadUrls[selectedOs][selectedMode]?.url}
               download={downloadUrls[selectedOs][selectedMode]?.name}
               target="_blank"
               rel="noreferrer"
-              className="bg-primary focus:ring-primary/50 inline-flex items-center justify-center rounded border border-transparent px-md py-xs text-base font-semibold text-black hover:brightness-95 focus:ring-2 focus:ring-offset-2"
+              className="bg-primary focus:ring-primary/50 px-md py-xs inline-flex items-center justify-center rounded border border-transparent text-base font-semibold text-black hover:brightness-95 focus:ring-2 focus:ring-offset-2"
             >
               ダウンロード
             </a>

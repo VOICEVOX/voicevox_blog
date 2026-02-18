@@ -21,7 +21,7 @@ const href = getDormitoryCharacterPageUrl(characterInfo);
     (className ?? "")}
 >
   <div
-    class="h-full cursor-pointer rounded-2xl border-[3px] pt-sm shadow-none"
+    class="pt-sm h-full cursor-pointer rounded-2xl border-[3px] shadow-none"
     style={{ borderColor: color }}
   >
     <a href={withBaseUrl(href)}>
@@ -34,7 +34,7 @@ const href = getDormitoryCharacterPageUrl(characterInfo);
         densities={[1, 1.5, 2]}
       />
       <div
-        class="border-t-[2.5px] px-0 py-lg text-center"
+        class="py-lg border-t-[2.5px] px-0 text-center"
         style={{ borderColor: color }}
       >
         <h3 class="text-xl font-semibold">{characterInfo.name}</h3>

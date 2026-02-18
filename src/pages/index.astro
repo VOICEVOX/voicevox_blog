@@ -32,19 +32,19 @@ const landingMovieThumbUrl = (await getImage({ src: landingMovieThumb })).src;
     >
       <header {...{ [hideHeaderAttr]: "" }} class="bg-primary text-black">
         <div class="py-xl">
-          <div class="mx-auto max-w-7xl px-md text-center">
+          <div class="px-md mx-auto max-w-7xl text-center">
             <div class="mb-sm h-14 md:h-20 lg:h-28">
               <Image src={logo} alt="VOICEVOX" class="mx-auto h-full w-auto" />
             </div>
-            <h2 class="mt-0 text-xl leading-xl font-semibold">
+            <h2 class="leading-xl mt-0 text-xl font-semibold">
               無料で使える中品質なテキスト読み上げ・歌声合成ソフトウェア
             </h2>
           </div>
         </div>
       </header>
-      <section class="flex flex-1 items-center py-3xl">
+      <section class="py-3xl flex flex-1 items-center">
         <div
-          class="mx-auto flex max-w-5xl flex-col justify-center gap-10 px-md lg:flex-row lg:items-center"
+          class="px-md mx-auto flex max-w-5xl flex-col justify-center gap-10 lg:flex-row lg:items-center"
         >
           <div class="w-full text-center lg:flex-1">
             {/* FIXME: キャプションTrackを追加する */}
@@ -64,7 +64,7 @@ const landingMovieThumbUrl = (await getImage({ src: landingMovieThumb })).src;
 
     <main>
       <section class="py-3xl">
-        <div class="mx-auto flex max-w-5xl flex-col px-md">
+        <div class="px-md mx-auto flex max-w-5xl flex-col">
           <h2
             id="characters"
             class="vv-anchor-offset-4 mb-xl text-3xl font-bold text-neutral-950"
@@ -84,7 +84,7 @@ const landingMovieThumbUrl = (await getImage({ src: landingMovieThumb })).src;
       </section>
 
       <section class="py-3xl">
-        <div class="mx-auto flex max-w-5xl flex-col px-md">
+        <div class="px-md mx-auto flex max-w-5xl flex-col">
           <h2
             id="nemo"
             class="vv-anchor-offset-4 mb-xl text-3xl font-bold text-neutral-950"
@@ -107,7 +107,7 @@ const landingMovieThumbUrl = (await getImage({ src: landingMovieThumb })).src;
       <EngineGuidanceSection />
 
       <section class="py-3xl">
-        <div class="mx-auto flex max-w-5xl flex-col px-md">
+        <div class="px-md mx-auto flex max-w-5xl flex-col">
           <h2
             id="core_library"
             class="vv-anchor-offset-4 mb-xl text-3xl font-bold text-neutral-950"

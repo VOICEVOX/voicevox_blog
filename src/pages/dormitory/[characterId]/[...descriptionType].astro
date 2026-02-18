@@ -52,7 +52,7 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
   >
     <main class="px-xl py-2xs lg:px-3xl">
       <div
-        class="mx-auto flex min-h-screen max-w-3xl flex-col items-center justify-center gap-sm md:min-h-[calc(100vh-52px)] md:max-w-[820px]"
+        class="gap-sm mx-auto flex min-h-screen max-w-3xl flex-col items-center justify-center md:min-h-[calc(100vh-52px)] md:max-w-[820px]"
       >
         <div
           class={`w-full overflow-hidden rounded-xl border-solid bg-white md:h-[550px]`}
@@ -61,7 +61,7 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
         >
           <div class="flex flex-col md:h-full md:flex-row">
             <div
-              class="relative flex items-center justify-center overflow-hidden px-0 max-md:py-2xs md:h-full md:w-1/3 md:border-r-[3px]"
+              class="max-md:py-2xs relative flex items-center justify-center overflow-hidden px-0 md:h-full md:w-1/3 md:border-r-[3px]"
               style={{ borderColor: characterInfo.color }}
             >
               <div class="h-screen w-full md:h-full">
@@ -105,7 +105,7 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
                   </a>
                 </div>
 
-                <div class="inline-flex max-md:mb-sm">
+                <div class="max-md:mb-sm inline-flex">
                   <TypeButton
                     characterInfo={characterInfo}
                     selectedType={descriptionType}
@@ -133,16 +133,16 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
                           <div
                             class={labelInfo.size === 1 ? "" : "md:col-span-2"}
                           >
-                            <div class="flex items-center px-2xs pt-sm">
+                            <div class="px-2xs pt-sm flex items-center">
                               <span
-                                class="inline-flex w-28 items-center justify-center rounded-lg py-xs text-center text-white"
+                                class="py-xs inline-flex w-28 items-center justify-center rounded-lg text-center text-white"
                                 style={{
                                   backgroundColor: characterInfo.color,
                                 }}
                               >
                                 {labelInfo.label}
                               </span>
-                              <span class="grow pl-sm text-base">
+                              <span class="pl-sm grow text-base">
                                 {labelInfo.value}
                               </span>
                             </div>
@@ -150,15 +150,15 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
                         ))}
                       </div>
 
-                      <div class="-mx-2xs flex items-center px-2xs pt-sm">
+                      <div class="-mx-2xs px-2xs pt-sm flex items-center">
                         <span
-                          class="inline-flex w-28 items-center justify-center rounded-lg py-xs text-center text-white"
+                          class="py-xs inline-flex w-28 items-center justify-center rounded-lg text-center text-white"
                           style={{ backgroundColor: characterInfo.color }}
                         >
                           音声サンプル
                         </span>
                         {characterInfo.dormitoryVoiceAudios ? (
-                          <div class="flex grow flex-wrap gap-2xs pl-sm">
+                          <div class="gap-2xs pl-sm flex grow flex-wrap">
                             {characterInfo.dormitoryVoiceAudios.map(
                               (audio, index) => (
                                 <PlayButton
@@ -173,7 +173,7 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
                             )}
                           </div>
                         ) : (
-                          <span class="grow pl-sm text-base">準備中</span>
+                          <span class="pl-sm grow text-base">準備中</span>
                         )}
                       </div>
 
@@ -198,9 +198,9 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
 
                 {
                   descriptionType === "calls" && (
-                    <div class="flex flex-1 flex-col gap-0 overflow-hidden pt-sm md:flex-row md:gap-xl">
-                      <div class="flex flex-row justify-center gap-2xl max-md:h-32 md:flex-col">
-                        <div class="flex h-26 w-26 flex-none flex-col items-center justify-center rounded-2xl border-2 border-black px-sm text-center">
+                    <div class="pt-sm md:gap-xl flex flex-1 flex-col gap-0 overflow-hidden md:flex-row">
+                      <div class="gap-2xl flex flex-row justify-center max-md:h-32 md:flex-col">
+                        <div class="px-sm flex h-26 w-26 flex-none flex-col items-center justify-center rounded-2xl border-2 border-black text-center">
                           <div class="mb-2xs font-bold">
                             <span>一人称</span>
                           </div>
@@ -210,7 +210,7 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
                             ))}
                           </div>
                         </div>
-                        <div class="flex h-26 w-26 flex-none flex-col items-center justify-center rounded-2xl border-2 border-black px-sm text-center">
+                        <div class="px-sm flex h-26 w-26 flex-none flex-col items-center justify-center rounded-2xl border-2 border-black text-center">
                           <div class="mb-2xs font-bold">
                             <span>二人称</span>
                           </div>
@@ -221,7 +221,7 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
                           </div>
                         </div>
                       </div>
-                      <div class="vv-scrollbar-thin flex flex-1 flex-col gap-xs overflow-auto md:pr-2xs">
+                      <div class="vv-scrollbar-thin gap-xs md:pr-2xs flex flex-1 flex-col overflow-auto">
                         {characterKeys
                           .filter(
                             (targetCharacterKey) =>
@@ -243,17 +243,19 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
           </div>
         </div>
 
-        <div class="flex flex-wrap items-center justify-center gap-xs font-bold">
+        <div
+          class="gap-xs flex flex-wrap items-center justify-center font-bold"
+        >
           <a
             href={withBaseUrl(getProductPageUrl(characterInfo))}
-            class="inline-flex h-10 items-center justify-center rounded-full border bg-white px-lg hover:bg-neutral-50"
+            class="px-lg inline-flex h-10 items-center justify-center rounded-full border bg-white hover:bg-neutral-50"
             style={{ borderColor: characterInfo.color, borderWidth: "1.5px" }}
           >
             ダウンロードページ
           </a>
           <a
             href={withBaseUrl(`/dormitory/#${characterInfo.id}`)}
-            class="inline-flex h-10 items-center justify-center rounded-full border bg-white px-lg hover:bg-neutral-50"
+            class="px-lg inline-flex h-10 items-center justify-center rounded-full border bg-white hover:bg-neutral-50"
             style={{ borderColor: characterInfo.color, borderWidth: "1.5px" }}
           >
             キャラクター一覧
