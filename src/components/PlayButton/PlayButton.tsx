@@ -134,7 +134,8 @@ export default function PlayButton({
       className={finalClassName}
       style={colorAddedStyle}
       type="button"
-      aria-label={`${name}を${isPlaying ? "停止" : "再生"}}`}
+      aria-label={`${name}を${isLoading ? "読み込み中" : isPlaying ? "停止" : "再生"}`}
+      aria-busy={isLoading || undefined}
       disabled={isLoading}
     >
       {!isLoading ? (

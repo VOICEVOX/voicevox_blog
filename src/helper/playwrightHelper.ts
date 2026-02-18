@@ -75,12 +75,10 @@ export async function waitForImages(page: Page) {
   );
 }
 
-/** 読み込み中クラスがあるボタンが存在しないことを確認する */
+/** 読み込み中属性を持つボタンがなくなるまで待機する */
 export async function waitForAudios(page: Page) {
   const audioEvaluateCallback = () => {
-    const loadingButtons = Array.from(
-      document.querySelectorAll(".is-loading"),
-    ).filter((element) => element instanceof HTMLButtonElement);
+    const loadingButtons = document.querySelectorAll("button[aria-busy]");
     return {
       total: 1,
       completeCount: loadingButtons.length === 0 ? 1 : 0,
