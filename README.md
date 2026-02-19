@@ -230,6 +230,8 @@ pnpm run test:e2e --ui # 開発時は UI モードが便利
 - tailwind の grayは使わない、neutral を使う
 - style=やclassはなるべく定義せずtailwindで済ませる、必要ならglobal.cssなどに書く、astro内に書く場合は相談する
   - Markdownなど、子要素のスタイルを結構変えたい場合などはclassを定義しても良い
+- ボタンなどの統一スタイルはcssにクラスとして定義し、cssをimportしてAstroやReactコンポーネントを作る
+  - cssを分けるのはAstro・React両方から使えるため
 
 ### モードと効果の表
 

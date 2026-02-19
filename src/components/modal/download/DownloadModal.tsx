@@ -5,6 +5,8 @@ import linuxInstallNvidia from "@/assets/script/linuxInstallNvidia.sh?url";
 import { APP_VERSION } from "@/constants";
 import { withBaseUrl } from "@/helper";
 import { $downloadModal } from "@/store";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useStore } from "@nanostores/react";
 import { useEffect, useState } from "react";
 
@@ -197,8 +199,8 @@ export default function DownloadModal() {
               onClick={hide}
               type="button"
             >
-              <span aria-hidden="true" className="text-2xl leading-none">
-                ×
+              <span aria-hidden="true" className="text-xl leading-none">
+                <FontAwesomeIcon icon={faXmark} />
               </span>
             </button>
           </header>

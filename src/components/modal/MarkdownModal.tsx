@@ -1,3 +1,6 @@
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 export default function MarkdownModal({
   isActive,
   title,
@@ -34,8 +37,8 @@ export default function MarkdownModal({
               onClick={hide}
               type="button"
             >
-              <span aria-hidden="true" className="text-2xl leading-none">
-                ×
+              <span aria-hidden="true" className="text-xl leading-none">
+                <FontAwesomeIcon icon={faXmark} />
               </span>
             </button>
           </header>

@@ -7,7 +7,7 @@ import {
   $nemoDownloadModal,
   $nemoGuidanceModal,
 } from "@/store";
-import { faDownload } from "@fortawesome/free-solid-svg-icons";
+import { faDownload, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useStore } from "@nanostores/react";
 
@@ -36,8 +36,8 @@ export default function NemoGuidanceModal() {
               onClick={hide}
               type="button"
             >
-              <span aria-hidden="true" className="text-2xl leading-none">
-                ×
+              <span aria-hidden="true" className="text-xl leading-none">
+                <FontAwesomeIcon icon={faXmark} />
               </span>
             </button>
           </header>
