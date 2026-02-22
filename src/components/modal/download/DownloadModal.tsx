@@ -2,6 +2,7 @@ import Selector from "./Selector";
 import linuxInstallCpuArm64 from "@/assets/script/linuxInstallCpuArm64.sh?url";
 import linuxInstallCpuX64 from "@/assets/script/linuxInstallCpuX64.sh?url";
 import linuxInstallNvidia from "@/assets/script/linuxInstallNvidia.sh?url";
+import IconButton from "@/components/ui/IconButton/IconButton";
 import { APP_VERSION } from "@/constants";
 import { withBaseUrl } from "@/helper";
 import { $downloadModal } from "@/store";
@@ -193,16 +194,16 @@ export default function DownloadModal() {
             <p className="text-2xl font-bold text-black">
               VOICEVOX ダウンロード
             </p>
-            <button
-              className="absolute top-1/2 right-5 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full text-neutral-700 transition-colors hover:text-neutral-900"
+            <IconButton
+              size="sm"
+              className="absolute top-1/2 right-5 -translate-y-1/2 text-neutral-700 transition-colors hover:text-neutral-900"
               aria-label="close"
               onClick={hide}
-              type="button"
             >
               <span aria-hidden="true" className="text-xl leading-none">
                 <FontAwesomeIcon icon={faXmark} />
               </span>
-            </button>
+            </IconButton>
           </header>
 
           <section className="px-xl py-2xl min-h-0 flex-1 space-y-4 overflow-y-auto">

@@ -1,0 +1,44 @@
+@utility vv-icon-button {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--vv-icon-button-size, 48px);
+  height: var(--vv-icon-button-size, 48px);
+  border-radius: 9999px;
+  background-color: transparent;
+  user-select: none;
+  line-height: 1;
+  --vv-icon-button-border-width: 1.8px;
+}
+
+@utility vv-icon-button-sm {
+  --vv-icon-button-size: 40px;
+  --vv-icon-button-border-width: 1px;
+}
+
+@utility vv-icon-button-md {
+  --vv-icon-button-size: 48px;
+  --vv-icon-button-border-width: 1.8px;
+}
+
+@utility vv-icon-button-lg {
+  --vv-icon-button-size: 57.6px;
+  --vv-icon-button-border-width: 2px;
+}
+
+@utility vv-icon-button-xl {
+  --vv-icon-button-size: 67.2px;
+  --vv-icon-button-border-width: 2.4px;
+}
+
+@utility vv-icon-button-border {
+  border-style: solid;
+  border-width: var(--vv-icon-button-border-width);
+  border-color: currentColor;
+}
+
+@utility vv-icon-button-border-2 {
+  --vv-icon-button-border-width: 2px;
+}

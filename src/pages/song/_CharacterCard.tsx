@@ -2,6 +2,7 @@
  * キャラクターごとのカード表示
  */
 import PlayButton from "@/components/PlayButton/PlayButton";
+import IconButton from "@/components/ui/IconButton/IconButton";
 import type { CharacterInfo } from "@/constants/type";
 import { getProductPageUrl } from "@/constants/url";
 import { withBaseUrl } from "@/helper";
@@ -119,15 +120,16 @@ export default function CharacterCard({
           <>
             <div className="gap-xs mb-0 flex items-center justify-center">
               {styleState.styles.length > 1 && (
-                <button
-                  className="relative flex h-10 w-10 items-center justify-center rounded-full border bg-transparent text-xs hover:opacity-90"
+                <IconButton
+                  size="sm"
+                  border
+                  className="relative text-xs hover:opacity-90"
                   style={coloredStyle}
-                  type="button"
                   aria-label="前のサンプル音声へ"
                   onClick={prevStyle}
                 >
                   <FontAwesomeIcon icon={faBackwardStep} />
-                </button>
+                </IconButton>
               )}
 
               <PlayButton
@@ -141,15 +143,16 @@ export default function CharacterCard({
               />
 
               {styleState.styles.length > 1 && (
-                <button
-                  className="relative flex h-10 w-10 items-center justify-center rounded-full border bg-transparent text-xs hover:opacity-90"
+                <IconButton
+                  size="sm"
+                  border
+                  className="relative text-xs hover:opacity-90"
                   style={coloredStyle}
-                  type="button"
                   aria-label="次のサンプル音声へ"
                   onClick={nextStyle}
                 >
                   <FontAwesomeIcon icon={faForwardStep} />
-                </button>
+                </IconButton>
               )}
             </div>
             <h4 className="text-xs text-white">{fullStyleName}</h4>

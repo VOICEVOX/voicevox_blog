@@ -1,3 +1,4 @@
+import IconButton from "@/components/ui/IconButton/IconButton";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -31,16 +32,16 @@ export default function MarkdownModal({
         <div className="pointer-events-auto flex max-h-full w-full max-w-xl flex-col overflow-hidden rounded-lg bg-white shadow-xl">
           <header className="px-xl py-lg relative flex items-center justify-center border-b border-gray-200 bg-neutral-50">
             <p className="text-2xl font-bold text-black">{title}</p>
-            <button
-              className="absolute top-1/2 right-5 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full text-neutral-700 transition-colors hover:text-neutral-900"
+            <IconButton
+              size="sm"
+              className="absolute top-1/2 right-5 -translate-y-1/2 text-neutral-700 transition-colors hover:text-neutral-900"
               aria-label="close"
               onClick={hide}
-              type="button"
             >
               <span aria-hidden="true" className="text-xl leading-none">
                 <FontAwesomeIcon icon={faXmark} />
               </span>
-            </button>
+            </IconButton>
           </header>
           <section className="px-xl py-2xl min-h-0 flex-1 overflow-y-auto">
             <div

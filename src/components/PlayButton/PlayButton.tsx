@@ -2,6 +2,8 @@
  * 再生ボタン。
  * 別の再生ボタンが押されたら停止する。
  */
+import IconButton from "@/components/ui/IconButton/IconButton";
+import type { IconButtonSize } from "@/components/ui/IconButton/helper";
 import { $lastAudio } from "@/store/audio";
 import { faPlay, faStop } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -23,11 +25,11 @@ export function useDebounce<T>(value: T, delay: number) {
   return debouncedValue;
 }
 
-const getSizeClasses = (size?: "sm" | "md" | "lg") => {
-  if (size === "sm") return "w-10 h-10 border text-xs";
-  if (size === "md") return "w-[57.6px] h-[57.6px] border-[2px] text-xl";
-  if (size === "lg") return "w-[67.2px] h-[67.2px] border-[2.4px] text-2xl";
-  return "w-12 h-12 border-[1.8px] text-base";
+const getTextSizeClass = (size?: "sm" | "md" | "lg") => {
+  if (size === "sm") return "text-xs";
+  if (size === "md") return "text-xl";
+  if (size === "lg") return "text-2xl";
+  return "text-base";
 };
 
 export default function PlayButton({
@@ -112,14 +114,11 @@ export default function PlayButton({
   };
 
   const isLoading = !(isReady || debouncedIsReady);
-  const baseClasses =
-    "relative flex items-center justify-center rounded-full disabled:cursor-wait";
-  const colorClasses = !color
-    ? "border-primary text-primary bg-transparent hover:bg-primary/10"
-    : "";
-  const sizeClasses = getSizeClasses(size);
+  const baseClasses = "relative disabled:cursor-wait";
+  const colorClasses = !color ? "text-primary hover:bg-primary/10" : "";
+  const textSizeClass = getTextSizeClass(size);
   const finalClassName =
-    `${baseClasses} ${sizeClasses} ${colorClasses} ${className || ""}`.trim();
+    `${baseClasses} ${textSizeClass} ${colorClasses} ${className || ""}`.trim();
 
   const getSpinnerSize = (size?: "sm" | "md" | "lg") => {
     if (size === "sm") return "w-4 h-4";
@@ -128,15 +127,19 @@ export default function PlayButton({
     return "w-4 h-4";
   };
 
+  const iconButtonSize: IconButtonSize =
+    size === "sm" ? "sm" : size === "md" ? "lg" : size === "lg" ? "xl" : "md";
+
   return (
-    <button
+    <IconButton
       onClick={isPlaying ? stop : play}
       className={finalClassName}
       style={colorAddedStyle}
-      type="button"
       aria-label={`${name}を${isLoading ? "読み込み中" : isPlaying ? "停止" : "再生"}`}
       aria-busy={isLoading || undefined}
       disabled={isLoading}
+      border
+      size={iconButtonSize}
     >
       {!isLoading ? (
         <FontAwesomeIcon icon={isPlaying ? faStop : faPlay} />
@@ -146,6 +149,6 @@ export default function PlayButton({
           style={{ borderColor: color || "currentColor" }}
         />
       )}
-    </button>
+    </IconButton>
   );
 }

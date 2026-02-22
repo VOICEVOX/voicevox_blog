@@ -1,6 +1,7 @@
 ---
 import FontAwesomeIcon from "@/components/FontAwesomeIcon.astro";
 import PlayButton from "@/components/PlayButton/index.astro";
+import IconButton from "@/components/ui/IconButton/index.astro";
 import { faXTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope, faHome } from "@fortawesome/free-solid-svg-icons";
 import { Image } from "astro:assets";
@@ -73,15 +74,17 @@ const { info, style } = Astro.props;
                 ].map(
                   ({ link, label, icon }) =>
                     link && (
-                      <a
-                        class="mb-0 ml-auto inline-flex h-[57.6px] w-[57.6px] items-center justify-center rounded-full border-2 border-[#2e333d] bg-transparent text-xl text-white hover:bg-neutral-700"
+                      <IconButton
                         href={link}
+                        size="lg"
+                        border
+                        class="mb-0 ml-auto border-[#2e333d] text-xl text-white hover:bg-neutral-700"
                         aria-label={`${info.cv}の${label}`}
                         target="_blank"
                         rel="noreferrer"
                       >
                         <FontAwesomeIcon icon={icon} />
-                      </a>
+                      </IconButton>
                     ),
                 )
               }

@@ -1,6 +1,7 @@
 ---
 import FontAwesomeIcon from "@/components/FontAwesomeIcon.astro";
 import PlayButton from "@/components/PlayButton/index.astro";
+import IconButton from "@/components/ui/IconButton/index.astro";
 import { characterEntries, characterKeys } from "@/constants/characterEntry";
 import { characterInfos } from "@/constants/characterInfo";
 import { callNameInfos } from "@/constants/characterInfos/callNameInfo";
@@ -86,8 +87,13 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
                     class="mb-xl text-3xl leading-9 font-extrabold text-neutral-700"
                     set:html={characterInfo.rubyName}
                   />
-                  <a
-                    class="ml-auto inline-flex h-12 w-12 items-center justify-center rounded-full border-[1.8px] bg-transparent px-0 py-[7px] hover:bg-neutral-50"
+                  <IconButton
+                    href={characterInfo.detailUrl
+                      ? withBaseUrl(characterInfo.detailUrl)
+                      : undefined}
+                    size="md"
+                    border
+                    class="ml-auto px-0 py-[7px] hover:bg-neutral-50"
                     style={{
                       color: characterInfo.color,
                       borderColor: characterInfo.color,
@@ -95,14 +101,12 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
                         ? "visible"
                         : "hidden",
                     }}
-                    href={characterInfo.detailUrl &&
-                      withBaseUrl(characterInfo.detailUrl)}
                     aria-label={`${characterInfo.name}の詳細ページ`}
-                    target="_blank"
-                    rel="noreferrer"
+                    target={characterInfo.detailUrl ? "_blank" : undefined}
+                    rel={characterInfo.detailUrl ? "noreferrer" : undefined}
                   >
                     <FontAwesomeIcon icon={faHome} />
-                  </a>
+                  </IconButton>
                 </div>
 
                 <div class="max-md:mb-sm inline-flex">

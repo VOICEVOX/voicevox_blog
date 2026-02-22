@@ -2,6 +2,7 @@
  * Nemoのダウンロードモーダル
  */
 import Selector from "./Selector";
+import IconButton from "@/components/ui/IconButton/IconButton";
 import { NEMO_VERSION } from "@/constants";
 import { withBaseUrl } from "@/helper";
 import { $nemoDownloadModal } from "@/store";
@@ -106,16 +107,16 @@ export default function DownloadNemoModal() {
             <p className="text-2xl font-bold text-black">
               Nemo エンジン ダウンロード
             </p>
-            <button
-              className="absolute top-1/2 right-5 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full text-neutral-700 transition-colors hover:text-neutral-900"
+            <IconButton
+              size="sm"
+              className="absolute top-1/2 right-5 -translate-y-1/2 text-neutral-700 transition-colors hover:text-neutral-900"
               aria-label="close"
               onClick={hide}
-              type="button"
             >
               <span aria-hidden="true" className="text-xl leading-none">
                 <FontAwesomeIcon icon={faXmark} />
               </span>
-            </button>
+            </IconButton>
           </header>
 
           <section className="px-xl py-2xl min-h-0 flex-1 space-y-4 overflow-y-auto">
