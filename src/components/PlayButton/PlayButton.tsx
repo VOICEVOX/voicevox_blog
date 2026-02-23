@@ -56,15 +56,7 @@ export default function PlayButton({
   }, [url]);
 
   const colorAddedStyle = useMemo(
-    () =>
-      !color
-        ? style
-        : {
-            backgroundColor: "white",
-            borderColor: color,
-            color: color,
-            ...style,
-          },
+    () => (!color ? style : { color: color, ...style }),
     [color, style],
   );
 
@@ -115,7 +107,7 @@ export default function PlayButton({
 
   const isLoading = !(isReady || debouncedIsReady);
   const baseClasses = "relative disabled:cursor-wait";
-  const colorClasses = !color ? "text-primary hover:bg-primary/10" : "";
+  const colorClasses = !color ? "text-primary" : "";
   const textSizeClass = getTextSizeClass(size);
   const finalClassName =
     `${baseClasses} ${textSizeClass} ${colorClasses} ${className || ""}`.trim();

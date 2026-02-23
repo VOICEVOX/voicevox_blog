@@ -23,8 +23,6 @@ export default function CharacterCard({
   const color = characterInfo.color;
   const coloredStyle = useMemo(() => {
     return {
-      backgroundColor: "transparent",
-      borderColor: color,
       color: color,
     };
   }, [color]);
@@ -123,7 +121,7 @@ export default function CharacterCard({
                 <IconButton
                   size="sm"
                   border
-                  className="relative text-xs hover:opacity-90"
+                  className="relative text-xs"
                   style={coloredStyle}
                   aria-label="前のサンプル音声へ"
                   onClick={prevStyle}
@@ -139,14 +137,13 @@ export default function CharacterCard({
                 }
                 name={`${fullStyleName}のサンプル音声}`}
                 color={characterInfo.color}
-                style={{ backgroundColor: "transparent" }}
               />
 
               {styleState.styles.length > 1 && (
                 <IconButton
                   size="sm"
                   border
-                  className="relative text-xs hover:opacity-90"
+                  className="relative text-xs"
                   style={coloredStyle}
                   aria-label="次のサンプル音声へ"
                   onClick={nextStyle}

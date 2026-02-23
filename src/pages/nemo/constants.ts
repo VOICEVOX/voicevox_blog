@@ -119,7 +119,7 @@ export function getSpeakerInfo(speakerKey: SpeakerKey) {
   return {
     ...speakerMetaInfo,
     color: femaleOrMale == "female" ? "#f1736fff" : "#6fcef1ff",
-    backgroundColor: femaleOrMale == "female" ? "#f1736f09" : "6fcef109",
+    backgroundColor: femaleOrMale == "female" ? "#f1736f09" : "#6fcef109", // TODO: 要らなくなってる？
     icon: iconImages[speakerKey],
     audios: audios[speakerKey],
   } satisfies SpeakerInfo;

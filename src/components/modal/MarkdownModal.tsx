@@ -34,7 +34,7 @@ export default function MarkdownModal({
             <p className="text-2xl font-bold text-black">{title}</p>
             <IconButton
               size="sm"
-              className="absolute top-1/2 right-5 -translate-y-1/2 text-neutral-700 transition-colors hover:text-neutral-900"
+              className="absolute top-1/2 right-5 -translate-y-1/2 text-neutral-700"
               aria-label="close"
               onClick={hide}
             >

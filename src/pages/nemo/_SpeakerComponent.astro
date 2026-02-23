@@ -77,8 +77,7 @@ const { info, style } = Astro.props;
                       <IconButton
                         href={link}
                         size="lg"
-                        border
-                        class="mb-0 ml-auto border-[#2e333d] text-xl text-white hover:bg-neutral-700"
+                        class="mb-0 ml-auto text-xl text-white"
                         aria-label={`${info.cv}の${label}`}
                         target="_blank"
                         rel="noreferrer"
@@ -101,7 +100,6 @@ const { info, style } = Astro.props;
           audio={audio}
           name={`${info.name}のサンプルボイス${index + 1}}`}
           color={info.color}
-          style={{ backgroundColor: info.backgroundColor }}
         />
       ))
     }

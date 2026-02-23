@@ -11,6 +11,10 @@
   user-select: none;
   line-height: 1;
   --vv-icon-button-border-width: 1.8px;
+
+  &:hover:not(:disabled) {
+    background-color: color-mix(in srgb, currentColor 10%, transparent);
+  }
 }
 
 @utility vv-icon-button-sm {

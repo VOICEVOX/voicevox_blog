@@ -93,10 +93,9 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
                       : undefined}
                     size="md"
                     border
-                    class="ml-auto px-0 py-[7px] hover:bg-neutral-50"
+                    class="ml-auto px-0 py-[7px]"
                     style={{
                       color: characterInfo.color,
-                      borderColor: characterInfo.color,
                       visibility: characterInfo.detailUrl
                         ? "visible"
                         : "hidden",
