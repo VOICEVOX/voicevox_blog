@@ -57,9 +57,7 @@ const postCharacterKey =
   <IconButton
     href={withBaseUrl(getProductPageUrl(characterInfos[prevCharacterKey]))}
     size="md"
-    border
-    borderWidth={2}
-    class="prev absolute top-[10%] left-[calc(50%-50vw+1.2rem)] z-10 -translate-y-1/2 text-5xl text-black opacity-25 hover:opacity-40"
+    class="absolute top-[10%] left-[calc(50%-50vw+1.2rem)] z-10 -translate-y-1/2 text-5xl text-black opacity-25 hover:opacity-40"
     aria-label="前のキャラクターを表示"
   >
     <FontAwesomeIcon icon={faCircleLeft} />
@@ -67,9 +65,7 @@ const postCharacterKey =
   <IconButton
     href={withBaseUrl(getProductPageUrl(characterInfos[postCharacterKey]))}
     size="md"
-    border
-    borderWidth={2}
-    class="post absolute top-[10%] right-[calc(50%-50vw+1.2rem)] z-10 -translate-y-1/2 text-5xl text-black opacity-25 hover:opacity-40"
+    class="absolute top-[10%] right-[calc(50%-50vw+1.2rem)] z-10 -translate-y-1/2 text-5xl text-black opacity-25 hover:opacity-40"
     aria-label="次のキャラクターを表示"
   >
     <FontAwesomeIcon icon={faCircleRight} />

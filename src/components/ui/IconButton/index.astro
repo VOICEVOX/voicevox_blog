@@ -1,6 +1,6 @@
 ---
 import type { HTMLAttributes } from "astro/types";
-import type { IconButtonBorderProps, IconButtonSize } from "./helper";
+import type { IconButtonSize } from "./helper";
 import { buildIconButtonClassName } from "./helper";
 
 type AnchorHtmlAttrs = Omit<HTMLAttributes<"a">, "href">;
@@ -8,8 +8,9 @@ type ButtonHtmlAttrs = Omit<HTMLAttributes<"button">, "type">;
 
 type SharedProps = {
   size: IconButtonSize;
+  border?: boolean;
   class?: string;
-} & IconButtonBorderProps;
+};
 type AnchorProps = SharedProps & AnchorHtmlAttrs & { href: string };
 type ButtonProps = SharedProps & ButtonHtmlAttrs & { href?: never };
 
@@ -26,14 +27,7 @@ type Resolved =
 
 function resolve(props: Props): Resolved {
   if (typeof props.href === "string") {
-    const {
-      href,
-      size,
-      class: className,
-      border,
-      borderWidth,
-      ...htmlAttrs
-    } = props;
+    const { href, size, class: className, border, ...htmlAttrs } = props;
     return {
       tag: "a",
       href,
@@ -41,19 +35,17 @@ function resolve(props: Props): Resolved {
         size,
         className,
         border,
-        borderWidth,
       }),
       htmlAttrs,
     };
   }
-  const { size, class: className, border, borderWidth, ...htmlAttrs } = props;
+  const { size, class: className, border, ...htmlAttrs } = props;
   return {
     tag: "button",
     finalClassName: buildIconButtonClassName({
       size,
       className,
       border,
-      borderWidth,
     }),
     htmlAttrs,
   };

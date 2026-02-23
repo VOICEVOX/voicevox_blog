@@ -42,7 +42,3 @@
   border-width: var(--vv-icon-button-border-width);
   border-color: currentColor;
 }
-
-@utility vv-icon-button-border-2 {
-  --vv-icon-button-border-width: 2px;
-}
