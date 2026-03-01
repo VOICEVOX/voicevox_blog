@@ -1,3 +1,4 @@
+import Button from "@/components/ui/Button/Button";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useId, useState } from "react";
@@ -40,19 +41,19 @@ export default function StyleDropdown({
       onMouseLeave={() => setIsOpen(false)}
     >
       <div>
-        <button
-          className="focus-visible:ring-primary/40 px-md py-xs inline-flex items-center gap-1.5 rounded-full border border-gray-300 bg-white text-base font-medium text-neutral-900 shadow-sm hover:bg-neutral-50 focus:outline-none focus-visible:ring-2"
+        <Button
+          kind="outline"
+          tone="neutral"
+          shape="pill"
+          size="md"
           aria-haspopup="true"
           aria-controls={id}
           aria-expanded={forceOpen}
-          type="button"
           aria-label={`${characterName}のサンプルボイスのスタイルを選択`}
+          endIcon={<FontAwesomeIcon icon={faAngleDown} />}
         >
-          <span className="whitespace-nowrap">{selectedStyle}</span>
-          <span className="-mr-2xs shrink-0 text-neutral-500">
-            <FontAwesomeIcon icon={faAngleDown} />
-          </span>
-        </button>
+          {selectedStyle}
+        </Button>
       </div>
       <div
         className={`absolute left-0 z-50 w-max min-w-full ${

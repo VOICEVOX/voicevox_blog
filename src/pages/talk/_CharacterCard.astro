@@ -6,6 +6,7 @@ import { showLibraryTermIntroModalCharacterKeyAttr } from "@/store";
 // NOTE: PlayButtonのため
 import { Image } from "astro:assets";
 import AudioSample from "./_AudioSample";
+import Button from "@/components/ui/Button/index.astro";
 
 interface Props {
   characterInfo: CharacterInfo;
@@ -56,13 +57,15 @@ const characterKey = characterInfo.key;
         )
       }
       <div class="-mx-xl pt-sm">
-        <button
+        <Button
           {...{ [showLibraryTermIntroModalCharacterKeyAttr]: characterKey }}
-          class="px-lg inline-flex h-10 items-center justify-center rounded-full border border-gray-300 bg-white text-base font-medium shadow-sm hover:bg-neutral-50"
-          type="button"
+          kind="outline"
+          tone="neutral"
+          shape="pill"
+          size="md"
         >
-          <span>{characterInfo.name} 利用規約</span>
-        </button>
+          {characterInfo.name} 利用規約
+        </Button>
       </div>
     </div>
   </div>

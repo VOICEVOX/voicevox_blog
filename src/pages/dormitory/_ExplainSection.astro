@@ -1,6 +1,7 @@
 ---
 import { withBaseUrl } from "@/helper";
 import "@/styles/global.css";
+import Button from "@/components/ui/Button/index.astro";
 
 /**
  * ボイボ寮とVOICEVOXをちょっとだけ紹介するコンポーネント
@@ -27,12 +28,16 @@ const { showingDormitoryPageButton } = Astro.props;
         </p>
         {
           showingDormitoryPageButton && (
-            <a
+            <Button
               href={withBaseUrl("/dormitory/")}
-              class="mt-lg px-lg inline-flex h-10 items-center justify-center self-center rounded-full border border-neutral-300 bg-white text-base font-medium text-neutral-800 hover:bg-neutral-50"
+              kind="outline"
+              tone="neutral"
+              shape="pill"
+              size="md"
+              class="mt-lg self-center"
             >
-              <span>ボイボ寮ページへ</span>
-            </a>
+              ボイボ寮ページへ
+            </Button>
           )
         }
       </div>
@@ -45,12 +50,16 @@ const { showingDormitoryPageButton } = Astro.props;
         <p class="text-base">
           商用・非商用問わず無料で、イントネーションの詳細な調整ができることが特徴です。
         </p>
-        <a
+        <Button
           href={withBaseUrl("/")}
-          class="bg-primary mt-lg px-xl py-xs inline-flex items-center self-center rounded-full font-semibold text-black hover:brightness-90"
+          kind="solid"
+          tone="primary"
+          shape="pill"
+          size="md"
+          class="mt-lg self-center"
         >
-          <span>ダウンロード</span>
-        </a>
+          ダウンロード
+        </Button>
       </div>
     </div>
   </div>

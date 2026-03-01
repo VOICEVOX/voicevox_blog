@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "../components/ui/IconButton/IconButton.css";
+@import "../components/ui/Button/Button.css";
 
 @font-face {
   font-family: "Unhinted Rounded M+ 1p";

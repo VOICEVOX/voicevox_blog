@@ -7,6 +7,7 @@
 
 import FontAwesomeIcon from "@/components/FontAwesomeIcon.astro";
 import KeepScrollAnchor from "@/components/KeepScrollAnchor.astro";
+import Button from "@/components/ui/Button/index.astro";
 import IconButton from "@/components/ui/IconButton/index.astro";
 import type { CharacterKey } from "@/constants/characterEntry";
 import { characterKeys } from "@/constants/characterEntry";
@@ -115,53 +116,63 @@ const postCharacterKey =
     </p>
     {
       characterInfo.releaseDate == undefined && (
-        <button
+        <Button
           {...{ [showDownloadModalAttr]: "" }}
-          class="bg-primary hover:bg-primary/90 mt-xl gap-xs inline-flex items-center rounded-full px-[30px] py-[14px] text-2xl font-semibold text-black"
+          kind="solid"
+          tone="primary"
+          shape="pill"
+          size="xl"
+          class="mt-xl"
         >
-          <span class="icon">
+          <span slot="icon">
             <FontAwesomeIcon icon={faDownload} />
           </span>
-          <span class="has-text-weight-semibold">
+          <span class="font-semibold">
             <span class="hidden md:inline">VOICEVOX を </span>
             ダウンロード
           </span>
-        </button>
+        </Button>
       )
     }
     <div
       class="terms mt-xl gap-xs flex flex-col items-center md:flex-row md:flex-wrap md:items-start"
     >
-      <a
+      <Button
         href={withBaseUrl("/term/")}
-        class="px-lg inline-flex h-10 items-center justify-center rounded-full border border-gray-300 bg-white text-base font-medium shadow-sm hover:bg-neutral-50"
+        kind="outline"
+        tone="neutral"
+        shape="pill"
+        size="md"
       >
-        <span>VOICEVOX 利用規約</span>
-      </a>
+        VOICEVOX 利用規約
+      </Button>
       {
         characterInfo.policyUrl && (
-          <button
-            {...{
-              [showLibraryTermIntroModalCharacterKeyAttr]: characterKey,
-            }}
-            class="px-lg inline-flex h-10 items-center justify-center rounded-full border border-gray-300 bg-white text-base font-medium shadow-sm hover:bg-neutral-50"
-            type="button"
+          <Button
+            {...{ [showLibraryTermIntroModalCharacterKeyAttr]: characterKey }}
+            kind="outline"
+            tone="neutral"
+            shape="pill"
+            size="md"
           >
-            <span>{characterInfo.name} 利用規約</span>
-          </button>
+            {characterInfo.name} 利用規約
+          </Button>
         )
       }
       {
         characterInfo.additionalProductLinks &&
           characterInfo.additionalProductLinks.map((obj) => (
-            <a
+            <Button
               href={obj.url}
-              class="px-lg inline-flex h-10 items-center justify-center rounded-full border border-gray-300 bg-white text-base font-medium shadow-sm hover:bg-neutral-50"
               target="_blank"
               rel="noreferrer"
+              kind="outline"
+              tone="neutral"
+              shape="pill"
+              size="md"
             >
-              <span>{obj.label}</span>
-            </a>
+              {obj.label}
+            </Button>
           ))
       }
     </div>

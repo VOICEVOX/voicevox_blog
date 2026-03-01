@@ -4,6 +4,7 @@ interface Props {
   style?: Record<string, string | number>;
 }
 
+import Button from "@/components/ui/Button/index.astro";
 import { APP_VERSION } from "@/constants";
 import { showDownloadModalAttr } from "@/store";
 import "@/styles/global.css";
@@ -33,14 +34,18 @@ const { class: className, style } = Astro.props;
     ※1 詳しくは各キャラクターの利用規約をご参照ください
   </p>
   <p class="text-xs">※2 Windows / Mac / Linux に対応</p>
-  <button
+  <Button
     {...{ [showDownloadModalAttr]: "" }}
-    class="bg-primary mt-lg gap-xs px-2xl py-md flex items-center self-center rounded-full text-2xl font-semibold text-black hover:brightness-90"
+    kind="solid"
+    tone="primary"
+    shape="pill"
+    size="xl"
+    class="mt-lg self-center"
   >
-    <span class="-ml-xs inline-flex items-center">
+    <span slot="icon">
       <FontAwesomeIcon icon={faDownload} />
     </span>
-    <span>ダウンロード</span>
-  </button>
+    ダウンロード
+  </Button>
   <p class="mt-xs self-center text-base">Version {APP_VERSION}</p>
 </div>

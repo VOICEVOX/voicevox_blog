@@ -1,0 +1,160 @@
+@utility vv-button {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  gap: var(--vv-button-gap);
+  border-width: var(--vv-button-border-width);
+  border-color: var(--vv-button-border-color);
+  border-radius: var(--vv-button-radius);
+  background-color: var(--vv-button-bg-color);
+  color: var(--vv-button-fg-color);
+  padding-inline: var(--vv-button-px);
+  padding-block: var(--vv-button-py);
+  height: var(--vv-button-height);
+  font-size: var(--vv-button-font-size);
+  font-weight: var(--vv-button-font-weight);
+  text-decoration: none;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: color-mix(
+      in srgb,
+      currentColor var(--vv-button-hover-mix),
+      var(--vv-button-bg-color)
+    );
+    border-color: var(--vv-button-border-color-hover);
+  }
+}
+
+@utility vv-button-kind-solid {
+  --vv-button-border-width: 0;
+  --vv-button-border-color: transparent;
+  --vv-button-border-color-hover: transparent;
+}
+
+@utility vv-button-kind-outline {
+  --vv-button-border-width: 1px;
+  --vv-button-border-color-hover: color-mix(
+    in srgb,
+    var(--vv-button-border-color) 90%,
+    currentColor 10%
+  );
+}
+
+@utility vv-button-tone-primary {
+  --vv-button-bg-color: var(--color-primary);
+  --vv-button-fg-color: var(--color-black);
+  --vv-button-hover-mix: 8%;
+}
+
+@utility vv-button-tone-white {
+  --vv-button-bg-color: var(--color-white);
+  --vv-button-fg-color: var(--color-neutral-950);
+  --vv-button-hover-mix: 10%;
+}
+
+@utility vv-button-tone-neutral {
+  --vv-button-bg-color: var(--color-white);
+  --vv-button-fg-color: var(--color-neutral-900);
+  --vv-button-border-color: var(--color-neutral-300);
+  --vv-button-hover-mix: 4%;
+
+  @variant dark {
+    --vv-button-bg-color: var(--color-neutral-800);
+    --vv-button-fg-color: var(--color-white);
+    --vv-button-border-color: var(--color-neutral-600);
+    --vv-button-hover-mix: 10%;
+  }
+}
+
+@utility vv-button-shape-pill {
+  --vv-button-radius: 9999px;
+}
+
+@utility vv-button-shape-rounded {
+  --vv-button-radius: 0.25rem;
+}
+
+@utility vv-button-size-xs {
+  --vv-button-height: --spacing(7);
+  --vv-button-px: --spacing(2.5);
+  --vv-button-py: --spacing(1);
+  --vv-button-font-size: var(--text-xs);
+  --vv-button-font-weight: var(--font-weight-normal);
+  --vv-button-icon-gap: --spacing(1);
+  --vv-button-icon-offset-start: calc(--spacing(1) * -1);
+  --vv-button-icon-offset-end: calc(--spacing(1) * -1);
+}
+
+@utility vv-button-size-sm {
+  --vv-button-height: --spacing(10);
+  --vv-button-px: --spacing(4);
+  --vv-button-py: --spacing(2);
+  --vv-button-font-size: var(--text-base);
+  --vv-button-font-weight: var(--font-weight-medium);
+  --vv-button-icon-gap: --spacing(2);
+  --vv-button-icon-offset-start: calc(--spacing(1) * -1);
+  --vv-button-icon-offset-end: calc(--spacing(1) * -1);
+}
+
+@utility vv-button-size-md {
+  --vv-button-height: --spacing(10);
+  --vv-button-px: --spacing(5);
+  --vv-button-py: --spacing(2);
+  --vv-button-font-size: var(--text-base);
+  --vv-button-font-weight: var(--font-weight-medium);
+  --vv-button-icon-gap: --spacing(1.5);
+  --vv-button-icon-offset-start: calc(--spacing(1) * -1);
+  --vv-button-icon-offset-end: calc(--spacing(1) * -1);
+}
+
+@utility vv-button-size-lg {
+  --vv-button-height: --spacing(12);
+  --vv-button-px: --spacing(6);
+  --vv-button-py: --spacing(2.5);
+  --vv-button-font-size: var(--text-lg);
+  --vv-button-font-weight: var(--font-weight-semibold);
+  --vv-button-icon-gap: --spacing(2);
+  --vv-button-icon-offset-start: calc(--spacing(2) * -1);
+  --vv-button-icon-offset-end: calc(--spacing(2) * -1);
+}
+
+@utility vv-button-size-xl {
+  --vv-button-height: --spacing(15);
+  --vv-button-px: --spacing(8);
+  --vv-button-py: --spacing(4);
+  --vv-button-font-size: var(--text-2xl);
+  --vv-button-font-weight: var(--font-weight-semibold);
+  --vv-button-icon-gap: --spacing(2);
+  --vv-button-icon-offset-start: calc(--spacing(2) * -1);
+  --vv-button-icon-offset-end: calc(--spacing(2) * -1);
+}
+
+@utility vv-button-with-icon {
+  --vv-button-gap: var(--vv-button-icon-gap);
+}
+
+@utility vv-button-without-icon {
+  --vv-button-gap: 0;
+}
+
+@utility vv-button-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+@utility vv-button-icon-start {
+  margin-left: var(--vv-button-icon-offset-start);
+}
+
+@utility vv-button-icon-end {
+  margin-right: var(--vv-button-icon-offset-end);
+}
+
+@utility vv-button-label {
+  display: inline-flex;
+  align-items: center;
+}

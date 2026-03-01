@@ -4,6 +4,7 @@ interface Props {
 }
 
 import FontAwesomeIcon from "@/components/FontAwesomeIcon.astro";
+import Button from "@/components/ui/Button/index.astro";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 const { class: className } = Astro.props;
@@ -37,39 +38,48 @@ const { class: className } = Astro.props;
       です。
     </p>
     <div class="mt-sm gap-xs flex flex-wrap">
-      <a
-        class="gap-xs px-md py-xs inline-flex items-center rounded border border-neutral-400 bg-white text-sm text-black hover:bg-neutral-50 dark:border-neutral-600 dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-700"
+      <Button
         href="https://github.com/VOICEVOX/voicevox"
         target="_blank"
         rel="noreferrer"
+        kind="outline"
+        tone="neutral"
+        shape="rounded"
+        size="sm"
       >
-        <span class="inline-flex items-center">
+        <span slot="icon">
           <FontAwesomeIcon icon={faGithub} />
         </span>
-        <span>VOICEVOX エディター</span>
-      </a>
-      <a
-        class="gap-xs px-md py-xs inline-flex items-center rounded border border-neutral-400 bg-white text-sm text-black hover:bg-neutral-50 dark:border-neutral-600 dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-700"
+        VOICEVOX エディター
+      </Button>
+      <Button
         href="https://github.com/VOICEVOX/voicevox_engine"
         target="_blank"
         rel="noreferrer"
+        kind="outline"
+        tone="neutral"
+        shape="rounded"
+        size="sm"
       >
-        <span class="inline-flex items-center">
+        <span slot="icon">
           <FontAwesomeIcon icon={faGithub} />
         </span>
-        <span>VOICEVOX エンジン</span>
-      </a>
-      <a
-        class="gap-xs px-md py-xs inline-flex items-center rounded border border-neutral-400 bg-white text-sm text-black hover:bg-neutral-50 dark:border-neutral-600 dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-700"
+        VOICEVOX エンジン
+      </Button>
+      <Button
         href="https://github.com/VOICEVOX/voicevox_core"
         target="_blank"
         rel="noreferrer"
+        kind="outline"
+        tone="neutral"
+        shape="rounded"
+        size="sm"
       >
-        <span class="inline-flex items-center">
+        <span slot="icon">
           <FontAwesomeIcon icon={faGithub} />
         </span>
-        <span>VOICEVOX コア</span>
-      </a>
+        VOICEVOX コア
+      </Button>
     </div>
   </div>
 </section>

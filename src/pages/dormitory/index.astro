@@ -4,6 +4,7 @@ import { hideHeaderAttr } from "@/components/Header/Header";
 import { characterInfos } from "@/constants/characterInfo";
 import { withBaseUrl } from "@/helper";
 import Base from "@/layouts/Base.astro";
+import Button from "@/components/ui/Button/index.astro";
 import { getImage } from "astro:assets";
 import CharacterCard from "./_CharacterCard.astro";
 import EventsContainer from "./_EventsContainer.astro";
@@ -276,12 +277,15 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
           <h2 class="mb-xl text-2xl leading-7 font-extrabold text-neutral-700">
             関連コンテンツ
           </h2>
-          <a
+          <Button
             href={withBaseUrl("/dormitory/call_names/")}
-            class="px-lg inline-flex h-10 items-center justify-center rounded-full border border-neutral-300 bg-white text-base font-medium text-neutral-800 hover:bg-neutral-50"
+            kind="outline"
+            tone="neutral"
+            shape="pill"
+            size="md"
           >
-            <span>キャラクターの呼称表</span>
-          </a>
+            キャラクターの呼称表
+          </Button>
         </div>
       </div>
     </main>

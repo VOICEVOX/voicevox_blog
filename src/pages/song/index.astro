@@ -4,6 +4,7 @@ import { characterInfos } from "@/constants/characterInfo";
 import { withBaseUrl } from "@/helper";
 import Base from "@/layouts/Base.astro";
 import { showDownloadModalAttr } from "@/store";
+import Button from "@/components/ui/Button/index.astro";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getImage, Image } from "astro:assets";
@@ -72,21 +73,27 @@ const backgroundImageSrc = (await getImage({ src: backgroundImage })).src;
         </div>
 
         <div class="gap-md flex flex-col items-center">
-          <button
+          <Button
             {...{ [showDownloadModalAttr]: "" }}
-            class="bg-primary gap-xs px-2xl py-sm inline-flex h-14 items-center justify-center rounded-full text-2xl font-medium text-black shadow-lg hover:opacity-90"
+            kind="solid"
+            tone="primary"
+            shape="pill"
+            size="xl"
           >
-            <span class="-ml-xs inline-flex items-center">
+            <span slot="icon">
               <FontAwesomeIcon icon={faDownload} />
             </span>
             <span class="font-semibold">ダウンロード</span>
-          </button>
-          <a
+          </Button>
+          <Button
             href={withBaseUrl("/term/")}
-            class="px-lg py-xs inline-flex h-10 items-center justify-center rounded-full bg-white text-base font-medium text-neutral-950 shadow-lg hover:opacity-90"
+            kind="solid"
+            tone="white"
+            shape="pill"
+            size="md"
           >
             利用規約
-          </a>
+          </Button>
         </div>
       </div>
     </section>

@@ -1,6 +1,7 @@
 ---
 import voicevoxIconImage from "@/assets/icon.png";
 import FontAwesomeIcon from "@/components/FontAwesomeIcon.astro";
+import Button from "@/components/ui/Button/index.astro";
 import Base from "@/layouts/Base.astro";
 import { showNemoGuidanceModalAttr, showNemoTermModalAttr } from "@/store";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
@@ -74,21 +75,29 @@ const voicevoxIconImageSrc = (await getImage({ src: voicevoxIconImage })).src;
           </div>
 
           <div class="mt-md gap-md flex">
-            <button
+            <Button
               {...{ [showNemoGuidanceModalAttr]: "" }}
-              class="bg-primary gap-xs px-md md:px-lg md:py-xs lg:px-xl inline-flex items-center justify-center rounded-full py-1.5 text-xs font-medium text-emerald-950 md:h-10 md:text-base lg:h-12 lg:py-2.5 lg:text-lg"
+              kind="solid"
+              tone="primary"
+              shape="pill"
+              size="xs"
+              class="md:vv-button-size-md lg:vv-button-size-lg"
             >
-              <span class="-ml-2xs inline-flex items-center">
+              <span slot="icon">
                 <FontAwesomeIcon icon={faDownload} />
               </span>
               <span class="font-semibold">ダウンロード</span>
-            </button>
-            <button
+            </Button>
+            <Button
               {...{ [showNemoTermModalAttr]: "" }}
-              class="px-md md:px-lg md:py-xs lg:px-xl inline-flex items-center justify-center rounded-full bg-white py-1.5 text-xs text-neutral-950 md:h-10 md:text-base lg:h-12 lg:py-2.5 lg:text-lg"
+              kind="solid"
+              tone="white"
+              shape="pill"
+              size="xs"
+              class="md:vv-button-size-md lg:vv-button-size-lg"
             >
-              <span>利用規約</span>
-            </button>
+              利用規約
+            </Button>
           </div>
         </div>
       </div>

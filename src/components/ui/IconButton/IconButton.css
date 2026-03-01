@@ -4,15 +4,15 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: var(--vv-icon-button-size, 48px);
-  height: var(--vv-icon-button-size, 48px);
+  width: var(--vv-icon-button-size);
+  height: var(--vv-icon-button-size);
   border-radius: 9999px;
   background-color: transparent;
   user-select: none;
   line-height: 1;
   --vv-icon-button-border-width: 1.8px;
 
-  &:hover:not(:disabled) {
+  &:hover {
     background-color: color-mix(in srgb, currentColor 10%, transparent);
   }
 }

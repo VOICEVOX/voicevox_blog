@@ -2,6 +2,7 @@ import Selector from "./Selector";
 import linuxInstallCpuArm64 from "@/assets/script/linuxInstallCpuArm64.sh?url";
 import linuxInstallCpuX64 from "@/assets/script/linuxInstallCpuX64.sh?url";
 import linuxInstallNvidia from "@/assets/script/linuxInstallNvidia.sh?url";
+import Button from "@/components/ui/Button/Button";
 import IconButton from "@/components/ui/IconButton/IconButton";
 import { APP_VERSION } from "@/constants";
 import { withBaseUrl } from "@/helper";
@@ -253,25 +254,35 @@ export default function DownloadModal() {
           </section>
 
           <footer className="gap-sm px-xl py-lg flex items-center justify-end border-t border-gray-200 bg-neutral-50">
-            <a
+            <Button
               href={withBaseUrl("/term/")}
-              className="px-md py-xs inline-flex items-center justify-center rounded border border-gray-300 bg-white text-base font-normal text-black shadow-sm hover:border-gray-400 hover:bg-neutral-50"
+              kind="outline"
+              tone="neutral"
+              shape="rounded"
+              size="sm"
             >
               利用規約
-            </a>
-            <a
+            </Button>
+            <Button
               href={
-                downloadUrls[selectedOs][selectedMode]?.[selectedPackage]?.url
-              }
-              download={
-                downloadUrls[selectedOs][selectedMode]?.[selectedPackage]?.name
+                downloadUrls[selectedOs][selectedOrDefaultMode]![
+                  selectedOrDefaultPackage
+                ]!.url
               }
               target="_blank"
               rel="noreferrer"
-              className="bg-primary focus:ring-primary/50 px-md py-xs inline-flex items-center justify-center rounded border border-transparent text-base font-semibold text-black hover:brightness-95 focus:ring-2 focus:ring-offset-2"
+              download={
+                downloadUrls[selectedOs][selectedOrDefaultMode]![
+                  selectedOrDefaultPackage
+                ]!.name
+              }
+              kind="solid"
+              tone="primary"
+              shape="rounded"
+              size="sm"
             >
               ダウンロード
-            </a>
+            </Button>
           </footer>
         </div>
       </div>

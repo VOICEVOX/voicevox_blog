@@ -1,3 +1,4 @@
+import Button from "@/components/ui/Button/Button";
 import { isDevelopment, sendEvent, withBaseUrl } from "@/helper";
 import { $downloadModal, $nemoGuidanceModal } from "@/store";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
@@ -158,8 +159,7 @@ export default function Header({
         <div
           className={`px-sm flex items-center self-stretch ${className ?? ""}`}
         >
-          <button
-            className="bg-primary hover:bg-primary/90 px-lg py-xs leading-xl inline-flex shrink-0 items-center gap-1.5 rounded-full text-base font-semibold whitespace-nowrap text-black"
+          <Button
             onClick={() => {
               if (!isNemo) {
                 $downloadModal.set(true);
@@ -169,12 +169,15 @@ export default function Header({
                 sendEvent("download", "nemo");
               }
             }}
+            kind="solid"
+            tone="primary"
+            shape="pill"
+            size="md"
+            className="font-semibold"
+            icon={<FontAwesomeIcon icon={faDownload} />}
           >
-            <span className="-ml-2xs inline-flex items-center">
-              <FontAwesomeIcon icon={faDownload} />
-            </span>
-            <span>ダウンロード</span>
-          </button>
+            ダウンロード
+          </Button>
         </div>
       ),
       hideType: "mobile" as HideType,
@@ -243,6 +246,7 @@ export default function Header({
               aria-label="menu"
               aria-expanded={`${isBurgerActive}`}
               onClick={() => setIsBurgerActive(!isBurgerActive)}
+              type="button"
             >
               <span className="sr-only">menu</span>
               <span

@@ -2,6 +2,7 @@
  * Nemoのダウンロードモーダル
  */
 import Selector from "./Selector";
+import Button from "@/components/ui/Button/Button";
 import IconButton from "@/components/ui/IconButton/IconButton";
 import { NEMO_VERSION } from "@/constants";
 import { withBaseUrl } from "@/helper";
@@ -160,15 +161,18 @@ export default function DownloadNemoModal() {
           </section>
 
           <footer className="gap-sm px-xl py-lg flex items-center justify-end border-t border-gray-200 bg-neutral-50">
-            <a
-              href={downloadUrls[selectedOs][selectedMode]?.url}
-              download={downloadUrls[selectedOs][selectedMode]?.name}
+            <Button
+              href={downloadUrls[selectedOs][selectedMode]!.url}
               target="_blank"
               rel="noreferrer"
-              className="bg-primary focus:ring-primary/50 px-md py-xs inline-flex items-center justify-center rounded border border-transparent text-base font-semibold text-black hover:brightness-95 focus:ring-2 focus:ring-offset-2"
+              download={downloadUrls[selectedOs][selectedMode]!.name}
+              kind="solid"
+              tone="primary"
+              shape="rounded"
+              size="sm"
             >
               ダウンロード
-            </a>
+            </Button>
           </footer>
         </div>
       </div>

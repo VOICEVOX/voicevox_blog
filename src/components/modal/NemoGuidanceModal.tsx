@@ -1,6 +1,7 @@
 /**
  * Nemoの案内モーダル
  */
+import Button from "@/components/ui/Button/Button";
 import IconButton from "@/components/ui/IconButton/IconButton";
 import { sendEvent } from "@/helper";
 import {
@@ -51,19 +52,19 @@ export default function NemoGuidanceModal() {
               <p className="text-base text-black">
                 VOICEVOX ソフトウェアをインストール
               </p>
-              <button
-                className="bg-primary focus:ring-primary/50 gap-xs px-xl inline-flex items-center justify-center rounded-full py-2.5 text-base font-semibold text-black hover:brightness-95 focus:ring-2 focus:ring-offset-2 focus:outline-none"
+              <Button
                 onClick={() => {
                   $downloadModal.set(true);
                   sendEvent("download", "software");
                 }}
-                type="button"
+                kind="solid"
+                tone="primary"
+                shape="pill"
+                size="md"
+                icon={<FontAwesomeIcon icon={faDownload} />}
               >
-                <span className="-ml-2xs inline-flex items-center">
-                  <FontAwesomeIcon icon={faDownload} />
-                </span>
-                <span>VOICEVOX ダウンロード</span>
-              </button>
+                VOICEVOX ダウンロード
+              </Button>
             </div>
 
             <hr className="my-md w-full flex-shrink-0 border-t border-gray-300" />
@@ -86,16 +87,16 @@ export default function NemoGuidanceModal() {
                 - Step 3 -
               </h3>
               <p className="text-base text-black">Nemo エンジンを追加</p>
-              <button
-                className="bg-primary focus:ring-primary/50 gap-xs px-xl inline-flex items-center justify-center rounded-full py-2.5 text-base font-semibold text-black hover:brightness-95 focus:ring-2 focus:ring-offset-2 focus:outline-none"
+              <Button
                 onClick={() => $nemoDownloadModal.set(true)}
-                type="button"
+                kind="solid"
+                tone="primary"
+                shape="pill"
+                size="md"
+                icon={<FontAwesomeIcon icon={faDownload} />}
               >
-                <span className="-ml-2xs inline-flex items-center">
-                  <FontAwesomeIcon icon={faDownload} />
-                </span>
-                <span>Nemo エンジン ダウンロード</span>
-              </button>
+                Nemo エンジン ダウンロード
+              </Button>
             </div>
 
             <hr className="my-md w-full flex-shrink-0 border-t border-gray-300" />
