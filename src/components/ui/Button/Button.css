@@ -76,24 +76,13 @@
   --vv-button-radius: 0.25rem;
 }
 
-@utility vv-button-size-xs {
+@utility vv-button-size-sm {
   --vv-button-height: --spacing(7);
   --vv-button-px: --spacing(2.5);
   --vv-button-py: --spacing(1);
   --vv-button-font-size: var(--text-xs);
   --vv-button-font-weight: var(--font-weight-normal);
   --vv-button-icon-gap: --spacing(1);
-  --vv-button-icon-offset-start: calc(--spacing(1) * -1);
-  --vv-button-icon-offset-end: calc(--spacing(1) * -1);
-}
-
-@utility vv-button-size-sm {
-  --vv-button-height: --spacing(10);
-  --vv-button-px: --spacing(4);
-  --vv-button-py: --spacing(2);
-  --vv-button-font-size: var(--text-base);
-  --vv-button-font-weight: var(--font-weight-medium);
-  --vv-button-icon-gap: --spacing(2);
   --vv-button-icon-offset-start: calc(--spacing(1) * -1);
   --vv-button-icon-offset-end: calc(--spacing(1) * -1);
 }

@@ -169,7 +169,7 @@ export default function DownloadNemoModal() {
               kind="solid"
               tone="primary"
               shape="rounded"
-              size="sm"
+              size="md"
             >
               ダウンロード
             </Button>

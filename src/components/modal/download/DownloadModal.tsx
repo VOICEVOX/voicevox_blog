@@ -259,7 +259,7 @@ export default function DownloadModal() {
               kind="outline"
               tone="neutral"
               shape="rounded"
-              size="sm"
+              size="md"
             >
               利用規約
             </Button>
@@ -279,7 +279,7 @@ export default function DownloadModal() {
               kind="solid"
               tone="primary"
               shape="rounded"
-              size="sm"
+              size="md"
             >
               ダウンロード
             </Button>

@@ -1,7 +1,7 @@
 export type ButtonKind = "solid" | "outline";
 export type ButtonTone = "primary" | "neutral" | "white";
 export type ButtonShape = "pill" | "rounded";
-export type ButtonSize = "xs" | "sm" | "md" | "lg" | "xl";
+export type ButtonSize = "sm" | "md" | "lg" | "xl";
 
 const KIND_CLASS: Record<ButtonKind, string> = {
   solid: "vv-button-kind-solid",
@@ -20,7 +20,6 @@ const SHAPE_CLASS: Record<ButtonShape, string> = {
 };
 
 const SIZE_CLASS: Record<ButtonSize, string> = {
-  xs: "vv-button-size-xs",
   sm: "vv-button-size-sm",
   md: "vv-button-size-md",
   lg: "vv-button-size-lg",
