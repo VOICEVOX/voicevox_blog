@@ -3,11 +3,11 @@
  * 製品ページのサムネイル生成
  */
 
-import FontAwesomeIcon from "@/components/FontAwesomeIcon.astro";
 import { characterEntries, characterKeys } from "@/constants/characterEntry";
 import { characterInfos } from "@/constants/characterInfo";
 import "@/styles/global.css";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 import { getImage } from "astro:assets";
 import backgroundImage from "./background.png";

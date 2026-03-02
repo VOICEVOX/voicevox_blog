@@ -1,8 +1,8 @@
 ---
-import FontAwesomeIcon from "@/components/FontAwesomeIcon.astro";
 import IconButton from "@/components/ui/IconButton/index.astro";
 import "@/styles/global.css";
-import { faDownload, faHome, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ReactIconButtonDemo } from "./_ReactIconButtonDemo.tsx";
 ---
 
@@ -18,7 +18,7 @@ import { ReactIconButtonDemo } from "./_ReactIconButtonDemo.tsx";
       <h1 class="mb-xl text-2xl font-bold">IconButton 確認用ページ</h1>
 
       <section class="mb-2xl">
-        <h2 class="mb-md text-xl font-semibold">borderなし size</h2>
+        <h2 class="mb-md text-xl font-semibold">borderなし</h2>
         <div class="gap-md flex flex-wrap items-center">
           <IconButton size="sm" aria-label="sm">
             <FontAwesomeIcon icon={faHome} />
@@ -36,7 +36,7 @@ import { ReactIconButtonDemo } from "./_ReactIconButtonDemo.tsx";
       </section>
 
       <section class="mb-2xl">
-        <h2 class="mb-md text-xl font-semibold">borderあり size</h2>
+        <h2 class="mb-md text-xl font-semibold">borderあり</h2>
         <div class="gap-md flex flex-wrap items-center">
           <IconButton size="sm" border aria-label="sm border">
             <FontAwesomeIcon icon={faHome} />
@@ -54,25 +54,6 @@ import { ReactIconButtonDemo } from "./_ReactIconButtonDemo.tsx";
       </section>
 
       <section class="mb-2xl">
-        <h2 class="mb-md text-xl font-semibold">href あり/なし比較</h2>
-        <div class="gap-md flex flex-wrap items-center">
-          <IconButton
-            href="https://github.com/VOICEVOX/voicevox"
-            target="_blank"
-            rel="noreferrer"
-            size="md"
-            border
-            aria-label="hrefあり"
-          >
-            <FontAwesomeIcon icon={faDownload} />
-          </IconButton>
-          <IconButton size="md" border aria-label="hrefなし">
-            <FontAwesomeIcon icon={faDownload} />
-          </IconButton>
-        </div>
-      </section>
-
-      <section class="mb-2xl">
         <h2 class="mb-md text-xl font-semibold">色</h2>
         <div class="gap-md flex flex-wrap items-center">
           <IconButton
@@ -80,14 +61,6 @@ import { ReactIconButtonDemo } from "./_ReactIconButtonDemo.tsx";
             border
             class="text-neutral-900"
             aria-label="neutral-900"
-          >
-            <FontAwesomeIcon icon={faXmark} />
-          </IconButton>
-          <IconButton
-            size="md"
-            border
-            class="text-neutral-500"
-            aria-label="neutral-500"
           >
             <FontAwesomeIcon icon={faXmark} />
           </IconButton>
@@ -123,30 +96,6 @@ import { ReactIconButtonDemo } from "./_ReactIconButtonDemo.tsx";
           >
             <FontAwesomeIcon icon={faXmark} />
           </IconButton>
-        </div>
-      </section>
-
-      <section class="mb-2xl">
-        <h2 class="mb-md text-xl font-semibold">ダーク背景</h2>
-        <div data-theme="dark" class="p-xl rounded-lg bg-black">
-          <div class="gap-md flex flex-wrap items-center">
-            <IconButton
-              size="md"
-              border
-              class="text-white"
-              aria-label="dark md"
-            >
-              <FontAwesomeIcon icon={faHome} />
-            </IconButton>
-            <IconButton
-              size="md"
-              border
-              class="text-primary"
-              aria-label="dark primary"
-            >
-              <FontAwesomeIcon icon={faHome} />
-            </IconButton>
-          </div>
         </div>
       </section>
 

@@ -5,7 +5,6 @@
  * モバイル版ではキャライラスト・キャラメニューがファーストビューに表示される。
  */
 
-import FontAwesomeIcon from "@/components/FontAwesomeIcon.astro";
 import KeepScrollAnchor from "@/components/KeepScrollAnchor.astro";
 import Button from "@/components/ui/Button/index.astro";
 import IconButton from "@/components/ui/IconButton/index.astro";
@@ -26,6 +25,7 @@ import {
   faCircleRight,
   faDownload,
 } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Image } from "astro:assets";
 import AudioSample from "./_AudioSample";
 import { buildDescription } from "./constants";

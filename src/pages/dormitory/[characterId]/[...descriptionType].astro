@@ -1,5 +1,4 @@
 ---
-import FontAwesomeIcon from "@/components/FontAwesomeIcon.astro";
 import PlayButton from "@/components/PlayButton/index.astro";
 import IconButton from "@/components/ui/IconButton/index.astro";
 import { characterEntries, characterKeys } from "@/constants/characterEntry";
@@ -10,6 +9,7 @@ import { withBaseUrl } from "@/helper";
 import Base from "@/layouts/Base.astro";
 import Button from "@/components/ui/Button/index.astro";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 import { getImage, Image } from "astro:assets";
 import backgroundImage from "../images/nc238325.jpg";

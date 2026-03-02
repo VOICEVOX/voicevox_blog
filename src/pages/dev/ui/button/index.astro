@@ -1,8 +1,8 @@
 ---
-import FontAwesomeIcon from "@/components/FontAwesomeIcon.astro";
 import Button from "@/components/ui/Button/index.astro";
 import "@/styles/global.css";
 import { faArrowRight, faDownload } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ReactButtonDemo } from "./_ReactButtonDemo.tsx";
 ---
 
@@ -19,7 +19,7 @@ import { ReactButtonDemo } from "./_ReactButtonDemo.tsx";
 
       <section class="mb-2xl">
         <h2 class="mb-md text-xl font-semibold">
-          solid / primary / pill（iconなし）
+          iconなし・solid・primary・pill
         </h2>
         <div class="gap-md flex flex-wrap items-center">
           <Button kind="solid" tone="primary" shape="pill" size="sm">sm</Button>
@@ -31,7 +31,7 @@ import { ReactButtonDemo } from "./_ReactButtonDemo.tsx";
 
       <section class="mb-2xl">
         <h2 class="mb-md text-xl font-semibold">
-          solid / primary / pill（start icon）
+          iconあり・solid・primary・pill
         </h2>
         <div class="gap-md flex flex-wrap items-center">
           <Button kind="solid" tone="primary" shape="pill" size="sm">
@@ -55,7 +55,7 @@ import { ReactButtonDemo } from "./_ReactButtonDemo.tsx";
 
       <section class="mb-2xl">
         <h2 class="mb-md text-xl font-semibold">
-          outline / neutral / pill（start icon）
+          iconあり・outline・neutral・pill
         </h2>
         <div class="gap-md flex flex-wrap items-center">
           <Button kind="outline" tone="neutral" shape="pill" size="sm">
@@ -71,7 +71,7 @@ import { ReactButtonDemo } from "./_ReactButtonDemo.tsx";
 
       <section class="mb-2xl">
         <h2 class="mb-md text-xl font-semibold">
-          outline / neutral / rounded（start icon）
+          iconあり・outline・neutral・rounded
         </h2>
         <div class="gap-md flex flex-wrap items-center">
           <Button kind="outline" tone="neutral" shape="rounded" size="sm">
@@ -86,9 +86,8 @@ import { ReactButtonDemo } from "./_ReactButtonDemo.tsx";
       </section>
 
       <section class="mb-2xl">
-        <h2 class="mb-md text-xl font-semibold">solid / white / pill</h2>
+        <h2 class="mb-md text-xl font-semibold">solid・white・pill</h2>
 
-        <h3 class="mb-sm text-lg font-semibold">ダーク背景</h3>
         <div data-theme="dark" class="p-xl rounded-lg bg-black">
           <div class="gap-md flex flex-wrap items-center">
             <Button kind="solid" tone="white" shape="pill" size="md">md</Button>
@@ -99,28 +98,6 @@ import { ReactButtonDemo } from "./_ReactButtonDemo.tsx";
               md
             </Button>
           </div>
-        </div>
-      </section>
-
-      <section class="mb-2xl">
-        <h2 class="mb-md text-xl font-semibold">href あり/なし比較</h2>
-        <div class="gap-md flex flex-wrap items-center">
-          <Button
-            href="https://github.com/VOICEVOX/voicevox"
-            target="_blank"
-            rel="noreferrer"
-            kind="outline"
-            tone="neutral"
-            shape="pill"
-            size="md"
-          >
-            <span slot="icon"><FontAwesomeIcon icon={faArrowRight} /></span>
-            hrefあり
-          </Button>
-          <Button kind="outline" tone="neutral" shape="pill" size="md">
-            <span slot="icon"><FontAwesomeIcon icon={faArrowRight} /></span>
-            hrefなし
-          </Button>
         </div>
       </section>
 
