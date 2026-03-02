@@ -17,7 +17,7 @@
   text-decoration: none;
   white-space: nowrap;
 
-  &:hover {
+  @variant hover {
     background-color: color-mix(
       in srgb,
       currentColor var(--vv-button-hover-mix),

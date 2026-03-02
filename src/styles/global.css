@@ -270,19 +270,15 @@
   color: var(--color-link);
   text-decoration: underline;
 
-  &:hover {
-    @media (hover: hover) {
-      color: var(--color-link-hover);
-    }
+  @variant hover {
+    color: var(--color-link-hover);
   }
 
   @variant dark {
     color: var(--color-link-dark);
 
-    &:hover {
-      @media (hover: hover) {
-        color: var(--color-link-dark-hover);
-      }
+    @variant hover {
+      color: var(--color-link-dark-hover);
     }
   }
 }
@@ -291,10 +287,8 @@
   text-decoration: none;
   text-underline-offset: 2px;
 
-  &:hover {
-    @media (hover: hover) {
-      text-decoration: underline;
-    }
+  @variant hover {
+    text-decoration: underline;
   }
 }
 
@@ -306,7 +300,7 @@
     height: 0;
   }
 
-  &:hover {
+  @variant hover {
     scrollbar-width: thin;
 
     &::-webkit-scrollbar {
