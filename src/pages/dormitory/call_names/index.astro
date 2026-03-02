@@ -51,10 +51,7 @@ function rgba2rgbOnWhite(
           ボイボ寮キャラクターの呼称表
         </h1>
         <p class="leading-relaxed">
-          <a
-            href={withBaseUrl("/dormitory/")}
-            class="text-link hover:text-link-hover font-bold underline"
-            >ボイボ寮</a
+          <a href={withBaseUrl("/dormitory/")} class="vv-link">ボイボ寮</a
           >&nbsp;キャラクターの呼び方一覧表です。必ずしも遵守する必要はなく、自由に改変して頂いても問題ありません。
         </p>
       </div>
@@ -89,7 +86,7 @@ function rgba2rgbOnWhite(
                       href={withBaseUrl(
                         getDormitoryCharacterPageUrl(characterInfo),
                       )}
-                      class="gap-2xs flex flex-col items-center justify-center text-center no-underline hover:underline"
+                      class="gap-2xs vv-link-subtle flex flex-col items-center justify-center text-center"
                       style={{
                         color: characterInfo.color,
                       }}
@@ -133,7 +130,7 @@ function rgba2rgbOnWhite(
                       href={withBaseUrl(
                         getDormitoryCharacterPageUrl(characterInfo),
                       )}
-                      class="gap-sm flex items-center justify-center text-center no-underline hover:underline md:justify-start"
+                      class="gap-sm vv-link-subtle flex items-center justify-center text-center md:justify-start"
                       style={{
                         color: characterInfo.color,
                       }}

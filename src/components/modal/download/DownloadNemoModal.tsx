@@ -139,10 +139,7 @@ export default function DownloadNemoModal() {
               />
               <p className="text-center text-xs text-neutral-800">
                 ※ GPUモードの方が快適ですが、利用するためには
-                <a
-                  href={withBaseUrl("/qa/")}
-                  className="text-link hover:text-link-hover underline"
-                >
+                <a href={withBaseUrl("/qa/")} className="vv-link">
                   対応するGPU
                 </a>
                 が必要です

@@ -265,6 +265,39 @@
   }
 }
 
+@utility vv-link {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-link);
+  text-decoration: underline;
+
+  &:hover {
+    @media (hover: hover) {
+      color: var(--color-link-hover);
+    }
+  }
+
+  @variant dark {
+    color: var(--color-link-dark);
+
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-link-dark-hover);
+      }
+    }
+  }
+}
+
+@utility vv-link-subtle {
+  text-decoration: none;
+  text-underline-offset: 2px;
+
+  &:hover {
+    @media (hover: hover) {
+      text-decoration: underline;
+    }
+  }
+}
+
 @utility vv-scrollbar-hidden-until-hover {
   scrollbar-width: none;
 
