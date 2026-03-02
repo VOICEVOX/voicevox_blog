@@ -278,7 +278,7 @@ export default function Header({
 
         <div className={`lg:hidden ${isBurgerActive ? "block" : "hidden"}`}>
           <div
-            className={`border-t border-gray-200 bg-white text-neutral-900 dark:border-gray-800 dark:bg-black dark:text-white`}
+            className={`border-t border-neutral-200 bg-white text-neutral-900 dark:border-neutral-800 dark:bg-black dark:text-white`}
           >
             <div className="py-xs mx-auto flex flex-col">
               {menus.map(({ Component, hideType }, i) => (

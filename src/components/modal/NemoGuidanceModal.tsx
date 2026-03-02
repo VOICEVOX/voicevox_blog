@@ -28,7 +28,7 @@ export default function NemoGuidanceModal() {
       />
       <div className="p-md pointer-events-none fixed inset-0 box-border flex items-center justify-center">
         <div className="pointer-events-auto flex max-h-full w-full max-w-xl flex-col overflow-hidden rounded-lg bg-white shadow-xl">
-          <header className="px-xl py-lg relative flex items-center justify-center border-b border-gray-200 bg-neutral-50">
+          <header className="px-xl py-lg relative flex items-center justify-center border-b border-neutral-200 bg-neutral-50">
             <p className="text-2xl font-bold text-black">
               VOICEVOX Nemo ご利用案内
             </p>
@@ -67,7 +67,7 @@ export default function NemoGuidanceModal() {
               </Button>
             </div>
 
-            <hr className="my-md w-full flex-shrink-0 border-t border-gray-300" />
+            <hr className="my-md w-full flex-shrink-0 border-t border-neutral-300" />
 
             <div className="gap-sm flex flex-col items-center text-center">
               <h3 className="mb-0 text-lg font-semibold text-neutral-700">
@@ -80,7 +80,7 @@ export default function NemoGuidanceModal() {
               </p>
             </div>
 
-            <hr className="my-md w-full flex-shrink-0 border-t border-gray-300" />
+            <hr className="my-md w-full flex-shrink-0 border-t border-neutral-300" />
 
             <div className="gap-sm flex flex-col items-center text-center">
               <h3 className="mb-0 text-lg font-semibold text-neutral-700">
@@ -99,7 +99,7 @@ export default function NemoGuidanceModal() {
               </Button>
             </div>
 
-            <hr className="my-md w-full flex-shrink-0 border-t border-gray-300" />
+            <hr className="my-md w-full flex-shrink-0 border-t border-neutral-300" />
 
             <p className="text-center text-xs text-neutral-800">
               ※ VOICEVOX ソフトウェアにはキャラクターの音声も含まれます。

@@ -104,7 +104,7 @@ export default function DownloadNemoModal() {
       />
       <div className="p-md pointer-events-none fixed inset-0 box-border flex items-center justify-center">
         <div className="pointer-events-auto flex max-h-full w-full max-w-xl flex-col overflow-hidden rounded-lg bg-white shadow-xl">
-          <header className="px-xl py-lg relative flex items-center justify-center border-b border-gray-200 bg-neutral-50">
+          <header className="px-xl py-lg relative flex items-center justify-center border-b border-neutral-200 bg-neutral-50">
             <p className="text-2xl font-bold text-black">
               Nemo エンジン ダウンロード
             </p>
@@ -128,7 +128,7 @@ export default function DownloadNemoModal() {
               candidates={["Windows", "Mac", "Linux"]}
             />
 
-            <hr className="border-t border-gray-300" />
+            <hr className="border-t border-neutral-300" />
 
             <div className="space-y-2">
               <Selector
@@ -146,7 +146,7 @@ export default function DownloadNemoModal() {
               </p>
             </div>
 
-            <hr className="border-t border-gray-300" />
+            <hr className="border-t border-neutral-300" />
 
             <p className="text-center text-xs text-neutral-800">
               VOICEVOX 内の「マルチエンジン機能」を ON にしたあと、
@@ -157,7 +157,7 @@ export default function DownloadNemoModal() {
             </p>
           </section>
 
-          <footer className="gap-sm px-xl py-lg flex items-center justify-end border-t border-gray-200 bg-neutral-50">
+          <footer className="gap-sm px-xl py-lg flex items-center justify-end border-t border-neutral-200 bg-neutral-50">
             <Button
               href={downloadUrls[selectedOs][selectedMode]!.url}
               target="_blank"

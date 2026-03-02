@@ -25,7 +25,7 @@ export default function AudioSample({
 
   return (
     <div>
-      <hr className="my-sm border-gray-200" />
+      <hr className="my-sm border-neutral-200" />
       <div className="py-2xs flex flex-wrap items-center justify-center gap-x-2.5 gap-y-[3px]">
         <div className="w-[100px]">
           <span className="whitespace-nowrap">音声サンプル</span>
@@ -58,7 +58,7 @@ export default function AudioSample({
           </div>
         </div>
       )}
-      <hr className="my-sm border-gray-200" />
+      <hr className="my-sm border-neutral-200" />
     </div>
   );
 }
