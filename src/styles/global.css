@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "@fortawesome/fontawesome-svg-core/styles.css";
 @import "../components/ui/IconButton/IconButton.css";
 @import "../components/ui/Button/Button.css";
 
