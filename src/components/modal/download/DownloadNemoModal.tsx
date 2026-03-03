@@ -1,14 +1,12 @@
 /**
  * Nemoのダウンロードモーダル
  */
+import ModalShell from "../ModalShell";
 import Selector from "./Selector";
 import Button from "@/components/ui/Button/Button";
-import IconButton from "@/components/ui/IconButton/IconButton";
 import { NEMO_VERSION } from "@/constants";
 import { withBaseUrl } from "@/helper";
 import { $nemoDownloadModal } from "@/store";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useStore } from "@nanostores/react";
 import { useEffect, useState } from "react";
 
@@ -93,86 +91,62 @@ export default function DownloadNemoModal() {
     }
   };
 
-  if (!isActive) return null;
-
   return (
-    <div className="fixed inset-0 z-50" role="dialog" data-theme="light">
-      <div
-        className="fixed inset-0 bg-black/80"
-        onClick={hide}
-        role="presentation"
-      />
-      <div className="p-md pointer-events-none fixed inset-0 box-border flex items-center justify-center">
-        <div className="pointer-events-auto flex max-h-full w-full max-w-xl flex-col overflow-hidden rounded-lg bg-white shadow-xl">
-          <header className="px-xl py-lg relative flex items-center justify-center border-b border-neutral-200 bg-neutral-50">
-            <p className="text-2xl font-bold text-black">
-              Nemo エンジン ダウンロード
-            </p>
-            <IconButton
-              size="sm"
-              className="absolute top-1/2 right-5 -translate-y-1/2 text-neutral-700"
-              aria-label="close"
-              onClick={hide}
-            >
-              <span aria-hidden="true" className="text-xl leading-none">
-                <FontAwesomeIcon icon={faXmark} />
-              </span>
-            </IconButton>
-          </header>
+    <ModalShell
+      isActive={isActive}
+      title="Nemo エンジン ダウンロード"
+      onClose={hide}
+      footer={
+        <Button
+          href={downloadUrls[selectedOs][selectedMode]!.url}
+          target="_blank"
+          rel="noreferrer"
+          download={downloadUrls[selectedOs][selectedMode]!.name}
+          kind="solid"
+          tone="primary"
+          shape="rounded"
+          size="md"
+        >
+          ダウンロード
+        </Button>
+      }
+    >
+      <div className="space-y-4">
+        <Selector
+          label="OS"
+          selected={selectedOs}
+          setSelected={selectOs}
+          candidates={["Windows", "Mac", "Linux"]}
+        />
 
-          <section className="px-xl py-2xl min-h-0 flex-1 space-y-4 overflow-y-auto">
-            <Selector
-              label="OS"
-              selected={selectedOs}
-              setSelected={selectOs}
-              candidates={["Windows", "Mac", "Linux"]}
-            />
+        <hr className="border-t border-neutral-300" />
 
-            <hr className="border-t border-neutral-300" />
-
-            <div className="space-y-2">
-              <Selector
-                label="対応モード"
-                selected={selectedMode}
-                setSelected={setSelectedMode}
-                candidates={modeAvailables[selectedOs]}
-              />
-              <p className="text-center text-xs text-neutral-800">
-                ※ GPUモードの方が快適ですが、利用するためには
-                <a href={withBaseUrl("/qa/")} className="vv-link">
-                  対応するGPU
-                </a>
-                が必要です
-              </p>
-            </div>
-
-            <hr className="border-t border-neutral-300" />
-
-            <p className="text-center text-xs text-neutral-800">
-              VOICEVOX 内の「マルチエンジン機能」を ON にしたあと、
-              <br />
-              ダウンロードした .vvpp ファイルをダブルクリックするか
-              <br />
-              「エンジン」→「エンジンの管理」で Nemo 音声を追加できます。
-            </p>
-          </section>
-
-          <footer className="gap-sm px-xl py-lg flex items-center justify-end border-t border-neutral-200 bg-neutral-50">
-            <Button
-              href={downloadUrls[selectedOs][selectedMode]!.url}
-              target="_blank"
-              rel="noreferrer"
-              download={downloadUrls[selectedOs][selectedMode]!.name}
-              kind="solid"
-              tone="primary"
-              shape="rounded"
-              size="md"
-            >
-              ダウンロード
-            </Button>
-          </footer>
+        <div className="space-y-2">
+          <Selector
+            label="対応モード"
+            selected={selectedMode}
+            setSelected={setSelectedMode}
+            candidates={modeAvailables[selectedOs]}
+          />
+          <p className="text-center text-xs text-neutral-800">
+            ※ GPUモードの方が快適ですが、利用するためには
+            <a href={withBaseUrl("/qa/")} className="vv-link">
+              対応するGPU
+            </a>
+            が必要です
+          </p>
         </div>
+
+        <hr className="border-t border-neutral-300" />
+
+        <p className="text-center text-xs text-neutral-800">
+          VOICEVOX 内の「マルチエンジン機能」を ON にしたあと、
+          <br />
+          ダウンロードした .vvpp ファイルをダブルクリックするか
+          <br />
+          「エンジン」→「エンジンの管理」で Nemo 音声を追加できます。
+        </p>
       </div>
-    </div>
+    </ModalShell>
   );
 }
