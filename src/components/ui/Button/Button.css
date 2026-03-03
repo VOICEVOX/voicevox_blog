@@ -77,8 +77,8 @@
 }
 
 @utility vv-button-size-sm {
-  --vv-button-height: --spacing(7);
-  --vv-button-px: --spacing(2.5);
+  --vv-button-height: --spacing(8);
+  --vv-button-px: --spacing(4);
   --vv-button-py: --spacing(1);
   --vv-button-font-size: var(--text-xs);
   --vv-button-font-weight: var(--font-weight-normal);
@@ -104,14 +104,14 @@
   --vv-button-py: --spacing(2.5);
   --vv-button-font-size: var(--text-lg);
   --vv-button-font-weight: var(--font-weight-semibold);
-  --vv-button-icon-gap: --spacing(2);
-  --vv-button-icon-offset-start: calc(--spacing(2) * -1);
-  --vv-button-icon-offset-end: calc(--spacing(2) * -1);
+  --vv-button-icon-gap: --spacing(1.5);
+  --vv-button-icon-offset-start: calc(--spacing(1.5) * -1);
+  --vv-button-icon-offset-end: calc(--spacing(1.5) * -1);
 }
 
 @utility vv-button-size-xl {
   --vv-button-height: --spacing(15);
-  --vv-button-px: --spacing(8);
+  --vv-button-px: --spacing(7);
   --vv-button-py: --spacing(4);
   --vv-button-font-size: var(--text-2xl);
   --vv-button-font-weight: var(--font-weight-semibold);
