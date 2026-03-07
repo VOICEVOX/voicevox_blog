@@ -293,6 +293,18 @@
   }
 }
 
+@utility vv-hr {
+  height: 0.125rem;
+  border: 0;
+  background-color: var(--color-neutral-100);
+}
+
+@layer utilities {
+  [role="dialog"] hr.vv-hr {
+    background-color: var(--color-neutral-200);
+  }
+}
+
 @utility vv-scrollbar-hidden-until-hover {
   scrollbar-width: none;
 

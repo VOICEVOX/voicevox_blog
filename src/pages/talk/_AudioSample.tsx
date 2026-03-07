@@ -24,41 +24,43 @@ export default function AudioSample({
   );
 
   return (
-    <div>
-      <hr className="my-sm border-neutral-200" />
-      <div className="py-2xs flex flex-wrap items-center justify-center gap-x-2.5 gap-y-[3px]">
-        <div className="w-[100px]">
-          <span className="whitespace-nowrap">音声サンプル</span>
-        </div>
-        <div className="flex gap-[3px]">
-          {selectedAudioUrls.map((url, index) => (
-            <PlayButton
-              key={index}
-              url={url}
-              name={`${characterName}の${selectedStyle}スタイルのサンプルボイス${
-                index + 1
-              }`}
-              size="sm"
-            />
-          ))}
-        </div>
-      </div>
-      {styles.length > 1 && (
+    <div className="space-y-sm">
+      <hr className="vv-hr" />
+      <div>
         <div className="py-2xs flex flex-wrap items-center justify-center gap-x-2.5 gap-y-[3px]">
           <div className="w-[100px]">
-            <span className="whitespace-nowrap">スタイル</span>
+            <span className="whitespace-nowrap">音声サンプル</span>
           </div>
           <div className="flex gap-[3px]">
-            <StyleDropdown
-              styles={styles}
-              selectedStyle={selectedStyle!}
-              setSelectedStyle={setSelectedStyle}
-              characterName={characterName}
-            />
+            {selectedAudioUrls.map((url, index) => (
+              <PlayButton
+                key={index}
+                url={url}
+                name={`${characterName}の${selectedStyle}スタイルのサンプルボイス${
+                  index + 1
+                }`}
+                size="sm"
+              />
+            ))}
           </div>
         </div>
-      )}
-      <hr className="my-sm border-neutral-200" />
+        {styles.length > 1 && (
+          <div className="py-2xs flex flex-wrap items-center justify-center gap-x-2.5 gap-y-[3px]">
+            <div className="w-[100px]">
+              <span className="whitespace-nowrap">スタイル</span>
+            </div>
+            <div className="flex gap-[3px]">
+              <StyleDropdown
+                styles={styles}
+                selectedStyle={selectedStyle!}
+                setSelectedStyle={setSelectedStyle}
+                characterName={characterName}
+              />
+            </div>
+          </div>
+        )}
+      </div>
+      <hr className="vv-hr" />
     </div>
   );
 }

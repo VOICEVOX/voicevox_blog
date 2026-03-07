@@ -225,7 +225,7 @@ export default function DownloadModal() {
           candidates={["Windows", "Mac", "Linux"]}
         />
 
-        <hr className="border-t border-neutral-300" />
+        <hr className="vv-hr" />
 
         <div className="space-y-2">
           <Selector
@@ -243,7 +243,7 @@ export default function DownloadModal() {
           </p>
         </div>
 
-        <hr className="border-t border-neutral-300" />
+        <hr className="vv-hr" />
 
         <div className="space-y-2">
           <Selector

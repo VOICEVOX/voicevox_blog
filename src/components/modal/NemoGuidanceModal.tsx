@@ -46,7 +46,7 @@ export default function NemoGuidanceModal() {
           </Button>
         </div>
 
-        <hr className="w-full flex-shrink-0 border-t border-neutral-300" />
+        <hr className="vv-hr" />
 
         <div className="gap-sm flex flex-col items-center text-center">
           <h3 className="mb-0 text-lg font-semibold text-neutral-700">
@@ -59,7 +59,7 @@ export default function NemoGuidanceModal() {
           </p>
         </div>
 
-        <hr className="w-full flex-shrink-0 border-t border-neutral-300" />
+        <hr className="vv-hr" />
 
         <div className="gap-sm flex flex-col items-center text-center">
           <h3 className="mb-0 text-lg font-semibold text-neutral-700">
@@ -78,7 +78,7 @@ export default function NemoGuidanceModal() {
           </Button>
         </div>
 
-        <hr className="w-full flex-shrink-0 border-t border-neutral-300" />
+        <hr className="vv-hr" />
 
         <p className="text-center text-xs text-neutral-800">
           ※ VOICEVOX ソフトウェアにはキャラクターの音声も含まれます。

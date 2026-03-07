@@ -119,7 +119,7 @@ export default function DownloadNemoModal() {
           candidates={["Windows", "Mac", "Linux"]}
         />
 
-        <hr className="border-t border-neutral-300" />
+        <hr className="vv-hr" />
 
         <div className="space-y-2">
           <Selector
@@ -137,7 +137,7 @@ export default function DownloadNemoModal() {
           </p>
         </div>
 
-        <hr className="border-t border-neutral-300" />
+        <hr className="vv-hr" />
 
         <p className="text-center text-xs text-neutral-800">
           VOICEVOX 内の「マルチエンジン機能」を ON にしたあと、
