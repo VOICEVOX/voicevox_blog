@@ -59,7 +59,9 @@
   font-display: fallback;
 }
 
-@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+@custom-variant dark (
+  &:where([data-theme=dark], [data-theme=dark] *):not(:where([data-theme=dark] [data-theme=light] *))
+);
 
 @theme {
   --color-primary: #a5d4ad;
