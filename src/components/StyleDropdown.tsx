@@ -70,10 +70,10 @@ export default function StyleDropdown({
                 key={index}
                 type="button"
                 role="menuitem"
-                className={`px-sm block w-full rounded py-1.5 text-left text-sm whitespace-nowrap ${
+                className={`vv-status-layer px-sm block w-full rounded py-1.5 text-left text-sm whitespace-nowrap ${
                   isSelected
-                    ? "bg-primary hover:bg-primary/90 font-semibold text-neutral-900"
-                    : "text-neutral-900 hover:bg-neutral-100"
+                    ? "bg-primary font-semibold text-neutral-900"
+                    : "text-neutral-900"
                 }`}
                 onMouseDown={() => {
                   setSelectedStyle(style);

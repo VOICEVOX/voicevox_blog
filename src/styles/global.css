@@ -293,6 +293,29 @@
   }
 }
 
+/** ボタンなどの状態を表すレイヤーを追加する */
+@utility vv-status-layer {
+  position: relative;
+  isolation: isolate;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background-color: currentColor;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  @variant hover {
+    &::after {
+      opacity: 0.08;
+    }
+  }
+}
+
 @utility vv-hr {
   height: 0.125rem;
   border: 0;

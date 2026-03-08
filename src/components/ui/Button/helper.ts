@@ -59,6 +59,7 @@ export const buildButtonClassName = ({
   const iconClass = withIcon ? "vv-button-with-icon" : "vv-button-without-icon";
 
   return [
+    "vv-status-layer",
     "vv-button",
     KIND_CLASS[kind],
     TONE_CLASS[tone],

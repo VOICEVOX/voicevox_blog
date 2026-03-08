@@ -18,7 +18,13 @@ export const buildIconButtonClassName = ({
 }): string => {
   const borderClass = border ? "vv-icon-button-border" : "";
 
-  return ["vv-icon-button", SIZE_CLASS[size], borderClass, className]
+  return [
+    "vv-status-layer",
+    "vv-icon-button",
+    SIZE_CLASS[size],
+    borderClass,
+    className,
+  ]
     .filter(Boolean)
     .join(" ");
 };

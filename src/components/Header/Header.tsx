@@ -19,7 +19,7 @@ export default function Header({
 }) {
   const [isBurgerActive, setIsBurgerActive] = useState(false);
   const [showingHeader, setShowingHeader] = useState(!defaultHide);
-  const menuItemHoverClassName = "hover:bg-neutral-100 dark:hover:bg-white/10";
+  const menuItemHoverClassName = "vv-status-layer";
   const menuItemBaseClassName = `flex items-center self-stretch px-sm text-base whitespace-nowrap ${menuItemHoverClassName}`;
   const menuItemBaseMobilePanelClassName = `flex items-center px-sm py-xs text-base whitespace-nowrap ${menuItemHoverClassName}`;
 

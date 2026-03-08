@@ -16,55 +16,36 @@
   font-weight: var(--vv-button-font-weight);
   text-decoration: none;
   white-space: nowrap;
-
-  @variant hover {
-    background-color: color-mix(
-      in srgb,
-      currentColor var(--vv-button-hover-mix),
-      var(--vv-button-bg-color)
-    );
-    border-color: var(--vv-button-border-color-hover);
-  }
 }
 
 @utility vv-button-kind-solid {
   --vv-button-border-width: 0;
   --vv-button-border-color: transparent;
-  --vv-button-border-color-hover: transparent;
 }
 
 @utility vv-button-kind-outline {
   --vv-button-border-width: 1px;
-  --vv-button-border-color-hover: color-mix(
-    in srgb,
-    var(--vv-button-border-color) 90%,
-    currentColor 10%
-  );
 }
 
 @utility vv-button-tone-primary {
   --vv-button-bg-color: var(--color-primary);
   --vv-button-fg-color: var(--color-black);
-  --vv-button-hover-mix: 8%;
 }
 
 @utility vv-button-tone-white {
   --vv-button-bg-color: var(--color-white);
   --vv-button-fg-color: var(--color-neutral-950);
-  --vv-button-hover-mix: 10%;
 }
 
 @utility vv-button-tone-neutral {
   --vv-button-bg-color: var(--color-white);
   --vv-button-fg-color: var(--color-neutral-900);
   --vv-button-border-color: var(--color-neutral-300);
-  --vv-button-hover-mix: 4%;
 
   @variant dark {
     --vv-button-bg-color: var(--color-neutral-800);
     --vv-button-fg-color: var(--color-white);
     --vv-button-border-color: var(--color-neutral-600);
-    --vv-button-hover-mix: 10%;
   }
 }
 
