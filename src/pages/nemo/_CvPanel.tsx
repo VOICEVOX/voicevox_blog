@@ -82,14 +82,14 @@ export default function CvPanel({
         </div>
         <Collapsible.Content
           ref={contentRef}
-          className="pt-xs absolute top-full left-0 z-50 w-max min-w-full"
+          className="pt-2xs absolute top-full left-1/2 z-50 w-max -translate-x-1/2"
           id={`panel-${cvId}`}
           onMouseLeave={(event) => {
             handleHoverLeave(event.relatedTarget);
           }}
         >
-          <div className="p-sm min-w-56 rounded-md bg-[#2e333d] shadow-lg ring-1 ring-black/20">
-            <div className="gap-xs flex flex-col items-center text-center text-white">
+          <div className="p-sm min-w-44 rounded-md bg-[#2e333d] shadow-lg ring-1 ring-black/20">
+            <div className="gap-2xs flex flex-col items-center text-center text-white">
               <span className="text-sm">音声収録のご依頼先</span>
               <div className="gap-xs flex">
                 {CONTACT_LINKS.map(({ icon, key, label }) => {
@@ -102,7 +102,7 @@ export default function CvPanel({
                       key={key}
                       href={link}
                       className={buildIconButtonClassName({
-                        size: "lg",
+                        size: "md",
                         className: "mb-0 ml-auto text-xl text-white",
                       })}
                       aria-label={`${cv}の${label}`}
