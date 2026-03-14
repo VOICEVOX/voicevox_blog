@@ -257,6 +257,9 @@ hover開閉でも、クリックでの開閉でもどちらでも良いように
 続いてNemoページのCVドロップダウンもRadix化してください。
 その際、共通部分はhookにして切り出してください。
 
+Modal系をRadix化してください。
+
+
 astroやbulmaやtailwindやRadix UIについてわからないことがあればcontext7で調べてください。
 
 ---
