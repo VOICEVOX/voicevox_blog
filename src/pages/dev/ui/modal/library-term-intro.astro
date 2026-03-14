@@ -38,7 +38,7 @@ const libraryTermIntroHtmls = await (async () => {
   </head>
   <body>
     <LibraryTermIntroModal
-      client:only="react"
+      client:load
       htmls={libraryTermIntroHtmls}
       templateHtml={await libraryTermIntroTemplateHtml()}
     />

@@ -27,7 +27,7 @@ const { forceCvDropdownOpen = false, info, style } = Astro.props;
   >
     <span class="text-base text-white max-lg:text-xs">CV</span>
     <CvPanel
-      client:visible
+      client:load
       cv={info.cv}
       cvId={info.id}
       forceOpen={forceCvDropdownOpen}
