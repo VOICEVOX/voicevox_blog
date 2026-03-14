@@ -137,8 +137,7 @@ export default function PlayButton({
         <FontAwesomeIcon icon={isPlaying ? faStop : faPlay} />
       ) : (
         <div
-          className={`${getSpinnerSize(size)} animate-spin rounded-full border-2 border-t-transparent border-r-transparent`}
-          style={{ borderColor: color || "currentColor" }}
+          className={`${getSpinnerSize(size)} animate-spin rounded-full border-2 border-b-current border-l-current border-t-transparent border-r-transparent`}
         />
       )}
     </IconButton>
