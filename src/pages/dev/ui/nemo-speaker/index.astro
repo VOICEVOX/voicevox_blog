@@ -42,12 +42,14 @@ const speakerInfos = [
         <h2 class="mb-md text-xl font-semibold text-white">
           CVドロップダウン（開いた状態）
         </h2>
-        <div class="**:[[role=menu]]:block!">
-          <div
-            class="gap-2xl px-md mx-auto grid w-full max-w-5xl place-content-center max-md:[grid-template-columns:repeat(1,minmax(0,25rem))] md:grid-cols-2"
-          >
-            <SpeakerComponent info={speakerInfos[0]} style={{ zIndex: 1 }} />
-          </div>
+        <div
+          class="gap-2xl px-md mx-auto grid w-full max-w-5xl place-content-center max-md:[grid-template-columns:repeat(1,minmax(0,25rem))] md:grid-cols-2"
+        >
+          <SpeakerComponent
+            info={speakerInfos[0]}
+            style={{ zIndex: 1 }}
+            forceCvDropdownOpen={true}
+          />
         </div>
       </section>
     </div>

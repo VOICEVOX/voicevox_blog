@@ -1,7 +1,9 @@
 import Button from "@/components/ui/Button/Button";
+import { useAdaptiveDropdown } from "@/components/ui/dropdown/useAdaptiveDropdown";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useId, useState } from "react";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import React, { useState } from "react";
 
 export function useStyleDropdownController({ styles }: { styles: string[] }) {
   const [selectedStyle, setSelectedStyle] = useState(
@@ -29,63 +31,84 @@ export default function StyleDropdown({
   direction?: "up" | "down";
   forceOpen?: boolean;
 } & React.HTMLAttributes<HTMLDivElement>) {
-  const [isOpen, setIsOpen] = useState(false);
-  const id = useId();
-
   const isUp = direction === "up";
+  const {
+    contentRef,
+    handleHoverLeave,
+    handleOpenChange,
+    handleTriggerMouseEnter,
+    handleTriggerPointerDownCapture,
+    open,
+    triggerWrapperRef,
+  } = useAdaptiveDropdown({ forceOpen });
 
   return (
-    <div
-      className={`group relative inline-block ${className || ""}`}
-      onMouseEnter={() => setIsOpen(true)}
-      onMouseLeave={() => setIsOpen(false)}
+    <DropdownMenu.Root
+      modal={false}
+      open={open}
+      onOpenChange={handleOpenChange}
     >
-      <div>
-        <Button
-          kind="outline"
-          tone="neutral"
-          shape="pill"
-          size="md"
-          aria-haspopup="true"
-          aria-controls={id}
-          aria-expanded={forceOpen}
-          aria-label={`${characterName}のサンプルボイスのスタイルを選択`}
-          endIcon={<FontAwesomeIcon icon={faAngleDown} />}
+      <div className={`relative inline-block ${className || ""}`}>
+        <div
+          ref={triggerWrapperRef}
+          onMouseEnter={handleTriggerMouseEnter}
+          onMouseLeave={(event) => {
+            handleHoverLeave(event.relatedTarget);
+          }}
         >
-          {selectedStyle}
-        </Button>
-      </div>
-      <div
-        className={`absolute left-0 z-50 w-max min-w-full ${
-          isUp ? "pb-xs bottom-full" : "pt-xs top-full"
-        } ${forceOpen || isOpen ? "block" : "hidden"}`}
-        role="menu"
-        id={id}
-      >
-        <div className="p-2xs rounded-md bg-white shadow-lg ring-1 ring-black/5">
-          {styles.map((style, index) => {
-            const isSelected = style == selectedStyle;
-            return (
-              <button
-                key={index}
-                type="button"
-                role="menuitem"
-                className={`vv-status-layer px-sm block w-full rounded py-1.5 text-left text-sm whitespace-nowrap ${
-                  isSelected
-                    ? "bg-primary font-semibold text-neutral-900"
-                    : "text-neutral-900"
-                }`}
-                onMouseDown={() => {
-                  setSelectedStyle(style);
-                  setIsOpen(false);
-                }}
-              >
-                {style}
-              </button>
-            );
-          })}
+          <DropdownMenu.Trigger asChild>
+            <Button
+              kind="outline"
+              tone="neutral"
+              shape="pill"
+              size="md"
+              aria-label={`${characterName}のサンプルボイスのスタイルを選択`}
+              endIcon={<FontAwesomeIcon icon={faAngleDown} />}
+              onMouseEnter={handleTriggerMouseEnter}
+              onPointerDownCapture={handleTriggerPointerDownCapture}
+            >
+              {selectedStyle}
+            </Button>
+          </DropdownMenu.Trigger>
         </div>
+
+        <DropdownMenu.Portal>
+          <DropdownMenu.Content
+            ref={contentRef}
+            side={isUp ? "top" : "bottom"}
+            align="start"
+            className="p-2xs z-50 w-max min-w-32 rounded-md bg-white shadow-lg ring-1 ring-black/5"
+            onMouseLeave={(event) => {
+              handleHoverLeave(event.relatedTarget);
+            }}
+          >
+            {styles.map((style) => {
+              const isSelected = style === selectedStyle;
+              return (
+                <DropdownMenu.Item
+                  key={style}
+                  asChild
+                  onSelect={() => {
+                    setSelectedStyle(style);
+                    handleOpenChange(false);
+                  }}
+                >
+                  <button
+                    type="button"
+                    className={`vv-status-layer px-md block w-full rounded py-1.5 text-left text-sm whitespace-nowrap ${
+                      isSelected
+                        ? "bg-primary font-semibold text-neutral-900"
+                        : "text-neutral-900"
+                    }`}
+                  >
+                    {style}
+                  </button>
+                </DropdownMenu.Item>
+              );
+            })}
+          </DropdownMenu.Content>
+        </DropdownMenu.Portal>
       </div>
-    </div>
+    </DropdownMenu.Root>
   );
 }

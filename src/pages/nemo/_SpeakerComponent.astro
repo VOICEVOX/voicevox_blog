@@ -1,18 +1,16 @@
 ---
 import PlayButton from "@/components/PlayButton/index.astro";
-import IconButton from "@/components/ui/IconButton/index.astro";
-import { faXTwitter } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope, faHome } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Image } from "astro:assets";
+import CvDropdown from "./_CvDropdown";
 import type { SpeakerInfo } from "./constants";
 
 interface Props {
   info: SpeakerInfo;
   style: Record<string, string | number>;
+  forceCvDropdownOpen?: boolean;
 }
 
-const { info, style } = Astro.props;
+const { forceCvDropdownOpen = false, info, style } = Astro.props;
 ---
 
 <div
@@ -28,70 +26,13 @@ const { info, style } = Astro.props;
     class="gap-xs max-lg:gap-2xs flex flex-1 flex-col items-center justify-center text-center"
   >
     <span class="text-base text-white max-lg:text-xs">CV</span>
-    <div class="group/dropdown relative inline-block">
-      <div>
-        <button
-          class="inline-flex h-auto items-center gap-0 border-none bg-transparent px-0 py-0 text-white underline hover:text-white active:text-white"
-          aria-haspopup="true"
-          aria-controls={`dropdown-${info.id}`}
-          type="button"
-        >
-          <h3
-            class="px-xs inline-block max-w-full overflow-hidden text-xl text-ellipsis whitespace-nowrap max-lg:text-base"
-          >
-            {info.cv}
-          </h3>
-        </button>
-      </div>
-      <div
-        class="pt-xs absolute top-full left-0 z-50 hidden w-max min-w-full group-hover/dropdown:block"
-        id={`dropdown-${info.id}`}
-        role="menu"
-      >
-        <div
-          class="p-sm min-w-56 rounded-md bg-[#2e333d] shadow-lg ring-1 ring-black/20"
-        >
-          <div class="gap-xs flex flex-col items-center text-center text-white">
-            <span class="text-sm">音声収録のご依頼先</span>
-            <div class="gap-xs flex">
-              {
-                [
-                  {
-                    link: info.link.homepage,
-                    label: "ホームページ",
-                    icon: faHome,
-                  },
-                  {
-                    link: info.link.twitter,
-                    label: "SNS",
-                    icon: faXTwitter,
-                  },
-                  {
-                    link: info.link.email,
-                    label: "メールアドレス",
-                    icon: faEnvelope,
-                  },
-                ].map(
-                  ({ link, label, icon }) =>
-                    link && (
-                      <IconButton
-                        href={link}
-                        size="lg"
-                        class="mb-0 ml-auto text-xl text-white"
-                        aria-label={`${info.cv}の${label}`}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        <FontAwesomeIcon icon={icon} />
-                      </IconButton>
-                    ),
-                )
-              }
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <CvDropdown
+      client:visible
+      cv={info.cv}
+      cvId={info.id}
+      forceOpen={forceCvDropdownOpen}
+      links={info.link}
+    />
   </div>
   <div class="gap-md flex shrink-0 flex-row items-center justify-center">
     {
