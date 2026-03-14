@@ -1,3 +1,5 @@
+import * as ToggleGroup from "@radix-ui/react-toggle-group";
+
 export default function Selector<T extends string>({
   label,
   selected,
@@ -14,25 +16,29 @@ export default function Selector<T extends string>({
       <p className="text-center text-lg font-semibold text-black sm:w-1/3">
         {label}
       </p>
-      <div className="gap-xs flex flex-wrap items-center justify-center sm:w-2/3">
+      <ToggleGroup.Root
+        type="single"
+        value={selected}
+        onValueChange={(value) => {
+          if (value) {
+            setSelected(value as T);
+          }
+        }}
+        orientation="horizontal"
+        className="gap-xs flex flex-wrap items-center justify-center sm:w-2/3"
+      >
         {candidates.map((candidate, index) => {
-          const isSelected = candidate === selected;
           return (
-            <button
+            <ToggleGroup.Item
               key={index}
-              className={
-                isSelected
-                  ? "vv-status-layer px-xl inline-flex items-center justify-center rounded-full border-none bg-emerald-400 py-2.5 text-base font-semibold text-black"
-                  : "vv-status-layer px-xl inline-flex items-center justify-center rounded-full border border-neutral-300 bg-white py-2.5 text-base font-normal text-black shadow-sm"
-              }
-              onClick={() => setSelected(candidate)}
-              type="button"
+              value={candidate}
+              className="vv-status-layer vv-button vv-button-shape-pill vv-button-size-md vv-button-without-icon data-[state=off]:vv-button-kind-outline data-[state=off]:vv-button-tone-neutral data-[state=on]:vv-button-kind-solid data-[state=on]:bg-emerald-400 data-[state=on]:text-black"
             >
               {candidate}
-            </button>
+            </ToggleGroup.Item>
           );
         })}
-      </div>
+      </ToggleGroup.Root>
     </div>
   );
 }

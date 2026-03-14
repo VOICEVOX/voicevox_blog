@@ -53,10 +53,10 @@ test("ダウンロードボタン", async ({ page }) => {
   await test.step("モーダルの表示状態を確認", async () => {
     await expect(page).toHaveScreenshot();
 
-    await modal.getByRole("button", { name: "Mac" }).click();
+    await modal.getByRole("radio", { name: "Mac" }).click();
     await expect(page).toHaveScreenshot();
 
-    await modal.getByRole("button", { name: "Linux" }).click();
+    await modal.getByRole("radio", { name: "Linux" }).click();
     await expect(page).toHaveScreenshot();
   });
 
