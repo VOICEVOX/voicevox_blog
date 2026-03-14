@@ -3,8 +3,8 @@ import { useEffect, useRef, useState } from "react";
 
 type OpenMode = "closed" | "hover" | "pinned";
 
-/** ドロップダウンをホバー可能端末ではホバーで、それ以外ではクリックで開閉するためのhook */
-export function useAdaptiveDropdown({ forceOpen = false } = {}) {
+/** ポップアップをホバー可能端末ではホバーで、それ以外ではクリックで開閉するためのhook */
+export function useAdaptivePopup({ forceOpen = false } = {}) {
   const [openMode, setOpenMode] = useState<OpenMode>("closed");
   const [canHover, setCanHover] = useState(false);
   const triggerWrapperRef = useRef<HTMLDivElement | null>(null);

@@ -1,9 +1,9 @@
 import { buildIconButtonClassName } from "@/components/ui/IconButton/helper";
-import { useAdaptiveDropdown } from "@/components/ui/dropdown/useAdaptiveDropdown";
+import { useAdaptivePopup } from "@/components/ui/popup/useAdaptivePopup";
 import { faXTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope, faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import * as Collapsible from "@radix-ui/react-collapsible";
 
 const CONTACT_LINKS = [
   {
@@ -25,7 +25,7 @@ const CONTACT_LINKS = [
 
 type LinkKey = (typeof CONTACT_LINKS)[number]["key"];
 
-export default function CvDropdown({
+export default function CvPanel({
   cv,
   cvId,
   forceOpen = false,
@@ -37,6 +37,7 @@ export default function CvDropdown({
   links: Partial<Record<LinkKey, string>>;
 }) {
   const {
+    canHover,
     contentRef,
     handleHoverLeave,
     handleOpenChange,
@@ -44,14 +45,10 @@ export default function CvDropdown({
     handleTriggerPointerDownCapture,
     open,
     triggerWrapperRef,
-  } = useAdaptiveDropdown({ forceOpen });
+  } = useAdaptivePopup({ forceOpen });
 
   return (
-    <DropdownMenu.Root
-      modal={false}
-      open={open}
-      onOpenChange={handleOpenChange}
-    >
+    <Collapsible.Root open={open} onOpenChange={handleOpenChange}>
       <div className="relative inline-block">
         <div
           ref={triggerWrapperRef}
@@ -60,12 +57,19 @@ export default function CvDropdown({
             handleHoverLeave(event.relatedTarget);
           }}
         >
-          <DropdownMenu.Trigger asChild>
+          <Collapsible.Trigger asChild>
             <button
               className="inline-flex h-auto items-center gap-0 border-none bg-transparent px-0 py-0 text-white underline hover:text-white active:text-white"
-              aria-controls={`dropdown-${cvId}`}
-              aria-haspopup="menu"
+              aria-controls={`panel-${cvId}`}
               aria-label={`${cv}のご依頼先を表示`}
+              aria-expanded={open}
+              onClickCapture={(event) => {
+                if (!canHover || event.detail === 0) {
+                  return;
+                }
+                event.preventDefault();
+                event.stopPropagation();
+              }}
               onMouseEnter={handleTriggerMouseEnter}
               type="button"
               onPointerDownCapture={handleTriggerPointerDownCapture}
@@ -74,13 +78,12 @@ export default function CvDropdown({
                 {cv}
               </span>
             </button>
-          </DropdownMenu.Trigger>
+          </Collapsible.Trigger>
         </div>
-        <DropdownMenu.Content
+        <Collapsible.Content
           ref={contentRef}
-          align="start"
           className="pt-xs absolute top-full left-0 z-50 w-max min-w-full"
-          id={`dropdown-${cvId}`}
+          id={`panel-${cvId}`}
           onMouseLeave={(event) => {
             handleHoverLeave(event.relatedTarget);
           }}
@@ -113,8 +116,8 @@ export default function CvDropdown({
               </div>
             </div>
           </div>
-        </DropdownMenu.Content>
+        </Collapsible.Content>
       </div>
-    </DropdownMenu.Root>
+    </Collapsible.Root>
   );
 }

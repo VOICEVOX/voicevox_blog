@@ -1,7 +1,7 @@
 ---
 import PlayButton from "@/components/PlayButton/index.astro";
 import { Image } from "astro:assets";
-import CvDropdown from "./_CvDropdown";
+import CvPanel from "./_CvPanel";
 import type { SpeakerInfo } from "./constants";
 
 interface Props {
@@ -26,7 +26,7 @@ const { forceCvDropdownOpen = false, info, style } = Astro.props;
     class="gap-xs max-lg:gap-2xs flex flex-1 flex-col items-center justify-center text-center"
   >
     <span class="text-base text-white max-lg:text-xs">CV</span>
-    <CvDropdown
+    <CvPanel
       client:visible
       cv={info.cv}
       cvId={info.id}

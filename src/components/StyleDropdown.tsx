@@ -1,5 +1,5 @@
 import Button from "@/components/ui/Button/Button";
-import { useAdaptiveDropdown } from "@/components/ui/dropdown/useAdaptiveDropdown";
+import { useAdaptivePopup } from "@/components/ui/popup/useAdaptivePopup";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
@@ -40,7 +40,7 @@ export default function StyleDropdown({
     handleTriggerPointerDownCapture,
     open,
     triggerWrapperRef,
-  } = useAdaptiveDropdown({ forceOpen });
+  } = useAdaptivePopup({ forceOpen });
 
   return (
     <DropdownMenu.Root
