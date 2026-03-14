@@ -1,8 +1,9 @@
 import Button from "@/components/ui/Button/Button";
 import { isDevelopment, sendEvent, withBaseUrl } from "@/helper";
 import { $downloadModal, $nemoGuidanceModal } from "@/store";
-import { faDownload } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faDownload, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import * as Collapsible from "@radix-ui/react-collapsible";
 import { useEffect, useState } from "react";
 
 /** ヘッダーを隠すための属性。この属性を持つ要素が表示されている間はヘッダーを隠す */
@@ -20,8 +21,9 @@ export default function Header({
   const [isBurgerActive, setIsBurgerActive] = useState(false);
   const [showingHeader, setShowingHeader] = useState(!defaultHide);
   const menuItemHoverClassName = "vv-status-layer";
-  const menuItemBaseClassName = `flex items-center self-stretch px-sm text-base whitespace-nowrap ${menuItemHoverClassName}`;
-  const menuItemBaseMobilePanelClassName = `flex items-center px-sm py-xs text-base whitespace-nowrap ${menuItemHoverClassName}`;
+  const menuItemBaseClassName = `${menuItemHoverClassName} flex items-center self-stretch px-sm text-base whitespace-nowrap`;
+  const menuItemBaseMobilePanelClassName = `${menuItemHoverClassName} flex items-center px-sm py-xs text-base whitespace-nowrap`;
+  const menuTriggerClassName = `${menuItemHoverClassName} inline-flex h-10 w-10 shrink-0 items-center justify-center self-center leading-none`;
 
   // ヘッダーを隠すための属性を持つ要素が表示されている間はヘッダーを隠す
   useEffect(() => {
@@ -206,91 +208,71 @@ export default function Header({
   return (
     <>
       {/* FIXME: 非表示の際もアニメーション適用したい */}
-      <nav
-        className={`fixed top-0 left-0 z-40 w-full ${
-          showingHeader ? "" : "hidden"
-        } ${
-          defaultHide
-            ? "animate-[fadeIn_0.1s_cubic-bezier(0.33,1,0.68,1)_1_forwards]"
-            : ""
-        } bg-white text-neutral-900 shadow-[0_2px_0_0_rgb(243,244,246)] dark:bg-black dark:text-white dark:shadow-[0_2px_0_0_hsl(0_0%_4%)]`}
-        role="navigation"
-        aria-label="main navigation"
-      >
-        <div className="mx-auto flex h-13 items-stretch justify-between">
-          <div className="flex min-w-0 items-stretch">
-            <a
-              href={withBaseUrl("/")}
-              className={`gap-sm px-sm flex items-center self-stretch whitespace-nowrap ${menuItemHoverClassName}`}
-            >
-              <img src={iconUrl} alt="" width="28" height="28" />
-              <span className="text-xl font-bold">VOICEVOX</span>
-            </a>
+      <Collapsible.Root open={isBurgerActive} onOpenChange={setIsBurgerActive}>
+        <nav
+          className={`fixed top-0 left-0 z-40 w-full ${
+            showingHeader ? "" : "hidden"
+          } ${
+            defaultHide
+              ? "animate-[fadeIn_0.1s_cubic-bezier(0.33,1,0.68,1)_1_forwards]"
+              : ""
+          } bg-white text-neutral-900 shadow-[0_2px_0_0_rgb(243,244,246)] dark:bg-black dark:text-white dark:shadow-[0_2px_0_0_hsl(0_0%_4%)]`}
+          role="navigation"
+          aria-label="main navigation"
+        >
+          <div className="mx-auto flex h-13 items-stretch justify-between">
+            <div className="flex min-w-0 items-stretch">
+              <a
+                href={withBaseUrl("/")}
+                className={`gap-sm px-sm flex items-center self-stretch whitespace-nowrap ${menuItemHoverClassName}`}
+              >
+                <img src={iconUrl} alt="" width="28" height="28" />
+                <span className="text-xl font-bold">VOICEVOX</span>
+              </a>
 
-            {menus.map(({ Component, hideType }, i) => (
-              <Component key={i} className={brandMenuClassName(hideType)} />
-            ))}
-          </div>
-
-          <div className="flex items-stretch">
-            <div className="hidden items-stretch lg:flex">
               {menus.map(({ Component, hideType }, i) => (
-                <Component key={i} className={desktopMenuClassName(hideType)} />
+                <Component key={i} className={brandMenuClassName(hideType)} />
               ))}
             </div>
 
-            <button
-              className={`navbar-burger mx-2xs relative inline-flex h-10 w-10 items-center justify-center self-center lg:hidden ${
-                isBurgerActive ? "opacity-80" : ""
-              }`}
-              aria-label="menu"
-              aria-expanded={`${isBurgerActive}`}
-              onClick={() => setIsBurgerActive(!isBurgerActive)}
-              type="button"
-            >
-              <span className="sr-only">menu</span>
-              <span
-                aria-hidden="true"
-                className="absolute block h-0.5 w-5 bg-current transition-transform"
-                style={{
-                  transform: isBurgerActive
-                    ? "translateY(0) rotate(45deg)"
-                    : "translateY(-6px)",
-                }}
-              />
-              <span
-                aria-hidden="true"
-                className="absolute block h-0.5 w-5 bg-current transition-opacity"
-                style={{ opacity: isBurgerActive ? 0 : 1 }}
-              />
-              <span
-                aria-hidden="true"
-                className="absolute block h-0.5 w-5 bg-current transition-transform"
-                style={{
-                  transform: isBurgerActive
-                    ? "translateY(0) rotate(-45deg)"
-                    : "translateY(6px)",
-                }}
-              />
-            </button>
-          </div>
-        </div>
+            <div className="flex items-stretch">
+              <div className="hidden items-stretch lg:flex">
+                {menus.map(({ Component, hideType }, i) => (
+                  <Component
+                    key={i}
+                    className={desktopMenuClassName(hideType)}
+                  />
+                ))}
+              </div>
 
-        <div className={`lg:hidden ${isBurgerActive ? "block" : "hidden"}`}>
-          <div
-            className={`border-t border-neutral-200 bg-white text-neutral-900 dark:border-neutral-800 dark:bg-black dark:text-white`}
-          >
-            <div className="py-xs mx-auto flex flex-col">
-              {menus.map(({ Component, hideType }, i) => (
-                <Component
-                  key={i}
-                  className={mobilePanelMenuItemClassName(hideType)}
-                />
-              ))}
+              <Collapsible.Trigger asChild>
+                <button
+                  className={`${menuTriggerClassName} lg:hidden`}
+                  aria-label="menu"
+                  type="button"
+                >
+                  <span aria-hidden="true" className="text-xl leading-none">
+                    <FontAwesomeIcon icon={isBurgerActive ? faXmark : faBars} />
+                  </span>
+                </button>
+              </Collapsible.Trigger>
             </div>
           </div>
-        </div>
-      </nav>
+
+          <Collapsible.Content className="lg:hidden">
+            <div className="border-t border-neutral-200 bg-white text-neutral-900 dark:border-neutral-800 dark:bg-black dark:text-white">
+              <div className="py-xs mx-auto flex flex-col">
+                {menus.map(({ Component, hideType }, i) => (
+                  <Component
+                    key={i}
+                    className={mobilePanelMenuItemClassName(hideType)}
+                  />
+                ))}
+              </div>
+            </div>
+          </Collapsible.Content>
+        </nav>
+      </Collapsible.Root>
 
       {/* 空間を空けるために必要 */}
       <div className={`h-13 ${showingHeader ? "" : "hidden"} invisible`} />

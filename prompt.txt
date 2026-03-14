@@ -259,7 +259,6 @@ hover開閉でも、クリックでの開閉でもどちらでも良いように
 
 Modal系をRadix化してください。
 
-
 astroやbulmaやtailwindやRadix UIについてわからないことがあればcontext7で調べてください。
 
 ---
