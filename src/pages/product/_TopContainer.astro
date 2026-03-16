@@ -52,165 +52,167 @@ const postCharacterKey =
   ];
 ---
 
-<div
-  class="top relative mx-auto grid w-[calc(100%-48px)] max-w-7xl grid-cols-1 grid-rows-[calc(100vh-3.25rem-5rem)_5rem_auto] md:h-[calc(100vh-3.25rem)] md:max-h-[1024px] md:min-h-[512px] md:grid-cols-2 md:grid-rows-[1fr_5rem]"
->
+<div class="@container">
   <div
-    class="character-area top-character-area relative col-start-1 row-start-1 md:col-start-2 md:row-start-1"
+    class="top relative mx-auto grid w-[calc(100%-48px)] max-w-7xl grid-cols-1 grid-rows-[calc(100vh-3.25rem-5rem)_5rem_auto] md:h-[calc(100vh-3.25rem)] md:max-h-[1024px] md:min-h-[512px] md:grid-cols-2 md:grid-rows-[1fr_5rem]"
   >
-    <div class="absolute inset-0 flex justify-center overflow-hidden">
-      <div class="flex-none">
-        <Image
-          class="block h-full w-auto object-contain"
-          src={characterInfo.portraitImage}
-          alt={characterInfo.name}
-          height={1280}
-          densities={[1, 1.5, 2]}
-        />
-      </div>
-    </div>
     <div
-      class="gap-md pb-lg absolute inset-y-0 right-[5%] flex flex-col justify-end"
+      class="max-md:pt-3xl md:px-3xl col-start-1 row-start-3 flex flex-col items-center justify-center px-0 md:col-start-1 md:row-start-1 md:items-start"
     >
-      <div
-        class="gap-md p-md flex w-[200px] flex-col items-end rounded-2xl bg-white/80"
-      >
-        <p>{characterInfo.description.replaceAll("<br />", "")}</p>
-        <a
-          href={withBaseUrl(getDormitoryCharacterPageUrl(characterInfo))}
-          class="vv-link-subtle font-bold text-black">キャラクター詳細 →</a
-        >
-      </div>
-
-      <AudioSample client:visible characterInfo={characterInfo} />
-    </div>
-  </div>
-
-  <div
-    class="max-md:pt-3xl md:px-3xl col-start-1 row-start-3 flex flex-col items-center justify-center px-0 md:col-start-1 md:row-start-1 md:items-start"
-  >
-    <h1 class="mb-xl text-3xl leading-[36px] font-extrabold">
-      VOICEVOX {characterInfo.name}
-    </h1>
-    <p class="text-xl leading-[30px]">
-      {description}
-      {additionalDescription && additionalDescription}
-    </p>
-    {
-      characterInfo.releaseDate == undefined && (
-        <Button
-          {...{ [showDownloadModalAttr]: "" }}
-          kind="solid"
-          tone="primary"
-          shape="pill"
-          size="xl"
-          class="mt-xl"
-        >
-          <span slot="icon">
-            <FontAwesomeIcon icon={faDownload} />
-          </span>
-          <span class="font-semibold">
-            <span class="max-lg:hidden">VOICEVOX を </span>
-            ダウンロード
-          </span>
-        </Button>
-      )
-    }
-    <div
-      class="terms mt-xl gap-xs flex flex-col items-center md:flex-row md:flex-wrap md:items-start"
-    >
-      <Button
-        href={withBaseUrl("/term/")}
-        kind="outline"
-        tone="neutral"
-        shape="pill"
-        size="md"
-      >
-        VOICEVOX 利用規約
-      </Button>
+      <h1 class="mb-xl text-3xl leading-[36px] font-extrabold">
+        VOICEVOX {characterInfo.name}
+      </h1>
+      <p class="text-xl leading-[30px]">
+        {description}
+        {additionalDescription && additionalDescription}
+      </p>
       {
-        characterInfo.policyUrl && (
+        characterInfo.releaseDate == undefined && (
           <Button
-            {...{ [showLibraryTermIntroModalCharacterKeyAttr]: characterKey }}
-            kind="outline"
-            tone="neutral"
+            {...{ [showDownloadModalAttr]: "" }}
+            kind="solid"
+            tone="primary"
             shape="pill"
-            size="md"
+            size="xl"
+            class="mt-xl"
           >
-            {characterInfo.name} 利用規約
+            <span slot="icon">
+              <FontAwesomeIcon icon={faDownload} />
+            </span>
+            <span class="font-semibold">
+              <span class="max-lg:hidden">VOICEVOX を </span>
+              ダウンロード
+            </span>
           </Button>
         )
       }
-      {
-        characterInfo.additionalProductLinks &&
-          characterInfo.additionalProductLinks.map((obj) => (
+      <div
+        class="terms mt-xl gap-xs flex flex-col items-center md:flex-row md:flex-wrap md:items-start"
+      >
+        <Button
+          href={withBaseUrl("/term/")}
+          kind="outline"
+          tone="neutral"
+          shape="pill"
+          size="md"
+        >
+          VOICEVOX 利用規約
+        </Button>
+        {
+          characterInfo.policyUrl && (
             <Button
-              href={obj.url}
-              target="_blank"
-              rel="noreferrer"
+              {...{ [showLibraryTermIntroModalCharacterKeyAttr]: characterKey }}
               kind="outline"
               tone="neutral"
               shape="pill"
               size="md"
             >
-              {obj.label}
+              {characterInfo.name} 利用規約
             </Button>
-          ))
-      }
+          )
+        }
+        {
+          characterInfo.additionalProductLinks &&
+            characterInfo.additionalProductLinks.map((obj) => (
+              <Button
+                href={obj.url}
+                target="_blank"
+                rel="noreferrer"
+                kind="outline"
+                tone="neutral"
+                shape="pill"
+                size="md"
+              >
+                {obj.label}
+              </Button>
+            ))
+        }
+      </div>
     </div>
-  </div>
 
-  <div
-    class="charamenu-area col-start-1 row-start-2 h-20 md:col-span-2 md:row-start-2"
-  >
     <div
-      class="vv-scrollbar-hidden-until-hover flex h-full overflow-x-auto overflow-y-hidden"
-      aria-label="キャラクター一覧"
+      class="character-area top-character-area relative col-start-1 row-start-1 md:col-start-2 md:row-start-1"
     >
-      {
-        characterKeys.map((key) => (
-          <KeepScrollAnchor
-            href={withBaseUrl(getProductPageUrl(characterInfos[key]))}
-            class={`character box-content flex aspect-square flex-none ${
-              key === characterKey
-                ? "active px-xs py-md relative h-12 opacity-100 before:absolute before:top-0 before:left-0 before:h-1 before:w-full before:bg-[var(--characterColor)] before:content-['']"
-                : "px-xs py-lg h-10 opacity-50 hover:opacity-80"
-            }`}
-            aria-label={characterInfos[key].name}
-            style={{
-              "--characterLightColor": characterInfos[key].lightColor,
-              "--characterColor": characterInfos[key].color,
-            }}
+      <div class="absolute inset-0 flex justify-center overflow-hidden">
+        <div class="flex-none">
+          <Image
+            class="block h-full w-auto object-contain"
+            src={characterInfo.portraitImage}
+            alt={characterInfo.name}
+            height={1280}
+            densities={[1, 1.5, 2]}
+          />
+        </div>
+      </div>
+      <div
+        class="gap-md pb-lg absolute inset-y-0 right-[5%] flex flex-col justify-end"
+      >
+        <div
+          class="gap-md p-md flex w-[200px] flex-col items-end rounded-2xl bg-white/80"
+        >
+          <p>{characterInfo.description.replaceAll("<br />", "")}</p>
+          <a
+            href={withBaseUrl(getDormitoryCharacterPageUrl(characterInfo))}
+            class="vv-link-subtle font-bold text-black">キャラクター詳細 →</a
           >
-            <Image
-              class="m-auto h-full w-auto rounded-lg bg-(--characterLightColor)"
-              src={characterInfos[key].bustupImage}
-              alt={characterInfos[key].name}
-              width="64"
-              densities={[1, 1.5, 2]}
-            />
-          </KeepScrollAnchor>
-        ))
-      }
+        </div>
+
+        <AudioSample client:visible characterInfo={characterInfo} />
+      </div>
+    </div>
+
+    <IconButton
+      href={withBaseUrl(getProductPageUrl(characterInfos[prevCharacterKey]))}
+      size="md"
+      class="absolute top-[10%] left-[calc(50%-50vw+1.2rem)] -translate-y-1/2 text-5xl text-black opacity-25 hover:opacity-40"
+      aria-label="前のキャラクターを表示"
+    >
+      <FontAwesomeIcon icon={faCircleLeft} />
+    </IconButton>
+    <IconButton
+      href={withBaseUrl(getProductPageUrl(characterInfos[postCharacterKey]))}
+      size="md"
+      class="absolute top-[10%] right-[calc(50%-50vw+1.2rem)] -translate-y-1/2 text-5xl text-black opacity-25 hover:opacity-40"
+      aria-label="次のキャラクターを表示"
+    >
+      <FontAwesomeIcon icon={faCircleRight} />
+    </IconButton>
+
+    <div
+      class="charamenu-area col-start-1 row-start-2 h-20 md:col-span-2 md:row-start-2"
+    >
+      <div
+        class="vv-scrollbar-hidden-until-hover flex h-full overflow-x-auto overflow-y-hidden"
+        aria-label="キャラクター一覧"
+      >
+        {
+          characterKeys.map((key) => (
+            <KeepScrollAnchor
+              href={withBaseUrl(getProductPageUrl(characterInfos[key]))}
+              class={`character box-content flex aspect-square flex-none ${
+                key === characterKey
+                  ? "active px-xs py-md relative h-12 opacity-100 before:absolute before:top-0 before:left-0 before:h-1 before:w-full before:bg-[var(--characterColor)] before:content-['']"
+                  : "px-xs py-lg h-10 opacity-50 hover:opacity-80"
+              }`}
+              aria-label={characterInfos[key].name}
+              style={{
+                "--characterLightColor": characterInfos[key].lightColor,
+                "--characterColor": characterInfos[key].color,
+              }}
+            >
+              <Image
+                class="m-auto h-full w-auto rounded-lg bg-(--characterLightColor)"
+                src={characterInfos[key].bustupImage}
+                alt={characterInfos[key].name}
+                width="64"
+                densities={[1, 1.5, 2]}
+              />
+            </KeepScrollAnchor>
+          ))
+        }
+      </div>
     </div>
   </div>
-
-  <IconButton
-    href={withBaseUrl(getProductPageUrl(characterInfos[prevCharacterKey]))}
-    size="md"
-    class="absolute top-[10%] left-[calc(50%-50vw+1.2rem)] -translate-y-1/2 text-5xl text-black opacity-25 hover:opacity-40"
-    aria-label="前のキャラクターを表示"
-  >
-    <FontAwesomeIcon icon={faCircleLeft} />
-  </IconButton>
-  <IconButton
-    href={withBaseUrl(getProductPageUrl(characterInfos[postCharacterKey]))}
-    size="md"
-    class="absolute top-[10%] right-[calc(50%-50vw+1.2rem)] -translate-y-1/2 text-5xl text-black opacity-25 hover:opacity-40"
-    aria-label="次のキャラクターを表示"
-  >
-    <FontAwesomeIcon icon={faCircleRight} />
-  </IconButton>
 </div>
 
 <script>
@@ -242,7 +244,7 @@ const postCharacterKey =
     position: absolute;
     top: 0;
     left: 0;
-    width: 50vw;
+    width: 50cqw;
     height: 100%;
     background-color: var(--characterBackgroundColor);
   }
