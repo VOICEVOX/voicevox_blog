@@ -308,7 +308,6 @@
     background-color: currentColor;
     opacity: 0;
     pointer-events: none;
-    z-index: 1;
   }
 
   @variant hover {

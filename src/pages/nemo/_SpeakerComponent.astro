@@ -6,16 +6,14 @@ import type { SpeakerInfo } from "./constants";
 
 interface Props {
   info: SpeakerInfo;
-  style: Record<string, string | number>;
   forceCvDropdownOpen?: boolean;
 }
 
-const { forceCvDropdownOpen = false, info, style } = Astro.props;
+const { forceCvDropdownOpen = false, info } = Astro.props;
 ---
 
 <div
-  class="pr-md relative flex h-32 flex-row filter-[drop-shadow(12px_12px_8px_rgba(0,0,0,0.5))] *:z-2 before:absolute before:top-[0.4rem] before:right-0 before:bottom-[0.4rem] before:left-[0.4rem] before:z-1 before:rounded-l-[calc(8rem-0.4rem)] before:bg-[#20242d] before:content-[''] max-lg:h-24 max-lg:before:rounded-l-[calc(6rem-0.4rem)] max-md:h-16 max-md:before:rounded-l-[calc(4rem-0.4rem)]"
-  style={style}
+  class="pr-md relative flex h-32 flex-row filter-[drop-shadow(12px_12px_8px_rgba(0,0,0,0.5))] *:relative before:absolute before:top-[0.4rem] before:right-0 before:bottom-[0.4rem] before:left-[0.4rem] before:rounded-l-[calc(8rem-0.4rem)] before:bg-[#20242d] before:content-[''] max-lg:h-24 max-lg:before:rounded-l-[calc(6rem-0.4rem)] max-md:h-16 max-md:before:rounded-l-[calc(4rem-0.4rem)]"
 >
   <div
     class="h-32 w-32 shrink-0 max-lg:h-24 max-lg:w-24 max-md:h-16 max-md:w-16"

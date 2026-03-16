@@ -27,14 +27,7 @@ const speakerInfos = [
         <div
           class="gap-2xl px-md mx-auto grid w-full max-w-5xl place-content-center max-md:grid-cols-[repeat(1,minmax(0,25rem))] md:grid-cols-2"
         >
-          {
-            speakerInfos.map((info, i) => (
-              <SpeakerComponent
-                info={info}
-                style={{ zIndex: speakerInfos.length - i }}
-              />
-            ))
-          }
+          {speakerInfos.map((info) => <SpeakerComponent info={info} />)}
         </div>
       </section>
 
@@ -45,11 +38,7 @@ const speakerInfos = [
         <div
           class="gap-2xl px-md mx-auto grid w-full max-w-5xl place-content-center max-md:[grid-template-columns:repeat(1,minmax(0,25rem))] md:grid-cols-2"
         >
-          <SpeakerComponent
-            info={speakerInfos[0]}
-            style={{ zIndex: 1 }}
-            forceCvDropdownOpen={true}
-          />
+          <SpeakerComponent info={speakerInfos[0]} forceCvDropdownOpen={true} />
         </div>
       </section>
     </div>

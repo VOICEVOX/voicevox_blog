@@ -151,13 +151,9 @@ const voicevoxIconImageSrc = (await getImage({ src: voicevoxIconImage })).src;
         class="mt-3xl gap-2xl px-xl pt-3xl md:px-md mx-auto grid w-full max-w-5xl grid-cols-1 md:grid-cols-2"
       >
         {
-          // 内部で表示するドロップメニューが兄弟要素で隠れてしまうのでz-indexを指定している
-          speakerKeys.map((key, i) => (
+          speakerKeys.map((key) => (
             <div class="w-full max-md:mx-auto max-md:max-w-sm">
-              <SpeakerComponent
-                info={getSpeakerInfo(key)}
-                style={{ zIndex: speakerKeys.length - i }}
-              />
+              <SpeakerComponent info={getSpeakerInfo(key)} />
             </div>
           ))
         }

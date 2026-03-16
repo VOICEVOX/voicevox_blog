@@ -48,17 +48,17 @@ const backgroundImageSrc = (await getImage({ src: backgroundImage })).src;
   <main class="bg-neutral-950 text-white">
     <section class="py-0" data-testid="first-view">
       <div
-        class="px-xl py-3xl relative isolate flex min-h-[calc(100vh-3.25rem)] flex-col items-center justify-center gap-14 text-center"
+        class="px-xl py-3xl relative flex min-h-[calc(100vh-3.25rem)] flex-col items-center justify-center gap-14 text-center"
       >
         <!-- 背景画像 -->
         <div
-          class="absolute inset-0 -z-10 bg-cover bg-center blur-xs brightness-75"
+          class="absolute inset-0 bg-cover bg-center blur-xs brightness-75"
           style={{ backgroundImage: `url(${backgroundImageSrc})` }}
         >
         </div>
 
         <div
-          class="gap-xs max-md:mb-4xl md:gap-md flex flex-col items-center justify-center"
+          class="gap-xs max-md:mb-4xl md:gap-md relative flex flex-col items-center justify-center"
         >
           <h1
             class="text-primary/75 text-5xl leading-[1.125] font-extrabold [text-shadow:0px_0px_10px_color-mix(in_srgb,var(--color-primary)_55%,transparent)] md:text-8xl lg:text-9xl"
@@ -72,7 +72,7 @@ const backgroundImageSrc = (await getImage({ src: backgroundImage })).src;
           </span>
         </div>
 
-        <div class="gap-md flex flex-col items-center">
+        <div class="gap-md relative flex flex-col items-center">
           <Button
             {...{ [showDownloadModalAttr]: "" }}
             kind="solid"

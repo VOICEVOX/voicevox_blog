@@ -55,23 +55,6 @@ const postCharacterKey =
 <div
   class="top relative mx-auto grid w-[calc(100%-48px)] max-w-7xl grid-cols-1 grid-rows-[calc(100vh-3.25rem-5rem)_5rem_auto] md:h-[calc(100vh-3.25rem)] md:max-h-[1024px] md:min-h-[512px] md:grid-cols-2 md:grid-rows-[1fr_5rem]"
 >
-  <IconButton
-    href={withBaseUrl(getProductPageUrl(characterInfos[prevCharacterKey]))}
-    size="md"
-    class="absolute top-[10%] left-[calc(50%-50vw+1.2rem)] z-10 -translate-y-1/2 text-5xl text-black opacity-25 hover:opacity-40"
-    aria-label="前のキャラクターを表示"
-  >
-    <FontAwesomeIcon icon={faCircleLeft} />
-  </IconButton>
-  <IconButton
-    href={withBaseUrl(getProductPageUrl(characterInfos[postCharacterKey]))}
-    size="md"
-    class="absolute top-[10%] right-[calc(50%-50vw+1.2rem)] z-10 -translate-y-1/2 text-5xl text-black opacity-25 hover:opacity-40"
-    aria-label="次のキャラクターを表示"
-  >
-    <FontAwesomeIcon icon={faCircleRight} />
-  </IconButton>
-
   <div
     class="character-area top-character-area relative col-start-1 row-start-1 md:col-start-2 md:row-start-1"
   >
@@ -211,6 +194,23 @@ const postCharacterKey =
       }
     </div>
   </div>
+
+  <IconButton
+    href={withBaseUrl(getProductPageUrl(characterInfos[prevCharacterKey]))}
+    size="md"
+    class="absolute top-[10%] left-[calc(50%-50vw+1.2rem)] -translate-y-1/2 text-5xl text-black opacity-25 hover:opacity-40"
+    aria-label="前のキャラクターを表示"
+  >
+    <FontAwesomeIcon icon={faCircleLeft} />
+  </IconButton>
+  <IconButton
+    href={withBaseUrl(getProductPageUrl(characterInfos[postCharacterKey]))}
+    size="md"
+    class="absolute top-[10%] right-[calc(50%-50vw+1.2rem)] -translate-y-1/2 text-5xl text-black opacity-25 hover:opacity-40"
+    aria-label="次のキャラクターを表示"
+  >
+    <FontAwesomeIcon icon={faCircleRight} />
+  </IconButton>
 </div>
 
 <script>
