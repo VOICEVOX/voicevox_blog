@@ -83,7 +83,7 @@ export default function StyleDropdown({
             ref={contentRef}
             side={isUp ? "top" : "bottom"}
             align="start"
-            className="p-2xs z-50 w-max min-w-32 rounded-md bg-white shadow-lg ring-1 ring-black/5"
+            className="p-2xs z-(--z-popup) w-max min-w-32 rounded-md bg-white shadow-lg ring-1 ring-black/5"
             onCloseAutoFocus={handleContentCloseAutoFocus}
             onMouseLeave={(event) => {
               handleHoverLeave(event.relatedTarget);

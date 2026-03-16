@@ -210,7 +210,7 @@ export default function Header({
       {/* FIXME: 非表示の際もアニメーション適用したい */}
       <Collapsible.Root open={isBurgerActive} onOpenChange={setIsBurgerActive}>
         <nav
-          className={`fixed top-0 left-0 z-40 w-full ${
+          className={`fixed top-0 left-0 z-(--z-header) w-full ${
             showingHeader ? "" : "hidden"
           } ${
             defaultHide

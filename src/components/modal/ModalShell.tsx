@@ -27,8 +27,8 @@ export default function ModalShell({
       }}
     >
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 z-50 bg-black/80" />
-        <div className="p-md pointer-events-none fixed inset-0 z-50 box-border flex items-center justify-center">
+        <Dialog.Overlay className="fixed inset-0 z-(--z-modal) bg-black/80" />
+        <div className="p-md pointer-events-none fixed inset-0 z-(--z-modal) box-border flex items-center justify-center">
           <Dialog.Content
             aria-describedby={undefined}
             className="pointer-events-auto flex max-h-full w-full max-w-xl flex-col overflow-hidden rounded-lg bg-white shadow-xl"
