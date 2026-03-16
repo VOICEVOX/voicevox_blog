@@ -34,13 +34,18 @@ export default function StyleDropdown({
   const isUp = direction === "up";
   const {
     contentRef,
+    handleContentCloseAutoFocus,
     handleHoverLeave,
     handleOpenChange,
+    handleTriggerKeyDownCapture,
     handleTriggerMouseEnter,
     handleTriggerPointerDownCapture,
     open,
     triggerWrapperRef,
-  } = useAdaptivePopup({ forceOpen });
+  } = useAdaptivePopup({
+    behavior: "menu",
+    forceOpen,
+  });
 
   return (
     <DropdownMenu.Root
@@ -65,6 +70,7 @@ export default function StyleDropdown({
               aria-label={`${characterName}のサンプルボイスのスタイルを選択`}
               endIcon={<FontAwesomeIcon icon={faAngleDown} />}
               onMouseEnter={handleTriggerMouseEnter}
+              onKeyDownCapture={handleTriggerKeyDownCapture}
               onPointerDownCapture={handleTriggerPointerDownCapture}
             >
               {selectedStyle}
@@ -78,6 +84,7 @@ export default function StyleDropdown({
             side={isUp ? "top" : "bottom"}
             align="start"
             className="p-2xs z-50 w-max min-w-32 rounded-md bg-white shadow-lg ring-1 ring-black/5"
+            onCloseAutoFocus={handleContentCloseAutoFocus}
             onMouseLeave={(event) => {
               handleHoverLeave(event.relatedTarget);
             }}

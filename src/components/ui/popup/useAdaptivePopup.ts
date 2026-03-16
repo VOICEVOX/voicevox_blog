@@ -1,14 +1,31 @@
-import type { PointerEvent } from "react";
+import type { KeyboardEvent, PointerEvent } from "react";
 import { useEffect, useRef, useState } from "react";
 
 type OpenMode = "closed" | "hover" | "pinned";
+type OpenCause = "hover" | "pointer" | "keyboard";
+type PopupBehavior = "menu" | "panel";
 
-/** ポップアップをホバー可能端末ではホバーで、それ以外ではクリックで開閉するためのhook */
-export function useAdaptivePopup({ forceOpen = false } = {}) {
+/**
+ * ポップアップの開閉とfocus移動を入力手段ごとに揃えるhook。
+ * ホバー可能端末ではhoverを優先し、それ以外ではクリックで開閉する。
+ * keyboardで開いたときだけcontent側へfocusを移し、それ以外ではfocusを動かさない。
+ */
+export function useAdaptivePopup({
+  behavior,
+  forceOpen = false,
+}: {
+  behavior: PopupBehavior;
+  forceOpen?: boolean;
+}) {
   const [openMode, setOpenMode] = useState<OpenMode>("closed");
   const [canHover, setCanHover] = useState(false);
   const triggerWrapperRef = useRef<HTMLDivElement | null>(null);
   const contentRef = useRef<HTMLDivElement | null>(null);
+  const openCauseRef = useRef<OpenCause | null>(null);
+  const keyboardOpenKeys =
+    behavior === "menu"
+      ? ["Enter", " ", "ArrowDown", "ArrowUp"]
+      : ["Enter", " "];
 
   const open = forceOpen || openMode !== "closed";
 
@@ -36,6 +53,7 @@ export function useAdaptivePopup({ forceOpen = false } = {}) {
     if (forceOpen || !canHover || openMode === "pinned") {
       return;
     }
+    openCauseRef.current = "hover";
     setOpenMode("hover");
   };
 
@@ -57,18 +75,56 @@ export function useAdaptivePopup({ forceOpen = false } = {}) {
   };
 
   const handleTriggerPointerDownCapture = (event: PointerEvent) => {
-    if (forceOpen || !canHover) {
+    if (forceOpen) {
+      return;
+    }
+    if (!canHover) {
+      openCauseRef.current = "pointer";
       return;
     }
     event.preventDefault();
     event.stopPropagation();
   };
 
+  const handleTriggerKeyDownCapture = (event: KeyboardEvent) => {
+    if (forceOpen || !keyboardOpenKeys.includes(event.key)) {
+      return;
+    }
+    openCauseRef.current = "keyboard";
+  };
+
+  const handleContentOpenAutoFocus = (
+    event: Event,
+    focusFirst?: () => void,
+  ) => {
+    if (behavior === "menu") {
+      return;
+    }
+    if (openCauseRef.current !== "keyboard") {
+      event.preventDefault();
+      return;
+    }
+    if (focusFirst) {
+      event.preventDefault();
+      focusFirst();
+    }
+  };
+
+  const handleContentCloseAutoFocus = (event: Event) => {
+    if (openCauseRef.current === "keyboard") {
+      return;
+    }
+    event.preventDefault();
+  };
+
   return {
     canHover,
     contentRef,
+    handleContentCloseAutoFocus,
+    handleContentOpenAutoFocus,
     handleHoverLeave,
     handleOpenChange,
+    handleTriggerKeyDownCapture,
     handleTriggerMouseEnter,
     handleTriggerPointerDownCapture,
     open,

@@ -3,7 +3,7 @@ import { useAdaptivePopup } from "@/components/ui/popup/useAdaptivePopup";
 import { faXTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope, faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import * as Collapsible from "@radix-ui/react-collapsible";
+import * as Popover from "@radix-ui/react-popover";
 
 const CONTACT_LINKS = [
   {
@@ -39,17 +39,20 @@ export default function CvPanel({
   const {
     canHover,
     contentRef,
+    handleContentCloseAutoFocus,
+    handleContentOpenAutoFocus,
     handleHoverLeave,
     handleOpenChange,
+    handleTriggerKeyDownCapture,
     handleTriggerMouseEnter,
     handleTriggerPointerDownCapture,
     open,
     triggerWrapperRef,
-  } = useAdaptivePopup({ forceOpen });
+  } = useAdaptivePopup({ behavior: "panel", forceOpen });
 
   return (
-    <Collapsible.Root open={open} onOpenChange={handleOpenChange}>
-      <div className="relative inline-block">
+    <Popover.Root modal={false} open={open} onOpenChange={handleOpenChange}>
+      <div className="inline-block">
         <div
           ref={triggerWrapperRef}
           onMouseEnter={handleTriggerMouseEnter}
@@ -57,7 +60,7 @@ export default function CvPanel({
             handleHoverLeave(event.relatedTarget);
           }}
         >
-          <Collapsible.Trigger asChild>
+          <Popover.Trigger asChild>
             <button
               className="inline-flex h-auto items-center gap-0 border-none bg-transparent px-0 py-0 text-white underline hover:text-white active:text-white"
               aria-controls={`panel-${cvId}`}
@@ -71,6 +74,7 @@ export default function CvPanel({
                 event.stopPropagation();
               }}
               onMouseEnter={handleTriggerMouseEnter}
+              onKeyDownCapture={handleTriggerKeyDownCapture}
               type="button"
               onPointerDownCapture={handleTriggerPointerDownCapture}
             >
@@ -78,46 +82,59 @@ export default function CvPanel({
                 {cv}
               </span>
             </button>
-          </Collapsible.Trigger>
+          </Popover.Trigger>
         </div>
-        <Collapsible.Content
-          ref={contentRef}
-          className="pt-2xs absolute top-full left-1/2 z-50 w-max -translate-x-1/2"
-          id={`panel-${cvId}`}
-          onMouseLeave={(event) => {
-            handleHoverLeave(event.relatedTarget);
-          }}
-        >
-          <div className="p-sm min-w-44 rounded-md bg-[#2e333d] shadow-lg ring-1 ring-black/20">
-            <div className="gap-2xs flex flex-col items-center text-center text-white">
-              <span className="text-sm">音声収録のご依頼先</span>
-              <div className="gap-xs flex">
-                {CONTACT_LINKS.map(({ icon, key, label }) => {
-                  const link = links[key];
-                  if (!link) {
-                    return null;
-                  }
-                  return (
-                    <a
-                      key={key}
-                      href={link}
-                      className={buildIconButtonClassName({
-                        size: "md",
-                        className: "mb-0 ml-auto text-xl text-white",
-                      })}
-                      aria-label={`${cv}の${label}`}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <FontAwesomeIcon icon={icon} />
-                    </a>
-                  );
-                })}
+        <Popover.Portal>
+          <Popover.Content
+            ref={contentRef}
+            side="bottom"
+            align="center"
+            sideOffset={0}
+            className="pt-2xs z-50 w-max"
+            id={`panel-${cvId}`}
+            onCloseAutoFocus={handleContentCloseAutoFocus}
+            onOpenAutoFocus={(event) => {
+              handleContentOpenAutoFocus(event, () => {
+                contentRef.current
+                  ?.querySelector<HTMLAnchorElement>("a")
+                  ?.focus();
+              });
+            }}
+            onMouseLeave={(event) => {
+              handleHoverLeave(event.relatedTarget);
+            }}
+          >
+            <div className="p-sm min-w-44 rounded-md bg-[#2e333d] shadow-lg ring-1 ring-black/20">
+              <div className="gap-2xs flex flex-col items-center text-center text-white">
+                <span className="text-sm">音声収録のご依頼先</span>
+                <div className="gap-xs flex">
+                  {CONTACT_LINKS.map(({ icon, key, label }) => {
+                    const link = links[key];
+                    if (!link) {
+                      return null;
+                    }
+                    return (
+                      <a
+                        key={key}
+                        href={link}
+                        className={buildIconButtonClassName({
+                          size: "md",
+                          className: "mb-0 ml-auto text-xl text-white",
+                        })}
+                        aria-label={`${cv}の${label}`}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <FontAwesomeIcon icon={icon} />
+                      </a>
+                    );
+                  })}
+                </div>
               </div>
             </div>
-          </div>
-        </Collapsible.Content>
+          </Popover.Content>
+        </Popover.Portal>
       </div>
-    </Collapsible.Root>
+    </Popover.Root>
   );
 }
