@@ -1,0 +1,12 @@
+*.txt
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.ico
+*.mp3
+*.wav
+*.mp4
+*.woff2
+pnpm-lock.yaml
