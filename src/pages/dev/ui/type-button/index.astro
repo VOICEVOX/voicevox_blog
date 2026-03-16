@@ -1,13 +1,7 @@
 ---
 import { characterInfos } from "@/constants/characterInfo";
-import { descriptionTypes } from "@/pages/dormitory/[characterId]/_constants";
-import TypeButton from "@/pages/dormitory/[characterId]/_TypeButton.astro";
+import DescriptionTypeSwitch from "@/pages/dormitory/[characterId]/_DescriptionTypeSwitch.astro";
 import "@/styles/global.css";
-
-const descriptionNames = {
-  profile: "プロフィール",
-  calls: "呼び方",
-} satisfies Record<(typeof descriptionTypes)[number], string>;
 
 const shikokuMetan = characterInfos.四国めたん;
 const zundamon = characterInfos.ずんだもん;
@@ -28,40 +22,17 @@ const zundamon = characterInfos.ずんだもん;
         <h2 class="mb-md text-xl font-semibold">
           四国めたん（プロフィール選択状態）
         </h2>
-        <div class="inline-flex">
-          <TypeButton
-            characterInfo={shikokuMetan}
-            selectedType="profile"
-            targetType="profile"
-            targetName={descriptionNames.profile}
-          />
-          <TypeButton
-            characterInfo={shikokuMetan}
-            selectedType="profile"
-            targetType="calls"
-            targetName={descriptionNames.calls}
-          />
-        </div>
+        <DescriptionTypeSwitch
+          characterInfo={shikokuMetan}
+          selectedType="profile"
+        />
       </section>
 
       <section class="mb-2xl">
         <h2 class="mb-md text-xl font-semibold">
           ずんだもん（呼び方選択状態）
         </h2>
-        <div class="inline-flex">
-          <TypeButton
-            characterInfo={zundamon}
-            selectedType="calls"
-            targetType="profile"
-            targetName={descriptionNames.profile}
-          />
-          <TypeButton
-            characterInfo={zundamon}
-            selectedType="calls"
-            targetType="calls"
-            targetName={descriptionNames.calls}
-          />
-        </div>
+        <DescriptionTypeSwitch characterInfo={zundamon} selectedType="calls" />
       </section>
     </div>
   </body>

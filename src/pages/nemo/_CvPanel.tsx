@@ -90,7 +90,7 @@ export default function CvPanel({
             side="bottom"
             align="center"
             sideOffset={0}
-            className="pt-2xs z-50 w-max"
+            className="pt-2xs w-max"
             id={`panel-${cvId}`}
             onCloseAutoFocus={handleContentCloseAutoFocus}
             onOpenAutoFocus={(event) => {

@@ -1,0 +1,50 @@
+---
+import KeepScrollAnchor from "@/components/KeepScrollAnchor.astro";
+import type { CharacterInfo } from "@/constants/type";
+import { getDormitoryCharacterPageUrl } from "@/constants/url";
+import { withBaseUrl } from "@/helper";
+import type { descriptionTypes } from "./_constants";
+
+interface Props {
+  characterInfo: CharacterInfo;
+  selectedType: (typeof descriptionTypes)[number];
+}
+
+const { characterInfo, selectedType } = Astro.props;
+const options = [
+  {
+    name: "プロフィール",
+    type: "profile",
+  },
+  {
+    name: "呼び方",
+    type: "calls",
+  },
+] as const satisfies ReadonlyArray<{
+  name: string;
+  type: (typeof descriptionTypes)[number];
+}>;
+---
+
+<div class="max-md:mb-sm inline-flex self-start">
+  {
+    options.map(({ name, type }, index) => {
+      const selected = selectedType === type;
+      return (
+        <KeepScrollAnchor
+          class={`description-type-button vv-status-layer inline-flex h-10 items-center justify-center border-[1.8px] px-[19px] py-[7px] text-base whitespace-nowrap shadow-none select-none ${
+            selected ? "font-bold" : "font-medium"
+          } ${index === 0 ? "rounded-l-full" : "-ml-[1.8px] rounded-r-full"}`}
+          style={{
+            color: characterInfo.color,
+            borderColor: characterInfo.color,
+            backgroundColor: selected ? characterInfo.lightColor : "white",
+          }}
+          href={withBaseUrl(getDormitoryCharacterPageUrl(characterInfo, type))}
+        >
+          <span>{name}</span>
+        </KeepScrollAnchor>
+      );
+    })
+  }
+</div>

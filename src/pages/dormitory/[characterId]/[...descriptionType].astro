@@ -15,7 +15,7 @@ import { getImage, Image } from "astro:assets";
 import backgroundImage from "../images/nc238325.jpg";
 import CallBox from "./_CallBox.astro";
 import { descriptionTypes } from "./_constants";
-import TypeButton from "./_TypeButton.astro";
+import DescriptionTypeSwitch from "./_DescriptionTypeSwitch.astro";
 
 export const getStaticPaths = (async () => {
   return characterKeys.flatMap((key) =>
@@ -32,17 +32,12 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 const { characterInfo, descriptionType } = Astro.props;
 const characterKey = characterInfo.key;
-const descriptionNames = {
-  profile: "プロフィール",
-  calls: "呼び方",
-} satisfies Record<(typeof descriptionTypes)[number], string>;
-
 const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src})`;
 ---
 
 <Base
   title={`${characterInfo.name} | ボイボ寮 ${
-    descriptionNames[descriptionType]
+    descriptionType === "profile" ? "プロフィール" : "呼び方"
   } | VOICEVOX`}
   description={characterInfo.description}
   image={characterInfo.dormitoryShareImage}
@@ -109,20 +104,10 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
                   </IconButton>
                 </div>
 
-                <div class="max-md:mb-sm inline-flex">
-                  <TypeButton
-                    characterInfo={characterInfo}
-                    selectedType={descriptionType}
-                    targetType="profile"
-                    targetName={descriptionNames.profile}
-                  />
-                  <TypeButton
-                    characterInfo={characterInfo}
-                    selectedType={descriptionType}
-                    targetType="calls"
-                    targetName={descriptionNames.calls}
-                  />
-                </div>
+                <DescriptionTypeSwitch
+                  characterInfo={characterInfo}
+                  selectedType={descriptionType}
+                />
 
                 {
                   descriptionType === "profile" && (
