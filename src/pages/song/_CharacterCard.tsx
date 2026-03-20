@@ -109,7 +109,7 @@ export default function CharacterCard({
       <LinkToProductPage className="w-2/3">{children}</LinkToProductPage>
       <div className="gap-xs flex flex-col text-center">
         <h3 className="mb-0 text-base font-medium text-white">
-          <LinkToProductPage style={{ color: "inherit" }}>
+          <LinkToProductPage className="text-current">
             {characterInfo.name}
           </LinkToProductPage>
         </h3>

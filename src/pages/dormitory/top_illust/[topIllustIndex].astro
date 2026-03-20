@@ -37,12 +37,7 @@ const shareThumb = (await getImage({ src: image, width: 1200 })).src;
         <div>
           <Image
             src={image}
-            style={{
-              width: "100%",
-              height: "100%",
-              display: "block",
-              objectFit: "contain",
-            }}
+            class="block h-full w-full object-contain"
             alt={`トップイラスト${index + 1}の大きな画像`}
           />
         </div>
