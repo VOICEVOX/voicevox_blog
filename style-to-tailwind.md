@@ -16,13 +16,12 @@
 
 ## 一覧
 
-| 箇所                                           | 現在の記述                                                                              | 判定     | Tailwind 置換案                                                                                                                                                                                                  | メモ                                                             |
-| ---------------------------------------------- | --------------------------------------------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `src/pages/qa/_layout.astro:25`                | `.qa-content .markdown h2/h3` の padding / 背景色 / 文字色を `<style is:global>` で指定 | 可       | 親に `"[&_.markdown_h2]:p-4 [&_.markdown_h2]:bg-primary [&_.markdown_h2]:text-[#3f213a] [&_.markdown_h3]:p-2 [&_.markdown_h3]:bg-[oklch(96.2%_0.044_156.743)] [&_.markdown_h3]:text-[oklch(13%_0.028_261.692)]"` | 可読性は少し落ちるが、Tailwind だけで表現可能                    |
-| `src/components/PlayButton/index.astro:23`     | `style` prop をそのまま子へ転送                                                         | 不可寄り | なし                                                                                                                                                                                                             | コンポーネント API として任意 style を受けているため             |
-| `src/components/PlayButton/PlayButton.tsx:129` | `style` prop と `color` を合成して `IconButton` へ渡す                                  | 不可寄り | なし                                                                                                                                                                                                             | 任意 style 転送が主目的。`color` だけなら CSS 変数化の余地はある |
-| `src/pages/_SoftwareFeature.astro:17`          | ルート `div` に任意 `style` prop を転送                                                 | 不可寄り | なし                                                                                                                                                                                                             | これもコンポーネント API                                         |
-| `src/pages/song/_CharacterCard.tsx:100`        | `LinkToProductPage` が任意 `style` を受ける                                             | 不可寄り | なし                                                                                                                                                                                                             | コンポーネント API                                               |
+| 箇所                                           | 現在の記述                                             | 判定     | Tailwind 置換案 | メモ                                                             |
+| ---------------------------------------------- | ------------------------------------------------------ | -------- | --------------- | ---------------------------------------------------------------- |
+| `src/components/PlayButton/index.astro:23`     | `style` prop をそのまま子へ転送                        | 不可寄り | なし            | コンポーネント API として任意 style を受けているため             |
+| `src/components/PlayButton/PlayButton.tsx:129` | `style` prop と `color` を合成して `IconButton` へ渡す | 不可寄り | なし            | 任意 style 転送が主目的。`color` だけなら CSS 変数化の余地はある |
+| `src/pages/_SoftwareFeature.astro:17`          | ルート `div` に任意 `style` prop を転送                | 不可寄り | なし            | これもコンポーネント API                                         |
+| `src/pages/song/_CharacterCard.tsx:100`        | `LinkToProductPage` が任意 `style` を受ける            | 不可寄り | なし            | コンポーネント API                                               |
 
 ## まとめ
 

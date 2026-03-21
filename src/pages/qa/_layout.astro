@@ -5,34 +5,33 @@ import type { Props } from "@/layouts/OneSectionMarkdown.astro";
 
 const props = Astro.props satisfies Props;
 const { frontmatter } = props;
+
+const headerTitle = frontmatter.headerTitle;
+if (!headerTitle) {
+  throw new Error("headerTitleが指定されていません");
+}
 ---
 
 <Base {...frontmatter}>
   <main class="py-3xl">
-    <div class="qa-content px-md mx-auto max-w-5xl">
-      {
-        frontmatter.headerTitle && (
-          <h1 class="mb-xl text-3xl leading-9 font-extrabold text-neutral-700">
-            {frontmatter.headerTitle}
-          </h1>
-        )
-      }
+    <div class="qa-markdown px-md mx-auto max-w-5xl">
+      <h1 class="mb-xl text-3xl leading-9 font-extrabold text-neutral-700">
+        {headerTitle}
+      </h1>
       <Markdown><slot /></Markdown>
     </div>
   </main>
 </Base>
 
-<style is:global>
-  /* NOTE: 本当は Tailwind の theme() を使ってトークン参照したい */
-  .qa-content .markdown h2 {
-    padding: 16px;
+<style>
+  .qa-markdown :global(.markdown h2) {
+    padding: var(--spacing-md);
     background-color: var(--color-primary);
-    color: #3f213a;
   }
 
-  .qa-content .markdown h3 {
-    color: oklch(13% 0.028 261.692);
-    padding: 8px;
-    background-color: oklch(96.2% 0.044 156.743);
+  .qa-markdown :global(.markdown h3) {
+    color: var(--color-neutral-950);
+    padding: var(--spacing-xs);
+    background-color: var(--color-green-100);
   }
 </style>
