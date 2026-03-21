@@ -7,7 +7,7 @@ import type { IconButtonSize } from "@/components/ui/IconButton/helper";
 import { $lastAudio } from "@/store/audio";
 import { faPlay, faStop } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 /** 値の変更を遅延させる */
 export function useDebounce<T>(value: T, delay: number) {
@@ -38,7 +38,6 @@ export default function PlayButton({
   color,
   size,
   className,
-  style,
 }: {
   url: string;
   name: string;
@@ -54,11 +53,6 @@ export default function PlayButton({
   useEffect(() => {
     setAudio(new Audio(url));
   }, [url]);
-
-  const colorAddedStyle = useMemo(
-    () => (!color ? style : { color: color, ...style }),
-    [color, style],
-  );
 
   useEffect(() => {
     if (!audio) return;
@@ -126,7 +120,7 @@ export default function PlayButton({
     <IconButton
       onClick={isPlaying ? stop : play}
       className={finalClassName}
-      style={colorAddedStyle}
+      style={color ? { color } : undefined}
       aria-label={`${name}を${isLoading ? "読み込み中" : isPlaying ? "停止" : "再生"}`}
       aria-busy={isLoading || undefined}
       disabled={isLoading}

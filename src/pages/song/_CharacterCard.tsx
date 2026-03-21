@@ -91,13 +91,11 @@ export default function CharacterCard({
   const LinkToProductPage = ({
     children,
     className,
-    style,
   }: React.HTMLAttributes<HTMLLinkElement>) => {
     return (
       <a
         href={withBaseUrl(getProductPageUrl(characterInfo))}
         className={className}
-        style={style}
       >
         {children}
       </a>

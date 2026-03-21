@@ -1,7 +1,6 @@
 ---
 interface Props {
   class?: string;
-  style?: Record<string, string | number>;
 }
 
 import Button from "@/components/ui/Button/index.astro";
@@ -11,10 +10,10 @@ import "@/styles/global.css";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const { class: className, style } = Astro.props;
+const { class: className } = Astro.props;
 ---
 
-<div class={`${className} flex flex-col`} style={style}>
+<div class={`${className} flex flex-col`}>
   <h2 id="feature" class="mb-md text-4xl font-bold">特徴</h2>
   <div>
     <ul class="list-inside list-disc space-y-2">
