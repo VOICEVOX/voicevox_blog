@@ -40,7 +40,7 @@ export default function AudioSample({
             <PlayButton
               key={index}
               url={url}
-              name={`${characterInfo.name}のサンプルボイス${index + 1}}`}
+              name={`${characterInfo.name}のサンプルボイス${index + 1}`}
               color={characterInfo.color}
               className="mx-2xs"
             />

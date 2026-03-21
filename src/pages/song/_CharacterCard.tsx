@@ -91,7 +91,7 @@ export default function CharacterCard({
   const LinkToProductPage = ({
     children,
     className,
-  }: React.HTMLAttributes<HTMLLinkElement>) => {
+  }: React.HTMLAttributes<HTMLAnchorElement>) => {
     return (
       <a
         href={withBaseUrl(getProductPageUrl(characterInfo))}
@@ -133,7 +133,7 @@ export default function CharacterCard({
                   characterInfo.songVoiceAudios[styleState.selectedStyleIndex]
                     .urls[0]
                 }
-                name={`${fullStyleName}のサンプル音声}`}
+                name={`${fullStyleName}のサンプル音声`}
                 color={characterInfo.color}
               />
 
