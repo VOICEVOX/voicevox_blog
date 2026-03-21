@@ -133,6 +133,11 @@ const postCharacterKey =
     <div
       class="character-area top-character-area relative col-start-1 row-start-1 md:col-start-2 md:row-start-1"
     >
+      <div
+        class="absolute inset-y-0 left-0 w-full md:w-[50cqw]"
+        style={{ backgroundColor: characterBackgroundColor }}
+      >
+      </div>
       <div class="absolute inset-0 flex justify-center overflow-hidden">
         <div class="flex-none">
           <Image
@@ -189,23 +194,27 @@ const postCharacterKey =
           characterKeys.map((key) => (
             <KeepScrollAnchor
               href={withBaseUrl(getProductPageUrl(characterInfos[key]))}
-              class={`character box-content flex aspect-square flex-none ${
+              class:list={[
+                "character px-xs box-content flex aspect-square flex-none",
                 key === characterKey
-                  ? "active px-xs py-md relative h-12 opacity-100 before:absolute before:top-0 before:left-0 before:h-1 before:w-full before:bg-[var(--characterColor)] before:content-['']"
-                  : "px-xs py-lg h-10 opacity-50 hover:opacity-80"
-              }`}
+                  ? "active py-md relative h-12 opacity-100"
+                  : "py-lg h-10 opacity-50 hover:opacity-80",
+              ]}
               aria-label={characterInfos[key].name}
-              style={{
-                "--characterLightColor": characterInfos[key].lightColor,
-                "--characterColor": characterInfos[key].color,
-              }}
             >
+              {key === characterKey && (
+                <span
+                  class="absolute top-0 left-0 h-1 w-full"
+                  style={{ backgroundColor: characterInfos[key].color }}
+                />
+              )}
               <Image
-                class="m-auto h-full w-auto rounded-lg bg-(--characterLightColor)"
+                class="m-auto h-full w-auto rounded-lg"
                 src={characterInfos[key].bustupImage}
                 alt={characterInfos[key].name}
                 width="64"
                 densities={[1, 1.5, 2]}
+                style={{ backgroundColor: characterInfos[key].lightColor }}
               />
             </KeepScrollAnchor>
           ))
@@ -237,21 +246,3 @@ const postCharacterKey =
 
   scrollToCenter();
 </script>
-
-<style lang="scss" define:vars={{ characterBackgroundColor }} is:global>
-  .top-character-area::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50cqw;
-    height: 100%;
-    background-color: var(--characterBackgroundColor);
-  }
-
-  @media (max-width: 768px) {
-    .top-character-area::before {
-      width: 100%;
-    }
-  }
-</style>
