@@ -146,10 +146,20 @@ pnpm run fmt
 pnpm run lint
 ```
 
+### GitHub Actions のバージョン固定
+
+[pinact](https://github.com/suzuki-shunsuke/pinact) を使って GitHub Actions のバージョンを full-length commit SHA に固定しています。
+プルリクエストを送ると自動でテストされます。
+
+```bash
+# 固定する
+pinact run
+```
+
 ### タイポチェック
 
-[typos](https://github.com/crate-ci/typos) を使ってタイポのチェックを行っています。  
-ブランチをプッシュすると自動でテストされます。
+[typos](https://github.com/crate-ci/typos) を使ってタイポのチェックを行っています。
+プルリクエストを送ると自動でテストされます。
 
 ### e2e テスト
 
