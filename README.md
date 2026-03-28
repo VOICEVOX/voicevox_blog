@@ -152,8 +152,8 @@ pnpm run lint
 プルリクエストを送ると自動でテストされます。
 
 ```bash
-# 固定する
-pinact run
+# バージョンを更新して固定する
+pinact run --update --min-age 7
 ```
 
 ### タイポチェック
