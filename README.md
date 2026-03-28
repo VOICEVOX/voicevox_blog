@@ -158,7 +158,7 @@ pinact run --update --min-age 7
 
 ### タイポチェック
 
-[typos](https://github.com/crate-ci/typos) を使ってタイポのチェックを行っています。
+[typos](https://github.com/crate-ci/typos) を使ってタイポのチェックを行っています。  
 プルリクエストを送ると自動でテストされます。
 
 ### e2e テスト
