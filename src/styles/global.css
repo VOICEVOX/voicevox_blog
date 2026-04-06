@@ -70,6 +70,7 @@
   --color-link-dark: rgb(165, 212, 173);
   --color-link-dark-hover: rgb(185, 232, 193);
   --font-sans: "Unhinted Rounded M+ 1p", ui-sans-serif, system-ui, sans-serif;
+
   --z-sticky-row: 1;
   --z-sticky-column: 2;
   --z-sticky-corner: 3;
