@@ -1,5 +1,6 @@
 ---
 import PlayButton from "@/components/PlayButton/index.astro";
+import Button from "@/components/ui/Button/index.astro";
 import IconButton from "@/components/ui/IconButton/index.astro";
 import { characterEntries, characterKeys } from "@/constants/characterEntry";
 import { characterInfos } from "@/constants/characterInfo";
@@ -7,7 +8,6 @@ import { callNameInfos } from "@/constants/characterInfos/callNameInfo";
 import { getProductPageUrl } from "@/constants/url";
 import { withBaseUrl } from "@/helper";
 import Base from "@/layouts/Base.astro";
-import Button from "@/components/ui/Button/index.astro";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
@@ -93,9 +93,7 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
                       "ml-auto px-0 py-[7px]",
                       characterInfo.detailUrl ? "visible" : "invisible",
                     ]}
-                    style={{
-                      color: characterInfo.color,
-                    }}
+                    style={{ color: characterInfo.color }}
                     aria-label={`${characterInfo.name}の詳細ページ`}
                     target={characterInfo.detailUrl ? "_blank" : undefined}
                     rel={characterInfo.detailUrl ? "noreferrer" : undefined}
@@ -125,9 +123,7 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
                             <div class="px-2xs pt-sm flex items-center">
                               <span
                                 class="py-xs inline-flex w-28 items-center justify-center rounded-lg text-center text-white"
-                                style={{
-                                  backgroundColor: characterInfo.color,
-                                }}
+                                style={{ backgroundColor: characterInfo.color }}
                               >
                                 {labelInfo.label}
                               </span>

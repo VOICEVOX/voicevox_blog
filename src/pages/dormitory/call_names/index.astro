@@ -118,18 +118,14 @@ function rgba2rgbOnWhite(
                 <tr style={{ backgroundColor }}>
                   <th
                     class="px-xs py-2xs sticky left-0 z-(--z-sticky-row) w-24 border-r border-neutral-500 text-center! align-middle md:w-[190px]"
-                    style={{
-                      backgroundColor,
-                    }}
+                    style={{ backgroundColor }}
                   >
                     <a
                       href={withBaseUrl(
                         getDormitoryCharacterPageUrl(characterInfo),
                       )}
                       class="gap-sm vv-link-subtle flex items-center justify-center text-center md:justify-start"
-                      style={{
-                        color: characterInfo.color,
-                      }}
+                      style={{ color: characterInfo.color }}
                     >
                       <CharacterImage characterInfo={characterInfo} />
                       <p class="hidden text-left whitespace-normal md:block">
