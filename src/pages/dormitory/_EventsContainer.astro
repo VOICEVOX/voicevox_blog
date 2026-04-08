@@ -14,7 +14,7 @@ const { id } = Astro.props;
 >
   <h2
     id={id}
-    class="vv-anchor-offset-4 mb-xl text-2xl leading-7 font-extrabold text-neutral-700"
+    class="vv-anchor-offset-4 mb-xl text-2xl font-extrabold text-neutral-700"
   >
     <a href={`#${id}`} class="text-black"> 過去のイベント </a>
   </h2>
@@ -37,7 +37,7 @@ const { id } = Astro.props;
               class="block w-full cursor-pointer rounded-2xl border border-black object-contain shadow-none"
             />
             <p
-              class="mt-xs leading-xl text-base text-neutral-950"
+              class="mt-xs text-base text-neutral-950"
               set:html={event.titles.join("<br />")}
             />
           </a>
