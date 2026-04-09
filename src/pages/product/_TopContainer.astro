@@ -54,7 +54,7 @@ const postCharacterKey =
 
 <div class="@container">
   <div
-    class="top relative mx-auto grid w-[calc(100%-48px)] max-w-7xl grid-cols-1 grid-rows-[calc(100vh-3.25rem-5rem)_5rem_auto] md:h-[calc(100vh-3.25rem)] md:max-h-[1024px] md:min-h-[512px] md:grid-cols-2 md:grid-rows-[1fr_5rem]"
+    class="relative mx-auto grid w-[calc(100%-48px)] max-w-7xl grid-cols-1 grid-rows-[calc(100vh-3.25rem-5rem)_5rem_auto] md:h-[calc(100vh-3.25rem)] md:max-h-[1024px] md:min-h-[512px] md:grid-cols-2 md:grid-rows-[1fr_5rem]"
   >
     <div
       class="max-md:pt-3xl md:px-3xl col-start-1 row-start-3 flex flex-col items-center justify-center px-0 md:col-start-1 md:row-start-1 md:items-start"
@@ -87,7 +87,7 @@ const postCharacterKey =
         )
       }
       <div
-        class="terms mt-xl gap-xs flex flex-col items-center md:flex-row md:flex-wrap md:items-start"
+        class="mt-xl gap-xs flex flex-col items-center md:flex-row md:flex-wrap md:items-start"
       >
         <Button
           href={withBaseUrl("/term/")}
@@ -130,9 +130,7 @@ const postCharacterKey =
       </div>
     </div>
 
-    <div
-      class="character-area top-character-area relative col-start-1 row-start-1 md:col-start-2 md:row-start-1"
-    >
+    <div class="relative col-start-1 row-start-1 md:col-start-2 md:row-start-1">
       <div
         class="absolute inset-y-0 left-0 w-full md:w-[50cqw]"
         style={{ backgroundColor: characterBackgroundColor }}
@@ -183,9 +181,7 @@ const postCharacterKey =
       <FontAwesomeIcon icon={faCircleRight} />
     </IconButton>
 
-    <div
-      class="charamenu-area col-start-1 row-start-2 h-20 md:col-span-2 md:row-start-2"
-    >
+    <div class="col-start-1 row-start-2 h-20 md:col-span-2 md:row-start-2">
       <div
         class="vv-scrollbar-hidden-until-hover flex h-full overflow-x-auto overflow-y-hidden"
         aria-label="キャラクター一覧"
@@ -195,7 +191,7 @@ const postCharacterKey =
             <KeepScrollAnchor
               href={withBaseUrl(getProductPageUrl(characterInfos[key]))}
               class:list={[
-                "character px-xs box-content flex aspect-square flex-none",
+                "px-xs box-content flex aspect-square flex-none",
                 key === characterKey
                   ? "active py-md relative h-12 opacity-100"
                   : "py-lg h-10 opacity-50 hover:opacity-80",

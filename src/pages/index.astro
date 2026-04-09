@@ -25,11 +25,8 @@ const landingMovieThumbUrl = (await getImage({ src: landingMovieThumb })).src;
   imageAlt=""
   defaultHideHeader={true}
 >
-  <div class="landing">
-    <div
-      class="first-view flex flex-col lg:min-h-screen"
-      data-testid="first-view"
-    >
+  <div>
+    <div class="flex flex-col lg:min-h-screen" data-testid="first-view">
       <header {...{ [hideHeaderAttr]: "" }} class="bg-primary text-black">
         <div class="py-xl">
           <div class="px-md mx-auto max-w-7xl text-center">
