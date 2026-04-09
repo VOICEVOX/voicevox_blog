@@ -41,7 +41,7 @@ export default function ModalShell({
               <Dialog.Close asChild>
                 <IconButton
                   size="sm"
-                  className="absolute top-1/2 right-5 -translate-y-1/2 text-neutral-700"
+                  className="absolute top-1/2 right-lg -translate-y-1/2 text-neutral-700"
                   aria-label="close"
                 >
                   <span aria-hidden="true" className="text-xl leading-none">

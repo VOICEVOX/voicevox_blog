@@ -111,7 +111,7 @@ export default function DownloadNemoModal() {
         </Button>
       }
     >
-      <div className="space-y-4">
+      <div className="space-y-md">
         <Selector
           label="OS"
           selected={selectedOs}
@@ -121,7 +121,7 @@ export default function DownloadNemoModal() {
 
         <hr className="vv-hr" />
 
-        <div className="space-y-2">
+        <div className="space-y-xs">
           <Selector
             label="対応モード"
             selected={selectedMode}

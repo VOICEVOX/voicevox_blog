@@ -52,13 +52,13 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
         class="gap-sm mx-auto flex min-h-screen max-w-3xl flex-col items-center justify-center md:min-h-[calc(100vh-52px)] md:max-w-[820px]"
       >
         <div
-          class={`w-full overflow-hidden rounded-xl border-[3px] border-solid bg-white md:h-[550px]`}
+          class={`w-full overflow-hidden rounded-xl border-3 border-solid bg-white md:h-[550px]`}
           style={{ borderColor: characterInfo.color }}
           data-testid="dormitory-character-card"
         >
           <div class="flex flex-col md:h-full md:flex-row">
             <div
-              class="max-md:py-2xs relative flex items-center justify-center overflow-hidden px-0 md:h-full md:w-1/3 md:border-r-[3px]"
+              class="max-md:py-2xs relative flex items-center justify-center overflow-hidden px-0 md:h-full md:w-1/3 md:border-r-3"
               style={{ borderColor: characterInfo.color }}
             >
               <div class="h-screen w-full md:h-full">

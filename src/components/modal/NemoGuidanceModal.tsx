@@ -23,7 +23,7 @@ export default function NemoGuidanceModal() {
       title="VOICEVOX Nemo ご利用案内"
       onClose={hide}
     >
-      <div className="space-y-4">
+      <div className="space-y-md">
         <div className="gap-sm flex flex-col items-center text-center">
           <h3 className="mb-0 text-lg font-semibold text-neutral-700">
             - Step 1 -

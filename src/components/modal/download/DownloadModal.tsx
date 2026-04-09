@@ -217,7 +217,7 @@ export default function DownloadModal() {
         </>
       }
     >
-      <div className="space-y-4">
+      <div className="space-y-md">
         <Selector
           label="OS"
           selected={selectedOs}
@@ -227,7 +227,7 @@ export default function DownloadModal() {
 
         <hr className="vv-hr" />
 
-        <div className="space-y-2">
+        <div className="space-y-xs">
           <Selector
             label="対応モード"
             selected={selectedOrDefaultMode}
@@ -245,7 +245,7 @@ export default function DownloadModal() {
 
         <hr className="vv-hr" />
 
-        <div className="space-y-2">
+        <div className="space-y-xs">
           <Selector
             label="パッケージ"
             selected={selectedOrDefaultPackage}
