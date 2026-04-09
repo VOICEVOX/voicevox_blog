@@ -45,11 +45,11 @@ export default function AudioSample({
           </div>
         </div>
         {styles.length > 1 && (
-          <div className="py-2xs flex flex-wrap items-center justify-center gap-x-2.5 gap-y-[3px]">
+          <div className="py-2xs flex flex-wrap items-center justify-center gap-x-2.5 gap-y-0.75">
             <div className="w-25">
               <span className="whitespace-nowrap">スタイル</span>
             </div>
-            <div className="flex gap-[3px]">
+            <div className="flex gap-0.75">
               <StyleDropdown
                 styles={styles}
                 selectedStyle={selectedStyle!}

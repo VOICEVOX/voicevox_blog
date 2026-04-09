@@ -1,6 +1,5 @@
 ---
-paths:
-  - "src/**/*.{astro,tsx,css}"
+paths: "src/**/*.{astro,tsx,css}"
 ---
 
 ## Tailwind CSS ルール
@@ -12,3 +11,7 @@ paths:
 - `leading-*` は原則使うな
   - 上下の幅を広げたい場合は padding や margin で制御せよ
   - ボタン系の `leading-none` や、複数行テキストの見た目調整には使ってよい
+- Tailwind クラスの値の優先順位はトークン(`-sm`等) > 数値(`-3`等) > 任意値(`-[12px]`等)
+  - デザインに必要なら数値や任意値も許容される
+  - 細かい数値になるなら `[px]` を使っても良い
+  - カスタムトークンは `global.css` で定義されている
