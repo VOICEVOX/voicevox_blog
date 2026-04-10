@@ -27,12 +27,10 @@ type LinkKey = (typeof CONTACT_LINKS)[number]["key"];
 
 export default function CvPanel({
   cv,
-  cvId,
   forceOpen = false,
   links,
 }: {
   cv: string;
-  cvId: string;
   forceOpen?: boolean;
   links: Partial<Record<LinkKey, string>>;
 }) {
@@ -101,7 +99,7 @@ export default function CvPanel({
               handleHoverLeave(event.relatedTarget);
             }}
           >
-            <div className="p-sm min-w-44 rounded-md bg-[#2e333d] shadow-lg ring-1 ring-black/20">
+            <div className="p-sm min-w-44 rounded-md bg-zinc-800 shadow-lg ring-1 ring-black/20">
               <div className="gap-2xs flex flex-col items-center text-center text-white">
                 <span className="text-sm">音声収録のご依頼先</span>
                 <div className="gap-xs flex">

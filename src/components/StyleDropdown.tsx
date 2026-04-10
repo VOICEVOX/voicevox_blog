@@ -97,7 +97,7 @@ export default function StyleDropdown({
                 <DropdownMenu.RadioItem
                   key={style}
                   value={style}
-                  className="vv-status-layer px-md block w-full rounded py-1.5 text-left text-sm whitespace-nowrap text-neutral-900 data-[state=checked]:bg-primary data-[state=checked]:font-semibold"
+                  className="vv-status-layer px-md data-[state=checked]:bg-primary block w-full rounded py-1.5 text-left text-sm whitespace-nowrap text-neutral-900 data-[state=checked]:font-semibold"
                 >
                   {style}
                 </DropdownMenu.RadioItem>

@@ -32,14 +32,6 @@ export default defineConfig({
   ],
 
   vite: {
-    css: {
-      preprocessorOptions: {
-        scss: {
-          quietDeps: true, // Bulmaの警告を抑制
-        },
-      },
-    },
-
     plugins: [tailwindcss()],
   },
 

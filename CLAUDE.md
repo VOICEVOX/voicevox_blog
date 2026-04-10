@@ -40,7 +40,7 @@ gh workflow run "Test" --repo <fork-repo> --ref <branch> -f update_snapshots=tru
 
 - **フレームワーク**: Astro 5
 - **UI**: React 19（インタラクティブなコンポーネント用）
-- **スタイリング**: Bulma + Tailwind CSS（移行中）
+- **スタイリング**: Tailwind CSS v4 + Radix UI
 - **状態管理**: nanostores
 - **テスト**: Playwright（E2E、VRT）
 

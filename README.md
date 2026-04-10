@@ -231,7 +231,7 @@ pnpm run test:e2e --ui # 開発時は UI モードが便利
   - けど Astro 考えると`<script>`のが考えること少ないこともあり、判断が難しい
 - React コンポーネントへのスタイル適用は helper.scss か、Astro でラップして`<style>`に書く
   - CSS in JS を使わない理由は単によく知らないから
-  - Bulma から Tailwind に移行したいかも
+  - Tailwind CSS v4 + Radix UI でスタイリング
 - コンポーネントをまたぐインタラクティブな挙動は Store を使う
   - React hook は Astro 内で使えないので、なるべく使わない方針
 - 静的ページやコンポーネントは Astro で作るのを意識すると楽
