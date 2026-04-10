@@ -11,9 +11,13 @@ export default function Selector<T extends string>({
   setSelected: (selected: T) => void;
   candidates: T[];
 }) {
+  const labelId = `selector-label-${label}`;
   return (
     <div className="gap-2xs py-xs sm:px-2xl flex flex-col items-center justify-center sm:flex-row sm:justify-between">
-      <p className="text-center text-lg font-semibold text-black sm:w-1/3">
+      <p
+        id={labelId}
+        className="text-center text-lg font-semibold text-black sm:w-1/3"
+      >
         {label}
       </p>
       <ToggleGroup.Root
@@ -25,6 +29,7 @@ export default function Selector<T extends string>({
           }
         }}
         orientation="horizontal"
+        aria-labelledby={labelId}
         className="gap-xs flex flex-wrap items-center justify-center sm:w-2/3"
       >
         {candidates.map((candidate, index) => {

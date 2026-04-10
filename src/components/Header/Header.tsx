@@ -217,8 +217,7 @@ export default function Header({
               ? "animate-[fadeIn_0.1s_cubic-bezier(0.33,1,0.68,1)_1_forwards]"
               : ""
           } bg-white text-neutral-900 shadow-[0_2px_0_0_rgb(243,244,246)] dark:bg-black dark:text-white dark:shadow-[0_2px_0_0_hsl(0_0%_4%)]`}
-          role="navigation"
-          aria-label="main navigation"
+          aria-label="main"
         >
           <div className="mx-auto flex h-13 items-stretch justify-between">
             <div className="flex min-w-0 items-stretch">

@@ -89,30 +89,20 @@ export default function StyleDropdown({
               handleHoverLeave(event.relatedTarget);
             }}
           >
-            {styles.map((style) => {
-              const isSelected = style === selectedStyle;
-              return (
-                <DropdownMenu.Item
+            <DropdownMenu.RadioGroup
+              value={selectedStyle}
+              onValueChange={setSelectedStyle}
+            >
+              {styles.map((style) => (
+                <DropdownMenu.RadioItem
                   key={style}
-                  asChild
-                  onSelect={() => {
-                    setSelectedStyle(style);
-                    handleOpenChange(false);
-                  }}
+                  value={style}
+                  className="vv-status-layer px-md block w-full rounded py-1.5 text-left text-sm whitespace-nowrap text-neutral-900 data-[state=checked]:bg-primary data-[state=checked]:font-semibold"
                 >
-                  <button
-                    type="button"
-                    className={`vv-status-layer px-md block w-full rounded py-1.5 text-left text-sm whitespace-nowrap ${
-                      isSelected
-                        ? "bg-primary font-semibold text-neutral-900"
-                        : "text-neutral-900"
-                    }`}
-                  >
-                    {style}
-                  </button>
-                </DropdownMenu.Item>
-              );
-            })}
+                  {style}
+                </DropdownMenu.RadioItem>
+              ))}
+            </DropdownMenu.RadioGroup>
           </DropdownMenu.Content>
         </DropdownMenu.Portal>
       </div>

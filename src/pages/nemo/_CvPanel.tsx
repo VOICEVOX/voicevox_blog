@@ -63,9 +63,7 @@ export default function CvPanel({
           <Popover.Trigger asChild>
             <button
               className="inline-flex h-auto items-center gap-0 border-none bg-transparent px-0 py-0 text-white underline hover:text-white active:text-white"
-              aria-controls={`panel-${cvId}`}
               aria-label={`${cv}のご依頼先を表示`}
-              aria-expanded={open}
               onClickCapture={(event) => {
                 if (!canHover || event.detail === 0) {
                   return;
@@ -91,7 +89,6 @@ export default function CvPanel({
             align="center"
             sideOffset={0}
             className="pt-2xs w-max"
-            id={`panel-${cvId}`}
             onCloseAutoFocus={handleContentCloseAutoFocus}
             onOpenAutoFocus={(event) => {
               handleContentOpenAutoFocus(event, () => {
