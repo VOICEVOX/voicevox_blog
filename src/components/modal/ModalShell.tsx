@@ -34,7 +34,7 @@ export default function ModalShell({
             className="pointer-events-auto flex max-h-full w-full max-w-xl flex-col overflow-hidden rounded-lg bg-white shadow-xl"
             data-theme="light"
           >
-            <header className="px-xl py-lg relative flex items-center justify-center border-b border-neutral-200 bg-neutral-50">
+            <header className="px-xl py-lg relative flex items-center justify-center border-b-2 border-neutral-200 bg-neutral-50">
               <Dialog.Title className="text-2xl font-bold text-black">
                 {title}
               </Dialog.Title>
@@ -56,7 +56,7 @@ export default function ModalShell({
             </section>
 
             {footer !== undefined && (
-              <footer className="gap-sm px-xl py-lg flex items-center justify-end border-t border-neutral-200 bg-neutral-50">
+              <footer className="gap-sm px-xl py-lg flex items-center justify-end border-t-2 border-neutral-200 bg-neutral-50">
                 {footer}
               </footer>
             )}
