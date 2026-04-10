@@ -226,7 +226,7 @@ export default function Header({
                 className={`gap-sm px-sm flex items-center self-stretch whitespace-nowrap ${menuItemHoverClassName}`}
               >
                 <img src={iconUrl} alt="" width="28" height="28" />
-                <span className="text-xl font-bold">VOICEVOX</span>
+                <span className="text-xl leading-none font-bold">VOICEVOX</span>
               </a>
 
               {menus.map(({ Component, hideType }, i) => (
