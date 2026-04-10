@@ -2,4 +2,3 @@
 - AIがRadixを使ったりコンポーネントを作ったりするとき、WAI-ARIAと合っているか確認するAIが必要
 - 要らなくなってるclass名、あと`src/pages/product/_TopContainer.astro`のactiveだけ、jsから見られてるっぽい
 - ヘッダーのアニメーションが消えてないのか、スクショ更新でヘッダーが半透明になっている時がある
-- 404ページがBulma残ってる
