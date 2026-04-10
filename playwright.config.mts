@@ -1,4 +1,5 @@
 import { defineConfig, devices } from "@playwright/test";
+import path from "path";
 
 const strictUsePreview = process.env.STRICT_USE_PREVIEW === "1"; // NOTE: 必ず preview サーバーを使うモード
 
@@ -30,6 +31,15 @@ export default defineConfig({
   use: {
     trace: "on-first-retry",
     ...(strictUsePreview ? {} : { baseURL: "http://localhost:4321" }),
+  },
+
+  expect: {
+    toHaveScreenshot: {
+      stylePath: path.join(
+        import.meta.dirname,
+        "tests/e2e/screenshot-styles.css",
+      ),
+    },
   },
 
   projects: [
