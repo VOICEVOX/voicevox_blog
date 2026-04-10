@@ -1,3 +1,2 @@
 - （以前からそうだけど）ボイボ寮キャラページの呼び方が長すぎるとアイコンが縦長になる
 - AIがRadixを使ったりコンポーネントを作ったりするとき、WAI-ARIAと合っているか確認するAIが必要
-- 要らなくなってるclass名、あと`src/pages/product/_TopContainer.astro`のactiveだけ、jsから見られてるっぽい

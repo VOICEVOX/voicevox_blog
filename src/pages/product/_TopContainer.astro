@@ -190,10 +190,11 @@ const postCharacterKey =
           characterKeys.map((key) => (
             <KeepScrollAnchor
               href={withBaseUrl(getProductPageUrl(characterInfos[key]))}
+              aria-current={key === characterKey ? "page" : undefined}
               class:list={[
                 "px-xs box-content flex aspect-square flex-none",
                 key === characterKey
-                  ? "active py-md relative h-12 opacity-100"
+                  ? "py-md relative h-12 opacity-100"
                   : "py-lg h-10 opacity-50 hover:opacity-80",
               ]}
               aria-label={characterInfos[key].name}
@@ -230,9 +231,11 @@ const postCharacterKey =
     if (!(characterList instanceof HTMLElement))
       throw new Error(`characterList is not HTMLElement: ${characterList}`);
 
-    const active = characterList.querySelector(".active");
+    const active = characterList.querySelector("[aria-current='page']");
     if (!(active instanceof HTMLElement))
-      throw new Error(`active is not HTMLElement: ${active}`);
+      throw new Error(
+        `aria-current page element is not HTMLElement: ${active}`,
+      );
 
     const activeCenter = active.offsetLeft + active.offsetWidth / 2;
     const containerCenter = characterList.offsetWidth / 2;
