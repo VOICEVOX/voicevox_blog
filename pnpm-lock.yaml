@@ -125,6 +125,9 @@ importers:
       prettier-plugin-astro-organize-imports:
         specifier: ^0.4.11
         version: 0.4.11(prettier-plugin-astro@0.14.1)(prettier-plugin-tailwindcss@0.7.2(@trivago/prettier-plugin-sort-imports@6.0.2(prettier@3.8.1))(prettier-plugin-astro@0.14.1)(prettier@3.8.1))(prettier@3.8.1)
+      prettier-plugin-tailwindcss:
+        specifier: ^0.7.2
+        version: 0.7.2(@trivago/prettier-plugin-sort-imports@6.0.2(prettier@3.8.1))(prettier-plugin-astro@0.14.1)(prettier@3.8.1)
       react:
         specifier: ^19.2.3
         version: 19.2.4
@@ -158,10 +161,6 @@ importers:
       zod:
         specifier: ^4.3.5
         version: 4.3.6
-    devDependencies:
-      prettier-plugin-tailwindcss:
-        specifier: ^0.7.2
-        version: 0.7.2(@trivago/prettier-plugin-sort-imports@6.0.2(prettier@3.8.1))(prettier-plugin-astro@0.14.1)(prettier@3.8.1)
 
 packages:
 
