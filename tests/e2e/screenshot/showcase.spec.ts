@@ -3,7 +3,6 @@
  * 一覧ページ（showcaseRoot直下のindex.astro）は対象外。
  * サブディレクトリ配下の個別コンポーネントページのみ収集する。
  */
-
 import { gotoAndWait } from "../helper";
 import { takeScreenshots } from "./helper";
 import { test } from "@playwright/test";
