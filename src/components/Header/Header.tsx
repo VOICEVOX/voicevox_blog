@@ -44,30 +44,30 @@ export default function Header({
     | "mobile"; // スマホでは表示しない
   const menus = [
     {
-      Component: ({ className }: { className?: string }) => (
+      Component: ({ className }: { className: string }) => (
         <a
           href={withBaseUrl("/")}
-          className={`${menuItemBaseClassName} ${className ?? ""}`}
+          className={`${menuItemBaseClassName} ${className}`}
         >
           トーク
         </a>
       ),
     },
     {
-      Component: ({ className }: { className?: string }) => (
+      Component: ({ className }: { className: string }) => (
         <a
           href={withBaseUrl("/song/")}
-          className={`${menuItemBaseClassName} ${className ?? ""}`}
+          className={`${menuItemBaseClassName} ${className}`}
         >
           ソング
         </a>
       ),
     },
     {
-      Component: ({ className }: { className?: string }) => (
+      Component: ({ className }: { className: string }) => (
         <a
           href={withBaseUrl("/dormitory/")}
-          className={`${menuItemBaseClassName} ${className ?? ""}`}
+          className={`${menuItemBaseClassName} ${className}`}
         >
           ボイボ寮
         </a>
@@ -75,10 +75,10 @@ export default function Header({
       hideType: "mobile" as HideType,
     },
     {
-      Component: ({ className }: { className?: string }) => (
+      Component: ({ className }: { className: string }) => (
         <a
           href={withBaseUrl("/nemo/")}
-          className={`${menuItemBaseClassName} ${className ?? ""}`}
+          className={`${menuItemBaseClassName} ${className}`}
         >
           Nemo
         </a>
@@ -86,10 +86,10 @@ export default function Header({
       hideType: "mobile" as HideType,
     },
     {
-      Component: ({ className }: { className?: string }) => (
+      Component: ({ className }: { className: string }) => (
         <a
           href={withBaseUrl("/how_to_use/")}
-          className={`${menuItemBaseClassName} ${className ?? ""}`}
+          className={`${menuItemBaseClassName} ${className}`}
         >
           使い方
         </a>
@@ -97,10 +97,10 @@ export default function Header({
       hideType: "tablet" as HideType,
     },
     {
-      Component: ({ className }: { className?: string }) => (
+      Component: ({ className }: { className: string }) => (
         <a
           href={withBaseUrl("/term/")}
-          className={`${menuItemBaseClassName} ${className ?? ""}`}
+          className={`${menuItemBaseClassName} ${className}`}
         >
           利用規約
         </a>
@@ -108,10 +108,10 @@ export default function Header({
       hideType: "tablet" as HideType,
     },
     {
-      Component: ({ className }: { className?: string }) => (
+      Component: ({ className }: { className: string }) => (
         <a
           href={withBaseUrl("/qa/")}
-          className={`${menuItemBaseClassName} ${className ?? ""}`}
+          className={`${menuItemBaseClassName} ${className}`}
         >
           Q&amp;A
         </a>
@@ -119,10 +119,10 @@ export default function Header({
       hideType: "tablet" as HideType,
     },
     {
-      Component: ({ className }: { className?: string }) => (
+      Component: ({ className }: { className: string }) => (
         <a
           href={withBaseUrl("/update_history/")}
-          className={`${menuItemBaseClassName} ${className ?? ""}`}
+          className={`${menuItemBaseClassName} ${className}`}
         >
           変更履歴
         </a>
@@ -132,10 +132,10 @@ export default function Header({
     ...(isDevelopment
       ? [
           {
-            Component: ({ className }: { className?: string }) => (
+            Component: ({ className }: { className: string }) => (
               <a
                 href={withBaseUrl("/news/")}
-                className={`${menuItemBaseClassName} ${className ?? ""}`}
+                className={`${menuItemBaseClassName} ${className}`}
               >
                 ニュース
               </a>
@@ -144,12 +144,12 @@ export default function Header({
         ]
       : []),
     {
-      Component: ({ className }: { className?: string }) => (
+      Component: ({ className }: { className: string }) => (
         <a
           href="https://hiho.fanbox.cc/"
           target="_blank"
           rel="noreferrer"
-          className={`${menuItemBaseClassName} ${className ?? ""}`}
+          className={`${menuItemBaseClassName} ${className}`}
         >
           pixivFANBOX
         </a>
@@ -157,10 +157,8 @@ export default function Header({
       hideType: "tablet" as HideType,
     },
     {
-      Component: ({ className }: { className?: string }) => (
-        <div
-          className={`px-sm flex items-center self-stretch ${className ?? ""}`}
-        >
+      Component: ({ className }: { className: string }) => (
+        <div className={`px-sm flex items-center self-stretch ${className}`}>
           <Button
             onClick={() => {
               if (!isNemo) {
