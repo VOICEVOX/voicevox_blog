@@ -1,0 +1,12 @@
+---
+import NemoGuidanceModal from "@/components/modal/NemoGuidanceModal";
+import Showcase from "../_Showcase.astro";
+---
+
+<Showcase title="Modal: VOICEVOX Nemo ご利用案内">
+  <NemoGuidanceModal client:load />
+  <script>
+    import { $nemoGuidanceModal } from "@/store";
+    $nemoGuidanceModal.set(true);
+  </script>
+</Showcase>

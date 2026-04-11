@@ -1,0 +1,22 @@
+---
+import Header from "@/components/Header/index.astro";
+import TopContainer from "@/pages/product/_TopContainer.astro";
+import "@/styles/global.css";
+
+const characterKey = "ずんだもん" as const;
+---
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Product TopContainer</title>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <TopContainer {characterKey} />
+    </main>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+---
+import EngineGuidanceSection from "@/pages/_EngineGuidanceSection.astro";
+import Showcase from "../_Showcase.astro";
+---
+
+<Showcase title="EngineGuidanceSection">
+  <EngineGuidanceSection />
+  {/* NOTE: `/song` に合わせて isDark の本文色は親側で白にしています。 */}
+  <div data-theme="dark" class="bg-black text-white">
+    <EngineGuidanceSection />
+  </div>
+</Showcase>

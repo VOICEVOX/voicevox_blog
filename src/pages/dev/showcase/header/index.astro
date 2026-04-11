@@ -1,0 +1,27 @@
+---
+import Header from "@/components/Header/index.astro";
+import "@/styles/global.css";
+---
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Header</title>
+  </head>
+  <body>
+    <Header />
+    <main class="p-2xl">
+      <div class="space-y-md">
+        {
+          Array.from({ length: 10 }).map(() => (
+            <p>
+              これはダミーの文章です。スクロール時のHeaderの表示位置とレイアウトの崩れがないことを確認します。
+            </p>
+          ))
+        }
+      </div>
+    </main>
+  </body>
+</html>

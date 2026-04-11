@@ -1,0 +1,13 @@
+---
+import { compiledContent as nemoReadmeHtml } from "@/assets/nemo-term.md";
+import { NemoTermModel } from "@/components/modal/MarkdownModals";
+import Showcase from "../_Showcase.astro";
+---
+
+<Showcase title="Modal: VOICEVOX Nemo 利用規約">
+  <NemoTermModel client:load html={await nemoReadmeHtml()} />
+  <script>
+    import { $nemoTermModal } from "@/store";
+    $nemoTermModal.set(true);
+  </script>
+</Showcase>

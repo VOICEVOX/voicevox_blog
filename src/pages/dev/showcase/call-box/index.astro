@@ -1,0 +1,30 @@
+---
+import { characterInfos } from "@/constants/characterInfo";
+import CallBox from "@/pages/dormitory/[characterId]/_CallBox.astro";
+import Showcase from "../_Showcase.astro";
+
+const shikokuMetan = characterInfos.四国めたん;
+const zundamon = characterInfos.ずんだもん;
+
+// NOTE: src/pages/dormitory/[characterId]/[...descriptionType].astro の is:global スタイルを dev/showcase でも再現するため、必要最小限を複製しています
+---
+
+<Showcase title="CallBox">
+  <div class="p-md gap-xl flex flex-col">
+    <CallBox
+      characterInfo={shikokuMetan}
+      baseCharacterKey="四国めたん"
+      targetCharacterKey="ずんだもん"
+    />
+    <CallBox
+      characterInfo={shikokuMetan}
+      baseCharacterKey="四国めたん"
+      targetCharacterKey="春日部つむぎ"
+    />
+    <CallBox
+      characterInfo={zundamon}
+      baseCharacterKey="ずんだもん"
+      targetCharacterKey="雨晴はう"
+    />
+  </div>
+</Showcase>

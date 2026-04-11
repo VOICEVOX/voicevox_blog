@@ -1,0 +1,17 @@
+---
+import { characterInfos } from "@/constants/characterInfo";
+import CharacterCard from "@/pages/talk/_CharacterCard.astro";
+import Showcase from "../_Showcase.astro";
+
+const characterInfo1 = characterInfos["ずんだもん"];
+const characterInfo2 = characterInfos["四国めたん"];
+const characterInfo3 = characterInfos["春日部つむぎ"];
+---
+
+<Showcase title="CharacterCard (talk)">
+  <div class="-m-sm p-md flex flex-wrap justify-center">
+    <CharacterCard characterInfo={characterInfo1} />
+    <CharacterCard characterInfo={characterInfo2} />
+    <CharacterCard characterInfo={characterInfo3} />
+  </div>
+</Showcase>

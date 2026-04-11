@@ -1,0 +1,12 @@
+---
+import DownloadModal from "@/components/modal/download/DownloadModal";
+import Showcase from "../_Showcase.astro";
+---
+
+<Showcase title="Modal: VOICEVOX ダウンロード">
+  <DownloadModal client:load />
+  <script>
+    import { $downloadModal } from "@/store";
+    $downloadModal.set(true);
+  </script>
+</Showcase>

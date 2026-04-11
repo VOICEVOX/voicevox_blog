@@ -1,0 +1,18 @@
+---
+import { characterInfos } from "@/constants/characterInfo";
+import DescriptionTypeSwitch from "@/pages/dormitory/[characterId]/_DescriptionTypeSwitch.astro";
+import Showcase from "../_Showcase.astro";
+
+const shikokuMetan = characterInfos.四国めたん;
+const zundamon = characterInfos.ずんだもん;
+---
+
+<Showcase title="TypeButton">
+  <div class="p-md gap-xl flex flex-col">
+    <DescriptionTypeSwitch
+      characterInfo={shikokuMetan}
+      selectedType="profile"
+    />
+    <DescriptionTypeSwitch characterInfo={zundamon} selectedType="calls" />
+  </div>
+</Showcase>
