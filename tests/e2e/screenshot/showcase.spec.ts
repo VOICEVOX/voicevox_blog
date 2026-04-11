@@ -31,10 +31,10 @@ function toShowcaseUrl(filePath: string): string {
   return `/dev/showcase/${withoutIndex}/`.replace(/\/+/g, "/");
 }
 
-const astroFiles = collectAstroFiles(showcaseRoot);
-const urls = astroFiles.map(toShowcaseUrl);
-
 test.describe("dev/showcase", () => {
+  const astroFiles = collectAstroFiles(showcaseRoot);
+  const urls = astroFiles.map(toShowcaseUrl);
+
   for (const url of urls) {
     test(url, async ({ page }) => {
       await gotoAndWait(page, url);
