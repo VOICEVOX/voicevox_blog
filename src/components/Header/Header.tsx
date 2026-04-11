@@ -23,7 +23,7 @@ export default function Header({
   const menuItemHoverClassName = "vv-status-layer";
   const menuItemBaseClassName = `${menuItemHoverClassName} flex items-center self-stretch px-sm text-base whitespace-nowrap`;
   const menuItemBaseMobilePanelClassName = `${menuItemHoverClassName} flex items-center px-sm py-xs text-base whitespace-nowrap`;
-  const menuTriggerClassName = `${menuItemHoverClassName} inline-flex h-10 w-10 shrink-0 items-center justify-center self-center leading-none`;
+  const menuTriggerClassName = `${menuItemHoverClassName} inline-flex h-10 w-10 mr-2xs shrink-0 items-center justify-center self-center leading-none`;
 
   // ヘッダーを隠すための属性を持つ要素が表示されている間はヘッダーを隠す
   useEffect(() => {

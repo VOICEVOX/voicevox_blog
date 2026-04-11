@@ -6,21 +6,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as Popover from "@radix-ui/react-popover";
 
 const CONTACT_LINKS = [
-  {
-    icon: faHome,
-    key: "homepage",
-    label: "ホームページ",
-  },
-  {
-    icon: faXTwitter,
-    key: "twitter",
-    label: "SNS",
-  },
-  {
-    icon: faEnvelope,
-    key: "email",
-    label: "メールアドレス",
-  },
+  { icon: faHome, key: "homepage", label: "ホームページ" },
+  { icon: faXTwitter, key: "twitter", label: "SNS" },
+  { icon: faEnvelope, key: "email", label: "メールアドレス" },
 ] as const;
 
 type LinkKey = (typeof CONTACT_LINKS)[number]["key"];

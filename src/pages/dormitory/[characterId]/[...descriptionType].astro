@@ -80,7 +80,7 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
               <div class="flex h-full flex-col">
                 <div class="flex items-start">
                   <h1
-                    class="mb-xl text-3xl font-extrabold text-neutral-700"
+                    class="mb-lg text-3xl font-extrabold text-neutral-700"
                     set:html={characterInfo.rubyName}
                   />
                   <IconButton
@@ -90,7 +90,7 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
                     size="md"
                     border
                     class:list={[
-                      "ml-auto px-0 py-[7px]",
+                      "ml-auto px-0 py-1.75",
                       characterInfo.detailUrl ? "visible" : "invisible",
                     ]}
                     style={{ color: characterInfo.color }}

@@ -12,14 +12,8 @@ interface Props {
 
 const { characterInfo, selectedType } = Astro.props;
 const options = [
-  {
-    name: "プロフィール",
-    type: "profile",
-  },
-  {
-    name: "呼び方",
-    type: "calls",
-  },
+  { name: "プロフィール", type: "profile" },
+  { name: "呼び方", type: "calls" },
 ] as const satisfies ReadonlyArray<{
   name: string;
   type: (typeof descriptionTypes)[number];

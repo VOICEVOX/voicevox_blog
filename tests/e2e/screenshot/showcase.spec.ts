@@ -1,3 +1,9 @@
+/**
+ * dev/showcaseのVRTテスト。
+ * 一覧ページ（showcaseRoot直下のindex.astro）は対象外。
+ * サブディレクトリ配下の個別コンポーネントページのみ収集する。
+ */
+
 import { gotoAndWait } from "../helper";
 import { takeScreenshots } from "./helper";
 import { test } from "@playwright/test";
@@ -32,7 +38,11 @@ function toShowcaseUrl(filePath: string): string {
 }
 
 test.describe("dev/showcase", () => {
-  const astroFiles = collectAstroFiles(showcaseRoot);
+  const showcaseSubDirs = fs
+    .readdirSync(showcaseRoot, { withFileTypes: true })
+    .filter((e) => e.isDirectory() && !e.name.startsWith("_"))
+    .map((e) => path.join(showcaseRoot, e.name));
+  const astroFiles = showcaseSubDirs.flatMap(collectAstroFiles);
   const urls = astroFiles.map(toShowcaseUrl);
 
   for (const url of urls) {

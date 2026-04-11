@@ -4,7 +4,7 @@
 
 ## ページ追加手順
 
-1. `src/pages/dev/showcase/<kebab-name>/index.astro` を作る（単一ファイルなら `src/pages/dev/showcase/<kebab-name>.astro`）
+1. `src/pages/dev/showcase/<kebab-name>/index.astro` を作る
 2. `_Showcase.astro` をレイアウトとして使い、`title` にコンポーネント名を入れる
 3. 実プロダクトで使われる形に近い最小構成のサンプルを並べる
 4. section/装飾クラス/ラベル文言は書かない
