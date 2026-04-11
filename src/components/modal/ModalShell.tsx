@@ -28,20 +28,21 @@ export default function ModalShell({
     >
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 z-(--z-modal) bg-black/80" />
-        <div className="p-md pointer-events-none fixed inset-0 z-(--z-modal) box-border flex items-center justify-center">
+        <div className="p-sm pointer-events-none fixed inset-0 z-(--z-modal) box-border flex items-center justify-center">
           <Dialog.Content
             aria-describedby={undefined}
             className="pointer-events-auto flex max-h-full w-full max-w-xl flex-col overflow-hidden rounded-lg bg-white shadow-xl"
             data-theme="light"
           >
-            <header className="px-xl py-lg relative flex items-center justify-center border-b-2 border-neutral-200 bg-neutral-50">
-              <Dialog.Title className="text-2xl font-bold text-black">
+            <header className="gap-sm px-xl py-lg flex items-center border-b-2 border-neutral-200 bg-neutral-50">
+              <div className="w-8 shrink-0 max-sm:hidden" aria-hidden />
+              <Dialog.Title className="min-w-0 flex-1 text-center text-2xl font-bold text-black max-sm:text-left">
                 {title}
               </Dialog.Title>
               <Dialog.Close asChild>
                 <IconButton
                   size="sm"
-                  className="right-lg absolute top-1/2 -translate-y-1/2 text-neutral-700"
+                  className="text-neutral-700"
                   aria-label="close"
                 >
                   <span aria-hidden="true" className="text-xl leading-none">
