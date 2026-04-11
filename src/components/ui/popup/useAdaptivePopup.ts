@@ -12,10 +12,10 @@ type PopupBehavior = "menu" | "panel";
  */
 export function useAdaptivePopup({
   behavior,
-  forceOpen = false,
+  debugForceOpen = false,
 }: {
   behavior: PopupBehavior;
-  forceOpen?: boolean;
+  debugForceOpen?: boolean;
 }) {
   const [openMode, setOpenMode] = useState<OpenMode>("closed");
   const [canHover, setCanHover] = useState(false);
@@ -27,7 +27,7 @@ export function useAdaptivePopup({
       ? ["Enter", " ", "ArrowDown", "ArrowUp"]
       : ["Enter", " "];
 
-  const open = forceOpen || openMode !== "closed";
+  const open = debugForceOpen || openMode !== "closed";
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
@@ -43,14 +43,14 @@ export function useAdaptivePopup({
   }, []);
 
   const handleOpenChange = (nextOpen: boolean) => {
-    if (forceOpen) {
+    if (debugForceOpen) {
       return;
     }
     setOpenMode(nextOpen ? "pinned" : "closed");
   };
 
   const handleTriggerMouseEnter = () => {
-    if (forceOpen || !canHover || openMode === "pinned") {
+    if (debugForceOpen || !canHover || openMode === "pinned") {
       return;
     }
     openCauseRef.current = "hover";
@@ -58,7 +58,7 @@ export function useAdaptivePopup({
   };
 
   const handleHoverLeave = (relatedTarget: EventTarget | null) => {
-    if (forceOpen || !canHover || openMode !== "hover") {
+    if (debugForceOpen || !canHover || openMode !== "hover") {
       return;
     }
 
@@ -75,7 +75,7 @@ export function useAdaptivePopup({
   };
 
   const handleTriggerPointerDownCapture = (event: PointerEvent) => {
-    if (forceOpen) {
+    if (debugForceOpen) {
       return;
     }
     if (!canHover) {
@@ -87,7 +87,7 @@ export function useAdaptivePopup({
   };
 
   const handleTriggerKeyDownCapture = (event: KeyboardEvent) => {
-    if (forceOpen || !keyboardOpenKeys.includes(event.key)) {
+    if (debugForceOpen || !keyboardOpenKeys.includes(event.key)) {
       return;
     }
     openCauseRef.current = "keyboard";

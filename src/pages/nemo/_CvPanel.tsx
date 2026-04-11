@@ -15,11 +15,11 @@ type LinkKey = (typeof CONTACT_LINKS)[number]["key"];
 
 export default function CvPanel({
   cv,
-  forceOpen = false,
+  debugForceOpen = false,
   links,
 }: {
   cv: string;
-  forceOpen?: boolean;
+  debugForceOpen?: boolean;
   links: Partial<Record<LinkKey, string>>;
 }) {
   const {
@@ -34,7 +34,7 @@ export default function CvPanel({
     handleTriggerPointerDownCapture,
     open,
     triggerWrapperRef,
-  } = useAdaptivePopup({ behavior: "panel", forceOpen });
+  } = useAdaptivePopup({ behavior: "panel", debugForceOpen });
 
   return (
     <Popover.Root modal={false} open={open} onOpenChange={handleOpenChange}>

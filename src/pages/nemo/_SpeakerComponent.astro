@@ -6,10 +6,10 @@ import type { SpeakerInfo } from "./constants";
 
 interface Props {
   info: SpeakerInfo;
-  forceCvDropdownOpen?: boolean;
+  debugForceCvDropdownOpen?: boolean;
 }
 
-const { forceCvDropdownOpen = false, info } = Astro.props;
+const { debugForceCvDropdownOpen = false, info } = Astro.props;
 ---
 
 <div
@@ -27,7 +27,7 @@ const { forceCvDropdownOpen = false, info } = Astro.props;
     <CvPanel
       client:load
       cv={info.cv}
-      forceOpen={forceCvDropdownOpen}
+      debugForceOpen={debugForceCvDropdownOpen}
       links={info.link}
     />
   </div>

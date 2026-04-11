@@ -21,7 +21,7 @@ export default function StyleDropdown({
   setSelectedStyle,
   characterName,
   direction = "down",
-  forceOpen = false,
+  debugForceOpen = false,
   className,
 }: {
   styles: string[];
@@ -29,7 +29,7 @@ export default function StyleDropdown({
   setSelectedStyle: (style: string) => void;
   characterName: string;
   direction?: "up" | "down";
-  forceOpen?: boolean;
+  debugForceOpen?: boolean;
 } & React.HTMLAttributes<HTMLDivElement>) {
   const isUp = direction === "up";
   const {
@@ -44,7 +44,7 @@ export default function StyleDropdown({
     triggerWrapperRef,
   } = useAdaptivePopup({
     behavior: "menu",
-    forceOpen,
+    debugForceOpen,
   });
 
   return (
