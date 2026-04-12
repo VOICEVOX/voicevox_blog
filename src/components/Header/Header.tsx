@@ -272,10 +272,7 @@ export default function Header({
       </Collapsible.Root>
 
       {/* 空間を空けるために必要 */}
-      {/* NOTE: defaultHideページではスペーサーのレイアウトシフトがIntersectionObserverと振動するため除外 */}
-      {!defaultHide && (
-        <div className={`h-13 ${showingHeader ? "" : "hidden"} invisible`} />
-      )}
+      <div className={`invisible h-13 ${defaultHide ? "hidden" : ""}`} />
     </>
   );
 }
