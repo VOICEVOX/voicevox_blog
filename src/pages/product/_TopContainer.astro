@@ -136,16 +136,14 @@ const postCharacterKey =
         style={{ backgroundColor: characterBackgroundColor }}
       >
       </div>
-      <div class="absolute inset-0 flex justify-center overflow-hidden">
-        <div class="flex-none">
-          <Image
-            class="block h-full w-auto object-contain"
-            src={characterInfo.portraitImage}
-            alt={characterInfo.name}
-            height={1280}
-            densities={[1, 1.5, 2]}
-          />
-        </div>
+      <div class="absolute inset-0 overflow-hidden">
+        <Image
+          class="absolute top-0 left-1/2 block h-full w-auto max-w-none -translate-x-1/2 object-contain"
+          src={characterInfo.portraitImage}
+          alt={characterInfo.name}
+          height={1280}
+          densities={[1, 1.5, 2]}
+        />
       </div>
       <div
         class="gap-md pb-lg absolute inset-y-0 right-[5%] flex flex-col justify-end"
