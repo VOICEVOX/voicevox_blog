@@ -1,0 +1,32 @@
+---
+import Base from "@/layouts/Base.astro";
+---
+
+<Base
+  title="Base: ライトモード"
+  description="Base.astroレイアウトの表示確認"
+  noindex={true}
+>
+  <main class="py-3xl">
+    <div class="px-md mx-auto max-w-7xl">
+      <h1>見出し1（h1）</h1>
+      <p>
+        通常の文章です。<button type="button" class="vv-link"
+          >リンクテキスト</button
+        >が含まれています。
+      </p>
+      <h2>見出し2（h2）</h2>
+      <p>通常の文章です。</p>
+      <h3>見出し3（h3）</h3>
+      <p>通常の文章です。</p>
+      <ul class="mb-md ml-2xl list-outside list-disc">
+        <li>
+          <a href="/dev/showcase/base/dark/" class="vv-link">ダークモード</a>
+        </li>
+        <li>
+          <a href="/dev/showcase/base/nemo/" class="vv-link">Nemoモード</a>
+        </li>
+      </ul>
+    </div>
+  </main>
+</Base>

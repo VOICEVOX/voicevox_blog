@@ -37,24 +37,20 @@ test("ダウンロードボタン", async ({ page }) => {
     await modal
       .getByRole("button", { name: "VOICEVOX ダウンロード", exact: true })
       .click();
-    await expect(modal).toHaveCount(2);
+    await expect(modal).toContainText("VOICEVOX ダウンロード");
     await expect(page).toHaveScreenshot();
   });
 
   await test.step("２つ目のモーダルを閉じれる", async () => {
-    await modal
-      .locator("header")
-      .filter({ hasText: "VOICEVOX ダウンロード" })
-      .getByLabel("close")
-      .click();
-    await expect(modal).toHaveCount(1);
+    await modal.getByLabel("close").click();
+    await expect(modal).toContainText("VOICEVOX Nemo ご利用案内");
   });
 
   await test.step("モーダル内のNemoエンジンダウンロードボタンで２つ目のモーダルが表示される", async () => {
     await modal
       .getByRole("button", { name: "Nemo エンジン ダウンロード", exact: true })
       .click();
-    await expect(modal).toHaveCount(2);
+    await expect(modal).toContainText("Nemo エンジン ダウンロード");
     await expect(page).toHaveScreenshot();
   });
 });

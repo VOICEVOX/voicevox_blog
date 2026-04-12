@@ -1,0 +1,14 @@
+/*
+ * スクリーンショット撮影時のみ適用するスタイル。
+ * toHaveScreenshot の stylePath に渡す。
+ */
+
+/*
+ * TODO: Playwright の animations: "disabled" がヘッダーの fadeIn アニメーションに
+ * 対して効かず、スクリーンショット撮影時に半透明状態で撮影されることがあるため、
+ * ワークアラウンドとしてヘッダーのアニメーションのみ強制的に無効化する。
+ * 原因の完全特定には至っていない。
+ */
+nav[role="navigation"] {
+  animation: none !important;
+}

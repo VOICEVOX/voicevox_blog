@@ -2,6 +2,7 @@
  * キャラクターごとのカード表示
  */
 import PlayButton from "@/components/PlayButton/PlayButton";
+import IconButton from "@/components/ui/IconButton/IconButton";
 import type { CharacterInfo } from "@/constants/type";
 import { getProductPageUrl } from "@/constants/url";
 import { withBaseUrl } from "@/helper";
@@ -22,8 +23,6 @@ export default function CharacterCard({
   const color = characterInfo.color;
   const coloredStyle = useMemo(() => {
     return {
-      backgroundColor: "transparent",
-      borderColor: color,
       color: color,
     };
   }, [color]);
@@ -92,13 +91,11 @@ export default function CharacterCard({
   const LinkToProductPage = ({
     children,
     className,
-    style,
-  }: React.HTMLAttributes<HTMLLinkElement>) => {
+  }: React.HTMLAttributes<HTMLAnchorElement>) => {
     return (
       <a
         href={withBaseUrl(getProductPageUrl(characterInfo))}
         className={className}
-        style={style}
       >
         {children}
       </a>
@@ -106,30 +103,29 @@ export default function CharacterCard({
   };
 
   return (
-    <div className="voice-card">
-      <LinkToProductPage className="voice-card-image">
-        {children}
-      </LinkToProductPage>
-      <div className="voice-card-content">
-        <h3 className="title">
-          <LinkToProductPage style={{ color: "inherit" }}>
+    <div className="gap-xs py-sm flex w-40 flex-col items-center justify-center rounded-lg bg-neutral-800">
+      <LinkToProductPage className="w-2/3">{children}</LinkToProductPage>
+      <div className="gap-xs flex flex-col text-center">
+        <h3 className="mb-0 text-base font-medium text-white">
+          <LinkToProductPage className="text-current">
             {characterInfo.name}
           </LinkToProductPage>
         </h3>
 
         {styleState && (
           <>
-            <div className="buttons">
+            <div className="gap-xs mb-0 flex items-center justify-center">
               {styleState.styles.length > 1 && (
-                <button
-                  className={`button circle-icon is-small`}
+                <IconButton
+                  size="sm"
+                  border
+                  className="relative text-xs"
                   style={coloredStyle}
-                  type="button"
                   aria-label="前のサンプル音声へ"
                   onClick={prevStyle}
                 >
                   <FontAwesomeIcon icon={faBackwardStep} />
-                </button>
+                </IconButton>
               )}
 
               <PlayButton
@@ -137,24 +133,24 @@ export default function CharacterCard({
                   characterInfo.songVoiceAudios[styleState.selectedStyleIndex]
                     .urls[0]
                 }
-                name={`${fullStyleName}のサンプル音声}`}
+                name={`${fullStyleName}のサンプル音声`}
                 color={characterInfo.color}
-                style={{ backgroundColor: "transparent" }}
               />
 
               {styleState.styles.length > 1 && (
-                <button
-                  className={`button circle-icon is-small`}
+                <IconButton
+                  size="sm"
+                  border
+                  className="relative text-xs"
                   style={coloredStyle}
-                  type="button"
                   aria-label="次のサンプル音声へ"
                   onClick={nextStyle}
                 >
                   <FontAwesomeIcon icon={faForwardStep} />
-                </button>
+                </IconButton>
               )}
             </div>
-            <h4 className="style-name">{fullStyleName}</h4>
+            <h4 className="text-xs text-white">{fullStyleName}</h4>
           </>
         )}
       </div>

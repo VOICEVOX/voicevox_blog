@@ -1,14 +1,14 @@
 ---
 /**
  * 製品ページのサムネイル生成
+ * 座標や寸法の細かい調整が多いため、可読性を優先して style={} を使う。
  */
 
-import FontAwesomeIcon from "@/components/FontAwesomeIcon.astro";
 import { characterEntries, characterKeys } from "@/constants/characterEntry";
 import { characterInfos } from "@/constants/characterInfo";
-import "@/styles/bulma.scss";
-import "@/styles/global.scss";
+import "@/styles/global.css";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 import { getImage } from "astro:assets";
 import backgroundImage from "./background.png";
@@ -95,17 +95,29 @@ const isDebug = false;
         ソフトウェア
       </span>
       <span
-        class="button is-primary is-rounded is-large"
+        class="bg-primary flex items-center justify-center rounded-full"
         style={{
           fontSize: "40px",
           marginTop: "38px",
           height: "70px",
+          paddingLeft: "50px",
+          paddingRight: "50px",
+          color: "rgb(23, 48, 27)",
         }}
       >
-        <span class="icon">
+        <span
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "60px",
+            height: "60px",
+            marginLeft: "-10px",
+          }}
+        >
           <FontAwesomeIcon icon={faDownload} />
         </span>
-        <span class="has-text-weight-semibold">ダウンロード</span>
+        <span class="font-semibold">ダウンロード</span>
       </span>
     </div>
   </div>

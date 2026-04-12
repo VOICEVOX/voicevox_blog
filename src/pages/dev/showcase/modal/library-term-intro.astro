@@ -1,0 +1,44 @@
+---
+import { compiledContent as libraryTermIntroTemplateHtml } from "@/assets/library-term-intro-template.md";
+import LibraryTermIntroModal from "@/components/modal/LibraryTermIntroModal";
+import {
+  characterEntries,
+  characterKeys,
+  type CharacterKey,
+} from "@/constants/characterEntry";
+import { makeAssetsRecordSingleOptional } from "@/helper";
+import type { MarkdownInstance } from "astro";
+import Showcase from "../_Showcase.astro";
+
+export const libraryTermIntroMarkdowns = makeAssetsRecordSingleOptional(
+  characterKeys,
+  characterEntries,
+  import.meta.glob<MarkdownInstance<object>>(
+    "@/assets/library-term-intro-markdowns/*.md",
+    {
+      eager: true,
+    },
+  ),
+);
+
+const libraryTermIntroHtmls = await (async () => {
+  const htmls = {} as Record<CharacterKey, string | undefined>;
+  for (const key of characterKeys) {
+    htmls[key] = await libraryTermIntroMarkdowns[key]?.compiledContent();
+  }
+  return htmls;
+})();
+---
+
+<Showcase title="Modal: 利用規約">
+  <LibraryTermIntroModal
+    client:load
+    htmls={libraryTermIntroHtmls}
+    templateHtml={await libraryTermIntroTemplateHtml()}
+  />
+  <script>
+    import { characterKeys } from "@/constants/characterEntry";
+    import { $libraryTermIntroModal } from "@/store";
+    $libraryTermIntroModal.set({ show: true, characterKey: characterKeys[0] });
+  </script>
+</Showcase>

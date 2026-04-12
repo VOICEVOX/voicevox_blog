@@ -1,87 +1,43 @@
 ---
-import FontAwesomeIcon from "@/components/FontAwesomeIcon.astro";
 import PlayButton from "@/components/PlayButton/index.astro";
-import { faXTwitter } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope, faHome } from "@fortawesome/free-solid-svg-icons";
 import { Image } from "astro:assets";
+import CvPanel from "./_CvPanel";
 import type { SpeakerInfo } from "./constants";
 
 interface Props {
   info: SpeakerInfo;
-  style: Record<string, string | number>;
+  debugForceCvDropdownOpen?: boolean;
 }
 
-const { info, style } = Astro.props;
+const { debugForceCvDropdownOpen = false, info } = Astro.props;
 ---
 
-<div class="speaker" style={style}>
-  <div class="speaker-icon-wrapper">
+<div
+  class="pr-md relative flex h-32 flex-row filter-[drop-shadow(12px_12px_8px_rgba(0,0,0,0.5))] *:relative before:absolute before:top-[0.4rem] before:right-0 before:bottom-[0.4rem] before:left-[0.4rem] before:rounded-l-[calc(8rem-0.4rem)] before:bg-zinc-900 before:content-[''] max-lg:h-24 max-lg:before:rounded-l-[calc(6rem-0.4rem)] max-md:h-16 max-md:before:rounded-l-[calc(4rem-0.4rem)]"
+>
+  <div
+    class="h-32 w-32 shrink-0 max-lg:h-24 max-lg:w-24 max-md:h-16 max-md:w-16"
+  >
     <Image src={info.icon} alt={`${info.name}のアイコン`} />
   </div>
-  <div class="speaker-labels">
-    <span class="cv">CV</span>
-    <div class="dropdown is-hoverable">
-      <div class="dropdown-trigger">
-        <button
-          class="button"
-          aria-haspopup="true"
-          aria-controls={`dropdown-${info.id}`}
-          type="button"
-        >
-          <h3>{info.cv}</h3>
-        </button>
-      </div>
-      <div class="dropdown-menu" id={`dropdown-${info.id}`} role="menu">
-        <div class="dropdown-content">
-          <div class="dropdown-item">
-            <span>音声収録のご依頼先</span>
-            <div class="buttons">
-              {
-                [
-                  {
-                    link: info.link.homepage,
-                    label: "ホームページ",
-                    icon: faHome,
-                  },
-                  {
-                    link: info.link.twitter,
-                    label: "SNS",
-                    icon: faXTwitter,
-                  },
-                  {
-                    link: info.link.email,
-                    label: "メールアドレス",
-                    icon: faEnvelope,
-                  },
-                ].map(
-                  ({ link, label, icon }) =>
-                    link && (
-                      <a
-                        class="button"
-                        href={link}
-                        aria-label={`${info.cv}の${label}`}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        <FontAwesomeIcon icon={icon} />
-                      </a>
-                    ),
-                )
-              }
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div
+    class="gap-xs max-lg:gap-2xs flex flex-1 flex-col items-center justify-center text-center"
+  >
+    <span class="text-base text-white max-lg:text-xs">CV</span>
+    <CvPanel
+      client:load
+      cv={info.cv}
+      debugForceOpen={debugForceCvDropdownOpen}
+      links={info.link}
+    />
   </div>
-  <div class="sample-voices">
+  <div class="gap-md flex shrink-0 flex-row items-center justify-center">
     {
       info.audios.map((audio, index) => (
         <PlayButton
           audio={audio}
-          name={`${info.name}のサンプルボイス${index + 1}}`}
+          name={`${info.name}のサンプルボイス${index + 1}`}
           color={info.color}
-          style={{ backgroundColor: info.backgroundColor }}
         />
       ))
     }

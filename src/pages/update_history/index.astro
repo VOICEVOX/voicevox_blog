@@ -7,32 +7,38 @@ import updateInfos from "public/updateInfos.json";
   title="変更履歴 | VOICEVOX"
   description="VOICEVOXソフトウェアの変更履歴です。"
 >
-  <section class="section">
-    <div class="container is-max-desktop">
-      <div class="content">
-        <h1 class="title">変更履歴</h1>
+  <main class="py-3xl">
+    <div class="px-md mx-auto max-w-5xl">
+      <h1 class="mb-xl text-3xl font-bold text-neutral-950">変更履歴</h1>
+      <div class="space-y-xl">
         {
           updateInfos.map((info, index) => (
             <>
               <div>
-                <h2 class="subtitle is-4">ver {info.version}</h2>
-                <ul>
+                <h2 class="mb-md text-2xl font-bold text-neutral-700">
+                  ver {info.version}
+                </h2>
+                <ul class="mb-md ml-2xl list-outside list-disc text-black">
                   {info.descriptions.map((d) => (
                     <li>{d}</li>
                   ))}
                 </ul>
                 {info.contributors.length > 0 && (
                   <>
-                    <h3 class="title is-5">貢献者リスト</h3>
-                    <div>{info.contributors.join(" / ")}</div>
+                    <h3 class="mt-md mb-sm text-xl font-bold text-neutral-700">
+                      貢献者リスト
+                    </h3>
+                    <div class="mb-md text-black">
+                      {info.contributors.join(" / ")}
+                    </div>
                   </>
                 )}
               </div>
-              {updateInfos.length !== index + 1 && <hr />}
+              {updateInfos.length !== index + 1 && <hr class="vv-hr" />}
             </>
           ))
         }
       </div>
     </div>
-  </section>
+  </main>
 </Base>

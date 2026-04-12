@@ -1,0 +1,75 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import type { IconButtonSize } from "./helper";
+import { buildIconButtonClassName } from "./helper";
+
+type AnchorHtmlAttrs = Omit<HTMLAttributes<"a">, "href">;
+type ButtonHtmlAttrs = Omit<HTMLAttributes<"button">, "type">;
+
+type SharedProps = {
+  size: IconButtonSize;
+  border?: boolean;
+  class?: string;
+};
+type AnchorProps = SharedProps & AnchorHtmlAttrs & { href: string };
+type ButtonProps = SharedProps & ButtonHtmlAttrs & { href?: never };
+
+type Props = AnchorProps | ButtonProps;
+
+type Resolved =
+  | {
+      tag: "a";
+      href: string;
+      finalClassName: string;
+      htmlAttrs: AnchorHtmlAttrs;
+    }
+  | { tag: "button"; finalClassName: string; htmlAttrs: ButtonHtmlAttrs };
+
+function resolve(props: Props): Resolved {
+  if (typeof props.href === "string") {
+    const { href, size, class: className, border, ...htmlAttrs } = props;
+    return {
+      tag: "a",
+      href,
+      finalClassName: buildIconButtonClassName({
+        size,
+        className,
+        border,
+      }),
+      htmlAttrs,
+    };
+  }
+  const { size, class: className, border, ...htmlAttrs } = props;
+  return {
+    tag: "button",
+    finalClassName: buildIconButtonClassName({
+      size,
+      className,
+      border,
+    }),
+    htmlAttrs,
+  };
+}
+
+const resolved = resolve(Astro.props);
+---
+
+{
+  resolved.tag === "a" ? (
+    <a
+      href={resolved.href}
+      class={resolved.finalClassName}
+      {...resolved.htmlAttrs}
+    >
+      <slot />
+    </a>
+  ) : (
+    <button
+      type="button"
+      class={resolved.finalClassName}
+      {...resolved.htmlAttrs}
+    >
+      <slot />
+    </button>
+  )
+}

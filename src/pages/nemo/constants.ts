@@ -90,7 +90,6 @@ export const speakerKeys = Object.keys(speakerMetaInfos) as SpeakerKey[];
 
 export type SpeakerInfo = SpeakerMetaInfo & {
   color: string;
-  backgroundColor: string;
   icon: ImageMetadata;
   audios: string[];
 };
@@ -119,7 +118,6 @@ export function getSpeakerInfo(speakerKey: SpeakerKey) {
   return {
     ...speakerMetaInfo,
     color: femaleOrMale == "female" ? "#f1736fff" : "#6fcef1ff",
-    backgroundColor: femaleOrMale == "female" ? "#f1736f09" : "6fcef109",
     icon: iconImages[speakerKey],
     audios: audios[speakerKey],
   } satisfies SpeakerInfo;

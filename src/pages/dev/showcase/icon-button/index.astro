@@ -1,0 +1,43 @@
+---
+import IconButton from "@/components/ui/IconButton/index.astro";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ReactIconButtonDemo } from "./_ReactIconButtonDemo.tsx";
+import Showcase from "../_Showcase.astro";
+---
+
+<Showcase title="IconButton">
+  <div class="p-md gap-xl flex flex-col">
+    <div class="gap-md flex flex-wrap items-center">
+      <IconButton size="sm" aria-label="sm">
+        <FontAwesomeIcon icon={faHome} />
+      </IconButton>
+      <IconButton size="md" aria-label="md">
+        <FontAwesomeIcon icon={faHome} />
+      </IconButton>
+      <IconButton size="lg" aria-label="lg">
+        <FontAwesomeIcon icon={faHome} />
+      </IconButton>
+      <IconButton size="xl" aria-label="xl">
+        <FontAwesomeIcon icon={faHome} />
+      </IconButton>
+    </div>
+
+    <div class="gap-md flex flex-wrap items-center">
+      <IconButton size="sm" border aria-label="sm border">
+        <FontAwesomeIcon icon={faHome} />
+      </IconButton>
+      <IconButton size="md" border aria-label="md border">
+        <FontAwesomeIcon icon={faHome} />
+      </IconButton>
+      <IconButton size="lg" border aria-label="lg border">
+        <FontAwesomeIcon icon={faHome} />
+      </IconButton>
+      <IconButton size="xl" border aria-label="xl border">
+        <FontAwesomeIcon icon={faHome} />
+      </IconButton>
+    </div>
+
+    <ReactIconButtonDemo client:load />
+  </div>
+</Showcase>

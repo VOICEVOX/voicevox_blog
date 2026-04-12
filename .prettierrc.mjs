@@ -6,6 +6,7 @@ export default {
     "@trivago/prettier-plugin-sort-imports",
     "prettier-plugin-astro",
     "prettier-plugin-astro-organize-imports",
+    "prettier-plugin-tailwindcss",
   ],
   overrides: [
     {

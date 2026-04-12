@@ -1,7 +1,9 @@
+import ModalShell from "../ModalShell";
 import Selector from "./Selector";
 import linuxInstallCpuArm64 from "@/assets/script/linuxInstallCpuArm64.sh?url";
 import linuxInstallCpuX64 from "@/assets/script/linuxInstallCpuX64.sh?url";
 import linuxInstallNvidia from "@/assets/script/linuxInstallNvidia.sh?url";
+import Button from "@/components/ui/Button/Button";
 import { APP_VERSION } from "@/constants";
 import { withBaseUrl } from "@/helper";
 import { $downloadModal } from "@/store";
@@ -177,79 +179,84 @@ export default function DownloadModal() {
   };
 
   return (
-    <div
-      className={"modal-download modal" + (isActive ? " is-active" : "")}
-      role="dialog"
-      data-theme="light"
+    <ModalShell
+      isActive={isActive}
+      title="VOICEVOX ダウンロード"
+      onClose={hide}
+      footer={
+        <>
+          <Button
+            href={withBaseUrl("/term/")}
+            kind="outline"
+            tone="neutral"
+            shape="rounded"
+            size="md"
+          >
+            利用規約
+          </Button>
+          <Button
+            href={
+              downloadUrls[selectedOs][selectedOrDefaultMode]![
+                selectedOrDefaultPackage
+              ]!.url
+            }
+            target="_blank"
+            rel="noreferrer"
+            download={
+              downloadUrls[selectedOs][selectedOrDefaultMode]![
+                selectedOrDefaultPackage
+              ]!.name
+            }
+            kind="solid"
+            tone="primary"
+            shape="rounded"
+            size="md"
+          >
+            ダウンロード
+          </Button>
+        </>
+      }
     >
-      <div className="modal-background" onClick={hide} role="presentation" />
-      <div className="modal-card">
-        <header className="modal-card-head has-text-centered">
-          <p className="modal-card-title">VOICEVOX ダウンロード</p>
-          <button
-            className="delete"
-            aria-label="close"
-            onClick={hide}
-            type="button"
-          />
-        </header>
+      <div className="space-y-md">
+        <Selector
+          label="OS"
+          selected={selectedOs}
+          setSelected={selectOs}
+          candidates={["Windows", "Mac", "Linux"]}
+        />
 
-        <section className="modal-card-body">
-          <Selector
-            label="OS"
-            selected={selectedOs}
-            setSelected={selectOs}
-            candidates={["Windows", "Mac", "Linux"]}
-          />
+        <hr className="vv-hr" />
 
-          <hr className="my-3" />
-
+        <div className="space-y-xs">
           <Selector
             label="対応モード"
             selected={selectedOrDefaultMode}
             setSelected={(mode) => selectMode(selectedOs, mode)}
             candidates={modeAvailables[selectedOs]}
           />
-          <p className="has-text-centered is-size-7">
+          <p className="text-center text-xs text-neutral-800">
             ※ GPUモードの方が快適ですが、利用するためには
-            <a href={withBaseUrl("/qa/")}>対応するGPU</a>
+            <a href={withBaseUrl("/qa/")} className="vv-link">
+              対応するGPU
+            </a>
             が必要です
           </p>
+        </div>
 
-          <hr className="my-3" />
+        <hr className="vv-hr" />
 
+        <div className="space-y-xs">
           <Selector
             label="パッケージ"
             selected={selectedOrDefaultPackage}
             setSelected={setSelectedPackage}
             candidates={packageAvailables[selectedOs][selectedOrDefaultMode]!}
           />
-          <p className="has-text-centered is-size-7">
+          <p className="text-center text-xs text-neutral-800">
             ※ 推奨パッケージはインストーラー版です
           </p>
-        </section>
-
-        <footer className="modal-card-foot is-justify-content-flex-end">
-          <div className="buttons">
-            <a href={withBaseUrl("/term/")} className="button">
-              <span>利用規約</span>
-            </a>
-            <a
-              href={
-                downloadUrls[selectedOs][selectedMode]?.[selectedPackage]?.url
-              }
-              download={
-                downloadUrls[selectedOs][selectedMode]?.[selectedPackage]?.name
-              }
-              target="_blank"
-              rel="noreferrer"
-              className="button is-primary"
-            >
-              <span className="has-text-weight-semibold">ダウンロード</span>
-            </a>
-          </div>
-        </footer>
+        </div>
       </div>
-    </div>
+    </ModalShell>
   );
 }

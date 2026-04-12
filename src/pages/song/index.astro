@@ -4,6 +4,7 @@ import { characterInfos } from "@/constants/characterInfo";
 import { withBaseUrl } from "@/helper";
 import Base from "@/layouts/Base.astro";
 import { showDownloadModalAttr } from "@/store";
+import Button from "@/components/ui/Button/index.astro";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getImage, Image } from "astro:assets";
@@ -34,7 +35,7 @@ const styleCount = orderedCharacterKeys.reduce((acc, key) => {
   return acc + characterInfos[key].songVoiceAudios.length;
 }, 0);
 
-const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src})`;
+const backgroundImageSrc = (await getImage({ src: backgroundImage })).src;
 ---
 
 <Base
@@ -44,65 +45,95 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
   imageAlt=""
   isDark={true}
 >
-  <main class="song">
-    <section class="section px-0 py-0" data-testid="first-view">
-      <div class="top">
-        <div class="titles">
-          <h1 class="title">VOICEVOX Song</h1>
-          <span class="subtitle"
-            >無料で使える中品質な<wbr
-            />テキスト読み上げ・歌声合成ソフトウェア</span
-          >
+  <main class="bg-neutral-950 text-white">
+    <section class="py-0" data-testid="first-view">
+      <div
+        class="px-xl py-3xl relative flex min-h-[calc(100vh-3.25rem)] flex-col items-center justify-center gap-14 text-center"
+      >
+        <!-- 背景画像 -->
+        <div
+          class="absolute inset-0 bg-cover bg-center blur-xs brightness-75"
+          style={{ backgroundImage: `url(${backgroundImageSrc})` }}
+        >
         </div>
 
-        <div class="buttons">
-          <button
-            {...{ [showDownloadModalAttr]: "" }}
-            class="button is-primary is-large is-rounded"
+        <div
+          class="gap-xs max-md:mb-4xl md:gap-md relative flex flex-col items-center justify-center"
+        >
+          <h1
+            class="text-primary/75 text-5xl leading-[1.125] font-extrabold [text-shadow:0px_0px_10px_color-mix(in_srgb,var(--color-primary)_55%,transparent)] md:text-8xl lg:text-9xl"
           >
-            <span class="icon">
+            VOICEVOX Song
+          </h1>
+          <span
+            class="text-2xl font-bold wrap-break-word break-keep drop-shadow-2xl"
+          >
+            無料で使える中品質な<wbr />テキスト読み上げ・歌声合成ソフトウェア
+          </span>
+        </div>
+
+        <div class="gap-md relative flex flex-col items-center">
+          <Button
+            {...{ [showDownloadModalAttr]: "" }}
+            kind="solid"
+            tone="primary"
+            shape="pill"
+            size="xl"
+          >
+            <span slot="icon">
               <FontAwesomeIcon icon={faDownload} />
             </span>
-            <span class="has-text-weight-semibold">ダウンロード</span>
-          </button>
-          <a
+            <span class="font-semibold">ダウンロード</span>
+          </Button>
+          <Button
             href={withBaseUrl("/term/")}
-            class="button is-normal is-rounded is-white"
+            kind="solid"
+            tone="white"
+            shape="pill"
+            size="md"
           >
             利用規約
-          </a>
+          </Button>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="feature container">
-        <h2 class="title">特徴</h2>
-        <div class="feature-cells">
-          <div class="feature-cell">
+    <section class="py-3xl">
+      <div class="mb-3xl px-xl mx-auto w-full max-w-6xl">
+        <h2 class="mb-xl text-3xl font-bold">特徴</h2>
+        <div class="gap-md grid grid-cols-2 md:grid-cols-4">
+          <div
+            class="py-2xl rounded-2xl bg-emerald-950/20 text-center text-base md:text-xl"
+          >
             商用利用可能な
             <br />
             フリーソフト
           </div>
-          <div class="feature-cell">
+          <div
+            class="py-2xl rounded-2xl bg-emerald-950/20 text-center text-base md:text-xl"
+          >
             マルチOSに対応
             <br />
             (Win / Mac / Linux)
           </div>
-          <div class="feature-cell">
+          <div
+            class="py-2xl rounded-2xl bg-emerald-950/20 text-center text-base md:text-xl"
+          >
             {characterCount} 名のキャラクターと
             <br />
             {styleCount} 種類のボイス
           </div>
-          <div class="feature-cell">
+          <div
+            class="py-2xl rounded-2xl bg-emerald-950/20 text-center text-base md:text-xl"
+          >
             すぐ使える GUI と<br />歌唱 AI で創作支援
           </div>
         </div>
       </div>
 
-      <div class="container voices">
-        <h2 class="title">音声ライブラリ一覧</h2>
-        <div class="voice-cards">
+      <div class="px-xl mx-auto w-full max-w-6xl">
+        <h2 class="mb-xl text-3xl font-bold">音声ライブラリ一覧</h2>
+        <div class="gap-md flex flex-wrap items-center justify-center">
           {
             orderedCharacterKeys.map((characterKey) => (
               <CharacterCard
@@ -113,7 +144,7 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
                   src={characterInfos[characterKey].bustupImage}
                   alt={characterInfos[characterKey].name}
                   width={256}
-                  style={{ display: "block" }}
+                  class="block"
                 />
               </CharacterCard>
             ))
@@ -122,212 +153,22 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
       </div>
     </section>
 
-    <section class="section">
-      <div class="container is-max-desktop">
-        <h2 class="title">ハミングとは？</h2>
-        <p class="is-size-5">
+    <section class="py-3xl">
+      <div class="px-xl mx-auto w-full max-w-5xl">
+        <h2 class="mb-xl text-3xl font-bold">ハミングとは？</h2>
+        <p class="text-xl">
           喋り声のデータを用いて音声ライブラリを作成し、
           歌えるキャラクターに歌い方を倣うことで、
           キャラクターの喋り声に近い声で歌える機能です。
         </p>
-        <p class="is-size-5">
+        <p class="mt-0 text-xl">
           キャラクターによっていろんなスタイルで歌うことができます。
         </p>
       </div>
     </section>
 
-    <EngineGuidanceSection isDark={true} />
+    <EngineGuidanceSection />
 
-    <OssGuidanceSection isDark={true} />
+    <OssGuidanceSection />
   </main>
 </Base>
-
-<style lang="scss" define:vars={{ backgroundImageUrl }} is:global>
-  @use "@/styles/vars.scss" as *;
-  @use "@/styles/helper.scss" as *;
-  @use "bulma/sass/elements" as *;
-  @use "bulma/sass/layout" as *;
-  @use "bulma/sass/utilities/initial-variables" as *;
-  @use "bulma/sass/utilities/mixins" as *;
-  @use "bulma/sass/helpers" as *;
-
-  .song {
-    color: white;
-
-    .title,
-    .subtitle {
-      color: white !important;
-    }
-
-    .top {
-      height: calc(100vh - 3.25rem);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 3.5rem;
-
-      // 背景画像
-      position: relative;
-      z-index: 0;
-      &:before {
-        background-image: var(--backgroundImageUrl);
-        background-size: cover;
-        background-position: center;
-
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-
-        filter: blur(2.5px) brightness(70%);
-        // filter: blur(1px) brightness(50%);
-      }
-
-      .titles {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-
-        text-align: center;
-
-        h1 {
-          color: rgba($primary, 0.75) !important;
-          font-size: 7.5rem;
-          text-shadow: 0 0 10px
-            rgb(
-              from color-mix(in srgb, var(--bulma-link-text) 95%, black) R G B /
-                0.55
-            );
-        }
-
-        .subtitle {
-          @extend .is-4;
-          @extend .has-text-weight-bold;
-          text-shadow: 0 0 10px rgba(black, 0.75);
-
-          // <wbr>で良い感じに改行するようにする
-          word-break: keep-all;
-          overflow-wrap: break-word;
-        }
-
-        @include touch {
-          h1 {
-            font-size: 6rem;
-          }
-        }
-
-        @include mobile {
-          gap: 0.5rem;
-          margin-bottom: 5rem;
-
-          h1 {
-            font-size: 3rem;
-          }
-        }
-      }
-
-      .buttons {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-
-        .button {
-          box-shadow: 0 0 10px #000;
-        }
-      }
-    }
-
-    .feature {
-      width: 100%;
-      @extend .is-max-widescreen;
-      @extend .mb-6;
-
-      .feature-cells {
-        width: 100%;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
-        gap: 1rem;
-
-        @include touch {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .feature-cell {
-          background-color: #43554239;
-          @extend .is-size-5;
-          @extend .is-size-6-mobile;
-          text-align: center;
-          padding: 2rem 0;
-          border-radius: 1rem;
-        }
-      }
-    }
-
-    .voices {
-      display: flex;
-      flex-direction: column;
-      @extend .is-max-widescreen;
-      @extend .mb-6;
-
-      .voice-cards {
-        display: flex;
-        flex-direction: row;
-        gap: 1rem;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-
-        .voice-card {
-          display: flex;
-          flex-direction: column;
-          gap: 0.5rem;
-          align-items: center;
-          justify-content: center;
-
-          background-color: #282828;
-          border-radius: 0.5rem;
-          width: 10rem;
-          @extend .py-3;
-
-          .voice-card-image {
-            width: 70%;
-          }
-
-          .voice-card-content {
-            @extend .has-text-centered;
-
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-
-            .title {
-              @extend .is-6;
-              @extend .has-text-weight-medium;
-              @extend .mb-0;
-            }
-
-            .buttons {
-              align-items: center;
-              justify-content: center;
-              @extend .mb-0;
-              gap: 8px;
-
-              .button {
-                @extend .mb-0;
-              }
-            }
-
-            .style-name {
-              @extend .is-size-7;
-            }
-          }
-        }
-      }
-    }
-  }
-</style>

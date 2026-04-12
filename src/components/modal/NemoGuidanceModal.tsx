@@ -1,6 +1,8 @@
 /**
  * Nemoの案内モーダル
  */
+import ModalShell from "./ModalShell";
+import Button from "@/components/ui/Button/Button";
 import { sendEvent } from "@/helper";
 import {
   $downloadModal,
@@ -16,87 +18,76 @@ export default function NemoGuidanceModal() {
   const hide = () => $nemoGuidanceModal.set(false);
 
   return (
-    <>
-      <div
-        className={"modal-nemo-guidance modal" + (isActive ? " is-active" : "")}
-        role="dialog"
-        data-theme="light"
-      >
-        <div className="modal-background" onClick={hide} role="presentation" />
-        <div className="modal-card">
-          <header className="modal-card-head has-text-centered">
-            <p className="modal-card-title">VOICEVOX Nemo ご利用案内</p>
-            <button
-              className="delete"
-              aria-label="close"
-              onClick={hide}
-              type="button"
-            ></button>
-          </header>
-
-          <section className="modal-card-body">
-            <div className="step-by-step">
-              <h3>- Step 1 -</h3>
-              <p>VOICEVOX ソフトウェアをインストール</p>
-              <button
-                className="button is-align-self-center is-primary is-rounded is-medium"
-                onClick={() => {
-                  $downloadModal.set(true);
-                  sendEvent("download", "software");
-                }}
-              >
-                <span className="icon">
-                  <FontAwesomeIcon icon={faDownload} />
-                </span>
-                <span className="has-text-weight-semibold">
-                  VOICEVOX ダウンロード
-                </span>
-              </button>
-            </div>
-
-            <hr />
-
-            <div className="step-by-step">
-              <h3>- Step 2 -</h3>
-              <p>
-                VOICEVOX ソフトウェアを起動して
-                <br />
-                設定→オプション→高度な設定→<b>マルチエンジン機能</b>をON
-              </p>
-            </div>
-
-            <hr />
-
-            <div className="step-by-step">
-              <h3>- Step 3 -</h3>
-              <p>Nemo エンジンを追加</p>
-              <button
-                className="button is-align-self-center is-primary is-rounded is-medium"
-                onClick={() => $nemoDownloadModal.set(true)}
-              >
-                <span className="icon">
-                  <FontAwesomeIcon icon={faDownload} />
-                </span>
-                <span className="has-text-weight-semibold">
-                  Nemo エンジン ダウンロード
-                </span>
-              </button>
-            </div>
-
-            <hr />
-
-            <p className="policy-note">
-              ※ VOICEVOX ソフトウェアにはキャラクターの音声も含まれます。
-              <br />
-              キャラクターの音声と Nemo の音声は利用規約が異なるので
-              <br />
-              ご利用の際は各音声の利用規約をご確認ください。
-            </p>
-          </section>
-
-          <footer className="modal-card-foot"></footer>
+    <ModalShell
+      isActive={isActive}
+      title="VOICEVOX Nemo ご利用案内"
+      onClose={hide}
+    >
+      <div className="space-y-md">
+        <div className="gap-sm flex flex-col items-center text-center">
+          <h3 className="mb-0 text-lg font-semibold text-neutral-700">
+            - Step 1 -
+          </h3>
+          <p className="text-base text-black">
+            VOICEVOX ソフトウェアをインストール
+          </p>
+          <Button
+            onClick={() => {
+              $downloadModal.set(true);
+              sendEvent("download", "software");
+            }}
+            kind="solid"
+            tone="primary"
+            shape="pill"
+            size="md"
+            icon={<FontAwesomeIcon icon={faDownload} />}
+          >
+            VOICEVOX ダウンロード
+          </Button>
         </div>
+
+        <hr className="vv-hr" />
+
+        <div className="gap-sm flex flex-col items-center text-center">
+          <h3 className="mb-0 text-lg font-semibold text-neutral-700">
+            - Step 2 -
+          </h3>
+          <p className="text-base text-black">
+            VOICEVOX ソフトウェアを起動して
+            <br />
+            設定→オプション→高度な設定→<b>マルチエンジン機能</b>をON
+          </p>
+        </div>
+
+        <hr className="vv-hr" />
+
+        <div className="gap-sm flex flex-col items-center text-center">
+          <h3 className="mb-0 text-lg font-semibold text-neutral-700">
+            - Step 3 -
+          </h3>
+          <p className="text-base text-black">Nemo エンジンを追加</p>
+          <Button
+            onClick={() => $nemoDownloadModal.set(true)}
+            kind="solid"
+            tone="primary"
+            shape="pill"
+            size="md"
+            icon={<FontAwesomeIcon icon={faDownload} />}
+          >
+            Nemo エンジン ダウンロード
+          </Button>
+        </div>
+
+        <hr className="vv-hr" />
+
+        <p className="text-center text-xs text-neutral-800">
+          ※ VOICEVOX ソフトウェアにはキャラクターの音声も含まれます。
+          <br />
+          キャラクターの音声と Nemo の音声は利用規約が異なるので
+          <br />
+          ご利用の際は各音声の利用規約をご確認ください。
+        </p>
       </div>
-    </>
+    </ModalShell>
   );
 }

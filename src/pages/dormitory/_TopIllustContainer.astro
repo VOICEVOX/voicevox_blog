@@ -5,12 +5,12 @@ import { Image } from "astro:assets";
 const { image } = dormitoryTopIllustInfos[dormitoryTopIllustInfos.length - 1];
 ---
 
-<div class="container is-max-desktop">
+<div class="mx-auto w-full max-w-5xl">
   <Image
     src={image}
     alt="トップイラスト"
     width={1024}
     densities={[1, 1.5]}
-    style={{ objectFit: "contain", display: "block" }}
+    class="block object-contain"
   />
 </div>

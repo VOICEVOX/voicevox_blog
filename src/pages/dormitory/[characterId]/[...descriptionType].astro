@@ -1,6 +1,7 @@
 ---
-import FontAwesomeIcon from "@/components/FontAwesomeIcon.astro";
 import PlayButton from "@/components/PlayButton/index.astro";
+import Button from "@/components/ui/Button/index.astro";
+import IconButton from "@/components/ui/IconButton/index.astro";
 import { characterEntries, characterKeys } from "@/constants/characterEntry";
 import { characterInfos } from "@/constants/characterInfo";
 import { callNameInfos } from "@/constants/characterInfos/callNameInfo";
@@ -8,12 +9,13 @@ import { getProductPageUrl } from "@/constants/url";
 import { withBaseUrl } from "@/helper";
 import Base from "@/layouts/Base.astro";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 import { getImage, Image } from "astro:assets";
 import backgroundImage from "../images/nc238325.jpg";
 import CallBox from "./_CallBox.astro";
 import { descriptionTypes } from "./_constants";
-import TypeButton from "./_TypeButton.astro";
+import DescriptionTypeSwitch from "./_DescriptionTypeSwitch.astro";
 
 export const getStaticPaths = (async () => {
   return characterKeys.flatMap((key) =>
@@ -30,149 +32,146 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 const { characterInfo, descriptionType } = Astro.props;
 const characterKey = characterInfo.key;
-const descriptionNames = {
-  profile: "プロフィール",
-  calls: "呼び方",
-} satisfies Record<(typeof descriptionTypes)[number], string>;
-
 const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src})`;
 ---
 
 <Base
   title={`${characterInfo.name} | ボイボ寮 ${
-    descriptionNames[descriptionType]
+    descriptionType === "profile" ? "プロフィール" : "呼び方"
   } | VOICEVOX`}
   description={characterInfo.description}
   image={characterInfo.dormitoryShareImage}
   imageAlt={characterInfo.dormitoryShareImage ? "" : undefined}
 >
-  <div class="dormitory-character">
-    <main class="section py-1">
-      <div class="container is-max-desktop">
-        <div class="box" style={{ borderColor: characterInfo.color }}>
-          <div class="columns m-0" style={{ height: "100%" }}>
+  <div
+    class="bg-white/70 bg-cover bg-fixed bg-blend-lighten"
+    style={{ backgroundImage: backgroundImageUrl }}
+  >
+    <main class="px-xl py-2xs lg:px-3xl">
+      <div
+        class="gap-sm mx-auto flex min-h-screen max-w-3xl flex-col items-center justify-center md:min-h-[calc(100vh-52px)] md:max-w-[820px]"
+      >
+        <div
+          class={`w-full overflow-hidden rounded-xl border-3 border-solid bg-white md:h-[550px]`}
+          style={{ borderColor: characterInfo.color }}
+          data-testid="dormitory-character-card"
+        >
+          <div class="flex flex-col md:h-full md:flex-row">
             <div
-              class="column is-4 portrait-column"
-              style={{ borderColor: characterInfo.color, position: "relative" }}
+              class="max-md:py-2xs relative flex items-center justify-center overflow-hidden px-0 md:h-full md:w-1/3 md:border-r-3"
+              style={{ borderColor: characterInfo.color }}
             >
-              <div class="height-image-wrapper">
-                <div>
+              <div class="h-screen w-full md:h-full">
+                <div class="flex h-full items-center justify-center">
                   <Image
                     src={characterInfo.portraitImage}
                     alt={characterInfo.name}
                     width={640}
                     densities={[1, 1.5, 2]}
-                    style={{
-                      height: "100%",
-                      display: "block",
-                      objectFit: "contain",
-                    }}
+                    class="block h-full w-auto max-w-none object-contain"
                   />
                 </div>
               </div>
             </div>
-            <div class="column description-column">
-              <div class="section">
-                <div class="description-top">
-                  <h1 class="title" set:html={characterInfo.rubyName} />
-                  <a
-                    class="button description-top-button"
-                    style={{
-                      color: characterInfo.color,
-                      borderColor: characterInfo.color,
-                      visibility: characterInfo.detailUrl
-                        ? "visible"
-                        : "hidden",
-                    }}
-                    href={characterInfo.detailUrl &&
-                      withBaseUrl(characterInfo.detailUrl)}
+
+            <div
+              class={`flex-1 p-xl ${descriptionType === "calls" ? "pb-sm" : ""}`}
+            >
+              <div class="flex h-full flex-col">
+                <div class="flex items-start">
+                  <h1
+                    class="mb-lg text-3xl font-extrabold text-neutral-700"
+                    set:html={characterInfo.rubyName}
+                  />
+                  <IconButton
+                    href={characterInfo.detailUrl
+                      ? withBaseUrl(characterInfo.detailUrl)
+                      : undefined}
+                    size="md"
+                    border
+                    class:list={[
+                      "ml-auto px-0 py-1.75",
+                      characterInfo.detailUrl ? "visible" : "invisible",
+                    ]}
+                    style={{ color: characterInfo.color }}
                     aria-label={`${characterInfo.name}の詳細ページ`}
-                    target="_blank"
-                    rel="noreferrer"
+                    target={characterInfo.detailUrl ? "_blank" : undefined}
+                    rel={characterInfo.detailUrl ? "noreferrer" : undefined}
                   >
                     <FontAwesomeIcon icon={faHome} />
-                  </a>
+                  </IconButton>
                 </div>
-                <div class="buttons has-addons">
-                  <TypeButton
-                    characterInfo={characterInfo}
-                    selectedType={descriptionType}
-                    targetType="profile"
-                    targetName={descriptionNames.profile}
-                  />
-                  <TypeButton
-                    characterInfo={characterInfo}
-                    selectedType={descriptionType}
-                    targetType="calls"
-                    targetName={descriptionNames.calls}
-                  />
-                </div>
+
+                <DescriptionTypeSwitch
+                  characterInfo={characterInfo}
+                  selectedType={descriptionType}
+                />
+
                 {
                   descriptionType === "profile" && (
                     <>
                       <div
-                        class="description-profile"
+                        class="mt-xl mb-xs text-xl font-bold"
                         set:html={characterInfo.description}
                       />
-                      <div class="columns is-variable is-1 is-multiline mb-3">
+
+                      <div class="-mx-2xs grid grid-cols-1 gap-0 md:grid-cols-2">
                         {characterInfo.labelInfos.map((labelInfo) => (
                           <div
-                            class={`column ${
-                              labelInfo.size == 1 ? "is-6" : "is-12"
-                            } description-box`}
+                            class={labelInfo.size === 1 ? "" : "md:col-span-2"}
                           >
-                            <span
-                              class="description-label"
-                              style={{ backgroundColor: characterInfo.color }}
-                            >
-                              {labelInfo.label}
-                            </span>
-                            <span
-                              class="description-text"
-                              set:html={labelInfo.value}
-                            />
+                            <div class="px-2xs pt-sm flex items-center">
+                              <span
+                                class="py-xs inline-flex w-28 items-center justify-center rounded-lg text-center text-white"
+                                style={{ backgroundColor: characterInfo.color }}
+                              >
+                                {labelInfo.label}
+                              </span>
+                              <span class="pl-sm grow text-base">
+                                {labelInfo.value}
+                              </span>
+                            </div>
                           </div>
                         ))}
-                        <div class="column is-12 description-box">
-                          <span
-                            class="description-label"
-                            style={{ backgroundColor: characterInfo.color }}
-                          >
-                            音声サンプル
-                          </span>
-                          {characterInfo.dormitoryVoiceAudios ? (
-                            <div class="description-samples">
-                              {characterInfo.dormitoryVoiceAudios.map(
-                                (audio, index) => (
-                                  <PlayButton
-                                    audio={audio}
-                                    name={`${
-                                      characterInfo.name
-                                    }のサンプルボイス${index + 1}`}
-                                    color={characterInfo.color}
-                                    class="mr-1"
-                                  />
-                                ),
-                              )}
-                            </div>
-                          ) : (
-                            <span class="description-text">準備中</span>
-                          )}
-                        </div>
                       </div>
+
+                      <div class="-mx-2xs px-2xs pt-sm flex items-center">
+                        <span
+                          class="py-xs inline-flex w-28 items-center justify-center rounded-lg text-center text-white"
+                          style={{ backgroundColor: characterInfo.color }}
+                        >
+                          音声サンプル
+                        </span>
+                        {characterInfo.dormitoryVoiceAudios ? (
+                          <div class="gap-2xs pl-sm flex grow flex-wrap">
+                            {characterInfo.dormitoryVoiceAudios.map(
+                              (audio, index) => (
+                                <PlayButton
+                                  audio={audio}
+                                  name={`${
+                                    characterInfo.name
+                                  }のサンプルボイス${index + 1}`}
+                                  color={characterInfo.color}
+                                  class="mr-2xs"
+                                />
+                              ),
+                            )}
+                          </div>
+                        ) : (
+                          <span class="pl-sm grow text-base">準備中</span>
+                        )}
+                      </div>
+
                       {characterInfo.dormitoryImages && (
-                        <div class="description-info-images">
+                        <div class="mt-sm flex max-h-32 gap-0 overflow-hidden">
                           {characterInfo.dormitoryImages.map((image) => (
-                            <div>
+                            <div class="flex flex-1 items-center justify-center">
                               <Image
                                 src={image}
                                 alt={characterInfo.name}
                                 height={256}
                                 densities={[1, 1.5, 2]}
-                                style={{
-                                  display: "block",
-                                  objectFit: "contain",
-                                }}
+                                class="block h-32 w-full object-contain"
                               />
                             </div>
                           ))}
@@ -181,32 +180,33 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
                     </>
                   )
                 }
+
                 {
                   descriptionType === "calls" && (
-                    <div class="columns description-call">
-                      <div class="column is-3 description-call-other-column">
-                        <div class="description-call-other-cell">
-                          <div>
+                    <div class="pt-sm md:gap-xl flex flex-1 flex-col gap-0 overflow-hidden md:flex-row">
+                      <div class="gap-2xl flex flex-row justify-center max-md:h-32 md:flex-col">
+                        <div class="px-sm flex h-26 w-26 flex-none flex-col items-center justify-center rounded-2xl border-2 border-black text-center">
+                          <div class="mb-2xs font-bold">
                             <span>一人称</span>
                           </div>
-                          <div>
+                          <div class="text-sm">
                             {callNameInfos[characterKey].me.map((callName) => (
                               <p>{callName}</p>
                             ))}
                           </div>
                         </div>
-                        <div class="description-call-other-cell">
-                          <div>
+                        <div class="px-sm flex h-26 w-26 flex-none flex-col items-center justify-center rounded-2xl border-2 border-black text-center">
+                          <div class="mb-2xs font-bold">
                             <span>二人称</span>
                           </div>
-                          <div>
+                          <div class="text-sm">
                             {callNameInfos[characterKey].you.map((callName) => (
                               <p>{callName}</p>
                             ))}
                           </div>
                         </div>
                       </div>
-                      <div class="column is-9 description-call-character">
+                      <div class="vv-scrollbar-thin gap-xs md:pr-2xs flex flex-1 flex-col overflow-auto">
                         {characterKeys
                           .filter(
                             (targetCharacterKey) =>
@@ -227,254 +227,32 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
             </div>
           </div>
         </div>
-        <div class="link-buttons has-text-weight-bold">
-          <a
+
+        <div
+          class="gap-xs flex flex-wrap items-center justify-center font-bold"
+        >
+          <Button
             href={withBaseUrl(getProductPageUrl(characterInfo))}
-            class="button is-normal is-rounded character-list-button"
-            style={{ borderColor: characterInfo.color }}
+            kind="outline"
+            tone="neutral"
+            shape="pill"
+            size="md"
+            style={{ "--vv-button-border-color": characterInfo.color }}
           >
             ダウンロードページ
-          </a>
-          <a
+          </Button>
+          <Button
             href={withBaseUrl(`/dormitory/#${characterInfo.id}`)}
-            class="button is-normal is-rounded character-list-button"
-            style={{ borderColor: characterInfo.color }}
+            kind="outline"
+            tone="neutral"
+            shape="pill"
+            size="md"
+            style={{ "--vv-button-border-color": characterInfo.color }}
           >
             キャラクター一覧
-          </a>
+          </Button>
         </div>
       </div>
     </main>
   </div>
 </Base>
-
-<style lang="scss" define:vars={{ backgroundImageUrl }} is:global>
-  @use "bulma/sass/utilities/mixins" as *;
-  @use "bulma/sass/helpers" as *;
-
-  @use "@/styles/helper" as *;
-
-  .dormitory-character {
-    background-image: var(--backgroundImageUrl);
-    background-color: rgba(255, 255, 255, 0.7);
-    background-blend-mode: lighten;
-    background-size: cover;
-    background-attachment: fixed;
-
-    .section {
-      .container {
-        min-height: calc(100vh - 3.25rem);
-        display: flex;
-        flex-direction: column;
-
-        justify-content: center;
-        align-items: center;
-        gap: 0.75rem;
-
-        max-width: 820px;
-
-        @include mobile {
-          min-height: auto;
-          max-height: unset;
-        }
-
-        @include tablet {
-          min-width: 768px;
-        }
-
-        .box {
-          width: 100%;
-          height: 550px;
-          @include mobile {
-            height: auto;
-          }
-
-          padding: 0;
-          margin-bottom: 0;
-
-          border-style: solid;
-          border-width: 3px;
-
-          .portrait-column {
-            @extend .py-1;
-            @extend .px-0;
-
-            // 大きい画面では左側にいっぱい画像表示
-            @include tablet {
-              border-right: solid;
-            }
-            // スマホ画面ではファーストビューに画像を表示
-            @include mobile {
-              height: 100vh;
-            }
-          }
-        }
-
-        .link-buttons {
-          display: flex;
-
-          justify-content: center;
-          align-items: center;
-          gap: 0.5rem;
-          flex-wrap: wrap;
-
-          .button {
-            border-width: 1.5px;
-          }
-        }
-      }
-
-      .description-column {
-        .section {
-          height: 100%;
-          @extend .p-3;
-
-          display: flex;
-          flex-direction: column;
-        }
-
-        .description-top {
-          display: flex;
-
-          .description-top-button {
-            @extend .circle-icon;
-            @extend .ml-auto;
-          }
-        }
-
-        .description-type-button {
-          box-shadow: none;
-          border-width: 1.5px;
-
-          &.description-type-button-selected {
-            @extend .has-text-weight-bold;
-          }
-        }
-
-        .description-profile {
-          @extend .is-size-5;
-          @extend .has-text-weight-bold;
-          @extend .mb-2;
-        }
-
-        .description-box {
-          @extend .pb-0;
-          @extend .pt-3;
-
-          display: flex;
-          align-items: center;
-
-          .description-label {
-            @extend .py-2;
-            width: 7rem;
-            border-radius: 10px;
-            color: white;
-            text-align: center;
-          }
-          .description-text {
-            flex-grow: 1;
-            @extend .pl-3;
-          }
-          .description-samples {
-            flex-grow: 1;
-            @extend .pl-3;
-          }
-        }
-
-        .description-info-images {
-          max-height: 8rem;
-          display: flex;
-          div {
-            display: flex;
-            justify-content: center;
-            img {
-              flex: 1 1 auto;
-            }
-          }
-        }
-
-        .description-call {
-          flex-grow: 1;
-          overflow: hidden;
-
-          .description-call-other-column {
-            height: 100%;
-
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 2rem;
-
-            @include mobile {
-              flex-direction: row;
-              height: 8rem;
-            }
-
-            .description-call-other-cell {
-              display: flex;
-              flex-direction: column;
-              justify-content: center;
-              align-items: center;
-
-              border-style: solid;
-              border-radius: 14px;
-              aspect-ratio: 1/1;
-              white-space: nowrap;
-
-              div {
-                text-align: center;
-              }
-
-              div:first-child {
-                @extend .has-text-weight-bold;
-                @extend .mb-1;
-              }
-            }
-          }
-
-          .description-call-character {
-            overflow: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-
-            .description-call-box {
-              display: flex;
-              gap: 0.5rem;
-
-              .description-call-line {
-                display: flex;
-                flex: 1;
-                .description-call-one {
-                  @extend .p-0;
-
-                  flex: 1;
-
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
-                  .description-call-arrow {
-                    margin: -1rem 0;
-                    font-size: 1.5rem;
-                  }
-                  .description-call-text {
-                    @extend .py-1;
-                    font-size: 0.8rem;
-                    flex-grow: 1;
-                    border-style: solid;
-                    border-radius: 8px;
-                    text-align: center;
-
-                    &.unknown {
-                      color: gray;
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-</style>

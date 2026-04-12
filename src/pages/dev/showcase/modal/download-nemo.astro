@@ -1,0 +1,12 @@
+---
+import DownloadNemoModal from "@/components/modal/download/DownloadNemoModal";
+import Showcase from "../_Showcase.astro";
+---
+
+<Showcase title="Modal: Nemo エンジン ダウンロード">
+  <DownloadNemoModal client:load />
+  <script>
+    import { $nemoDownloadModal } from "@/store";
+    $nemoDownloadModal.set(true);
+  </script>
+</Showcase>

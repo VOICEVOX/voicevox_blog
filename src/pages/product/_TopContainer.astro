@@ -5,8 +5,9 @@
  * モバイル版ではキャライラスト・キャラメニューがファーストビューに表示される。
  */
 
-import FontAwesomeIcon from "@/components/FontAwesomeIcon.astro";
 import KeepScrollAnchor from "@/components/KeepScrollAnchor.astro";
+import Button from "@/components/ui/Button/index.astro";
+import IconButton from "@/components/ui/IconButton/index.astro";
 import type { CharacterKey } from "@/constants/characterEntry";
 import { characterKeys } from "@/constants/characterEntry";
 import { characterInfos } from "@/constants/characterInfo";
@@ -24,6 +25,7 @@ import {
   faCircleRight,
   faDownload,
 } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Image } from "astro:assets";
 import AudioSample from "./_AudioSample";
 import { buildDescription } from "./constants";
@@ -50,124 +52,171 @@ const postCharacterKey =
   ];
 ---
 
-<div class="top container">
-  <a
-    href={withBaseUrl(getProductPageUrl(characterInfos[prevCharacterKey]))}
-    class="button prev circle-icon is-black"
-    aria-label="前のキャラクターを表示"
+<div class="@container">
+  <div
+    class="relative mx-auto grid w-[calc(100%-48px)] max-w-7xl grid-cols-1 grid-rows-[calc(100vh-3.25rem-5rem)_5rem_auto] md:h-[calc(100vh-3.25rem)] md:max-h-[1024px] md:min-h-[512px] md:grid-cols-2 md:grid-rows-[1fr_5rem]"
   >
-    <FontAwesomeIcon icon={faCircleLeft} />
-  </a>
-  <a
-    href={withBaseUrl(getProductPageUrl(characterInfos[postCharacterKey]))}
-    class="button post circle-icon is-black"
-    aria-label="次のキャラクターを表示"
-  >
-    <FontAwesomeIcon icon={faCircleRight} />
-  </a>
-
-  <div class="character-area">
-    <div class="height-image-wrapper">
-      <div>
-        <Image
-          src={characterInfo.portraitImage}
-          alt={characterInfo.name}
-          height={1280}
-          densities={[1, 1.5, 2]}
-          style={{ display: "block", objectFit: "contain" }}
-        />
-      </div>
-    </div>
-    <div class="info pb-5">
-      <div class="detail p-4">
-        <p>{characterInfo.description.replaceAll("<br />", "")}</p>
-        <a
-          href={withBaseUrl(getDormitoryCharacterPageUrl(characterInfo))}
-          class="has-text-weight-bold has-text-black">キャラクター詳細 →</a
-        >
-      </div>
-
-      <AudioSample client:visible characterInfo={characterInfo} />
-    </div>
-  </div>
-
-  <div class="description-area">
-    <h1 class="title">VOICEVOX {characterInfo.name}</h1>
-    <p class="is-size-5">
-      {description}
-      {additionalDescription && additionalDescription}
-    </p>
-    {
-      characterInfo.releaseDate == undefined && (
-        <button
-          {...{ [showDownloadModalAttr]: "" }}
-          class="button mt-5 is-primary is-rounded is-large"
-        >
-          <span class="icon">
-            <FontAwesomeIcon icon={faDownload} />
-          </span>
-          <span class="has-text-weight-semibold">
-            <span class="is-hidden-mobile">VOICEVOX を </span>
-            ダウンロード
-          </span>
-        </button>
-      )
-    }
-    <div class="terms mt-5">
-      <a href={withBaseUrl("/term/")} class="button is-normal is-rounded">
-        <span>VOICEVOX 利用規約</span>
-      </a>
+    <div
+      class="max-md:pt-3xl md:px-3xl col-start-1 row-start-3 flex flex-col items-center justify-center px-0 md:col-start-1 md:row-start-1 md:items-start"
+    >
+      <h1 class="mb-xl text-3xl font-extrabold">
+        VOICEVOX {characterInfo.name}
+      </h1>
+      <p class="text-xl">
+        {description}
+        {additionalDescription && additionalDescription}
+      </p>
       {
-        characterInfo.policyUrl && (
-          <button
-            {...{
-              [showLibraryTermIntroModalCharacterKeyAttr]: characterKey,
-            }}
-            class="button is-normal is-rounded"
-            type="button"
+        characterInfo.releaseDate == undefined && (
+          <Button
+            {...{ [showDownloadModalAttr]: "" }}
+            kind="solid"
+            tone="primary"
+            shape="pill"
+            size="xl"
+            class="mt-xl"
           >
-            <span>{characterInfo.name} 利用規約</span>
-          </button>
+            <span slot="icon">
+              <FontAwesomeIcon icon={faDownload} />
+            </span>
+            <span class="font-semibold">
+              <span class="max-lg:hidden">VOICEVOX を </span>
+              ダウンロード
+            </span>
+          </Button>
         )
       }
-      {
-        characterInfo.additionalProductLinks &&
-          characterInfo.additionalProductLinks.map((obj) => (
-            <a
-              href={obj.url}
-              class="button is-normal is-rounded"
-              target="_blank"
-              rel="noreferrer"
+      <div
+        class="mt-xl gap-xs flex flex-col items-center md:flex-row md:flex-wrap md:items-start"
+      >
+        <Button
+          href={withBaseUrl("/term/")}
+          kind="outline"
+          tone="neutral"
+          shape="pill"
+          size="md"
+        >
+          VOICEVOX 利用規約
+        </Button>
+        {
+          characterInfo.policyUrl && (
+            <Button
+              {...{ [showLibraryTermIntroModalCharacterKeyAttr]: characterKey }}
+              kind="outline"
+              tone="neutral"
+              shape="pill"
+              size="md"
             >
-              <span>{obj.label}</span>
-            </a>
-          ))
-      }
+              {characterInfo.name} 利用規約
+            </Button>
+          )
+        }
+        {
+          characterInfo.additionalProductLinks &&
+            characterInfo.additionalProductLinks.map((obj) => (
+              <Button
+                href={obj.url}
+                target="_blank"
+                rel="noreferrer"
+                kind="outline"
+                tone="neutral"
+                shape="pill"
+                size="md"
+              >
+                {obj.label}
+              </Button>
+            ))
+        }
+      </div>
     </div>
-  </div>
 
-  <div class="charamenu-area">
-    <div class="characters" aria-label="キャラクター一覧">
-      {
-        characterKeys.map((key) => (
-          <KeepScrollAnchor
-            href={withBaseUrl(getProductPageUrl(characterInfos[key]))}
-            class={`character ${key === characterKey ? "active" : ""}`}
-            aria-label={characterInfos[key].name}
-            style={{
-              "--characterLightColor": characterInfos[key].lightColor,
-              "--characterColor": characterInfos[key].color,
-            }}
+    <div class="relative col-start-1 row-start-1 md:col-start-2 md:row-start-1">
+      <div
+        class="absolute inset-y-0 left-0 w-full md:w-[50cqw]"
+        style={{ backgroundColor: characterBackgroundColor }}
+      >
+      </div>
+      <div class="absolute inset-0 flex justify-center overflow-hidden">
+        <div class="flex-none">
+          <Image
+            class="block h-full w-auto object-contain"
+            src={characterInfo.portraitImage}
+            alt={characterInfo.name}
+            height={1280}
+            densities={[1, 1.5, 2]}
+          />
+        </div>
+      </div>
+      <div
+        class="gap-md pb-lg absolute inset-y-0 right-[5%] flex flex-col justify-end"
+      >
+        <div
+          class="gap-md p-md flex w-50 flex-col items-end rounded-2xl bg-white/80"
+        >
+          <p>{characterInfo.description.replaceAll("<br />", "")}</p>
+          <a
+            href={withBaseUrl(getDormitoryCharacterPageUrl(characterInfo))}
+            class="vv-link-subtle font-bold text-black">キャラクター詳細 →</a
           >
-            <Image
-              src={characterInfos[key].bustupImage}
-              alt={characterInfos[key].name}
-              width="64"
-              densities={[1, 1.5, 2]}
-            />
-          </KeepScrollAnchor>
-        ))
-      }
+        </div>
+
+        <AudioSample client:visible characterInfo={characterInfo} />
+      </div>
+    </div>
+
+    <IconButton
+      href={withBaseUrl(getProductPageUrl(characterInfos[prevCharacterKey]))}
+      size="md"
+      class="absolute top-[10%] left-[calc(50%-50vw+1.2rem)] -translate-y-1/2 text-5xl text-black opacity-25 hover:opacity-40"
+      aria-label="前のキャラクターを表示"
+    >
+      <FontAwesomeIcon icon={faCircleLeft} />
+    </IconButton>
+    <IconButton
+      href={withBaseUrl(getProductPageUrl(characterInfos[postCharacterKey]))}
+      size="md"
+      class="absolute top-[10%] right-[calc(50%-50vw+1.2rem)] -translate-y-1/2 text-5xl text-black opacity-25 hover:opacity-40"
+      aria-label="次のキャラクターを表示"
+    >
+      <FontAwesomeIcon icon={faCircleRight} />
+    </IconButton>
+
+    <div class="col-start-1 row-start-2 h-20 md:col-span-2 md:row-start-2">
+      <div
+        class="vv-scrollbar-hidden-until-hover flex h-full overflow-x-auto overflow-y-hidden"
+        aria-label="キャラクター一覧"
+      >
+        {
+          characterKeys.map((key) => (
+            <KeepScrollAnchor
+              href={withBaseUrl(getProductPageUrl(characterInfos[key]))}
+              aria-current={key === characterKey ? "page" : undefined}
+              class:list={[
+                "px-xs box-content flex aspect-square flex-none",
+                key === characterKey
+                  ? "py-md relative h-12 opacity-100"
+                  : "py-lg h-10 opacity-50 hover:opacity-80",
+              ]}
+              aria-label={characterInfos[key].name}
+            >
+              {key === characterKey && (
+                <span
+                  class="absolute top-0 left-0 h-1 w-full"
+                  style={{ backgroundColor: characterInfos[key].color }}
+                />
+              )}
+              <Image
+                class="m-auto h-full w-auto rounded-lg"
+                src={characterInfos[key].bustupImage}
+                alt={characterInfos[key].name}
+                width="64"
+                densities={[1, 1.5, 2]}
+                style={{ backgroundColor: characterInfos[key].lightColor }}
+              />
+            </KeepScrollAnchor>
+          ))
+        }
+      </div>
     </div>
   </div>
 </div>
@@ -182,9 +231,11 @@ const postCharacterKey =
     if (!(characterList instanceof HTMLElement))
       throw new Error(`characterList is not HTMLElement: ${characterList}`);
 
-    const active = characterList.querySelector(".active");
+    const active = characterList.querySelector("[aria-current='page']");
     if (!(active instanceof HTMLElement))
-      throw new Error(`active is not HTMLElement: ${active}`);
+      throw new Error(
+        `aria-current page element is not HTMLElement: ${active}`,
+      );
 
     const activeCenter = active.offsetLeft + active.offsetWidth / 2;
     const containerCenter = characterList.offsetWidth / 2;
@@ -194,185 +245,3 @@ const postCharacterKey =
 
   scrollToCenter();
 </script>
-
-<style lang="scss" define:vars={{ characterBackgroundColor }} is:global>
-  @use "@/styles/vars.scss" as *;
-  @use "@/styles/helper.scss" as *;
-
-  @use "bulma/sass/elements" as *;
-  @use "bulma/sass/utilities/initial-variables" as *;
-  @use "bulma/sass/utilities/mixins" as *;
-  @use "bulma/sass/helpers" as *;
-
-  .top {
-    display: grid;
-    grid-template-areas:
-      "description character"
-      "charamenu charamenu";
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: calc(100vh - 3.25rem - 5rem) 5rem;
-    min-height: calc($desktop / 2);
-    max-height: $desktop;
-
-    position: relative;
-
-    @include mobile {
-      grid-template-areas:
-        "character"
-        "charamenu"
-        "description";
-      grid-template-columns: 100%;
-      grid-template-rows: calc(100vh - 3.25rem - 5rem) 5rem auto;
-      max-height: unset;
-    }
-
-    .prev,
-    .post {
-      position: absolute;
-      z-index: 10; // FIXME: なくしたい
-      top: 10%;
-      transform: translateY(-50%);
-      font-size: 3rem;
-      opacity: 0.25;
-    }
-    .prev {
-      left: calc(50% - 50vw + 1.2rem);
-    }
-    .post {
-      right: calc(50% - 50vw + 1.2rem);
-    }
-
-    /* キャラクターエリア */
-    .character-area {
-      grid-area: character;
-      position: relative;
-
-      &::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 50vw;
-        height: 100%;
-        background-color: var(--characterBackgroundColor);
-
-        @include mobile {
-          width: 100%; // FIXME: 左右に空間が空いてしまう
-        }
-      }
-
-      .info {
-        position: absolute;
-        top: 0;
-        right: 5%;
-
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        gap: 1rem;
-
-        .detail,
-        .sample {
-          background-color: #fffc;
-          width: 200px;
-          border-radius: 16px;
-          display: flex;
-          flex-direction: column;
-        }
-
-        .detail {
-          align-items: flex-end;
-          gap: 1rem;
-        }
-
-        .sample {
-          align-items: center;
-        }
-      }
-    }
-
-    /* 説明エリア */
-    .description-area {
-      grid-area: description;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: start;
-      @extend .px-6;
-
-      @include mobile {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        align-items: center;
-        padding-top: 3rem;
-      }
-
-      .terms {
-        display: flex;
-        gap: 0.5rem;
-        flex-wrap: wrap;
-
-        @include mobile {
-          flex-direction: column;
-          align-items: center;
-        }
-      }
-    }
-
-    /* キャラクターメニューエリア */
-    .charamenu-area {
-      grid-area: charamenu;
-
-      .characters {
-        display: flex;
-        overflow: auto hidden;
-        margin: 0 auto auto;
-        height: 100%;
-        scrollbar-width: none;
-
-        &:hover {
-          scrollbar-width: thin;
-        }
-
-        .character {
-          --padding-y: 1.25rem;
-          display: flex;
-          opacity: 0.5;
-          height: calc(5rem - var(--padding-y) * 2);
-          box-sizing: content-box;
-          aspect-ratio: 1;
-          padding: var(--padding-y) 0.5rem;
-
-          &:hover {
-            opacity: 0.8;
-          }
-
-          &.active {
-            --padding-y: 1rem;
-            opacity: 1;
-            position: relative;
-
-            &:before {
-              content: "";
-              position: absolute;
-              top: 0;
-              left: 0;
-              height: 0.25rem;
-              width: 100%;
-              background-color: var(--characterColor);
-            }
-          }
-
-          img {
-            background-color: var(--characterLightColor);
-            height: 100%;
-            width: auto;
-            border-radius: 0.45rem;
-            margin: auto;
-          }
-        }
-      }
-    }
-  }
-</style>

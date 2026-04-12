@@ -28,24 +28,21 @@ const shareThumb = (await getImage({ src: image, width: 1200 })).src;
   image={shareThumb}
   imageAlt=""
 >
-  <main>
-    <section class="section">
-      <div class="container">
-        <h1 class="title is-3">トップイラスト {index + 1}</h1>
+  <main class="py-3xl">
+    <div class="px-md mx-auto max-w-7xl">
+      <h1 class="mb-xl text-3xl font-extrabold text-neutral-700">
+        トップイラスト {index + 1}
+      </h1>
+      <div>
         <div>
           <Image
             src={image}
-            style={{
-              width: "100%",
-              height: "100%",
-              display: "block",
-              objectFit: "contain",
-            }}
+            class="block h-full w-full object-contain"
             alt={`トップイラスト${index + 1}の大きな画像`}
           />
         </div>
-        <p class="has-text-right mt-4">イラスト：{illustrator}</p>
       </div>
-    </section>
+      <p class="mt-md text-right text-black">イラスト：{illustrator}</p>
+    </div>
   </main>
 </Base>

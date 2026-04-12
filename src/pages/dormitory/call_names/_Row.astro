@@ -31,8 +31,13 @@ const callNameInfo = callNameInfos[characterKey];
 
     if (callNames == undefined) {
       return (
-        <td class="unknown">
-          <p style={{ outlineColor: characterInfo.color }}>？</p>
+        <td class="p-2xs h-20 w-[150px] border-0 !text-center align-middle text-neutral-500">
+          <p
+            style={{ outlineColor: characterInfo.color }}
+            class="cursor-default select-none"
+          >
+            ？
+          </p>
         </td>
       );
     } else {

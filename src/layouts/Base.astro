@@ -14,6 +14,7 @@ import {
   isTest,
   stripHtmlTags,
 } from "@/helper";
+import "@/styles/global.css";
 import type { ImageMetadata } from "astro";
 import { SEO } from "astro-seo";
 import { getImage } from "astro:assets";
@@ -137,50 +138,19 @@ const googleAnalyticsSrc = `https://www.googletagmanager.com/gtag/js?id=${GA_TRA
     <ClientRouter />
   </head>
 
-  <body class={isDark ? "has-background-black" : "has-background-white"}>
-    <Header defaultHide={defaultHideHeader} isDark={isDark} isNemo={isNemo} />
+  <body
+    class="flex min-h-screen flex-col bg-white text-black dark:bg-zinc-900 dark:text-white"
+  >
+    <Header defaultHide={defaultHideHeader} isNemo={isNemo} />
 
-    <slot />
-
-    <footer class={`footer appearance ${isDark ? "has-background-black" : ""}`}>
-      <Footer isDark={isDark} />
-    </footer>
-    <div class="footer height-holder">
-      {/* 空間を空けるために必要 */}
-      <Footer isDark={isDark} />
+    <div class="grow">
+      <slot />
     </div>
+
+    <footer class="px-xl pt-3xl bg-neutral-50 pb-24 dark:bg-zinc-950">
+      <Footer />
+    </footer>
 
     <Modals />
   </body>
 </html>
-
-<style lang="scss" is:global>
-  @use "@/styles/global.scss";
-  @use "@/styles/bulma.scss";
-
-  // ページの高さを最低でも画面の高さに合わせる
-  html {
-    height: -webkit-fill-available;
-  }
-  body {
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
-  }
-
-  body {
-    position: relative;
-    overflow: hidden;
-
-    .footer {
-      // footerを最下部に固定するためのクラス
-      &.appearance {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-      }
-      &.height-holder {
-        visibility: hidden;
-      }
-    }
-  }
-</style>

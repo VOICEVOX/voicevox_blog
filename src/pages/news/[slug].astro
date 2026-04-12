@@ -26,13 +26,15 @@ const { frontmatter } = article;
   description="無料で使えるテキスト読み上げ・歌声合成ソフトウェア、VOICEVOXのニュースです。"
   noindex={true}
 >
-  <section class="section">
-    <div class="container is-max-desktop">
-      <h1 class="title">{frontmatter.title}</h1>
-      <p class="has-text-grey-light">{frontmatter.date}</p>
+  <main class="py-3xl">
+    <div class="px-md mx-auto max-w-5xl">
+      <h1 class="mb-xs text-3xl font-bold text-neutral-950">
+        {frontmatter.title}
+      </h1>
+      <p class="text-neutral-400">{frontmatter.date}</p>
       <Markdown>
-        <div class="markdown mt-5" set:html={article.compiledContent()} />
+        <div class="markdown mt-lg" set:html={article.compiledContent()} />
       </Markdown>
     </div>
-  </section>
+  </main>
 </Base>

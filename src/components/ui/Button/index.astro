@@ -1,0 +1,132 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { buildButtonClassName } from "./helper";
+import type { ButtonKind, ButtonShape, ButtonSize, ButtonTone } from "./helper";
+
+type AnchorHtmlAttrs = Omit<HTMLAttributes<"a">, "href" | "onClick">;
+type ButtonHtmlAttrs = Omit<HTMLAttributes<"button">, "type" | "disabled">;
+
+type SharedProps = {
+  kind: ButtonKind;
+  tone: ButtonTone;
+  shape: ButtonShape;
+  size: ButtonSize;
+  class?: string;
+};
+type AnchorProps = SharedProps & AnchorHtmlAttrs & { href: string };
+type ButtonProps = SharedProps & ButtonHtmlAttrs & { href?: never };
+
+type Props = AnchorProps | ButtonProps;
+
+type Resolved =
+  | {
+      tag: "a";
+      href: string;
+      finalClassName: string;
+      htmlAttrs: AnchorHtmlAttrs;
+      hasStartIcon: boolean;
+      hasEndIcon: boolean;
+    }
+  | {
+      tag: "button";
+      finalClassName: string;
+      htmlAttrs: ButtonHtmlAttrs;
+      hasStartIcon: boolean;
+      hasEndIcon: boolean;
+    };
+
+function resolve(props: Props): Resolved {
+  const hasStartIcon = Astro.slots.has("icon");
+  const hasEndIcon = Astro.slots.has("endIcon");
+  const withIcon = hasStartIcon || hasEndIcon;
+
+  if (typeof props.href === "string") {
+    const {
+      href,
+      kind,
+      tone,
+      shape,
+      size,
+      class: className,
+      ...htmlAttrs
+    } = props;
+    return {
+      tag: "a",
+      href,
+      hasStartIcon,
+      hasEndIcon,
+      finalClassName: buildButtonClassName({
+        kind,
+        tone,
+        shape,
+        size,
+        withIcon,
+        className,
+      }),
+      htmlAttrs,
+    };
+  }
+
+  const { kind, tone, shape, size, class: className, ...htmlAttrs } = props;
+  return {
+    tag: "button",
+    hasStartIcon,
+    hasEndIcon,
+    finalClassName: buildButtonClassName({
+      kind,
+      tone,
+      shape,
+      size,
+      withIcon,
+      className,
+    }),
+    htmlAttrs,
+  };
+}
+
+const resolved = resolve(Astro.props);
+---
+
+{
+  resolved.tag === "a" ? (
+    <a
+      href={resolved.href}
+      class={resolved.finalClassName}
+      {...resolved.htmlAttrs}
+    >
+      {resolved.hasStartIcon && (
+        <span class="vv-button-icon vv-button-icon-start">
+          <slot name="icon" />
+        </span>
+      )}
+      <span class="vv-button-label">
+        <slot />
+      </span>
+      {resolved.hasEndIcon && (
+        <span class="vv-button-icon vv-button-icon-end">
+          <slot name="endIcon" />
+        </span>
+      )}
+    </a>
+  ) : (
+    <button
+      type="button"
+      class={resolved.finalClassName}
+      {...resolved.htmlAttrs}
+    >
+      {resolved.hasStartIcon && (
+        <span class="vv-button-icon vv-button-icon-start">
+          <slot name="icon" />
+        </span>
+      )}
+      <span class="vv-button-label">
+        <slot />
+      </span>
+      {resolved.hasEndIcon && (
+        <span class="vv-button-icon vv-button-icon-end">
+          <slot name="endIcon" />
+        </span>
+      )}
+    </button>
+  )
+}

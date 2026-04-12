@@ -1,47 +1,48 @@
 ---
+import Button from "@/components/ui/Button/index.astro";
 import { showPrivacyPolicyModalAttr } from "@/store";
 import { faGithub, faXTwitter } from "@fortawesome/free-brands-svg-icons";
-import FontAwesomeIcon from "./FontAwesomeIcon.astro";
-
-interface Props {
-  isDark?: boolean; // Nemoやソングのページかどうか
-}
-
-const { isDark } = Astro.props;
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 ---
 
-<div class={`container is-flex is-justify-content-center`}>
-  <a
-    class={`button is-small ml-1 mr-1 ${!isDark ? "" : "is-dark"}`}
+<div class="flex justify-center">
+  <Button
     href="https://github.com/VOICEVOX/voicevox"
     target="_blank"
     rel="noreferrer"
+    kind="outline"
+    tone="neutral"
+    shape="rounded"
+    size="sm"
+    class="mx-2xs"
   >
-    <span class="icon">
+    <span slot="icon">
       <FontAwesomeIcon icon={faGithub} />
     </span>
-    <span>GitHub</span>
-  </a>
-  <a
-    class={`button is-small ml-1 mr-1 ${!isDark ? "" : "is-dark"}`}
+    GitHub
+  </Button>
+  <Button
     href="https://x.com/voicevox_pj"
     target="_blank"
     rel="noreferrer"
+    kind="outline"
+    tone="neutral"
+    shape="rounded"
+    size="sm"
+    class="mx-2xs"
   >
-    <span class="icon">
+    <span slot="icon">
       <FontAwesomeIcon icon={faXTwitter} />
     </span>
-    <span>Official SNS</span>
-  </a>
+    Official SNS
+  </Button>
 </div>
-<div class="container is-flex is-justify-content-center mt-2">
+<div class="mt-xs flex justify-center">
   <button
     {...{ [showPrivacyPolicyModalAttr]: "" }}
-    class={`is-size-7 ml-1 mr-1 ${isDark ? "has-text-primary" : ""}`}
+    class="dark:text-primary mx-2xs text-xs"
   >
     プライバシーポリシー
   </button>
-  <p class={`is-size-7	ml-1 mr-1 ${isDark ? "has-text-white-bis" : ""}`}>
-    © Hiroshiba Kazuyuki
-  </p>
+  <p class="mx-2xs text-xs dark:text-neutral-100">© Hiroshiba Kazuyuki</p>
 </div>

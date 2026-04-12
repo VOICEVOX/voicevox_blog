@@ -1,0 +1,22 @@
+---
+import PlayButton from "@/components/PlayButton/index.astro";
+import Showcase from "../_Showcase.astro";
+
+import zundamonAudio1 from "@/assets/talk-audios/zundamon-normal-001.wav";
+import zundamonAudio2 from "@/assets/talk-audios/zundamon-normal-002.wav";
+import zundamonAudio3 from "@/assets/talk-audios/zundamon-normal-003.wav";
+---
+
+<Showcase title="PlayButton">
+  <div class="p-md gap-xl flex flex-col">
+    <div class="gap-xs flex items-center">
+      <PlayButton audio={zundamonAudio1} name="ずんだもんサンプル1" />
+      <PlayButton audio={zundamonAudio2} name="ずんだもんサンプル2" />
+      <PlayButton audio={zundamonAudio3} name="ずんだもんサンプル3" />
+    </div>
+    <div class="gap-md flex items-center">
+      <PlayButton audio={zundamonAudio1} name="女性ボイス" color="#f1736f" />
+      <PlayButton audio={zundamonAudio1} name="男性ボイス" color="#6fcef1" />
+    </div>
+  </div>
+</Showcase>

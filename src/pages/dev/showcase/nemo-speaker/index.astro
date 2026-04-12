@@ -1,0 +1,28 @@
+---
+import SpeakerComponent from "@/pages/nemo/_SpeakerComponent.astro";
+import { getSpeakerInfo } from "@/pages/nemo/constants";
+import Showcase from "../_Showcase.astro";
+
+const speakerInfos = [
+  getSpeakerInfo("nemo_female_002"),
+  getSpeakerInfo("nemo_male_001"),
+];
+---
+
+<Showcase title="SpeakerComponent (nemo)" bodyClass="bg-zinc-950 text-white">
+  <div class="p-md gap-2xl flex flex-col">
+    <div
+      class="gap-2xl px-md grid w-full place-content-center max-md:grid-cols-[repeat(1,minmax(0,25rem))] md:grid-cols-2"
+    >
+      {speakerInfos.map((info) => <SpeakerComponent info={info} />)}
+    </div>
+    <div
+      class="gap-2xl px-md grid w-full place-content-center max-md:[grid-template-columns:repeat(1,minmax(0,25rem))] md:grid-cols-2"
+    >
+      <SpeakerComponent
+        info={speakerInfos[0]}
+        debugForceCvDropdownOpen={true}
+      />
+    </div>
+  </div>
+</Showcase>

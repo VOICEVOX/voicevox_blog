@@ -1,0 +1,13 @@
+---
+import { compiledContent as privacyPolicyHtml } from "@/assets/privacy-policy.md";
+import { PrivacyPolicyModal } from "@/components/modal/MarkdownModals";
+import Showcase from "../_Showcase.astro";
+---
+
+<Showcase title="Modal: プライバシーポリシー">
+  <PrivacyPolicyModal client:load html={await privacyPolicyHtml()} />
+  <script>
+    import { $privacyPolicyModal } from "@/store";
+    $privacyPolicyModal.set(true);
+  </script>
+</Showcase>

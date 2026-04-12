@@ -23,31 +23,28 @@ const callFrom: string | undefined =
 const targetCharacterInfo = characterInfos[targetCharacterKey];
 ---
 
-<div class="description-call-box">
-  <div class="description-call-line">
-    <div class="description-call-one">
+<div class="gap-xs flex">
+  <div class="flex flex-1">
+    <div class="flex flex-1 items-center justify-center p-0">
       <span
-        class={`description-call-text ${callTo ? "" : "unknown"}`}
+        class={`flex-1 border-3 rounded-lg py-2xs text-[0.8rem] text-center ${callTo ? "" : "text-neutral-500"}`}
         style={{ borderColor: characterInfo.color }}
       >
         {callTo || "？"}
       </span>
-      <span
-        class="description-call-arrow"
-        style={{ color: characterInfo.color }}
-      >
+      <span class="-my-md text-2xl" style={{ color: characterInfo.color }}>
         →
       </span>
     </div>
-    <div class="description-call-one">
+    <div class="flex flex-1 items-center justify-center p-0">
       <span
-        class="description-call-arrow"
+        class="-my-md text-2xl"
         style={{ color: targetCharacterInfo.color }}
       >
         ←
       </span>
       <span
-        class={`description-call-text ${callFrom ? "" : "unknown"}`}
+        class={`flex-1 border-3 rounded-lg py-2xs text-[0.8rem] text-center ${callFrom ? "" : "text-neutral-500"}`}
         style={{ borderColor: targetCharacterInfo.color }}
       >
         {callFrom || "？"}
@@ -64,13 +61,8 @@ const targetCharacterInfo = characterInfos[targetCharacterKey];
       alt={targetCharacterInfo.name}
       width={56}
       densities={[1, 1.5, 2]}
-      style={{
-        borderColor: targetCharacterInfo.color,
-        borderStyle: "solid",
-        borderRadius: "0.5rem",
-        display: "block",
-        height: "100%",
-      }}
+      class="block h-full rounded-lg border-3"
+      style={{ borderColor: targetCharacterInfo.color }}
     />
   </a>
 </div>

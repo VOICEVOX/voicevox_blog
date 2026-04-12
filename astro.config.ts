@@ -1,6 +1,7 @@
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
+import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
 
 const site = process.env.NETLIFY
@@ -31,13 +32,7 @@ export default defineConfig({
   ],
 
   vite: {
-    css: {
-      preprocessorOptions: {
-        scss: {
-          quietDeps: true, // Bulmaの警告を抑制
-        },
-      },
-    },
+    plugins: [tailwindcss()],
   },
 
   devToolbar: {

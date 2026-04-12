@@ -1,6 +1,9 @@
+import Button from "@/components/ui/Button/Button";
+import { useAdaptivePopup } from "@/components/ui/popup/useAdaptivePopup";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useId, useState } from "react";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import React, { useState } from "react";
 
 export function useStyleDropdownController({ styles }: { styles: string[] }) {
   const [selectedStyle, setSelectedStyle] = useState(
@@ -17,55 +20,92 @@ export default function StyleDropdown({
   selectedStyle,
   setSelectedStyle,
   characterName,
+  direction = "down",
+  debugForceOpen = false,
   className,
 }: {
   styles: string[];
   selectedStyle: string;
   setSelectedStyle: (style: string) => void;
   characterName: string;
+  direction?: "up" | "down";
+  debugForceOpen?: boolean;
 } & React.HTMLAttributes<HTMLDivElement>) {
-  const [isOpenDropdown, setIsOpenDropdown] = useState(false);
-  const id = useId();
+  const isUp = direction === "up";
+  const {
+    contentRef,
+    handleContentCloseAutoFocus,
+    handleHoverLeave,
+    handleOpenChange,
+    handleTriggerKeyDownCapture,
+    handleTriggerMouseEnter,
+    handleTriggerPointerDownCapture,
+    open,
+    triggerWrapperRef,
+  } = useAdaptivePopup({
+    behavior: "menu",
+    debugForceOpen,
+  });
+
   return (
-    <div
-      className={`dropdown ${isOpenDropdown ? "is-active" : ""} ${className}`}
-      onMouseEnter={() => setIsOpenDropdown(true)}
-      onMouseLeave={() => setIsOpenDropdown(false)}
+    <DropdownMenu.Root
+      modal={false}
+      open={open}
+      onOpenChange={handleOpenChange}
     >
-      <div className="dropdown-trigger">
-        <button
-          className="button is-rounded"
-          aria-haspopup="true"
-          aria-controls={id}
-          type="button"
-          onFocus={() => setIsOpenDropdown(true)}
-          onBlur={() => setIsOpenDropdown(false)}
-          aria-label={`${characterName}のサンプルボイスのスタイルを選択`}
+      <div className={`relative inline-block ${className || ""}`}>
+        <div
+          ref={triggerWrapperRef}
+          onMouseEnter={handleTriggerMouseEnter}
+          onMouseLeave={(event) => {
+            handleHoverLeave(event.relatedTarget);
+          }}
         >
-          <span>{selectedStyle}</span>
-          <span className="icon">
-            <FontAwesomeIcon icon={faAngleDown} />
-          </span>
-        </button>
-      </div>
-      <div className="dropdown-menu" role="menu" id={id}>
-        <div className="dropdown-content">
-          {styles.map((style, index) => (
-            <button
-              key={index}
-              className={`dropdown-item is-primary ${
-                style == selectedStyle ? "is-active" : ""
-              }`}
-              onMouseDown={() => {
-                setSelectedStyle(style);
-                setIsOpenDropdown(false);
-              }}
+          <DropdownMenu.Trigger asChild>
+            <Button
+              kind="outline"
+              tone="neutral"
+              shape="pill"
+              size="md"
+              aria-label={`${characterName}のサンプルボイスのスタイルを選択`}
+              endIcon={<FontAwesomeIcon icon={faAngleDown} />}
+              onMouseEnter={handleTriggerMouseEnter}
+              onKeyDownCapture={handleTriggerKeyDownCapture}
+              onPointerDownCapture={handleTriggerPointerDownCapture}
             >
-              {style}
-            </button>
-          ))}
+              {selectedStyle}
+            </Button>
+          </DropdownMenu.Trigger>
         </div>
+
+        <DropdownMenu.Portal>
+          <DropdownMenu.Content
+            ref={contentRef}
+            side={isUp ? "top" : "bottom"}
+            align="start"
+            className="p-2xs z-(--z-popup) w-max min-w-32 rounded-md bg-white shadow-lg ring-1 ring-black/5"
+            onCloseAutoFocus={handleContentCloseAutoFocus}
+            onMouseLeave={(event) => {
+              handleHoverLeave(event.relatedTarget);
+            }}
+          >
+            <DropdownMenu.RadioGroup
+              value={selectedStyle}
+              onValueChange={setSelectedStyle}
+            >
+              {styles.map((style) => (
+                <DropdownMenu.RadioItem
+                  key={style}
+                  value={style}
+                  className="vv-status-layer px-md data-[state=checked]:bg-primary block w-full rounded py-1.5 text-left text-sm whitespace-nowrap text-neutral-900 data-[state=checked]:font-semibold"
+                >
+                  {style}
+                </DropdownMenu.RadioItem>
+              ))}
+            </DropdownMenu.RadioGroup>
+          </DropdownMenu.Content>
+        </DropdownMenu.Portal>
       </div>
-    </div>
+    </DropdownMenu.Root>
   );
 }

@@ -1,0 +1,83 @@
+---
+import Button from "@/components/ui/Button/index.astro";
+import { faArrowRight, faDownload } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ReactButtonDemo } from "./_ReactButtonDemo.tsx";
+import Showcase from "../_Showcase.astro";
+---
+
+<Showcase title="Button">
+  <div class="p-md gap-xl flex flex-col">
+    <div class="gap-md flex flex-wrap items-center">
+      <Button kind="solid" tone="primary" shape="pill" size="sm">sm</Button>
+      <Button kind="solid" tone="primary" shape="pill" size="md">md</Button>
+      <Button kind="solid" tone="primary" shape="pill" size="lg">lg</Button>
+      <Button kind="solid" tone="primary" shape="pill" size="xl">xl</Button>
+    </div>
+
+    <div class="gap-md flex flex-wrap items-center">
+      <Button kind="solid" tone="primary" shape="pill" size="sm">
+        <span slot="icon"><FontAwesomeIcon icon={faDownload} /></span>
+        sm
+      </Button>
+      <Button kind="solid" tone="primary" shape="pill" size="md">
+        <span slot="icon"><FontAwesomeIcon icon={faDownload} /></span>
+        md
+      </Button>
+      <Button kind="solid" tone="primary" shape="pill" size="lg">
+        <span slot="icon"><FontAwesomeIcon icon={faDownload} /></span>
+        lg
+      </Button>
+      <Button kind="solid" tone="primary" shape="pill" size="xl">
+        <span slot="icon"><FontAwesomeIcon icon={faDownload} /></span>
+        xl
+      </Button>
+    </div>
+
+    <div class="gap-md flex flex-wrap items-center">
+      <Button kind="outline" tone="neutral" shape="pill" size="sm">
+        <span slot="icon"><FontAwesomeIcon icon={faArrowRight} /></span>
+        sm
+      </Button>
+      <Button kind="outline" tone="neutral" shape="pill" size="md">
+        <span slot="icon"><FontAwesomeIcon icon={faArrowRight} /></span>
+        md
+      </Button>
+      <Button kind="outline" tone="neutral" shape="rounded" size="sm">
+        <span slot="icon"><FontAwesomeIcon icon={faArrowRight} /></span>
+        sm
+      </Button>
+      <Button kind="outline" tone="neutral" shape="rounded" size="md">
+        <span slot="icon"><FontAwesomeIcon icon={faArrowRight} /></span>
+        md
+      </Button>
+    </div>
+
+    <div data-theme="dark" class="p-xl rounded-lg bg-black">
+      <div class="gap-md flex flex-wrap items-center">
+        <Button kind="solid" tone="white" shape="pill" size="md">md</Button>
+        <Button kind="solid" tone="white" shape="pill" size="lg">lg</Button>
+        <Button kind="solid" tone="white" shape="pill" size="xl">xl</Button>
+        <Button kind="solid" tone="white" shape="pill" size="md">
+          <span slot="icon"><FontAwesomeIcon icon={faArrowRight} /></span>
+          md
+        </Button>
+      </div>
+    </div>
+
+    <div class="gap-md flex flex-wrap items-center">
+      <Button
+        kind="solid"
+        tone="primary"
+        shape="pill"
+        size="sm"
+        class="md:vv-button-size-md lg:vv-button-size-lg"
+      >
+        <span slot="icon"><FontAwesomeIcon icon={faDownload} /></span>
+        Nemo風
+      </Button>
+    </div>
+
+    <ReactButtonDemo client:load />
+  </div>
+</Showcase>

@@ -1,0 +1,361 @@
+@import "tailwindcss";
+@import "@fortawesome/fontawesome-svg-core/styles.css";
+@import "../components/ui/IconButton/IconButton.css";
+@import "../components/ui/Button/Button.css";
+
+@font-face {
+  font-family: "Unhinted Rounded M+ 1p";
+  src: url("/fonts/unhinted-rounded-mplus-1p-light.woff2");
+  font-weight: 300; /* Light */
+  font-display: fallback;
+}
+@font-face {
+  font-family: "Unhinted Rounded M+ 1p";
+  src: url("/fonts/unhinted-rounded-mplus-1p-regular.woff2");
+  font-weight: normal;
+  font-display: fallback;
+}
+@font-face {
+  font-family: "Unhinted Rounded M+ 1p";
+  src: url("/fonts/unhinted-rounded-mplus-1p-medium.woff2");
+  font-weight: 500; /* Medium */
+  font-display: fallback;
+}
+@font-face {
+  font-family: "Unhinted Rounded M+ 1p";
+  src: url("/fonts/unhinted-rounded-mplus-1p-bold.woff2");
+  font-weight: bold;
+  font-display: fallback;
+}
+
+/*
+ * 本製品では「LINE Seed」フォントを使用しています。このフォントはLINE Corp.によって作成され、
+ * SIL Open Font License 1.1のもとでリリースされています。
+ * ライセンスの詳細については、https://scripts.sil.org/OFL をご覧ください。
+ */
+
+@font-face {
+  font-family: "LINE Seed";
+  src: url("/fonts/LINESeedJP_OTF_Th.woff2");
+  font-weight: 100; /* Thin */
+  font-display: fallback;
+}
+@font-face {
+  font-family: "LINE Seed";
+  src: url("/fonts/LINESeedJP_OTF_Rg.woff2");
+  font-weight: normal;
+  font-display: fallback;
+}
+@font-face {
+  font-family: "LINE Seed";
+  src: url("/fonts/LINESeedJP_OTF_Bd.woff2");
+  font-weight: bold;
+  font-display: fallback;
+}
+@font-face {
+  font-family: "LINE Seed";
+  src: url("/fonts/LINESeedJP_OTF_Eb.woff2");
+  font-weight: 800; /* Extra Bold */
+  font-display: fallback;
+}
+
+@custom-variant dark (
+  &:where([data-theme=dark], [data-theme=dark] *):not(:where([data-theme=dark] [data-theme=light] *))
+);
+
+@theme {
+  --color-primary: #a5d4ad;
+  --color-link: rgb(48, 100, 57);
+  --color-link-hover: rgb(38, 80, 47);
+  --color-link-dark: rgb(165, 212, 173);
+  --color-link-dark-hover: rgb(185, 232, 193);
+  --font-sans: "Unhinted Rounded M+ 1p", ui-sans-serif, system-ui, sans-serif;
+
+  --z-sticky-row: 1;
+  --z-sticky-column: 2;
+  --z-sticky-corner: 3;
+  --z-header: 10;
+  --z-popup: 20;
+  --z-modal: 30;
+
+  --spacing-2xs: calc(var(--spacing) * 1);
+  --spacing-xs: calc(var(--spacing) * 2);
+  --spacing-sm: calc(var(--spacing) * 3);
+  --spacing-md: calc(var(--spacing) * 4);
+  --spacing-lg: calc(var(--spacing) * 5);
+  --spacing-xl: calc(var(--spacing) * 6);
+  --spacing-2xl: calc(var(--spacing) * 8);
+  --spacing-3xl: calc(var(--spacing) * 12);
+  --spacing-4xl: calc(var(--spacing) * 20);
+}
+
+/*
+ * --spacing-*を定義すると--container-*が効かなくなる問題のワークアラウンド
+ * 参照: https://github.com/tailwindlabs/tailwindcss/discussions/17777#discussioncomment-12937263
+ */
+@theme inline {
+  --width-3xs: var(--container-3xs);
+  --width-2xs: var(--container-2xs);
+  --width-xs: var(--container-xs);
+  --width-sm: var(--container-sm);
+  --width-md: var(--container-md);
+  --width-lg: var(--container-lg);
+  --width-xl: var(--container-xl);
+  --width-2xl: var(--container-2xl);
+  --width-3xl: var(--container-3xl);
+  --width-4xl: var(--container-4xl);
+  --width-5xl: var(--container-5xl);
+  --width-6xl: var(--container-6xl);
+  --width-7xl: var(--container-7xl);
+
+  --min-width-3xs: var(--container-3xs);
+  --min-width-2xs: var(--container-2xs);
+  --min-width-xs: var(--container-xs);
+  --min-width-sm: var(--container-sm);
+  --min-width-md: var(--container-md);
+  --min-width-lg: var(--container-lg);
+  --min-width-xl: var(--container-xl);
+  --min-width-2xl: var(--container-2xl);
+  --min-width-3xl: var(--container-3xl);
+  --min-width-4xl: var(--container-4xl);
+  --min-width-5xl: var(--container-5xl);
+  --min-width-6xl: var(--container-6xl);
+  --min-width-7xl: var(--container-7xl);
+
+  --max-width-3xs: var(--container-3xs);
+  --max-width-2xs: var(--container-2xs);
+  --max-width-xs: var(--container-xs);
+  --max-width-sm: var(--container-sm);
+  --max-width-md: var(--container-md);
+  --max-width-lg: var(--container-lg);
+  --max-width-xl: var(--container-xl);
+  --max-width-2xl: var(--container-2xl);
+  --max-width-3xl: var(--container-3xl);
+  --max-width-4xl: var(--container-4xl);
+  --max-width-5xl: var(--container-5xl);
+  --max-width-6xl: var(--container-6xl);
+  --max-width-7xl: var(--container-7xl);
+}
+
+@layer base {
+  /* ページの高さを最低でも画面の高さに合わせる */
+  html {
+    height: -webkit-fill-available;
+    scroll-padding-top: 3.25rem;
+  }
+  body {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
+@layer components {
+  .markdown {
+    color: var(--color-black);
+    line-height: 1.5;
+  }
+
+  .markdown h2 {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-weight-extrabold);
+    color: var(--color-neutral-800);
+    line-height: 1.25;
+    margin-top: --spacing(7);
+    margin-bottom: --spacing(3);
+  }
+
+  .markdown h3 {
+    font-size: var(--text-xl);
+    font-weight: var(--font-weight-extrabold);
+    color: var(--color-neutral-800);
+    line-height: 1.25;
+    margin-top: --spacing(7);
+    margin-bottom: --spacing(3);
+  }
+
+  .markdown h4 {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-extrabold);
+    color: var(--color-neutral-800);
+    line-height: 1.25;
+    margin-top: --spacing(6);
+    margin-bottom: --spacing(3);
+  }
+
+  .markdown h1 {
+    font-size: var(--text-3xl);
+    font-weight: var(--font-weight-extrabold);
+    color: var(--color-neutral-800);
+    line-height: --spacing(9);
+    margin-bottom: --spacing(4);
+  }
+
+  .markdown p {
+    margin-bottom: --spacing(4);
+  }
+
+  .markdown ul,
+  .markdown ol {
+    margin-left: --spacing(7);
+    margin-bottom: --spacing(4);
+    list-style-position: outside;
+  }
+
+  .markdown ul {
+    list-style-type: disc;
+  }
+
+  .markdown ol {
+    list-style-type: decimal;
+  }
+
+  .markdown li {
+    margin-bottom: --spacing(2);
+  }
+
+  .markdown img {
+    display: inline-block;
+    margin-bottom: --spacing(3);
+    vertical-align: middle;
+    border: 1px solid var(--color-neutral-800);
+  }
+
+  .markdown a {
+    color: var(--color-link);
+    text-decoration: underline;
+  }
+
+  .markdown a:hover {
+    color: var(--color-link-hover);
+  }
+
+  .markdown code {
+    background-color: var(--color-neutral-100);
+    padding: 0.25em 0.5em;
+    border-radius: 7px;
+    font-size: var(--text-sm);
+    color: var(--color-rose-700);
+    font-family: Consolas, Menlo, "Liberation Mono", monospace;
+  }
+
+  .markdown pre {
+    background-color: var(--color-neutral-100);
+    padding: --spacing(4);
+    border-radius: var(--radius-md);
+    overflow-x: auto;
+    margin-bottom: --spacing(4);
+  }
+
+  .markdown pre code {
+    background-color: transparent;
+    padding: 0;
+    color: inherit;
+  }
+}
+
+@utility vv-scrollbar-thin {
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+@utility vv-link {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-link);
+  text-decoration: underline;
+
+  @variant hover {
+    color: var(--color-link-hover);
+  }
+
+  @variant dark {
+    color: var(--color-link-dark);
+
+    @variant hover {
+      color: var(--color-link-dark-hover);
+    }
+  }
+}
+
+@utility vv-link-subtle {
+  text-decoration: none;
+  text-underline-offset: 2px;
+
+  @variant hover {
+    text-decoration: underline;
+  }
+}
+
+/** ボタンなどの状態を表すレイヤーを追加する */
+@utility vv-status-layer {
+  position: relative;
+  isolation: isolate;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background-color: currentColor;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  @variant hover {
+    &::after {
+      opacity: 0.08;
+    }
+  }
+}
+
+@utility vv-hr {
+  height: 0.125rem;
+  border: 0;
+  background-color: var(--color-neutral-100);
+}
+
+@layer utilities {
+  [role="dialog"] hr.vv-hr {
+    background-color: var(--color-neutral-200);
+  }
+}
+
+@utility vv-scrollbar-hidden-until-hover {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
+  @variant hover {
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+  }
+}
+
+@utility vv-anchor-offset-* {
+  /* idタグにジャンプるするときのオフセット */
+  scroll-margin-top: --spacing(--value(integer));
+}

@@ -1,0 +1,22 @@
+---
+import { characterInfos } from "@/constants/characterInfo";
+import AudioSample from "@/pages/product/_AudioSample";
+import Showcase from "../_Showcase.astro";
+
+const characterInfo = characterInfos["ずんだもん"];
+
+// NOTE: src/pages/product/_TopContainer.astro の is:global スタイルを dev/showcase でも再現するため、必要最小限を複製しています
+---
+
+<Showcase title="AudioSample (product)">
+  <div class="p-md">
+    <div
+      class="p-2xl inline-block rounded-2xl"
+      style={{ backgroundColor: characterInfo.lightColor }}
+    >
+      <div class="w-50">
+        <AudioSample client:load characterInfo={characterInfo} />
+      </div>
+    </div>
+  </div>
+</Showcase>

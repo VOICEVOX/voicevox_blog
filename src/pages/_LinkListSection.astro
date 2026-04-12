@@ -6,48 +6,34 @@ import { isDevelopment, withBaseUrl } from "@/helper";
  */
 ---
 
-<section class="section">
-  <div class="container is-max-desktop is-flex is-flex-direction-column">
-    <h2 id="link" class="jump-anchor-header-padding title">
-      <a href={withBaseUrl("#link")} class="has-text-black">リンク</a>
+<section class="py-3xl">
+  <div class="px-md mx-auto flex max-w-5xl flex-col">
+    <h2 id="link" class="vv-anchor-offset-4 mb-xl text-3xl font-bold">
+      <a
+        href={withBaseUrl("#link")}
+        class="text-neutral-950 dark:text-neutral-950">リンク</a
+      >
     </h2>
-    <ul class="is-size-5">
+    <ul class="text-xl">
       <li>
-        <a
-          href={withBaseUrl("/dormitory/")}
-          class="has-text-weight-bold is-underlined">ボイボ寮</a
-        >
+        <a href={withBaseUrl("/dormitory/")} class="vv-link">ボイボ寮</a>
       </li>
       <li>
-        <a
-          href={withBaseUrl("/how_to_use/")}
-          class="has-text-weight-bold is-underlined">使い方</a
-        >
+        <a href={withBaseUrl("/how_to_use/")} class="vv-link">使い方</a>
       </li>
       <li>
-        <a
-          href={withBaseUrl("/term/")}
-          class="has-text-weight-bold is-underlined">利用規約</a
-        >
+        <a href={withBaseUrl("/term/")} class="vv-link">利用規約</a>
       </li>
       <li>
-        <a href={withBaseUrl("/qa/")} class="has-text-weight-bold is-underlined"
-          >Q&amp;A</a
-        >
+        <a href={withBaseUrl("/qa/")} class="vv-link">Q&amp;A</a>
       </li>
       <li>
-        <a
-          href={withBaseUrl("/update_history/")}
-          class="has-text-weight-bold is-underlined">変更履歴</a
-        >
+        <a href={withBaseUrl("/update_history/")} class="vv-link">変更履歴</a>
       </li>
       {
         isDevelopment && (
           <li>
-            <a
-              href={withBaseUrl("/news/")}
-              class="has-text-weight-bold is-underlined"
-            >
+            <a href={withBaseUrl("/news/")} class="vv-link">
               ニュース
             </a>
           </li>
@@ -58,7 +44,7 @@ import { isDevelopment, withBaseUrl } from "@/helper";
           href="https://hiho.fanbox.cc/"
           target={"_blank"}
           rel={"noreferrer"}
-          class="has-text-weight-bold is-underlined">pixivFANBOX</a
+          class="vv-link">pixivFANBOX</a
         >
       </li>
     </ul>

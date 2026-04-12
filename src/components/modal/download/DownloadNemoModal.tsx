@@ -1,7 +1,9 @@
 /**
  * Nemoのダウンロードモーダル
  */
-import DownloadModalSelecter from "./Selector";
+import ModalShell from "../ModalShell";
+import Selector from "./Selector";
+import Button from "@/components/ui/Button/Button";
 import { NEMO_VERSION } from "@/constants";
 import { withBaseUrl } from "@/helper";
 import { $nemoDownloadModal } from "@/store";
@@ -90,70 +92,61 @@ export default function DownloadNemoModal() {
   };
 
   return (
-    <div
-      className={"modal-download modal" + (isActive ? " is-active" : "")}
-      role="dialog"
-      data-theme="light"
+    <ModalShell
+      isActive={isActive}
+      title="Nemo エンジン ダウンロード"
+      onClose={hide}
+      footer={
+        <Button
+          href={downloadUrls[selectedOs][selectedMode]!.url}
+          target="_blank"
+          rel="noreferrer"
+          download={downloadUrls[selectedOs][selectedMode]!.name}
+          kind="solid"
+          tone="primary"
+          shape="rounded"
+          size="md"
+        >
+          ダウンロード
+        </Button>
+      }
     >
-      <div className="modal-background" onClick={hide} role="presentation" />
-      <div className="modal-card">
-        <header className="modal-card-head has-text-centered">
-          <p className="modal-card-title">Nemo エンジン ダウンロード</p>
-          <button
-            className="delete"
-            aria-label="close"
-            onClick={hide}
-            type="button"
-          />
-        </header>
+      <div className="space-y-md">
+        <Selector
+          label="OS"
+          selected={selectedOs}
+          setSelected={selectOs}
+          candidates={["Windows", "Mac", "Linux"]}
+        />
 
-        <section className="modal-card-body">
-          <DownloadModalSelecter
-            label="OS"
-            selected={selectedOs}
-            setSelected={selectOs}
-            candidates={["Windows", "Mac", "Linux"]}
-          />
+        <hr className="vv-hr" />
 
-          <hr className="my-3" />
-
-          <DownloadModalSelecter
+        <div className="space-y-xs">
+          <Selector
             label="対応モード"
             selected={selectedMode}
             setSelected={setSelectedMode}
             candidates={modeAvailables[selectedOs]}
           />
-          <p className="has-text-centered is-size-7">
+          <p className="text-center text-xs text-neutral-800">
             ※ GPUモードの方が快適ですが、利用するためには
-            <a href={withBaseUrl("/qa/")}>対応するGPU</a>
+            <a href={withBaseUrl("/qa/")} className="vv-link">
+              対応するGPU
+            </a>
             が必要です
           </p>
+        </div>
 
-          <hr className="my-3" />
+        <hr className="vv-hr" />
 
-          <p className="has-text-centered">
-            VOICEVOX 内の「マルチエンジン機能」を ON にしたあと、
-            <br />
-            ダウンロードした .vvpp ファイルをダブルクリックするか
-            <br />
-            「エンジン」→「エンジンの管理」で Nemo 音声を追加できます。
-          </p>
-        </section>
-
-        <footer className="modal-card-foot is-justify-content-flex-end">
-          <div className="buttons">
-            <a
-              href={downloadUrls[selectedOs][selectedMode]?.url}
-              download={downloadUrls[selectedOs][selectedMode]?.name}
-              target="_blank"
-              rel="noreferrer"
-              className="button is-primary"
-            >
-              <span className="has-text-weight-semibold">ダウンロード</span>
-            </a>
-          </div>
-        </footer>
+        <p className="text-center text-xs text-neutral-800">
+          VOICEVOX 内の「マルチエンジン機能」を ON にしたあと、
+          <br />
+          ダウンロードした .vvpp ファイルをダブルクリックするか
+          <br />
+          「エンジン」→「エンジンの管理」で Nemo 音声を追加できます。
+        </p>
       </div>
-    </div>
+    </ModalShell>
   );
 }

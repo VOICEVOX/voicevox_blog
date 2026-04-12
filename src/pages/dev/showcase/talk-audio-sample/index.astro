@@ -1,0 +1,19 @@
+---
+import { characterInfos } from "@/constants/characterInfo";
+import AudioSample from "@/pages/talk/_AudioSample";
+import Showcase from "../_Showcase.astro";
+
+const characterInfo = characterInfos["ずんだもん"];
+
+// NOTE: src/pages/talk/_CharacterCard.astro の is:global スタイルを dev/showcase でも再現するため、必要最小限を複製しています
+---
+
+<Showcase title="AudioSample (talk)">
+  <div class="p-md gap-xl flex flex-col">
+    <AudioSample
+      client:load
+      audioSamples={characterInfo.talkVoiceAudios}
+      characterName={characterInfo.name}
+    />
+  </div>
+</Showcase>

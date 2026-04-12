@@ -1,0 +1,74 @@
+---
+import Showcase from "./_Showcase.astro";
+
+const pages = [
+  { path: "/dev/showcase/base/", label: "Base (ライトモード)" },
+  { path: "/dev/showcase/base/dark/", label: "Base (ダークモード)" },
+  { path: "/dev/showcase/base/nemo/", label: "Base (Nemoモード)" },
+  {
+    path: "/dev/showcase/modal/privacy-policy/",
+    label: "Modal: プライバシーポリシー",
+  },
+  {
+    path: "/dev/showcase/modal/nemo-term/",
+    label: "Modal: VOICEVOX Nemo 利用規約",
+  },
+  { path: "/dev/showcase/modal/library-term-intro/", label: "Modal: 利用規約" },
+  {
+    path: "/dev/showcase/modal/nemo-guidance/",
+    label: "Modal: VOICEVOX Nemo ご利用案内",
+  },
+  {
+    path: "/dev/showcase/modal/download-nemo/",
+    label: "Modal: Nemo エンジン ダウンロード",
+  },
+  {
+    path: "/dev/showcase/modal/download/",
+    label: "Modal: VOICEVOX ダウンロード",
+  },
+  { path: "/dev/showcase/play-button/", label: "PlayButton" },
+  { path: "/dev/showcase/style-dropdown/", label: "StyleDropdown" },
+  { path: "/dev/showcase/button/", label: "Button" },
+  { path: "/dev/showcase/icon-button/", label: "IconButton" },
+  { path: "/dev/showcase/footer/", label: "Footer" },
+  { path: "/dev/showcase/header/", label: "Header" },
+  { path: "/dev/showcase/software-feature/", label: "SoftwareFeature" },
+  { path: "/dev/showcase/engine-guidance/", label: "EngineGuidanceSection" },
+  { path: "/dev/showcase/oss-guidance/", label: "OssGuidanceSection" },
+  { path: "/dev/showcase/link-list/", label: "LinkListSection" },
+  { path: "/dev/showcase/character-card-talk/", label: "CharacterCard (talk)" },
+  {
+    path: "/dev/showcase/character-card-dormitory/",
+    label: "CharacterCard (dormitory)",
+  },
+  { path: "/dev/showcase/top-illust/", label: "TopIllustContainer" },
+  { path: "/dev/showcase/explain-section/", label: "ExplainSection" },
+  { path: "/dev/showcase/type-button/", label: "TypeButton" },
+  { path: "/dev/showcase/call-box/", label: "CallBox" },
+  { path: "/dev/showcase/nemo-speaker/", label: "SpeakerComponent (nemo)" },
+  {
+    path: "/dev/showcase/product-top-container/",
+    label: "Product TopContainer",
+  },
+  {
+    path: "/dev/showcase/product-audio-sample/",
+    label: "AudioSample (product)",
+  },
+  { path: "/dev/showcase/talk-audio-sample/", label: "AudioSample (talk)" },
+  { path: "/dev/showcase/song-character-card/", label: "CharacterCard (song)" },
+];
+---
+
+<Showcase title="UI Showcase">
+  <ul class="p-md space-y-xs">
+    {
+      pages.map((page) => (
+        <li>
+          <a href={page.path} class="vv-link">
+            {page.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</Showcase>
