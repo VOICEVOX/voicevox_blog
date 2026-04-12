@@ -22,7 +22,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## コマンド
 
-`README.md`
+`README.md`を読んでください。
 
 ## コーディング規約
 
