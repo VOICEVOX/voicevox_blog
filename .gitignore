@@ -28,7 +28,3 @@ pnpm-debug.log*
 /playwright-report/
 /blob-report/
 /playwright/.cache/
-
-# AI agents
-.codex
-.vv-ai/
