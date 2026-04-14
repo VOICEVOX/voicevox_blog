@@ -30,5 +30,5 @@ pnpm-debug.log*
 /playwright/.cache/
 
 # AI agents
-.codex
+.codex*
 .vv-ai/
