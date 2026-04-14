@@ -18,7 +18,7 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 const { article } = Astro.props;
 const { frontmatter } = article;
 
-// TODO: リリース時にnoindexを外す
+// TODO: リリース時にnoindexを外す。併せて astro.config.ts の sitemap filter からも /news/ を外す
 ---
 
 <Base
