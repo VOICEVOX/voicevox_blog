@@ -1,13 +1,8 @@
 ---
 import { compiledContent as markdownSampleHtml } from "@/assets/dev-showcase-markdown-sample.md";
-import Markdown from "@/components/Markdown.astro";
 import Showcase from "../_Showcase.astro";
 ---
 
 <Showcase title="Markdown">
-  <div class="p-md">
-    <Markdown>
-      <div set:html={await markdownSampleHtml()} />
-    </Markdown>
-  </div>
+  <div class="markdown p-md" set:html={await markdownSampleHtml()} />
 </Showcase>

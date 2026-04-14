@@ -26,4 +26,4 @@ pnpm run test:e2e
 
 ### 画像
 
-![VOICEVOX のアイコン](./icon.png)
+![VOICEVOX のアイコン](/android-chrome-192x192.png)
