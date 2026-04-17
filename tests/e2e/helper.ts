@@ -1,4 +1,8 @@
-import { waitForImages, waitForAudios } from "@/helper/playwrightHelper";
+import {
+  waitForAudios,
+  waitForFonts,
+  waitForImages,
+} from "@/helper/playwrightHelper";
 import { expect, type Page, test } from "playwright/test";
 
 export async function gotoAndWait(
@@ -59,10 +63,17 @@ export async function preparePage(
     });
     await waitForImages(page);
     await waitForAudios(page);
+    await waitForFonts(page);
     await page.evaluate(
       (fromBottom) =>
         window.scrollTo(0, fromBottom ? document.body.scrollHeight : 0),
       fromBottom,
     );
   });
+}
+
+/** ページがスクリーンショットと一致することを期待する */
+export async function expectPageToHaveScreenshot(page: Page): Promise<void> {
+  await waitForFonts(page);
+  await expect(page).toHaveScreenshot();
 }

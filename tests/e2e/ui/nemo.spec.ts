@@ -1,4 +1,4 @@
-import { gotoAndWait } from "../helper";
+import { expectPageToHaveScreenshot, gotoAndWait } from "../helper";
 import { getLocators, isMobile } from "./helper";
 import { expect, test } from "@playwright/test";
 
@@ -30,7 +30,7 @@ test("ダウンロードボタン", async ({ page }) => {
     });
     await headerDownloadButton.click();
     await expect(modal).toContainText("VOICEVOX Nemo ご利用案内");
-    await expect(page).toHaveScreenshot();
+    await expectPageToHaveScreenshot(page);
   });
 
   await test.step("モーダル内のVOICEVOXダウンロードボタンで２つ目のモーダルが表示される", async () => {
@@ -38,7 +38,7 @@ test("ダウンロードボタン", async ({ page }) => {
       .getByRole("button", { name: "VOICEVOX ダウンロード", exact: true })
       .click();
     await expect(modal).toContainText("VOICEVOX ダウンロード");
-    await expect(page).toHaveScreenshot();
+    await expectPageToHaveScreenshot(page);
   });
 
   await test.step("２つ目のモーダルを閉じれる", async () => {
@@ -51,7 +51,7 @@ test("ダウンロードボタン", async ({ page }) => {
       .getByRole("button", { name: "Nemo エンジン ダウンロード", exact: true })
       .click();
     await expect(modal).toContainText("Nemo エンジン ダウンロード");
-    await expect(page).toHaveScreenshot();
+    await expectPageToHaveScreenshot(page);
   });
 });
 
@@ -61,7 +61,7 @@ test("利用規約", async ({ page }) => {
   await test.step("利用規約モーダルを表示できる", async () => {
     await page.getByRole("button", { name: "利用規約", exact: true }).click();
     await expect(modal).toHaveCount(1);
-    await expect(page).toHaveScreenshot();
+    await expectPageToHaveScreenshot(page);
   });
 
   await test.step("利用規約を表示できる", async () => {

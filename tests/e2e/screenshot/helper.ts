@@ -1,5 +1,9 @@
-import { preparePage, progressiveScroll } from "../helper";
-import test, { expect, type Page } from "playwright/test";
+import {
+  expectPageToHaveScreenshot,
+  preparePage,
+  progressiveScroll,
+} from "../helper";
+import test, { type Page } from "playwright/test";
 
 export async function takeScreenshots(
   page: Page,
@@ -14,7 +18,7 @@ export async function takeScreenshots(
     await progressiveScroll(
       page,
       async () => {
-        await expect(page).toHaveScreenshot();
+        await expectPageToHaveScreenshot(page);
       },
       { fromBottom },
     );
