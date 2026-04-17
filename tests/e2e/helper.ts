@@ -71,9 +71,3 @@ export async function preparePage(
     );
   });
 }
-
-/** ページがスクリーンショットと一致することを期待する */
-export async function expectPageToHaveScreenshot(page: Page): Promise<void> {
-  await waitForFonts(page);
-  await expect(page).toHaveScreenshot();
-}

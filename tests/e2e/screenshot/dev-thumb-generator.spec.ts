@@ -1,4 +1,4 @@
-import { expectPageToHaveScreenshot, gotoAndWait } from "../helper";
+import { gotoAndWait } from "../helper";
 import { characterEntries, characterKeys } from "@/constants/characterEntry";
 import { waitForFonts, waitForImages } from "@/helper/playwrightHelper";
 import { expect, test } from "@playwright/test";
@@ -19,8 +19,9 @@ test.describe("dev/thumb_generator", () => {
       `/dev/thumb_generator/product/${characterEntry.id}/`,
     );
     await waitForImages(page);
+    await waitForFonts(page);
 
-    await expectPageToHaveScreenshot(page);
+    await expect(page).toHaveScreenshot();
   });
 
   test("dormitory", async ({ page }) => {

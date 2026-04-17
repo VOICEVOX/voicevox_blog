@@ -1,8 +1,4 @@
-import {
-  expectPageToHaveScreenshot,
-  gotoAndWait,
-  preparePage,
-} from "../helper";
+import { gotoAndWait, preparePage } from "../helper";
 import { getLocators, isMobile } from "./helper";
 import { expect, test } from "@playwright/test";
 
@@ -55,13 +51,13 @@ test("ダウンロードボタン", async ({ page }) => {
   });
 
   await test.step("モーダルの表示状態を確認", async () => {
-    await expectPageToHaveScreenshot(page);
+    await expect(page).toHaveScreenshot();
 
     await modal.getByRole("radio", { name: "Mac" }).click();
-    await expectPageToHaveScreenshot(page);
+    await expect(page).toHaveScreenshot();
 
     await modal.getByRole("radio", { name: "Linux" }).click();
-    await expectPageToHaveScreenshot(page);
+    await expect(page).toHaveScreenshot();
   });
 
   await test.step("利用規約に飛べる", async () => {
@@ -82,11 +78,11 @@ test.describe("キャラクターカード", () => {
 
       await expect(styleChangeButton).toContainText("ノーマル");
       await styleChangeButton.click();
-      await expectPageToHaveScreenshot(page);
+      await expect(page).toHaveScreenshot();
       await page.getByRole("menu").getByText("ささやき").click();
       await expect(styleChangeButton).toContainText("ささやき");
       await styleChangeButton.click();
-      await expectPageToHaveScreenshot(page);
+      await expect(page).toHaveScreenshot();
     });
   });
 
@@ -102,7 +98,7 @@ test.describe("キャラクターカード", () => {
       await expect(modal.locator("header")).toContainText(
         "ずんだもん 利用規約",
       );
-      await expectPageToHaveScreenshot(page);
+      await expect(page).toHaveScreenshot();
     });
 
     await test.step("モーダルを閉じれる", async () => {
@@ -117,7 +113,7 @@ test.describe("キャラクターカード", () => {
       await expect(modal.locator("header")).toContainText(
         "冥鳴ひまり 利用規約",
       );
-      await expectPageToHaveScreenshot(page);
+      await expect(page).toHaveScreenshot();
     });
   });
 });
