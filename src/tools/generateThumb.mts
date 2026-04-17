@@ -2,7 +2,7 @@
  * サムネイル画像を生成する
  */
 import { characterKeys, characterEntries } from "@/constants/characterEntry";
-import { waitForImages } from "@/helper/playwrightHelper";
+import { waitForFonts, waitForImages } from "@/helper/playwrightHelper";
 import fs from "fs";
 import path from "path";
 import { chromium } from "playwright";
@@ -47,6 +47,7 @@ for (const key of characterKeys) {
       { waitUntil: "load" },
     );
     await waitForImages(page);
+    await waitForFonts(page);
     await page.screenshot({ path: savePath });
   });
 }
@@ -74,6 +75,7 @@ for (const key of characterKeys) {
       { waitUntil: "load" },
     );
     await waitForImages(page);
+    await waitForFonts(page);
 
     const target = page.getByTestId("dormitory-character-card");
     await target.screenshot({ path: savePath, omitBackground: true });

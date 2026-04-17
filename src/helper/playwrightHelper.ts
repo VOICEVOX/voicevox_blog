@@ -91,3 +91,19 @@ export async function waitForAudios(page: Page) {
     "音声の読み込みが完了するまで待つ",
   );
 }
+
+/** ページ内のフォントがすべて読み込まれるまで待機する */
+export async function waitForFonts(page: Page) {
+  const fontEvaluateCallback = () => {
+    return {
+      total: 1,
+      completeCount: document.fonts.status === "loaded" ? 1 : 0,
+    };
+  };
+
+  await waitForResourcesWithTimeout(
+    page,
+    fontEvaluateCallback,
+    "フォントの読み込みが完了するまで待つ",
+  );
+}

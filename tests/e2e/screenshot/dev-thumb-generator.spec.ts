@@ -1,6 +1,6 @@
 import { gotoAndWait } from "../helper";
 import { characterEntries, characterKeys } from "@/constants/characterEntry";
-import { waitForImages } from "@/helper/playwrightHelper";
+import { waitForFonts, waitForImages } from "@/helper/playwrightHelper";
 import { expect, test } from "@playwright/test";
 
 test.describe("dev/thumb_generator", () => {
@@ -19,6 +19,7 @@ test.describe("dev/thumb_generator", () => {
       `/dev/thumb_generator/product/${characterEntry.id}/`,
     );
     await waitForImages(page);
+    await waitForFonts(page);
 
     await expect(page).toHaveScreenshot();
   });
@@ -31,6 +32,7 @@ test.describe("dev/thumb_generator", () => {
       `/dev/thumb_generator/dormitory/${characterEntry.id}/`,
     );
     await waitForImages(page);
+    await waitForFonts(page);
 
     await expect(page.getByTestId("dormitory-character-card")).toHaveScreenshot(
       {
