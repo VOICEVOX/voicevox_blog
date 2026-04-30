@@ -16,8 +16,7 @@ export default {
   name: "夜語トバリ",
   id: "yogatari_tobari",
   rubyName: "<ruby>夜語<rp>(</rp><rt>よがたり</rt><rp>)</rp>トバリ</ruby>",
-  // TODO: 声の特徴を設定する
-  voiceFeature: undefined,
+  voiceFeature: "理知的で輪郭のある声",
   color: "#6964AD",
   lightColor: "#B2B6D8",
   description: "高校2年生の文学少女。<br />本を読むのが好きだがクラスは理系",
@@ -31,8 +30,7 @@ export default {
     { label: "相棒", value: "暁記ミタマ", size: 1 },
     { label: "CV", value: "行成とあ", size: 1 },
   ],
-  // TODO: 規約ページURLを設定する
-  policyUrl: undefined,
-  detailUrl: "https://yogataritobari.studio.site/", // これで合ってるのか要確認
+  policyUrl: "https://yogataritobari.studio.site/#rules",
+  detailUrl: "https://yogataritobari.studio.site/",
   ...getCharacterAssets(key, styles),
 } satisfies CharacterInfo;

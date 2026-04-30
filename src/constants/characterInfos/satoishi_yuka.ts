@@ -19,7 +19,8 @@ export default {
   lightColor: "#E3ADD5",
   description:
     "愛を糧に戦う魔法少女。大人になるのが怖くて、<br />18歳の誕生日に世界をやり直している。",
-  additionalProductDescription: "開花スタイル（画像右）は今後実装予定。",
+  additionalProductDescription:
+    "つぼみは引っ込み思案、開花は天真爛漫。開花スタイル（画像右）は今後実装予定。",
   labelInfos: [
     { label: "年齢", value: "17歳", size: 1 },
     { label: "身長", value: "168cm", size: 1 },

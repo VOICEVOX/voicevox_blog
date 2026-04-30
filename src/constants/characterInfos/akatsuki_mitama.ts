@@ -16,8 +16,7 @@ export default {
   name: "暁記ミタマ",
   id: "akatsuki_mitama",
   rubyName: "<ruby>暁記<rp>(</rp><rt>あかつき</rt><rp>)</rp>ミタマ</ruby>",
-  // TODO: 声の特徴を設定する
-  voiceFeature: undefined,
+  voiceFeature: "儚げで浮遊感のある声",
   color: "#99D02B",
   lightColor: "#E6F5B0",
   description: "夜語トバリに仕える謎のメイドさん",
@@ -31,9 +30,7 @@ export default {
     { label: "相棒", value: "夜語トバリ", size: 1 },
     { label: "CV", value: "椎名桃香", size: 1 },
   ],
-  // TODO: 規約ページURLを設定する
-  policyUrl: undefined,
-  // TODO: キャラクターページURLを設定する
-  detailUrl: undefined,
+  policyUrl: "https://yogataritobari.studio.site/#rules",
+  detailUrl: "https://yogataritobari.studio.site/",
   ...getCharacterAssets(key, styles),
 } satisfies CharacterInfo;
