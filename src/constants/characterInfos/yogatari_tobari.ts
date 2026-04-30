@@ -6,8 +6,8 @@ const key = "夜語トバリ" satisfies CharacterKey;
 
 const styles = [
   { name: "ノーマル", id: "normal", type: "talk" },
-  { name: "明るい", id: "akarui", type: "talk" },
-  { name: "哀しみ", id: "kanashimi", type: "talk" },
+  { name: "明るい", id: "cheerful", type: "talk" },
+  { name: "哀しみ", id: "sad", type: "talk" },
   { name: "呆れ", id: "akire", type: "talk" },
 ] satisfies Styles;
 

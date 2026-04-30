@@ -1650,4 +1650,8 @@ export const callNameInfos: {
     me: [],
     you: [],
   },
+  里石ユカ: {
+    me: [],
+    you: [],
+  },
 };

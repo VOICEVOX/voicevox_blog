@@ -41,6 +41,7 @@ export const characterKeys = [
   "あんこもん",
   "夜語トバリ",
   "暁記ミタマ",
+  "里石ユカ",
 ] as const;
 
 export type CharacterKey = (typeof characterKeys)[number];
@@ -218,6 +219,10 @@ export const characterEntries = {
   暁記ミタマ: {
     name: "暁記ミタマ",
     id: "akatsuki_mitama",
+  },
+  里石ユカ: {
+    name: "里石ユカ",
+    id: "satoishi_yuka",
   },
 } as const satisfies {
   [key in CharacterKey]: CharacterEntry;

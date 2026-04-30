@@ -6,9 +6,9 @@ const key = "暁記ミタマ" satisfies CharacterKey;
 
 const styles = [
   { name: "ノーマル", id: "normal", type: "talk" },
-  { name: "怒り", id: "ikari", type: "talk" },
-  { name: "哀しみ", id: "kanashimi", type: "talk" },
-  { name: "ささやき", id: "sasayaki", type: "talk" },
+  { name: "怒り", id: "angry", type: "talk" },
+  { name: "哀しみ", id: "sad", type: "talk" },
+  { name: "ささやき", id: "whisper", type: "talk" },
 ] satisfies Styles;
 
 export default {

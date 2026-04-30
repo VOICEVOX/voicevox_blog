@@ -28,6 +28,7 @@ import number_seven_info from "./characterInfos/number_seven";
 import nurserobo_typet_info from "./characterInfos/nurserobo_typet";
 import ouka_miko_info from "./characterInfos/ouka_miko";
 import rito_info from "./characterInfos/rito";
+import satoishi_yuka_info from "./characterInfos/satoishi_yuka";
 import sayo_info from "./characterInfos/sayo";
 import shikoku_metan_info from "./characterInfos/shikoku_metan";
 import shirakami_kotarou_info from "./characterInfos/shirakami_kotarou";
@@ -88,4 +89,5 @@ export const characterInfos: {
   あんこもん: ankomon_info,
   夜語トバリ: yogatari_tobari_info,
   暁記ミタマ: akatsuki_mitama_info,
+  里石ユカ: satoishi_yuka_info,
 };
