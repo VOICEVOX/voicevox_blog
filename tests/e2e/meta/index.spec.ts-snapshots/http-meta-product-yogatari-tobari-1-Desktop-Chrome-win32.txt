@@ -1,0 +1,6 @@
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/product/yogatari_tobari/",
+  "title": "VOICEVOX 夜語トバリ | 無料のテキスト読み上げソフトウェア",
+  "description": "VOICEVOXは「夜語トバリ」の理知的で輪郭のある声で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。",
+  "robots": "index, follow"
+}

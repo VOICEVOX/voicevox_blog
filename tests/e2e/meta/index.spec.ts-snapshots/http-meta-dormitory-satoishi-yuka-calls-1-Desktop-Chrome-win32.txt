@@ -1,0 +1,6 @@
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/satoishi_yuka/calls/",
+  "title": "里石ユカ | ボイボ寮 呼び方 | VOICEVOX",
+  "description": "愛を糧に戦う魔法少女。大人になるのが怖くて、18歳の誕生日に世界をやり直している。",
+  "robots": "index, follow"
+}
