@@ -1,0 +1,6 @@
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/product/satoishi_yuka/",
+  "title": "VOICEVOX 里石ユカ | 無料のテキスト読み上げソフトウェア",
+  "description": "VOICEVOXは「里石ユカ」の声で誰でも簡単に音声を作成できる、無料のテキスト読み上げソフトウェアです。",
+  "robots": "index, follow"
+}

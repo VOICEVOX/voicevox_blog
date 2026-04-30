@@ -1,0 +1,6 @@
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/yogatari_tobari/",
+  "title": "夜語トバリ | ボイボ寮 プロフィール | VOICEVOX",
+  "description": "高校2年生の文学少女。本を読むのが好きだがクラスは理系",
+  "robots": "index, follow"
+}

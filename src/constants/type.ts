@@ -12,6 +12,7 @@ export type CharacterInfo = {
   id: string;
   rubyName: string;
   voiceFeature: string | undefined;
+  temporaryToppageCardText?: string; // 一時的にトップページのカードだけに表示する文言
   color: string;
   lightColor: string;
   description: string; // ボイボ寮ページでの紹介文

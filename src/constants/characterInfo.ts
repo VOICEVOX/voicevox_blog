@@ -1,5 +1,6 @@
 import type { CharacterKey } from "./characterEntry";
 import aierutan_info from "./characterInfos/aierutan";
+import akatsuki_mitama_info from "./characterInfos/akatsuki_mitama";
 import amehare_hau_info from "./characterInfos/amehare_hau";
 import ankomon_info from "./characterInfos/ankomon";
 import aoyama_ryusei_info from "./characterInfos/aoyama_ryusei";
@@ -27,6 +28,7 @@ import number_seven_info from "./characterInfos/number_seven";
 import nurserobo_typet_info from "./characterInfos/nurserobo_typet";
 import ouka_miko_info from "./characterInfos/ouka_miko";
 import rito_info from "./characterInfos/rito";
+import satoishi_yuka_info from "./characterInfos/satoishi_yuka";
 import sayo_info from "./characterInfos/sayo";
 import shikoku_metan_info from "./characterInfos/shikoku_metan";
 import shirakami_kotarou_info from "./characterInfos/shirakami_kotarou";
@@ -36,6 +38,7 @@ import tohoku_zunko_info from "./characterInfos/tohoku_zunko";
 import voidoll_info from "./characterInfos/voidoll";
 import wakamatsu_akashi_info from "./characterInfos/wakamatsu_akashi";
 import white_cul_info from "./characterInfos/white_cul";
+import yogatari_tobari_info from "./characterInfos/yogatari_tobari";
 import yureichan_info from "./characterInfos/yureichan";
 import zonko_info from "./characterInfos/zonko";
 import zundamon_info from "./characterInfos/zundamon";
@@ -84,4 +87,7 @@ export const characterInfos: {
   東北きりたん: tohoku_kiritan_info,
   東北イタコ: tohoku_itako_info,
   あんこもん: ankomon_info,
+  夜語トバリ: yogatari_tobari_info,
+  暁記ミタマ: akatsuki_mitama_info,
+  里石ユカ: satoishi_yuka_info,
 };
