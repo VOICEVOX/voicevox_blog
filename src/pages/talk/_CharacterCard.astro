@@ -13,6 +13,20 @@ interface Props {
 
 const { characterInfo } = Astro.props;
 const characterKey = characterInfo.key;
+
+if (
+  characterInfo.voiceFeature != undefined &&
+  characterInfo.temporaryToppageCardText != undefined
+) {
+  throw new Error(
+    `${characterInfo.name}は声の特徴と一時的なトップページカード文言を同時に設定できません。`,
+  );
+}
+
+const cardText =
+  characterInfo.voiceFeature ??
+  characterInfo.temporaryToppageCardText ??
+  "（準備中）";
 ---
 
 <div class="p-sm box-border w-full flex-none md:w-1/2 lg:w-1/3">
@@ -39,7 +53,7 @@ const characterKey = characterInfo.key;
         </a>
       </h3>
       <p class="mb-lg mt-0 text-xl">
-        {characterInfo.voiceFeature ? characterInfo.voiceFeature : "（準備中）"}
+        {cardText}
       </p>
       {
         characterInfo.releaseDate != undefined && (

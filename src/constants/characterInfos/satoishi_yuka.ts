@@ -15,6 +15,8 @@ export default {
   rubyName: "<ruby>里石<rp>(</rp><rt>さといし</rt><rp>)</rp>ユカ</ruby>",
   // TODO: 声の特徴を設定する
   voiceFeature: undefined,
+  // TODO: 開花スタイルのリリース後に削除する
+  temporaryToppageCardText: "開花スタイルは今後実装予定",
   color: "#DF4C94",
   lightColor: "#E3ADD5",
   description:
