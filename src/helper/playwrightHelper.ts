@@ -94,16 +94,12 @@ export async function waitForAudios(page: Page) {
 
 /** ページ内のフォントがすべて読み込まれるまで待機する */
 export async function waitForFonts(page: Page) {
-  const fontEvaluateCallback = () => {
-    return {
-      total: 1,
-      completeCount: document.fonts.status === "loaded" ? 1 : 0,
-    };
+  const executor = async () => {
+    await page.evaluate(() => document.fonts.ready);
   };
 
-  await waitForResourcesWithTimeout(
-    page,
-    fontEvaluateCallback,
+  await executeWithStepRecording(
     "フォントの読み込みが完了するまで待つ",
+    executor,
   );
 }
