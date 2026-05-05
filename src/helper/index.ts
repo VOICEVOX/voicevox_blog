@@ -189,10 +189,27 @@ export function sortedImportGlob<T>(record: Record<string, T>) {
     .map(([, value]) => value);
 }
 
+/** 値がnullまたはundefinedでないことを保証する */
+export function assertNonNullable<T>(
+  value: T,
+): asserts value is NonNullable<T> {
+  if (value == undefined) {
+    throw new UnreachableError();
+  }
+}
+
+/** never型になるはずの値を使って型システムで非到達をチェックするエラー */
+export class ExhaustiveError extends Error {
+  constructor(value: never) {
+    super(`網羅されていない値です: ${String(value)}`);
+    this.name = "ExhaustiveError";
+  }
+}
+
 /** 到達しないであろうコードに到達したことを示すエラー */
 export class UnreachableError extends Error {
-  constructor(message?: string) {
-    super(message || "Unreachable code was executed.");
+  constructor() {
+    super("到達しないはずのコードが実行されました。");
     this.name = "UnreachableError";
   }
 }
