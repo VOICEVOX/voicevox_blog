@@ -54,6 +54,7 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-astro": "^1.5.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
+    "fuse.js": "^7.3.0",
     "nanostores": "^1.1.0",
     "playwright": "^1.57.0",
     "prettier": "^3.7.4",
