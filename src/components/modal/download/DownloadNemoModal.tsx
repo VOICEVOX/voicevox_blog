@@ -65,20 +65,13 @@ const downloadUrls: Record<
   },
 };
 
-const getDownloadInfo = (
-  os: OsType,
-  mode: ModeType,
-): { url: string; name: string } => {
-  return ensureNotNullish(downloadUrls[os][mode]);
-};
-
 export default function DownloadNemoModal() {
   const isActive = useStore($nemoDownloadModal);
   const hide = () => $nemoDownloadModal.set(false);
 
   const [selectedOs, setSelectedOs] = useState<OsType>("Windows");
   const [selectedMode, setSelectedMode] = useState<ModeType>("GPU / CPU");
-  const downloadInfo = getDownloadInfo(selectedOs, selectedMode);
+  const downloadInfo = ensureNotNullish(downloadUrls[selectedOs][selectedMode]);
 
   useEffect(() => {
     const userAgent = window.navigator.userAgent;

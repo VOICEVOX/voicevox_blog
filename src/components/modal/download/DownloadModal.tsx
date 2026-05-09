@@ -129,19 +129,6 @@ const downloadUrls: Record<
   },
 };
 
-const getPackageCandidates = (os: OsType, mode: ModeType): PackageType[] => {
-  return ensureNotNullish(packageAvailables[os][mode]);
-};
-
-const getDownloadInfo = (
-  os: OsType,
-  mode: ModeType,
-  packageType: PackageType,
-): { url: string; name: string } => {
-  const modeDownloadUrls = ensureNotNullish(downloadUrls[os][mode]);
-  return ensureNotNullish(modeDownloadUrls[packageType]);
-};
-
 export default function DownloadModal() {
   const isActive = useStore($downloadModal);
   const hide = () => $downloadModal.set(false);
@@ -157,19 +144,19 @@ export default function DownloadModal() {
     ? selectedMode
     : modeAvailables[selectedOs][0];
 
-  const packageCandidates = getPackageCandidates(
-    selectedOs,
-    selectedOrDefaultMode,
+  const packageCandidates = ensureNotNullish(
+    packageAvailables[selectedOs][selectedOrDefaultMode],
   );
 
   const selectedOrDefaultPackage = packageCandidates.includes(selectedPackage)
     ? selectedPackage
     : packageCandidates[0];
 
-  const downloadInfo = getDownloadInfo(
-    selectedOs,
-    selectedOrDefaultMode,
-    selectedOrDefaultPackage,
+  const modeDownloadUrls = ensureNotNullish(
+    downloadUrls[selectedOs][selectedOrDefaultMode],
+  );
+  const downloadInfo = ensureNotNullish(
+    modeDownloadUrls[selectedOrDefaultPackage],
   );
 
   useEffect(() => {
@@ -195,7 +182,7 @@ export default function DownloadModal() {
   };
   const selectMode = (os: OsType, mode: ModeType) => {
     setSelectedMode(mode);
-    const packageCandidates = getPackageCandidates(os, mode);
+    const packageCandidates = ensureNotNullish(packageAvailables[os][mode]);
     if (!packageCandidates.includes(selectedPackage)) {
       setSelectedPackage(packageCandidates[0]);
     }
