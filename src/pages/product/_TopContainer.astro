@@ -220,20 +220,19 @@ const postCharacterKey =
 </div>
 
 <script>
+  import { assertNonNullable, UnreachableError } from "@/helper";
+
   function scrollToCenter() {
     const characterList = document.querySelector(
       "[aria-label='キャラクター一覧']",
     );
     if (characterList == undefined) return;
 
-    if (!(characterList instanceof HTMLElement))
-      throw new Error(`characterList is not HTMLElement: ${characterList}`);
+    if (!(characterList instanceof HTMLElement)) throw new UnreachableError();
 
     const active = characterList.querySelector("[aria-current='page']");
-    if (!(active instanceof HTMLElement))
-      throw new Error(
-        `aria-current page element is not HTMLElement: ${active}`,
-      );
+    assertNonNullable(active);
+    if (!(active instanceof HTMLElement)) throw new UnreachableError();
 
     const activeCenter = active.offsetLeft + active.offsetWidth / 2;
     const containerCenter = characterList.offsetWidth / 2;

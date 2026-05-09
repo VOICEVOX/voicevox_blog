@@ -5,7 +5,7 @@ import linuxInstallCpuX64 from "@/assets/script/linuxInstallCpuX64.sh?url";
 import linuxInstallNvidia from "@/assets/script/linuxInstallNvidia.sh?url";
 import Button from "@/components/ui/Button/Button";
 import { APP_VERSION } from "@/constants";
-import { withBaseUrl } from "@/helper";
+import { ensureNotNullish, withBaseUrl } from "@/helper";
 import { $downloadModal } from "@/store";
 import { useStore } from "@nanostores/react";
 import { useEffect, useState } from "react";
@@ -144,11 +144,20 @@ export default function DownloadModal() {
     ? selectedMode
     : modeAvailables[selectedOs][0];
 
-  const selectedOrDefaultPackage = packageAvailables[selectedOs][
-    selectedOrDefaultMode
-  ]!.includes(selectedPackage)
+  const packageCandidates = ensureNotNullish(
+    packageAvailables[selectedOs][selectedOrDefaultMode],
+  );
+
+  const selectedOrDefaultPackage = packageCandidates.includes(selectedPackage)
     ? selectedPackage
-    : packageAvailables[selectedOs][selectedOrDefaultMode]![0];
+    : packageCandidates[0];
+
+  const modeDownloadUrls = ensureNotNullish(
+    downloadUrls[selectedOs][selectedOrDefaultMode],
+  );
+  const downloadInfo = ensureNotNullish(
+    modeDownloadUrls[selectedOrDefaultPackage],
+  );
 
   useEffect(() => {
     const userAgent = window.navigator.userAgent;
@@ -173,8 +182,9 @@ export default function DownloadModal() {
   };
   const selectMode = (os: OsType, mode: ModeType) => {
     setSelectedMode(mode);
-    if (!packageAvailables[os][mode]!.includes(selectedPackage)) {
-      setSelectedPackage(packageAvailables[os][mode]![0]);
+    const packageCandidates = ensureNotNullish(packageAvailables[os][mode]);
+    if (!packageCandidates.includes(selectedPackage)) {
+      setSelectedPackage(packageCandidates[0]);
     }
   };
 
@@ -195,18 +205,10 @@ export default function DownloadModal() {
             利用規約
           </Button>
           <Button
-            href={
-              downloadUrls[selectedOs][selectedOrDefaultMode]![
-                selectedOrDefaultPackage
-              ]!.url
-            }
+            href={downloadInfo.url}
             target="_blank"
             rel="noreferrer"
-            download={
-              downloadUrls[selectedOs][selectedOrDefaultMode]![
-                selectedOrDefaultPackage
-              ]!.name
-            }
+            download={downloadInfo.name}
             kind="solid"
             tone="primary"
             shape="rounded"
@@ -250,7 +252,7 @@ export default function DownloadModal() {
             label="パッケージ"
             selected={selectedOrDefaultPackage}
             setSelected={setSelectedPackage}
-            candidates={packageAvailables[selectedOs][selectedOrDefaultMode]!}
+            candidates={packageCandidates}
           />
           <p className="text-center text-xs text-neutral-800">
             ※ 推奨パッケージはインストーラー版です

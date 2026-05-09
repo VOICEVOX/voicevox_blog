@@ -198,6 +198,14 @@ export function assertNonNullable<T>(
   }
 }
 
+/** 入力がnullまたはundefinedの場合エラーを投げ、それ以外の場合は入力をそのまま返す */
+export const ensureNotNullish = <T>(value: T | null | undefined): T => {
+  if (value == null) {
+    throw new UnreachableError();
+  }
+  return value;
+};
+
 /** never型になるはずの値を使って型システムで非到達をチェックするエラー */
 export class ExhaustiveError extends Error {
   constructor(value: never) {

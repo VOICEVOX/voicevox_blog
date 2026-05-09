@@ -5,7 +5,7 @@ import ModalShell from "../ModalShell";
 import Selector from "./Selector";
 import Button from "@/components/ui/Button/Button";
 import { NEMO_VERSION } from "@/constants";
-import { withBaseUrl } from "@/helper";
+import { ensureNotNullish, withBaseUrl } from "@/helper";
 import { $nemoDownloadModal } from "@/store";
 import { useStore } from "@nanostores/react";
 import { useEffect, useState } from "react";
@@ -71,6 +71,7 @@ export default function DownloadNemoModal() {
 
   const [selectedOs, setSelectedOs] = useState<OsType>("Windows");
   const [selectedMode, setSelectedMode] = useState<ModeType>("GPU / CPU");
+  const downloadInfo = ensureNotNullish(downloadUrls[selectedOs][selectedMode]);
 
   useEffect(() => {
     const userAgent = window.navigator.userAgent;
@@ -98,10 +99,10 @@ export default function DownloadNemoModal() {
       onClose={hide}
       footer={
         <Button
-          href={downloadUrls[selectedOs][selectedMode]!.url}
+          href={downloadInfo.url}
           target="_blank"
           rel="noreferrer"
-          download={downloadUrls[selectedOs][selectedMode]!.name}
+          download={downloadInfo.name}
           kind="solid"
           tone="primary"
           shape="rounded"
