@@ -1,3 +1,5 @@
+import { UnreachableError } from "@/helper";
+
 export type ButtonKind = "solid" | "outline";
 export type ButtonTone = "primary" | "neutral" | "white";
 export type ButtonShape = "pill" | "rounded";
@@ -52,7 +54,7 @@ export const buildButtonClassName = ({
   } else if (kind === "outline" && tone === "neutral") {
     // OK
   } else {
-    throw new Error(`Button: kind="${kind}" tone="${tone}" is not implemented`);
+    throw new UnreachableError();
   }
 
   const sizeClass = SIZE_CLASS[size];

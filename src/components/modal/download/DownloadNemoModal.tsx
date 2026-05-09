@@ -5,7 +5,7 @@ import ModalShell from "../ModalShell";
 import Selector from "./Selector";
 import Button from "@/components/ui/Button/Button";
 import { NEMO_VERSION } from "@/constants";
-import { withBaseUrl } from "@/helper";
+import { assertNonNullable, withBaseUrl } from "@/helper";
 import { $nemoDownloadModal } from "@/store";
 import { useStore } from "@nanostores/react";
 import { useEffect, useState } from "react";
@@ -25,52 +25,62 @@ const modeAvailables: Record<OsType, ModeType[]> = {
   Linux: ["GPU / CPU", "CPU (x64)", "CPU (arm64)"],
 };
 
+const downloadUrls: Record<
+  OsType,
+  Partial<Record<ModeType, { url: string; name: string }>>
+> = {
+  Windows: {
+    "GPU / CPU": {
+      url: `https://github.com/VOICEVOX/voicevox_nemo_engine/releases/download/${NEMO_VERSION}/voicevox_engine-windows-directml-${NEMO_VERSION}.vvpp`,
+      name: `VOICEVOX.Nemo.${NEMO_VERSION}.Windows.vvpp`,
+    },
+    CPU: {
+      url: `https://github.com/VOICEVOX/voicevox_nemo_engine/releases/download/${NEMO_VERSION}/voicevox_engine-windows-cpu-${NEMO_VERSION}.vvpp`,
+      name: `VOICEVOX-CPU.Nemo.${NEMO_VERSION}.Windows.vvpp`,
+    },
+  },
+  Mac: {
+    "CPU (Intel)": {
+      url: `https://github.com/VOICEVOX/voicevox_nemo_engine/releases/download/${NEMO_VERSION}/voicevox_engine-macos-x64-${NEMO_VERSION}.vvpp`,
+      name: `VOICEVOX-CPU-x64.Nemo.${NEMO_VERSION}.Mac.vvpp`,
+    },
+    "CPU (Apple)": {
+      url: `https://github.com/VOICEVOX/voicevox_nemo_engine/releases/download/${NEMO_VERSION}/voicevox_engine-macos-arm64-${NEMO_VERSION}.vvpp`,
+      name: `VOICEVOX-CPU-arm64.Nemo.${NEMO_VERSION}.Mac.vvpp`,
+    },
+  },
+  Linux: {
+    "GPU / CPU": {
+      url: `https://github.com/VOICEVOX/voicevox_nemo_engine/releases/download/${NEMO_VERSION}/voicevox_engine-linux-nvidia-${NEMO_VERSION}.vvpp`,
+      name: `VOICEVOX.Nemo.${NEMO_VERSION}.Linux.vvpp`,
+    },
+    "CPU (x64)": {
+      url: `https://github.com/VOICEVOX/voicevox_nemo_engine/releases/download/${NEMO_VERSION}/voicevox_engine-linux-cpu-x64-${NEMO_VERSION}.vvpp`,
+      name: `VOICEVOX-CPU.Nemo.${NEMO_VERSION}.Linux.vvpp`,
+    },
+    "CPU (arm64)": {
+      url: `https://github.com/VOICEVOX/voicevox_nemo_engine/releases/download/${NEMO_VERSION}/voicevox_engine-linux-cpu-arm64-${NEMO_VERSION}.vvpp`,
+      name: `VOICEVOX-CPU-arm64.Nemo.${NEMO_VERSION}.Linux.vvpp`,
+    },
+  },
+};
+
+const getDownloadInfo = (
+  os: OsType,
+  mode: ModeType,
+): { url: string; name: string } => {
+  const downloadInfo = downloadUrls[os][mode];
+  assertNonNullable(downloadInfo);
+  return downloadInfo;
+};
+
 export default function DownloadNemoModal() {
   const isActive = useStore($nemoDownloadModal);
   const hide = () => $nemoDownloadModal.set(false);
 
-  const downloadUrls: Record<
-    OsType,
-    Partial<Record<ModeType, { url: string; name: string }>>
-  > = {
-    Windows: {
-      "GPU / CPU": {
-        url: `https://github.com/VOICEVOX/voicevox_nemo_engine/releases/download/${NEMO_VERSION}/voicevox_engine-windows-directml-${NEMO_VERSION}.vvpp`,
-        name: `VOICEVOX.Nemo.${NEMO_VERSION}.Windows.vvpp`,
-      },
-      CPU: {
-        url: `https://github.com/VOICEVOX/voicevox_nemo_engine/releases/download/${NEMO_VERSION}/voicevox_engine-windows-cpu-${NEMO_VERSION}.vvpp`,
-        name: `VOICEVOX-CPU.Nemo.${NEMO_VERSION}.Windows.vvpp`,
-      },
-    },
-    Mac: {
-      "CPU (Intel)": {
-        url: `https://github.com/VOICEVOX/voicevox_nemo_engine/releases/download/${NEMO_VERSION}/voicevox_engine-macos-x64-${NEMO_VERSION}.vvpp`,
-        name: `VOICEVOX-CPU-x64.Nemo.${NEMO_VERSION}.Mac.vvpp`,
-      },
-      "CPU (Apple)": {
-        url: `https://github.com/VOICEVOX/voicevox_nemo_engine/releases/download/${NEMO_VERSION}/voicevox_engine-macos-arm64-${NEMO_VERSION}.vvpp`,
-        name: `VOICEVOX-CPU-arm64.Nemo.${NEMO_VERSION}.Mac.vvpp`,
-      },
-    },
-    Linux: {
-      "GPU / CPU": {
-        url: `https://github.com/VOICEVOX/voicevox_nemo_engine/releases/download/${NEMO_VERSION}/voicevox_engine-linux-nvidia-${NEMO_VERSION}.vvpp`,
-        name: `VOICEVOX.Nemo.${NEMO_VERSION}.Linux.vvpp`,
-      },
-      "CPU (x64)": {
-        url: `https://github.com/VOICEVOX/voicevox_nemo_engine/releases/download/${NEMO_VERSION}/voicevox_engine-linux-cpu-x64-${NEMO_VERSION}.vvpp`,
-        name: `VOICEVOX-CPU.Nemo.${NEMO_VERSION}.Linux.vvpp`,
-      },
-      "CPU (arm64)": {
-        url: `https://github.com/VOICEVOX/voicevox_nemo_engine/releases/download/${NEMO_VERSION}/voicevox_engine-linux-cpu-arm64-${NEMO_VERSION}.vvpp`,
-        name: `VOICEVOX-CPU-arm64.Nemo.${NEMO_VERSION}.Linux.vvpp`,
-      },
-    },
-  };
-
   const [selectedOs, setSelectedOs] = useState<OsType>("Windows");
   const [selectedMode, setSelectedMode] = useState<ModeType>("GPU / CPU");
+  const downloadInfo = getDownloadInfo(selectedOs, selectedMode);
 
   useEffect(() => {
     const userAgent = window.navigator.userAgent;
@@ -98,10 +108,10 @@ export default function DownloadNemoModal() {
       onClose={hide}
       footer={
         <Button
-          href={downloadUrls[selectedOs][selectedMode]!.url}
+          href={downloadInfo.url}
           target="_blank"
           rel="noreferrer"
-          download={downloadUrls[selectedOs][selectedMode]!.name}
+          download={downloadInfo.name}
           kind="solid"
           tone="primary"
           shape="rounded"

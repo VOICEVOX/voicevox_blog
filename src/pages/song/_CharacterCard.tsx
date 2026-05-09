@@ -5,13 +5,26 @@ import PlayButton from "@/components/PlayButton/PlayButton";
 import IconButton from "@/components/ui/IconButton/IconButton";
 import type { CharacterInfo } from "@/constants/type";
 import { getProductPageUrl } from "@/constants/url";
-import { withBaseUrl } from "@/helper";
+import { assertNonNullable, ExhaustiveError, withBaseUrl } from "@/helper";
 import {
   faBackwardStep,
   faForwardStep,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useMemo, useState, type ReactNode } from "react";
+
+type StyleType = "song" | "humming";
+
+const getStyleTypeLabel = (styleType: StyleType): string => {
+  switch (styleType) {
+    case "song":
+      return "ソング";
+    case "humming":
+      return "ハミング";
+    default:
+      throw new ExhaustiveError(styleType);
+  }
+};
 
 export default function CharacterCard({
   characterInfo,
@@ -34,7 +47,7 @@ export default function CharacterCard({
 
   const [styleState, setStyleState] = useState<
     | {
-        styles: { name: string; type: string }[];
+        styles: { name: string; type: StyleType }[];
         selectedStyleIndex: number;
       }
     | undefined // スタイルが未発表な場合はundefined
@@ -55,9 +68,7 @@ export default function CharacterCard({
       return undefined;
     }
     return (
-      (styleState.styles[styleState.selectedStyleIndex].type == "humming"
-        ? "ハミング"
-        : "ソング") +
+      getStyleTypeLabel(styleState.styles[styleState.selectedStyleIndex].type) +
       "：" +
       styleState.styles[styleState.selectedStyleIndex].name
     );
@@ -65,9 +76,7 @@ export default function CharacterCard({
 
   // 次のスタイルへ
   const nextStyle = () => {
-    if (!styleState) {
-      throw new Error("styleState is undefined.");
-    }
+    assertNonNullable(styleState);
     setStyleState({
       ...styleState,
       selectedStyleIndex:
@@ -77,9 +86,7 @@ export default function CharacterCard({
 
   // 前のスタイルへ
   const prevStyle = () => {
-    if (!styleState) {
-      throw new Error("styleState is undefined.");
-    }
+    assertNonNullable(styleState);
     setStyleState({
       ...styleState,
       selectedStyleIndex:
