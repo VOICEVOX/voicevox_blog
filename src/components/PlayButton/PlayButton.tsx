@@ -4,7 +4,7 @@
  */
 import IconButton from "@/components/ui/IconButton/IconButton";
 import type { IconButtonSize } from "@/components/ui/IconButton/helper";
-import { assertNonNullable, ExhaustiveError } from "@/helper";
+import { ensureNotNullish, ExhaustiveError } from "@/helper";
 import { $lastAudio } from "@/store/audio";
 import { faPlay, faStop } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -130,13 +130,11 @@ export default function PlayButton({
   }, [audio]);
 
   const play = () => {
-    assertNonNullable(audio);
-    audio.play();
+    ensureNotNullish(audio).play();
   };
 
   const stop = () => {
-    assertNonNullable(audio);
-    audio.pause();
+    ensureNotNullish(audio).pause();
   };
 
   const isLoading = !(isReady || debouncedIsReady);

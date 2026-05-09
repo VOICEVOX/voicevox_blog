@@ -1,4 +1,4 @@
-import { assertNonNullable } from "@/helper";
+import { ensureNotNullish } from "@/helper";
 import type { Page } from "playwright";
 
 /** 固定のいろんなコンポーネントを取得する */
@@ -13,7 +13,6 @@ export function getLocators(page: Page) {
 
 /** スマホ画面サイズかどうか */
 export function isMobile(page: Page) {
-  const viewport = page.viewportSize();
-  assertNonNullable(viewport);
+  const viewport = ensureNotNullish(page.viewportSize());
   return viewport.width < 768;
 }

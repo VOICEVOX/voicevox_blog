@@ -1,4 +1,4 @@
-import { assertNonNullable } from "@/helper";
+import { ensureNotNullish } from "@/helper";
 import { test, expect } from "@playwright/test";
 import fs from "node:fs";
 import path from "node:path";
@@ -50,10 +50,7 @@ test.describe("http meta", () => {
             : new URL(ogImageUrl).pathname;
           const ogImage = await fetch(baseURL + ogImagePathname)
             .then((res) => res.body)
-            .then((body) => {
-              assertNonNullable(body);
-              return buffer(body);
-            });
+            .then((body) => buffer(ensureNotNullish(body)));
           expect(ogImage).toMatchSnapshot(
             `share${pathname.replaceAll("/", "-")}.webp`,
           );
@@ -67,7 +64,8 @@ test("末尾スラッシュがないURLは末尾スラッシュと同じcanonica
   baseURL,
 }) => {
   const http = await fetch(baseURL + "/song").then((res) => res.text());
-  const canonicalUrl = http.match(/<link rel="canonical" href="(.*?)"/)?.[1];
-  assertNonNullable(canonicalUrl);
+  const canonicalUrl = ensureNotNullish(
+    http.match(/<link rel="canonical" href="(.*?)"/)?.[1],
+  );
   expect(new URL(canonicalUrl).pathname).toBe("/song/");
 });

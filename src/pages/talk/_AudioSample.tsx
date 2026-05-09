@@ -2,7 +2,7 @@ import PlayButton from "@/components/PlayButton/PlayButton";
 import StyleDropdown, {
   useStyleDropdownController,
 } from "@/components/StyleDropdown";
-import { assertNonNullable } from "@/helper";
+import { ensureNotNullish } from "@/helper";
 import { useMemo } from "react";
 
 export default function AudioSample({
@@ -20,13 +20,12 @@ export default function AudioSample({
     styles,
   });
   const selectedAudioUrls = useMemo(() => {
-    const selectedAudioSample = audioSamples.find(
-      ({ style }) => style == selectedStyle,
+    const selectedAudioSample = ensureNotNullish(
+      audioSamples.find(({ style }) => style == selectedStyle),
     );
-    assertNonNullable(selectedAudioSample);
     return selectedAudioSample.urls;
   }, [audioSamples, selectedStyle]);
-  assertNonNullable(selectedStyle);
+  const selectedStyleName = ensureNotNullish(selectedStyle);
 
   return (
     <div className="space-y-sm">
@@ -41,9 +40,7 @@ export default function AudioSample({
               <PlayButton
                 key={index}
                 url={url}
-                name={`${characterName}の${selectedStyle}スタイルのサンプルボイス${
-                  index + 1
-                }`}
+                name={`${characterName}の${selectedStyleName}スタイルのサンプルボイス${index + 1}`}
                 size="sm"
               />
             ))}
@@ -57,7 +54,7 @@ export default function AudioSample({
             <div className="flex gap-0.75">
               <StyleDropdown
                 styles={styles}
-                selectedStyle={selectedStyle}
+                selectedStyle={selectedStyleName}
                 setSelectedStyle={setSelectedStyle}
                 characterName={characterName}
               />

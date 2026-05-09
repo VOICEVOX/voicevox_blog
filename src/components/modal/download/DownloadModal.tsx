@@ -5,7 +5,7 @@ import linuxInstallCpuX64 from "@/assets/script/linuxInstallCpuX64.sh?url";
 import linuxInstallNvidia from "@/assets/script/linuxInstallNvidia.sh?url";
 import Button from "@/components/ui/Button/Button";
 import { APP_VERSION } from "@/constants";
-import { assertNonNullable, withBaseUrl } from "@/helper";
+import { ensureNotNullish, withBaseUrl } from "@/helper";
 import { $downloadModal } from "@/store";
 import { useStore } from "@nanostores/react";
 import { useEffect, useState } from "react";
@@ -130,9 +130,7 @@ const downloadUrls: Record<
 };
 
 const getPackageCandidates = (os: OsType, mode: ModeType): PackageType[] => {
-  const packageCandidates = packageAvailables[os][mode];
-  assertNonNullable(packageCandidates);
-  return packageCandidates;
+  return ensureNotNullish(packageAvailables[os][mode]);
 };
 
 const getDownloadInfo = (
@@ -140,11 +138,8 @@ const getDownloadInfo = (
   mode: ModeType,
   packageType: PackageType,
 ): { url: string; name: string } => {
-  const modeDownloadUrls = downloadUrls[os][mode];
-  assertNonNullable(modeDownloadUrls);
-  const downloadInfo = modeDownloadUrls[packageType];
-  assertNonNullable(downloadInfo);
-  return downloadInfo;
+  const modeDownloadUrls = ensureNotNullish(downloadUrls[os][mode]);
+  return ensureNotNullish(modeDownloadUrls[packageType]);
 };
 
 export default function DownloadModal() {

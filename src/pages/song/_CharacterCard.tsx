@@ -5,7 +5,7 @@ import PlayButton from "@/components/PlayButton/PlayButton";
 import IconButton from "@/components/ui/IconButton/IconButton";
 import type { CharacterInfo } from "@/constants/type";
 import { getProductPageUrl } from "@/constants/url";
-import { assertNonNullable, ExhaustiveError, withBaseUrl } from "@/helper";
+import { ensureNotNullish, ExhaustiveError, withBaseUrl } from "@/helper";
 import {
   faBackwardStep,
   faForwardStep,
@@ -76,22 +76,25 @@ export default function CharacterCard({
 
   // 次のスタイルへ
   const nextStyle = () => {
-    assertNonNullable(styleState);
+    const currentStyleState = ensureNotNullish(styleState);
     setStyleState({
-      ...styleState,
+      ...currentStyleState,
       selectedStyleIndex:
-        (styleState.selectedStyleIndex + 1) % styleState.styles.length,
+        (currentStyleState.selectedStyleIndex + 1) %
+        currentStyleState.styles.length,
     });
   };
 
   // 前のスタイルへ
   const prevStyle = () => {
-    assertNonNullable(styleState);
+    const currentStyleState = ensureNotNullish(styleState);
     setStyleState({
-      ...styleState,
+      ...currentStyleState,
       selectedStyleIndex:
-        (styleState.selectedStyleIndex - 1 + styleState.styles.length) %
-        styleState.styles.length,
+        (currentStyleState.selectedStyleIndex -
+          1 +
+          currentStyleState.styles.length) %
+        currentStyleState.styles.length,
     });
   };
 

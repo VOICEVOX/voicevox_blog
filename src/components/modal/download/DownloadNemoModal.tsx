@@ -5,7 +5,7 @@ import ModalShell from "../ModalShell";
 import Selector from "./Selector";
 import Button from "@/components/ui/Button/Button";
 import { NEMO_VERSION } from "@/constants";
-import { assertNonNullable, withBaseUrl } from "@/helper";
+import { ensureNotNullish, withBaseUrl } from "@/helper";
 import { $nemoDownloadModal } from "@/store";
 import { useStore } from "@nanostores/react";
 import { useEffect, useState } from "react";
@@ -69,9 +69,7 @@ const getDownloadInfo = (
   os: OsType,
   mode: ModeType,
 ): { url: string; name: string } => {
-  const downloadInfo = downloadUrls[os][mode];
-  assertNonNullable(downloadInfo);
-  return downloadInfo;
+  return ensureNotNullish(downloadUrls[os][mode]);
 };
 
 export default function DownloadNemoModal() {
