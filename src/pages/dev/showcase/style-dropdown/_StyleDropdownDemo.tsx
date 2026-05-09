@@ -1,14 +1,13 @@
 import StyleDropdown, {
   useStyleDropdownController,
 } from "@/components/StyleDropdown";
-import { ensureNotNullish } from "@/helper";
+import { assertNonNullable } from "@/helper";
 
 export function StyleDropdownClosed({ styles }: { styles: string[] }) {
-  const { selectedStyle: nullableSelectedStyle, setSelectedStyle } =
-    useStyleDropdownController({
-      styles,
-    });
-  const selectedStyle = ensureNotNullish(nullableSelectedStyle);
+  const { selectedStyle, setSelectedStyle } = useStyleDropdownController({
+    styles,
+  });
+  assertNonNullable(selectedStyle);
   return (
     <StyleDropdown
       styles={styles}
@@ -20,11 +19,10 @@ export function StyleDropdownClosed({ styles }: { styles: string[] }) {
 }
 
 export function StyleDropdownOpened({ styles }: { styles: string[] }) {
-  const { selectedStyle: nullableSelectedStyle, setSelectedStyle } =
-    useStyleDropdownController({
-      styles,
-    });
-  const selectedStyle = ensureNotNullish(nullableSelectedStyle);
+  const { selectedStyle, setSelectedStyle } = useStyleDropdownController({
+    styles,
+  });
+  assertNonNullable(selectedStyle);
   return (
     <StyleDropdown
       styles={styles}

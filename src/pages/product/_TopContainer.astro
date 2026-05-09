@@ -220,7 +220,7 @@ const postCharacterKey =
 </div>
 
 <script>
-  import { ensureNotNullish, UnreachableError } from "@/helper";
+  import { assertNonNullable, UnreachableError } from "@/helper";
 
   function scrollToCenter() {
     const characterList = document.querySelector(
@@ -230,9 +230,8 @@ const postCharacterKey =
 
     if (!(characterList instanceof HTMLElement)) throw new UnreachableError();
 
-    const active = ensureNotNullish(
-      characterList.querySelector("[aria-current='page']"),
-    );
+    const active = characterList.querySelector("[aria-current='page']");
+    assertNonNullable(active);
     if (!(active instanceof HTMLElement)) throw new UnreachableError();
 
     const activeCenter = active.offsetLeft + active.offsetWidth / 2;

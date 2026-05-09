@@ -1,4 +1,4 @@
-import { ensureNotNullish } from "@/helper";
+import { assertNonNullable, ensureNotNullish } from "@/helper";
 import { test, expect } from "@playwright/test";
 import fs from "node:fs";
 import path from "node:path";
@@ -64,8 +64,7 @@ test("末尾スラッシュがないURLは末尾スラッシュと同じcanonica
   baseURL,
 }) => {
   const http = await fetch(baseURL + "/song").then((res) => res.text());
-  const canonicalUrl = ensureNotNullish(
-    http.match(/<link rel="canonical" href="(.*?)"/)?.[1],
-  );
+  const canonicalUrl = http.match(/<link rel="canonical" href="(.*?)"/)?.[1];
+  assertNonNullable(canonicalUrl);
   expect(new URL(canonicalUrl).pathname).toBe("/song/");
 });

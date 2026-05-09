@@ -65,15 +65,14 @@ const { callNames, characterInfo, additionalClass } = Astro.props;
 </td>
 
 <script>
-  import { ensureNotNullish } from "@/helper";
+  import { assertNonNullable } from "@/helper";
 
   // クリックしたときにクリップボードにコピー
   document.querySelectorAll("[data-voicevox-call-name]").forEach((elem) => {
     let timeoutId: ReturnType<typeof setTimeout>;
     elem.addEventListener("click", () => {
-      const callName = ensureNotNullish(
-        elem.getAttribute("data-voicevox-call-name"),
-      );
+      const callName = elem.getAttribute("data-voicevox-call-name");
+      assertNonNullable(callName);
 
       // しばらくの間コピー済みマークを表示
       navigator.clipboard.writeText(callName).then(() => {
