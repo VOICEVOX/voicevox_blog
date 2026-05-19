@@ -1,14 +1,13 @@
 import StyleDropdown, {
   useStyleDropdownController,
 } from "@/components/StyleDropdown";
+import { assertNonNullable } from "@/helper";
 
 export function StyleDropdownClosed({ styles }: { styles: string[] }) {
   const { selectedStyle, setSelectedStyle } = useStyleDropdownController({
     styles,
   });
-  if (selectedStyle == undefined) {
-    throw new Error("selectedStyle is undefined");
-  }
+  assertNonNullable(selectedStyle);
   return (
     <StyleDropdown
       styles={styles}
@@ -23,9 +22,7 @@ export function StyleDropdownOpened({ styles }: { styles: string[] }) {
   const { selectedStyle, setSelectedStyle } = useStyleDropdownController({
     styles,
   });
-  if (selectedStyle == undefined) {
-    throw new Error("selectedStyle is undefined");
-  }
+  assertNonNullable(selectedStyle);
   return (
     <StyleDropdown
       styles={styles}

@@ -4,6 +4,7 @@
  */
 import IconButton from "@/components/ui/IconButton/IconButton";
 import type { IconButtonSize } from "@/components/ui/IconButton/helper";
+import { ensureNotNullish, ExhaustiveError } from "@/helper";
 import { $lastAudio } from "@/store/audio";
 import { faPlay, faStop } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -25,11 +26,50 @@ export function useDebounce<T>(value: T, delay: number) {
   return debouncedValue;
 }
 
-const getTextSizeClass = (size?: "sm" | "md" | "lg") => {
-  if (size === "sm") return "text-xs";
-  if (size === "md") return "text-xl";
-  if (size === "lg") return "text-2xl";
-  return "text-base";
+type PlayButtonSize = "sm" | "md" | "lg";
+
+const getTextSizeClass = (size: PlayButtonSize | undefined) => {
+  if (size == undefined) return "text-base";
+  switch (size) {
+    case "sm":
+      return "text-xs";
+    case "md":
+      return "text-xl";
+    case "lg":
+      return "text-2xl";
+    default:
+      throw new ExhaustiveError(size);
+  }
+};
+
+const getSpinnerSize = (size: PlayButtonSize | undefined) => {
+  if (size == undefined) return "w-4 h-4";
+  switch (size) {
+    case "sm":
+      return "w-4 h-4";
+    case "md":
+      return "w-5 h-5";
+    case "lg":
+      return "w-6 h-6";
+    default:
+      throw new ExhaustiveError(size);
+  }
+};
+
+const getIconButtonSize = (
+  size: PlayButtonSize | undefined,
+): IconButtonSize => {
+  if (size == undefined) return "md";
+  switch (size) {
+    case "sm":
+      return "sm";
+    case "md":
+      return "lg";
+    case "lg":
+      return "xl";
+    default:
+      throw new ExhaustiveError(size);
+  }
 };
 
 export default function PlayButton({
@@ -42,7 +82,7 @@ export default function PlayButton({
   url: string;
   name: string;
   color?: string; // 無指定の場合はprimary
-  size?: "sm" | "md" | "lg";
+  size?: PlayButtonSize;
 } & React.HTMLAttributes<HTMLButtonElement>) {
   const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -90,13 +130,11 @@ export default function PlayButton({
   }, [audio]);
 
   const play = () => {
-    if (!audio) throw new Error(`audio is not ready: ${url}`);
-    audio.play();
+    ensureNotNullish(audio).play();
   };
 
   const stop = () => {
-    if (!audio) throw new Error(`audio is not ready: ${url}`);
-    audio.pause();
+    ensureNotNullish(audio).pause();
   };
 
   const isLoading = !(isReady || debouncedIsReady);
@@ -106,15 +144,7 @@ export default function PlayButton({
   const finalClassName =
     `${baseClasses} ${textSizeClass} ${colorClasses} ${className || ""}`.trim();
 
-  const getSpinnerSize = (size?: "sm" | "md" | "lg") => {
-    if (size === "sm") return "w-4 h-4";
-    if (size === "md") return "w-5 h-5";
-    if (size === "lg") return "w-6 h-6";
-    return "w-4 h-4";
-  };
-
-  const iconButtonSize: IconButtonSize =
-    size === "sm" ? "sm" : size === "md" ? "lg" : size === "lg" ? "xl" : "md";
+  const iconButtonSize = getIconButtonSize(size);
 
   return (
     <IconButton
