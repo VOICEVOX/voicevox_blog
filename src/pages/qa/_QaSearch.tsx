@@ -1,8 +1,9 @@
+import { assertNonNullable } from "@/helper";
 import { faMagnifyingGlass, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Fuse from "fuse.js";
 import type { FuseResultMatch } from "fuse.js";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import { z } from "zod";
 
@@ -29,7 +30,9 @@ const MAX_EXCERPT_LENGTH = 140;
 export default function QaSearch(rawProps: QaSearchProps) {
   const { items } = qaSearchPropsSchema.parse(rawProps);
   const [query, setQuery] = useState("");
-  const trimmedQuery = query.trim();
+  const [searchQuery, setSearchQuery] = useState("");
+  const isComposingRef = useRef(false);
+  const trimmedSearchQuery = searchQuery.trim();
   const fuse = useMemo(
     () =>
       new Fuse(items, {
@@ -46,11 +49,23 @@ export default function QaSearch(rawProps: QaSearchProps) {
     [items],
   );
   const results = useMemo(() => {
-    if (trimmedQuery.length === 0) {
+    if (trimmedSearchQuery.length === 0) {
       return [];
     }
-    return fuse.search(trimmedQuery, { limit: 12 });
-  }, [fuse, trimmedQuery]);
+    return fuse.search(trimmedSearchQuery, { limit: 12 });
+  }, [fuse, trimmedSearchQuery]);
+
+  const clearQuery = () => {
+    setQuery("");
+    setSearchQuery("");
+  };
+
+  const handleSelect = (id: string) => {
+    const target = document.getElementById(id);
+    assertNonNullable(target);
+    target.scrollIntoView();
+    history.replaceState(null, "", `#${id}`);
+  };
 
   return (
     <section className="mb-2xl" aria-labelledby={PAGE_TITLE_ID}>
@@ -81,14 +96,32 @@ export default function QaSearch(rawProps: QaSearchProps) {
               enterKeyHint="search"
               placeholder="キーワードを入力"
               className="h-12 w-full rounded-md border border-neutral-300 bg-white pr-12 pl-11 text-base text-neutral-950 placeholder:text-neutral-500"
-              onChange={(event) => setQuery(event.currentTarget.value)}
+              onChange={(event) => {
+                const value = event.currentTarget.value;
+                setQuery(value);
+                if (!isComposingRef.current) {
+                  setSearchQuery(value);
+                }
+              }}
+              onCompositionStart={() => {
+                isComposingRef.current = true;
+              }}
+              onCompositionEnd={(event) => {
+                isComposingRef.current = false;
+                setSearchQuery(event.currentTarget.value);
+              }}
+              onKeyDown={(event) => {
+                if (event.key === "Escape") {
+                  clearQuery();
+                }
+              }}
             />
             {query.length > 0 && (
               <button
                 type="button"
                 aria-label="検索語を消去"
                 className="vv-status-layer absolute top-1/2 right-2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full text-neutral-600"
-                onClick={() => setQuery("")}
+                onClick={() => clearQuery()}
               >
                 <FontAwesomeIcon icon={faXmark} />
               </button>
@@ -96,17 +129,32 @@ export default function QaSearch(rawProps: QaSearchProps) {
           </div>
         </div>
       </div>
-      {trimmedQuery.length > 0 && (
-        <div className="mt-xl py-md" aria-live="polite">
-          <h2 className="text-lg font-bold text-neutral-900">検索結果</h2>
+      {trimmedSearchQuery.length > 0 && (
+        <div
+          className="mt-md p-md rounded-md border border-neutral-300 bg-white"
+          aria-live="polite"
+        >
+          <h2 className="text-lg font-bold text-neutral-900">
+            検索結果
+            {results.length > 0 && (
+              <span className="ml-sm text-sm font-normal text-neutral-600">
+                {results.length}件
+              </span>
+            )}
+          </h2>
           {results.length === 0 ? (
             <p className="mt-sm text-sm text-neutral-600">
               該当するQ&amp;Aがありません
             </p>
           ) : (
-            <ol className="mt-sm">
+            <ol className="mt-sm divide-y divide-neutral-200">
               {results.map(({ item, matches }) => (
-                <SearchResultItem key={item.id} item={item} matches={matches} />
+                <SearchResultItem
+                  key={item.id}
+                  item={item}
+                  matches={matches}
+                  onSelect={handleSelect}
+                />
               ))}
             </ol>
           )}
@@ -119,9 +167,11 @@ export default function QaSearch(rawProps: QaSearchProps) {
 function SearchResultItem({
   item,
   matches,
+  onSelect,
 }: {
   item: QaSearchItem;
   matches?: readonly FuseResultMatch[];
+  onSelect: (id: string) => void;
 }) {
   const categoryMatch = findMatch(matches, "category");
   const questionMatch = findMatch(matches, "question");
@@ -135,10 +185,14 @@ function SearchResultItem({
   );
 
   return (
-    <li className="py-md border-t border-neutral-200">
+    <li className="py-md">
       <a
         href={`#${item.id}`}
         className="vv-status-layer -mx-2xs px-2xs py-xs block rounded-md text-current no-underline"
+        onClick={(event) => {
+          event.preventDefault();
+          onSelect(item.id);
+        }}
       >
         <p className="text-sm font-bold text-green-900">
           {highlightText(item.category, categoryMatch?.indices ?? [])}
