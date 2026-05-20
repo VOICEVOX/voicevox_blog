@@ -28,6 +28,7 @@ type QaSearchItem = {
   answer: string;
 };
 
+const QUESTION_HEADING_PREFIX = "Q. ";
 const props = Astro.props;
 const { frontmatter } = props;
 
@@ -103,7 +104,7 @@ function buildQaSearchItems(
         throw new Error("Q&A検索用データの見出し順が一致しません");
       }
 
-      currentQuestion = questionText;
+      currentQuestion = parseQuestionText(questionText);
       currentSlug = questionHeading.slug;
       answerLines = [];
       questionIndex += 1;
@@ -141,6 +142,19 @@ function normalizeAnswerText(lines: string[]): string {
     .map((line) => normalizeMarkdownText(line))
     .filter((line) => line.length > 0)
     .join(" ");
+}
+
+function parseQuestionText(text: string): string {
+  if (!text.startsWith(QUESTION_HEADING_PREFIX)) {
+    throw new Error("Q&A検索用データの質問見出しがQ. から始まっていません");
+  }
+
+  const questionText = text.slice(QUESTION_HEADING_PREFIX.length).trim();
+  if (questionText.length === 0) {
+    throw new Error("Q&A検索用データの質問が空です");
+  }
+
+  return questionText;
 }
 
 function normalizeMarkdownText(text: string): string {

@@ -25,6 +25,7 @@ type MatchRange = readonly [number, number];
 
 const SEARCH_INPUT_ID = "qa-search-input";
 const PAGE_TITLE_ID = "qa-page-title";
+const QUESTION_HEADING_PREFIX = "Q. ";
 const MAX_EXCERPT_LENGTH = 140;
 
 export default function QaSearch(rawProps: QaSearchProps) {
@@ -198,6 +199,7 @@ function SearchResultItem({
           {highlightText(item.category, categoryMatch?.indices ?? [])}
         </p>
         <p className="mt-2xs text-lg font-bold text-neutral-900">
+          {QUESTION_HEADING_PREFIX}
           {highlightText(item.question, questionMatch?.indices ?? [])}
         </p>
         <p className="mt-xs text-sm text-neutral-700">
