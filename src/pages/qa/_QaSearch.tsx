@@ -5,7 +5,7 @@ import { faMagnifyingGlass, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Fuse from "fuse.js";
 import type { IFuseOptions } from "fuse.js";
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 
 type QaSearchProps = {
   items: QaSearchItem[];
@@ -29,15 +29,16 @@ const FUSE_OPTIONS = {
 export default function QaSearch({ items }: QaSearchProps) {
   const [query, setQuery] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
-  const isComposingRef = useRef(false);
   const trimmedSearchQuery = searchQuery.trim();
+  const isSearching = trimmedSearchQuery.length > 0;
   const fuse = useMemo(() => new Fuse(items, FUSE_OPTIONS), [items]);
   const results = useMemo(() => {
-    if (trimmedSearchQuery.length === 0) {
+    if (isSearching === false) {
       return [];
     }
     return fuse.search(trimmedSearchQuery, { limit: MAX_RESULTS });
-  }, [fuse, trimmedSearchQuery]);
+  }, [fuse, isSearching, trimmedSearchQuery]);
+  const hasResults = results.length > 0;
 
   const clearQuery = () => {
     setQuery("");
@@ -84,15 +85,14 @@ export default function QaSearch({ items }: QaSearchProps) {
               onChange={(event) => {
                 const value = event.currentTarget.value;
                 setQuery(value);
-                if (!isComposingRef.current) {
+                if (!(event.nativeEvent instanceof InputEvent)) {
+                  throw new Error("検索入力のIME状態を判定できません");
+                }
+                if (event.nativeEvent.isComposing === false) {
                   setSearchQuery(value);
                 }
               }}
-              onCompositionStart={() => {
-                isComposingRef.current = true;
-              }}
               onCompositionEnd={(event) => {
-                isComposingRef.current = false;
                 setSearchQuery(event.currentTarget.value);
               }}
               onKeyDown={(event) => {
@@ -114,24 +114,20 @@ export default function QaSearch({ items }: QaSearchProps) {
           </div>
         </div>
       </div>
-      {trimmedSearchQuery.length > 0 && (
+      {isSearching === true && (
         <div
           className="mt-md p-md rounded-md border border-neutral-300 bg-white"
           aria-live="polite"
         >
           <h2 className="text-lg font-bold text-neutral-900">
             検索結果
-            {results.length > 0 && (
+            {hasResults === true && (
               <span className="ml-sm text-sm font-normal text-neutral-600">
                 {results.length}件
               </span>
             )}
           </h2>
-          {results.length === 0 ? (
-            <p className="mt-sm text-sm text-neutral-600">
-              該当するQ&amp;Aがありません
-            </p>
-          ) : (
+          {hasResults === true ? (
             <ol className="mt-sm divide-y divide-neutral-200">
               {results.map(({ item, matches }) => (
                 <SearchResultItem
@@ -142,6 +138,10 @@ export default function QaSearch({ items }: QaSearchProps) {
                 />
               ))}
             </ol>
+          ) : (
+            <p className="mt-sm text-sm text-neutral-600">
+              該当するQ&amp;Aがありません
+            </p>
           )}
         </div>
       )}

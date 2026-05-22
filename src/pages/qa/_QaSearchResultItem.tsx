@@ -1,13 +1,10 @@
 import { QUESTION_HEADING_PREFIX } from "./_qa";
 import type { QaSearchItem } from "./_qa";
-import type { FuseResultMatch } from "fuse.js";
+import type { FuseResultMatch, RangeTuple } from "fuse.js";
 import type { ReactNode } from "react";
 
-type SearchKey = "category" | "question" | "answer";
-type MatchRange = readonly [number, number];
-
-const MAX_EXCERPT_LENGTH = 140;
-const EXCERPT_CONTEXT_BEFORE = 40;
+const MAX_EXCERPT_CHARACTER_COUNT = 140;
+const EXCERPT_CONTEXT_BEFORE_MATCH_CHARACTER_COUNT = 40;
 
 export default function SearchResultItem({
   item,
@@ -18,9 +15,9 @@ export default function SearchResultItem({
   matches?: readonly FuseResultMatch[];
   onSelect: (id: string) => void;
 }) {
-  const categoryMatch = findMatch(matches, "category");
-  const questionMatch = findMatch(matches, "question");
-  const answerMatch = findMatch(matches, "answer");
+  const categoryMatch = matches?.find((match) => match.key === "category");
+  const questionMatch = matches?.find((match) => match.key === "question");
+  const answerMatch = matches?.find((match) => match.key === "answer");
   const answerIndices = answerMatch?.indices ?? [];
   const excerpt = buildExcerpt(item.answer, answerIndices);
   const excerptRanges = sliceMatchRanges(
@@ -47,35 +44,25 @@ export default function SearchResultItem({
           {highlightText(item.question, questionMatch?.indices ?? [])}
         </p>
         <p className="mt-xs text-sm text-neutral-700">
-          {excerpt.hasLeadingEllipsis && "..."}
+          {excerpt.hasLeadingEllipsis === true && "..."}
           {highlightText(excerpt.text, excerptRanges)}
-          {excerpt.hasTrailingEllipsis && "..."}
+          {excerpt.hasTrailingEllipsis === true && "..."}
         </p>
       </a>
     </li>
   );
 }
 
-function findMatch(
-  matches: readonly FuseResultMatch[] | undefined,
-  key: SearchKey,
-): FuseResultMatch | undefined {
-  if (matches == undefined) {
-    return undefined;
-  }
-  return matches.find((match) => match.key === key);
-}
-
 function buildExcerpt(
   text: string,
-  indices: readonly MatchRange[],
+  indices: readonly RangeTuple[],
 ): {
   text: string;
   offset: number;
   hasLeadingEllipsis: boolean;
   hasTrailingEllipsis: boolean;
 } {
-  if (text.length <= MAX_EXCERPT_LENGTH) {
+  if (text.length <= MAX_EXCERPT_CHARACTER_COUNT) {
     return {
       text,
       offset: 0,
@@ -86,12 +73,12 @@ function buildExcerpt(
 
   const firstMatch = indices[0];
   const firstMatchStart = firstMatch == undefined ? 0 : firstMatch[0];
-  const maxOffset = text.length - MAX_EXCERPT_LENGTH;
+  const maxOffset = text.length - MAX_EXCERPT_CHARACTER_COUNT;
   const offset = Math.min(
-    Math.max(0, firstMatchStart - EXCERPT_CONTEXT_BEFORE),
+    Math.max(0, firstMatchStart - EXCERPT_CONTEXT_BEFORE_MATCH_CHARACTER_COUNT),
     maxOffset,
   );
-  const end = offset + MAX_EXCERPT_LENGTH;
+  const end = offset + MAX_EXCERPT_CHARACTER_COUNT;
 
   return {
     text: text.slice(offset, end),
@@ -102,11 +89,11 @@ function buildExcerpt(
 }
 
 function sliceMatchRanges(
-  indices: readonly MatchRange[],
+  indices: readonly RangeTuple[],
   offset: number,
   length: number,
-): MatchRange[] {
-  const ranges: MatchRange[] = [];
+): RangeTuple[] {
+  const ranges: RangeTuple[] = [];
   const endOffset = offset + length - 1;
   for (const [start, end] of indices) {
     if (end < offset || start > endOffset) {
@@ -122,7 +109,7 @@ function sliceMatchRanges(
 
 function highlightText(
   text: string,
-  indices: readonly MatchRange[],
+  indices: readonly RangeTuple[],
 ): ReactNode {
   if (indices.length === 0) {
     return text;

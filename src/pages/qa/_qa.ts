@@ -6,6 +6,35 @@ type ParsedHeading = {
   text: string;
 };
 
+type ParsedLine =
+  | {
+      kind: "codeFence";
+    }
+  | {
+      kind: "heading";
+      heading: ParsedHeading;
+    }
+  | {
+      kind: "text";
+      text: string;
+    };
+
+type ParseState =
+  | {
+      kind: "init";
+    }
+  | {
+      kind: "category";
+      category: string;
+    }
+  | {
+      kind: "question";
+      category: string;
+      question: string;
+      slug: string;
+      answerLines: string[];
+    };
+
 export type QaSearchItem = {
   id: string;
   category: string;
@@ -21,94 +50,86 @@ export function buildQaSearchItems(
 ): QaSearchItem[] {
   const questionHeadings = headings.filter((heading) => heading.depth === 3);
   const items: QaSearchItem[] = [];
-  let currentCategory: string | undefined;
-  let currentQuestion: string | undefined;
-  let currentSlug: string | undefined;
-  let answerLines: string[] = [];
+  let state: ParseState = { kind: "init" };
   let questionIndex = 0;
   let inCodeFence = false;
 
   const pushCurrentItem = () => {
-    if (currentQuestion == undefined) {
+    if (state.kind !== "question") {
       return;
-    }
-    if (currentCategory == undefined) {
-      throw new Error("Q&A検索用データのカテゴリがありません");
-    }
-    if (currentSlug == undefined) {
-      throw new Error("Q&A検索用データの見出しIDがありません");
     }
 
     items.push({
-      id: currentSlug,
-      category: currentCategory,
-      question: currentQuestion,
-      answer: normalizeAnswerText(answerLines),
+      id: state.slug,
+      category: state.category,
+      question: state.question,
+      answer: normalizeAnswerText(state.answerLines),
     });
   };
 
+  const pushAnswerLine = (line: string) => {
+    if (state.kind !== "question") {
+      return;
+    }
+    state.answerLines.push(line);
+  };
+
   for (const line of markdown.split(/\r?\n/)) {
-    if (isCodeFenceLine(line)) {
-      inCodeFence = !inCodeFence;
-      if (currentQuestion != undefined) {
-        answerLines.push(line);
+    const parsedLine = parseLine(line, inCodeFence);
+
+    switch (parsedLine.kind) {
+      case "codeFence":
+        inCodeFence = !inCodeFence;
+        pushAnswerLine(line);
+        break;
+      case "text":
+        pushAnswerLine(parsedLine.text);
+        break;
+      case "heading": {
+        const { heading } = parsedLine;
+        if (heading.depth === 2) {
+          pushCurrentItem();
+          state = {
+            kind: "category",
+            category: normalizeMarkdownText(heading.text),
+          };
+          break;
+        }
+
+        if (heading.depth === 3) {
+          pushCurrentItem();
+          if (state.kind === "init") {
+            throw new Error("Q&A検索用データのカテゴリより前に質問があります");
+          }
+
+          const questionHeading = questionHeadings[questionIndex];
+          if (questionHeading == undefined) {
+            throw new Error("Q&A検索用データの見出しIDが足りません");
+          }
+
+          const questionText = normalizeMarkdownText(heading.text);
+          if (normalizeMarkdownText(questionHeading.text) !== questionText) {
+            throw new Error("Q&A検索用データの見出し順が一致しません");
+          }
+
+          state = {
+            kind: "question",
+            category: state.category,
+            question: parseQuestionText(questionText),
+            slug: questionHeading.slug,
+            answerLines: [],
+          };
+          questionIndex += 1;
+          break;
+        }
+
+        pushAnswerLine(heading.text);
+        break;
       }
-      continue;
-    }
-
-    if (inCodeFence) {
-      if (currentQuestion != undefined) {
-        answerLines.push(line);
-      }
-      continue;
-    }
-
-    const heading = parseHeading(line);
-    if (heading == undefined) {
-      if (currentQuestion != undefined) {
-        answerLines.push(line);
-      }
-      continue;
-    }
-
-    if (heading.depth === 2) {
-      pushCurrentItem();
-      currentCategory = normalizeMarkdownText(heading.text);
-      currentQuestion = undefined;
-      currentSlug = undefined;
-      answerLines = [];
-      continue;
-    }
-
-    if (heading.depth === 3) {
-      pushCurrentItem();
-      if (currentCategory == undefined) {
-        throw new Error("Q&A検索用データのカテゴリより前に質問があります");
-      }
-
-      const questionHeading = questionHeadings[questionIndex];
-      if (questionHeading == undefined) {
-        throw new Error("Q&A検索用データの見出しIDが足りません");
-      }
-
-      const questionText = normalizeMarkdownText(heading.text);
-      if (normalizeMarkdownText(questionHeading.text) !== questionText) {
-        throw new Error("Q&A検索用データの見出し順が一致しません");
-      }
-
-      currentQuestion = parseQuestionText(questionText);
-      currentSlug = questionHeading.slug;
-      answerLines = [];
-      questionIndex += 1;
-      continue;
-    }
-
-    if (currentQuestion != undefined) {
-      answerLines.push(heading.text);
     }
   }
 
-  if (inCodeFence) {
+  if (inCodeFence === true) {
     throw new Error("Q&A検索用データのコードブロックが閉じていません");
   }
 
@@ -119,6 +140,23 @@ export function buildQaSearchItems(
   }
 
   return items;
+}
+
+function parseLine(line: string, inCodeFence: boolean): ParsedLine {
+  if (isCodeFenceLine(line) === true) {
+    return { kind: "codeFence" };
+  }
+
+  if (inCodeFence === true) {
+    return { kind: "text", text: line };
+  }
+
+  const heading = parseHeading(line);
+  if (heading == undefined) {
+    return { kind: "text", text: line };
+  }
+
+  return { kind: "heading", heading };
 }
 
 function isCodeFenceLine(line: string): boolean {
