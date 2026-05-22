@@ -1,10 +1,6 @@
 import SearchResultItem from "./_QaSearchResultItem";
 import type { QaSearchItem } from "./_qa";
-import {
-  assertNonNullable,
-  ensureNotNullish,
-  UnreachableError,
-} from "@/helper";
+import { ensureNotNullish, UnreachableError } from "@/helper";
 import { faMagnifyingGlass, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Fuse from "fuse.js";
@@ -74,13 +70,6 @@ export default function QaSearch({ items }: QaSearchProps) {
 
   const clearQuery = () => {
     setSearchState({ input: "", committed: "" });
-  };
-
-  const handleSelect = (id: string) => {
-    const target = document.getElementById(id);
-    assertNonNullable(target);
-    target.scrollIntoView();
-    history.replaceState(null, "", `#${id}`);
   };
 
   return (
@@ -163,11 +152,7 @@ export default function QaSearch({ items }: QaSearchProps) {
           {resultState.kind === "matched" ? (
             <ol className="mt-sm divide-y divide-neutral-200">
               {resultState.results.map((result) => (
-                <SearchResultItem
-                  key={result.item.id}
-                  result={result}
-                  onSelect={handleSelect}
-                />
+                <SearchResultItem key={result.item.id} result={result} />
               ))}
             </ol>
           ) : (

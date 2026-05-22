@@ -1,5 +1,6 @@
 import { QUESTION_HEADING_PREFIX } from "./_qa";
 import type { QaSearchResult } from "./_QaSearch";
+import { assertNonNullable } from "@/helper";
 import type { RangeTuple } from "fuse.js";
 import type { ReactNode } from "react";
 
@@ -8,10 +9,8 @@ const EXCERPT_CONTEXT_BEFORE_MATCH_CHARACTER_COUNT = 40;
 
 export default function SearchResultItem({
   result,
-  onSelect,
 }: {
   result: QaSearchResult;
-  onSelect: (id: string) => void;
 }) {
   const { item, indicesByKey } = result;
   const excerpt = buildExcerpt(item.answer, indicesByKey.answer);
@@ -23,7 +22,10 @@ export default function SearchResultItem({
         className="vv-status-layer -mx-2xs px-2xs py-xs block rounded-md text-current no-underline"
         onClick={(event) => {
           event.preventDefault();
-          onSelect(item.id);
+          const target = document.getElementById(item.id);
+          assertNonNullable(target);
+          target.scrollIntoView();
+          history.replaceState(null, "", `#${item.id}`);
         }}
       >
         <p className="text-sm font-bold text-green-900">
@@ -52,8 +54,7 @@ function buildExcerpt(
   hasLeadingEllipsis: boolean;
   hasTrailingEllipsis: boolean;
 } {
-  const firstMatch = indices[0];
-  const firstMatchStart = firstMatch == undefined ? 0 : firstMatch[0];
+  const firstMatchStart = indices.length > 0 ? indices[0][0] : 0;
   const maxOffset = Math.max(0, text.length - MAX_EXCERPT_CHARACTER_COUNT);
   const offset = Math.min(
     Math.max(0, firstMatchStart - EXCERPT_CONTEXT_BEFORE_MATCH_CHARACTER_COUNT),
