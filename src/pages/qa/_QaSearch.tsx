@@ -54,7 +54,7 @@ export default function QaSearch({ items }: QaSearchProps) {
     if (trimmed.length === 0) {
       return { kind: "idle" };
     }
-    const results: QaSearchResult[] = fuse
+    const results = fuse
       .search(trimmed, { limit: MAX_RESULTS })
       .map((result) => ({
         item: result.item,
@@ -105,7 +105,7 @@ export default function QaSearch({ items }: QaSearchProps) {
               role="searchbox"
               value={inputValue}
               enterKeyHint="search"
-              placeholder="キーワードを入力"
+              placeholder="検索ワードを入力"
               className="h-12 w-full rounded-md border border-neutral-300 bg-white pr-12 pl-11 text-base text-neutral-950 placeholder:text-neutral-500"
               onChange={(event) => {
                 const value = event.currentTarget.value;

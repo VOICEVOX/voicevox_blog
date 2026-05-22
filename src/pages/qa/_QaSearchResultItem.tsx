@@ -100,10 +100,6 @@ function highlightText(
   text: string,
   indices: readonly RangeTuple[],
 ): ReactNode {
-  if (indices.length === 0) {
-    return text;
-  }
-
   const chunks: ReactNode[] = [];
   let lastIndex = 0;
   indices.forEach(([start, end], index) => {
