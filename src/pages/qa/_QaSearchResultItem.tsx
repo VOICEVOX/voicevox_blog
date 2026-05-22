@@ -1,5 +1,5 @@
 import { QUESTION_HEADING_PREFIX } from "./_qa";
-import type { QaSearchItem } from "./_qa";
+import type { QaSearchResult } from "./_QaSearch";
 import { UnreachableError } from "@/helper";
 import type { FuseResultMatch, RangeTuple } from "fuse.js";
 import type { ReactNode } from "react";
@@ -9,15 +9,14 @@ const EXCERPT_CONTEXT_BEFORE_MATCH_CHARACTER_COUNT = 40;
 type SearchKey = "category" | "question" | "answer";
 
 export default function SearchResultItem({
-  item,
-  matches,
+  result,
   onSelect,
 }: {
-  item: QaSearchItem;
-  matches: readonly FuseResultMatch[];
+  result: QaSearchResult;
   onSelect: (id: string) => void;
 }) {
-  const matchesByKey = buildMatchesByKey(matches);
+  const { item } = result;
+  const matchesByKey = buildMatchesByKey(result.matches);
   const categoryMatch = matchesByKey.get("category");
   const questionMatch = matchesByKey.get("question");
   const answerMatch = matchesByKey.get("answer");

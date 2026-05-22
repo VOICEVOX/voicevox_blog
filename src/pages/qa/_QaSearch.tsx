@@ -8,7 +8,7 @@ import {
 import { faMagnifyingGlass, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Fuse from "fuse.js";
-import type { IFuseOptions } from "fuse.js";
+import type { FuseResultMatch, IFuseOptions } from "fuse.js";
 import { useMemo, useState } from "react";
 
 type QaSearchProps = {
@@ -16,6 +16,16 @@ type QaSearchProps = {
 };
 
 type SearchState = { input: string; committed: string };
+
+export type QaSearchResult = {
+  item: QaSearchItem;
+  matches: readonly FuseResultMatch[];
+};
+
+type SearchResultState =
+  | { kind: "idle" }
+  | { kind: "empty" }
+  | { kind: "matched"; results: QaSearchResult[] };
 
 const SEARCH_INPUT_ID = "qa-search-input";
 const PAGE_TITLE_ID = "qa-page-title";
@@ -38,21 +48,23 @@ export default function QaSearch({ items }: QaSearchProps) {
     committed: "",
   });
   const inputValue = searchState.input;
-  const trimmedSearchQuery = searchState.committed.trim();
-  const isSearching = trimmedSearchQuery.length > 0;
   const fuse = useMemo(() => new Fuse(items, FUSE_OPTIONS), [items]);
-  const results = useMemo(() => {
-    if (!isSearching) {
-      return [];
+  const resultState = useMemo<SearchResultState>(() => {
+    const trimmed = searchState.committed.trim();
+    if (trimmed.length === 0) {
+      return { kind: "idle" };
     }
-    return fuse
-      .search(trimmedSearchQuery, { limit: MAX_RESULTS })
+    const results: QaSearchResult[] = fuse
+      .search(trimmed, { limit: MAX_RESULTS })
       .map((result) => ({
-        ...result,
+        item: result.item,
         matches: ensureNotNullish(result.matches),
       }));
-  }, [fuse, isSearching, trimmedSearchQuery]);
-  const hasResults = results.length > 0;
+    if (results.length === 0) {
+      return { kind: "empty" };
+    }
+    return { kind: "matched", results };
+  }, [fuse, searchState.committed]);
 
   const clearQuery = () => {
     setSearchState({ input: "", committed: "" });
@@ -129,26 +141,25 @@ export default function QaSearch({ items }: QaSearchProps) {
           </div>
         </div>
       </div>
-      {isSearching && (
+      {resultState.kind !== "idle" && (
         <div
           className="mt-md p-md rounded-md border border-neutral-300 bg-white"
           aria-live="polite"
         >
           <h2 className="text-lg font-bold text-neutral-900">
             検索結果
-            {hasResults && (
+            {resultState.kind === "matched" && (
               <span className="ml-sm text-sm font-normal text-neutral-600">
-                {results.length}件
+                {resultState.results.length}件
               </span>
             )}
           </h2>
-          {hasResults ? (
+          {resultState.kind === "matched" ? (
             <ol className="mt-sm divide-y divide-neutral-200">
-              {results.map(({ item, matches }) => (
+              {resultState.results.map((result) => (
                 <SearchResultItem
-                  key={item.id}
-                  item={item}
-                  matches={matches}
+                  key={result.item.id}
+                  result={result}
                   onSelect={handleSelect}
                 />
               ))}
