@@ -5,6 +5,7 @@ import type { ReactNode } from "react";
 
 const MAX_EXCERPT_CHARACTER_COUNT = 140;
 const EXCERPT_CONTEXT_BEFORE_MATCH_CHARACTER_COUNT = 40;
+type SearchKey = "category" | "question" | "answer";
 
 export default function SearchResultItem({
   item,
@@ -15,16 +16,12 @@ export default function SearchResultItem({
   matches?: readonly FuseResultMatch[];
   onSelect: (id: string) => void;
 }) {
-  const categoryMatch = matches?.find((match) => match.key === "category");
-  const questionMatch = matches?.find((match) => match.key === "question");
-  const answerMatch = matches?.find((match) => match.key === "answer");
+  const matchesByKey = buildMatchesByKey(matches);
+  const categoryMatch = matchesByKey.get("category");
+  const questionMatch = matchesByKey.get("question");
+  const answerMatch = matchesByKey.get("answer");
   const answerIndices = answerMatch?.indices ?? [];
   const excerpt = buildExcerpt(item.answer, answerIndices);
-  const excerptRanges = sliceMatchRanges(
-    answerIndices,
-    excerpt.offset,
-    excerpt.text.length,
-  );
 
   return (
     <li className="py-md">
@@ -44,9 +41,9 @@ export default function SearchResultItem({
           {highlightText(item.question, questionMatch?.indices ?? [])}
         </p>
         <p className="mt-xs text-sm text-neutral-700">
-          {excerpt.hasLeadingEllipsis === true && "..."}
-          {highlightText(excerpt.text, excerptRanges)}
-          {excerpt.hasTrailingEllipsis === true && "..."}
+          {excerpt.hasLeadingEllipsis && "..."}
+          {highlightText(excerpt.text, excerpt.ranges)}
+          {excerpt.hasTrailingEllipsis && "..."}
         </p>
       </a>
     </li>
@@ -58,14 +55,14 @@ function buildExcerpt(
   indices: readonly RangeTuple[],
 ): {
   text: string;
-  offset: number;
+  ranges: readonly RangeTuple[];
   hasLeadingEllipsis: boolean;
   hasTrailingEllipsis: boolean;
 } {
   if (text.length <= MAX_EXCERPT_CHARACTER_COUNT) {
     return {
       text,
-      offset: 0,
+      ranges: indices,
       hasLeadingEllipsis: false,
       hasTrailingEllipsis: false,
     };
@@ -79,32 +76,24 @@ function buildExcerpt(
     maxOffset,
   );
   const end = offset + MAX_EXCERPT_CHARACTER_COUNT;
-
-  return {
-    text: text.slice(offset, end),
-    offset,
-    hasLeadingEllipsis: offset > 0,
-    hasTrailingEllipsis: end < text.length,
-  };
-}
-
-function sliceMatchRanges(
-  indices: readonly RangeTuple[],
-  offset: number,
-  length: number,
-): RangeTuple[] {
   const ranges: RangeTuple[] = [];
-  const endOffset = offset + length - 1;
-  for (const [start, end] of indices) {
-    if (end < offset || start > endOffset) {
+  const endOffset = end - 1;
+  for (const [start, rangeEnd] of indices) {
+    if (rangeEnd < offset || start > endOffset) {
       continue;
     }
     ranges.push([
       Math.max(start, offset) - offset,
-      Math.min(end, endOffset) - offset,
+      Math.min(rangeEnd, endOffset) - offset,
     ]);
   }
-  return ranges;
+
+  return {
+    text: text.slice(offset, end),
+    ranges,
+    hasLeadingEllipsis: offset > 0,
+    hasTrailingEllipsis: end < text.length,
+  };
 }
 
 function highlightText(
@@ -137,4 +126,27 @@ function highlightText(
   }
 
   return chunks;
+}
+
+function buildMatchesByKey(
+  matches: readonly FuseResultMatch[] | undefined,
+): ReadonlyMap<SearchKey, FuseResultMatch> {
+  const matchesByKey = new Map<SearchKey, FuseResultMatch>();
+  if (matches == undefined) {
+    return matchesByKey;
+  }
+
+  for (const match of matches) {
+    matchesByKey.set(parseSearchKey(match.key), match);
+  }
+
+  return matchesByKey;
+}
+
+function parseSearchKey(key: string | undefined): SearchKey {
+  if (key === "category" || key === "question" || key === "answer") {
+    return key;
+  }
+
+  throw new Error("Q&A検索結果のキーが不正です");
 }

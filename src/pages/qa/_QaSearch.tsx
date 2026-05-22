@@ -11,6 +11,10 @@ type QaSearchProps = {
   items: QaSearchItem[];
 };
 
+type SearchState =
+  | { kind: "idle"; input: string }
+  | { kind: "composing"; input: string; committed: string };
+
 const SEARCH_INPUT_ID = "qa-search-input";
 const PAGE_TITLE_ID = "qa-page-title";
 const MAX_RESULTS = 12;
@@ -27,13 +31,16 @@ const FUSE_OPTIONS = {
 } satisfies IFuseOptions<QaSearchItem>;
 
 export default function QaSearch({ items }: QaSearchProps) {
-  const [query, setQuery] = useState("");
-  const [searchQuery, setSearchQuery] = useState("");
-  const trimmedSearchQuery = searchQuery.trim();
+  const [searchState, setSearchState] = useState<SearchState>({
+    kind: "idle",
+    input: "",
+  });
+  const inputValue = searchState.input;
+  const trimmedSearchQuery = getCommittedSearchQuery(searchState).trim();
   const isSearching = trimmedSearchQuery.length > 0;
   const fuse = useMemo(() => new Fuse(items, FUSE_OPTIONS), [items]);
   const results = useMemo(() => {
-    if (isSearching === false) {
+    if (!isSearching) {
       return [];
     }
     return fuse.search(trimmedSearchQuery, { limit: MAX_RESULTS });
@@ -41,8 +48,7 @@ export default function QaSearch({ items }: QaSearchProps) {
   const hasResults = results.length > 0;
 
   const clearQuery = () => {
-    setQuery("");
-    setSearchQuery("");
+    setSearchState({ kind: "idle", input: "" });
   };
 
   const handleSelect = (id: string) => {
@@ -78,22 +84,30 @@ export default function QaSearch({ items }: QaSearchProps) {
               id={SEARCH_INPUT_ID}
               type="text"
               role="searchbox"
-              value={query}
+              value={inputValue}
               enterKeyHint="search"
               placeholder="キーワードを入力"
               className="h-12 w-full rounded-md border border-neutral-300 bg-white pr-12 pl-11 text-base text-neutral-950 placeholder:text-neutral-500"
               onChange={(event) => {
                 const value = event.currentTarget.value;
-                setQuery(value);
                 if (!(event.nativeEvent instanceof InputEvent)) {
                   throw new Error("検索入力のIME状態を判定できません");
                 }
-                if (event.nativeEvent.isComposing === false) {
-                  setSearchQuery(value);
+                if (event.nativeEvent.isComposing) {
+                  setSearchState((currentState) => ({
+                    kind: "composing",
+                    input: value,
+                    committed: getCommittedSearchQuery(currentState),
+                  }));
+                  return;
                 }
+                setSearchState({ kind: "idle", input: value });
               }}
               onCompositionEnd={(event) => {
-                setSearchQuery(event.currentTarget.value);
+                setSearchState({
+                  kind: "idle",
+                  input: event.currentTarget.value,
+                });
               }}
               onKeyDown={(event) => {
                 if (event.key === "Escape") {
@@ -101,7 +115,7 @@ export default function QaSearch({ items }: QaSearchProps) {
                 }
               }}
             />
-            {query.length > 0 && (
+            {inputValue.length > 0 && (
               <button
                 type="button"
                 aria-label="検索ワードを消去"
@@ -114,20 +128,20 @@ export default function QaSearch({ items }: QaSearchProps) {
           </div>
         </div>
       </div>
-      {isSearching === true && (
+      {isSearching && (
         <div
           className="mt-md p-md rounded-md border border-neutral-300 bg-white"
           aria-live="polite"
         >
           <h2 className="text-lg font-bold text-neutral-900">
             検索結果
-            {hasResults === true && (
+            {hasResults && (
               <span className="ml-sm text-sm font-normal text-neutral-600">
                 {results.length}件
               </span>
             )}
           </h2>
-          {hasResults === true ? (
+          {hasResults ? (
             <ol className="mt-sm divide-y divide-neutral-200">
               {results.map(({ item, matches }) => (
                 <SearchResultItem
@@ -147,4 +161,12 @@ export default function QaSearch({ items }: QaSearchProps) {
       )}
     </section>
   );
+}
+
+function getCommittedSearchQuery(searchState: SearchState): string {
+  if (searchState.kind === "idle") {
+    return searchState.input;
+  }
+
+  return searchState.committed;
 }

@@ -22,6 +22,8 @@ type ParseState =
       answerLines: string[];
     };
 
+type QuestionParseState = Extract<ParseState, { kind: "question" }>;
+
 export type QaSearchItem = {
   id: string;
   category: string;
@@ -41,24 +43,17 @@ export function buildQaSearchItems(
   let questionIndex = 0;
   let inCodeFence = false;
 
-  const pushCurrentItem = () => {
-    if (state.kind !== "question") {
-      return;
-    }
-
+  const pushQuestionItem = (questionState: QuestionParseState) => {
     items.push({
-      id: state.slug,
-      category: state.category,
-      question: state.question,
-      answer: normalizeAnswerText(state.answerLines),
+      id: questionState.slug,
+      category: questionState.category,
+      question: questionState.question,
+      answer: normalizeAnswerText(questionState.answerLines),
     });
   };
 
-  const pushAnswerLine = (line: string) => {
-    if (state.kind !== "question") {
-      return;
-    }
-    state.answerLines.push(line);
+  const pushAnswerLine = (questionState: QuestionParseState, line: string) => {
+    questionState.answerLines.push(line);
   };
 
   for (const line of markdown.split(/\r?\n/)) {
@@ -67,15 +62,21 @@ export function buildQaSearchItems(
     switch (parsedLine.kind) {
       case "codeFence":
         inCodeFence = !inCodeFence;
-        pushAnswerLine(line);
+        if (state.kind === "question") {
+          pushAnswerLine(state, line);
+        }
         break;
       case "text":
-        pushAnswerLine(parsedLine.text);
+        if (state.kind === "question") {
+          pushAnswerLine(state, parsedLine.text);
+        }
         break;
       case "heading": {
         const { heading } = parsedLine;
         if (heading.depth === 2) {
-          pushCurrentItem();
+          if (state.kind === "question") {
+            pushQuestionItem(state);
+          }
           state = {
             kind: "category",
             category: normalizeMarkdownText(heading.text),
@@ -84,7 +85,9 @@ export function buildQaSearchItems(
         }
 
         if (heading.depth === 3) {
-          pushCurrentItem();
+          if (state.kind === "question") {
+            pushQuestionItem(state);
+          }
           if (state.kind === "init") {
             throw new Error("Q&A検索用データのカテゴリより前に質問があります");
           }
@@ -110,17 +113,21 @@ export function buildQaSearchItems(
           break;
         }
 
-        pushAnswerLine(heading.text);
+        if (state.kind === "question") {
+          pushAnswerLine(state, heading.text);
+        }
         break;
       }
     }
   }
 
-  if (inCodeFence === true) {
+  if (inCodeFence) {
     throw new Error("Q&A検索用データのコードブロックが閉じていません");
   }
 
-  pushCurrentItem();
+  if (state.kind === "question") {
+    pushQuestionItem(state);
+  }
 
   if (questionIndex !== questionHeadings.length) {
     throw new Error("Q&A検索用データに未処理の質問見出しがあります");
@@ -130,11 +137,11 @@ export function buildQaSearchItems(
 }
 
 function parseLine(line: string, inCodeFence: boolean): ParsedLine {
-  if (isCodeFenceLine(line) === true) {
+  if (isCodeFenceLine(line)) {
     return { kind: "codeFence" };
   }
 
-  if (inCodeFence === true) {
+  if (inCodeFence) {
     return { kind: "text", text: line };
   }
 
