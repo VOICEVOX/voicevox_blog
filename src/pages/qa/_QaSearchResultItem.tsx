@@ -52,23 +52,14 @@ function buildExcerpt(
   hasLeadingEllipsis: boolean;
   hasTrailingEllipsis: boolean;
 } {
-  if (text.length <= MAX_EXCERPT_CHARACTER_COUNT) {
-    return {
-      text,
-      ranges: indices,
-      hasLeadingEllipsis: false,
-      hasTrailingEllipsis: false,
-    };
-  }
-
   const firstMatch = indices[0];
   const firstMatchStart = firstMatch == undefined ? 0 : firstMatch[0];
-  const maxOffset = text.length - MAX_EXCERPT_CHARACTER_COUNT;
+  const maxOffset = Math.max(0, text.length - MAX_EXCERPT_CHARACTER_COUNT);
   const offset = Math.min(
     Math.max(0, firstMatchStart - EXCERPT_CONTEXT_BEFORE_MATCH_CHARACTER_COUNT),
     maxOffset,
   );
-  const end = offset + MAX_EXCERPT_CHARACTER_COUNT;
+  const end = Math.min(text.length, offset + MAX_EXCERPT_CHARACTER_COUNT);
   const ranges: RangeTuple[] = [];
   const endOffset = end - 1;
   for (const [start, rangeEnd] of indices) {
