@@ -1,48 +1,42 @@
-import { QUESTION_HEADING_PREFIX } from "./_qa";
+import SearchResultItem from "./_QaSearchResultItem";
 import type { QaSearchItem } from "./_qa";
 import { assertNonNullable } from "@/helper";
 import { faMagnifyingGlass, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Fuse from "fuse.js";
-import type { FuseResultMatch } from "fuse.js";
+import type { IFuseOptions } from "fuse.js";
 import { useMemo, useRef, useState } from "react";
-import type { ReactNode } from "react";
 
 type QaSearchProps = {
   items: QaSearchItem[];
 };
-type SearchKey = "category" | "question" | "answer";
-type MatchRange = readonly [number, number];
 
 const SEARCH_INPUT_ID = "qa-search-input";
 const PAGE_TITLE_ID = "qa-page-title";
-const MAX_EXCERPT_LENGTH = 140;
+const MAX_RESULTS = 12;
+const FUSE_OPTIONS = {
+  keys: [
+    { name: "question", weight: 0.55 },
+    { name: "answer", weight: 0.35 },
+    { name: "category", weight: 0.1 },
+  ],
+  includeMatches: true,
+  includeScore: true,
+  ignoreLocation: true,
+  threshold: 0.2,
+} satisfies IFuseOptions<QaSearchItem>;
 
 export default function QaSearch({ items }: QaSearchProps) {
   const [query, setQuery] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const isComposingRef = useRef(false);
   const trimmedSearchQuery = searchQuery.trim();
-  const fuse = useMemo(
-    () =>
-      new Fuse(items, {
-        keys: [
-          { name: "question", weight: 0.55 },
-          { name: "answer", weight: 0.35 },
-          { name: "category", weight: 0.1 },
-        ],
-        includeMatches: true,
-        includeScore: true,
-        ignoreLocation: true,
-        threshold: 0.2,
-      }),
-    [items],
-  );
+  const fuse = useMemo(() => new Fuse(items, FUSE_OPTIONS), [items]);
   const results = useMemo(() => {
     if (trimmedSearchQuery.length === 0) {
       return [];
     }
-    return fuse.search(trimmedSearchQuery, { limit: 12 });
+    return fuse.search(trimmedSearchQuery, { limit: MAX_RESULTS });
   }, [fuse, trimmedSearchQuery]);
 
   const clearQuery = () => {
@@ -153,144 +147,4 @@ export default function QaSearch({ items }: QaSearchProps) {
       )}
     </section>
   );
-}
-
-function SearchResultItem({
-  item,
-  matches,
-  onSelect,
-}: {
-  item: QaSearchItem;
-  matches?: readonly FuseResultMatch[];
-  onSelect: (id: string) => void;
-}) {
-  const categoryMatch = findMatch(matches, "category");
-  const questionMatch = findMatch(matches, "question");
-  const answerMatch = findMatch(matches, "answer");
-  const answerIndices = answerMatch?.indices ?? [];
-  const excerpt = buildExcerpt(item.answer, answerIndices);
-  const excerptRanges = sliceMatchRanges(
-    answerIndices,
-    excerpt.offset,
-    excerpt.text.length,
-  );
-
-  return (
-    <li className="py-md">
-      <a
-        href={`#${item.id}`}
-        className="vv-status-layer -mx-2xs px-2xs py-xs block rounded-md text-current no-underline"
-        onClick={(event) => {
-          event.preventDefault();
-          onSelect(item.id);
-        }}
-      >
-        <p className="text-sm font-bold text-green-900">
-          {highlightText(item.category, categoryMatch?.indices ?? [])}
-        </p>
-        <p className="mt-2xs text-lg font-bold text-neutral-900">
-          {QUESTION_HEADING_PREFIX}
-          {highlightText(item.question, questionMatch?.indices ?? [])}
-        </p>
-        <p className="mt-xs text-sm text-neutral-700">
-          {excerpt.hasLeadingEllipsis && "..."}
-          {highlightText(excerpt.text, excerptRanges)}
-          {excerpt.hasTrailingEllipsis && "..."}
-        </p>
-      </a>
-    </li>
-  );
-}
-
-function findMatch(
-  matches: readonly FuseResultMatch[] | undefined,
-  key: SearchKey,
-): FuseResultMatch | undefined {
-  if (matches == undefined) {
-    return undefined;
-  }
-  return matches.find((match) => match.key === key);
-}
-
-function buildExcerpt(
-  text: string,
-  indices: readonly MatchRange[],
-): {
-  text: string;
-  offset: number;
-  hasLeadingEllipsis: boolean;
-  hasTrailingEllipsis: boolean;
-} {
-  if (text.length <= MAX_EXCERPT_LENGTH) {
-    return {
-      text,
-      offset: 0,
-      hasLeadingEllipsis: false,
-      hasTrailingEllipsis: false,
-    };
-  }
-
-  const firstMatch = indices[0];
-  const firstMatchStart = firstMatch == undefined ? 0 : firstMatch[0];
-  const maxOffset = text.length - MAX_EXCERPT_LENGTH;
-  const offset = Math.min(Math.max(0, firstMatchStart - 40), maxOffset);
-  const end = offset + MAX_EXCERPT_LENGTH;
-
-  return {
-    text: text.slice(offset, end),
-    offset,
-    hasLeadingEllipsis: offset > 0,
-    hasTrailingEllipsis: end < text.length,
-  };
-}
-
-function sliceMatchRanges(
-  indices: readonly MatchRange[],
-  offset: number,
-  length: number,
-): MatchRange[] {
-  const ranges: MatchRange[] = [];
-  const endOffset = offset + length - 1;
-  for (const [start, end] of indices) {
-    if (end < offset || start > endOffset) {
-      continue;
-    }
-    ranges.push([
-      Math.max(start, offset) - offset,
-      Math.min(end, endOffset) - offset,
-    ]);
-  }
-  return ranges;
-}
-
-function highlightText(
-  text: string,
-  indices: readonly MatchRange[],
-): ReactNode {
-  if (indices.length === 0) {
-    return text;
-  }
-
-  const chunks: ReactNode[] = [];
-  let lastIndex = 0;
-  indices.forEach(([start, end], index) => {
-    if (start > lastIndex) {
-      chunks.push(text.slice(lastIndex, start));
-    }
-    chunks.push(
-      <mark
-        key={`${start}-${end}-${index}`}
-        className="rounded-sm bg-yellow-100 px-0.5 text-inherit"
-      >
-        {text.slice(start, end + 1)}
-      </mark>,
-    );
-    lastIndex = end + 1;
-  });
-
-  if (lastIndex < text.length) {
-    chunks.push(text.slice(lastIndex));
-  }
-
-  return chunks;
 }

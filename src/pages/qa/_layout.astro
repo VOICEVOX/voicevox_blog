@@ -4,7 +4,7 @@ import Base from "@/layouts/Base.astro";
 import type { Props as OneSectionMarkdownProps } from "@/layouts/OneSectionMarkdown.astro";
 import QaSearch from "./_QaSearch";
 import { buildQaSearchItems } from "./_qa";
-import type { MarkdownHeading } from "./_qa";
+import type { MarkdownHeading } from "astro";
 
 interface Props extends OneSectionMarkdownProps {
   headings: MarkdownHeading[];

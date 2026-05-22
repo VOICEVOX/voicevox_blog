@@ -1,10 +1,5 @@
 import { stripHtmlTags } from "@/helper";
-
-export type MarkdownHeading = {
-  depth: number;
-  slug: string;
-  text: string;
-};
+import type { MarkdownHeading } from "astro";
 
 type ParsedHeading = {
   depth: number;
