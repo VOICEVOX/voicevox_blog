@@ -8,7 +8,11 @@ import {
 import { faMagnifyingGlass, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Fuse from "fuse.js";
-import type { FuseResultMatch, IFuseOptions } from "fuse.js";
+import type {
+  FuseResultMatch,
+  IFuseOptions,
+  RangeTuple,
+} from "fuse.js";
 import { useMemo, useState } from "react";
 
 type QaSearchProps = {
@@ -17,9 +21,11 @@ type QaSearchProps = {
 
 type SearchState = { input: string; committed: string };
 
+type SearchKey = "category" | "question" | "answer";
+
 export type QaSearchResult = {
   item: QaSearchItem;
-  matches: readonly FuseResultMatch[];
+  indicesByKey: Record<SearchKey, readonly RangeTuple[]>;
 };
 
 type SearchResultState =
@@ -56,9 +62,9 @@ export default function QaSearch({ items }: QaSearchProps) {
     }
     const results = fuse
       .search(trimmed, { limit: MAX_RESULTS })
-      .map((result) => ({
+      .map((result): QaSearchResult => ({
         item: result.item,
-        matches: ensureNotNullish(result.matches),
+        indicesByKey: buildIndicesByKey(ensureNotNullish(result.matches)),
       }));
     if (results.length === 0) {
       return { kind: "empty" };
@@ -173,4 +179,25 @@ export default function QaSearch({ items }: QaSearchProps) {
       )}
     </section>
   );
+}
+
+function buildIndicesByKey(
+  matches: readonly FuseResultMatch[],
+): Record<SearchKey, readonly RangeTuple[]> {
+  const indicesByKey: Record<SearchKey, readonly RangeTuple[]> = {
+    category: [],
+    question: [],
+    answer: [],
+  };
+  for (const match of matches) {
+    indicesByKey[parseSearchKey(match.key)] = match.indices;
+  }
+  return indicesByKey;
+}
+
+function parseSearchKey(key: string | undefined): SearchKey {
+  if (key === "category" || key === "question" || key === "answer") {
+    return key;
+  }
+  throw new UnreachableError();
 }

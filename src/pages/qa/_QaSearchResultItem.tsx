@@ -1,12 +1,10 @@
 import { QUESTION_HEADING_PREFIX } from "./_qa";
 import type { QaSearchResult } from "./_QaSearch";
-import { UnreachableError } from "@/helper";
-import type { FuseResultMatch, RangeTuple } from "fuse.js";
+import type { RangeTuple } from "fuse.js";
 import type { ReactNode } from "react";
 
 const MAX_EXCERPT_CHARACTER_COUNT = 140;
 const EXCERPT_CONTEXT_BEFORE_MATCH_CHARACTER_COUNT = 40;
-type SearchKey = "category" | "question" | "answer";
 
 export default function SearchResultItem({
   result,
@@ -15,13 +13,8 @@ export default function SearchResultItem({
   result: QaSearchResult;
   onSelect: (id: string) => void;
 }) {
-  const { item } = result;
-  const matchesByKey = buildMatchesByKey(result.matches);
-  const categoryMatch = matchesByKey.get("category");
-  const questionMatch = matchesByKey.get("question");
-  const answerMatch = matchesByKey.get("answer");
-  const answerIndices = answerMatch?.indices ?? [];
-  const excerpt = buildExcerpt(item.answer, answerIndices);
+  const { item, indicesByKey } = result;
+  const excerpt = buildExcerpt(item.answer, indicesByKey.answer);
 
   return (
     <li className="py-md">
@@ -34,11 +27,11 @@ export default function SearchResultItem({
         }}
       >
         <p className="text-sm font-bold text-green-900">
-          {highlightText(item.category, categoryMatch?.indices ?? [])}
+          {highlightText(item.category, indicesByKey.category)}
         </p>
         <p className="mt-2xs text-lg font-bold text-neutral-900">
           {QUESTION_HEADING_PREFIX}
-          {highlightText(item.question, questionMatch?.indices ?? [])}
+          {highlightText(item.question, indicesByKey.question)}
         </p>
         <p className="mt-xs text-sm text-neutral-700">
           {excerpt.hasLeadingEllipsis && "..."}
@@ -122,22 +115,4 @@ function highlightText(
   }
 
   return chunks;
-}
-
-function buildMatchesByKey(
-  matches: readonly FuseResultMatch[],
-): ReadonlyMap<SearchKey, FuseResultMatch> {
-  const matchesByKey = new Map<SearchKey, FuseResultMatch>();
-  for (const match of matches) {
-    matchesByKey.set(parseSearchKey(match.key), match);
-  }
-  return matchesByKey;
-}
-
-function parseSearchKey(key: string | undefined): SearchKey {
-  if (key === "category" || key === "question" || key === "answer") {
-    return key;
-  }
-
-  throw new UnreachableError();
 }
