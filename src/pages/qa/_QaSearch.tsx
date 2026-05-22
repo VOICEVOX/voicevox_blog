@@ -120,7 +120,7 @@ export default function QaSearch(rawProps: QaSearchProps) {
             {query.length > 0 && (
               <button
                 type="button"
-                aria-label="検索語を消去"
+                aria-label="検索ワードを消去"
                 className="vv-status-layer absolute top-1/2 right-2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full text-neutral-600"
                 onClick={() => clearQuery()}
               >
