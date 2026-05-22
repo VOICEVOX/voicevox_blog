@@ -11,9 +11,7 @@ type QaSearchProps = {
   items: QaSearchItem[];
 };
 
-type SearchState =
-  | { kind: "idle"; input: string }
-  | { kind: "composing"; input: string; committed: string };
+type SearchState = { input: string; committed: string };
 
 const SEARCH_INPUT_ID = "qa-search-input";
 const PAGE_TITLE_ID = "qa-page-title";
@@ -32,11 +30,11 @@ const FUSE_OPTIONS = {
 
 export default function QaSearch({ items }: QaSearchProps) {
   const [searchState, setSearchState] = useState<SearchState>({
-    kind: "idle",
     input: "",
+    committed: "",
   });
   const inputValue = searchState.input;
-  const trimmedSearchQuery = getCommittedSearchQuery(searchState).trim();
+  const trimmedSearchQuery = searchState.committed.trim();
   const isSearching = trimmedSearchQuery.length > 0;
   const fuse = useMemo(() => new Fuse(items, FUSE_OPTIONS), [items]);
   const results = useMemo(() => {
@@ -53,7 +51,7 @@ export default function QaSearch({ items }: QaSearchProps) {
   const hasResults = results.length > 0;
 
   const clearQuery = () => {
-    setSearchState({ kind: "idle", input: "" });
+    setSearchState({ input: "", committed: "" });
   };
 
   const handleSelect = (id: string) => {
@@ -98,21 +96,15 @@ export default function QaSearch({ items }: QaSearchProps) {
                 if (!(event.nativeEvent instanceof InputEvent)) {
                   throw new Error("検索入力のIME状態を判定できません");
                 }
-                if (event.nativeEvent.isComposing) {
-                  setSearchState((currentState) => ({
-                    kind: "composing",
-                    input: value,
-                    committed: getCommittedSearchQuery(currentState),
-                  }));
-                  return;
-                }
-                setSearchState({ kind: "idle", input: value });
+                const isComposing = event.nativeEvent.isComposing;
+                setSearchState((currentState) => ({
+                  input: value,
+                  committed: isComposing ? currentState.committed : value,
+                }));
               }}
               onCompositionEnd={(event) => {
-                setSearchState({
-                  kind: "idle",
-                  input: event.currentTarget.value,
-                });
+                const value = event.currentTarget.value;
+                setSearchState({ input: value, committed: value });
               }}
               onKeyDown={(event) => {
                 if (event.key === "Escape") {
@@ -168,10 +160,3 @@ export default function QaSearch({ items }: QaSearchProps) {
   );
 }
 
-function getCommittedSearchQuery(searchState: SearchState): string {
-  if (searchState.kind === "idle") {
-    return searchState.input;
-  }
-
-  return searchState.committed;
-}
