@@ -7,26 +7,13 @@ type ParsedHeading = {
 };
 
 type ParsedLine =
-  | {
-      kind: "codeFence";
-    }
-  | {
-      kind: "heading";
-      heading: ParsedHeading;
-    }
-  | {
-      kind: "text";
-      text: string;
-    };
+  | { kind: "codeFence" }
+  | { kind: "heading"; heading: ParsedHeading }
+  | { kind: "text"; text: string };
 
 type ParseState =
-  | {
-      kind: "init";
-    }
-  | {
-      kind: "category";
-      category: string;
-    }
+  | { kind: "init" }
+  | { kind: "category"; category: string }
   | {
       kind: "question";
       category: string;
