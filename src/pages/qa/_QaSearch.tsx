@@ -1,6 +1,10 @@
 import SearchResultItem from "./_QaSearchResultItem";
 import type { QaSearchItem } from "./_qa";
-import { assertNonNullable, ensureNotNullish } from "@/helper";
+import {
+  assertNonNullable,
+  ensureNotNullish,
+  UnreachableError,
+} from "@/helper";
 import { faMagnifyingGlass, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Fuse from "fuse.js";
@@ -94,7 +98,7 @@ export default function QaSearch({ items }: QaSearchProps) {
               onChange={(event) => {
                 const value = event.currentTarget.value;
                 if (!(event.nativeEvent instanceof InputEvent)) {
-                  throw new Error("検索入力のIME状態を判定できません");
+                  throw new UnreachableError();
                 }
                 const isComposing = event.nativeEvent.isComposing;
                 setSearchState((currentState) => ({

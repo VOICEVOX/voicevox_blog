@@ -1,5 +1,6 @@
 import { QUESTION_HEADING_PREFIX } from "./_qa";
 import type { QaSearchItem } from "./_qa";
+import { UnreachableError } from "@/helper";
 import type { FuseResultMatch, RangeTuple } from "fuse.js";
 import type { ReactNode } from "react";
 
@@ -143,5 +144,5 @@ function parseSearchKey(key: string | undefined): SearchKey {
     return key;
   }
 
-  throw new Error("Q&A検索結果のキーが不正です");
+  throw new UnreachableError();
 }
