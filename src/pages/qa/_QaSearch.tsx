@@ -1,3 +1,5 @@
+import { QUESTION_HEADING_PREFIX } from "./_qa";
+import type { QaSearchItem } from "./_qa";
 import { assertNonNullable } from "@/helper";
 import { faMagnifyingGlass, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -5,31 +7,18 @@ import Fuse from "fuse.js";
 import type { FuseResultMatch } from "fuse.js";
 import { useMemo, useRef, useState } from "react";
 import type { ReactNode } from "react";
-import { z } from "zod";
 
-const qaSearchItemSchema = z.object({
-  id: z.string().min(1),
-  category: z.string().min(1),
-  question: z.string().min(1),
-  answer: z.string(),
-});
-
-const qaSearchPropsSchema = z.object({
-  items: z.array(qaSearchItemSchema),
-});
-
-type QaSearchItem = z.infer<typeof qaSearchItemSchema>;
-type QaSearchProps = z.infer<typeof qaSearchPropsSchema>;
+type QaSearchProps = {
+  items: QaSearchItem[];
+};
 type SearchKey = "category" | "question" | "answer";
 type MatchRange = readonly [number, number];
 
 const SEARCH_INPUT_ID = "qa-search-input";
 const PAGE_TITLE_ID = "qa-page-title";
-const QUESTION_HEADING_PREFIX = "Q. ";
 const MAX_EXCERPT_LENGTH = 140;
 
-export default function QaSearch(rawProps: QaSearchProps) {
-  const { items } = qaSearchPropsSchema.parse(rawProps);
+export default function QaSearch({ items }: QaSearchProps) {
   const [query, setQuery] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const isComposingRef = useRef(false);
@@ -89,6 +78,7 @@ export default function QaSearch(rawProps: QaSearchProps) {
               icon={faMagnifyingGlass}
               className="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-neutral-500"
             />
+            {/* NOTE: ブラウザ標準の消去ボタンと独自ボタンの重複を避けるため、type="search"を使わない */}
             <input
               id={SEARCH_INPUT_ID}
               type="text"
@@ -122,7 +112,7 @@ export default function QaSearch(rawProps: QaSearchProps) {
                 type="button"
                 aria-label="検索ワードを消去"
                 className="vv-status-layer absolute top-1/2 right-2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full text-neutral-600"
-                onClick={() => clearQuery()}
+                onClick={clearQuery}
               >
                 <FontAwesomeIcon icon={faXmark} />
               </button>
