@@ -13,7 +13,7 @@ export default function SearchResultItem({
   onSelect,
 }: {
   item: QaSearchItem;
-  matches?: readonly FuseResultMatch[];
+  matches: readonly FuseResultMatch[];
   onSelect: (id: string) => void;
 }) {
   const matchesByKey = buildMatchesByKey(matches);
@@ -129,17 +129,12 @@ function highlightText(
 }
 
 function buildMatchesByKey(
-  matches: readonly FuseResultMatch[] | undefined,
+  matches: readonly FuseResultMatch[],
 ): ReadonlyMap<SearchKey, FuseResultMatch> {
   const matchesByKey = new Map<SearchKey, FuseResultMatch>();
-  if (matches == undefined) {
-    return matchesByKey;
-  }
-
   for (const match of matches) {
     matchesByKey.set(parseSearchKey(match.key), match);
   }
-
   return matchesByKey;
 }
 

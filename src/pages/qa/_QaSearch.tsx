@@ -1,6 +1,6 @@
 import SearchResultItem from "./_QaSearchResultItem";
 import type { QaSearchItem } from "./_qa";
-import { assertNonNullable } from "@/helper";
+import { assertNonNullable, ensureNotNullish } from "@/helper";
 import { faMagnifyingGlass, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Fuse from "fuse.js";
@@ -43,7 +43,12 @@ export default function QaSearch({ items }: QaSearchProps) {
     if (!isSearching) {
       return [];
     }
-    return fuse.search(trimmedSearchQuery, { limit: MAX_RESULTS });
+    return fuse
+      .search(trimmedSearchQuery, { limit: MAX_RESULTS })
+      .map((result) => ({
+        ...result,
+        matches: ensureNotNullish(result.matches),
+      }));
   }, [fuse, isSearching, trimmedSearchQuery]);
   const hasResults = results.length > 0;
 
