@@ -163,4 +163,3 @@ export default function QaSearch({ items }: QaSearchProps) {
     </section>
   );
 }
-
