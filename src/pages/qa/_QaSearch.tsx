@@ -24,7 +24,6 @@ type SearchResultState =
   | { kind: "empty" }
   | { kind: "matched"; results: QaSearchResult[] };
 
-const SEARCH_INPUT_ID = "qa-search-input";
 const PAGE_TITLE_ID = "qa-page-title";
 const MAX_RESULTS = 12;
 const FUSE_OPTIONS = {
@@ -94,19 +93,10 @@ export default function QaSearch({ items }: QaSearchProps) {
   return (
     <section className="mb-2xl" aria-labelledby={PAGE_TITLE_ID}>
       <div className="gap-md flex flex-col md:flex-row md:items-center md:justify-between">
-        <h1
-          id={PAGE_TITLE_ID}
-          className="text-3xl font-bold text-neutral-950"
-        >
+        <h1 id={PAGE_TITLE_ID} className="text-3xl font-bold text-neutral-950">
           よくあるご質問
         </h1>
-        <div className="gap-sm flex w-full items-center md:w-80 lg:w-96">
-          <label
-            htmlFor={SEARCH_INPUT_ID}
-            className="shrink-0 text-sm font-bold text-neutral-700"
-          >
-            検索
-          </label>
+        <div className="flex w-full items-center md:w-80 lg:w-96">
           <div className="relative flex-1">
             <FontAwesomeIcon
               icon={faMagnifyingGlass}
@@ -114,9 +104,9 @@ export default function QaSearch({ items }: QaSearchProps) {
             />
             {/* NOTE: ブラウザ標準の消去ボタンと独自ボタンの重複を避けるため、type="search"を使わない */}
             <input
-              id={SEARCH_INPUT_ID}
               type="text"
               role="searchbox"
+              aria-label="検索"
               value={input}
               enterKeyHint="search"
               placeholder="検索ワードを入力"
