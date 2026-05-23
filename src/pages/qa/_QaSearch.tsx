@@ -96,7 +96,7 @@ export default function QaSearch({ items }: QaSearchProps) {
       <div className="gap-md flex flex-col md:flex-row md:items-center md:justify-between">
         <h1
           id={PAGE_TITLE_ID}
-          className="text-3xl font-extrabold text-neutral-700"
+          className="text-3xl font-bold text-neutral-950"
         >
           よくあるご質問
         </h1>
