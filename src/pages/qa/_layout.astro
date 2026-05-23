@@ -1,15 +1,11 @@
 ---
 import Markdown from "@/components/Markdown.astro";
-import Base from "@/layouts/Base.astro";
-import type { Props as OneSectionMarkdownProps } from "@/layouts/OneSectionMarkdown.astro";
+import Base, { type Props as BaseProps } from "@/layouts/Base.astro";
 import QaSearch from "./_QaSearch";
 import { buildQaSearchItems } from "./_qa";
-import type { MarkdownHeading } from "astro";
+import type { MarkdownLayoutProps } from "astro";
 
-interface Props extends OneSectionMarkdownProps {
-  headings: MarkdownHeading[];
-  rawContent: () => string;
-}
+type Props = MarkdownLayoutProps<BaseProps & { headerTitle?: string }>;
 
 const props = Astro.props;
 const { frontmatter } = props;
