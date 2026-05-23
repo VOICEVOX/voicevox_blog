@@ -1,6 +1,5 @@
 import type { QaSearchItem } from "./_qa";
 import { QUESTION_HEADING_PREFIX } from "./_qa";
-import { assertNonNullable } from "@/helper";
 import type { RangeTuple } from "fuse.js";
 import type { ReactNode } from "react";
 
@@ -29,13 +28,6 @@ export default function SearchResultItem({
       <a
         href={`#${item.anchorId}`}
         className="vv-status-layer -mx-2xs px-2xs py-xs block rounded-md text-current no-underline"
-        onClick={(event) => {
-          event.preventDefault();
-          const target = document.getElementById(item.anchorId);
-          assertNonNullable(target);
-          target.scrollIntoView();
-          history.replaceState(null, "", `#${item.anchorId}`);
-        }}
       >
         <p className="text-sm font-bold text-green-900">
           {highlightText(item.category, indicesByKey.category)}
