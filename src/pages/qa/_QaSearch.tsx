@@ -8,6 +8,7 @@ import Fuse from "fuse.js";
 import type { FuseResultMatch, IFuseOptions } from "fuse.js";
 import {
   useMemo,
+  useRef,
   useState,
   type ChangeEventHandler,
   type CompositionEventHandler,
@@ -51,22 +52,24 @@ export default function QaSearch({
     committed: debugInitialInput,
   });
   const { input, committed } = inputState;
+  const isComposingRef = useRef(false);
 
   const onChange: ChangeEventHandler<HTMLInputElement> = (event) => {
     const value = event.currentTarget.value;
-    if (!(event.nativeEvent instanceof InputEvent)) {
-      throw new UnreachableError();
-    }
-    const isComposing = event.nativeEvent.isComposing;
     setInputState((current) => ({
       input: value,
-      committed: isComposing ? current.committed : value,
+      committed: isComposingRef.current ? current.committed : value,
     }));
+  };
+
+  const onCompositionStart: CompositionEventHandler<HTMLInputElement> = () => {
+    isComposingRef.current = true;
   };
 
   const onCompositionEnd: CompositionEventHandler<HTMLInputElement> = (
     event,
   ) => {
+    isComposingRef.current = false;
     const value = event.currentTarget.value;
     setInputState({ input: value, committed: value });
   };
@@ -115,6 +118,7 @@ export default function QaSearch({
               placeholder="検索ワードを入力"
               className="h-12 w-full rounded-md border border-neutral-300 bg-white pr-12 pl-11 text-base text-neutral-950 placeholder:text-neutral-500"
               onChange={onChange}
+              onCompositionStart={onCompositionStart}
               onCompositionEnd={onCompositionEnd}
               onKeyDown={(event) => {
                 if (event.key === "Escape") {
