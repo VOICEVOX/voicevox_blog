@@ -15,6 +15,7 @@ import {
 
 type QaSearchProps = {
   items: QaSearchItem[];
+  debugInitialInput?: string;
 };
 
 type SearchKey = "category" | "question" | "answer";
@@ -42,10 +43,13 @@ const FUSE_OPTIONS = {
  * Q&Aページの検索フォームと検索結果を表示するコンポーネント。
  * 入力ワードでカテゴリ・質問・回答を横断してfuzzy searchし、マッチ箇所をハイライトした結果一覧を表示する。
  */
-export default function QaSearch({ items }: QaSearchProps) {
+export default function QaSearch({
+  items,
+  debugInitialInput = "",
+}: QaSearchProps) {
   const [inputState, setInputState] = useState({
-    input: "",
-    committed: "",
+    input: debugInitialInput,
+    committed: debugInitialInput,
   });
   const { input, committed } = inputState;
 

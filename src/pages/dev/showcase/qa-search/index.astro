@@ -1,0 +1,62 @@
+---
+import QaSearch from "@/pages/qa/_QaSearch";
+import type { QaSearchItem } from "@/pages/qa/_qa";
+import Showcase from "../_Showcase.astro";
+
+const items: QaSearchItem[] = [
+  {
+    anchorId: "cat-sleep",
+    category: "哺乳類",
+    question: "ネコはなぜよく眠るのですか",
+    answer:
+      "ネコは肉食動物で狩りに多くのエネルギーを使うため、1日14〜16時間眠ることもあります。",
+  },
+  {
+    anchorId: "bat-nocturnal",
+    category: "哺乳類",
+    question: "コウモリはなぜ夜行性なのですか",
+    answer:
+      "コウモリは夜行性の動物で、昼間の捕食者を避けるために夜に活動します。超音波で障害物を避けながら飛びます。",
+  },
+  {
+    anchorId: "hedgehog-nocturnal",
+    category: "哺乳類",
+    question: "ハリネズミも夜行性ですか",
+    answer:
+      "ハリネズミは夜行性で、夜になると活発に動き回り昆虫などを食べます。",
+  },
+  {
+    anchorId: "owl-nocturnal",
+    category: "鳥類",
+    question: "フクロウはなぜ夜行性なのですか",
+    answer:
+      "フクロウは夜行性の猛禽類で、暗闇でも見える目と鋭い聴覚で獲物を捕まえます。",
+  },
+  {
+    anchorId: "penguin-swim",
+    category: "鳥類",
+    question: "ペンギンはなぜ泳ぎが得意なのですか",
+    answer:
+      "ペンギンは飛べない代わりに翼がひれとして発達しており、水中を時速25km以上で泳げます。",
+  },
+  {
+    anchorId: "parrot-mimic",
+    category: "鳥類",
+    question: "インコはなぜ言葉をまねるのですか",
+    answer:
+      "インコは群れで生活する社会性の高い鳥で、仲間とのコミュニケーションのために音を模倣する能力が発達しています。",
+  },
+];
+---
+
+<Showcase title="QaSearch">
+  <div class="space-y-2xl p-md">
+    <QaSearch client:load items={items} />
+    <QaSearch client:load items={items} debugInitialInput="夜行性" />
+    <QaSearch
+      client:load
+      items={items}
+      debugInitialInput="存在しないキーワードxyzzy"
+    />
+  </div>
+</Showcase>
