@@ -34,7 +34,6 @@ const FUSE_OPTIONS = {
     { name: "category", weight: 0.1 },
   ],
   includeMatches: true,
-  includeScore: true,
   ignoreLocation: true,
   threshold: 0.2,
 } satisfies IFuseOptions<QaSearchItem>;
