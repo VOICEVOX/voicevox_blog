@@ -39,6 +39,10 @@ const FUSE_OPTIONS = {
   threshold: 0.2,
 } satisfies IFuseOptions<QaSearchItem>;
 
+/**
+ * Q&Aページの検索フォームと検索結果を表示するコンポーネント。
+ * 入力ワードでカテゴリ・質問・回答を横断してfuzzy searchし、マッチ箇所をハイライトした結果一覧を表示する。
+ */
 export default function QaSearch({ items }: QaSearchProps) {
   const [inputState, setInputState] = useState({
     input: "",
