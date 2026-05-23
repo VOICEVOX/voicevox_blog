@@ -96,7 +96,7 @@ export default function QaSearch({ items }: QaSearchProps) {
         <h1 id={PAGE_TITLE_ID} className="text-3xl font-bold text-neutral-950">
           よくあるご質問
         </h1>
-        <div className="flex w-full items-center md:w-80 lg:w-96">
+        <search className="flex w-full items-center md:w-80 lg:w-96">
           <div className="relative flex-1">
             <FontAwesomeIcon
               icon={faMagnifyingGlass}
@@ -130,34 +130,36 @@ export default function QaSearch({ items }: QaSearchProps) {
               </button>
             )}
           </div>
-        </div>
+        </search>
       </div>
-      {resultState.kind !== "idle" && (
-        <div
-          className="mt-md p-md rounded-md border border-neutral-300 bg-white"
-          aria-live="polite"
-        >
-          <h2 className="text-lg font-bold text-neutral-900">
-            検索結果
-            {resultState.kind === "matched" && (
-              <span className="ml-sm text-sm font-normal text-neutral-600">
-                {resultState.results.length}件
-              </span>
+      <div aria-live="polite">
+        {resultState.kind !== "idle" && (
+          <div className="mt-md p-md rounded-md border border-neutral-300 bg-white">
+            <h2 className="text-lg font-bold text-neutral-900">
+              検索結果
+              {resultState.kind === "matched" && (
+                <span className="ml-sm text-sm font-normal text-neutral-600">
+                  {resultState.results.length}件
+                </span>
+              )}
+            </h2>
+            {resultState.kind === "matched" ? (
+              <ol className="mt-sm divide-y divide-neutral-200">
+                {resultState.results.map((result) => (
+                  <SearchResultItem
+                    key={result.item.anchorId}
+                    result={result}
+                  />
+                ))}
+              </ol>
+            ) : (
+              <p className="mt-sm text-sm text-neutral-600">
+                該当するQ&amp;Aがありません
+              </p>
             )}
-          </h2>
-          {resultState.kind === "matched" ? (
-            <ol className="mt-sm divide-y divide-neutral-200">
-              {resultState.results.map((result) => (
-                <SearchResultItem key={result.item.anchorId} result={result} />
-              ))}
-            </ol>
-          ) : (
-            <p className="mt-sm text-sm text-neutral-600">
-              該当するQ&amp;Aがありません
-            </p>
-          )}
-        </div>
-      )}
+          </div>
+        )}
+      </div>
     </section>
   );
 }
