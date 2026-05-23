@@ -71,6 +71,9 @@ importers:
       '@types/gtag.js':
         specifier: ^0.0.20
         version: 0.0.20
+      '@types/mdast':
+        specifier: ^4.0.4
+        version: 4.0.4
       '@types/node':
         specifier: ^25.0.8
         version: 25.5.2
@@ -8861,6 +8864,7 @@ time:
   '@tailwindcss/vite@4.2.2': '2026-03-18T16:13:13.562Z'
   '@trivago/prettier-plugin-sort-imports@6.0.2': '2026-01-07T08:13:56.357Z'
   '@types/gtag.js@0.0.20': '2024-05-31T17:06:50.609Z'
+  '@types/mdast@4.0.4': '2024-05-14T07:35:37.616Z'
   '@types/node@25.5.2': '2026-04-03T11:14:43.165Z'
   '@types/react-dom@19.2.3': '2025-11-12T04:37:39.524Z'
   '@types/react@19.2.14': '2026-02-11T11:44:58.515Z'

@@ -1,20 +1,14 @@
 import type { MarkdownHeading } from "astro";
+import type { Heading, RootContent } from "mdast";
 import { toString as mdastToString } from "mdast-util-to-string";
 import remarkParse from "remark-parse";
 import { unified } from "unified";
 
-type QuestionParseState = {
-  kind: "question";
+type QuestionSection = {
   category: string;
-  question: string;
-  slug: string;
-  answerLines: string[];
+  questionHeading: Heading;
+  bodyNodes: RootContent[];
 };
-
-type ParseState =
-  | { kind: "init" }
-  | { kind: "category"; category: string }
-  | QuestionParseState;
 
 export type QaSearchItem = {
   id: string;
@@ -31,71 +25,68 @@ export function buildQaSearchItems(
 ): QaSearchItem[] {
   const questionHeadings = headings.filter((heading) => heading.depth === 3);
   const tree = unified().use(remarkParse).parse(markdown);
-  const items: QaSearchItem[] = [];
-  let state: ParseState = { kind: "init" };
-  let questionIndex = 0;
+  const sections = extractQuestionSections(tree.children);
 
-  const pushQuestionItem = (questionState: QuestionParseState) => {
-    items.push({
-      id: questionState.slug,
-      category: questionState.category,
-      question: questionState.question,
-      answer: questionState.answerLines.join(" "),
-    });
-  };
+  if (sections.length !== questionHeadings.length) {
+    throw new Error("Q&A検索用データの質問数と見出しIDの数が一致しません");
+  }
 
-  for (const node of tree.children) {
+  return sections.map((section, index) => ({
+    id: questionHeadings[index].slug,
+    category: section.category,
+    question: parseQuestionText(mdastToString(section.questionHeading)),
+    answer: buildAnswerText(section.bodyNodes),
+  }));
+}
+
+function extractQuestionSections(nodes: RootContent[]): QuestionSection[] {
+  const sections: QuestionSection[] = [];
+  let currentCategory: string | null = null;
+  let currentSection: QuestionSection | null = null;
+
+  for (const node of nodes) {
     if (node.type === "heading" && node.depth === 2) {
-      if (state.kind === "question") {
-        pushQuestionItem(state);
+      if (currentSection != null) {
+        sections.push(currentSection);
+        currentSection = null;
       }
-      state = { kind: "category", category: mdastToString(node) };
+      currentCategory = mdastToString(node);
       continue;
     }
 
     if (node.type === "heading" && node.depth === 3) {
-      if (state.kind === "question") {
-        pushQuestionItem(state);
+      if (currentSection != null) {
+        sections.push(currentSection);
       }
-      if (state.kind === "init") {
+      if (currentCategory == null) {
         throw new Error("Q&A検索用データのカテゴリより前に質問があります");
       }
-      const questionHeading = questionHeadings[questionIndex];
-      if (questionHeading == undefined) {
-        throw new Error("Q&A検索用データの見出しIDが足りません");
-      }
-      state = {
-        kind: "question",
-        category: state.category,
-        question: parseQuestionText(mdastToString(node)),
-        slug: questionHeading.slug,
-        answerLines: [],
+      currentSection = {
+        category: currentCategory,
+        questionHeading: node,
+        bodyNodes: [],
       };
-      questionIndex += 1;
       continue;
     }
 
-    if (node.type === "html") {
-      continue;
-    }
-
-    if (state.kind === "question") {
-      const text = mdastToString(node).trim();
-      if (text.length > 0) {
-        state.answerLines.push(text);
-      }
+    if (currentSection != null) {
+      currentSection.bodyNodes.push(node);
     }
   }
 
-  if (state.kind === "question") {
-    pushQuestionItem(state);
+  if (currentSection != null) {
+    sections.push(currentSection);
   }
 
-  if (questionIndex !== questionHeadings.length) {
-    throw new Error("Q&A検索用データに未処理の質問見出しがあります");
-  }
+  return sections;
+}
 
-  return items;
+function buildAnswerText(bodyNodes: RootContent[]): string {
+  return bodyNodes
+    .filter((node) => node.type !== "html")
+    .map((node) => mdastToString(node).trim())
+    .filter((text) => text.length > 0)
+    .join(" ");
 }
 
 function parseQuestionText(text: string): string {

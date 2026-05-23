@@ -1,5 +1,5 @@
 import { QUESTION_HEADING_PREFIX } from "./_qa";
-import type { QaSearchResult } from "./_QaSearch";
+import type { QaSearchResult } from "./_useQaSearch";
 import { assertNonNullable } from "@/helper";
 import type { RangeTuple } from "fuse.js";
 import type { ReactNode } from "react";
