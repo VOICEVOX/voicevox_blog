@@ -93,11 +93,5 @@ function parseQuestionText(text: string): string {
   if (!text.startsWith(QUESTION_HEADING_PREFIX)) {
     throw new Error("Q&A検索用データの質問見出しがQ. から始まっていません");
   }
-
-  const questionText = text.slice(QUESTION_HEADING_PREFIX.length).trim();
-  if (questionText.length === 0) {
-    throw new Error("Q&A検索用データの質問が空です");
-  }
-
-  return questionText;
+  return text.slice(QUESTION_HEADING_PREFIX.length);
 }

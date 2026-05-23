@@ -28,19 +28,6 @@ type SearchResultState =
   | { kind: "empty" }
   | { kind: "matched"; results: QaSearchResult[] };
 
-type ImeAwareInputState = {
-  input: string;
-  committed: string;
-};
-
-type ImeAwareInput = {
-  input: string;
-  committed: string;
-  onChange: ChangeEventHandler<HTMLInputElement>;
-  onCompositionEnd: CompositionEventHandler<HTMLInputElement>;
-  clear: () => void;
-};
-
 const SEARCH_INPUT_ID = "qa-search-input";
 const PAGE_TITLE_ID = "qa-page-title";
 const MAX_RESULTS = 12;
@@ -57,9 +44,52 @@ const FUSE_OPTIONS = {
 } satisfies IFuseOptions<QaSearchItem>;
 
 export default function QaSearch({ items }: QaSearchProps) {
-  const { input, committed, onChange, onCompositionEnd, clear } =
-    useImeAwareInput("");
-  const resultState = useQaSearch(items, committed);
+  const [inputState, setInputState] = useState({
+    input: "",
+    committed: "",
+  });
+  const { input, committed } = inputState;
+
+  const onChange: ChangeEventHandler<HTMLInputElement> = (event) => {
+    const value = event.currentTarget.value;
+    if (!(event.nativeEvent instanceof InputEvent)) {
+      throw new UnreachableError();
+    }
+    const isComposing = event.nativeEvent.isComposing;
+    setInputState((current) => ({
+      input: value,
+      committed: isComposing ? current.committed : value,
+    }));
+  };
+
+  const onCompositionEnd: CompositionEventHandler<HTMLInputElement> = (
+    event,
+  ) => {
+    const value = event.currentTarget.value;
+    setInputState({ input: value, committed: value });
+  };
+
+  const clear = () => {
+    setInputState({ input: "", committed: "" });
+  };
+
+  const fuse = useMemo(() => new Fuse(items, FUSE_OPTIONS), [items]);
+  const resultState = useMemo<SearchResultState>(() => {
+    const trimmed = committed.trim();
+    if (trimmed.length === 0) {
+      return { kind: "idle" };
+    }
+    const results = fuse.search(trimmed, { limit: MAX_RESULTS }).map(
+      (result): QaSearchResult => ({
+        item: result.item,
+        indicesByKey: buildIndicesByKey(ensureNotNullish(result.matches)),
+      }),
+    );
+    if (results.length === 0) {
+      return { kind: "empty" };
+    }
+    return { kind: "matched", results };
+  }, [fuse, committed]);
 
   return (
     <section className="mb-2xl" aria-labelledby={PAGE_TITLE_ID}>
@@ -140,67 +170,6 @@ export default function QaSearch({ items }: QaSearchProps) {
       )}
     </section>
   );
-}
-
-function useImeAwareInput(initial: string): ImeAwareInput {
-  const [state, setState] = useState<ImeAwareInputState>({
-    input: initial,
-    committed: initial,
-  });
-
-  const onChange: ChangeEventHandler<HTMLInputElement> = (event) => {
-    const value = event.currentTarget.value;
-    if (!(event.nativeEvent instanceof InputEvent)) {
-      throw new UnreachableError();
-    }
-    const isComposing = event.nativeEvent.isComposing;
-    setState((current) => ({
-      input: value,
-      committed: isComposing ? current.committed : value,
-    }));
-  };
-
-  const onCompositionEnd: CompositionEventHandler<HTMLInputElement> = (
-    event,
-  ) => {
-    const value = event.currentTarget.value;
-    setState({ input: value, committed: value });
-  };
-
-  const clear = () => {
-    setState({ input: "", committed: "" });
-  };
-
-  return {
-    input: state.input,
-    committed: state.committed,
-    onChange,
-    onCompositionEnd,
-    clear,
-  };
-}
-
-function useQaSearch(
-  items: QaSearchItem[],
-  query: string,
-): SearchResultState {
-  const fuse = useMemo(() => new Fuse(items, FUSE_OPTIONS), [items]);
-  return useMemo<SearchResultState>(() => {
-    const trimmed = query.trim();
-    if (trimmed.length === 0) {
-      return { kind: "idle" };
-    }
-    const results = fuse.search(trimmed, { limit: MAX_RESULTS }).map(
-      (result): QaSearchResult => ({
-        item: result.item,
-        indicesByKey: buildIndicesByKey(ensureNotNullish(result.matches)),
-      }),
-    );
-    if (results.length === 0) {
-      return { kind: "empty" };
-    }
-    return { kind: "matched", results };
-  }, [fuse, query]);
 }
 
 function buildIndicesByKey(
