@@ -11,7 +11,7 @@ type QuestionSection = {
 };
 
 export type QaSearchItem = {
-  id: string;
+  anchorId: string;
   category: string;
   question: string;
   answer: string;
@@ -19,6 +19,7 @@ export type QaSearchItem = {
 
 export const QUESTION_HEADING_PREFIX = "Q. ";
 
+/** Markdown本文と見出し一覧からQ&A検索用アイテムを生成する */
 export function buildQaSearchItems(
   markdown: string,
   headings: MarkdownHeading[],
@@ -32,9 +33,9 @@ export function buildQaSearchItems(
   }
 
   return sections.map((section, index) => ({
-    id: questionHeadings[index].slug,
+    anchorId: questionHeadings[index].slug,
     category: section.category,
-    question: parseQuestionText(mdastToString(section.questionHeading)),
+    question: stripQuestionPrefix(mdastToString(section.questionHeading)),
     answer: buildAnswerText(section.bodyNodes),
   }));
 }
@@ -89,7 +90,7 @@ function buildAnswerText(bodyNodes: RootContent[]): string {
     .join(" ");
 }
 
-function parseQuestionText(text: string): string {
+function stripQuestionPrefix(text: string): string {
   if (!text.startsWith(QUESTION_HEADING_PREFIX)) {
     throw new Error("Q&A検索用データの質問見出しがQ. から始まっていません");
   }

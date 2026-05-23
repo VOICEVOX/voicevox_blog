@@ -154,7 +154,7 @@ export default function QaSearch({ items }: QaSearchProps) {
           {resultState.kind === "matched" ? (
             <ol className="mt-sm divide-y divide-neutral-200">
               {resultState.results.map((result) => (
-                <SearchResultItem key={result.item.id} result={result} />
+                <SearchResultItem key={result.item.anchorId} result={result} />
               ))}
             </ol>
           ) : (

@@ -27,14 +27,14 @@ export default function SearchResultItem({
   return (
     <li className="py-md">
       <a
-        href={`#${item.id}`}
+        href={`#${item.anchorId}`}
         className="vv-status-layer -mx-2xs px-2xs py-xs block rounded-md text-current no-underline"
         onClick={(event) => {
           event.preventDefault();
-          const target = document.getElementById(item.id);
+          const target = document.getElementById(item.anchorId);
           assertNonNullable(target);
           target.scrollIntoView();
-          history.replaceState(null, "", `#${item.id}`);
+          history.replaceState(null, "", `#${item.anchorId}`);
         }}
       >
         <p className="text-sm font-bold text-green-900">
