@@ -1,6 +1,6 @@
 resolutionMode: time-based
 minimumReleaseAge: 10080
 allowBuilds:
-  '@parcel/watcher': true
+  "@parcel/watcher": true
   esbuild: true
   sharp: true
