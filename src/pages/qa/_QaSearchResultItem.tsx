@@ -1,8 +1,17 @@
-import type { QaSearchResult } from "./_QaSearch";
+import type { QaSearchItem } from "./_qa";
 import { QUESTION_HEADING_PREFIX } from "./_qa";
 import { assertNonNullable } from "@/helper";
 import type { RangeTuple } from "fuse.js";
 import type { ReactNode } from "react";
+
+export type QaSearchResult = {
+  item: QaSearchItem;
+  indicesByKey: {
+    category: readonly RangeTuple[];
+    question: readonly RangeTuple[];
+    answer: readonly RangeTuple[];
+  };
+};
 
 const MAX_EXCERPT_CHARACTER_COUNT = 140;
 const EXCERPT_CONTEXT_BEFORE_MATCH_CHARACTER_COUNT = 40;

@@ -1,10 +1,11 @@
 import SearchResultItem from "./_QaSearchResultItem";
+import type { QaSearchResult } from "./_QaSearchResultItem";
 import type { QaSearchItem } from "./_qa";
 import { ensureNotNullish, UnreachableError } from "@/helper";
 import { faMagnifyingGlass, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Fuse from "fuse.js";
-import type { FuseResultMatch, IFuseOptions, RangeTuple } from "fuse.js";
+import type { FuseResultMatch, IFuseOptions } from "fuse.js";
 import {
   useMemo,
   useState,
@@ -17,11 +18,6 @@ type QaSearchProps = {
 };
 
 type SearchKey = "category" | "question" | "answer";
-
-export type QaSearchResult = {
-  item: QaSearchItem;
-  indicesByKey: Record<SearchKey, readonly RangeTuple[]>;
-};
 
 type SearchResultState =
   | { kind: "idle" }
@@ -174,8 +170,8 @@ export default function QaSearch({ items }: QaSearchProps) {
 
 function buildIndicesByKey(
   matches: readonly FuseResultMatch[],
-): Record<SearchKey, readonly RangeTuple[]> {
-  const indicesByKey: Record<SearchKey, readonly RangeTuple[]> = {
+): QaSearchResult["indicesByKey"] {
+  const indicesByKey: QaSearchResult["indicesByKey"] = {
     category: [],
     question: [],
     answer: [],
