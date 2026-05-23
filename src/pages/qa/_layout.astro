@@ -1,23 +1,27 @@
 ---
 import Markdown from "@/components/Markdown.astro";
-import Base from "@/layouts/Base.astro";
-import type { Props } from "@/layouts/OneSectionMarkdown.astro";
+import Base, { type Props as BaseProps } from "@/layouts/Base.astro";
+import QaSearch from "./_QaSearch";
+import { buildQaSearchItems } from "./_qa";
+import type { MarkdownLayoutProps } from "astro";
 
-const props = Astro.props satisfies Props;
+type Props = MarkdownLayoutProps<BaseProps & { headerTitle?: string }>;
+
+const props = Astro.props;
 const { frontmatter } = props;
 
 const headerTitle = frontmatter.headerTitle;
-if (!headerTitle) {
-  throw new Error("headerTitleが指定されていません");
+if (headerTitle != undefined) {
+  throw new Error("headerTitleは使えません");
 }
+
+const qaSearchItems = buildQaSearchItems(props.rawContent(), props.headings);
 ---
 
 <Base {...frontmatter}>
   <main class="py-3xl">
     <div class="qa-markdown px-md mx-auto max-w-5xl">
-      <h1 class="mb-xl text-3xl font-extrabold text-neutral-700">
-        {headerTitle}
-      </h1>
+      <QaSearch client:load items={qaSearchItems} />
       <Markdown><slot /></Markdown>
     </div>
   </main>

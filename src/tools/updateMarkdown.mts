@@ -8,9 +8,11 @@ import { parseArgs } from "node:util";
 const argv = parseArgs({
   options: {
     target: { type: "string", short: "t" },
+    "remove-prefix": { type: "string" },
   },
 }).values;
 const { target } = argv;
+const removePrefix = argv["remove-prefix"];
 
 console.log(`target: ${target}`);
 
@@ -29,10 +31,22 @@ if (frontmatter == null) {
   throw new Error("フロントマターが見つかりませんでした");
 }
 
-// 入力マークダウンで置き換え
+// 入力マークダウンを取得
 const chunks = [];
 for await (const chunk of process.stdin) chunks.push(chunk);
-const input = Buffer.concat(chunks).toString("utf8");
+let input = Buffer.concat(chunks).toString("utf8");
+
+// 接頭辞を削除
+if (removePrefix != undefined) {
+  if (!input.startsWith(removePrefix)) {
+    throw new Error(
+      "入力マークダウンがremove-prefixで指定した文字列から始まりません",
+    );
+  }
+  input = input.slice(removePrefix.length);
+}
+
+// 置き換え
 const output = frontmatter[0] + "\n\n" + input;
 
 // ファイルに書き込み

@@ -72,7 +72,7 @@ curl -s "$editor_url/public/howtouse.md" |
 
 # Q&A
 curl -s "$editor_url/public/qAndA.md" |
-  pnpm run updateMarkdown -t "src/pages/qa/index.md"
+  pnpm run updateMarkdown -t "src/pages/qa/index.md" --remove-prefix $'# よくあるご質問\n\n' # NOTE: 見出しと本文の間に検索欄を入れるため、見出しを消してレンダリング時に足す
 
 # 変更履歴
 curl -s "$editor_url/public/updateInfos.json" \
