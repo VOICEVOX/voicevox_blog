@@ -4,11 +4,7 @@ import { ensureNotNullish, UnreachableError } from "@/helper";
 import { faMagnifyingGlass, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Fuse from "fuse.js";
-import type {
-  FuseResultMatch,
-  IFuseOptions,
-  RangeTuple,
-} from "fuse.js";
+import type { FuseResultMatch, IFuseOptions, RangeTuple } from "fuse.js";
 import { useMemo, useState } from "react";
 
 type QaSearchProps = {
@@ -56,12 +52,12 @@ export default function QaSearch({ items }: QaSearchProps) {
     if (trimmed.length === 0) {
       return { kind: "idle" };
     }
-    const results = fuse
-      .search(trimmed, { limit: MAX_RESULTS })
-      .map((result): QaSearchResult => ({
+    const results = fuse.search(trimmed, { limit: MAX_RESULTS }).map(
+      (result): QaSearchResult => ({
         item: result.item,
         indicesByKey: buildIndicesByKey(ensureNotNullish(result.matches)),
-      }));
+      }),
+    );
     if (results.length === 0) {
       return { kind: "empty" };
     }
