@@ -1,0 +1,28 @@
+---
+interface Props {
+  class?: string;
+}
+
+import { withBaseUrl } from "@/helper";
+
+const { class: className } = Astro.props;
+---
+
+<section class="py-3xl">
+  <div class={`${className} max-w-5xl mx-auto px-md flex flex-col`}>
+    <h2 id="voice_library" class="vv-anchor-offset-4 mb-xl text-3xl font-bold">
+      <a href="#voice_library" class="text-neutral-950 dark:text-white">
+        キャラクター音声ライブラリ制作のご相談
+      </a>
+    </h2>
+    <p class="text-xl">
+      VOICEVOX に新しく加わる音声ライブラリの制作についてご相談を受け付けています。
+    </p>
+    <p class="text-xl">個人・法人いずれの方からもご相談いただけます。</p>
+    <p class="text-xl">
+      詳しくは&nbsp;<a href={withBaseUrl("/voice_library/")} class="vv-link"
+        >音声ライブラリ制作のご案内</a
+      >&nbsp;をご参照ください。
+    </p>
+  </div>
+</section>

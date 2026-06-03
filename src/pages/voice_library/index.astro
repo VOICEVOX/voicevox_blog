@@ -1,0 +1,317 @@
+---
+import Button from "@/components/ui/Button/index.astro";
+import Base from "@/layouts/Base.astro";
+import {
+  faCircleCheck,
+  faCircleQuestion,
+  faChevronDown,
+  faEnvelope,
+  faListCheck,
+  faPaperPlane,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+const formUrl = "https://forms.gle/cgGXtsu8oP4GXGn7A";
+const contactMail = "voicevox.info@gmail.com";
+
+const steps = [
+  {
+    title: "相談フォームを送信",
+    body: "下記のフォームからご相談の内容・運営情報などをお送りください。",
+  },
+  {
+    title: "審査",
+    body: "VOICEVOX 運営にていただいた内容を審査いたします。",
+  },
+  {
+    title: "ご連絡",
+    body: "フォームにご記入いただいたメールアドレス宛にご連絡いたします。",
+  },
+];
+
+const preparations = [
+  {
+    title: "運営の情報",
+    items: [
+      "運営の名義",
+      "ご連絡先のメールアドレス",
+      "公式サイトの URL",
+      "動画投稿サイト（YouTube・ニコニコ・TikTok など）のアカウント",
+      "SNS アカウント",
+    ],
+  },
+  {
+    title: "音声サンプル",
+    items: [
+      "既存コーパス（声優統計コーパス・ITA コーパスなど）または外郎売の朗読音声",
+      "ファイル共有サービスの URL",
+      "声の特徴のご説明",
+      "ソング機能をご検討の場合は、歌声が分かる音源",
+    ],
+  },
+  {
+    title: "キャラクター情報",
+    items: [
+      "キャラクター設定の概要",
+      "立ち絵などビジュアルのリンク",
+      "キャラクターの利用規約のリンク",
+    ],
+  },
+  {
+    title: "音声提供者の情報",
+    items: [
+      "名義・所属",
+      "SNS アカウント",
+      "活動実績・スキル・レッスン歴",
+      "未成年の場合は保護者の同意状況",
+      "事務所・プロダクション所属の場合は所属先の許諾状況",
+    ],
+  },
+  {
+    title: "キャラクターの活動と運用計画",
+    items: [
+      "これまでの活動実績",
+      "立ち絵・ボイスなどの素材",
+      "VOICEVOX 化後の運用計画・ご相談の動機",
+      "その他のアピールや、ご相談にあたってのご要望",
+    ],
+  },
+];
+
+const faqs = [
+  {
+    q: "活動実績のない新規キャラクターでもご相談できますか？",
+    a: "ご相談いただけます。これからキャラクターを立ち上げる段階の企画も歓迎しています。",
+  },
+  {
+    q: "音声提供者がまだ決まっていなくてもご相談できますか？",
+    a: "ご相談いただけます。フォームの該当欄に「なし」とご記入ください。",
+  },
+  {
+    q: "一部の項目が準備できていない場合でもご相談できますか？",
+    a: "ご相談いただけます。ご用意できない項目は「なし」とご記入ください。",
+  },
+  {
+    q: "トークとソング、どちらか一方のみの制作もご相談できますか？",
+    a: "ご相談いただけます。トーク・ソングのいずれか一方でも、両方でもご相談いただけます。",
+  },
+  {
+    q: "個人と法人でご相談の手続きは違いますか？",
+    a: "同じフォームでお受けしています。",
+  },
+];
+---
+
+<Base
+  title="VOICEVOX 音声ライブラリ制作について | VOICEVOX"
+  description="VOICEVOX 音声ライブラリの制作に関するご相談を受け付けています。個人・法人のいずれの方からもご相談いただけます。"
+>
+  <main class="py-4xl">
+    <div class="px-md mx-auto max-w-5xl text-center">
+      <h1 class="mb-2xl px-xs relative inline-block">
+        <span
+          class="bg-primary absolute inset-x-0 bottom-1 h-2 rounded-sm opacity-55"
+          aria-hidden="true"></span>
+        <span class="relative text-4xl font-bold text-neutral-950">
+          VOICEVOX 音声ライブラリ制作について
+        </span>
+      </h1>
+
+      <div class="space-y-4xl">
+        <div class="space-y-xs mx-auto max-w-2xl">
+          <p class="text-lg text-black">
+            VOICEVOX
+            音声ライブラリの制作について、いつでもご相談を受け付けています。
+          </p>
+          <p class="text-lg text-black">
+            個人・法人のいずれの方でも、キャラクターの実績を問わずご相談いただけます。
+          </p>
+        </div>
+
+        <div>
+          <div class="mb-md">
+            <h2 class="pb-xs relative inline-flex items-center gap-3">
+              <span
+                class="bg-primary size-3 shrink-0 rotate-45"
+                aria-hidden="true"></span>
+              <span class="text-2xl font-bold text-neutral-800"
+                >ご相談の流れ</span
+              >
+              <span
+                class="bg-primary absolute bottom-0 left-1/2 h-0.5 w-9 -translate-x-1/2 rounded-sm opacity-65"
+                aria-hidden="true"></span>
+            </h2>
+          </div>
+          <div class="py-2xl px-xl rounded-2xl bg-green-50">
+            <ol class="gap-md grid grid-cols-1 md:grid-cols-3">
+              {
+                steps.map((step, index) => (
+                  <li class="p-md rounded-2xl bg-white text-left ring-1 ring-black/5">
+                    <p class="text-link text-sm font-bold tracking-widest">
+                      STEP {String(index + 1).padStart(2, "0")}
+                    </p>
+                    <h3 class="mt-xs text-lg font-bold text-neutral-950">
+                      {step.title}
+                    </h3>
+                    <p class="mt-xs text-sm text-neutral-700">{step.body}</p>
+                  </li>
+                ))
+              }
+            </ol>
+          </div>
+        </div>
+
+        <div>
+          <div class="mb-md">
+            <h2 class="pb-xs relative inline-flex items-center gap-3">
+              <span
+                class="bg-primary size-3 shrink-0 rotate-45"
+                aria-hidden="true"></span>
+              <span class="text-2xl font-bold text-neutral-800"
+                >フォームへのご記入について</span
+              >
+              <span
+                class="bg-primary absolute bottom-0 left-1/2 h-0.5 w-9 -translate-x-1/2 rounded-sm opacity-65"
+                aria-hidden="true"></span>
+            </h2>
+          </div>
+          <div class="py-2xl px-xl rounded-2xl bg-green-50">
+            <div class="mx-auto max-w-2xl">
+              <p class="mb-md text-lg text-black">
+                フォームでは以下の情報を伺います。
+              </p>
+              <p class="mb-md text-lg text-black">
+                現時点でご用意できないものは「なし」とご記入ください。
+              </p>
+              <details class="group rounded border border-neutral-200 bg-white">
+                <summary
+                  class="vv-status-layer px-md py-sm gap-sm flex cursor-pointer list-none items-center text-left font-bold text-neutral-800"
+                >
+                  <span class="text-link">
+                    <FontAwesomeIcon icon={faListCheck} />
+                  </span>
+                  <span class="flex-1">お伺いする項目の一覧</span>
+                  <span class="text-neutral-500 group-open:rotate-180">
+                    <FontAwesomeIcon icon={faChevronDown} />
+                  </span>
+                </summary>
+                <div class="px-md pb-md divide-y divide-neutral-200 text-left">
+                  {
+                    preparations.map((item, index) => (
+                      <section class="py-md">
+                        <div class="gap-sm mb-sm flex items-baseline">
+                          <span class="text-xs font-bold text-neutral-500">
+                            {String(index + 1).padStart(2, "0")}
+                          </span>
+                          <h3 class="text-link text-base font-bold">
+                            {item.title}
+                          </h3>
+                        </div>
+                        <ul class="ml-md space-y-xs list-outside list-disc text-sm text-black">
+                          {item.items.map((entry) => (
+                            <li>{entry}</li>
+                          ))}
+                        </ul>
+                      </section>
+                    ))
+                  }
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="mb-md">
+            <h2 class="pb-xs relative inline-flex items-center gap-3">
+              <span
+                class="bg-primary size-3 shrink-0 rotate-45"
+                aria-hidden="true"></span>
+              <span class="text-2xl font-bold text-neutral-800"
+                >よくあるご質問</span
+              >
+              <span
+                class="bg-primary absolute bottom-0 left-1/2 h-0.5 w-9 -translate-x-1/2 rounded-sm opacity-65"
+                aria-hidden="true"></span>
+            </h2>
+          </div>
+          <div class="py-2xl px-xl rounded-2xl bg-green-50">
+            <div class="space-y-xs mx-auto max-w-2xl">
+              {
+                faqs.map((faq) => (
+                  <details class="group rounded border border-neutral-200 bg-white">
+                    <summary class="vv-status-layer px-md py-sm gap-sm flex cursor-pointer list-none items-center text-left font-bold text-neutral-800">
+                      <span class="text-link">
+                        <FontAwesomeIcon icon={faCircleQuestion} />
+                      </span>
+                      <span class="flex-1">{faq.q}</span>
+                      <span class="text-neutral-500 group-open:rotate-180">
+                        <FontAwesomeIcon icon={faChevronDown} />
+                      </span>
+                    </summary>
+                    <p class="pt-xs pb-sm pl-10 text-left text-black">
+                      <FontAwesomeIcon
+                        icon={faCircleCheck}
+                        className="text-link -ml-6 mr-xs"
+                      />
+                      {faq.a}
+                    </p>
+                  </details>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="mb-md">
+            <h2 class="pb-xs relative inline-flex items-center gap-3">
+              <span
+                class="bg-primary size-3 shrink-0 rotate-45"
+                aria-hidden="true"></span>
+              <span class="text-2xl font-bold text-neutral-800"
+                >ご相談はこちらから</span
+              >
+              <span
+                class="bg-primary absolute bottom-0 left-1/2 h-0.5 w-9 -translate-x-1/2 rounded-sm opacity-65"
+                aria-hidden="true"></span>
+            </h2>
+          </div>
+          <div class="py-2xl px-xl rounded-2xl bg-green-50">
+            <div class="mx-auto max-w-2xl">
+              <p class="mb-md text-lg text-black">
+                ご相談内容は VOICEVOX 運営で拝見いたします。
+              </p>
+              <p class="mb-md text-lg text-black">
+                お預かりした情報は、ご返信および確認に必要な範囲でのみ利用いたします。
+              </p>
+              <div class="gap-sm my-2xl flex flex-wrap justify-center">
+                <Button
+                  href={formUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  kind="solid"
+                  tone="primary"
+                  shape="pill"
+                  size="xl"
+                >
+                  <span slot="icon">
+                    <FontAwesomeIcon icon={faPaperPlane} />
+                  </span>
+                  企画提出フォームへ
+                </Button>
+              </div>
+              <p class="text-lg text-black">
+                ご不明な点は<a
+                  href={`mailto:${contactMail}`}
+                  class="vv-link mx-xs"
+                  ><FontAwesomeIcon icon={faEnvelope} />&#160;{contactMail}</a
+                >までお問い合わせください。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Base>
