@@ -745,4 +745,9 @@
             https://voicevox.hiroshiba.jp/update_history/
         </loc>
     </url>
+    <url>
+        <loc>
+            https://voicevox.hiroshiba.jp/voice_library/
+        </loc>
+    </url>
 </urlset>

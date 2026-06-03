@@ -1,0 +1,6 @@
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/voice_library/",
+  "title": "VOICEVOX 音声ライブラリ制作について | VOICEVOX",
+  "description": "VOICEVOX 音声ライブラリの制作に関するご相談を受け付けています。個人・法人のいずれの方からもご相談いただけます。",
+  "robots": "index, follow"
+}
