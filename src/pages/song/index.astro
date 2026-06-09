@@ -8,6 +8,7 @@ import Button from "@/components/ui/Button/index.astro";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getImage, Image } from "astro:assets";
+import CoreLibrarySection from "../_CoreLibrarySection.astro";
 import EngineGuidanceSection from "../_EngineGuidanceSection.astro";
 import OssGuidanceSection from "../_OssGuidanceSection.astro";
 import CharacterCard from "./_CharacterCard";
@@ -168,6 +169,8 @@ const backgroundImageSrc = (await getImage({ src: backgroundImage })).src;
     </section>
 
     <EngineGuidanceSection />
+
+    <CoreLibrarySection />
 
     <OssGuidanceSection />
   </main>
