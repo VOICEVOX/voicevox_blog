@@ -5,6 +5,7 @@ import { characterInfos } from "@/constants/characterInfo";
 import { withBaseUrl } from "@/helper";
 import Base from "@/layouts/Base.astro";
 import { Image, getImage } from "astro:assets";
+import CoreLibrarySection from "./_CoreLibrarySection.astro";
 import EngineGuidanceSection from "./_EngineGuidanceSection.astro";
 import LinkListSection from "./_LinkListSection.astro";
 import OssGuidanceSection from "./_OssGuidanceSection.astro";
@@ -101,31 +102,7 @@ const landingMovieThumbUrl = (await getImage({ src: landingMovieThumb })).src;
 
       <EngineGuidanceSection />
 
-      <section class="py-3xl">
-        <div class="px-md mx-auto flex max-w-5xl flex-col">
-          <h2
-            id="core_library"
-            class="vv-anchor-offset-4 mb-xl text-3xl font-bold text-neutral-950"
-          >
-            <a href="#core_library" class="text-neutral-950">
-              コアライブラリ
-            </a>
-          </h2>
-          <p class="text-xl">
-            VOICEVOX
-            の音声合成をアプリケーションやサービスに組み込める、VOICEVOX
-            のコアライブラリを配布しています。
-          </p>
-          <p class="text-xl">
-            詳しくは&nbsp;<a
-              href="https://github.com/VOICEVOX/voicevox_core"
-              class="vv-link"
-              target="_blank"
-              rel="noreferrer">VOICEVOX CORE</a
-            >&nbsp;をご参照ください。
-          </p>
-        </div>
-      </section>
+      <CoreLibrarySection />
 
       <OssGuidanceSection />
 
