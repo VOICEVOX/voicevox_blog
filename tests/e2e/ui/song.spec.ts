@@ -19,11 +19,11 @@ test("ダウンロードボタン", async ({ page }) => {
   });
 
   await test.step("モーダルを閉じれる", async () => {
-    await page.getByRole("button", { name: "close" }).click();
+    await page.getByRole("button", { name: "閉じる" }).click();
   });
 
   await test.step("ヘッダーのダウンロードボタンでモーダルが表示される", async () => {
-    if (isMobile(page)) await header.getByLabel("menu").click();
+    if (isMobile(page)) await header.getByLabel("メニュー").click();
     const headerDownloadButton = header.getByRole("button", {
       name: "ダウンロード",
     });
