@@ -19,12 +19,12 @@ test("ダウンロードボタン", async ({ page }) => {
   });
 
   await test.step("モーダルを閉じれる", async () => {
-    await page.getByRole("button", { name: "close" }).click();
+    await page.getByRole("button", { name: "閉じる" }).click();
     await expect(modal).toHaveCount(0);
   });
 
   await test.step("ヘッダーのダウンロードボタンで１つ目のモーダルが表示される", async () => {
-    if (isMobile(page)) await header.getByLabel("menu").click();
+    if (isMobile(page)) await header.getByLabel("メニュー").click();
     const headerDownloadButton = header.getByRole("button", {
       name: "ダウンロード",
     });
@@ -42,7 +42,7 @@ test("ダウンロードボタン", async ({ page }) => {
   });
 
   await test.step("２つ目のモーダルを閉じれる", async () => {
-    await modal.getByLabel("close").click();
+    await modal.getByLabel("閉じる").click();
     await expect(modal).toContainText("VOICEVOX Nemo ご利用案内");
   });
 

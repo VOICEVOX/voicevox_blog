@@ -43,7 +43,7 @@ export default function ModalShell({
                 <IconButton
                   size="sm"
                   className="text-neutral-700"
-                  aria-label="close"
+                  aria-label="閉じる"
                 >
                   <span aria-hidden="true" className="text-xl leading-none">
                     <FontAwesomeIcon icon={faXmark} />
