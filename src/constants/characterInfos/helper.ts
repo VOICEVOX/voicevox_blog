@@ -9,7 +9,7 @@ import {
   talkAudiosAndPaths,
   productShareImages,
   dormitoryShareImages,
-} from "@/constants/characaterAsset";
+} from "@/constants/characterAsset";
 import type { CharacterKey } from "@/constants/characterEntry";
 
 function getBasename(filePath: string): string {
