@@ -19,3 +19,10 @@ runs:
     - name: Setup pnpm
       shell: bash
       run: pnpm install
+
+    - name: Setup mise
+      uses: jdx/mise-action@e6a8b3978addb5a52f2b4cd9d91eafa7f0ab959d # v4.2.0
+
+    - name: Setup fontTools
+      shell: bash
+      run: mise use --global --pin "pipx:fonttools[extras=woff]@4.63.0"
