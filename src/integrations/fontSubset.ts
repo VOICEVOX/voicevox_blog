@@ -1,16 +1,14 @@
 /**
- * フォントサブセットを生成して配信するAstro integration。
+ * フォントサブセットを生成するAstro integration。
  * srcとpublic以下のgit管理されたテキストファイルに登場する文字を集め、
  * `resources/fonts` 以下のフォントをその文字だけを含むwoff2にサブセット化する。
- * 生成結果はAstroのキャッシュディレクトリに保存し、devでは `/fonts/` として配信、buildでは `dist/fonts` へ出力する。
+ * 生成結果はAstroのキャッシュディレクトリに保存し、Viteのアセットとして配信する。
  */
-import { ensureNotNullish } from "../helper";
 import type { AstroIntegration, AstroIntegrationLogger } from "astro";
 import { execFile } from "node:child_process";
 import { createHash } from "node:crypto";
 import { existsSync } from "node:fs";
 import {
-  cp,
   mkdtempDisposable,
   mkdir,
   readFile,
@@ -23,7 +21,6 @@ import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
 
 const CACHE_VERSION = 4;
-const FONT_ROUTE_PREFIX = "/fonts/";
 const FONT_SUBSET_CACHE_DIR = "voicevox-font-subsets";
 const SOURCE_FONTS_DIR = "resources/fonts";
 
@@ -31,14 +28,11 @@ const execFileAsync = promisify(execFile);
 
 type GeneratedFontSubsets = {
   directoryPath: string;
-  fontFiles: string[];
   sourcePaths: string[];
 };
 
 /** Astro integration */
 export function fontSubsetIntegration(): AstroIntegration {
-  let generatedFontSubsets: GeneratedFontSubsets | undefined;
-
   return {
     name: "voicevox-font-subset",
     hooks: {
@@ -53,55 +47,23 @@ export function fontSubsetIntegration(): AstroIntegration {
         if (command !== "dev" && command !== "build") {
           return;
         }
-        // CSSが参照する `/fonts/` はビルド時に存在しないため、未解決警告を抑制する
-        updateConfig({
-          vite: {
-            build: {
-              rollupOptions: {
-                external: (id: string) =>
-                  id.startsWith(FONT_ROUTE_PREFIX) && id.endsWith(".woff2"),
-              },
-            },
-          },
-        });
-        generatedFontSubsets = await generateFontSubsets(
+        const generatedFontSubsets = await generateFontSubsets(
           fileURLToPath(config.root),
           fileURLToPath(config.cacheDir),
           logger,
         );
+        updateConfig({
+          vite: {
+            resolve: {
+              alias: {
+                "/fonts": generatedFontSubsets.directoryPath,
+              },
+            },
+          },
+        });
         for (const sourcePath of generatedFontSubsets.sourcePaths) {
           addWatchFile(sourcePath);
         }
-      },
-
-      // devサーバーで生成済みのフォントサブセットを `/fonts/` として配信する
-      "astro:server:setup": ({ server }) => {
-        const { directoryPath, fontFiles } =
-          ensureNotNullish(generatedFontSubsets);
-        server.middlewares.use(FONT_ROUTE_PREFIX, (request, response, next) => {
-          if (request.url == undefined) return next();
-          const fontFile = decodeURIComponent(
-            new URL(request.url, "http://localhost").pathname.slice(1),
-          );
-          if (!fontFiles.includes(fontFile)) return next();
-          readFile(join(directoryPath, fontFile))
-            .then((fontFileData) => {
-              response.setHeader("Cache-Control", "no-store");
-              response.setHeader("Content-Length", fontFileData.byteLength);
-              response.setHeader("Content-Type", "font/woff2");
-              response.end(fontFileData);
-            })
-            .catch((error: unknown) => next(error));
-        });
-      },
-
-      // 生成済みのフォントサブセットを `dist/fonts` へコピーする
-      "astro:build:done": async ({ dir }) => {
-        await cp(
-          ensureNotNullish(generatedFontSubsets).directoryPath,
-          join(fileURLToPath(dir), "fonts"),
-          { recursive: true },
-        );
       },
     },
   };
@@ -139,7 +101,6 @@ async function generateFontSubsets(
 
   return {
     directoryPath,
-    fontFiles,
     sourcePaths: [...filePaths, sourceFontsPath],
   };
 }
