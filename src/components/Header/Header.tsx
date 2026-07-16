@@ -245,7 +245,7 @@ export default function Header({
               <Collapsible.Trigger asChild>
                 <button
                   className={`${menuTriggerClassName} lg:hidden`}
-                  aria-label="menu"
+                  aria-label="メニュー"
                   type="button"
                 >
                   <span aria-hidden="true" className="text-xl leading-none">

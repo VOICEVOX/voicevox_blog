@@ -37,12 +37,12 @@ test("ダウンロードボタン", async ({ page }) => {
   });
 
   await test.step("モーダルを閉じれる", async () => {
-    await page.getByRole("button", { name: "close" }).click();
+    await page.getByRole("button", { name: "閉じる" }).click();
   });
 
   await test.step("ヘッダーのダウンロードボタンでモーダルが表示される", async () => {
     await page.evaluate(() => window.scrollBy(0, 500));
-    if (isMobile(page)) await header.getByLabel("menu").click();
+    if (isMobile(page)) await header.getByLabel("メニュー").click();
     const headerDownloadButton = header.getByRole("button", {
       name: "ダウンロード",
     });
@@ -95,14 +95,14 @@ test.describe("キャラクターカード", () => {
         .getByText("ずんだもん", { exact: true })
         .scrollIntoViewIfNeeded();
       await page.getByRole("button", { name: "ずんだもん 利用規約" }).click();
-      await expect(modal.locator("header")).toContainText(
+      await expect(modal.getByRole("heading")).toContainText(
         "ずんだもん 利用規約",
       );
       await expect(page).toHaveScreenshot();
     });
 
     await test.step("モーダルを閉じれる", async () => {
-      await page.getByRole("button", { name: "close" }).click();
+      await page.getByRole("button", { name: "閉じる" }).click();
     });
 
     await test.step("別のキャラクターの利用規約も表示できる", async () => {
@@ -110,7 +110,7 @@ test.describe("キャラクターカード", () => {
         .getByText("冥鳴ひまり", { exact: true })
         .scrollIntoViewIfNeeded();
       await page.getByRole("button", { name: "冥鳴ひまり 利用規約" }).click();
-      await expect(modal.locator("header")).toContainText(
+      await expect(modal.getByRole("heading")).toContainText(
         "冥鳴ひまり 利用規約",
       );
       await expect(page).toHaveScreenshot();
