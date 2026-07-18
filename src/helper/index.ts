@@ -230,7 +230,11 @@ export function sendEvent(event: string, eventCategory: string) {
 }
 
 /** パスにViteのBASE_URLを追加する関数 */
-export function withBaseUrl(path: string) {
+export function withBaseUrl(path: string): string {
+  if (!path.startsWith("/")) {
+    throw new Error("パスの先頭に/が必要です");
+  }
+
   const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, "");
-  return baseUrl ? `${baseUrl}/${path}` : path;
+  return `${baseUrl}${path}`;
 }
