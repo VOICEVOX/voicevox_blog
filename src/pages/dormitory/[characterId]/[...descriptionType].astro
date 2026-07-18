@@ -84,9 +84,7 @@ const backgroundImageUrl = `url(${(await getImage({ src: backgroundImage })).src
                     set:html={characterInfo.rubyName}
                   />
                   <IconButton
-                    href={characterInfo.detailUrl
-                      ? withBaseUrl(characterInfo.detailUrl)
-                      : undefined}
+                    href={characterInfo.detailUrl}
                     size="md"
                     border
                     class:list={[
