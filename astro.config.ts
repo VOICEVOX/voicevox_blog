@@ -1,3 +1,4 @@
+import { fontSubsetIntegration } from "./src/integrations/fontSubset";
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
@@ -16,6 +17,7 @@ export default defineConfig({
   },
 
   integrations: [
+    fontSubsetIntegration(),
     mdx(),
     sitemap({
       filter: (page) => !page.includes("/dev/") && !page.includes("/news/"),
