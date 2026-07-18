@@ -116,7 +116,7 @@ export default function QaSearch({
               value={input}
               enterKeyHint="search"
               placeholder="検索ワードを入力"
-              className="font-system h-12 w-full rounded-md border border-neutral-300 bg-white pr-12 pl-11 text-base text-neutral-950 placeholder:text-neutral-500"
+              className="font-system h-12 w-full rounded-md border border-neutral-300 bg-white pr-12 pl-11 text-base text-neutral-950 placeholder:font-sans placeholder:text-neutral-500"
               onChange={onChange}
               onCompositionStart={onCompositionStart}
               onCompositionEnd={onCompositionEnd}
