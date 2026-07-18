@@ -13,6 +13,7 @@ import {
   isPreview,
   isTest,
   stripHtmlTags,
+  withBaseUrl,
 } from "@/helper";
 import "@/styles/global.css";
 import type { ImageMetadata } from "astro";
@@ -100,13 +101,27 @@ const googleAnalyticsSrc = `https://www.googletagmanager.com/gtag/js?id=${GA_TRA
 
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="sitemap" href={withBaseUrl("/sitemap-index.xml")} />
 
     {/* アイコン */}
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="manifest" href="/site.webmanifest" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href={withBaseUrl("/apple-touch-icon.png")}
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href={withBaseUrl("/favicon-32x32.png")}
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href={withBaseUrl("/favicon-16x16.png")}
+    />
+    <link rel="manifest" href={withBaseUrl("/site.webmanifest")} />
 
     {/* Google Analytics */}
     <script is:inline async src={googleAnalyticsSrc}></script>
