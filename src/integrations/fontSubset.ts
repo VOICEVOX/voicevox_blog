@@ -15,6 +15,7 @@ import {
   readdir,
   rename,
   stat,
+  writeFile,
 } from "node:fs/promises";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -117,17 +118,25 @@ async function writeFontSubsets(
   await using temporaryDirectory = await mkdtempDisposable(
     join(cacheRootPath, "temporary-"),
   );
-  for (const fontFile of fontFiles) {
-    await runPyftsubset([
-      join(sourceFontsPath, fontFile),
-      `--text=${characters}`,
-      `--output-file=${join(temporaryDirectory.path, fontFile)}`,
-      "--name-IDs=*", // NOTE: 商標情報などを残す
-      "--flavor=woff2",
-    ]);
-  }
+  // 文字数が多いとコマンドライン長制限に達するため、一時ファイル経由で渡す
+  const charactersFilePath = join(temporaryDirectory.path, "characters.txt");
+  await writeFile(charactersFilePath, characters);
+
+  const outputDirectoryPath = join(temporaryDirectory.path, "output");
+  await mkdir(outputDirectoryPath);
+  await Promise.all(
+    fontFiles.map((fontFile) =>
+      runPyftsubset([
+        join(sourceFontsPath, fontFile),
+        `--text-file=${charactersFilePath}`,
+        `--output-file=${join(outputDirectoryPath, fontFile)}`,
+        "--name-IDs=*", // NOTE: 商標情報などを残す
+        "--flavor=woff2",
+      ]),
+    ),
+  );
   try {
-    await rename(temporaryDirectory.path, directoryPath);
+    await rename(outputDirectoryPath, directoryPath);
   } catch (error) {
     // エディタのAstro拡張などが同じキャッシュキーの生成を並行して完了させることがあり、その場合は完成済みの結果を使う
     if (!existsSync(directoryPath)) {
