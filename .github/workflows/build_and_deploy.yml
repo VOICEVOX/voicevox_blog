@@ -1,7 +1,11 @@
 name: Build and deploy
+run-name: Push ${{ github.sha }} to gh-pages
 
 on:
   workflow_dispatch:
+
+concurrency:
+  group: pages-branch-deployment
 
 defaults:
   run:
@@ -11,6 +15,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Validate deployment ref
+        env:
+          DEPLOYMENT_REF: ${{ github.ref }}
+        run: |
+          if [[ "$DEPLOYMENT_REF" != "refs/heads/master" ]]; then
+            echo "::error::masterブランチからのみ実行できます。"
+            exit 1
+          fi
+
       - name: Checkout
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
 
@@ -21,20 +34,47 @@ jobs:
         run: pnpm run build
 
       - name: Upload static files as artifact
-        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
+          name: pages-content
           path: dist/
+          if-no-files-found: error
+          retention-days: 1
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
     environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      name: pages-branch-push
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5
+      - name: Download static files
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          name: pages-content
+          path: ${{ runner.temp }}/pages-content
+
+      - name: Create deployment commit
+        env:
+          PAGES_CONTENT_DIRECTORY: ${{ runner.temp }}/pages-content
+          PAGES_REPOSITORY_DIRECTORY: ${{ runner.temp }}/pages-repository
+        run: |
+          git init --initial-branch=gh-pages "$PAGES_REPOSITORY_DIRECTORY"
+          cp -a "${PAGES_CONTENT_DIRECTORY}/." "${PAGES_REPOSITORY_DIRECTORY}/"
+          touch "${PAGES_REPOSITORY_DIRECTORY}/.nojekyll"
+          git -C "$PAGES_REPOSITORY_DIRECTORY" add --all
+
+          git -C "$PAGES_REPOSITORY_DIRECTORY" config user.name "VOICEVOX-OSS"
+          git -C "$PAGES_REPOSITORY_DIRECTORY" config user.email "318298905+VOICEVOX-OSS@users.noreply.github.com"
+          git -C "$PAGES_REPOSITORY_DIRECTORY" commit \
+            -m "デプロイ" \
+            -m "ソース: ${GITHUB_SHA}"
+
+      - name: Push deployment commit
+        env:
+          PAGES_DEPLOY_TOKEN: ${{ secrets.PAGES_DEPLOY_TOKEN }}
+          PAGES_REPOSITORY_DIRECTORY: ${{ runner.temp }}/pages-repository
+        run: |
+          git -C "$PAGES_REPOSITORY_DIRECTORY" push \
+            --force \
+            "https://x-access-token:${PAGES_DEPLOY_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
+            HEAD:refs/heads/gh-pages
