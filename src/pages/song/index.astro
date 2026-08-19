@@ -11,6 +11,7 @@ import { getImage, Image } from "astro:assets";
 import CoreLibrarySection from "../_CoreLibrarySection.astro";
 import EngineGuidanceSection from "../_EngineGuidanceSection.astro";
 import OssGuidanceSection from "../_OssGuidanceSection.astro";
+import VoiceLibrarySection from "../_VoiceLibrarySection.astro";
 import CharacterCard from "./_CharacterCard";
 import backgroundImage from "./background.png";
 import shareThumb from "./share.png";
@@ -173,5 +174,7 @@ const backgroundImageSrc = (await getImage({ src: backgroundImage })).src;
     <CoreLibrarySection />
 
     <OssGuidanceSection />
+
+    <VoiceLibrarySection />
   </main>
 </Base>
