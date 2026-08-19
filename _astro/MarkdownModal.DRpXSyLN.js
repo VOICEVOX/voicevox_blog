@@ -1,0 +1,1 @@
+import{j as o}from"./index.CJoXEicE.js";import{M as l}from"./index.dZvkHjVS.js";function m({isActive:r,title:e,html:t,hide:a}){return o.jsx(l,{isActive:r,title:e,onClose:a,footer:null,children:o.jsx("div",{className:"markdown","data-theme":"light",dangerouslySetInnerHTML:{__html:t}})})}export{m as M};

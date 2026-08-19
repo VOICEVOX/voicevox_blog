@@ -1,0 +1,438 @@
+<!DOCTYPE html><html lang="ja" data-theme="light" data-astro-transition-scope="astro-t6vruy3w-1"> <head><title>使い方 | VOICEVOX</title><meta charset="utf-8"><link rel="canonical" href="https://voicevox.hiroshiba.jp/how_to_use/"><meta name="description" content="VOICEVOXソフトウェアの使い方です"><meta name="robots" content="index, follow"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="使い方 | VOICEVOX"><meta name="twitter:description" content="VOICEVOXソフトウェアの使い方です"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.18.1"><link rel="sitemap" href="/sitemap-index.xml"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="manifest" href="/site.webmanifest"><script async src="https://www.googletagmanager.com/gtag/js?id=G-NZL33X0EQV"></script><script>(function(){const GA_TRACKING_ID = "G-NZL33X0EQV";
+const isGoogleAnalyticsDebugMode = false;
+
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function gtag() {
+        dataLayer.push(arguments);
+      };
+      document.addEventListener("astro:page-load", () => {
+        if ((navigator.doNotTrack || window.doNotTrack) != "1") {
+          const config = { send_page_view: false };
+          if (isGoogleAnalyticsDebugMode) {
+            config.debug_mode = true;
+          }
+
+          gtag("js", new Date());
+          gtag("config", GA_TRACKING_ID, config);
+          gtag("event", "page_view", {
+            page_title: document.title,
+            page_location: location.href,
+          });
+        }
+      });
+    })();</script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><link rel="stylesheet" href="/_astro/how_to_use.CF7aSw79.css">
+<style>.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}@keyframes astroFadeInOut{0%{opacity:1}to{opacity:0}}@keyframes astroFadeIn{0%{opacity:0;mix-blend-mode:plus-lighter}to{opacity:1;mix-blend-mode:plus-lighter}}@keyframes astroFadeOut{0%{opacity:1;mix-blend-mode:plus-lighter}to{opacity:0;mix-blend-mode:plus-lighter}}@keyframes astroSlideFromRight{0%{transform:translate(100%)}}@keyframes astroSlideFromLeft{0%{transform:translate(-100%)}}@keyframes astroSlideToRight{to{transform:translate(100%)}}@keyframes astroSlideToLeft{to{transform:translate(-100%)}}@media(prefers-reduced-motion){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}[data-astro-transition-scope]{animation:none!important}}
+</style><style>[data-astro-transition-scope="astro-t6vruy3w-1"] { view-transition-name: astro-t6vruy3w-1; }@layer astro { ::view-transition-old(astro-t6vruy3w-1) { animation: none; opacity: 0; mix-blend-mode: normal; }::view-transition-new(astro-t6vruy3w-1) { animation: none; mix-blend-mode: normal; }::view-transition-group(astro-t6vruy3w-1) { animation: none } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-t6vruy3w-1"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-t6vruy3w-1"] { animation: none; mix-blend-mode: normal; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-t6vruy3w-1"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-t6vruy3w-1"] { animation: none; mix-blend-mode: normal; }</style></head> <body class="flex min-h-screen flex-col bg-white text-black dark:bg-zinc-900 dark:text-white"> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();</script><script>(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="AmEim" prefix="r3" component-url="/_astro/Header.mj35w1lU.js" component-export="default" renderer-url="/_astro/client.Dhq_i1tP.js" props="{&quot;defaultHide&quot;:[0],&quot;isNemo&quot;:[0],&quot;iconUrl&quot;:[0,&quot;/_astro/icon.DUOt12x4_Z2jw1DM.webp&quot;]}" ssr client="load" opts="{&quot;name&quot;:&quot;Header&quot;,&quot;value&quot;:true}" await-children><link rel="preload" as="image" href="/_astro/icon.DUOt12x4_Z2jw1DM.webp"/><div data-state="closed"><nav class="fixed top-0 left-0 z-(--z-header) w-full   bg-white text-neutral-900 shadow-[0_2px_0_0_rgb(243,244,246)] dark:bg-black dark:text-white dark:shadow-[0_2px_0_0_hsl(0_0%_4%)]" aria-label="main"><div class="mx-auto flex h-13 items-stretch justify-between"><div class="flex min-w-0 items-stretch"><a href="/" class="gap-sm px-sm flex items-center self-stretch whitespace-nowrap vv-status-layer"><img src="/_astro/icon.DUOt12x4_Z2jw1DM.webp" alt="" width="28" height="28"/><span class="text-xl leading-none font-bold">VOICEVOX</span></a><a href="/" class="vv-status-layer flex items-center self-stretch px-sm text-base whitespace-nowrap lg:hidden">トーク</a><a href="/song/" class="vv-status-layer flex items-center self-stretch px-sm text-base whitespace-nowrap lg:hidden">ソング</a><a href="/dormitory/" class="vv-status-layer flex items-center self-stretch px-sm text-base whitespace-nowrap hidden md:flex lg:hidden">ボイボ寮</a><a href="/nemo/" class="vv-status-layer flex items-center self-stretch px-sm text-base whitespace-nowrap hidden md:flex lg:hidden">Nemo</a><a href="/how_to_use/" class="vv-status-layer flex items-center self-stretch px-sm text-base whitespace-nowrap hidden">使い方</a><a href="/term/" class="vv-status-layer flex items-center self-stretch px-sm text-base whitespace-nowrap hidden">利用規約</a><a href="/qa/" class="vv-status-layer flex items-center self-stretch px-sm text-base whitespace-nowrap hidden">Q&amp;A</a><a href="/update_history/" class="vv-status-layer flex items-center self-stretch px-sm text-base whitespace-nowrap hidden">変更履歴</a><a href="https://hiho.fanbox.cc/" target="_blank" rel="noreferrer" class="vv-status-layer flex items-center self-stretch px-sm text-base whitespace-nowrap hidden">pixivFANBOX</a><div class="px-sm flex items-center self-stretch hidden md:flex lg:hidden"><button class="vv-status-layer vv-button vv-button-kind-solid vv-button-tone-primary vv-button-shape-pill vv-button-size-md vv-button-with-icon font-semibold" type="button"><span class="vv-button-icon vv-button-icon-start"><svg data-prefix="fas" data-icon="download" class="svg-inline--fa fa-download" role="img" viewBox="0 0 448 512" aria-hidden="true"><path fill="currentColor" d="M256 32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 210.7-41.4-41.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0l96-96c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 242.7 256 32zM64 320c-35.3 0-64 28.7-64 64l0 32c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-32c0-35.3-28.7-64-64-64l-46.9 0-56.6 56.6c-31.2 31.2-81.9 31.2-113.1 0L110.9 320 64 320zm304 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"></path></svg></span><span class="vv-button-label">ダウンロード</span></button></div></div><div class="flex items-stretch"><div class="hidden items-stretch lg:flex"><a href="/" class="vv-status-layer flex items-center self-stretch px-sm text-base whitespace-nowrap flex items-center self-stretch">トーク</a><a href="/song/" class="vv-status-layer flex items-center self-stretch px-sm text-base whitespace-nowrap flex items-center self-stretch">ソング</a><a href="/dormitory/" class="vv-status-layer flex items-center self-stretch px-sm text-base whitespace-nowrap flex items-center self-stretch py-0">ボイボ寮</a><a href="/nemo/" class="vv-status-layer flex items-center self-stretch px-sm text-base whitespace-nowrap flex items-center self-stretch py-0">Nemo</a><a href="/how_to_use/" class="vv-status-layer flex items-center self-stretch px-sm text-base whitespace-nowrap flex items-center self-stretch">使い方</a><a href="/term/" class="vv-status-layer flex items-center self-stretch px-sm text-base whitespace-nowrap flex items-center self-stretch">利用規約</a><a href="/qa/" class="vv-status-layer flex items-center self-stretch px-sm text-base whitespace-nowrap flex items-center self-stretch">Q&amp;A</a><a href="/update_history/" class="vv-status-layer flex items-center self-stretch px-sm text-base whitespace-nowrap flex items-center self-stretch">変更履歴</a><a href="https://hiho.fanbox.cc/" target="_blank" rel="noreferrer" class="vv-status-layer flex items-center self-stretch px-sm text-base whitespace-nowrap flex items-center self-stretch">pixivFANBOX</a><div class="px-sm flex items-center self-stretch flex items-center self-stretch py-0"><button class="vv-status-layer vv-button vv-button-kind-solid vv-button-tone-primary vv-button-shape-pill vv-button-size-md vv-button-with-icon font-semibold" type="button"><span class="vv-button-icon vv-button-icon-start"><svg data-prefix="fas" data-icon="download" class="svg-inline--fa fa-download" role="img" viewBox="0 0 448 512" aria-hidden="true"><path fill="currentColor" d="M256 32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 210.7-41.4-41.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0l96-96c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 242.7 256 32zM64 320c-35.3 0-64 28.7-64 64l0 32c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-32c0-35.3-28.7-64-64-64l-46.9 0-56.6 56.6c-31.2 31.2-81.9 31.2-113.1 0L110.9 320 64 320zm304 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"></path></svg></span><span class="vv-button-label">ダウンロード</span></button></div></div><button class="vv-status-layer inline-flex h-10 w-10 mr-2xs shrink-0 items-center justify-center self-center leading-none lg:hidden" aria-label="メニュー" type="button" aria-controls="radix-_r3R_1_" aria-expanded="false" data-state="closed"><span aria-hidden="true" class="text-xl leading-none"><svg data-prefix="fas" data-icon="bars" class="svg-inline--fa fa-bars" role="img" viewBox="0 0 448 512" aria-hidden="true"><path fill="currentColor" d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"></path></svg></span></button></div></div><div data-state="closed" id="radix-_r3R_1_" hidden="" class="lg:hidden"></div></nav></div><div class="invisible h-13 "></div><!--astro:end--></astro-island> <div class="grow">  <main class="py-3xl"> <div class="px-md mx-auto max-w-5xl">  <div class="markdown"> <h1 id="使い方">使い方</h1>
+<h2 id="はじめに">はじめに</h2>
+<p>これはテキスト音声合成ソフトウェア「VOICEVOX」の使い方を紹介するドキュメントです。<br>
+最初に<a href="https://voicevox.hiroshiba.jp/term">利用規約</a>をご確認ください。</p>
+<p>また、<a href="https://youtu.be/4yVpklclxwU">使い方を軽めに紹介した動画</a>もあるので、よかったらご覧ください。</p>
+<h2 id="インストール起動方法">インストール・起動方法</h2>
+<h3 id="windows-版">Windows 版</h3>
+<details><summary>クリックで展開</summary>
+<p>起動しようとすると「Windows によって PC が保護されました」というダイアログが表示されるかもしれません。その際は「詳細情報」をクリックし、発行元が「Kazuyuki Hiroshiba」であることを確認してから「実行」を選んでください。</p>
+<p><img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image14.png" style="max-height: 16rem" alt="「Windows によって PC が保護されました」というダイアログ"> → <img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image15.png" style="max-height: 16rem" alt="「詳細情報」をクリックし、「実行」を選んでいる様子。"></p>
+</details>
+<h3 id="mac-版">Mac 版</h3>
+<details><summary>クリックで展開</summary>
+<p>初回起動時は Apple に登録されていないアプリケーションとして警告ダイアログが表示されるかもしれません。</p>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/gatekeeper.png" style="max-height: 16rem" alt="「VOICEVOXは開発を検証できないため開けません」というダイアログ">
+<p>その際は Finder で <code>Ctrl</code> キーを押しながら VOICEVOX アプリケーションアイコンをクリックし、ショートカットメニューから「開く」を選択してから、「開く」をクリックしてください。</p>
+<p>もしくは、アップルメニューから「システム設定」を選択して「プライバシーとセキュリティ」 をクリックし、ページの下にあるセキュリティの「このまま開く」を選んでください。</p>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/macos-system-settings-security.png" style="max-height: 16rem" alt="Macのシステム設定の「プライバシーとセキュリティ」を開いた画面">
+<p>macOS Ventura 以前をお使いの場合は、アップルメニューから「システム環境設定」を選択して「セキュリティとプライバシー」 をクリックし、「一般」パネルで「このまま開く」選んでください。</p>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/macos-system-preferences-security.png" style="max-height: 16rem" alt="Macのシステム環境設定の「セキュリティとプライバシー」を開いた画面">
+<h4 id="apple-silicon-搭載の-mac-をお使いの場合">Apple Silicon 搭載の Mac をお使いの場合</h4>
+<p>初めて VOICEVOX を起動する際に Rosetta のインストールを促される場合は、案内に従ってインストールしてください。</p>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/macos-big-sur-software-update-rosetta-alert.jpg" style="max-height: 12rem" alt="Rosettaのインストールを確認するダイアログ">
+</details>
+<h2 id="音声合成エンジンの起動">音声合成エンジンの起動</h2>
+<p>最初に音声合成エンジンが起動します。
+GPU をお持ちの方は、音声の生成がずっと速い GPU モードを快適にご利用いただけます。</p>
+<p>※Mac 版では GPU モードに対応していないため GPU モードはご利用頂けません。</p>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image4.png" style="max-height: 6rem" alt="音声合成エンジンを起動している様子">
+<h2 id="音声の生成再生">音声の生成・再生</h2>
+<p>キャラクターアイコンの右にある空白をクリックしてテキストを入力してみてください。</p>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image19.png" style="max-height: 12rem" alt="キャラクターアイコンの右にある空白">
+<p><code>Enter</code> キーを押して文章を確定すると、画面の下の方に読みとアクセントが表示されます。（１回目は反映まで数秒ほど時間がかかることがあります。）</p>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image6.png" style="max-height: 16rem" alt="画面の下の方に読みとアクセントが表示された様子">
+<p>再生ボタンを押すと音声が生成され、音声が再生されます。</p>
+<h2 id="文章の追加削除">文章の追加・削除</h2>
+<p>右下の＋ボタンを押すとテキスト欄が増え、複数の文章を並べることができます。</p>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image10.png" style="max-height: 12rem" alt="テキスト欄が増えた様子">
+<p>テキスト欄にマウスカーソルを合わせると出てくるゴミ箱のボタンで、そのテキスト欄を削除できます。</p>
+<h2 id="キャラクターの変更">キャラクターの変更</h2>
+<p>テキスト入力欄の左にあるアイコンをクリックすると、テキストを読み上げてくれるキャラクターを変更することができます。</p>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image7.png" style="max-height: 10rem" alt="左にあるアイコンをクリックしてほかのキャラクターアイコンが表示されている様子">
+<p>キャラクターの表示順序は「キャラクター並び替え」で変更できます。</p>
+<h2 id="テキスト欄の並び替え">テキスト欄の並び替え</h2>
+<p>テキスト欄周辺をドラッグすることで、テキスト欄の順番を並び替えられます。</p>
+<h2 id="単語の接続変更">単語の接続変更</h2>
+<p>意図しない箇所で単語が分離していた場合や、意図しない形で結合してしまっている場合は、アクセント項目で文字の間をクリックすることで修正できます。</p>
+<p>例えば「ディープラーニング」がこのように分かれてしまった場合は、</p>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image9.png" style="max-height: 12rem" alt="「ディープラーニング」が「ディープ」と「ラーニング」に分かれた様子">
+<p>２つの隙間をクリックすると</p>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image3.png" style="max-height: 8rem" alt="「ディープ」と「ラーニング」の間にマウスカーソルを合わせている様子。マウスカーソルが当たっている部分が青色になります">
+<p>このように１語にまとめることができます</p>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image8.png" style="max-height: 7rem" alt="「ディープ」と「ラーニング」が「ディープラーニング」の１語にまとまった様子">
+<p>逆に切り離したい場合は、文字の間をクリックして切り離すことができます。</p>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image13.png" style="max-height: 7rem" alt="「ディープ」と「ラーニング」の間にマウスカーソルを合わせている様子。マウスカーソルが当たっている部分が青色になります">
+<h2 id="アクセントの変更">アクセントの変更</h2>
+<p>音声の抑揚が意図しないものだった場合に、抑揚を変える方法が２つあります。まずはアクセント箇所を変えてみることをおすすめします。</p>
+<p>アクセント箇所を変えるには、読みの上にあるバーを左右に動かします。
+例えば「ディープラーニング」を「↑ ディープラ ↓ アニング」と読んでほしい場合は、「ラ」の位置まで丸をスライドします。</p>
+<p><img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image8.png" style="max-height: 7.5rem" alt="「ディープラーニング」"> → <img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image1.png" style="max-height: 8rem" alt="「↑ ディープラ ↓ アニング」"></p>
+<h2 id="パラメータの変更">パラメータの変更</h2>
+<p>画面の右の欄で、テキスト欄ごとに話速や抑揚などのパラメータを変更することができます。</p>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image24.png" style="max-height: 12rem" alt="右側にパラメータを調整する欄が表示されています。">
+<ul>
+<li>話速
+<ul>
+<li>読み上げ速度を変更できます。数値が大きいほど速くなります。</li>
+</ul>
+</li>
+<li>音高
+<ul>
+<li>読み上げの高さを変更できます。数値が大きいほど高くなります。</li>
+</ul>
+</li>
+<li>抑揚
+<ul>
+<li>読み上げの抑揚を変更できます。数値が小さいほど棒読みに近くなります。</li>
+</ul>
+</li>
+<li>音量
+<ul>
+<li>音声の音量を変更できます。数値が大きいほど音が大きくなります。</li>
+</ul>
+</li>
+<li>間の長さ
+<ul>
+<li>文中の無音の長さを変更できます。数値が大きいほど無音時間が長くなります。</li>
+</ul>
+</li>
+<li>開始無音・終了無音
+<ul>
+<li>音声の先頭や末尾の無音の長さを変更できます。数値が大きいほど無音時間が長くなります。</li>
+</ul>
+</li>
+</ul>
+<h2 id="イントネーションの変更">イントネーションの変更</h2>
+<p>アクセントを変更してもうまく行かなかったときや、抑揚をより拘りたいときに、文字ごとの音の高さ（イントネーション）を直接変更することができます。</p>
+<p>「イントネーション」をクリックして現れる縦線のバーを上下させることで抑揚を表現できます。</p>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image2.png" style="max-height: 8rem" alt="「イントネーション」をクリックして現れる縦線のバー">
+<p>イントネーション調整スペースを縦に広くすることで、より細かく抑揚を調整することもできます。</p>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image18.png" style="max-height: 14rem" alt="イントネーション調整スペースを縦に広くした様子">
+<p>マウスホイールで調整することもできます。Ctrl キー（Mac 版では Command キー）を押しながらマウスホイールを使うと更に細かく調整できます。Alt キー（Mac 版では Option キー）を押しながらイントネーションや長さを調整することで、同じアクセント区間内を同時に調整できます。</p>
+<p>また、「キ」や「ツ」や「ス」などが無声化されている場合、バーが灰色になっています。イントネーション欄のテキストをクリックすることで無声化を解くことができます。</p>
+<p><img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image5.png" style="max-height: 10rem" alt="「キツツキデス」の「キ」と「ツ」と「ス」のバーが灰色になっている様子"> → <img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image12.png" style="max-height: 10rem" alt="「キツツキデス」のすべての文字のバーが青色で表示されている様子。"></p>
+<p>無声化できるものはイ行とウ行だけです。</p>
+<h2 id="読みの修正">読みの修正</h2>
+<p>読みが思っているものと違う場合は、アクセント欄で読みをクリックすることで後から修正することもできます。テキスト欄と同様に、ひらがなや句読点、漢字も入力できます。</p>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image20.png" style="max-height: 12rem" alt="アクセント欄で読みをクリックした様子。修正したいテキストが表示されたテキストボックスが表示されています。テキストボックスの内容を書き換えることで読みを修正できます。">
+<p>修正箇所以外の調整結果はそのままなので、調整結果を維持したままテキストを修正したいときにも便利です。</p>
+<h2 id="スタイルの変更">スタイルの変更</h2>
+<p>キャラクターによっては複数のスタイル（喋り方）を変えることができます。キャラクターの変更と同様に、テキスト欄左のアイコンから選択できます。</p>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image21.png" style="max-height: 12rem" alt="キャラクターのアイコンをクリックすると別のキャラクターアイコンが表示されている様子">
+<p>キャラクターを選択したときに適用されるスタイルは、設定の「デフォルトスタイル」で変更できます。</p>
+<h2 id="音の長さの変更">音の長さの変更</h2>
+<p>文字ごとに、音の長さを変えることが可能です。語尾を少し伸ばしたい、無音の長さを調整したいときなどに便利です。</p>
+<p>「長さ」をクリックして現れる縦線のバーを上げるとその音を長く、下げると短くできます。
+右のバーが母音、左のバーが子音に対応しています。</p>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image22.png" style="max-height: 12rem" alt="一つの文字のバーが中央で縦に分かれている様子">
+<h2 id="音声を途中から再生">音声を途中から再生</h2>
+<p>アクセント区間をクリックすることで、その区間から音声を再生できます。もう一度クリックすると解除できます。</p>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image23.png" style="max-height: 8rem" alt="アクセント区間をクリックした様子。クリックされたアクセント区間が青色になっています。">
+<h2 id="音声ファイルの書き出し">音声ファイルの書き出し</h2>
+<p>メニューにある「ファイル」の「音声書き出し」ボタンを押すと、全テキスト欄の音声が WAV ファイルとして書き出されます。
+ファイル保存時、ファイル名は <code>[何行目]_[キャラ名]_[テキスト冒頭].wav</code> として保存されます。設定でテキストファイルも一緒に書き出すこともできます。ファイル名は設定の「書き出しファイル名パターン」で変更できます。</p>
+<h2 id="テキストファイルの読み込み">テキストファイルの読み込み</h2>
+<p>読み込みボタンを押すとテキストファイルを読み込めます。テキストは改行または半角コンマ（,）で区切ることで分割できます。また、キャラクター名だけで区切ることで、そのキャラクターとして読み込むことができます。</p>
+<p>例えばこのようなテキストを読み込むと、</p>
+<pre><code class="language-txt">四国めたん,おはようございます,こんにちは
+ずんだもん,こんばんは
+四国めたん（あまあま）,さようなら
+</code></pre>
+<p>このように読み込まれます。</p>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image17.png" style="max-height: 10rem" alt="テキストが読み込まれた様子。四国めたん「おはようございます」、四国めたん「こんにちは」、ずんだもん「こんばんは」、四国めたん「さようなら」のように、キャラクターと文章が読み込まれています">
+<p>スタイル名が指定されていない場合は、デフォルトスタイルのスタイルが適用されます。</p>
+<h2 id="テキストを繋げて書き出し">テキストを繋げて書き出し</h2>
+<p>メニュー「ファイル」の「テキストを繋げて書き出し」ボタンで、すべてのテキストを書き出すことができます。
+テキストはキャラクター名も一緒に保存され、上の「テキストファイルの読み込み」で読み込むこともできます</p>
+<h2 id="プロジェクトファイルの保存読み込み">プロジェクトファイルの保存・読み込み</h2>
+<p>入力したテキストやキャラクター、アクセント修正やイントネーションの調整結果は、プロジェクトファイルとして保存し、ソフトウェアを起動し直した後で読み込むことができます。プロジェクトファイルの拡張子は<code>.vvproj</code>です。</p>
+<h2 id="ショートカットキー">ショートカットキー</h2>
+<p>「設定」の「キー割り当て」でショートカットキーを表示・変更することができます。
+（Mac 版をご利用の場合は Ctrl を Command に、Alt を Option に読み替えてください。）</p>
+<ul>
+<li>上下キー
+<ul>
+<li>上下のテキスト欄に移動</li>
+</ul>
+</li>
+<li><code>Space</code>
+<ul>
+<li>音声を再生</li>
+</ul>
+</li>
+<li><code>Shift</code> + <code>Enter</code>
+<ul>
+<li>テキスト欄を追加</li>
+</ul>
+</li>
+<li><code>Shift</code> + <code>Delete</code>
+<ul>
+<li>テキスト欄を消去</li>
+</ul>
+</li>
+<li><code>Ctrl</code> + <code>S</code>
+<ul>
+<li>プロジェクトの保存</li>
+</ul>
+</li>
+<li><code>Ctrl</code> + <code>E</code>
+<ul>
+<li>音声を書き出し</li>
+</ul>
+</li>
+<li><code>Ctrl</code> + <code>Z</code>
+<ul>
+<li>元に戻す</li>
+</ul>
+</li>
+<li><code>Ctrl</code> + <code>Y</code>
+<ul>
+<li>やり直す</li>
+</ul>
+</li>
+<li><code>Esc</code>
+<ul>
+<li>テキスト欄からカーソルを外す</li>
+</ul>
+</li>
+<li>1
+<ul>
+<li>アクセント欄を表示</li>
+</ul>
+</li>
+<li>2
+<ul>
+<li>イントネーション欄を表示</li>
+</ul>
+</li>
+<li>3
+<ul>
+<li>長さ欄を表示</li>
+</ul>
+</li>
+<li>スライダーの上でマウスホイール
+<ul>
+<li>スライダーの値を変更します（スライダー →<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image16.png" style="max-height: 1rem" alt="スライダー、緑色の棒">）</li>
+<li><code>Ctrl</code> キーを押しながらマウスホイールを使うと更に細かく調整できます</li>
+<li><code>Alt</code> キーを押しながらイントネーションや長さを調整することで、同じアクセント区間内を同時に調整できます</li>
+</ul>
+</li>
+<li><code>Ctrl</code> + <code>G</code>
+<ul>
+<li>全体のイントネーションをリセット</li>
+</ul>
+</li>
+<li><code>R</code>
+<ul>
+<li>選択中のイントネーションをリセット</li>
+</ul>
+</li>
+<li><code>Ctrl</code> + 数字
+<ul>
+<li>数字番目のキャラクターを選択</li>
+</ul>
+</li>
+</ul>
+<h2 id="ツールバーのカスタマイズ">ツールバーのカスタマイズ</h2>
+<p>ボタンをドラッグすることにより、画面上部にあるツールバーのボタンの種類や配置を変更することができます。</p>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/toolbar-customize.png" style="max-height: 18rem" alt="ツールバーカスタマイズ画面">
+<h2 id="キャラクターの並び替え試聴">キャラクターの並び替え・試聴</h2>
+<p>「設定」の「キャラクターの並び替え」で、キャラクターの表示順序を変更することができます。
+また、キャラクターごとのサンプルボイスを試聴することもできます。</p>
+<h2 id="デフォルトスタイル">デフォルトスタイル</h2>
+<p>「設定」の「デフォルトスタイル」で、キャラクターごとのデフォルトのスタイルを変更することができます。</p>
+<h2 id="読み方アクセント辞書">読み方＆アクセント辞書</h2>
+<p>難しい単語や新しい単語は正しい読みにならないことがありますが、辞書機能を使って読み方を登録しておくことができます。
+辞書機能は「設定」の「読み方＆アクセント辞書」で利用できます。</p>
+<p>読み方＆アクセント辞書画面を開くと、左に登録した単語のリストが表示されます。
+「追加」ボタンで新規に単語を登録できます。</p>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/dict01.png" style="max-height: 17rem" alt="読み方＆アクセント辞書の単語リスト画面">
+<p>「単語」に登録したいテキストを、「読み」にそのテキストの読み方をひらがなかカタカナで入力してください。
+「アクセント調整」で自然になるアクセントを登録できます。
+もし登録した単語が反映されない場合は、「単語優先度」を上げてみてください。</p>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/dict02.png" style="max-height: 17rem" alt="単語と読みとアクセントの登録画面">
+<!--
+TODO: 右クリックメニューの説明。項目が増えてきたら追加する。
+-->
+<h2 id="ソング機能">ソング機能</h2>
+<p>VOICEVOX では、歌声合成機能がプロトタイプ版として提供されています。
+歌声合成手法は技術的に異なる２つの種類をご用意しています。</p>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/song1.png" style="max-height: 17rem" alt="ソング機能を使って歌声合成やピアノロールでの編集ができる画面が写っています">
+<ul>
+<li>ハミング：キャラクターの喋り声に近い声で歌うことができます</li>
+<li>ソング：歌声らしい声で歌うことができます</li>
+</ul>
+<p>ソング機能は鋭意制作中です。フィードバックをお待ちしています。</p>
+<h3 id="ノート音符の追加">ノート（音符）の追加</h3>
+<p>ピアノロールをクリックすることで、その高さのノート（音符）を追加できます。
+ドラッグすることで、長さを指定しつつノートを追加することもできます。
+<code>Esc</code>キーでノートの選択状態を解除できます。</p>
+<h3 id="歌詞の入力">歌詞の入力</h3>
+<p>ノートをダブルクリックすることで歌詞を入力できます。複数の文字を入力すれば一括入力できます。</p>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/song2.png" style="max-height: 8rem" alt="ノートに複数の文字を入力することで、後ろのノートに歌詞が送られる様子が写っています">
+<h3 id="音域調整">音域調整</h3>
+<p>「音域調整」の値が大きいほど高い音域で、小さいほど低い音域でうまく歌えるようになります。
+デフォルトではキャラクターに合う音域が設定されています。</p>
+<p>「音域調整」の値と中央のキーの関係はおおよそ以下の通りです。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>音域調整の値</th><th>中央のキー</th></tr></thead><tbody><tr><td>0</td><td>G4（ソ4）</td></tr><tr><td>-7</td><td>C4（ド4）</td></tr><tr><td>-12</td><td>G3（ソ3）</td></tr><tr><td>-19</td><td>C3（ド3）</td></tr><tr><td>-24</td><td>G2（ソ2）</td></tr></tbody></table>
+<h3 id="声量調整">声量調整</h3>
+<p>デフォルトの設定だと、キャラクターによっては声が少しかすれてしまうことがあります。
+そのような場合は「声量調整」を<code>5</code>や<code>10</code>などにすることで、発声をより強くすることができます。</p>
+<p>将来的にこの値は自動設定される予定です。</p>
+<h3 id="ピッチ編集">ピッチ編集</h3>
+<p>ツールバーからピッチ編集モードに切り替えることで、歌の音程を細かく制御することができます。</p>
+<h3 id="インポート">インポート</h3>
+<p>様々な形式のプロジェクトファイルをインポートすることができます。</p>
+<h3 id="マルチトラック">マルチトラック</h3>
+<p>画面左上のハンバーガーメニュー ☰ をクリックすることでトラック一覧を表示できます。トラック一覧の＋ボタンでトラックを追加することで、複数のトラックを編集・再生できるようになります。</p>
+<h3 id="ソング機能のよくある質問">ソング機能のよくある質問</h3>
+<p>Q. 赤くなって声が再生されない<br>
+A. なにかしらのエラー状態を示しています。現在のバージョンでは、１つのノート（音符）につき日本語１文字分のみ入力できます。またノートが重なっていてもエラーとなります。</p>
+<p>Q. 思った高さの音が出ない<br>
+A. 音域がずれている可能性があります。「音域調整」で調整してみてください。</p>
+<h2 id="オプション">オプション</h2>
+<p>「設定」の「オプション」でいろいろな設定を変更することができます。</p>
+<h3 id="エンジン項目">「エンジン」項目</h3>
+<p>エンジンの起動モードの起動モードを変更できます。</p>
+<p>GPU モードを利用するには、GPU が必要です。
+Linux は Nvidia 製 GPU のみに対応しています。</p>
+<h4 id="音声のサンプリングレート">音声のサンプリングレート</h4>
+<p>音声のサンプリングレートを変更して再生・保存します。<br>
+サンプリングレートを高くしても音声の品質は上がりません。</p>
+<h3 id="操作項目">「操作」項目</h3>
+<h4 id="プリセット機能">プリセット機能</h4>
+<p>話速や抑揚などのパラメータをまとめて登録できるプリセット機能を利用できるようになります。ソフトウェアが終了しても設定したプリセットは残ります。<br>
+プリセットを再登録する際、同じプリセットを割り当てているテキスト欄のパラメータを一括で変更することもできます。</p>
+<p>スタイルごとに１つデフォルトプリセットが用意されています。</p>
+<h4 id="スタイル変更時にデフォルトプリセットを適用">スタイル変更時にデフォルトプリセットを適用</h4>
+<p>プリセット機能をオンにしている場合、スタイルを変更したときにデフォルトプリセットを自動的に適用するようになります。</p>
+<h4 id="パラメータの引き継ぎ">パラメータの引き継ぎ</h4>
+<p>テキスト欄を追加する際、話速や抑揚といったパラメータを引き継ぐようになります。</p>
+<h4 id="再生位置を追従">再生位置を追従</h4>
+<p>再生中の単語が画面内に収まるよう、自動的にスクロールして追従するようになります。</p>
+<h4 id="テキスト自動分割">テキスト自動分割</h4>
+<p>テキストを貼り付ける時、句点や改行でテキストを分割するかの挙動を変更できます。</p>
+<h4 id="メモ機能">メモ機能</h4>
+<p>テキストを<code>[]</code>で囲むことで、テキスト中にメモを書けます。半角の<code>[]</code>と全角の<code>［］</code>のどちらにも対応しています。</p>
+<h4 id="ルビ機能">ルビ機能</h4>
+<p>テキストに<code>{ルビ対象|よみかた}</code>と書くことでテキストの読み方を変えられるようになります。半角の<code>{|}</code>と全角の<code>｛｜｝</code>のどちらにも対応しています。書き出しテキストを変えずに読み方を変えたいときに便利です。</p>
+<h3 id="保存項目">「保存」項目</h3>
+<h4 id="書き出し先を固定">書き出し先を固定</h4>
+<p>音声ファイルを書き出すフォルダを固定し、毎回フォルダを選択しなくても同じフォルダに書き出し続けるようにします。</p>
+<h4 id="書き出しファイル名パターン">書き出しファイル名パターン</h4>
+<p>音声やテキストファイルなどを書き出す際のファイル名をカスタマイズできます。</p>
+<h4 id="上書き防止">上書き防止</h4>
+<p>同じファイル名のファイルがあった場合に連番として保存します。</p>
+<h4 id="文字コード">文字コード</h4>
+<p>読み込み・書き込み用の文字コードを選択できます。</p>
+<h4 id="txt-ファイルを書き出し">txt ファイルを書き出し</h4>
+<p>テキスト内容を一緒に保存します。</p>
+<h4 id="lab-ファイルを書き出し">lab ファイルを書き出し</h4>
+<p>リップシンクなどに便利な、音声の音素情報とそのタイミング情報が書かれたラベルファイルを一緒に保存します。</p>
+<h3 id="外観項目">「外観」項目</h3>
+<h4 id="テーマ">テーマ</h4>
+<p>デフォルトのライトテーマと、暗めのダークテーマを切り替えることが出来ます。</p>
+<h4 id="フォント">フォント</h4>
+<p>ソフトウェアで使用するフォントを変更できます。</p>
+<h4 id="行番号の表示">行番号の表示</h4>
+<p>テキスト欄の左に行番号を表示します。</p>
+<h4 id="テキスト追加ボタンの表示">テキスト追加ボタンの表示</h4>
+<p>テキスト追加ボタンを非表示にできます。ショートカットキー<code>Shift</code>+<code>Enter</code>でテキスト欄を追加できます。</p>
+<h3 id="高度な設定項目">「高度な設定」項目</h3>
+<h4 id="マルチエンジン機能">マルチエンジン機能</h4>
+<p>VOICEVOX API 準拠エンジンを VOICEVOX 内で利用できるようになります。<br>
+マルチエンジン機能をオンにしたあと、メニューにある「エンジン」の「エンジンの管理」に移動し、次のどちらかを実行すると利用できます。</p>
+<ul>
+<li>VOICEVOX API 準拠エンジンの VVPP ファイルをインストールする</li>
+<li>VOICEVOX 系ソフトウェア内のエンジンのパスを指定する</li>
+</ul>
+<h4 id="音声をステレオ化">音声をステレオ化</h4>
+<p>音声をモノラルからステレオに変換して再生・保存します。</p>
+<h4 id="再生デバイス">再生デバイス</h4>
+<p>音声を再生するデバイスを変更できます。</p>
+<h3 id="実験的機能項目">「実験的機能」項目</h3>
+<p>開発中の便利機能を利用することができます。</p>
+<h4 id="疑問文自動調整">疑問文自動調整</h4>
+<p>疑問文のときに自動的に語尾の音を上げて、疑問文っぽい音声を生成するようになります。</p>
+<h4 id="モーフィング機能">モーフィング機能</h4>
+<p>対応している音声を混ぜてモーフィングした音声を合成できるようになります。<br>
+２つの音声を一度生成してから、音声を機械的に分析・再合成する後処理を行うことで実現しています。</p>
+<h4 id="複数選択">複数選択</h4>
+<p>複数のテキスト欄を選択できるようになります。
+<code>Shift</code> キーを押しながらクリックすることで、最後に選択したテキスト欄からクリックしたテキスト欄までのすべてのテキスト欄を選択できます。
+<code>Ctrl</code> キーを押しながらクリックすることで、複数のテキスト欄を個別に選択できます。</p>
+<h3 id="データ収集項目">「データ収集」項目</h3>
+<h4 id="ソフトウェア利用状況のデータ収集を許可する">ソフトウェア利用状況のデータ収集を許可する</h4>
+<p>各 UI の利用率などのデータを送信して VOICEVOX の改善に役立てます。<br>
+入力されたテキストデータや音声データの情報は収集しておりませんのでご安心ください。</p>
+<h2 id="その他">その他</h2>
+<p>右上のピンボタンでウィンドウを最前面に固定できます。</p>
+<h2 id="ヘルプ">ヘルプ</h2>
+<p>利用規約などを確認することができます。</p>
+<h2 id="アンインストール方法">アンインストール方法</h2>
+<h3 id="windows-版-1">Windows 版</h3>
+<p>インストーラー版でインストールした場合、インストールしたフォルダの中にある<code>Uninstall VOICEVOX.exe</code>を実行してください。<br>
+ZIP ファイルを解凍した場合、ダウンロードした ZIP ファイルと、展開したフォルダを消去すればアンインストール完了です。</p>
+<h3 id="mac-版-1">Mac 版</h3>
+<p>インストーラー版でインストールした場合、「アプリケーション」フォルダにある VOICEVOX を「ゴミ箱」にドラッグ＆ドロップしてください。<br>
+ZIP ファイルを解凍した場合、ダウンロードした ZIP ファイルと、展開したフォルダを消去すればアンインストール完了です。</p>
+<p>マルチエンジン機能で追加したエンジンを削除する場合は、Finder のメニューバーの「移動」をクリックし、「フォルダへ移動」をクリックして表示された画面に<code>~/Library/Application Support/voicevox</code>と入力して <code>Enter</code>キーを押し、<code>vvpp-engines</code>フォルダを削除すれば完了です。</p>
+<!-- TODO: windowsの方にもvvpp-enginesフォルダ削除方法を案内する -->
+<h2 id="よくあるご質問">よくあるご質問</h2>
+<p><a href="https://voicevox.hiroshiba.jp/qa">Q&#x26;A</a> をご参照ください。</p>
+<h2 id="ご感想ご要望バグ報告など">ご感想・ご要望・バグ報告など</h2>
+<p>ご感想・ご要望は、ぜひ X（旧 Twitter）にてハッシュタグ <code>#VOICEVOX</code> を付けてポストしてください。開発の励みになります。</p>
+<p>うまく動かない場合や不具合を見つけられた方は、X にて不具合をハッシュタグ <code>#VOICEVOX</code> を付けてポストしていただくか、VOICEVOX 公式（<a href="https://x.com/voicevox_pj">@voicevox_pj</a>）までご報告ください。</p>
+<p>その他、 Q&#x26;A に掲載されていないご質問があれば VOICEVOX 公式（<a href="https://x.com/voicevox_pj">@voicevox_pj</a>）にお問い合わせください。</p> </div> </div> </main>  </div> <footer class="px-xl pt-3xl bg-neutral-50 pb-24 dark:bg-zinc-950"> <div class="flex justify-center"> <a href="https://github.com/VOICEVOX/voicevox" class="vv-status-layer vv-button vv-button-kind-outline vv-button-tone-neutral vv-button-shape-rounded vv-button-size-sm vv-button-with-icon mx-2xs" target="_blank" rel="noreferrer"><span class="vv-button-icon vv-button-icon-start"><span> <svg data-prefix="fab" data-icon="github" class="svg-inline--fa fa-github" role="img" viewBox="0 0 512 512" aria-hidden="true"><path fill="currentColor" d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM252.8 8c-138.7 0-244.8 105.3-244.8 244 0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1 100-33.2 167.8-128.1 167.8-239 0-138.7-112.5-244-251.2-244zM105.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg> </span></span><span class="vv-button-label"> 
+GitHub
+</span></a> <a href="https://x.com/voicevox_pj" class="vv-status-layer vv-button vv-button-kind-outline vv-button-tone-neutral vv-button-shape-rounded vv-button-size-sm vv-button-with-icon mx-2xs" target="_blank" rel="noreferrer"><span class="vv-button-icon vv-button-icon-start"><span> <svg data-prefix="fab" data-icon="x-twitter" class="svg-inline--fa fa-x-twitter" role="img" viewBox="0 0 448 512" aria-hidden="true"><path fill="currentColor" d="M357.2 48L427.8 48 273.6 224.2 455 464 313 464 201.7 318.6 74.5 464 3.8 464 168.7 275.5-5.2 48 140.4 48 240.9 180.9 357.2 48zM332.4 421.8l39.1 0-252.4-333.8-42 0 255.3 333.8z"></path></svg> </span></span><span class="vv-button-label"> 
+Official SNS
+</span></a> </div> <div class="mt-xs flex justify-center"> <button data-voicevox-show-privacy-policy-modal class="dark:text-primary mx-2xs text-xs">
+プライバシーポリシー
+</button> <p class="mx-2xs text-xs dark:text-neutral-100">© Hiroshiba Kazuyuki</p> </div> </footer> <astro-island uid="25USyV" prefix="r10" component-url="/_astro/NemoGuidanceModal.D90XEwr3.js" component-export="default" renderer-url="/_astro/client.Dhq_i1tP.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;NemoGuidanceModal&quot;,&quot;value&quot;:true}"></astro-island><astro-island uid="Z17sJRk" prefix="r11" component-url="/_astro/DownloadModal.BbYvopK-.js" component-export="default" renderer-url="/_astro/client.Dhq_i1tP.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;DownloadModal&quot;,&quot;value&quot;:true}"></astro-island><astro-island uid="Zaq9JH" prefix="r12" component-url="/_astro/DownloadNemoModal.BfaBPWiN.js" component-export="default" renderer-url="/_astro/client.Dhq_i1tP.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;DownloadNemoModal&quot;,&quot;value&quot;:true}"></astro-island><astro-island uid="Z2tneQO" prefix="r13" component-url="/_astro/LibraryTermIntroModal.B4lx-V6b.js" component-export="default" renderer-url="/_astro/client.Dhq_i1tP.js" props="{&quot;htmls&quot;:[0,{&quot;四国めたん&quot;:[0],&quot;ずんだもん&quot;:[0],&quot;春日部つむぎ&quot;:[0],&quot;雨晴はう&quot;:[0],&quot;波音リツ&quot;:[0],&quot;玄野武宏&quot;:[0],&quot;白上虎太郎&quot;:[0],&quot;青山龍星&quot;:[0,&quot;&lt;p&gt;個人が青山龍星の音声ライブラリを用いて生成した音声は、「VOICEVOX:青山龍星」とクレジットを記載すれば、商用・非商用で利用可能です。&lt;br&gt;\nただし企業が携わる形で利用する場合は、「&lt;a href=\&quot;https://v.seventhh.com/contact/\&quot;&gt;ななはぴ&lt;/a&gt;」に対し事前確認を取る必要があります。&lt;/p&gt;\n&lt;p&gt;利用規約の詳細は以下をご確認ください。&lt;br&gt;\n&lt;a href=\&quot;https://www.virvoxproject.com/voicevox%E3%81%AE%E5%88%A9%E7%94%A8%E8%A6%8F%E7%B4%84\&quot;&gt;https://www.virvoxproject.com/voicevoxの利用規約&lt;/a&gt;&lt;/p&gt;&quot;],&quot;冥鳴ひまり&quot;:[0],&quot;九州そら&quot;:[0],&quot;モチノキョウコ&quot;:[0,&quot;&lt;p&gt;個人がもち子さんの音声ライブラリを用いて生成した音声は、「VOICEVOX:もち子(cv 明日葉よもぎ)」とクレジットを記載すれば、音声作品・音声素材・ゲーム作品等を除いて商用・非商用で利用可能です。&lt;br&gt;\nただし企業が携わる形で利用する場合は、「&lt;a href=\&quot;https://vtubermochio.wixsite.com/mochizora/contact\&quot;&gt;もちぞら模型店&lt;/a&gt;」に対し事前確認を取る必要があります。&lt;/p&gt;\n&lt;p&gt;利用規約の詳細は以下をご確認ください。&lt;br&gt;\n&lt;a href=\&quot;https://vtubermochio.wixsite.com/mochizora/%E5%88%A9%E7%94%A8%E8%A6%8F%E7%B4%84\&quot;&gt;https://vtubermochio.wixsite.com/mochizora/利用規約&lt;/a&gt;&lt;/p&gt;&quot;],&quot;剣崎雌雄&quot;:[0],&quot;WhiteCUL&quot;:[0],&quot;後鬼&quot;:[0,&quot;&lt;p&gt;個人が後鬼の音声ライブラリを用いて生成した音声は、「VOICEVOX:後鬼」とクレジットを記載すれば、商用・非商用で利用可能です。&lt;br&gt;\nただし企業が携わる形で利用する場合は、「&lt;a href=\&quot;https://%E3%81%A4%E3%81%84%E3%81%AA%E3%81%A1%E3%82%83%E3%82%93.com/mail/\&quot;&gt;【鬼っ子ハンターついなちゃん】プロジェクト&lt;/a&gt;」に対し事前確認を取る必要があります。&lt;/p&gt;\n&lt;p&gt;利用規約の詳細は以下をご確認ください。&lt;br&gt;\n&lt;a href=\&quot;https://%E3%81%A4%E3%81%84%E3%81%AA%E3%81%A1%E3%82%83%E3%82%93.com/voicevox_terms/\&quot;&gt;https://ついなちゃん.com/voicevox_terms/&lt;/a&gt;&lt;/p&gt;&quot;],&quot;No7&quot;:[0,&quot;&lt;p&gt;個人がNo.7の音声ライブラリを用いて生成した音声は、「VOICEVOX:No.7」とクレジットを記載すれば、非商用（同人利用や配信による収入はOK）で利用可能です。&lt;br&gt;\nその他商用利用の場合は、「&lt;a href=\&quot;https://voiceseven.com/\&quot;&gt;No.7製作委員会&lt;/a&gt;」に対し事前確認を取る必要があります。&lt;/p&gt;\n&lt;p&gt;利用規約の詳細は以下をご確認ください。&lt;br&gt;\n&lt;a href=\&quot;https://voiceseven.com/\&quot;&gt;https://voiceseven.com/&lt;/a&gt;&lt;/p&gt;&quot;],&quot;ちび式じい&quot;:[0],&quot;櫻歌ミコ&quot;:[0],&quot;小夜_SAYO&quot;:[0],&quot;ナースロボ＿タイプＴ&quot;:[0],&quot;聖騎士紅桜&quot;:[0],&quot;雀松朱司&quot;:[0],&quot;麒ヶ島宗麟&quot;:[0],&quot;春歌ナナ&quot;:[0],&quot;猫使アル&quot;:[0],&quot;猫使ビィ&quot;:[0],&quot;中国うさぎ&quot;:[0],&quot;栗田まろん&quot;:[0],&quot;藍田ノエル&quot;:[0],&quot;満別花丸&quot;:[0],&quot;琴詠ニア&quot;:[0],&quot;Voidoll&quot;:[0,&quot;&lt;p&gt;個人がVoidollの音声ライブラリを用いて生成した音声は、「VOICEVOX:Voidoll(CV:丹下桜)」とクレジットを記載すれば、商用・非商用で利用可能です。&lt;br&gt;\nただし法人による利用の場合は、個別に&lt;a href=\&quot;https://qa.nicovideo.jp/\&quot;&gt;問い合わせ&lt;/a&gt;が必要です。&lt;/p&gt;\n&lt;p&gt;利用規約の詳細は以下をご確認ください。&lt;br&gt;\n&lt;a href=\&quot;https://blog.nicovideo.jp/niconews/224589.html\&quot;&gt;https://blog.nicovideo.jp/niconews/224589.html&lt;/a&gt;&lt;/p&gt;&quot;],&quot;ぞん子&quot;:[0,&quot;&lt;p&gt;ぞん子の音声ライブラリを用いて生成した音声は、「VOICEVOX:ぞん子」とクレジットを記載すれば、商用・非商用で利用可能です。&lt;br&gt;\nただし商用利用の場合は、個別に&lt;a href=\&quot;https://zonko.zone-energy.jp/contact\&quot;&gt;問い合わせ&lt;/a&gt;が必要です。&lt;/p&gt;\n&lt;p&gt;利用規約の詳細は以下をご確認ください。&lt;br&gt;\n&lt;a href=\&quot;https://zonko.zone-energy.jp/guideline\&quot;&gt;https://zonko.zone-energy.jp/guideline&lt;/a&gt;&lt;/p&gt;&quot;],&quot;中部つるぎ&quot;:[0],&quot;離途&quot;:[0],&quot;黒沢冴白&quot;:[0],&quot;ユーレイちゃん&quot;:[0,&quot;&lt;p&gt;個人がユーレイちゃんの音声ライブラリを用いて生成した音声は、「VOICEVOX:ユーレイちゃん(CV:神崎零)」とクレジットを記載すれば、非商用（同人利用や配信による収入はOK）で利用可能です。&lt;br&gt;\nその他商用利用の場合は、「&lt;a href=\&quot;https://u-stella.co.jp/\&quot;&gt;ユーステラ&lt;/a&gt;」に対し事前確認を取る必要があります。&lt;/p&gt;\n&lt;p&gt;利用規約の詳細は以下をご確認ください。&lt;br&gt;\n&lt;a href=\&quot;https://u-stella.co.jp/voicevox-ure-chan-tucumo-terms-of-use/\&quot;&gt;https://u-stella.co.jp/voicevox-ure-chan-tucumo-terms-of-use/&lt;/a&gt;&lt;/p&gt;&quot;],&quot;東北ずん子&quot;:[0],&quot;東北きりたん&quot;:[0],&quot;東北イタコ&quot;:[0],&quot;あんこもん&quot;:[0],&quot;夜語トバリ&quot;:[0],&quot;暁記ミタマ&quot;:[0],&quot;里石ユカ&quot;:[0,&quot;&lt;p&gt;里石ユカ（つぼみ）の音声ライブラリを用いて生成した音声は、「VOICEVOX:里石ユカ（つぼみ）」とクレジットを記載すれば、商用・非商用で利用可能です。&lt;/p&gt;\n&lt;p&gt;利用規約の詳細は以下をご確認ください。&lt;br&gt;\n&lt;a href=\&quot;https://satoishiyuka.wixsite.com/satoishi/kiyaku\&quot;&gt;https://satoishiyuka.wixsite.com/satoishi/kiyaku&lt;/a&gt;&lt;/p&gt;&quot;]}],&quot;templateHtml&quot;:[0,&quot;&lt;p&gt;VV_TEMPLATE_CHARACTER_NAMEの音声ライブラリを用いて生成した音声は、「VOICEVOX:VV_TEMPLATE_CHARACTER_NAME」とクレジットを記載すれば、商用・非商用で利用可能です。&lt;/p&gt;\n&lt;p&gt;利用規約の詳細は以下をご確認ください。&lt;br&gt;\n&lt;a href=\&quot;VV_TEMPLATE_POLICY_URL\&quot;&gt;VV_TEMPLATE_POLICY_URL&lt;/a&gt;&lt;/p&gt;&quot;]}" ssr client="load" opts="{&quot;name&quot;:&quot;LibraryTermIntroModal&quot;,&quot;value&quot;:true}"></astro-island><astro-island uid="ZEYv5f" prefix="r14" component-url="/_astro/MarkdownModals.DNVUiJfU.js" component-export="PrivacyPolicyModal" renderer-url="/_astro/client.Dhq_i1tP.js" props="{&quot;html&quot;:[0,&quot;&lt;p&gt;当サイトでは「Google アナリティクス」を使用しています。\nGoogle アナリティクスはデータの収集のために Cookie を使用しています。\nデータは匿名で収集されており、個人を特定するものではありません。&lt;/p&gt;\n&lt;p&gt;この機能は Cookie を無効にすることで収集を拒否することが出来ますので、お使いのブラウザの設定をご確認ください。\nこの規約に関しての詳細は\n&lt;a href=\&quot;https://marketingplatform.google.com/about/analytics/terms/jp/\&quot;&gt;Google アナリティクス利用規約&lt;/a&gt; や\n&lt;a href=\&quot;https://policies.google.com/technologies/ads?hl=ja\&quot;&gt;Google ポリシーと規約ページ&lt;/a&gt; をご覧ください。&lt;/p&gt;&quot;]}" ssr client="load" opts="{&quot;name&quot;:&quot;PrivacyPolicyModal&quot;,&quot;value&quot;:true}"></astro-island><astro-island uid="m4BT4" prefix="r15" component-url="/_astro/MarkdownModals.DNVUiJfU.js" component-export="NemoTermModel" renderer-url="/_astro/client.Dhq_i1tP.js" props="{&quot;html&quot;:[0,&quot;&lt;p&gt;Nemo の音声ライブラリを用いて生成した音声は、「VOICEVOX Nemo」とクレジットを記載すれば、商用・非商用で利用可能です。&lt;/p&gt;\n&lt;p&gt;利用規約の詳細は以下をご確認ください。&lt;br&gt;\n&lt;a href=\&quot;/nemo/term/\&quot;&gt;利用規約&lt;/a&gt;&lt;/p&gt;&quot;]}" ssr client="load" opts="{&quot;name&quot;:&quot;NemoTermModel&quot;,&quot;value&quot;:true}"></astro-island><script type="module" src="/_astro/Modals.astro_astro_type_script_index_0_lang.Dcxrv9Lo.js"></script> </body></html>
