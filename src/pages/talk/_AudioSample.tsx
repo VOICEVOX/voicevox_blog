@@ -29,9 +29,9 @@ export default function AudioSample({
   assertNonNullable(selectedStyle);
 
   return (
-    <div className="space-y-sm">
+    <div className="flex flex-1 flex-col">
       <hr className="vv-hr" />
-      <div>
+      <div className="py-sm flex flex-1 flex-col justify-center">
         <div className="py-2xs flex flex-wrap items-center justify-center gap-x-2.5 gap-y-[3px]">
           <div className="w-25">
             <span className="whitespace-nowrap">音声サンプル</span>
