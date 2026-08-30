@@ -33,7 +33,7 @@ export default function AudioSample({
       <hr className="vv-hr" />
       <div className="gap-xs py-xs flex flex-1 items-center justify-center">
         <div className="gap-2xs flex min-w-0 flex-1 flex-col items-center justify-center">
-          <span className="whitespace-nowrap">音声サンプル</span>
+          <span className="text-sm whitespace-nowrap">音声サンプル</span>
           <div className="flex gap-[3px]">
             {selectedAudioUrls.map((url, index) => (
               <PlayButton
@@ -47,8 +47,9 @@ export default function AudioSample({
         </div>
         {styles.length > 1 && (
           <div className="gap-2xs flex min-w-0 flex-1 flex-col items-center justify-center">
-            <span className="whitespace-nowrap">スタイル</span>
+            <span className="text-sm whitespace-nowrap">スタイル</span>
             <StyleDropdown
+              className="max-w-full"
               styles={styles}
               selectedStyle={selectedStyle}
               setSelectedStyle={setSelectedStyle}
