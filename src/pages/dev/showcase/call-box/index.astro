@@ -5,6 +5,7 @@ import Showcase from "../_Showcase.astro";
 
 const shikokuMetan = characterInfos.四国めたん;
 const zundamon = characterInfos.ずんだもん;
+const chugokuUsagi = characterInfos.中国うさぎ;
 
 // NOTE: src/pages/dormitory/[characterId]/[...descriptionType].astro の is:global スタイルを dev/showcase でも再現するため、必要最小限を複製しています
 ---
@@ -25,6 +26,14 @@ const zundamon = characterInfos.ずんだもん;
       characterInfo={zundamon}
       baseCharacterKey="ずんだもん"
       targetCharacterKey="雨晴はう"
+    />
+    {
+      /* NOTE: 呼び方が長く折り返す場合でもアイコンが正方形になることを確認するためのケース */
+    }
+    <CallBox
+      characterInfo={chugokuUsagi}
+      baseCharacterKey="中国うさぎ"
+      targetCharacterKey="四国めたん"
     />
   </div>
 </Showcase>

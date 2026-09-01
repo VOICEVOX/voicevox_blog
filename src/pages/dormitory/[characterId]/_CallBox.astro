@@ -55,13 +55,14 @@ const targetCharacterInfo = characterInfos[targetCharacterKey];
     href={withBaseUrl(
       getDormitoryCharacterPageUrl(targetCharacterInfo, "calls"),
     )}
+    class="self-center"
   >
     <Image
       src={targetCharacterInfo.bustupImage}
       alt={targetCharacterInfo.name}
       width={56}
       densities={[1, 1.5, 2]}
-      class="block h-full rounded-lg border-3"
+      class="block aspect-square w-14 rounded-lg border-3"
       style={{ borderColor: targetCharacterInfo.color }}
     />
   </a>
