@@ -150,8 +150,19 @@
   }
 
   button:not(:disabled),
-  [role="button"]:not(:disabled) {
+  [role="button"]:not(:disabled):not([aria-disabled="true"]),
+  [role="menuitem"]:not(:disabled):not([aria-disabled="true"]),
+  [role="menuitemradio"]:not(:disabled):not([aria-disabled="true"]),
+  [role="menuitemcheckbox"]:not(:disabled):not([aria-disabled="true"]) {
     cursor: pointer;
+  }
+
+  button,
+  [role="button"],
+  [role="menuitem"],
+  [role="menuitemradio"],
+  [role="menuitemcheckbox"] {
+    user-select: none;
   }
 
   @keyframes fadeIn {

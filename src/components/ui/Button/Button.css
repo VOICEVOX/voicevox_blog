@@ -16,6 +16,7 @@
   font-weight: var(--vv-button-font-weight);
   text-decoration: none;
   white-space: nowrap;
+  user-select: none;
 }
 
 @utility vv-button-kind-solid {
