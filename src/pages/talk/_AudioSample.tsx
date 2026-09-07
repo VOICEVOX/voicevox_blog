@@ -29,13 +29,11 @@ export default function AudioSample({
   assertNonNullable(selectedStyle);
 
   return (
-    <div className="space-y-sm">
+    <div className="flex flex-1 flex-col">
       <hr className="vv-hr" />
-      <div>
-        <div className="py-2xs flex flex-wrap items-center justify-center gap-x-2.5 gap-y-[3px]">
-          <div className="w-25">
-            <span className="whitespace-nowrap">音声サンプル</span>
-          </div>
+      <div className="gap-xs py-xs flex flex-1 items-center justify-center">
+        <div className="gap-2xs flex min-w-0 flex-1 flex-col items-center justify-center">
+          <span className="text-sm whitespace-nowrap">音声サンプル</span>
           <div className="flex gap-[3px]">
             {selectedAudioUrls.map((url, index) => (
               <PlayButton
@@ -48,18 +46,15 @@ export default function AudioSample({
           </div>
         </div>
         {styles.length > 1 && (
-          <div className="py-2xs flex flex-wrap items-center justify-center gap-x-2.5 gap-y-0.75">
-            <div className="w-25">
-              <span className="whitespace-nowrap">スタイル</span>
-            </div>
-            <div className="flex gap-0.75">
-              <StyleDropdown
-                styles={styles}
-                selectedStyle={selectedStyle}
-                setSelectedStyle={setSelectedStyle}
-                characterName={characterName}
-              />
-            </div>
+          <div className="gap-2xs flex min-w-0 flex-1 flex-col items-center justify-center">
+            <span className="text-sm whitespace-nowrap">スタイル</span>
+            <StyleDropdown
+              className="max-w-full"
+              styles={styles}
+              selectedStyle={selectedStyle}
+              setSelectedStyle={setSelectedStyle}
+              characterName={characterName}
+            />
           </div>
         )}
       </div>
