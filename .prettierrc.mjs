@@ -6,8 +6,7 @@ export default {
     "@trivago/prettier-plugin-sort-imports",
     "prettier-plugin-astro",
     "prettier-plugin-tailwindcss",
-    // Astro の import と Tailwind CSS のクラスを両方整列するため最後に指定する
-    "prettier-plugin-astro-organize-imports",
+    "prettier-plugin-astro-organize-imports", // 他のプラグインの整形もまとめて実行するので、最後に指定する
   ],
   overrides: [
     {
