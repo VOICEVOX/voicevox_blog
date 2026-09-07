@@ -1,7 +1,7 @@
 ---
 import type { HTMLAttributes } from "astro/types";
-import { buildButtonClassName } from "./helper";
 import type { ButtonKind, ButtonShape, ButtonSize, ButtonTone } from "./helper";
+import { buildButtonClassName } from "./helper";
 
 type AnchorHtmlAttrs = Omit<HTMLAttributes<"a">, "href" | "onClick">;
 type ButtonHtmlAttrs = Omit<HTMLAttributes<"button">, "type" | "disabled">;

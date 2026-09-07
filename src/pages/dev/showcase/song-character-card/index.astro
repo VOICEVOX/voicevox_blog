@@ -2,8 +2,8 @@
 import { characterKeys } from "@/constants/characterEntry";
 import { characterInfos } from "@/constants/characterInfo";
 import CharacterCard from "@/pages/song/_CharacterCard";
-import Showcase from "../_Showcase.astro";
 import { Image } from "astro:assets";
+import Showcase from "../_Showcase.astro";
 
 const songCharacterKeys = characterKeys.filter(
   (key) => characterInfos[key].songVoiceAudios.length > 0,

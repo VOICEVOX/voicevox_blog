@@ -146,6 +146,8 @@ pnpm run fmt
 pnpm run lint
 ```
 
+Astro の import と Tailwind CSS のクラスを両方整列できるように、`.prettierrc.mjs` では `prettier-plugin-astro-organize-imports` をプラグイン一覧の最後に指定します。
+
 ### GitHub Actions のバージョン固定
 
 [pinact](https://github.com/suzuki-shunsuke/pinact) を使って GitHub Actions のバージョンを full-length commit SHA に固定しています。
