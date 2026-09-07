@@ -9,6 +9,7 @@ import CoreLibrarySection from "./_CoreLibrarySection.astro";
 import EngineGuidanceSection from "./_EngineGuidanceSection.astro";
 import LinkListSection from "./_LinkListSection.astro";
 import OssGuidanceSection from "./_OssGuidanceSection.astro";
+import VoiceLibrarySection from "./_VoiceLibrarySection.astro";
 import SoftwareFeature from "./_SoftwareFeature.astro";
 import CharacterCard from "./talk/_CharacterCard.astro";
 import landingMovieThumb from "./talk/landing-movie-thumb.png";
@@ -105,6 +106,8 @@ const landingMovieThumbUrl = (await getImage({ src: landingMovieThumb })).src;
       <CoreLibrarySection />
 
       <OssGuidanceSection />
+
+      <VoiceLibrarySection />
 
       <LinkListSection />
     </main>
