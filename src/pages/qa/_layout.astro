@@ -1,9 +1,9 @@
 ---
 import Markdown from "@/components/Markdown.astro";
 import Base, { type Props as BaseProps } from "@/layouts/Base.astro";
+import type { MarkdownLayoutProps } from "astro";
 import QaSearch from "./_QaSearch";
 import { buildQaSearchItems } from "./_qa";
-import type { MarkdownLayoutProps } from "astro";
 
 type Props = MarkdownLayoutProps<BaseProps & { headerTitle?: string }>;
 
