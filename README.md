@@ -43,11 +43,13 @@ pnpm run preview-build
 
 ```bash
 EDITOR_VERSION="0.25.2"
+ENGINE_VERSION="0.25.2"
 RESOURCE_VERSION="0.25.2"
 NEMO_VERSION="0.24.0"
 
 pnpm run updateVersion \
   --editor_version="$EDITOR_VERSION" \
+  --engine_version="$ENGINE_VERSION" \
   --resource_version="$RESOURCE_VERSION" \
   --nemo_version="$NEMO_VERSION"
 ```
@@ -57,6 +59,9 @@ pnpm run updateVersion \
 ```bash
 editor_tag="0.25.2"
 editor_url="https://raw.githubusercontent.com/VOICEVOX/voicevox/$editor_tag"
+
+engine_tag="0.25.2"
+engine_url="https://raw.githubusercontent.com/VOICEVOX/voicevox_engine/$engine_tag"
 
 resource_tag="0.25.2"
 resource_url="https://raw.githubusercontent.com/VOICEVOX/voicevox_resource/$resource_tag"
@@ -78,6 +83,10 @@ curl -s "$editor_url/public/qAndA.md" |
 curl -s "$editor_url/public/updateInfos.json" \
   >public/updateInfos.json
 cp public/updateInfos.json src/data/updateInfos.json  # 0.22までsrc/dataディレクトリだったので、しばらくはコピーする
+
+# デフォルトエンジンの変更履歴
+curl -s "$engine_url/resources/engine_manifest_assets/update_infos.json" \
+  >public/defaultEngineUpdateInfos.json
 
 # デフォルトエンジンの更新情報
 pnpm run generateLatestDefaultEngineInfos \
