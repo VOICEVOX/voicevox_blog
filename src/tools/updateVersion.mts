@@ -8,12 +8,14 @@ import { parseArgs } from "node:util";
 const argv = parseArgs({
   options: {
     editor_version: { type: "string" },
+    engine_version: { type: "string" },
     resource_version: { type: "string" },
     nemo_version: { type: "string" },
   },
 }).values;
 const {
   editor_version: editorVersion,
+  engine_version: engineVersion,
   resource_version: resourceVersion,
   nemo_version: nemoVersion,
 } = argv;
@@ -35,6 +37,7 @@ function updateFile(path: string, before: RegExp, after: string) {
 }
 
 console.log(`editor_version: ${editorVersion}`);
+console.log(`engine_version: ${engineVersion}`);
 console.log(`resource_version: ${resourceVersion}`);
 console.log(`nemo_version: ${nemoVersion}`);
 
@@ -44,6 +47,13 @@ if (editorVersion != undefined) {
     "./README.md",
     /editor_tag=".*?"/,
     `editor_tag="${editorVersion}"`,
+  );
+}
+if (engineVersion != undefined) {
+  updateFile(
+    "./README.md",
+    /engine_tag=".*?"/,
+    `engine_tag="${engineVersion}"`,
   );
 }
 if (resourceVersion != undefined) {
