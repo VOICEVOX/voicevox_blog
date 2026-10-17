@@ -63,6 +63,7 @@ export default function StyleDropdown({
         >
           <DropdownMenu.Trigger asChild>
             <Button
+              className="max-w-full [&>.vv-button-label]:block [&>.vv-button-label]:min-w-0 [&>.vv-button-label]:truncate"
               kind="outline"
               tone="neutral"
               shape="pill"
