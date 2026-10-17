@@ -54,7 +54,8 @@ jsonファイルの形式は以下の通り。
     "macos-x64-cpu": {},
     "macos-arm64-cpu": {},
     "linux-x64-cpu": {},
-    "linux-x64-cuda": {}
+    "linux-x64-cuda": {},
+    "linux-arm64-cpu": {}
   }
 }
 ```
@@ -159,6 +160,17 @@ const runtimeTargets: RuntimeTarget[] = [
       order: 1,
     },
   },
+  {
+    os: "linux",
+    arch: "arm64",
+    device: "cpu",
+    displayInfo: {
+      label: "CPU",
+      hint: "CPUで音声を生成します",
+      order: 0,
+      default: true,
+    },
+  },
 ];
 
 function validateDisplayInfo(targets: RuntimeTarget[]): void {
@@ -198,6 +210,7 @@ function getVvppTxtName(target: string, version: string): string {
     "macos-arm64-cpu": `voicevox_engine-macos-arm64-${version}.vvpp.txt`,
     "linux-x64-cpu": `voicevox_engine-linux-cpu-x64-${version}.vvpp.txt`,
     "linux-x64-cuda": `voicevox_engine-linux-nvidia-${version}.vvpp.txt`,
+    "linux-arm64-cpu": `voicevox_engine-linux-cpu-arm64-${version}.vvpp.txt`,
   };
 
   const result = mapping[target];

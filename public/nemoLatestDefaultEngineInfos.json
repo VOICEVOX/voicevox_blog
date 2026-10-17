@@ -94,6 +94,22 @@
           "size": 1395668097
         }
       ]
+    },
+    "linux-arm64-cpu": {
+      "version": "0.24.0",
+      "displayInfo": {
+        "label": "CPU",
+        "hint": "CPUで音声を生成します",
+        "order": 0,
+        "default": true
+      },
+      "files": [
+        {
+          "url": "https://github.com/VOICEVOX/voicevox_nemo_engine/releases/download/0.24.0/voicevox_engine-linux-cpu-arm64-0.24.0.vvpp",
+          "name": "voicevox_engine-linux-cpu-arm64-0.24.0.vvpp",
+          "size": 153656900
+        }
+      ]
     }
   }
 }
