@@ -1,0 +1,1 @@
+import{a as o}from"./index.C90rn6aM.js";document.querySelectorAll("[data-voicevox-call-name]").forEach(t=>{let e;t.addEventListener("click",()=>{const a=t.getAttribute("data-voicevox-call-name");o(a),navigator.clipboard.writeText(a).then(()=>{t.setAttribute("data-voicevox-copied",""),clearTimeout(e),e=setTimeout(()=>{t.removeAttribute("data-voicevox-copied")},800)})})});
