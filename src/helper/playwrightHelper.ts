@@ -95,7 +95,27 @@ export async function waitForAudios(page: Page) {
 /** ページ内のフォントがすべて読み込まれるまで待機する */
 export async function waitForFonts(page: Page) {
   const executor = async () => {
-    await page.evaluate(() => document.fonts.ready);
+    await page.evaluate(async () => {
+      for (const sheet of document.styleSheets) {
+        let rules;
+
+        try {
+          rules = sheet.cssRules;
+        } catch {
+          continue;
+        }
+
+        for (const rule of rules) {
+          if (rule instanceof CSSFontFaceRule) {
+            if (rule.style.getPropertyValue("font-display") === "fallback") {
+              rule.style.setProperty("font-display", "swap");
+            }
+          }
+        }
+      }
+
+      await document.fonts.ready;
+    });
   };
 
   await executeWithStepRecording(
