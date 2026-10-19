@@ -119,9 +119,3 @@ export async function waitForFonts(page: Page) {
     executor,
   );
 }
-
-  await executeWithStepRecording(
-    "フォントの読み込みが完了するまで待つ",
-    executor,
-  );
-}
