@@ -15,15 +15,15 @@ type ModeType =
   | "GPU / CPU"
   | "GPU / CPU (x64)"
   | "CPU"
-  | "CPU (Intel)"
   | "CPU (Apple)"
+  | "CPU (Intel)"
   | "CPU (x64)"
   | "CPU (arm64)";
 type PackageType = "インストーラー" | "Zip" | "tar.gz";
 
 const modeAvailables: Record<OsType, ModeType[]> = {
   Windows: ["GPU / CPU", "CPU"],
-  Mac: ["CPU (Intel)", "CPU (Apple)"],
+  Mac: ["CPU (Apple)", "CPU (Intel)"],
   Linux: ["GPU / CPU (x64)", "CPU (x64)", "CPU (arm64)"],
 };
 
@@ -36,8 +36,8 @@ const packageAvailables: Record<
     CPU: ["インストーラー", "Zip"],
   },
   Mac: {
-    "CPU (Intel)": ["インストーラー", "Zip"],
     "CPU (Apple)": ["インストーラー", "Zip"],
+    "CPU (Intel)": ["インストーラー", "Zip"],
   },
   Linux: {
     "GPU / CPU (x64)": ["インストーラー"],
@@ -82,16 +82,6 @@ export default function DownloadModal() {
       },
     },
     Mac: {
-      "CPU (Intel)": {
-        インストーラー: {
-          url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/VOICEVOX.${APP_VERSION}-x64.dmg`,
-          name: `VOICEVOX-CPU-x64.${APP_VERSION}.Mac.dmg`,
-        },
-        Zip: {
-          url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/voicevox-macos-cpu-x64-${APP_VERSION}.zip`,
-          name: `VOICEVOX-CPU-x64.${APP_VERSION}.Mac.zip`,
-        },
-      },
       "CPU (Apple)": {
         インストーラー: {
           url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/VOICEVOX.${APP_VERSION}-arm64.dmg`,
@@ -100,6 +90,16 @@ export default function DownloadModal() {
         Zip: {
           url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/voicevox-macos-cpu-arm64-${APP_VERSION}.zip`,
           name: `VOICEVOX-CPU-arm64.${APP_VERSION}.Mac.zip`,
+        },
+      },
+      "CPU (Intel)": {
+        インストーラー: {
+          url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/VOICEVOX.${APP_VERSION}-x64.dmg`,
+          name: `VOICEVOX-CPU-x64.${APP_VERSION}.Mac.dmg`,
+        },
+        Zip: {
+          url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/voicevox-macos-cpu-x64-${APP_VERSION}.zip`,
+          name: `VOICEVOX-CPU-x64.${APP_VERSION}.Mac.zip`,
         },
       },
     },
