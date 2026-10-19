@@ -96,16 +96,19 @@ export async function waitForAudios(page: Page) {
 export async function waitForFonts(page: Page) {
   const executor = async () => {
     await page.evaluate(async () => {
+      // 全てのスタイルシートを巡回する
       for (const sheet of document.styleSheets) {
         let rules;
 
         try {
           rules = sheet.cssRules;
         } catch {
-          continue;
+          continue; // CORS関連のエラーなどが発生した場合、スキップする
         }
 
+        // スタイルシート内の全てのルールを巡回する
         for (const rule of rules) {
+          // ルールが `@font-face` であり、プロパティ `font-display` が `fallback` の場合、 `swap` に書き換える
           if (rule instanceof CSSFontFaceRule) {
             if (rule.style.getPropertyValue("font-display") === "fallback") {
               rule.style.setProperty("font-display", "swap");
