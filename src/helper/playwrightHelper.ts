@@ -95,7 +95,6 @@ export async function waitForAudios(page: Page) {
 /** ページ内のフォントがすべて読み込まれるまで待機する */
 export async function waitForFonts(page: Page) {
   const executor = async () => {
-    await page.evaluate(async () => {
     // NOTE: font-display: fallback では代替フォントのままになることがあるため、swap に切り替える
     await page.evaluate(async () => {
       for (const sheet of document.styleSheets) {
