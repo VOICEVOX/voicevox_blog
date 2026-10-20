@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "packages": {
     "windows-x64-cpu": {
-      "version": "0.25.2",
+      "version": "0.26.0",
       "displayInfo": {
         "label": "CPU",
         "hint": "CPUで音声を生成します",
@@ -10,14 +10,14 @@
       },
       "files": [
         {
-          "url": "https://github.com/VOICEVOX/voicevox_engine/releases/download/0.25.2/voicevox_engine-windows-cpu-0.25.2.vvpp",
-          "name": "voicevox_engine-windows-cpu-0.25.2.vvpp",
-          "size": 1894411533
+          "url": "https://github.com/VOICEVOX/voicevox_engine/releases/download/0.26.0/voicevox_engine-windows-cpu-0.26.0.vvpp",
+          "name": "voicevox_engine-windows-cpu-0.26.0.vvpp",
+          "size": 1925791376
         }
       ]
     },
     "windows-x64-directml": {
-      "version": "0.25.2",
+      "version": "0.26.0",
       "displayInfo": {
         "label": "GPU / CPU",
         "hint": "DirectML対応のGPUでも音声を生成できます",
@@ -26,14 +26,14 @@
       },
       "files": [
         {
-          "url": "https://github.com/VOICEVOX/voicevox_engine/releases/download/0.25.2/voicevox_engine-windows-directml-0.25.2.vvpp",
-          "name": "voicevox_engine-windows-directml-0.25.2.vvpp",
-          "size": 1903499910
+          "url": "https://github.com/VOICEVOX/voicevox_engine/releases/download/0.26.0/voicevox_engine-windows-directml-0.26.0.vvpp",
+          "name": "voicevox_engine-windows-directml-0.26.0.vvpp",
+          "size": 1936066614
         }
       ]
     },
     "macos-x64-cpu": {
-      "version": "0.25.2",
+      "version": "0.26.0",
       "displayInfo": {
         "label": "CPU",
         "hint": "CPUで音声を生成します",
@@ -42,14 +42,14 @@
       },
       "files": [
         {
-          "url": "https://github.com/VOICEVOX/voicevox_engine/releases/download/0.25.2/voicevox_engine-macos-x64-0.25.2.vvpp",
-          "name": "voicevox_engine-macos-x64-0.25.2.vvpp",
-          "size": 1890344527
+          "url": "https://github.com/VOICEVOX/voicevox_engine/releases/download/0.26.0/voicevox_engine-macos-x64-0.26.0.vvpp",
+          "name": "voicevox_engine-macos-x64-0.26.0.vvpp",
+          "size": 1931784359
         }
       ]
     },
     "macos-arm64-cpu": {
-      "version": "0.25.2",
+      "version": "0.26.0",
       "displayInfo": {
         "label": "CPU",
         "hint": "CPUで音声を生成します",
@@ -58,14 +58,14 @@
       },
       "files": [
         {
-          "url": "https://github.com/VOICEVOX/voicevox_engine/releases/download/0.25.2/voicevox_engine-macos-arm64-0.25.2.vvpp",
-          "name": "voicevox_engine-macos-arm64-0.25.2.vvpp",
-          "size": 1887128088
+          "url": "https://github.com/VOICEVOX/voicevox_engine/releases/download/0.26.0/voicevox_engine-macos-arm64-0.26.0.vvpp",
+          "name": "voicevox_engine-macos-arm64-0.26.0.vvpp",
+          "size": 1925582689
         }
       ]
     },
     "linux-x64-cpu": {
-      "version": "0.25.2",
+      "version": "0.26.0",
       "displayInfo": {
         "label": "CPU",
         "hint": "CPUで音声を生成します",
@@ -74,14 +74,14 @@
       },
       "files": [
         {
-          "url": "https://github.com/VOICEVOX/voicevox_engine/releases/download/0.25.2/voicevox_engine-linux-cpu-x64-0.25.2.vvpp",
-          "name": "voicevox_engine-linux-cpu-x64-0.25.2.vvpp",
-          "size": 1911613161
+          "url": "https://github.com/VOICEVOX/voicevox_engine/releases/download/0.26.0/voicevox_engine-linux-cpu-x64-0.26.0.vvpp",
+          "name": "voicevox_engine-linux-cpu-x64-0.26.0.vvpp",
+          "size": 1944635675
         }
       ]
     },
     "linux-x64-cuda": {
-      "version": "0.25.2",
+      "version": "0.26.0",
       "displayInfo": {
         "label": "GPU(CUDA)",
         "hint": "CUDA対応のNVIDIA製GPUでも音声を生成できます",
@@ -89,19 +89,19 @@
       },
       "files": [
         {
-          "url": "https://github.com/VOICEVOX/voicevox_engine/releases/download/0.25.2/voicevox_engine-linux-nvidia-0.25.2.001.vvppp",
-          "name": "voicevox_engine-linux-nvidia-0.25.2.001.vvppp",
+          "url": "https://github.com/VOICEVOX/voicevox_engine/releases/download/0.26.0/voicevox_engine-linux-nvidia-0.26.0.001.vvppp",
+          "name": "voicevox_engine-linux-nvidia-0.26.0.001.vvppp",
           "size": 1992294400
         },
         {
-          "url": "https://github.com/VOICEVOX/voicevox_engine/releases/download/0.25.2/voicevox_engine-linux-nvidia-0.25.2.002.vvppp",
-          "name": "voicevox_engine-linux-nvidia-0.25.2.002.vvppp",
-          "size": 1071615559
+          "url": "https://github.com/VOICEVOX/voicevox_engine/releases/download/0.26.0/voicevox_engine-linux-nvidia-0.26.0.002.vvppp",
+          "name": "voicevox_engine-linux-nvidia-0.26.0.002.vvppp",
+          "size": 1563748265
         }
       ]
     },
     "linux-arm64-cpu": {
-      "version": "0.25.2",
+      "version": "0.26.0",
       "displayInfo": {
         "label": "CPU",
         "hint": "CPUで音声を生成します",
@@ -110,9 +110,9 @@
       },
       "files": [
         {
-          "url": "https://github.com/VOICEVOX/voicevox_engine/releases/download/0.25.2/voicevox_engine-linux-cpu-arm64-0.25.2.vvpp",
-          "name": "voicevox_engine-linux-cpu-arm64-0.25.2.vvpp",
-          "size": 1907271021
+          "url": "https://github.com/VOICEVOX/voicevox_engine/releases/download/0.26.0/voicevox_engine-linux-cpu-arm64-0.26.0.vvpp",
+          "name": "voicevox_engine-linux-cpu-arm64-0.26.0.vvpp",
+          "size": 1939650731
         }
       ]
     }
