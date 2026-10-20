@@ -21,7 +21,7 @@ description: VOICEVOXソフトウェアの使い方です
 
 起動しようとすると「Windows によって PC が保護されました」というダイアログが表示されるかもしれません。その際は「詳細情報」をクリックし、発行元が「Kazuyuki Hiroshiba」であることを確認してから「実行」を選んでください。
 
-<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image14.png" style="max-height: 16rem" alt="「Windows によって PC が保護されました」というダイアログ" /> → <img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image15.png" style="max-height: 16rem" alt="「詳細情報」をクリックし、「実行」を選んでいる様子。" />
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.26.0/public/res/image14.png" style="max-height: 16rem" alt="「Windows によって PC が保護されました」というダイアログ" /> → <img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.26.0/public/res/image15.png" style="max-height: 16rem" alt="「詳細情報」をクリックし、「実行」を選んでいる様子。" />
 
 </details>
 
@@ -29,27 +29,30 @@ description: VOICEVOXソフトウェアの使い方です
 
 <details><summary>クリックで展開</summary>
 
-初回起動時は Apple に登録されていないアプリケーションとして警告ダイアログが表示されるかもしれません。
-
-<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/gatekeeper.png" style="max-height: 16rem" alt="「VOICEVOXは開発を検証できないため開けません」というダイアログ"/>
-
-その際は Finder で `Ctrl` キーを押しながら VOICEVOX アプリケーションアイコンをクリックし、ショートカットメニューから「開く」を選択してから、「開く」をクリックしてください。
-
-もしくは、アップルメニューから「システム設定」を選択して「プライバシーとセキュリティ」 をクリックし、ページの下にあるセキュリティの「このまま開く」を選んでください。
-
-<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/macos-system-settings-security.png" style="max-height: 16rem" alt="Macのシステム設定の「プライバシーとセキュリティ」を開いた画面"/>
-
-macOS Ventura 以前をお使いの場合は、アップルメニューから「システム環境設定」を選択して「セキュリティとプライバシー」 をクリックし、「一般」パネルで「このまま開く」選んでください。
-
-<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/macos-system-preferences-security.png" style="max-height: 16rem" alt="Macのシステム環境設定の「セキュリティとプライバシー」を開いた画面"/>
+初回起動時に、インターネットからダウンロードしたアプリケーションを開くかどうか確認するダイアログが表示されるかもしれません。その際はアプリケーション名が「VOICEVOX」であることを確認してから「開く」を選んでください。
 
 #### Apple Silicon 搭載の Mac をお使いの場合
 
 初めて VOICEVOX を起動する際に Rosetta のインストールを促される場合は、案内に従ってインストールしてください。
 
-<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/macos-big-sur-software-update-rosetta-alert.jpg" style="max-height: 12rem" alt="Rosettaのインストールを確認するダイアログ"/>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.26.0/public/res/macos-big-sur-software-update-rosetta-alert.jpg" style="max-height: 12rem" alt="Rosettaのインストールを確認するダイアログ"/>
 
 </details>
+
+## 音声合成エンジンのダウンロード
+
+インストーラー版をダウンロードした場合は、初回起動時に音声合成エンジンがダウンロードされます。
+ここでは、CPU 版と GPU 版のどちらをダウンロードするか選択できます。
+ダウンロードが完了したら、右上の「エディタを起動」ボタンからエディタを起動できます。
+
+ZIP 版・tar.gz 版をダウンロードした場合は、音声合成エンジンのダウンロードは不要です。
+
+### 音声合成エンジンのアップデート
+
+インストーラー版をダウンロードした場合は、「エンジン」メニューの「エンジンの管理」から音声合成エンジンをアップデートできます。
+また、 CPU 版と GPU 版を切り替えることもできます。
+
+ZIP 版・tar.gz 版はソフトウェア内からのアップデートはできません。ホームページからソフトウェアをダウンロードし直してアップデートしてください。
 
 ## 音声合成エンジンの起動
 
@@ -58,17 +61,17 @@ GPU をお持ちの方は、音声の生成がずっと速い GPU モードを�
 
 ※Mac 版では GPU モードに対応していないため GPU モードはご利用頂けません。
 
-<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image4.png" style="max-height: 6rem" alt="音声合成エンジンを起動している様子" />
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.26.0/public/res/image4.png" style="max-height: 6rem" alt="音声合成エンジンを起動している様子" />
 
 ## 音声の生成・再生
 
 キャラクターアイコンの右にある空白をクリックしてテキストを入力してみてください。
 
-<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image19.png" style="max-height: 12rem" alt="キャラクターアイコンの右にある空白" />
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.26.0/public/res/image19.png" style="max-height: 12rem" alt="キャラクターアイコンの右にある空白" />
 
 `Enter` キーを押して文章を確定すると、画面の下の方に読みとアクセントが表示されます。（１回目は反映まで数秒ほど時間がかかることがあります。）
 
-<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image6.png" style="max-height: 16rem" alt="画面の下の方に読みとアクセントが表示された様子"/>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.26.0/public/res/image6.png" style="max-height: 16rem" alt="画面の下の方に読みとアクセントが表示された様子"/>
 
 再生ボタンを押すと音声が生成され、音声が再生されます。
 
@@ -76,7 +79,7 @@ GPU をお持ちの方は、音声の生成がずっと速い GPU モードを�
 
 右下の＋ボタンを押すとテキスト欄が増え、複数の文章を並べることができます。
 
-<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image10.png" style="max-height: 12rem" alt="テキスト欄が増えた様子" />
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.26.0/public/res/image10.png" style="max-height: 12rem" alt="テキスト欄が増えた様子" />
 
 テキスト欄にマウスカーソルを合わせると出てくるゴミ箱のボタンで、そのテキスト欄を削除できます。
 
@@ -84,7 +87,7 @@ GPU をお持ちの方は、音声の生成がずっと速い GPU モードを�
 
 テキスト入力欄の左にあるアイコンをクリックすると、テキストを読み上げてくれるキャラクターを変更することができます。
 
-<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image7.png" style="max-height: 10rem" alt="左にあるアイコンをクリックしてほかのキャラクターアイコンが表示されている様子"/>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.26.0/public/res/image7.png" style="max-height: 10rem" alt="左にあるアイコンをクリックしてほかのキャラクターアイコンが表示されている様子"/>
 
 キャラクターの表示順序は「キャラクター並び替え」で変更できます。
 
@@ -98,19 +101,19 @@ GPU をお持ちの方は、音声の生成がずっと速い GPU モードを�
 
 例えば「ディープラーニング」がこのように分かれてしまった場合は、
 
-<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image9.png" style="max-height: 12rem" alt="「ディープラーニング」が「ディープ」と「ラーニング」に分かれた様子"/>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.26.0/public/res/image9.png" style="max-height: 12rem" alt="「ディープラーニング」が「ディープ」と「ラーニング」に分かれた様子"/>
 
 ２つの隙間をクリックすると
 
-<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image3.png" style="max-height: 8rem" alt="「ディープ」と「ラーニング」の間にマウスカーソルを合わせている様子。マウスカーソルが当たっている部分が青色になります"/>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.26.0/public/res/image3.png" style="max-height: 8rem" alt="「ディープ」と「ラーニング」の間にマウスカーソルを合わせている様子。マウスカーソルが当たっている部分が青色になります"/>
 
 このように１語にまとめることができます
 
-<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image8.png" style="max-height: 7rem" alt="「ディープ」と「ラーニング」が「ディープラーニング」の１語にまとまった様子"/>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.26.0/public/res/image8.png" style="max-height: 7rem" alt="「ディープ」と「ラーニング」が「ディープラーニング」の１語にまとまった様子"/>
 
 逆に切り離したい場合は、文字の間をクリックして切り離すことができます。
 
-<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image13.png" style="max-height: 7rem" alt="「ディープ」と「ラーニング」の間にマウスカーソルを合わせている様子。マウスカーソルが当たっている部分が青色になります"/>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.26.0/public/res/image13.png" style="max-height: 7rem" alt="「ディープ」と「ラーニング」の間にマウスカーソルを合わせている様子。マウスカーソルが当たっている部分が青色になります"/>
 
 ## アクセントの変更
 
@@ -119,13 +122,13 @@ GPU をお持ちの方は、音声の生成がずっと速い GPU モードを�
 アクセント箇所を変えるには、読みの上にあるバーを左右に動かします。
 例えば「ディープラーニング」を「↑ ディープラ ↓ アニング」と読んでほしい場合は、「ラ」の位置まで丸をスライドします。
 
-<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image8.png" style="max-height: 7.5rem" alt="「ディープラーニング」" /> → <img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image1.png" style="max-height: 8rem" alt="「↑ ディープラ ↓ アニング」" />
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.26.0/public/res/image8.png" style="max-height: 7.5rem" alt="「ディープラーニング」" /> → <img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.26.0/public/res/image1.png" style="max-height: 8rem" alt="「↑ ディープラ ↓ アニング」" />
 
 ## パラメータの変更
 
 画面の右の欄で、テキスト欄ごとに話速や抑揚などのパラメータを変更することができます。
 
-<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image24.png" style="max-height: 12rem" alt="右側にパラメータを調整する欄が表示されています。"/>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.26.0/public/res/image24.png" style="max-height: 12rem" alt="右側にパラメータを調整する欄が表示されています。"/>
 
 - 話速
   - 読み上げ速度を変更できます。数値が大きいほど速くなります。
@@ -146,17 +149,17 @@ GPU をお持ちの方は、音声の生成がずっと速い GPU モードを�
 
 「イントネーション」をクリックして現れる縦線のバーを上下させることで抑揚を表現できます。
 
-<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image2.png" style="max-height: 8rem" alt="「イントネーション」をクリックして現れる縦線のバー"/>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.26.0/public/res/image2.png" style="max-height: 8rem" alt="「イントネーション」をクリックして現れる縦線のバー"/>
 
 イントネーション調整スペースを縦に広くすることで、より細かく抑揚を調整することもできます。
 
-<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image18.png" style="max-height: 14rem" alt="イントネーション調整スペースを縦に広くした様子"/>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.26.0/public/res/image18.png" style="max-height: 14rem" alt="イントネーション調整スペースを縦に広くした様子"/>
 
 マウスホイールで調整することもできます。Ctrl キー（Mac 版では Command キー）を押しながらマウスホイールを使うと更に細かく調整できます。Alt キー（Mac 版では Option キー）を押しながらイントネーションや長さを調整することで、同じアクセント区間内を同時に調整できます。
 
 また、「キ」や「ツ」や「ス」などが無声化されている場合、バーが灰色になっています。イントネーション欄のテキストをクリックすることで無声化を解くことができます。
 
-<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image5.png" style="max-height: 10rem" alt="「キツツキデス」の「キ」と「ツ」と「ス」のバーが灰色になっている様子" /> → <img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image12.png" style="max-height: 10rem" alt="「キツツキデス」のすべての文字のバーが青色で表示されている様子。" />
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.26.0/public/res/image5.png" style="max-height: 10rem" alt="「キツツキデス」の「キ」と「ツ」と「ス」のバーが灰色になっている様子" /> → <img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.26.0/public/res/image12.png" style="max-height: 10rem" alt="「キツツキデス」のすべての文字のバーが青色で表示されている様子。" />
 
 無声化できるものはイ行とウ行だけです。
 
@@ -164,7 +167,7 @@ GPU をお持ちの方は、音声の生成がずっと速い GPU モードを�
 
 読みが思っているものと違う場合は、アクセント欄で読みをクリックすることで後から修正することもできます。テキスト欄と同様に、ひらがなや句読点、漢字も入力できます。
 
-<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image20.png" style="max-height: 12rem" alt="アクセント欄で読みをクリックした様子。修正したいテキストが表示されたテキストボックスが表示されています。テキストボックスの内容を書き換えることで読みを修正できます。"/>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.26.0/public/res/image20.png" style="max-height: 12rem" alt="アクセント欄で読みをクリックした様子。修正したいテキストが表示されたテキストボックスが表示されています。テキストボックスの内容を書き換えることで読みを修正できます。"/>
 
 修正箇所以外の調整結果はそのままなので、調整結果を維持したままテキストを修正したいときにも便利です。
 
@@ -172,7 +175,7 @@ GPU をお持ちの方は、音声の生成がずっと速い GPU モードを�
 
 キャラクターによっては複数のスタイル（喋り方）を変えることができます。キャラクターの変更と同様に、テキスト欄左のアイコンから選択できます。
 
-<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image21.png" style="max-height: 12rem" alt="キャラクターのアイコンをクリックすると別のキャラクターアイコンが表示されている様子"/>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.26.0/public/res/image21.png" style="max-height: 12rem" alt="キャラクターのアイコンをクリックすると別のキャラクターアイコンが表示されている様子"/>
 
 キャラクターを選択したときに適用されるスタイルは、設定の「デフォルトスタイル」で変更できます。
 
@@ -183,13 +186,19 @@ GPU をお持ちの方は、音声の生成がずっと速い GPU モードを�
 「長さ」をクリックして現れる縦線のバーを上げるとその音を長く、下げると短くできます。
 右のバーが母音、左のバーが子音に対応しています。
 
-<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image22.png" style="max-height: 12rem" alt="一つの文字のバーが中央で縦に分かれている様子"/>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.26.0/public/res/image22.png" style="max-height: 12rem" alt="一つの文字のバーが中央で縦に分かれている様子"/>
 
 ## 音声を途中から再生
 
 アクセント区間をクリックすることで、その区間から音声を再生できます。もう一度クリックすると解除できます。
 
-<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image23.png" style="max-height: 8rem" alt="アクセント区間をクリックした様子。クリックされたアクセント区間が青色になっています。"/>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.26.0/public/res/image23.png" style="max-height: 8rem" alt="アクセント区間をクリックした様子。クリックされたアクセント区間が青色になっています。"/>
+
+## テキスト欄の複数選択
+
+テキスト欄は複数選択できます。
+`Shift` キーを押しながらクリックすることで、最後に選択したテキスト欄からクリックしたテキスト欄までのすべてのテキスト欄を選択できます。
+`Ctrl` キーを押しながらクリックすることで、複数のテキスト欄を個別に選択できます。
 
 ## 音声ファイルの書き出し
 
@@ -210,7 +219,7 @@ GPU をお持ちの方は、音声の生成がずっと速い GPU モードを�
 
 このように読み込まれます。
 
-<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image17.png" style="max-height: 10rem" alt="テキストが読み込まれた様子。四国めたん「おはようございます」、四国めたん「こんにちは」、ずんだもん「こんばんは」、四国めたん「さようなら」のように、キャラクターと文章が読み込まれています"/>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.26.0/public/res/image17.png" style="max-height: 10rem" alt="テキストが読み込まれた様子。四国めたん「おはようございます」、四国めたん「こんにちは」、ずんだもん「こんばんは」、四国めたん「さようなら」のように、キャラクターと文章が読み込まれています"/>
 
 スタイル名が指定されていない場合は、デフォルトスタイルのスタイルが適用されます。
 
@@ -253,7 +262,7 @@ GPU をお持ちの方は、音声の生成がずっと速い GPU モードを�
 - 3
   - 長さ欄を表示
 - スライダーの上でマウスホイール
-  - スライダーの値を変更します（スライダー →<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/image16.png" style="max-height: 1rem" alt="スライダー、緑色の棒"/>）
+  - スライダーの値を変更します（スライダー →<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.26.0/public/res/image16.png" style="max-height: 1rem" alt="スライダー、緑色の棒"/>）
   - `Ctrl` キーを押しながらマウスホイールを使うと更に細かく調整できます
   - `Alt` キーを押しながらイントネーションや長さを調整することで、同じアクセント区間内を同時に調整できます
 - `Ctrl` + `G`
@@ -267,7 +276,7 @@ GPU をお持ちの方は、音声の生成がずっと速い GPU モードを�
 
 ボタンをドラッグすることにより、画面上部にあるツールバーのボタンの種類や配置を変更することができます。
 
-<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/toolbar-customize.png" style="max-height: 18rem" alt="ツールバーカスタマイズ画面"/>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.26.0/public/res/toolbar-customize.png" style="max-height: 18rem" alt="ツールバーカスタマイズ画面"/>
 
 ## キャラクターの並び替え・試聴
 
@@ -286,13 +295,13 @@ GPU をお持ちの方は、音声の生成がずっと速い GPU モードを�
 読み方＆アクセント辞書画面を開くと、左に登録した単語のリストが表示されます。
 「追加」ボタンで新規に単語を登録できます。
 
-<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/dict01.png" style="max-height: 17rem" alt="読み方＆アクセント辞書の単語リスト画面"/>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.26.0/public/res/dict01.png" style="max-height: 17rem" alt="読み方＆アクセント辞書の単語リスト画面"/>
 
 「単語」に登録したいテキストを、「読み」にそのテキストの読み方をひらがなかカタカナで入力してください。
 「アクセント調整」で自然になるアクセントを登録できます。
 もし登録した単語が反映されない場合は、「単語優先度」を上げてみてください。
 
-<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/dict02.png" style="max-height: 17rem" alt="単語と読みとアクセントの登録画面"/>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.26.0/public/res/dict02.png" style="max-height: 17rem" alt="単語と読みとアクセントの登録画面"/>
 
 <!--
 TODO: 右クリックメニューの説明。項目が増えてきたら追加する。
@@ -303,7 +312,7 @@ TODO: 右クリックメニューの説明。項目が増えてきたら追加�
 VOICEVOX では、歌声合成機能がプロトタイプ版として提供されています。
 歌声合成手法は技術的に異なる２つの種類をご用意しています。
 
-<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/song1.png" style="max-height: 17rem" alt="ソング機能を使って歌声合成やピアノロールでの編集ができる画面が写っています"/>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.26.0/public/res/song1.png" style="max-height: 17rem" alt="ソング機能を使って歌声合成やピアノロールでの編集ができる画面が写っています"/>
 
 - ハミング：キャラクターの喋り声に近い声で歌うことができます
 - ソング：歌声らしい声で歌うことができます
@@ -320,7 +329,7 @@ VOICEVOX では、歌声合成機能がプロトタイプ版として提供さ�
 
 ノートをダブルクリックすることで歌詞を入力できます。複数の文字を入力すれば一括入力できます。
 
-<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.25.2/public/res/song2.png" style="max-height: 8rem" alt="ノートに複数の文字を入力することで、後ろのノートに歌詞が送られる様子が写っています"/>
+<img src="https://raw.githubusercontent.com/VOICEVOX/voicevox/0.26.0/public/res/song2.png" style="max-height: 8rem" alt="ノートに複数の文字を入力することで、後ろのノートに歌詞が送られる様子が写っています"/>
 
 ### 音域調整
 
@@ -459,10 +468,21 @@ Linux は Nvidia 製 GPU のみに対応しています。
 
 ### 「高度な設定」項目
 
+#### ストリーミング再生
+
+対応するエンジンで、音声を生成しながら同時に再生するストリーミングトーク機能を利用できるようになります。
+次のいずれかから選択して利用できます。
+
+- 「低遅延」：最も低遅延で音声を再生できますが、PC の性能によっては音声が途切れることがあります。
+- 「バランス」：低遅延モードよりも少し遅延しますが、音声が途切れにくくなります。
+- 「安定」：この機能を無効化します。音声が長いほど遅延は大きくなりますが、音声が途切れることはありません。
+
+PC の性能が高くない場合は「安定」を、性能が高い場合は「バランス」や「低遅延」を選択することをおすすめします。
+
 #### マルチエンジン機能
 
 VOICEVOX API 準拠エンジンを VOICEVOX 内で利用できるようになります。  
-マルチエンジン機能をオンにしたあと、メニューにある「エンジン」の「エンジンの管理」に移動し、次のどちらかを実行すると利用できます。
+マルチエンジン機能をオンにしたあと、メニューにある「エンジン」の「マルチエンジンの管理」に移動し、次のどちらかを実行すると利用できます。
 
 - VOICEVOX API 準拠エンジンの VVPP ファイルをインストールする
 - VOICEVOX 系ソフトウェア内のエンジンのパスを指定する
@@ -487,12 +507,6 @@ VOICEVOX API 準拠エンジンを VOICEVOX 内で利用できるようになり
 
 対応している音声を混ぜてモーフィングした音声を合成できるようになります。  
 ２つの音声を一度生成してから、音声を機械的に分析・再合成する後処理を行うことで実現しています。
-
-#### 複数選択
-
-複数のテキスト欄を選択できるようになります。
-`Shift` キーを押しながらクリックすることで、最後に選択したテキスト欄からクリックしたテキスト欄までのすべてのテキスト欄を選択できます。
-`Ctrl` キーを押しながらクリックすることで、複数のテキスト欄を個別に選択できます。
 
 ### 「データ収集」項目
 

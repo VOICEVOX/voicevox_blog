@@ -1,8 +1,5 @@
 import ModalShell from "../ModalShell";
 import Selector from "./Selector";
-import linuxInstallCpuArm64 from "@/assets/script/linuxInstallCpuArm64.sh?url";
-import linuxInstallCpuX64 from "@/assets/script/linuxInstallCpuX64.sh?url";
-import linuxInstallNvidia from "@/assets/script/linuxInstallNvidia.sh?url";
 import Button from "@/components/ui/Button/Button";
 import { APP_VERSION } from "@/constants";
 import { ensureNotNullish, withBaseUrl } from "@/helper";
@@ -106,14 +103,14 @@ export default function DownloadModal() {
     Linux: {
       "GPU / CPU (x64)": {
         インストーラー: {
-          url: linuxInstallNvidia,
-          name: `VOICEVOX.Installer.${APP_VERSION}.Linux.sh`,
+          url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/VOICEVOX.linux-nvidia-appimage.${APP_VERSION}.sh`,
+          name: `VOICEVOX.linux-nvidia-appimage.${APP_VERSION}.sh`,
         },
       },
       "CPU (x64)": {
         インストーラー: {
-          url: linuxInstallCpuX64,
-          name: `VOICEVOX-CPU-X64.Installer.${APP_VERSION}.Linux.sh`,
+          url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/VOICEVOX.linux-cpu-x64-appimage.${APP_VERSION}.sh`,
+          name: `VOICEVOX.linux-cpu-x64-appimage.${APP_VERSION}.sh`,
         },
         "tar.gz": {
           url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/voicevox-linux-cpu-x64-${APP_VERSION}.tar.gz`,
@@ -122,8 +119,8 @@ export default function DownloadModal() {
       },
       "CPU (arm64)": {
         インストーラー: {
-          url: linuxInstallCpuArm64,
-          name: `VOICEVOX-CPU-ARM64.Installer.${APP_VERSION}.Linux.sh`,
+          url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/VOICEVOX.linux-cpu-arm64-appimage.${APP_VERSION}.sh`,
+          name: `VOICEVOX.linux-cpu-arm64-appimage.${APP_VERSION}.sh`,
         },
         "tar.gz": {
           url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/voicevox-linux-cpu-arm64-${APP_VERSION}.tar.gz`,
