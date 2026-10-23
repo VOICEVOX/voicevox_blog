@@ -42,9 +42,9 @@ pnpm run preview-build
 コードの更新
 
 ```bash
-EDITOR_VERSION="0.25.2"
-ENGINE_VERSION="0.25.2"
-RESOURCE_VERSION="0.25.2"
+EDITOR_VERSION="0.26.1"
+ENGINE_VERSION="0.26.0"
+RESOURCE_VERSION="0.26.0"
 NEMO_VERSION="0.24.0"
 
 pnpm run updateVersion \
@@ -57,13 +57,13 @@ pnpm run updateVersion \
 リソースの更新
 
 ```bash
-editor_tag="0.25.2"
+editor_tag="0.26.1"
 editor_url="https://raw.githubusercontent.com/VOICEVOX/voicevox/$editor_tag"
 
-engine_tag="0.25.2"
+engine_tag="0.26.0"
 engine_url="https://raw.githubusercontent.com/VOICEVOX/voicevox_engine/$engine_tag"
 
-resource_tag="0.25.2"
+resource_tag="0.26.0"
 resource_url="https://raw.githubusercontent.com/VOICEVOX/voicevox_resource/$resource_tag"
 
 # 規約
