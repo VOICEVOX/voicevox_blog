@@ -1,0 +1,1 @@
+import{j as o,F as r,a as t}from"./index.CJoXEicE.js";import{I as e}from"./IconButton.A4oc0KyE.js";import"./index.DIfZGIpv.js";import"./helper.BrpAfGpJ.js";function i(){return o.jsx(e,{size:"sm",border:!0,"aria-label":"close",children:o.jsx(r,{icon:t})})}export{i as ReactIconButtonDemo};
