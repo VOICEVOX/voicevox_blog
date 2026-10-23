@@ -8,38 +8,40 @@ import { useStore } from "@nanostores/react";
 import { useEffect, useState } from "react";
 
 type OsType = "Windows" | "Mac" | "Linux";
+type PackageType = "インストーラー" | "Zip" | "tar.gz";
 type ModeType =
+  | "x64"
+  | "Apple"
+  | "Intel"
+  | "arm64"
   | "GPU / CPU"
-  | "GPU / CPU (x64)"
   | "CPU"
   | "CPU (Apple)"
   | "CPU (Intel)"
   | "CPU (x64)"
   | "CPU (arm64)";
-type PackageType = "インストーラー" | "Zip" | "tar.gz";
 
-const modeAvailables: Record<OsType, ModeType[]> = {
-  Windows: ["GPU / CPU", "CPU"],
-  Mac: ["CPU (Apple)", "CPU (Intel)"],
-  Linux: ["GPU / CPU (x64)", "CPU (x64)", "CPU (arm64)"],
+const packageAvailables: Record<OsType, PackageType[]> = {
+  Windows: ["インストーラー", "Zip"],
+  Mac: ["インストーラー", "Zip"],
+  Linux: ["インストーラー", "tar.gz"],
 };
 
-const packageAvailables: Record<
+const modeAvailables: Record<
   OsType,
-  Partial<Record<ModeType, PackageType[]>>
+  Partial<Record<PackageType, ModeType[]>>
 > = {
   Windows: {
-    "GPU / CPU": ["インストーラー", "Zip"],
-    CPU: ["インストーラー", "Zip"],
+    インストーラー: ["x64"],
+    Zip: ["GPU / CPU", "CPU"],
   },
   Mac: {
-    "CPU (Apple)": ["インストーラー", "Zip"],
-    "CPU (Intel)": ["インストーラー", "Zip"],
+    インストーラー: ["Apple", "Intel"],
+    Zip: ["CPU (Apple)", "CPU (Intel)"],
   },
   Linux: {
-    "GPU / CPU (x64)": ["インストーラー"],
-    "CPU (x64)": ["インストーラー", "tar.gz"],
-    "CPU (arm64)": ["インストーラー", "tar.gz"],
+    インストーラー: ["x64", "arm64"],
+    "tar.gz": ["CPU (x64)", "CPU (arm64)"],
   },
 };
 
@@ -51,78 +53,68 @@ export default function DownloadModal() {
     OsType,
     Partial<
       Record<
-        ModeType,
-        Partial<Record<PackageType, { url: string; name: string }>>
+        PackageType,
+        Partial<Record<ModeType, { url: string; name: string }>>
       >
     >
   > = {
     Windows: {
-      "GPU / CPU": {
-        インストーラー: {
+      インストーラー: {
+        x64: {
           url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/VOICEVOX.Web.Setup.${APP_VERSION}.exe`,
           name: `VOICEVOX.Setup.${APP_VERSION}.Windows.exe`,
         },
-        Zip: {
+      },
+      Zip: {
+        "GPU / CPU": {
           url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/voicevox-windows-directml-${APP_VERSION}.zip`,
           name: `VOICEVOX.${APP_VERSION}.Windows.zip`,
         },
-      },
-      CPU: {
-        インストーラー: {
-          url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/VOICEVOX-CPU.Web.Setup.${APP_VERSION}.exe`,
-          name: `VOICEVOX-CPU.Setup.${APP_VERSION}.Windows.exe`,
-        },
-        Zip: {
+        CPU: {
           url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/voicevox-windows-cpu-${APP_VERSION}.zip`,
           name: `VOICEVOX-CPU.${APP_VERSION}.Windows.zip`,
         },
       },
     },
     Mac: {
-      "CPU (Apple)": {
-        インストーラー: {
+      インストーラー: {
+        Apple: {
           url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/VOICEVOX.${APP_VERSION}-arm64.dmg`,
-          name: `VOICEVOX-CPU-arm64.${APP_VERSION}.Mac.dmg`,
+          name: `VOICEVOX-arm64.${APP_VERSION}.Mac.dmg`,
         },
-        Zip: {
+        Intel: {
+          url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/VOICEVOX.${APP_VERSION}-x64.dmg`,
+          name: `VOICEVOX-x64.${APP_VERSION}.Mac.dmg`,
+        },
+      },
+      Zip: {
+        "CPU (Apple)": {
           url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/voicevox-macos-cpu-arm64-${APP_VERSION}.zip`,
           name: `VOICEVOX-CPU-arm64.${APP_VERSION}.Mac.zip`,
         },
-      },
-      "CPU (Intel)": {
-        インストーラー: {
-          url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/VOICEVOX.${APP_VERSION}-x64.dmg`,
-          name: `VOICEVOX-CPU-x64.${APP_VERSION}.Mac.dmg`,
-        },
-        Zip: {
+        "CPU (Intel)": {
           url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/voicevox-macos-cpu-x64-${APP_VERSION}.zip`,
           name: `VOICEVOX-CPU-x64.${APP_VERSION}.Mac.zip`,
         },
       },
     },
     Linux: {
-      "GPU / CPU (x64)": {
-        インストーラー: {
-          url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/VOICEVOX.linux-nvidia-appimage.${APP_VERSION}.sh`,
-          name: `VOICEVOX.linux-nvidia-appimage.${APP_VERSION}.sh`,
+      インストーラー: {
+        x64: {
+          url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/VOICEVOX.linux-appimage.${APP_VERSION}.sh`,
+          name: `VOICEVOX.linux-appimage.${APP_VERSION}.sh`,
+        },
+        arm64: {
+          url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/VOICEVOX.linux-arm64-appimage.${APP_VERSION}.sh`,
+          name: `VOICEVOX.linux-arm64-appimage.${APP_VERSION}.sh`,
         },
       },
-      "CPU (x64)": {
-        インストーラー: {
-          url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/VOICEVOX.linux-cpu-x64-appimage.${APP_VERSION}.sh`,
-          name: `VOICEVOX.linux-cpu-x64-appimage.${APP_VERSION}.sh`,
-        },
-        "tar.gz": {
+      "tar.gz": {
+        "CPU (x64)": {
           url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/voicevox-linux-cpu-x64-${APP_VERSION}.tar.gz`,
           name: `VOICEVOX-CPU-X64.${APP_VERSION}.Linux.tar.gz`,
         },
-      },
-      "CPU (arm64)": {
-        インストーラー: {
-          url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/VOICEVOX.linux-cpu-arm64-appimage.${APP_VERSION}.sh`,
-          name: `VOICEVOX.linux-cpu-arm64-appimage.${APP_VERSION}.sh`,
-        },
-        "tar.gz": {
+        "CPU (arm64)": {
           url: `https://github.com/VOICEVOX/voicevox/releases/download/${APP_VERSION}/voicevox-linux-cpu-arm64-${APP_VERSION}.tar.gz`,
           name: `VOICEVOX-CPU-ARM64.${APP_VERSION}.Linux.tar.gz`,
         },
@@ -131,58 +123,52 @@ export default function DownloadModal() {
   };
 
   const [selectedOs, setSelectedOs] = useState<OsType>("Windows");
-  const [selectedMode, setSelectedMode] = useState<ModeType>("GPU / CPU");
   const [selectedPackage, setSelectedPackage] =
     useState<PackageType>("インストーラー");
+  const [selectedMode, setSelectedMode] = useState<ModeType>("x64");
 
-  const selectedOrDefaultMode = modeAvailables[selectedOs].includes(
-    selectedMode,
-  )
-    ? selectedMode
-    : modeAvailables[selectedOs][0];
-
-  const packageCandidates = ensureNotNullish(
-    packageAvailables[selectedOs][selectedOrDefaultMode],
-  );
-
+  const packageCandidates = packageAvailables[selectedOs];
   const selectedOrDefaultPackage = packageCandidates.includes(selectedPackage)
     ? selectedPackage
     : packageCandidates[0];
 
-  const modeDownloadUrls = ensureNotNullish(
-    downloadUrls[selectedOs][selectedOrDefaultMode],
+  const modeCandidates = ensureNotNullish(
+    modeAvailables[selectedOs][selectedOrDefaultPackage],
+  );
+  const selectedOrDefaultMode = modeCandidates.includes(selectedMode)
+    ? selectedMode
+    : modeCandidates[0];
+
+  const packageDownloadUrls = ensureNotNullish(
+    downloadUrls[selectedOs][selectedOrDefaultPackage],
   );
   const downloadInfo = ensureNotNullish(
-    modeDownloadUrls[selectedOrDefaultPackage],
+    packageDownloadUrls[selectedOrDefaultMode],
   );
 
   useEffect(() => {
     const userAgent = window.navigator.userAgent;
     if (userAgent.includes("Windows")) {
-      selectOs("Windows");
+      setSelectedOs("Windows");
     } else if (userAgent.includes("Mac")) {
-      selectOs("Mac");
+      setSelectedOs("Mac");
     } else if (userAgent.includes("Linux")) {
-      selectOs("Linux");
+      setSelectedOs("Linux");
     }
   }, []);
 
-  const selectOs = (os: OsType) => {
-    setSelectedOs(os);
-    // 変更先のOSで選択できないモードの場合、最初のモードを選択する
-    selectMode(
-      os,
-      modeAvailables[os].includes(selectedMode)
-        ? selectedMode
-        : modeAvailables[os][0],
+  const selectPackage = (packageType: PackageType) => {
+    setSelectedPackage(packageType);
+    // パッケージを変えてもCPUの種類が変わらないよう、同じ位置の対応モードを選択する
+    const modeIndex = modeCandidates.indexOf(selectedOrDefaultMode);
+    const nextModeCandidates = ensureNotNullish(
+      modeAvailables[selectedOs][packageType],
     );
-  };
-  const selectMode = (os: OsType, mode: ModeType) => {
-    setSelectedMode(mode);
-    const packageCandidates = ensureNotNullish(packageAvailables[os][mode]);
-    if (!packageCandidates.includes(selectedPackage)) {
-      setSelectedPackage(packageCandidates[0]);
-    }
+    setSelectedMode(
+      modeIndex < nextModeCandidates.length
+        ? nextModeCandidates[modeIndex]
+        : nextModeCandidates[0],
+    );
   };
 
   return (
@@ -220,7 +206,7 @@ export default function DownloadModal() {
         <Selector
           label="OS"
           selected={selectedOs}
-          setSelected={selectOs}
+          setSelected={setSelectedOs}
           candidates={["Windows", "Mac", "Linux"]}
         />
 
@@ -228,17 +214,13 @@ export default function DownloadModal() {
 
         <div className="space-y-xs">
           <Selector
-            label="対応モード"
-            selected={selectedOrDefaultMode}
-            setSelected={(mode) => selectMode(selectedOs, mode)}
-            candidates={modeAvailables[selectedOs]}
+            label="パッケージ"
+            selected={selectedOrDefaultPackage}
+            setSelected={selectPackage}
+            candidates={packageCandidates}
           />
           <p className="text-center text-xs text-neutral-800">
-            ※ GPUモードの方が快適ですが、利用するためには
-            <a href={withBaseUrl("/qa/")} className="vv-link">
-              対応するGPU
-            </a>
-            が必要です
+            ※ 推奨パッケージはインストーラー版です
           </p>
         </div>
 
@@ -246,14 +228,28 @@ export default function DownloadModal() {
 
         <div className="space-y-xs">
           <Selector
-            label="パッケージ"
-            selected={selectedOrDefaultPackage}
-            setSelected={setSelectedPackage}
-            candidates={packageCandidates}
+            label={
+              selectedOrDefaultPackage === "インストーラー"
+                ? "CPU"
+                : "対応モード"
+            }
+            selected={selectedOrDefaultMode}
+            setSelected={setSelectedMode}
+            candidates={modeCandidates}
           />
-          <p className="text-center text-xs text-neutral-800">
-            ※ 推奨パッケージはインストーラー版です
-          </p>
+          {selectedOrDefaultPackage === "インストーラー" ? (
+            <p className="text-center text-xs text-neutral-800">
+              ※ GPUモードは起動後に選べます
+            </p>
+          ) : (
+            <p className="text-center text-xs text-neutral-800">
+              ※ GPUモードの方が快適ですが、利用するためには
+              <a href={withBaseUrl("/qa/")} className="vv-link">
+                対応するGPU
+              </a>
+              が必要です
+            </p>
+          )}
         </div>
       </div>
     </ModalShell>
