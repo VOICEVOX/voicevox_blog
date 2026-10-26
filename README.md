@@ -45,7 +45,7 @@ pnpm run preview-build
 EDITOR_VERSION="0.26.1"
 ENGINE_VERSION="0.26.0"
 RESOURCE_VERSION="0.26.0"
-NEMO_VERSION="0.24.0"
+NEMO_VERSION="0.26.0"
 
 pnpm run updateVersion \
   --editor_version="$EDITOR_VERSION" \
