@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://voicevox.hiroshiba.jp/sitemap-index.xml
