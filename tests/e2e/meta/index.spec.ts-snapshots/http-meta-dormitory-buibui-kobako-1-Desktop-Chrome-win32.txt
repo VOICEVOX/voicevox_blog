@@ -1,0 +1,6 @@
+{
+  "canonicalUrl": "https://voicevox.hiroshiba.jp/dormitory/buibui_kobako/",
+  "title": "ブイブイ・コバコ | ボイボ寮 プロフィール | VOICEVOX",
+  "description": "遠くの星からやってきた配送屋さん。いろいろあって、ボイボ寮に住むことに…",
+  "robots": "index, follow"
+}

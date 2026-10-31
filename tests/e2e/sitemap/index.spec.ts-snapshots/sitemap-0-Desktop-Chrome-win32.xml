@@ -62,6 +62,16 @@
     </url>
     <url>
         <loc>
+            https://voicevox.hiroshiba.jp/dormitory/buibui_kobako/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            https://voicevox.hiroshiba.jp/dormitory/buibui_kobako/calls/
+        </loc>
+    </url>
+    <url>
+        <loc>
             https://voicevox.hiroshiba.jp/dormitory/call_names/
         </loc>
     </url>
@@ -538,6 +548,11 @@
     <url>
         <loc>
             https://voicevox.hiroshiba.jp/product/aoyama_ryusei/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            https://voicevox.hiroshiba.jp/product/buibui_kobako/
         </loc>
     </url>
     <url>
