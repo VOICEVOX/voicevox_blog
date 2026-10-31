@@ -4,6 +4,7 @@ import akatsuki_mitama_info from "./characterInfos/akatsuki_mitama";
 import amehare_hau_info from "./characterInfos/amehare_hau";
 import ankomon_info from "./characterInfos/ankomon";
 import aoyama_ryusei_info from "./characterInfos/aoyama_ryusei";
+import buibui_kobako_info from "./characterInfos/buibui_kobako";
 import chibishikiji_info from "./characterInfos/chibishikiji";
 import chubu_tsurugi_info from "./characterInfos/chubu_tsurugi";
 import chugoku_usagi_info from "./characterInfos/chugoku_usagi";
@@ -90,4 +91,5 @@ export const characterInfos: {
   夜語トバリ: yogatari_tobari_info,
   暁記ミタマ: akatsuki_mitama_info,
   里石ユカ: satoishi_yuka_info,
+  "ブイブイ・コバコ": buibui_kobako_info,
 };

@@ -131,17 +131,18 @@ pnpm run generateThumb
 ## キャラクター追加方法
 
 1. `src/constants/characterEntry.ts`にキー追加
-2. リソースを追加
+2. `src/pages/dormitory/index.astro`にキャラクターを追加
+3. リソースを追加
    - `src/assets/talk-audios`にトーク系音声サンプル
    - `src/assets/dormitory-audios`にボイボ寮音声サンプル
    - `src/assets/song-audios`にソング系音声サンプル
    - `src/assets/portrait-images`に立ち絵
    - `src/assets/bustup-images`にバストアップイラスト
-   - `src/constants/characterInfos.ts`にキャラクター情報追加
+   - `src/constants/characterInfos/`にキャラクター情報追加
    - `src/constants/characterInfo.ts`にキャラクター情報import
    - 呼び方・製品ページサムネ・ボイボ寮サムネ
-3. バージョンを更新
-4. デプロイ
+4. バージョンを更新
+5. デプロイ
 
 ## テスト
 
