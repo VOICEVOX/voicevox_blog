@@ -23,7 +23,7 @@ pnpm start
 
 ## deploy
 
-Github Workflowの`build-and-deploy.yml`を`workflow_dispatch`してデプロイします。
+Github Workflowの`build_and_deploy.yml`を`workflow_dispatch`してデプロイします。
 
 ### プレビュー版
 
@@ -91,9 +91,11 @@ curl -s "$engine_url/resources/engine_manifest_assets/update_infos.json" \
 # デフォルトエンジンの更新情報
 pnpm run generateLatestDefaultEngineInfos \
   --github_release_url="https://api.github.com/repos/VOICEVOX/voicevox_engine/releases" \
+  --version="$engine_tag" \
   --output_path="public/latestDefaultEngineInfos.json"
 pnpm run generateLatestDefaultEngineInfos \
   --github_release_url="https://api.github.com/repos/VOICEVOX/voicevox_nemo_engine/releases" \
+  --version="$NEMO_VERSION" \
   --output_path="public/nemoLatestDefaultEngineInfos.json"
 ```
 

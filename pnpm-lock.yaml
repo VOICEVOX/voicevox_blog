@@ -83,9 +83,6 @@ importers:
       '@types/react-dom':
         specifier: ^19.2.3
         version: 19.2.3(@types/react@19.2.14)
-      '@types/semver':
-        specifier: ^7.7.1
-        version: 7.7.1
       '@typescript-eslint/parser':
         specifier: ^8.53.0
         version: 8.58.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3)
@@ -146,9 +143,6 @@ importers:
       remark-parse:
         specifier: ^11.0.0
         version: 11.0.0
-      semver:
-        specifier: ^7.7.3
-        version: 7.7.4
       sharp:
         specifier: ^0.34.5
         version: 0.34.5
@@ -1656,9 +1650,6 @@ packages:
 
   '@types/sax@1.2.7':
     resolution: {integrity: sha512-rO73L89PJxeYM3s3pPPjiPgVVcymqU490g0YO5n5By0k2Erzj6tay/4lr1CHAAU4JyOWd1rpQ8bCf6cZfHU96A==}
-
-  '@types/semver@7.7.1':
-    resolution: {integrity: sha512-FmgJfu+MOcQ370SD0ev7EI8TlCAfKYU+B4m5T3yXc1CiRN94g/SZPtsCkk506aUDtlMnFZvasDwHHUcZUEaYuA==}
 
   '@types/unist@2.0.11':
     resolution: {integrity: sha512-CmBKiL6NNo/OqgmMn95Fk9Whlp2mtvIv+KNpQKN2F4SjvrEesubTRWGYSg+BnWZOnlCaSTU1sMpsBOzgbYhnsA==}
@@ -5572,8 +5563,6 @@ snapshots:
     dependencies:
       '@types/node': 25.5.2
 
-  '@types/semver@7.7.1': {}
-
   '@types/unist@2.0.11': {}
 
   '@types/unist@3.0.3': {}
@@ -8868,7 +8857,6 @@ time:
   '@types/node@25.5.2': '2026-04-03T11:14:43.165Z'
   '@types/react-dom@19.2.3': '2025-11-12T04:37:39.524Z'
   '@types/react@19.2.14': '2026-02-11T11:44:58.515Z'
-  '@types/semver@7.7.1': '2025-09-03T15:02:35.366Z'
   '@typescript-eslint/parser@8.58.0': '2026-03-30T17:19:49.353Z'
   astro-seo@1.1.0: '2026-01-13T15:06:37.829Z'
   astro@5.18.1: '2026-03-10T15:03:19.810Z'
@@ -8889,7 +8877,6 @@ time:
   react-dom@19.2.4: '2026-01-26T18:23:18.598Z'
   react@19.2.4: '2026-01-26T18:23:10.244Z'
   remark-parse@11.0.0: '2023-09-18T09:42:28.170Z'
-  semver@7.7.4: '2026-02-05T17:23:11.131Z'
   sharp@0.34.5: '2025-11-06T14:19:40.989Z'
   tailwindcss@4.2.2: '2026-03-18T16:12:50.031Z'
   tsx@4.21.0: '2025-11-30T15:56:09.488Z'

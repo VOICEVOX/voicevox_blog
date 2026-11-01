@@ -1,5 +1,5 @@
 /**
- * VOICEVOX ENGINEのGithub releasesの情報から最新のvvppおよびvvpppのリンク先を取得し、
+ * VOICEVOX ENGINEのGithub releasesの情報から指定バージョンのvvppおよびvvpppのリンク先を取得し、
  * デフォルトエンジンの更新情報をjson形式で出力する。
  */
 /*
@@ -67,19 +67,22 @@ displayInfoの仕様
 - default: 各OS/アーキテクチャごとにtrueのものが1つだけ存在
 */
 import fs from "fs";
-import semver from "semver";
 import { parseArgs } from "util";
 import z from "zod";
 
 const args = parseArgs({
   options: {
     github_release_url: { type: "string" },
+    version: { type: "string" },
     output_path: { type: "string" },
   },
 }).values;
 
 if (args.github_release_url == undefined) {
   throw new Error("github_release_urlが指定されていません");
+}
+if (args.version == undefined) {
+  throw new Error("versionが指定されていません");
 }
 if (args.output_path == undefined) {
   throw new Error("output_pathが指定されていません");
@@ -220,17 +223,9 @@ function getVvppTxtName(target: string, version: string): string {
   return result;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const output: any = {
-  formatVersion: 1,
-  packages: {},
-};
-
-let releases = z
+const version = args.version;
+const { assets } = z
   .object({
-    tag_name: z.string(),
-    draft: z.boolean(),
-    prerelease: z.boolean(),
     assets: z.array(
       z.object({
         name: z.string(),
@@ -239,30 +234,25 @@ let releases = z
       }),
     ),
   })
-  .array()
-  .parse(await (await fetch(args.github_release_url)).json());
+  .parse(
+    await (
+      await fetch(
+        `${args.github_release_url}/tags/${encodeURIComponent(version)}`,
+      )
+    ).json(),
+  );
 
-releases = releases.filter((release) => !release.draft && !release.prerelease);
-
-releases = releases.filter((release) => semver.valid(release.tag_name));
-
-releases.sort((a, b) => semver.rcompare(a.tag_name, b.tag_name));
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const output: any = {
+  formatVersion: 1,
+  packages: {},
+};
 
 for (const { os, arch, device, displayInfo } of runtimeTargets) {
   const target = `${os}-${arch}-${device}`;
 
-  const release = releases.find((release) =>
-    release.assets.some((asset) =>
-      asset.name.match(getVvppTxtName(target, release.tag_name)),
-    ),
-  );
-  if (release == undefined) {
-    throw new Error(`releaseが見つかりませんでした: ${target}`);
-  }
-
-  const version = release.tag_name;
-  const vvppTxtUrl = release.assets.find((asset) =>
-    asset.name.match(getVvppTxtName(target, version)),
+  const vvppTxtUrl = assets.find(
+    (asset) => asset.name === getVvppTxtName(target, version),
   )?.browser_download_url;
   if (vvppTxtUrl == undefined) {
     throw new Error(`vvpp.txtが見つかりませんでした: ${target}`);
@@ -273,9 +263,7 @@ for (const { os, arch, device, displayInfo } of runtimeTargets) {
     .split("\n");
 
   const files = packageNames.map((packageName) => {
-    const asset = release.assets.find((asset) =>
-      asset.name.includes(packageName),
-    );
+    const asset = assets.find((asset) => asset.name === packageName);
     if (asset == undefined) {
       throw new Error(`ファイルが見つかりませんでした: ${packageName}`);
     }
