@@ -2,7 +2,7 @@ import type { CharacterInfo, Styles } from "../type";
 import { getCharacterAssets } from "./helper";
 import type { CharacterKey } from "@/constants/characterEntry";
 
-const key = "ブイブイ・コバコ" satisfies CharacterKey;
+const key = "ブイブイコバコ" satisfies CharacterKey;
 
 const styles = [
   { name: "ノーマル", id: "normal", type: "talk" },

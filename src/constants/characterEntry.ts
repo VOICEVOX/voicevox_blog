@@ -42,7 +42,7 @@ export const characterKeys = [
   "夜語トバリ",
   "暁記ミタマ",
   "里石ユカ",
-  "ブイブイ・コバコ",
+  "ブイブイコバコ",
 ] as const;
 
 export type CharacterKey = (typeof characterKeys)[number];
@@ -225,7 +225,7 @@ export const characterEntries = {
     name: "里石ユカ",
     id: "satoishi_yuka",
   },
-  "ブイブイ・コバコ": {
+  ブイブイコバコ: {
     name: "ブイブイ・コバコ",
     id: "buibui_kobako",
   },

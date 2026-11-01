@@ -91,5 +91,5 @@ export const characterInfos: {
   夜語トバリ: yogatari_tobari_info,
   暁記ミタマ: akatsuki_mitama_info,
   里石ユカ: satoishi_yuka_info,
-  "ブイブイ・コバコ": buibui_kobako_info,
+  ブイブイコバコ: buibui_kobako_info,
 };
