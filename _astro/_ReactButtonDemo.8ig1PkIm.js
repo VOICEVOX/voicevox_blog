@@ -1,0 +1,1 @@
+import{j as o,F as t,f as i}from"./index.CJoXEicE.js";import{B as n}from"./Button.C6Wh8wCS.js";import"./index.DIfZGIpv.js";import"./index.C90rn6aM.js";function a(){return o.jsx(n,{kind:"solid",tone:"primary",shape:"pill",size:"md",icon:o.jsx(t,{icon:i}),children:"ダウンロード"})}export{a as ReactButtonDemo};
