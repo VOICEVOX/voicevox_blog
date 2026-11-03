@@ -34,7 +34,7 @@ export default {
     { label: "相棒", value: "雪おこじょ", size: 1 },
     { label: "好物", value: "バニラソフトクリーム", size: 2 },
   ],
-  policyUrl: "https://www.whitecul.com/guideline",
-  detailUrl: "https://www.whitecul.com/",
+  policyUrl: "https://www.whitecul.net/guideline",
+  detailUrl: "https://www.whitecul.net/",
   ...getCharacterAssets(key, styles),
 } satisfies CharacterInfo;
