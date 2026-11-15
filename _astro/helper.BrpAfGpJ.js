@@ -1,0 +1,1 @@
+const s={sm:"vv-icon-button-sm",md:"vv-icon-button-md",lg:"vv-icon-button-lg",xl:"vv-icon-button-xl"},b=({size:o,className:t,border:n})=>{const v=n?"vv-icon-button-border":"";return["vv-status-layer","vv-icon-button",s[o],v,t].filter(Boolean).join(" ")};export{b};

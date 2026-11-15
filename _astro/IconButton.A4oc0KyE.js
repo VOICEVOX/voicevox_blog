@@ -1,0 +1,1 @@
+import{j as m}from"./index.CJoXEicE.js";import{b as r}from"./helper.BrpAfGpJ.js";import"./index.DIfZGIpv.js";function p({size:t,border:o,className:s,...n}){const a=r({size:t,className:s,border:o});return m.jsx("button",{...n,className:a,type:"button"})}export{p as I};
